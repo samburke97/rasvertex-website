@@ -1,9 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-white text-gray-900;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --navy: #1a0f5e;
+  --navy-dark: #0f172a;
+  --red: #dc2626;
+  --red-dark: #991b1b;
+  --cream: #fbf7f0;
+  --sky-from: #e8f4f8;
+  --sky-to: #d4e7ed;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
 }
