@@ -1,0 +1,428 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.desktopMenu {
+  display: none;
+  align-items: center;
+  gap: 48px;
+}
+
+@media (min-width: 1024px) {
+  .desktopMenu {
+    display: flex;
+  }
+}
+
+.dropdown {
+  position: relative;
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 24px 0;
+  transition: color 0.2s;
+}
+
+.menuButton:hover {
+  color: var(--red);
+}
+
+.arrowIcon {
+  transition: transform 0.2s;
+}
+
+.arrowIcon.open {
+  transform: rotate(180deg);
+}
+
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  width: 1000px;
+  background: linear-gradient(to bottom right, var(--sky-from), var(--sky-to));
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  padding: 32px;
+}
+
+.megaMenuContent {
+  display: flex;
+  gap: 24px;
+}
+
+.servicesList {
+  width: 224px;
+  flex-shrink: 0;
+}
+
+.serviceButton {
+  width: 100%;
+  text-align: left;
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  color: var(--navy);
+  opacity: 0.4;
+}
+
+.serviceButton:hover {
+  color: var(--navy);
+  opacity: 1;
+}
+
+.serviceButton.active {
+  color: var(--navy);
+  opacity: 1;
+}
+
+.serviceContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.serviceDetails {
+  display: flex;
+  gap: 24px;
+}
+
+.serviceInfo {
+  flex: 1;
+}
+
+.serviceDescription {
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.servicePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 12px;
+  background: white;
+  border-radius: 9999px;
+  color: var(--navy);
+  border: 1px solid rgba(26, 15, 94, 0.1);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.serviceImage {
+  width: 288px;
+  height: 208px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.imagePlaceholder {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.companyDropdown {
+  position: absolute;
+  top: 100%;
+  left: auto;
+  right: 0;
+  margin-top: 8px;
+  width: 700px;
+  background: var(--cream);
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  padding: 32px;
+  transform: translateX(0);
+}
+
+.companyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.companyColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.companyLink {
+  display: block;
+  color: var(--navy);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.companyLink:hover {
+  color: var(--red);
+}
+
+.companyLink.main {
+  font-weight: 600;
+}
+
+.ctaButtons {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (min-width: 1024px) {
+  .ctaButtons {
+    display: flex;
+  }
+}
+
+.phoneButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.phoneButton:hover {
+  background: var(--navy);
+  color: white;
+}
+
+.quoteButton {
+  padding: 10px 24px;
+  background: var(--red);
+  color: white;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.quoteButton:hover {
+  background: var(--red-dark);
+}
+
+.mobileMenuButton {
+  display: block;
+  color: var(--navy);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .mobileMenuButton {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+
+.mobileMenuContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobileSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileSectionButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-display);
+  color: var(--navy);
+  padding: 8px 0;
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobileDropdownContent {
+  margin-top: 16px;
+  background: linear-gradient(to bottom right, var(--sky-from), var(--sky-to));
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.mobileDropdownContent.company {
+  background: var(--cream);
+}
+
+.mobileServicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobileServiceLink {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.mobileServiceLink:hover {
+  color: var(--red);
+}
+
+.mobileCompanyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobileCompanySection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileCompanySectionDivider {
+  padding-top: 16px;
+  border-top: 1px solid rgba(26, 15, 94, 0.1);
+}
+
+.mobileCompanyLink {
+  display: block;
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.mobileCompanyLink.secondary {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.mobileCompanyLink:hover {
+  color: var(--red);
+}
+
+.mobileLocationsLabel {
+  color: var(--navy);
+  opacity: 0.6;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.mobileCtaButtons {
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileCallButton {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 12px 24px;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  border-radius: 9999px;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.mobileQuoteButton {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--red);
+  color: white;
+  border-radius: 9999px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}

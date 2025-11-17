@@ -12,8 +12,7 @@ import {
   locations,
   type ServiceKey,
 } from "../data/navigationData";
-
-const bebasFont = { fontFamily: "'Bebas Neue', Arial, sans-serif" };
+import styles from "./Navigation.module.css";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,11 +21,11 @@ export default function Navigation() {
   const [companyOpen, setCompanyOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
-      <div className="max-w-[1400px] mx-auto px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center gap-12">
-            <Link href="/">
+    <nav className={styles.nav}>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.leftSection}>
+            <Link href="/" className={styles.logo}>
               <Image
                 src="/logo.png"
                 alt="RAS-VERTEX Logo"
@@ -36,21 +35,18 @@ export default function Navigation() {
               />
             </Link>
 
-            <div className="hidden lg:flex items-center gap-12">
+            <div className={styles.desktopMenu}>
               <div
-                className="relative"
+                className={styles.dropdown}
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
               >
-                <button
-                  className="flex items-center gap-1 text-navy hover:text-red transition-colors py-6 text-xl tracking-wide"
-                  style={bebasFont}
-                >
+                <button className={styles.menuButton}>
                   SERVICES
                   <ArrowDown2
                     size={16}
-                    className={`transition-transform duration-200 ${
-                      servicesOpen ? "rotate-180" : ""
+                    className={`${styles.arrowIcon} ${
+                      servicesOpen ? styles.open : ""
                     }`}
                   />
                 </button>
@@ -62,25 +58,18 @@ export default function Navigation() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-[1000px] rounded-3xl shadow-xl p-8"
-                      style={{
-                        background:
-                          "linear-gradient(to bottom right, var(--sky-from), var(--sky-to))",
-                      }}
+                      className={styles.megaMenu}
                     >
-                      <div className="flex gap-6">
-                        <div className="w-56 space-y-0 flex-shrink-0">
+                      <div className={styles.megaMenuContent}>
+                        <div className={styles.servicesList}>
                           {(Object.keys(servicesData) as ServiceKey[]).map(
                             (key) => (
                               <button
                                 key={key}
                                 onMouseEnter={() => setActiveService(key)}
-                                className={`w-full text-left px-4 py-2 transition-colors text-xl tracking-wide ${
-                                  activeService === key
-                                    ? "text-navy"
-                                    : "text-navy/40 hover:text-navy"
+                                className={`${styles.serviceButton} ${
+                                  activeService === key ? styles.active : ""
                                 }`}
-                                style={bebasFont}
                               >
                                 {servicesData[key].name.toUpperCase()}
                               </button>
@@ -88,7 +77,7 @@ export default function Navigation() {
                           )}
                         </div>
 
-                        <div className="flex-1 min-w-0">
+                        <div className={styles.serviceContent}>
                           <AnimatePresence mode="wait">
                             <motion.div
                               key={activeService}
@@ -96,20 +85,19 @@ export default function Navigation() {
                               animate={{ opacity: 1, x: 0 }}
                               exit={{ opacity: 0, x: -10 }}
                               transition={{ duration: 0.2 }}
-                              className="flex gap-6"
+                              className={styles.serviceDetails}
                             >
-                              <div className="flex-1">
-                                <p className="text-navy text-sm leading-relaxed mb-4">
+                              <div className={styles.serviceInfo}>
+                                <p className={styles.serviceDescription}>
                                   {servicesData[activeService].description}
                                 </p>
 
-                                <div className="flex flex-wrap gap-2">
+                                <div className={styles.servicePills}>
                                   {servicesData[activeService].subServices.map(
                                     (service) => (
                                       <span
                                         key={service}
-                                        className="text-xs px-3 py-1.5 bg-white rounded-full text-navy border border-navy/10 tracking-wide"
-                                        style={bebasFont}
+                                        className={styles.pill}
                                       >
                                         {service}
                                       </span>
@@ -118,8 +106,8 @@ export default function Navigation() {
                                 </div>
                               </div>
 
-                              <div className="w-72 h-52 rounded-2xl overflow-hidden bg-white flex items-center justify-center flex-shrink-0">
-                                <span className="text-gray-400 text-sm">
+                              <div className={styles.serviceImage}>
+                                <span className={styles.imagePlaceholder}>
                                   Image placeholder
                                 </span>
                               </div>
@@ -133,19 +121,16 @@ export default function Navigation() {
               </div>
 
               <div
-                className="relative"
+                className={styles.dropdown}
                 onMouseEnter={() => setCompanyOpen(true)}
                 onMouseLeave={() => setCompanyOpen(false)}
               >
-                <button
-                  className="flex items-center gap-1 text-navy hover:text-red transition-colors py-6 text-xl tracking-wide"
-                  style={bebasFont}
-                >
+                <button className={styles.menuButton}>
                   COMPANY
                   <ArrowDown2
                     size={16}
-                    className={`transition-transform duration-200 ${
-                      companyOpen ? "rotate-180" : ""
+                    className={`${styles.arrowIcon} ${
+                      companyOpen ? styles.open : ""
                     }`}
                   />
                 </button>
@@ -157,37 +142,37 @@ export default function Navigation() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full right-0 mt-2 w-[700px] bg-cream rounded-3xl shadow-xl p-8"
+                      className={styles.companyDropdown}
                     >
-                      <div className="grid grid-cols-3 gap-8">
-                        <div className="space-y-2">
+                      <div className={styles.companyGrid}>
+                        <div className={styles.companyColumn}>
                           {companyMain.map((item) => (
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="block text-navy hover:text-red font-semibold transition-colors text-sm"
+                              className={`${styles.companyLink} ${styles.main}`}
                             >
                               {item.name}
                             </Link>
                           ))}
                         </div>
-                        <div className="space-y-2">
+                        <div className={styles.companyColumn}>
                           {companySecondary.map((item) => (
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="block text-navy hover:text-red font-normal transition-colors text-sm"
+                              className={styles.companyLink}
                             >
                               {item.name}
                             </Link>
                           ))}
                         </div>
-                        <div className="space-y-2">
+                        <div className={styles.companyColumn}>
                           {locations.map((item) => (
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="block text-navy hover:text-red font-normal transition-colors text-sm"
+                              className={styles.companyLink}
                             >
                               {item.name}
                             </Link>
@@ -201,24 +186,18 @@ export default function Navigation() {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="tel:0731300226"
-              className="flex items-center justify-center px-6 py-2.5 border-2 border-navy text-navy rounded-full hover:bg-navy hover:text-white transition-all font-medium text-[15px]"
-            >
+          <div className={styles.ctaButtons}>
+            <a href="tel:0731300226" className={styles.phoneButton}>
               (07) 3130 0226
             </a>
-            <Link
-              href="/quote"
-              className="px-6 py-2.5 bg-red text-white rounded-full hover:bg-red-dark transition-all font-medium text-[15px]"
-            >
+            <Link href="/quote" className={styles.quoteButton}>
               Free Quote →
             </Link>
           </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-navy"
+            className={styles.mobileMenuButton}
           >
             {mobileMenuOpen ? (
               <CloseSquare size={32} />
@@ -235,40 +214,32 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-gray-200 overflow-y-auto max-h-[calc(100vh-80px)]"
+            className={styles.mobileMenu}
           >
-            <div className="px-6 py-6 space-y-6">
-              <div>
+            <div className={styles.mobileMenuContent}>
+              <div className={styles.mobileSection}>
                 <button
                   onClick={() => setServicesOpen(!servicesOpen)}
-                  className="flex items-center justify-between w-full text-left text-navy py-2 text-2xl tracking-wide"
-                  style={bebasFont}
+                  className={styles.mobileSectionButton}
                 >
                   SERVICES
                   <ArrowDown2
                     size={20}
-                    className={`transition-transform ${
-                      servicesOpen ? "rotate-180" : ""
+                    className={`${styles.arrowIcon} ${
+                      servicesOpen ? styles.open : ""
                     }`}
                   />
                 </button>
                 {servicesOpen && (
-                  <div
-                    className="mt-4 rounded-3xl p-6"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom right, var(--sky-from), var(--sky-to))",
-                    }}
-                  >
-                    <div className="space-y-4">
+                  <div className={styles.mobileDropdownContent}>
+                    <div className={styles.mobileServicesList}>
                       {(Object.keys(servicesData) as ServiceKey[]).map(
                         (key) => (
                           <Link
                             key={key}
                             href={servicesData[key].href}
-                            className="block text-navy text-xl tracking-wide hover:text-red transition-colors"
+                            className={styles.mobileServiceLink}
                             onClick={() => setMobileMenuOpen(false)}
-                            style={bebasFont}
                           >
                             {servicesData[key].name.toUpperCase()}
                           </Link>
@@ -279,59 +250,59 @@ export default function Navigation() {
                 )}
               </div>
 
-              <div>
+              <div className={styles.mobileSection}>
                 <button
                   onClick={() => setCompanyOpen(!companyOpen)}
-                  className="flex items-center justify-between w-full text-left text-navy py-2 text-2xl tracking-wide"
-                  style={bebasFont}
+                  className={styles.mobileSectionButton}
                 >
                   COMPANY
                   <ArrowDown2
                     size={20}
-                    className={`transition-transform ${
-                      companyOpen ? "rotate-180" : ""
+                    className={`${styles.arrowIcon} ${
+                      companyOpen ? styles.open : ""
                     }`}
                   />
                 </button>
                 {companyOpen && (
-                  <div className="mt-4 bg-cream rounded-3xl p-6">
-                    <div className="space-y-6">
-                      <div className="space-y-3">
+                  <div
+                    className={`${styles.mobileDropdownContent} ${styles.company}`}
+                  >
+                    <div className={styles.mobileCompanyContent}>
+                      <div className={styles.mobileCompanySection}>
                         {companyMain.map((item) => (
                           <Link
                             key={item.name}
                             href={item.href}
-                            className="block text-navy font-bold text-lg hover:text-red transition-colors"
+                            className={styles.mobileCompanyLink}
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {item.name}
                           </Link>
                         ))}
                       </div>
-                      <div className="space-y-2 pt-4 border-t border-navy/10">
+                      <div
+                        className={`${styles.mobileCompanySection} ${styles.mobileCompanySectionDivider}`}
+                      >
                         {companySecondary.map((item) => (
                           <Link
                             key={item.name}
                             href={item.href}
-                            className="block text-navy font-normal text-base hover:text-red transition-colors"
+                            className={`${styles.mobileCompanyLink} ${styles.secondary}`}
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {item.name}
                           </Link>
                         ))}
                       </div>
-                      <div className="space-y-2 pt-4 border-t border-navy/10">
-                        <p
-                          className="text-navy/60 text-sm font-semibold mb-2 tracking-wide"
-                          style={bebasFont}
-                        >
-                          LOCATIONS
-                        </p>
+                      <div
+                        className={`${styles.mobileCompanySection} ${styles.mobileCompanySectionDivider}`}
+                      >
+                        <p className={styles.mobileLocationsLabel}>LOCATIONS</p>
                         {locations.map((item) => (
                           <Link
                             key={item.name}
                             href={item.href}
-                            className="block text-navy font-normal text-base hover:text-red transition-colors"
+                            className={`${styles.mobileCompanyLink} ${styles.secondary}`}
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {item.name}
@@ -343,16 +314,13 @@ export default function Navigation() {
                 )}
               </div>
 
-              <div className="pt-6 space-y-3 border-t border-gray-200">
-                <a
-                  href="tel:0731300226"
-                  className="block text-center w-full px-6 py-3 border-2 border-navy text-navy rounded-full font-medium"
-                >
+              <div className={styles.mobileCtaButtons}>
+                <a href="tel:0731300226" className={styles.mobileCallButton}>
                   Call
                 </a>
                 <Link
                   href="/quote"
-                  className="block text-center w-full px-6 py-3 bg-red text-white rounded-full font-medium"
+                  className={styles.mobileQuoteButton}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Quote →

@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navigation />
-        <main className="pt-24">{children}</main>
+        <main style={{ paddingTop: "80px" }}>{children}</main>
       </body>
     </html>
   );
