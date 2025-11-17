@@ -1,0 +1,40 @@
+.companyDropdown {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  background: var(--cream);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  padding: 48px 0;
+}
+
+.companyGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.companyColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.companyLink {
+  display: block;
+  color: var(--navy);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.companyLink:hover {
+  color: var(--red);
+}
+
+.companyLink.main {
+  font-weight: 600;
+}

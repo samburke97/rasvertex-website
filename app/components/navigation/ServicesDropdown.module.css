@@ -1,0 +1,99 @@
+.megaMenu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  background: linear-gradient(to bottom right, var(--sky-from), var(--sky-to));
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  padding: 48px 0;
+}
+
+.megaMenuContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  gap: 48px;
+}
+
+.servicesList {
+  width: 224px;
+  flex-shrink: 0;
+}
+
+.serviceButton {
+  width: 100%;
+  text-align: left;
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  color: var(--navy);
+  opacity: 0.4;
+}
+
+.serviceButton:hover,
+.serviceButton.active {
+  color: var(--navy);
+  opacity: 1;
+}
+
+.serviceContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.serviceDetails {
+  display: flex;
+  gap: 48px;
+}
+
+.serviceInfo {
+  flex: 1;
+}
+
+.serviceDescription {
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.servicePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 12px;
+  background: white;
+  border-radius: 9999px;
+  color: var(--navy);
+  border: 1px solid rgba(26, 15, 94, 0.1);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.serviceImage {
+  width: 400px;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.imagePlaceholder {
+  color: #9ca3af;
+  font-size: 14px;
+}
