@@ -9,12 +9,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        display: ["var(--font-bebas)"],
+        display: ["var(--font-bebas)", "Arial", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        navy: {
+          DEFAULT: "#1a0f5e",
+          dark: "#0F172A",
+        },
+        red: {
+          DEFAULT: "#DC2626",
+          dark: "#991B1B",
+        },
+        cream: "#FBF7F0",
+        "sky-gradient-from": "#e8f4f8",
+        "sky-gradient-to": "#d4e7ed",
       },
     },
   },
