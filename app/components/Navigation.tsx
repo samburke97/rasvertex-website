@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { HambergerMenu, CloseSquare, ArrowDown2 } from "iconsax-react";
-import {
-  servicesData,
-  companyMain,
-  companySecondary,
-  locations,
-  type ServiceKey,
-} from "../data/navigationData";
+import { HambergerMenu, CloseSquare } from "iconsax-react";
+import { type ServiceKey } from "../data/navigationData";
+import DesktopNav from "../components/navigation/CompanyDropdown";
+import ServicesDropdown from "../components/navigation/ServicesDropdown";
+import CompanyDropdown from "../components/navigation/CompanyDropdown";
+import MobileMenu from "../components/navigation/MobileMenu";
 import styles from "./Navigation.module.css";
 
 export default function Navigation() {
@@ -19,6 +16,17 @@ export default function Navigation() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [activeService, setActiveService] = useState<ServiceKey>("painting");
   const [companyOpen, setCompanyOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenuOpen]);
 
   return (
     <nav className={styles.nav}>
@@ -35,155 +43,14 @@ export default function Navigation() {
               />
             </Link>
 
-            <div className={styles.desktopMenu}>
-              <div
-                className={styles.dropdown}
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                <button className={styles.menuButton}>
-                  SERVICES
-                  <ArrowDown2
-                    size={16}
-                    className={`${styles.arrowIcon} ${
-                      servicesOpen ? styles.open : ""
-                    }`}
-                  />
-                </button>
-
-                <AnimatePresence>
-                  {servicesOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className={styles.megaMenu}
-                    >
-                      <div className={styles.megaMenuContent}>
-                        <div className={styles.servicesList}>
-                          {(Object.keys(servicesData) as ServiceKey[]).map(
-                            (key) => (
-                              <button
-                                key={key}
-                                onMouseEnter={() => setActiveService(key)}
-                                className={`${styles.serviceButton} ${
-                                  activeService === key ? styles.active : ""
-                                }`}
-                              >
-                                {servicesData[key].name.toUpperCase()}
-                              </button>
-                            )
-                          )}
-                        </div>
-
-                        <div className={styles.serviceContent}>
-                          <AnimatePresence mode="wait">
-                            <motion.div
-                              key={activeService}
-                              initial={{ opacity: 0, x: 10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: -10 }}
-                              transition={{ duration: 0.2 }}
-                              className={styles.serviceDetails}
-                            >
-                              <div className={styles.serviceInfo}>
-                                <p className={styles.serviceDescription}>
-                                  {servicesData[activeService].description}
-                                </p>
-
-                                <div className={styles.servicePills}>
-                                  {servicesData[activeService].subServices.map(
-                                    (service) => (
-                                      <span
-                                        key={service}
-                                        className={styles.pill}
-                                      >
-                                        {service}
-                                      </span>
-                                    )
-                                  )}
-                                </div>
-                              </div>
-
-                              <div className={styles.serviceImage}>
-                                <span className={styles.imagePlaceholder}>
-                                  Image placeholder
-                                </span>
-                              </div>
-                            </motion.div>
-                          </AnimatePresence>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <div
-                className={styles.dropdown}
-                onMouseEnter={() => setCompanyOpen(true)}
-                onMouseLeave={() => setCompanyOpen(false)}
-              >
-                <button className={styles.menuButton}>
-                  COMPANY
-                  <ArrowDown2
-                    size={16}
-                    className={`${styles.arrowIcon} ${
-                      companyOpen ? styles.open : ""
-                    }`}
-                  />
-                </button>
-
-                <AnimatePresence>
-                  {companyOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className={styles.companyDropdown}
-                    >
-                      <div className={styles.companyGrid}>
-                        <div className={styles.companyColumn}>
-                          {companyMain.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className={`${styles.companyLink} ${styles.main}`}
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                        </div>
-                        <div className={styles.companyColumn}>
-                          {companySecondary.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className={styles.companyLink}
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                        </div>
-                        <div className={styles.companyColumn}>
-                          {locations.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className={styles.companyLink}
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
+            <DesktopNav
+              servicesOpen={servicesOpen}
+              setServicesOpen={setServicesOpen}
+              companyOpen={companyOpen}
+              setCompanyOpen={setCompanyOpen}
+              activeService={activeService}
+              setActiveService={setActiveService}
+            />
           </div>
 
           <div className={styles.ctaButtons}>
@@ -208,128 +75,22 @@ export default function Navigation() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className={styles.mobileMenu}
-          >
-            <div className={styles.mobileMenuContent}>
-              <div className={styles.mobileSection}>
-                <button
-                  onClick={() => setServicesOpen(!servicesOpen)}
-                  className={styles.mobileSectionButton}
-                >
-                  SERVICES
-                  <ArrowDown2
-                    size={20}
-                    className={`${styles.arrowIcon} ${
-                      servicesOpen ? styles.open : ""
-                    }`}
-                  />
-                </button>
-                {servicesOpen && (
-                  <div className={styles.mobileDropdownContent}>
-                    <div className={styles.mobileServicesList}>
-                      {(Object.keys(servicesData) as ServiceKey[]).map(
-                        (key) => (
-                          <Link
-                            key={key}
-                            href={servicesData[key].href}
-                            className={styles.mobileServiceLink}
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {servicesData[key].name.toUpperCase()}
-                          </Link>
-                        )
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
+      <ServicesDropdown
+        isOpen={servicesOpen}
+        activeService={activeService}
+        setActiveService={setActiveService}
+      />
 
-              <div className={styles.mobileSection}>
-                <button
-                  onClick={() => setCompanyOpen(!companyOpen)}
-                  className={styles.mobileSectionButton}
-                >
-                  COMPANY
-                  <ArrowDown2
-                    size={20}
-                    className={`${styles.arrowIcon} ${
-                      companyOpen ? styles.open : ""
-                    }`}
-                  />
-                </button>
-                {companyOpen && (
-                  <div
-                    className={`${styles.mobileDropdownContent} ${styles.company}`}
-                  >
-                    <div className={styles.mobileCompanyContent}>
-                      <div className={styles.mobileCompanySection}>
-                        {companyMain.map((item) => (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className={styles.mobileCompanyLink}
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                      <div
-                        className={`${styles.mobileCompanySection} ${styles.mobileCompanySectionDivider}`}
-                      >
-                        {companySecondary.map((item) => (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className={`${styles.mobileCompanyLink} ${styles.secondary}`}
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                      <div
-                        className={`${styles.mobileCompanySection} ${styles.mobileCompanySectionDivider}`}
-                      >
-                        <p className={styles.mobileLocationsLabel}>LOCATIONS</p>
-                        {locations.map((item) => (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className={`${styles.mobileCompanyLink} ${styles.secondary}`}
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+      <CompanyDropdown isOpen={companyOpen} />
 
-              <div className={styles.mobileCtaButtons}>
-                <a href="tel:0731300226" className={styles.mobileCallButton}>
-                  Call
-                </a>
-                <Link
-                  href="/quote"
-                  className={styles.mobileQuoteButton}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Quote →
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        servicesOpen={servicesOpen}
+        setServicesOpen={setServicesOpen}
+        companyOpen={companyOpen}
+        setCompanyOpen={setCompanyOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
     </nav>
   );
 }
