@@ -146,9 +146,7 @@ export default function Navigation() {
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center gap-12">
               <Link href="/" className="flex items-center">
-                <span className="text-3xl font-display tracking-tight text-[#0F172A]">
-                  RAS-<span className="text-[#DC2626]">VERTEX</span>
-                </span>
+                <Image src="@/public/logo.png" width={300} height={300}></Image>
               </Link>
 
               <div className="hidden lg:flex items-center gap-12">
