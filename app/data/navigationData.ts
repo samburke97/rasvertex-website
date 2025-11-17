@@ -1,0 +1,128 @@
+export const servicesData = {
+  painting: {
+    name: "Painting",
+    href: "/services/painting",
+    description:
+      "Professional interior and exterior painting services for commercial and residential properties. Quality finishes that last.",
+    image: "/images/services/painting.jpg",
+    subServices: [
+      "INTERIOR PAINTING",
+      "EXTERIOR PAINTING",
+      "HERITAGE PAINTING",
+      "COLOUR CONSULTING",
+      "PRE-SALE PAINTING",
+      "STRATA PAINTING",
+      "RENDER PAINTING",
+      "ROOF PAINTING",
+      "COLORBOND ROOF PAINTING",
+      "METAL ROOF PAINTING",
+      "TILED ROOF PAINTING",
+    ],
+  },
+  building: {
+    name: "Building Cleaning",
+    href: "/services/building-cleaning",
+    description:
+      "Comprehensive building maintenance and cleaning services. Pressure washing, facade cleaning, and complete building care.",
+    image: "/images/services/building-cleaning.jpg",
+    subServices: [
+      "PRESSURE WASHING",
+      "FACADE CLEANING",
+      "RENDER CLEANING",
+      "GRAFFITI REMOVAL",
+      "CONCRETE CLEANING",
+      "BUILDING WASH",
+      "DRIVEWAY CLEANING",
+      "PAVER CLEANING",
+    ],
+  },
+  window: {
+    name: "Window Cleaning",
+    href: "/services/window-cleaning",
+    description:
+      "High-rise and commercial window cleaning with full IRATA certification. Safe, professional, and compliant services.",
+    image: "/images/services/window-cleaning.jpg",
+    subServices: [
+      "HIGH-RISE WINDOWS",
+      "ROPE ACCESS",
+      "COMMERCIAL WINDOWS",
+      "STRATA WINDOWS",
+      "SOLAR PANEL CLEANING",
+      "GUTTER CLEANING",
+      "SKYLIGHT CLEANING",
+    ],
+  },
+  waterproofing: {
+    name: "Waterproofing",
+    href: "/services/waterproofing",
+    description:
+      "Expert waterproofing solutions for balconies, roofs, and wet areas. Long-term warranties and proven protection.",
+    image: "/images/services/waterproofing.jpg",
+    subServices: [
+      "BALCONY WATERPROOFING",
+      "ROOF WATERPROOFING",
+      "BATHROOM WATERPROOFING",
+      "DECK WATERPROOFING",
+      "LEAK DETECTION",
+      "MEMBRANE SYSTEMS",
+      "TANKING",
+      "WATER DAMAGE REPAIR",
+    ],
+  },
+  maintenance: {
+    name: "Maintenance",
+    href: "/services/maintenance",
+    description:
+      "Ongoing building maintenance and repair services to keep your property in top condition year-round.",
+    image: "/images/services/maintenance.jpg",
+    subServices: [
+      "PREVENTATIVE MAINTENANCE",
+      "REACTIVE REPAIRS",
+      "BUILDING INSPECTIONS",
+      "GUTTER CLEANING",
+      "MINOR REPAIRS",
+      "SCHEDULED SERVICING",
+      "EMERGENCY REPAIRS",
+    ],
+  },
+  height: {
+    name: "Height Safety",
+    href: "/services/height-safety",
+    description:
+      "Complete height safety systems, certification, and compliance. IRATA certified technicians and full safety compliance.",
+    image: "/images/services/height-safety.jpg",
+    subServices: [
+      "ANCHOR POINT INSTALLATION",
+      "SAFETY LINE SYSTEMS",
+      "ANNUAL INSPECTIONS",
+      "COMPLIANCE CERTIFICATES",
+      "SAFETY TRAINING",
+      "IRATA SERVICES",
+      "RESCUE PLANS",
+    ],
+  },
+};
+
+export const companyMain = [
+  { name: "About Us", href: "/about" },
+  { name: "Our Team", href: "/team" },
+  { name: "Careers", href: "/careers" },
+  { name: "Project Portfolio", href: "/projects" },
+  { name: "Certifications", href: "/certifications" },
+];
+
+export const companySecondary = [
+  { name: "Contact", href: "/contact" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Get a Quote", href: "/quote" },
+  { name: "Reviews", href: "/reviews" },
+  { name: "Blog", href: "/blog" },
+];
+
+export const locations = [
+  { name: "Sunshine Coast", href: "/locations/sunshine-coast" },
+  { name: "Brisbane", href: "/locations/brisbane" },
+  { name: "Gold Coast", href: "/locations/gold-coast" },
+];
+
+export type ServiceKey = keyof typeof servicesData;

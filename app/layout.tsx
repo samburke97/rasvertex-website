@@ -29,10 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${bebasNeue.variable} font-sans antialiased`}
-      >
+    <html lang="en" className={`${inter.variable} ${bebasNeue.variable}`}>
+      <body className="antialiased">
         <Navigation />
         <main className="pt-24">{children}</main>
       </body>
