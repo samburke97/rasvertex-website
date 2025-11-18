@@ -38,72 +38,78 @@ export default function Navigation() {
   return (
     <nav className={styles.nav}>
       <Container size="xl">
-        <div className={styles.container}>
-          <div className={styles.wrapper}>
-            <div className={styles.leftSection}>
-              <Link href="/" className={styles.logo}></Link>
+        <div className={styles.wrapper}>
+          <div className={styles.leftSection}>
+            <Link href="/" className={styles.logo}>
+              {/* <Image
+                src="/logo.png"
+                alt="RAS-VERTEX"
+                width={120}
+                height={30}
+                priority
+              /> */}
+            </Link>
 
-              <div className={styles.desktopMenu}>
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
-                >
-                  <button className={styles.menuButton}>
-                    Services
-                    <ArrowDown2
-                      size={16}
-                      className={`${styles.arrowIcon} ${
-                        servicesOpen ? styles.open : ""
-                      }`}
-                    />
-                  </button>
-                  <ServicesDropdown
-                    isOpen={servicesOpen}
-                    activeService={activeService}
-                    setActiveService={setActiveService}
+            <div className={styles.desktopMenu}>
+              <div
+                className={styles.dropdown}
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button className={styles.menuButton}>
+                  Services
+                  <ArrowDown2
+                    size={16}
+                    className={`${styles.arrowIcon} ${
+                      servicesOpen ? styles.open : ""
+                    }`}
                   />
-                </div>
-
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setCompanyOpen(true)}
-                  onMouseLeave={() => setCompanyOpen(false)}
-                >
-                  <button className={styles.menuButton}>
-                    Company
-                    <ArrowDown2
-                      size={16}
-                      className={`${styles.arrowIcon} ${
-                        companyOpen ? styles.open : ""
-                      }`}
-                    />
-                  </button>
-                  <CompanyDropdown isOpen={companyOpen} />
-                </div>
+                </button>
+                <ServicesDropdown
+                  isOpen={servicesOpen}
+                  activeService={activeService}
+                  setActiveService={setActiveService}
+                />
               </div>
 
-              {/* Hamburger menu - hidden on desktop */}
-              <button
-                className={styles.mobileMenuButton}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle menu"
+              <div
+                className={styles.dropdown}
+                onMouseEnter={() => setCompanyOpen(true)}
+                onMouseLeave={() => setCompanyOpen(false)}
               >
-                {mobileMenuOpen ? (
-                  <CloseSquare size={32} />
-                ) : (
-                  <HambergerMenu size={32} />
-                )}
-              </button>
+                <button className={styles.menuButton}>
+                  Company
+                  <ArrowDown2
+                    size={16}
+                    className={`${styles.arrowIcon} ${
+                      companyOpen ? styles.open : ""
+                    }`}
+                  />
+                </button>
+                <CompanyDropdown isOpen={companyOpen} />
+              </div>
             </div>
 
-            {/* CTA buttons - desktop only */}
-            <div className={styles.ctaButtons}>
-              <a href="tel:(07)31300226" className={styles.phoneButton}>
-                (07) 3130 0226
-              </a>
-              <button className={styles.quoteButton}>Free Quote →</button>
-            </div>
+            {/* Hamburger menu - hidden on desktop */}
+            <button
+              className={styles.mobileMenuButton}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <CloseSquare size={32} />
+              ) : (
+                <HambergerMenu size={32} />
+              )}
+            </button>
+          </div>
+
+          {/* CTA buttons - desktop only */}
+          <div className={styles.ctaButtons}>
+            <a href="tel:(07)31300226" className={styles.phoneButton}>
+              (07) 3130 0226
+            </a>
+            <button className={styles.quoteButton}>Free Quote →</button>
           </div>
         </div>
       </Container>

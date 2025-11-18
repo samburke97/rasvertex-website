@@ -22,36 +22,28 @@ export default function CompanyDropdown({ isOpen }: CompanyDropdownProps) {
           transition={{ duration: 0.2 }}
           className={styles.companyDropdown}
         >
-          <div className={styles.companyGrid}>
-            <div className={styles.companyColumn}>
-              {companyMain.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`${styles.companyLink} ${styles.main}`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-            <div className={styles.companyColumn}>
+          {/* Row 1: Main headings in Bebas, stacked vertically, left side */}
+          <div className={styles.headingsSection}>
+            {companyMain.map((item) => (
+              <Link key={item.name} href={item.href} className={styles.heading}>
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Row 2: Two columns with Inter links */}
+          <div className={styles.linksSection}>
+            <div className={styles.column}>
               {companySecondary.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={styles.companyLink}
-                >
+                <Link key={item.name} href={item.href} className={styles.link}>
                   {item.name}
                 </Link>
               ))}
             </div>
-            <div className={styles.companyColumn}>
+
+            <div className={styles.column}>
               {locations.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={styles.companyLink}
-                >
+                <Link key={item.name} href={item.href} className={styles.link}>
                   {item.name}
                 </Link>
               ))}

@@ -16,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/nuk5csv.css" />
+      </head>
       <body>
         <Navigation />
         <main style={{ paddingTop: "80px" }}>{children}</main>
