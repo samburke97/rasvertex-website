@@ -1,4 +1,4 @@
-/* Mega menu container */
+/* Mega menu container - expands to the right only */
 .megaMenu {
   position: absolute;
   top: 100%;
@@ -6,26 +6,26 @@
   margin-top: 8px;
   background: linear-gradient(to bottom right, var(--sky-from), var(--sky-to));
   border-radius: 24px;
-  overflow: hidden;
+  padding: 40px;
+  overflow: hidden; /* Hide content during width transition */
 }
 
-/* Grid container - flexbox that expands */
-.gridContainer {
-  display: grid;
-  grid-template-columns: 240px 1fr; /* Column 1 fixed, rest flexible */
+/* Content wrapper */
+.content {
+  display: flex;
   gap: 40px;
-  min-height: 350px;
+  height: 350px;
 }
 
-/* Column 1: Service Categories List - ALWAYS VISIBLE */
+/* Column 1: Service Categories - FIXED WIDTH, always visible */
 .servicesList {
+  width: 200px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px; /* 2px gap vertical between them - from knowledge base */
-  padding: 40px 0 40px 40px; /* Consistent padding */
+  gap: 2px; /* From knowledge base */
 }
 
-/* Single unified service button style - looks the same in both states */
 .serviceButton {
   width: 100%;
   text-align: left;
@@ -48,24 +48,26 @@
   opacity: 1;
 }
 
-/* Expanded content - Columns 2 & 3 */
-.expandedContent {
-  display: grid;
-  grid-template-columns: 1fr 400px; /* Content area and image */
+/* Expanded section - appears on the right */
+.expandedSection {
+  display: flex;
   gap: 40px;
-  padding: 40px 40px 40px 0;
+  flex: 1;
+  min-width: 0;
 }
 
-/* Column 2: Content Area - Description top, Pills bottom with space between */
+/* Column 2: Content Area */
 .serviceContent {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .contentColumn {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space between description and pills */
+  justify-content: space-between;
   height: 100%;
 }
 
@@ -105,10 +107,11 @@
   transform: translateY(-1px); /* From knowledge base */
 }
 
-/* Column 3: Image - Full height of the blob */
+/* Column 3: Image - Full height */
 .serviceImage {
-  width: 100%;
-  height: 100%; /* Full height to match the grid height */
+  width: 400px;
+  height: 100%;
+  flex-shrink: 0;
   border-radius: 16px; /* From knowledge base */
   overflow: hidden;
   background: white;
@@ -123,37 +126,39 @@
   font-family: var(--font-display);
 }
 
-/* Responsive adjustments - From knowledge base */
+/* Responsive adjustments */
 @media (max-width: 1280px) {
-  .gridContainer {
-    grid-template-columns: 220px 1fr;
-  }
-
-  .expandedContent {
-    grid-template-columns: 1fr 350px;
+  .serviceImage {
+    width: 350px;
   }
 }
 
 @media (max-width: 1024px) {
-  /* No two-stage on mobile/tablet - always show expanded */
-  .gridContainer {
-    grid-template-columns: 180px 1fr;
+  /* Mobile: no two-stage, always full width */
+  .megaMenu {
+    width: 90vw !important;
+    max-width: 900px;
+  }
+
+  .content {
+    height: 280px;
     gap: 24px;
-    min-height: 280px;
   }
 
   .servicesList {
-    padding: 32px 0 32px 32px;
-  }
-
-  .expandedContent {
-    grid-template-columns: 1fr 300px;
-    gap: 24px;
-    padding: 32px 32px 32px 0;
+    width: 160px;
   }
 
   .serviceButton {
     font-size: 18px;
     padding: 6px 12px;
+  }
+
+  .expandedSection {
+    gap: 24px;
+  }
+
+  .serviceImage {
+    width: 300px;
   }
 }
