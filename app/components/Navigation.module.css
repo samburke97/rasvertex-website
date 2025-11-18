@@ -17,7 +17,7 @@
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 120px; /* Increased from 48px - moves nav items further right from logo */
+  gap: 120px;
 }
 
 .logo {
@@ -28,7 +28,7 @@
 .desktopMenu {
   display: none;
   align-items: center;
-  gap: 80px; /* Increased from 48px - more separation between Services and Company */
+  gap: 80px;
 }
 
 @media (min-width: 1024px) {
@@ -44,10 +44,11 @@
 .menuButton {
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between text and arrow icon */
+  gap: 2px;
   color: var(--navy);
   font-family: var(--font-body);
   font-size: 16px;
+  font-weight: 400;
   letter-spacing: 0.05em;
   background: none;
   border: none;
@@ -58,17 +59,6 @@
 
 .menuButton:hover {
   color: var(--red);
-}
-
-.arrowIcon {
-  transition: transform 0.2s, color 0.2s;
-  opacity: 1; /* Always visible */
-  flex-shrink: 0; /* Prevent icon from shrinking */
-  color: var(--navy); /* Explicit navy color for arrows */
-}
-
-.menuButton:hover .arrowIcon {
-  color: var(--red); /* Arrows turn red on hover */
 }
 
 .arrowIcon.open {
@@ -92,9 +82,9 @@
   align-items: center;
   justify-content: center;
   padding: 10px 24px;
-  border: 1px solid rgba(26, 15, 94, 0.25); /* Same subtle border as pills */
+  border: 1px solid rgba(26, 15, 94, 0.25);
   color: var(--navy);
-  border-radius: 4px; /* Slight rounding like pills, not circular */
+  border-radius: 4px;
   font-weight: 500;
   font-size: 15px;
   transition: all 0.2s;
@@ -110,11 +100,11 @@
 
 .quoteButton {
   padding: 10px 24px;
-  background: #6d2932; /* Maroon color matching dropdown */
+  background: var(--navy);
   color: white;
-  border-radius: 4px; /* Slight rounding like pills */
-  font-family: var(--font-display); /* BEBAS NEUE for attention! */
-  font-size: 18px; /* Slightly larger for emphasis */
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 15px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: all 0.2s;
@@ -124,8 +114,8 @@
 }
 
 .quoteButton:hover {
-  background: #5a1f28; /* Darker maroon on hover */
-  transform: translateY(-1px); /* Subtle lift on hover */
+  background: #5a1f28;
+  transform: translateY(-1px);
 }
 
 .mobileMenuButton {

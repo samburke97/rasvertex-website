@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { HambergerMenu, CloseSquare, ArrowDown2 } from "iconsax-react";
+import { HambergerMenu, CloseSquare } from "iconsax-react";
 import { type ServiceKey } from "../data/navigationData";
 import ServicesDropdown from "./navigation/ServicesDropdown";
 import CompanyDropdown from "./navigation/CompanyDropdown";
@@ -40,15 +40,7 @@ export default function Navigation() {
       <Container size="xl">
         <div className={styles.wrapper}>
           <div className={styles.leftSection}>
-            <Link href="/" className={styles.logo}>
-              {/* <Image
-                src="/logo.png"
-                alt="RAS-VERTEX"
-                width={120}
-                height={30}
-                priority
-              /> */}
-            </Link>
+            <s>RAS-VERTEX</s>
 
             <div className={styles.desktopMenu}>
               <div
@@ -58,12 +50,12 @@ export default function Navigation() {
               >
                 <button className={styles.menuButton}>
                   Services
-                  <ArrowDown2
-                    size={16}
-                    className={`${styles.arrowIcon} ${
-                      servicesOpen ? styles.open : ""
-                    }`}
-                  />
+                  <Image
+                    src="/icons/utility-outline/down.svg"
+                    alt="Select"
+                    width={16}
+                    height={16}
+                  />{" "}
                 </button>
                 <ServicesDropdown
                   isOpen={servicesOpen}
@@ -79,12 +71,12 @@ export default function Navigation() {
               >
                 <button className={styles.menuButton}>
                   Company
-                  <ArrowDown2
-                    size={16}
-                    className={`${styles.arrowIcon} ${
-                      companyOpen ? styles.open : ""
-                    }`}
-                  />
+                  <Image
+                    src="/icons/utility-outline/down.svg"
+                    alt="Select"
+                    width={16}
+                    height={16}
+                  />{" "}
                 </button>
                 <CompanyDropdown isOpen={companyOpen} />
               </div>
