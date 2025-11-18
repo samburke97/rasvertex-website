@@ -4,7 +4,7 @@
   top: 100%;
   left: 0;
   margin-top: 8px;
-  background: linear-gradient(to bottom right, var(--sky-from), var(--sky-to));
+  background: #6d2932; /* Burgundy background to match Rochele */
   border-radius: 24px;
   padding: 40px;
   overflow: hidden;
@@ -23,40 +23,39 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px; /* From knowledge base */
+  gap: 0px; /* More vertically squished - closer together */
 }
 
 .serviceButton {
   width: 100%;
   text-align: left;
-  padding: 1px 16px; /* From knowledge base */
+  padding: 4px 16px; /* Tighter vertical spacing */
   font-family: var(--font-display);
-  font-size: 24px; /* From knowledge base */
+  font-size: 24px;
   letter-spacing: 0.05em;
   background: none;
   border: none;
   cursor: pointer;
   transition: all 0.2s;
-  color: var(--navy);
-  opacity: 0.4;
+  color: white; /* White text on burgundy background */
+  opacity: 0.4; /* More subtle when not active */
   border-radius: 8px;
-  text-transform: uppercase; /* Force uppercase for fat Bebas Neue look */
+  text-transform: uppercase;
 }
 
 .serviceButton:hover,
 .serviceButton.active {
-  color: var(--navy);
+  color: white;
   opacity: 1;
 }
 
-/* Expanded section - appears on the right */
+/* Expanded section - appears on the right - MUCH TALLER */
 .expandedSection {
   display: flex;
   gap: 40px;
   flex: 1;
   min-width: 0;
-  /* Set height to match original when expanded */
-  height: 270px;
+  height: 420px; /* Much taller to match Rochele */
 }
 
 /* Column 2: Content Area */
@@ -76,8 +75,8 @@
 
 /* Description at the top */
 .serviceDescription {
-  color: var(--navy);
-  font-size: 16px; /* From knowledge base */
+  color: white; /* White text on burgundy background */
+  font-size: 16px;
   line-height: 1.6;
   margin: 0;
   font-family: var(--font-body); /* Inter */
@@ -88,43 +87,48 @@
 .servicePills {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px; /* From knowledge base */
+  gap: 8px; /* Tighter gap between pills */
   align-items: flex-end;
 }
 
 .pill {
-  font-size: 11px; /* From knowledge base */
-  padding: 8px 16px; /* From knowledge base */
-  background: white;
-  border-radius: 9999px;
-  color: var(--navy);
-  border: 1px solid rgba(26, 15, 94, 0.1); /* From knowledge base */
-  font-family: var(--font-body); /* Changed to Inter */
+  font-size: 11px;
+  padding: 6px 14px; /* Slightly more compact */
+  background: transparent; /* Transparent background like Rochele */
+  border-radius: 4px; /* Slight rounding, not circular */
+  color: white; /* White text */
+  border: 1px solid rgba(255, 255, 255, 0.25); /* Subtle white border */
+  font-family: var(--font-display); /* Adobe Bebas Neue */
   letter-spacing: 0.05em;
-  font-weight: 100; /* Thin */
-  transition: all 0.2s; /* From knowledge base */
+  font-weight: 400;
+  transition: all 0.2s;
   white-space: nowrap;
+  text-transform: uppercase; /* Capitalised */
 }
 
 .pill:hover {
-  background: rgba(255, 255, 255, 0.9); /* From knowledge base */
-  border-color: rgba(26, 15, 94, 0.2); /* From knowledge base */
-  transform: translateY(-1px); /* From knowledge base */
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
 }
 
-/* Column 3: Image - Full height */
+/* Column 3: Image - Stretched vertically, not square */
 .serviceImage {
-  width: 400px;
+  width: 480px; /* Wider for more stretched look */
   height: 100%;
   flex-shrink: 0;
-  border-radius: 16px; /* From knowledge base */
+  border-radius: 16px;
   overflow: hidden;
-  background: white;
-  position: relative; /* For Next Image fill */
+  position: relative;
+}
+
+.serviceImage img {
+  object-fit: cover; /* Ensures image stretches to fill */
+  object-position: center;
 }
 
 .imagePlaceholder {
-  color: #9ca3af;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 14px;
   font-family: var(--font-display);
 }
@@ -132,7 +136,11 @@
 /* Responsive adjustments */
 @media (max-width: 1280px) {
   .serviceImage {
-    width: 350px;
+    width: 400px;
+  }
+
+  .expandedSection {
+    height: 380px;
   }
 }
 
@@ -144,11 +152,12 @@
   }
 
   .content {
-    min-height: 280px;
+    min-height: 320px;
   }
 
   .servicesList {
     width: 160px;
+    gap: 2px;
   }
 
   .serviceButton {
@@ -158,10 +167,10 @@
 
   .expandedSection {
     gap: 24px;
-    height: 240px;
+    height: 300px;
   }
 
   .serviceImage {
-    width: 300px;
+    width: 340px;
   }
 }
