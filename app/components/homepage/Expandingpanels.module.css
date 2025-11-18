@@ -1,22 +1,21 @@
 .container {
   display: flex;
   width: 100%;
-  height: 600px;
+  height: 700px; /* Taller */
   gap: 0;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 0;
 }
 
 .panel {
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 80px; /* Minimum width when collapsed */
+  min-width: 100px;
 }
 
 .panel:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.08);
 }
 
 /* Background Image */
@@ -31,20 +30,26 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.6)
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.7)
   );
   z-index: 1;
+  transition: opacity 0.4s ease;
 }
 
-/* Collapsed State - Vertical Text */
+.panel.active .overlay {
+  opacity: 0.85;
+}
+
+/* Collapsed State - Vertical Text AT BOTTOM */
 .collapsedContent {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* Text at bottom */
   justify-content: center;
   z-index: 2;
+  padding-bottom: 40px;
 }
 
 .verticalTitle {
@@ -52,7 +57,7 @@
   text-orientation: mixed;
   transform: rotate(180deg);
   font-family: var(--font-display); /* Bebas Neue */
-  font-size: 32px;
+  font-size: 36px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: white;
@@ -74,32 +79,49 @@
 
 .title {
   font-family: var(--font-display); /* Bebas Neue */
-  font-size: 56px;
+  font-size: 64px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: white;
-  margin: 0 0 16px 0;
   line-height: 1.1;
 }
 
 .description {
   font-family: var(--font-body); /* Inter */
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.6;
   color: white;
   margin: 0;
-  max-width: 600px;
+  max-width: 650px;
   font-weight: 300;
 }
 
 /* Responsive adjustments */
+@media (max-width: 1280px) {
+  .container {
+    height: 600px;
+  }
+
+  .title {
+    font-size: 56px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .verticalTitle {
+    font-size: 32px;
+  }
+}
+
 @media (max-width: 1024px) {
   .container {
-    height: 500px;
+    height: 550px;
   }
 
   .expandedContent {
-    padding: 40px;
+    padding: 50px;
   }
 
   .title {
@@ -113,43 +135,48 @@
   .verticalTitle {
     font-size: 28px;
   }
+
+  .collapsedContent {
+    padding-bottom: 30px;
+  }
 }
 
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
     height: auto;
-    gap: 16px;
+    gap: 0;
   }
 
   .panel {
-    min-height: 100px;
+    min-height: 120px;
     min-width: 100%;
   }
 
   .panel.active {
-    min-height: 400px;
+    min-height: 450px;
   }
 
   .collapsedContent {
     padding: 24px;
+    padding-bottom: 24px;
   }
 
   .verticalTitle {
     writing-mode: horizontal-tb;
     transform: none;
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .expandedContent {
-    padding: 32px;
+    padding: 40px;
   }
 
   .title {
-    font-size: 36px;
+    font-size: 40px;
   }
 
   .description {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
