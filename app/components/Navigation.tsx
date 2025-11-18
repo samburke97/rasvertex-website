@@ -14,8 +14,15 @@ import Container from "./Container";
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [activeService, setActiveService] = useState<ServiceKey>("painting");
+  const [activeService, setActiveService] = useState<ServiceKey | null>(null);
   const [companyOpen, setCompanyOpen] = useState(false);
+
+  // Reset activeService when dropdown closes for clean two-stage behavior
+  useEffect(() => {
+    if (!servicesOpen) {
+      setActiveService(null);
+    }
+  }, [servicesOpen]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -75,39 +82,40 @@ export default function Navigation() {
                   <CompanyDropdown isOpen={companyOpen} />
                 </div>
               </div>
+
+              {/* Hamburger menu - hidden on desktop */}
+              <button
+                className={styles.mobileMenuButton}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <CloseSquare size={32} />
+                ) : (
+                  <HambergerMenu size={32} />
+                )}
+              </button>
             </div>
 
+            {/* CTA buttons - desktop only */}
             <div className={styles.ctaButtons}>
-              <a href="tel:0731300226" className={styles.phoneButton}>
+              <a href="tel:(07)31300226" className={styles.phoneButton}>
                 (07) 3130 0226
               </a>
-              <Link href="/quote" className={styles.quoteButton}>
-                Free Quote →
-              </Link>
+              <button className={styles.quoteButton}>Free Quote →</button>
             </div>
-
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={styles.mobileMenuButton}
-            >
-              {mobileMenuOpen ? (
-                <CloseSquare size={32} />
-              ) : (
-                <HambergerMenu size={32} />
-              )}
-            </button>
           </div>
         </div>
-
-        <MobileMenu
-          isOpen={mobileMenuOpen}
-          servicesOpen={servicesOpen}
-          setServicesOpen={setServicesOpen}
-          companyOpen={companyOpen}
-          setCompanyOpen={setCompanyOpen}
-          onClose={() => setMobileMenuOpen(false)}
-        />
       </Container>
+
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        servicesOpen={servicesOpen}
+        setServicesOpen={setServicesOpen}
+        companyOpen={companyOpen}
+        setCompanyOpen={setCompanyOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
     </nav>
   );
 }

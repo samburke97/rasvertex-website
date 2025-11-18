@@ -4,33 +4,34 @@
   top: 100%;
   left: 0;
   margin-top: 8px;
-  width: 1200px;
   background: linear-gradient(to bottom right, var(--sky-from), var(--sky-to));
   border-radius: 24px;
-  padding: 40px;
+  overflow: hidden;
 }
 
-/* 3 Column Grid Layout */
-.threeColumnGrid {
+/* Grid container - flexbox that expands */
+.gridContainer {
   display: grid;
-  grid-template-columns: 200px 1fr 400px; /* Col 1: Services, Col 2: Content, Col 3: Image */
+  grid-template-columns: 240px 1fr; /* Column 1 fixed, rest flexible */
   gap: 40px;
-  height: 350px; /* Fixed height so image can be full height */
+  min-height: 350px;
 }
 
-/* Column 1: Service Categories List - Top Left */
+/* Column 1: Service Categories List - ALWAYS VISIBLE */
 .servicesList {
   display: flex;
   flex-direction: column;
-  gap: 2px; /* 2px gap vertical between them */
+  gap: 2px; /* 2px gap vertical between them - from knowledge base */
+  padding: 40px 0 40px 40px; /* Consistent padding */
 }
 
+/* Single unified service button style - looks the same in both states */
 .serviceButton {
   width: 100%;
   text-align: left;
-  padding: 1px 16px;
+  padding: 1px 16px; /* From knowledge base */
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 24px; /* From knowledge base */
   letter-spacing: 0.05em;
   background: none;
   border: none;
@@ -45,6 +46,14 @@
 .serviceButton.active {
   color: var(--navy);
   opacity: 1;
+}
+
+/* Expanded content - Columns 2 & 3 */
+.expandedContent {
+  display: grid;
+  grid-template-columns: 1fr 400px; /* Content area and image */
+  gap: 40px;
+  padding: 40px 40px 40px 0;
 }
 
 /* Column 2: Content Area - Description top, Pills bottom with space between */
@@ -63,7 +72,7 @@
 /* Description at the top */
 .serviceDescription {
   color: var(--navy);
-  font-size: 16px;
+  font-size: 16px; /* From knowledge base */
   line-height: 1.6;
   margin: 0;
 }
@@ -72,33 +81,35 @@
 .servicePills {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 12px; /* From knowledge base */
   align-items: flex-end;
 }
 
 .pill {
-  font-size: 11px;
-  padding: 8px 16px;
+  font-size: 11px; /* From knowledge base */
+  padding: 8px 16px; /* From knowledge base */
+  background: white;
+  border-radius: 9999px;
   color: var(--navy);
-  border: 1px solid rgba(26, 15, 94, 0.1);
+  border: 1px solid rgba(26, 15, 94, 0.1); /* From knowledge base */
   font-family: var(--font-display);
   letter-spacing: 0.05em;
-  font-weight: 500;
-  transition: all 0.2s;
+  font-weight: 500; /* From knowledge base */
+  transition: all 0.2s; /* From knowledge base */
   white-space: nowrap;
 }
 
 .pill:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(26, 15, 94, 0.2);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.9); /* From knowledge base */
+  border-color: rgba(26, 15, 94, 0.2); /* From knowledge base */
+  transform: translateY(-1px); /* From knowledge base */
 }
 
 /* Column 3: Image - Full height of the blob */
 .serviceImage {
   width: 100%;
   height: 100%; /* Full height to match the grid height */
-  border-radius: 16px;
+  border-radius: 16px; /* From knowledge base */
   overflow: hidden;
   background: white;
   display: flex;
@@ -106,28 +117,39 @@
   justify-content: center;
 }
 
-/* Responsive adjustments */
+.imagePlaceholder {
+  color: #9ca3af;
+  font-size: 14px;
+  font-family: var(--font-display);
+}
+
+/* Responsive adjustments - From knowledge base */
 @media (max-width: 1280px) {
-  .megaMenu {
-    width: 1000px;
+  .gridContainer {
+    grid-template-columns: 220px 1fr;
   }
 
-  .threeColumnGrid {
-    grid-template-columns: 180px 1fr 350px;
-    height: 320px;
+  .expandedContent {
+    grid-template-columns: 1fr 350px;
   }
 }
 
 @media (max-width: 1024px) {
-  .megaMenu {
-    width: 90vw;
-    max-width: 900px;
+  /* No two-stage on mobile/tablet - always show expanded */
+  .gridContainer {
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    min-height: 280px;
   }
 
-  .threeColumnGrid {
-    grid-template-columns: 160px 1fr 300px;
+  .servicesList {
+    padding: 32px 0 32px 32px;
+  }
+
+  .expandedContent {
+    grid-template-columns: 1fr 300px;
     gap: 24px;
-    height: 280px;
+    padding: 32px 32px 32px 0;
   }
 
   .serviceButton {
