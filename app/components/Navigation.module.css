@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 100px;
 }
 
 .leftSection {
@@ -85,9 +85,9 @@
   align-items: center;
   justify-content: center;
   padding: 10px 24px;
-  border: 2px solid var(--navy);
+  border: 1px solid rgba(26, 15, 94, 0.25); /* Same subtle border as pills */
   color: var(--navy);
-  border-radius: 9999px;
+  border-radius: 4px; /* Slight rounding like pills, not circular */
   font-weight: 500;
   font-size: 15px;
   transition: all 0.2s;
@@ -97,17 +97,19 @@
 }
 
 .phoneButton:hover {
-  background: var(--navy);
-  color: white;
+  background: rgba(26, 15, 94, 0.05);
+  border-color: rgba(26, 15, 94, 0.4);
 }
 
 .quoteButton {
   padding: 10px 24px;
-  background: var(--red);
+  background: #6d2932; /* Maroon color matching dropdown */
   color: white;
-  border-radius: 9999px;
-  font-weight: 500;
-  font-size: 15px;
+  border-radius: 4px; /* Slight rounding like pills */
+  font-family: var(--font-display); /* BEBAS NEUE for attention! */
+  font-size: 18px; /* Slightly larger for emphasis */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   transition: all 0.2s;
   border: none;
   cursor: pointer;
@@ -115,7 +117,8 @@
 }
 
 .quoteButton:hover {
-  background: var(--red-dark);
+  background: #5a1f28; /* Darker maroon on hover */
+  transform: translateY(-1px); /* Subtle lift on hover */
 }
 
 .mobileMenuButton {

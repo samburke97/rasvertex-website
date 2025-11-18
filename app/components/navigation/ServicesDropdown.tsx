@@ -11,11 +11,11 @@ type ServicesDropdownProps = {
 
 // Map service keys to image filenames
 const serviceImages: Record<ServiceKey, string> = {
-  painting: "/nav/titlies painting.png",
-  building: "/nav/cleaning.png", // Adjust if filename is different
-  window: "/nav/window.png", // Adjust if filename is different
-  waterproofing: "/nav/waterproofing.png", // Adjust if filename is different
-  maintenance: "/nav/maintenance.png", // Adjust if filename is different
+  painting: "/nav/painting.png",
+  building: "/nav/cleaning.png",
+  window: "/nav/window.png",
+  waterproofing: "/nav/waterproofing.png",
+  maintenance: "/nav/maintenance.png",
   height: "/nav/height.png",
 };
 
