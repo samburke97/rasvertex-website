@@ -7,14 +7,13 @@
   background: linear-gradient(to bottom right, var(--sky-from), var(--sky-to));
   border-radius: 24px;
   padding: 40px;
-  overflow: hidden; /* Hide content during width transition */
+  overflow: hidden;
 }
 
 /* Content wrapper */
 .content {
   display: flex;
   gap: 40px;
-  /* Changed from fixed height: 350px to min-height so it wraps content tightly */
   min-height: min-content;
 }
 

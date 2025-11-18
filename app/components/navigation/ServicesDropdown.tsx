@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { servicesData, type ServiceKey } from "../../data/navigationData";
 import styles from "./ServicesDropdown.module.css";
 
@@ -6,6 +7,16 @@ type ServicesDropdownProps = {
   isOpen: boolean;
   activeService: ServiceKey | null;
   setActiveService: (service: ServiceKey | null) => void;
+};
+
+// Map service keys to image filenames
+const serviceImages: Record<ServiceKey, string> = {
+  painting: "/nav/titlies painting.png",
+  building: "/nav/cleaning.png", // Adjust if filename is different
+  window: "/nav/window.png", // Adjust if filename is different
+  waterproofing: "/nav/waterproofing.png", // Adjust if filename is different
+  maintenance: "/nav/maintenance.png", // Adjust if filename is different
+  height: "/nav/height.png",
 };
 
 export default function ServicesDropdown({
@@ -87,7 +98,7 @@ export default function ServicesDropdown({
                     </AnimatePresence>
                   </div>
 
-                  {/* Column 3: Image */}
+                  {/* Column 3: Image - Now using actual images */}
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeService}
@@ -97,9 +108,14 @@ export default function ServicesDropdown({
                       transition={{ duration: 0.15 }}
                       className={styles.serviceImage}
                     >
-                      <span className={styles.imagePlaceholder}>
-                        Image placeholder ({servicesData[activeService].name})
-                      </span>
+                      <Image
+                        src={serviceImages[activeService]}
+                        alt={servicesData[activeService].name}
+                        fill
+                        sizes="400px"
+                        style={{ objectFit: "cover" }}
+                        priority
+                      />
                     </motion.div>
                   </AnimatePresence>
                 </motion.div>
