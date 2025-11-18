@@ -1,121 +1,113 @@
-"use client";
+import { motion, AnimatePresence } from "framer-motion";
+import { servicesData, type ServiceKey } from "../../data/navigationData";
+import styles from "./ServicesDropdown.module.css";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { HambergerMenu, CloseSquare, ArrowDown2 } from "iconsax-react";
-import { type ServiceKey } from "../data/navigationData";
-import ServicesDropdown from "./navigation/ServicesDropdown";
-import CompanyDropdown from "./navigation/CompanyDropdown";
-import MobileMenu from "./navigation/MobileMenu";
-import styles from "./Navigation.module.css";
-import Container from "./Container";
+type ServicesDropdownProps = {
+  isOpen: boolean;
+  activeService: ServiceKey | null;
+  setActiveService: (service: ServiceKey | null) => void;
+};
 
-export default function Navigation() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [activeService, setActiveService] = useState<ServiceKey | null>(null);
-  const [companyOpen, setCompanyOpen] = useState(false);
-
-  // Reset activeService when dropdown closes for clean two-stage behavior
-  useEffect(() => {
-    if (!servicesOpen) {
-      setActiveService(null);
-    }
-  }, [servicesOpen]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024 && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [mobileMenuOpen]);
+export default function ServicesDropdown({
+  isOpen,
+  activeService,
+  setActiveService,
+}: ServicesDropdownProps) {
+  const isExpanded = activeService !== null;
 
   return (
-    <nav className={styles.nav}>
-      <Container size="xl">
-        <div className={styles.container}>
-          <div className={styles.wrapper}>
-            <div className={styles.leftSection}>
-              <Link href="/" className={styles.logo}></Link>
-
-              <div className={styles.desktopMenu}>
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className={styles.megaMenu}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            width: isExpanded ? 1200 : 280, // Width expands right
+          }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{
+            opacity: { duration: 0.2 },
+            y: { duration: 0.2 },
+            width: { duration: 0.25, ease: [0.4, 0, 0.2, 1] },
+          }}
+        >
+          <div className={styles.content}>
+            {/* Service list - ALWAYS visible, stays in same position */}
+            <div className={styles.servicesList}>
+              {(Object.keys(servicesData) as ServiceKey[]).map((key) => (
+                <button
+                  key={key}
+                  onMouseEnter={() => setActiveService(key)}
+                  className={`${styles.serviceButton} ${
+                    activeService === key ? styles.active : ""
+                  }`}
                 >
-                  <button className={styles.menuButton}>
-                    Services
-                    <ArrowDown2
-                      size={16}
-                      className={`${styles.arrowIcon} ${
-                        servicesOpen ? styles.open : ""
-                      }`}
-                    />
-                  </button>
-                  <ServicesDropdown
-                    isOpen={servicesOpen}
-                    activeService={activeService}
-                    setActiveService={setActiveService}
-                  />
-                </div>
-
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setCompanyOpen(true)}
-                  onMouseLeave={() => setCompanyOpen(false)}
-                >
-                  <button className={styles.menuButton}>
-                    Company
-                    <ArrowDown2
-                      size={16}
-                      className={`${styles.arrowIcon} ${
-                        companyOpen ? styles.open : ""
-                      }`}
-                    />
-                  </button>
-                  <CompanyDropdown isOpen={companyOpen} />
-                </div>
-              </div>
-
-              {/* Hamburger menu - hidden on desktop */}
-              <button
-                className={styles.mobileMenuButton}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                {mobileMenuOpen ? (
-                  <CloseSquare size={32} />
-                ) : (
-                  <HambergerMenu size={32} />
-                )}
-              </button>
+                  {servicesData[key].name.toUpperCase()}
+                </button>
+              ))}
             </div>
 
-            {/* CTA buttons - desktop only */}
-            <div className={styles.ctaButtons}>
-              <a href="tel:(07)31300226" className={styles.phoneButton}>
-                (07) 3130 0226
-              </a>
-              <button className={styles.quoteButton}>Free Quote →</button>
-            </div>
+            {/* Expanded content - fades in on the right */}
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 0.05 }}
+                  className={styles.expandedSection}
+                >
+                  {/* Column 2: Description + Pills */}
+                  <div className={styles.serviceContent}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeService}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.15 }}
+                        className={styles.contentColumn}
+                      >
+                        <p className={styles.serviceDescription}>
+                          {servicesData[activeService].description}
+                        </p>
+
+                        <div className={styles.servicePills}>
+                          {servicesData[activeService].subServices.map(
+                            (service) => (
+                              <span key={service} className={styles.pill}>
+                                {service}
+                              </span>
+                            )
+                          )}
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Column 3: Image */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeService}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className={styles.serviceImage}
+                    >
+                      <span className={styles.imagePlaceholder}>
+                        Image placeholder ({servicesData[activeService].name})
+                      </span>
+                    </motion.div>
+                  </AnimatePresence>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </div>
-      </Container>
-
-      <MobileMenu
-        isOpen={mobileMenuOpen}
-        servicesOpen={servicesOpen}
-        setServicesOpen={setServicesOpen}
-        companyOpen={companyOpen}
-        setCompanyOpen={setCompanyOpen}
-        onClose={() => setMobileMenuOpen(false)}
-      />
-    </nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
