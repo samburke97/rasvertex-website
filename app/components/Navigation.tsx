@@ -41,13 +41,13 @@ export default function Navigation() {
         <div className={styles.wrapper}>
           <div className={styles.leftSection}>
             <Link href="/" className={styles.logo}>
-              <Image
+              {/* <Image
                 src="/logo.png"
                 alt="RAS-VERTEX"
-                width={200}
-                height={50}
+                width={120}
+                height={30}
                 priority
-              />
+              /> */}
             </Link>
 
             <div className={styles.desktopMenu}>
@@ -107,7 +107,7 @@ export default function Navigation() {
           {/* CTA buttons - desktop only */}
           <div className={styles.ctaButtons}>
             <a href="tel:(07)31300226" className={styles.phoneButton}>
-              (07) 5371 0201
+              (07) 3130 0226
             </a>
             <button className={styles.quoteButton}>Free Quote →</button>
           </div>
