@@ -11,13 +11,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 80px;
 }
 
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 120px; /* Increased from 48px - moves nav items further right from logo */
 }
 
 .logo {
@@ -28,7 +28,7 @@
 .desktopMenu {
   display: none;
   align-items: center;
-  gap: 48px;
+  gap: 80px; /* Increased from 48px - more separation between Services and Company */
 }
 
 @media (min-width: 1024px) {
@@ -44,7 +44,7 @@
 .menuButton {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px; /* Space between text and arrow icon */
   color: var(--navy);
   font-family: var(--font-body);
   font-size: 16px;
@@ -61,11 +61,18 @@
 }
 
 .arrowIcon {
-  transition: transform 0.2s;
+  transition: transform 0.2s, color 0.2s;
+  opacity: 1; /* Always visible */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  color: var(--navy); /* Explicit navy color for arrows */
+}
+
+.menuButton:hover .arrowIcon {
+  color: var(--red); /* Arrows turn red on hover */
 }
 
 .arrowIcon.open {
-  transform: rotate(180deg);
+  transform: rotate(180deg); /* Rotates when dropdown is open */
 }
 
 .ctaButtons {
