@@ -23,7 +23,9 @@ export default function ServicesDropdown({
           transition={{ duration: 0.2 }}
           className={styles.megaMenu}
         >
-          <div className={styles.megaMenuContent}>
+          {/* 3 Column Layout */}
+          <div className={styles.threeColumnGrid}>
+            {/* Column 1: Service Categories - Top Left */}
             <div className={styles.servicesList}>
               {(Object.keys(servicesData) as ServiceKey[]).map((key) => (
                 <button
@@ -38,40 +40,49 @@ export default function ServicesDropdown({
               ))}
             </div>
 
+            {/* Column 2: Description at top, Pills at bottom with space between */}
             <div className={styles.serviceContent}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeService}
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className={styles.serviceDetails}
+                  className={styles.contentColumn}
                 >
-                  <div className={styles.serviceInfo}>
-                    <p className={styles.serviceDescription}>
-                      {servicesData[activeService].description}
-                    </p>
+                  {/* Description at the top */}
+                  <p className={styles.serviceDescription}>
+                    {servicesData[activeService].description}
+                  </p>
 
-                    <div className={styles.servicePills}>
-                      {servicesData[activeService].subServices.map(
-                        (service) => (
-                          <span key={service} className={styles.pill}>
-                            {service}
-                          </span>
-                        )
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={styles.serviceImage}>
-                    <span className={styles.imagePlaceholder}>
-                      Image placeholder
-                    </span>
+                  {/* Pills at the very bottom - space between */}
+                  <div className={styles.servicePills}>
+                    {servicesData[activeService].subServices.map((service) => (
+                      <span key={service} className={styles.pill}>
+                        {service}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
+
+            {/* Column 3: Image - Full height of the blob */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeService}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className={styles.serviceImage}
+              >
+                <span className={styles.imagePlaceholder}>
+                  Image placeholder ({servicesData[activeService].name})
+                </span>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
       )}
