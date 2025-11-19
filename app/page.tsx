@@ -1,5 +1,7 @@
 import ExpandingPanels from "./components/homepage/Expandingpanels";
 import ExperienceSection from "./components/homepage/ExperienceSection";
+import PartnersCarousel from "./components/homepage/PartnersCarousel";
+import Testimonials from "./components/homepage/Testimonials";
 import { mainPanels } from "./data/expandingPanelsData";
 
 export default function Home() {
@@ -10,6 +12,8 @@ export default function Home() {
         defaultActivePanel="higher-standards"
       />
       <ExperienceSection />
+      <PartnersCarousel />
+      <Testimonials />
     </div>
   );
 }

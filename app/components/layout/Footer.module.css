@@ -1,0 +1,171 @@
+.footer {
+  width: 100%;
+  padding: 3rem 0 1.5rem;
+  border-top: 1px solid var(--Outline-Light, #f5f5f5);
+  background: var(--Conatiner-Light, #fafafa);
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border-color, #e5e5e5);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.linkList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link {
+  font-family: var(--font-body);
+  color: var(--text-secondary, #4d4d4d);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.link:hover {
+  color: var(--text-primary, #1a1a1a);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-body);
+  color: var(--text-secondary, #4d4d4d);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.socialLink:hover {
+  color: var(--text-primary, #1a1a1a);
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.socialLink:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Bottom section with acknowledgement and copyright on same line */
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  gap: 2rem;
+}
+
+.acknowledgementContent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 55%;
+  margin-left: -10px;
+}
+
+.aboriginalFlag {
+  flex-shrink: 0;
+  width: 60px;
+  height: 40px;
+  display: block;
+}
+
+.acknowledgementText {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body); /* Inter */
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #4d4d4d);
+}
+
+.copyright {
+  margin: 0;
+  font-family: var(--font-body); /* Inter */
+  font-size: 0.85rem;
+  color: var(--text-secondary, #4d4d4d);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Tablet Styles (768px to 1023px) */
+@media (max-width: 1023px) {
+  .topSection {
+    gap: 1.5rem;
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .acknowledgementContent {
+    max-width: 100%;
+  }
+
+  .aboriginalFlag {
+    width: 56px;
+    height: 37px;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .topSection {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .acknowledgementContent {
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .aboriginalFlag {
+    width: 64px;
+    height: 43px;
+  }
+
+  .acknowledgementText {
+    font-size: 0.85rem;
+  }
+}
