@@ -1,7 +1,7 @@
 import ExpandingPanels from "./components/homepage/Expandingpanels";
 import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
-import Testimonials from "./components/homepage/Testimonials";
+import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import { mainPanels } from "./data/expandingPanelsData";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
       />
       <ExperienceSection />
       <PartnersCarousel />
-      <Testimonials />
+      <ProjectShowcase />
     </div>
   );
 }

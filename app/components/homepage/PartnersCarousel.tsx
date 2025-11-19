@@ -6,15 +6,15 @@ import Image from "next/image";
 import styles from "./PartnersCarousel.module.css";
 
 const partners = [
-  { name: "KBW", logo: "/partners/eagers.svg" },
-  { name: "Archers Body Corporate", logo: "/partners/acu.svg" },
-  { name: "GPT Group", logo: "/partners/calile.svg" },
-  { name: "RACV", logo: "/partners/ck.svg" },
-  { name: "Trafalgar Towers", logo: "/partners/guardian.svg" },
-  { name: "Maroochydore RSL", logo: "/partners/motherduck.svg" },
-  { name: "Cooroy Football Club", logo: "/partners/nudgee.svg" },
-  { name: "Schools", logo: "/partners/sandgate.svg" },
-  { name: "Something Notable", logo: "/partners/somerville.svg" },
+  { name: "Archers Body Corporate", logo: "/partners/archers.png" },
+  { name: "RACV", logo: "/partners/racv.png" },
+  { name: "Trafalgar Towers", logo: "/partners/trafalgar.svg" },
+  { name: "Maroochydore RSL", logo: "/partners/maroochy.png" },
+  { name: "Accor", logo: "/partners/accor.svg" },
+  { name: "Mosaic", logo: "/partners/mosaic.svg" },
+  { name: "Pica Group", logo: "/partners/pica.png" },
+  { name: "Novotel", logo: "/partners/novotel.svg.png" },
+  { name: "QLD Government", logo: "/partners/gov.svg" },
 ];
 
 export default function PartnersCarousel() {

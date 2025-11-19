@@ -41,7 +41,6 @@ export default function Navigation() {
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
-    const heroHeight = typeof window !== "undefined" ? window.innerHeight : 800; // Approximate hero height
 
     const updateNavbar = () => {
       const currentScrollY = window.scrollY;
@@ -49,15 +48,12 @@ export default function Navigation() {
       // Check if at top
       setIsAtTop(currentScrollY < 10);
 
-      // Only hide/show after passing the hero section
-      if (currentScrollY < heroHeight) {
-        // Still in hero section - always show
+      // Hide/show based on scroll direction
+      if (currentScrollY < lastScrollY) {
+        // Scrolling up
         setIsVisible(true);
-      } else if (currentScrollY < lastScrollY) {
-        // Scrolling up and past hero
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
-        // Scrolling down and past hero
+      } else if (currentScrollY > lastScrollY && currentScrollY > 300) {
+        // Scrolling down and past 300px (hero section)
         setIsVisible(false);
       }
 
