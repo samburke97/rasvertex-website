@@ -9,10 +9,12 @@ export default function ExperienceSection() {
       <div className={styles.container}>
         {/* Left side - Text content (max 50% width) */}
         <div className={styles.content}>
-          <p className={styles.subtitle}>Our Services</p>
+          <p className={styles.subtitle}>
+            The Sunshine Coast's Property Partner
+          </p>
           <h2 className={styles.title}>
-            25 YEARS SERVING OUR SUNSHINE COAST COMMUNITY, WHERE OUR NEIGHBOURS
-            LIVE, LEARN, AND WORK.
+            25+ Years serving our Sunshine Coast community, where our neighbours
+            live, learn and work.
           </h2>
         </div>
 

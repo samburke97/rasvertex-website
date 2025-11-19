@@ -16,6 +16,8 @@ export default function Navigation() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [activeService, setActiveService] = useState<ServiceKey | null>(null);
   const [companyOpen, setCompanyOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   // Reset activeService when dropdown closes for clean two-stage behavior
   useEffect(() => {
@@ -35,12 +37,57 @@ export default function Navigation() {
     return () => window.removeEventListener("resize", handleResize);
   }, [mobileMenuOpen]);
 
+  // Handle scroll behavior
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const heroHeight = typeof window !== "undefined" ? window.innerHeight : 800; // Approximate hero height
+
+    const updateNavbar = () => {
+      const currentScrollY = window.scrollY;
+
+      // Check if at top
+      setIsAtTop(currentScrollY < 10);
+
+      // Only hide/show after passing the hero section
+      if (currentScrollY < heroHeight) {
+        // Still in hero section - always show
+        setIsVisible(true);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up and past hero
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down and past hero
+        setIsVisible(false);
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className={styles.nav}>
+    <nav
+      className={`${styles.nav} ${isVisible ? styles.visible : styles.hidden} ${
+        isAtTop ? styles.atTop : ""
+      }`}
+    >
       <Container size="xl">
         <div className={styles.wrapper}>
           <div className={styles.leftSection}>
-            <s>RAS-VERTEX</s>
+            <Link href="/" className={styles.logo}>
+              RAS-VERTEX
+            </Link>
 
             <div className={styles.desktopMenu}>
               <div
@@ -55,7 +102,7 @@ export default function Navigation() {
                     alt="Select"
                     width={16}
                     height={16}
-                  />{" "}
+                  />
                 </button>
                 <ServicesDropdown
                   isOpen={servicesOpen}
@@ -76,7 +123,7 @@ export default function Navigation() {
                     alt="Select"
                     width={16}
                     height={16}
-                  />{" "}
+                  />
                 </button>
                 <CompanyDropdown isOpen={companyOpen} />
               </div>
