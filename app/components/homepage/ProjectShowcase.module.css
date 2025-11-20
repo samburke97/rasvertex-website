@@ -10,6 +10,7 @@
   text-align: left;
   margin-bottom: 40px;
 }
+
 .carousel {
   overflow: hidden;
 }
@@ -36,7 +37,7 @@
   position: relative;
   width: 600px;
   height: 500px;
-  border-radius: 24px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -44,7 +45,7 @@
   position: absolute;
   top: 0;
   background: white;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 24px;
   font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 400;
@@ -53,26 +54,26 @@
   color: var(--navy);
   z-index: 2;
   white-space: nowrap;
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Removed transition - tag stays visible */
 }
 
 .tagLeft {
   left: 0;
-  border-radius: 0 0 20px 0;
+  border-radius: 0 0 4px 0; /* UPDATED: Matching card corners */
 }
 
 .tagRight {
   right: 0;
-  border-radius: 0 0 0 20px;
+  border-radius: 0 0 0 4px; /* UPDATED: Matching card corners */
 }
 
 .hover {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 24px;
   z-index: 1;
   animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -86,14 +87,41 @@
   }
 }
 
-.hover p {
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.building {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+.review {
   font-family: var(--font-body);
-  font-size: 1.3rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: white;
+  margin: 0 0 1rem 0;
+  font-weight: 300;
+  max-width: 500px;
+  text-align: left;
+}
+
+.client {
+  font-family: var(--font-display);
+  font-size: 1rem;
   color: white;
   margin: 0;
-  text-align: center;
-  animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 @keyframes slideUp {

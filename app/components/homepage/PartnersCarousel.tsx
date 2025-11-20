@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import Image from "next/image";
 import styles from "./PartnersCarousel.module.css";
+import Container from "../Container";
 
 const partners = [
   { name: "Archers Body Corporate", logo: "/partners/archers.png" },
@@ -21,14 +22,15 @@ export default function PartnersCarousel() {
   const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
-      dragFree: true,
+      dragFree: false,
       containScroll: false,
+      watchDrag: false, // Disable dragging completely
     },
     [
       AutoScroll({
         speed: 1,
         stopOnInteraction: false,
-        stopOnMouseEnter: true,
+        stopOnMouseEnter: false, // Never stop - infinite scroll
       }),
     ]
   );
@@ -38,32 +40,29 @@ export default function PartnersCarousel() {
 
   return (
     <section className={styles.section}>
-      <div className={styles.container}>
+      <Container>
         <h2 className={styles.title}>Trusted by the Sunshine Coast</h2>
+      </Container>
 
-        <div className={styles.embla} ref={emblaRef}>
-          <div className={styles.emblaContainer}>
-            {duplicatedPartners.map((partner, index) => (
-              <div
-                key={`${partner.name}-${index}`}
-                className={styles.emblaSlide}
-              >
-                <div className={styles.logoWrapper}>
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    width={180}
-                    height={80}
-                    style={{
-                      objectFit: "contain",
-                      filter:
-                        "brightness(0) saturate(100%) invert(10%) sepia(43%) saturate(3428%) hue-rotate(235deg) brightness(94%) contrast(101%)",
-                    }}
-                  />
-                </div>
+      <div className={styles.embla} ref={emblaRef}>
+        <div className={styles.emblaContainer}>
+          {duplicatedPartners.map((partner, index) => (
+            <div key={`${partner.name}-${index}`} className={styles.emblaSlide}>
+              <div className={styles.logoWrapper}>
+                <Image
+                  src={partner.logo}
+                  alt={partner.name}
+                  width={180}
+                  height={80}
+                  style={{
+                    objectFit: "contain",
+                    filter:
+                      "brightness(0) saturate(100%) invert(10%) sepia(43%) saturate(3428%) hue-rotate(235deg) brightness(94%) contrast(101%)",
+                  }}
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

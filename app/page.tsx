@@ -2,6 +2,7 @@ import ExpandingPanels from "./components/homepage/Expandingpanels";
 import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import ProjectShowcase from "./components/homepage/ProjectShowcase";
+import ServicesGrid from "./components/homepage/ServicesGrid";
 import { mainPanels } from "./data/expandingPanelsData";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <ExperienceSection />
       <PartnersCarousel />
       <ProjectShowcase />
+      <ServicesGrid />
     </div>
   );
 }
