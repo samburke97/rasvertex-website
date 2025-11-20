@@ -14,8 +14,8 @@ export default function Home() {
       />
       <ExperienceSection />
       <PartnersCarousel />
-      <ProjectShowcase />
       <ServicesGrid />
+      <ProjectShowcase />
     </div>
   );
 }
