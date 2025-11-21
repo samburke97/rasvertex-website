@@ -3,6 +3,7 @@
   width: 100%;
   background: white;
   position: relative;
+  overflow: visible;
 }
 
 /* CONTAINER */
@@ -14,21 +15,24 @@
   display: flex;
   gap: 4rem;
   align-items: flex-start;
-  position: relative;
 }
 
-/* LEFT COLUMN - Container for sticky content */
-.leftColumn {
+/* LEFT COLUMN - STICKY IS HERE NOW */
+.fixedLeft {
+  position: sticky;
+  top: 100px;
   flex: 0 0 35%;
-  position: relative;
+  height: 100vh; /* 👈 Makes it visibly stick */
+  align-self: flex-start;
 }
 
-/* LEFT CONTENT - Locomotive will make this sticky */
+/* LEFT CONTENT - NO sticky here */
 .leftContent {
+  position: static !important;
   width: 100%;
 }
 
-.eyebrow {
+.subtitle {
   font-family: var(--font-body);
   font-size: 18px;
   font-weight: 500;
@@ -37,7 +41,7 @@
   line-height: 1.4;
 }
 
-.heading {
+.category {
   font-family: var(--font-display);
   font-size: 64px;
   font-weight: 400;
@@ -48,7 +52,7 @@
   letter-spacing: 0.05em;
 }
 
-.button {
+.allServicesButton {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 12px 28px;
@@ -64,14 +68,14 @@
   width: fit-content;
 }
 
-.button:hover {
+.allServicesButton:hover {
   background: rgba(26, 15, 94, 0.05);
   border-color: rgba(26, 15, 94, 0.4);
   transform: translateY(-1px);
 }
 
-/* RIGHT COLUMN */
-.rightColumn {
+/* RIGHT COLUMN - SCROLLABLE */
+.scrollableRight {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -79,23 +83,23 @@
 }
 
 /* SERVICES GRID */
-.servicesGrid {
+.grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 
-.serviceCard {
+.card {
   display: block;
   text-decoration: none;
   transition: transform 0.3s ease;
 }
 
-.serviceCard:hover {
+.card:hover {
   transform: translateY(-4px);
 }
 
-.imageWrapper {
+.imageContainer {
   position: relative;
   width: 100%;
   height: 360px;
@@ -104,7 +108,7 @@
   margin-bottom: 1rem;
 }
 
-.imageOverlay {
+.overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -114,7 +118,7 @@
   z-index: 2;
 }
 
-.serviceTitle {
+.serviceName {
   font-family: var(--font-display);
   font-size: 32px;
   font-weight: 400;
@@ -125,13 +129,13 @@
   line-height: 1;
 }
 
-.tags {
+.pills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.tag {
+.pill {
   display: inline-block;
   padding: 7px 16px;
   font-family: var(--font-display);
@@ -147,18 +151,18 @@
   transition: all 0.2s ease;
 }
 
-.tag:hover {
+.pill:hover {
   background: rgba(26, 15, 94, 0.05);
   border-color: rgba(26, 15, 94, 0.4);
 }
 
 /* CTA CARD */
-.ctaCard {
+.cta {
   padding: 2.5rem;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .avatar {
@@ -169,7 +173,7 @@
   margin-bottom: 1.25rem;
 }
 
-.ctaHeading {
+.ctaTitle {
   font-family: var(--font-body);
   font-size: 21px;
   font-weight: 600;
@@ -208,25 +212,25 @@
 
 /* RESPONSIVE */
 @media (max-width: 1400px) {
-  .heading {
+  .category {
     font-size: 56px;
   }
 
-  .imageWrapper {
+  .imageContainer {
     height: 320px;
   }
 }
 
 @media (max-width: 1280px) {
-  .heading {
+  .category {
     font-size: 52px;
   }
 
-  .imageWrapper {
+  .imageContainer {
     height: 300px;
   }
 
-  .serviceTitle {
+  .serviceName {
     font-size: 28px;
   }
 }
@@ -237,17 +241,19 @@
     gap: 3rem;
   }
 
-  .leftColumn {
+  .fixedLeft {
+    position: static;
     flex: none;
     width: 100%;
+    height: auto;
   }
 
-  .heading {
+  .category {
     font-size: 48px;
     margin-bottom: 1.5rem;
   }
 
-  .servicesGrid {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -257,28 +263,28 @@
     padding: 4rem 24px;
   }
 
-  .heading {
+  .category {
     font-size: 36px;
   }
 
-  .eyebrow {
+  .subtitle {
     font-size: 16px;
   }
 
-  .servicesGrid {
+  .grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
 
-  .imageWrapper {
+  .imageContainer {
     height: 260px;
   }
 
-  .serviceTitle {
+  .serviceName {
     font-size: 24px;
   }
 
-  .ctaCard {
+  .cta {
     padding: 2rem;
   }
 }

@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import LocomotiveScroll from "locomotive-scroll";
 import { servicesData, type ServiceKey } from "../../data/navigationData";
 import styles from "./ServicesGrid.module.css";
 
@@ -17,9 +15,6 @@ const serviceImages: Record<ServiceKey, string> = {
 };
 
 export default function ServicesGrid() {
-  const scrollRef = useRef<HTMLElement>(null);
-  const locomotiveScrollRef = useRef<LocomotiveScroll | null>(null);
-
   const serviceKeys: ServiceKey[] = [
     "painting",
     "building",
@@ -29,78 +24,48 @@ export default function ServicesGrid() {
     "height",
   ];
 
-  useEffect(() => {
-    if (!scrollRef.current) return;
-
-    // Initialize Locomotive Scroll
-    locomotiveScrollRef.current = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: false, // Keep native scroll, just use for sticky
-      tablet: {
-        smooth: false,
-      },
-      smartphone: {
-        smooth: false,
-      },
-    });
-
-    return () => {
-      locomotiveScrollRef.current?.destroy();
-    };
-  }, []);
-
   return (
-    <section ref={scrollRef} data-scroll-container className={styles.section}>
-      <div data-scroll-section className={styles.container}>
-        {/* LEFT COLUMN - STICKY */}
-        <div className={styles.leftColumn} id="sticky-target">
-          <div
-            data-scroll
-            data-scroll-sticky
-            data-scroll-target="#sticky-target"
-            className={styles.leftContent}
-          >
-            <p className={styles.eyebrow}>Every building, any height.</p>
-            <h2 className={styles.heading}>Residential</h2>
-            <h2 className={styles.heading}>Commercial</h2>
-            <h2 className={styles.heading}>Body Corporate</h2>
-            <Link href="/services" className={styles.button}>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        {/* STICKY LEFT SIDE */}
+        <div className={styles.fixedLeft}>
+          <div className={styles.leftContent}>
+            <p className={styles.subtitle}>Every building, any height.</p>
+            <h2 className={styles.category}>Residential</h2>
+            <h2 className={styles.category}>Commercial</h2>
+            <h2 className={styles.category}>Body Corporate</h2>
+            <Link href="/services" className={styles.allServicesButton}>
               All Services
             </Link>
           </div>
         </div>
 
-        {/* RIGHT COLUMN - SCROLLS */}
-        <div className={styles.rightColumn}>
+        {/* SCROLLABLE RIGHT SIDE */}
+        <div className={styles.scrollableRight}>
           {/* Services Grid */}
-          <div className={styles.servicesGrid}>
+          <div className={styles.grid}>
             {serviceKeys.map((key) => {
               const service = servicesData[key];
               return (
-                <Link
-                  key={key}
-                  href={service.href}
-                  className={styles.serviceCard}
-                >
-                  <div className={styles.imageWrapper}>
+                <Link key={key} href={service.href} className={styles.card}>
+                  <div className={styles.imageContainer}>
                     <Image
                       src={serviceImages[key]}
                       alt={service.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, 45vw"
+                      sizes="(max-width: 768px) 100vw, 40vw"
                       style={{ objectFit: "cover" }}
                     />
-                    <div className={styles.imageOverlay}>
-                      <h3 className={styles.serviceTitle}>
+                    <div className={styles.overlay}>
+                      <h3 className={styles.serviceName}>
                         {service.name.toUpperCase()}
                       </h3>
                     </div>
                   </div>
-
-                  <div className={styles.tags}>
-                    {service.subServices.map((sub) => (
-                      <span key={sub} className={styles.tag}>
-                        {sub}
+                  <div className={styles.pills}>
+                    {service.subServices.map((subService) => (
+                      <span key={subService} className={styles.pill}>
+                        {subService}
                       </span>
                     ))}
                   </div>
@@ -109,16 +74,16 @@ export default function ServicesGrid() {
             })}
           </div>
 
-          {/* CTA Card */}
-          <div className={styles.ctaCard}>
+          {/* CTA at bottom */}
+          <div className={styles.cta}>
             <Image
               src="/images/avatar.jpg"
-              alt="Contact us"
+              alt="Contact"
               width={80}
               height={80}
               className={styles.avatar}
             />
-            <h3 className={styles.ctaHeading}>Time to paint your place?</h3>
+            <h3 className={styles.ctaTitle}>Time to paint your place?</h3>
             <p className={styles.ctaText}>
               Painting projects can feel a bit full-on. Don't stress. We've been
               doing this for 50 years. We've got this.
