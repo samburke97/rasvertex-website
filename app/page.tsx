@@ -1,3 +1,4 @@
+import Container from "./components/Container";
 import CommunitySection from "./components/homepage/CommunitySection";
 import ExpandingPanels from "./components/homepage/Expandingpanels";
 import ExperienceSection from "./components/homepage/ExperienceSection";
@@ -8,16 +9,26 @@ import { mainPanels } from "./data/expandingPanelsData";
 
 export default function Home() {
   return (
-    <div className="min-h-screen pt-20">
+    <>
       <ExpandingPanels
         panels={mainPanels}
         defaultActivePanel="higher-standards"
       />
-      <ExperienceSection />
-      <PartnersCarousel />
-      <ServicesGrid />
-      <ProjectShowcase />
+      <Container>
+        <section className="py-[80px]">
+          <ExperienceSection />
+        </section>
+      </Container>
+      <section className="py-[80px]">
+        <PartnersCarousel />
+      </section>
+      <section className="py-[80px]">
+        <ServicesGrid />
+      </section>
+      <section className="py-[80px]">
+        <ProjectShowcase />
+      </section>
       <CommunitySection />
-    </div>
+    </>
   );
 }

@@ -14,6 +14,21 @@ const serviceImages: Record<ServiceKey, string> = {
   height: "/nav/height.png",
 };
 
+const serviceDescriptions: Record<ServiceKey, string> = {
+  painting:
+    "From residential repaints to large-scale commercial projects, our experienced team delivers exceptional finishes that last in Sunshine Coast conditions.",
+  building:
+    "Comprehensive building cleaning and maintenance services for residential complexes, offices, and commercial properties across the Sunshine Coast.",
+  window:
+    "Professional window cleaning services including high-rise access, utilizing rope access techniques for buildings of any height.",
+  waterproofing:
+    "Expert waterproofing and protective coating solutions to safeguard your building against moisture damage and coastal weather.",
+  maintenance:
+    "Complete property maintenance services including repairs, touch-ups, and ongoing care to keep your building in pristine condition.",
+  height:
+    "Certified rope access specialists providing safe, efficient solutions for high-rise maintenance, inspections, and cleaning services.",
+};
+
 export default function ServicesGrid() {
   const serviceKeys: ServiceKey[] = [
     "painting",
@@ -57,27 +72,32 @@ export default function ServicesGrid() {
             {serviceKeys.map((key) => {
               const service = servicesData[key];
               return (
-                <div key={key}>
-                  <Link href={service.href} className={styles.card}>
-                    <div className={styles.imageContainer}>
-                      <Image
-                        src={serviceImages[key]}
-                        alt={service.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        style={{ objectFit: "cover" }}
-                      />
-                      <div className={styles.tag}>
-                        {service.name.toUpperCase()}
+                <div key={key} className={styles.cardWrapper}>
+                  <div className={styles.card}>
+                    <Link href={service.href}>
+                      <div className={styles.imageContainer}>
+                        <Image
+                          src={serviceImages[key]}
+                          alt={service.name}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 600px"
+                          style={{ objectFit: "cover" }}
+                        />
+                        <div className={styles.tag}>
+                          {service.name.toUpperCase()}
+                        </div>
                       </div>
+                    </Link>
+                    <p className={styles.description}>
+                      {serviceDescriptions[key]}
+                    </p>
+                    <div className={styles.pills}>
+                      {service.subServices.map((subService) => (
+                        <span key={subService} className={styles.pill}>
+                          {subService}
+                        </span>
+                      ))}
                     </div>
-                  </Link>
-                  <div className={styles.pills}>
-                    {service.subServices.map((subService) => (
-                      <span key={subService} className={styles.pill}>
-                        {subService}
-                      </span>
-                    ))}
                   </div>
                 </div>
               );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./Expandingpanels.module.css";
 
@@ -84,7 +84,6 @@ export default function ExpandingPanels({
               </motion.div>
             )}
 
-            {/* Expanded State - ONLY MOUNTS after panel is fully expanded */}
             {isActive && isFullyExpanded && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

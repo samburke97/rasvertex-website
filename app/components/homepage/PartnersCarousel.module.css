@@ -1,6 +1,5 @@
 .section {
   background: white;
-  padding: 80px 0;
   overflow: hidden;
 }
 
@@ -23,7 +22,7 @@
   gap: 60px;
   user-select: none;
   -webkit-user-select: none;
-  cursor: default; /* Changed from grab since dragging is disabled */
+  cursor: default;
 }
 
 .emblaSlide {
