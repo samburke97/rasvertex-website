@@ -7,7 +7,6 @@ export default function ExperienceSection() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        {/* Left side - Text content (max 50% width) */}
         <div className={styles.content}>
           <p className={styles.subtitle}>
             The Sunshine Coast's Property Partner
@@ -18,7 +17,6 @@ export default function ExperienceSection() {
           </h2>
         </div>
 
-        {/* Right side - Google Rating Badge (bottom right) */}
         <div className={styles.badgeColumn}>
           <Image
             src="/images/google.svg"
