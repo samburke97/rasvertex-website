@@ -1,0 +1,199 @@
+/* SECTION */
+.section {
+  background: white;
+  padding: 100px 40px;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 80px;
+  min-height: 500px;
+}
+
+/* LEFT CONTENT - Matches ExperienceSection */
+.content {
+  flex: 0 0 50%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--navy);
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.title {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 58.207px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -2.328px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+}
+
+/* RIGHT COLUMN - Image card and logos */
+.imageColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* IMAGE CARD - Matches ProjectShowcase style */
+.imageCard {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* TAG - Top right like ProjectShowcase */
+.tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  padding: 0.5rem 24px;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+  z-index: 2;
+  white-space: nowrap;
+  border-radius: 0 0 0 4px;
+}
+
+/* SPONSOR LOGOS - Spread across bottom evenly */
+.sponsorLogos {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.logoCard {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 1;
+  background: white;
+  border: 1px solid rgba(26, 15, 94, 0.08);
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.logoCard:hover {
+  border-color: rgba(26, 15, 94, 0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 40px;
+  }
+
+  .container {
+    gap: 60px;
+    min-height: 400px;
+  }
+
+  .title {
+    font-size: 48px;
+    letter-spacing: -1.9px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .imageCard {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 24px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    min-height: auto;
+  }
+
+  .content {
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 36px;
+    letter-spacing: -1.4px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .imageColumn {
+    width: 100%;
+  }
+
+  .imageCard {
+    height: 350px;
+  }
+
+  .sponsorLogos {
+    gap: 0.75rem;
+  }
+
+  .logoCard {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .imageCard {
+    height: 280px;
+  }
+
+  .tag {
+    font-size: 0.55rem;
+    padding: 0.4rem 16px;
+  }
+
+  .sponsorLogos {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logoCard {
+    flex: 0 0 calc(33.333% - 0.5rem);
+    padding: 0.625rem;
+  }
+}

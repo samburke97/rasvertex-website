@@ -1,3 +1,26 @@
+/* Backdrop overlay */
+.backdrop {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 40;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .nav {
   position: fixed;
   top: 0;
@@ -67,7 +90,7 @@
   color: var(--navy);
   font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 300;
   letter-spacing: 0.05em;
   background: none;
   border: none;

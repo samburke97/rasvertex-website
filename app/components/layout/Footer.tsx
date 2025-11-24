@@ -21,7 +21,6 @@ interface FooterColumnProps {
   isSocial?: boolean;
 }
 
-// FooterColumn component definition
 const FooterColumn = ({
   title,
   links,
@@ -70,7 +69,6 @@ export default function Footer() {
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
 
-    // Add schema.org structured data
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.innerHTML = JSON.stringify({
@@ -109,6 +107,9 @@ export default function Footer() {
               links={footerLinks.social}
               isSocial={true}
             />
+            <div className={styles.higherStandardsColumn}>
+              <h2 className={styles.higherStandardsText}>HIGHER STANDARDS.</h2>
+            </div>
           </div>
 
           <div className={styles.bottomSection}>
@@ -129,10 +130,15 @@ export default function Footer() {
               </p>
             </div>
 
-            <p className={styles.copyright}>
-              <span aria-label="Copyright">©</span> {currentYear} Rope Access
-              Services Pty Ltd
-            </p>
+            <div className={styles.copyrightWrapper}>
+              <p className={styles.copyright}>
+                <span aria-label="Copyright">©</span> {currentYear} Rope Access
+                Services Pty Ltd
+              </p>
+              <p className={styles.businessDetails}>
+                QBCC: 1307234 | ACN 167 652 637
+              </p>
+            </div>
           </div>
         </div>
       </Container>

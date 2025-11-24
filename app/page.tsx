@@ -1,3 +1,4 @@
+import CommunitySection from "./components/homepage/CommunitySection";
 import ExpandingPanels from "./components/homepage/Expandingpanels";
 import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
@@ -16,6 +17,7 @@ export default function Home() {
       <PartnersCarousel />
       <ServicesGrid />
       <ProjectShowcase />
+      <CommunitySection />
     </div>
   );
 }
