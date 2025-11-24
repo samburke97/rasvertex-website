@@ -27,15 +27,25 @@ export default function ServicesGrid() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        {/* STICKY LEFT SIDE */}
+        {/* STICKY LEFT SIDE - UPDATED WITH HOW CAN WE HELP */}
         <div className={styles.fixedLeft}>
           <div className={styles.leftContent}>
-            <p className={styles.subtitle}>Every building, any height.</p>
-            <h2 className={styles.category}>Residential</h2>
-            <h2 className={styles.category}>Commercial</h2>
-            <h2 className={styles.category}>Body Corporate</h2>
-            <Link href="/services" className={styles.allServicesButton}>
-              All Services
+            <Image
+              src="/images/people/caro.jpg"
+              alt="Caroline"
+              width={120}
+              height={120}
+              className={styles.avatar}
+            />
+            <h2 className={styles.ctaTitle}>How can we help?</h2>
+            <p className={styles.ctaText}>
+              Before you kick off your project, talk to the Sunshine
+              Coast&apos;s experts. With over a decade working in our coastal
+              conditions, we know what your building really needs. Let&apos;s
+              chat.
+            </p>
+            <Link href="/contact" className={styles.ctaButton}>
+              Chat to our team
             </Link>
           </div>
         </div>
@@ -47,21 +57,25 @@ export default function ServicesGrid() {
             {serviceKeys.map((key) => {
               const service = servicesData[key];
               return (
-                <Link key={key} href={service.href} className={styles.card}>
-                  <div className={styles.imageContainer}>
-                    <Image
-                      src={serviceImages[key]}
-                      alt={service.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                      style={{ objectFit: "cover" }}
-                    />
-                    <div className={styles.overlay}>
-                      <h3 className={styles.serviceName}>
+                <div key={key}>
+                  <Link href={service.href} className={styles.card}>
+                    <div className={styles.imageContainer}>
+                      <Image
+                        src={serviceImages[key]}
+                        alt={service.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                        style={{ objectFit: "cover" }}
+                      />
+
+                      {/* Tag cutout in BOTTOM-LEFT with service name */}
+                      <div className={styles.tag}>
                         {service.name.toUpperCase()}
-                      </h3>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
+
+                  {/* Pills below the card */}
                   <div className={styles.pills}>
                     {service.subServices.map((subService) => (
                       <span key={subService} className={styles.pill}>
@@ -69,7 +83,7 @@ export default function ServicesGrid() {
                       </span>
                     ))}
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
@@ -77,10 +91,10 @@ export default function ServicesGrid() {
           {/* CTA at bottom */}
           <div className={styles.cta}>
             <Image
-              src="/images/avatar.jpg"
-              alt="Contact"
-              width={80}
-              height={80}
+              src="/images/people/caro.jpg"
+              alt="Caroline"
+              width={120}
+              height={120}
               className={styles.avatar}
             />
             <h3 className={styles.ctaTitle}>Time to paint your place?</h3>
