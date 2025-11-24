@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 6rem max(24px, calc((100vw - 1600px) / 2));
+  padding: 6rem 24px 6rem max(24px, calc((100vw - 1600px) / 2));
   display: flex;
   gap: 3rem;
   align-items: flex-start;
@@ -28,150 +28,8 @@
   align-self: flex-start;
 }
 
-/* LEFT CONTENT - NO sticky here */
 .leftContent {
   position: static !important;
-  width: 100%;
-}
-
-.subtitle {
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--navy);
-  margin: 0 0 1.5rem 0;
-  line-height: 1.4;
-}
-
-.category {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -2.328px;
-  text-transform: uppercase;
-  color: var(--navy);
-  margin: 0 0 0.5rem 0;
-  transition: color 0.2s;
-}
-
-.category:hover {
-  color: var(--red);
-}
-
-.allServicesButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.5rem;
-  padding: 10px 24px;
-  border: 1px solid rgba(26, 15, 94, 0.25);
-  color: var(--navy);
-  background: transparent;
-  border-radius: 4px;
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s;
-  width: fit-content;
-}
-
-.allServicesButton:hover {
-  background: rgba(26, 15, 94, 0.05);
-  border-color: rgba(26, 15, 94, 0.4);
-  transform: translateY(-1px);
-}
-
-.scrollableRight {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  max-width: none;
-}
-
-/* SERVICES GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  width: 100%; /* ✅ Full width of scrollableRight */
-}
-
-.card {
-  display: block;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.imageContainer {
-  position: relative;
-  width: 100%;
-  height: 360px;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.tag {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: white;
-  padding: 0.75rem 1.5rem;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--navy);
-  z-index: 2;
-  white-space: nowrap;
-  border-radius: 0 16px 0 0;
-  line-height: 1;
-}
-
-/* Pills below the card */
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.pill {
-  display: inline-block;
-  padding: 7px 16px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--navy);
-  background: transparent;
-  border: 1px solid rgba(26, 15, 94, 0.25);
-  border-radius: 4px;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.pill:hover {
-  background: rgba(26, 15, 94, 0.05);
-  border-color: rgba(26, 15, 94, 0.4);
-}
-
-/* CTA CARD */
-.cta {
-  padding: 3rem;
-  background: white;
-  border: none;
-  border-radius: 0;
-  margin-top: 3rem;
   width: 100%;
 }
 
@@ -225,6 +83,98 @@
   transform: translateY(-1px);
 }
 
+/* RIGHT COLUMN - SCROLLABLE */
+.scrollableRight {
+  flex: 0 0 60%;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* SERVICES GRID - SINGLE COLUMN */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: white;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+  z-index: 2;
+  white-space: nowrap;
+  border-radius: 0 16px 0 0;
+  line-height: 1;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 7px 16px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid rgba(26, 15, 94, 0.25);
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.pill:hover {
+  background: rgba(26, 15, 94, 0.05);
+  border-color: rgba(26, 15, 94, 0.4);
+}
+
+/* CTA CARD */
+.cta {
+  padding: 3rem;
+  background: white;
+  border: none;
+  border-radius: 0;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+/* RESPONSIVE */
 @media (max-width: 1600px) {
   .fixedLeft {
     flex: 0 0 30%;
@@ -235,11 +185,15 @@
   }
 }
 
-/* RESPONSIVE - TABLET */
 @media (max-width: 1400px) {
-  .category {
-    font-size: 52px;
-    letter-spacing: -2.08px;
+  .ctaTitle {
+    font-size: 48px;
+    letter-spacing: -1.92px;
+  }
+
+  .ctaText {
+    font-size: 18px;
+    letter-spacing: -0.72px;
   }
 
   .fixedLeft {
@@ -258,22 +212,17 @@
     font-size: 1.4rem;
     padding: 0.7rem 1.4rem;
   }
-
-  .ctaTitle {
-    font-size: 48px;
-    letter-spacing: -1.92px;
-  }
-
-  .ctaText {
-    font-size: 18px;
-    letter-spacing: -0.72px;
-  }
 }
 
 @media (max-width: 1280px) {
-  .category {
-    font-size: 48px;
-    letter-spacing: -1.92px;
+  .ctaTitle {
+    font-size: 42px;
+    letter-spacing: -1.68px;
+  }
+
+  .ctaText {
+    font-size: 16px;
+    letter-spacing: -0.64px;
   }
 
   .fixedLeft {
@@ -289,23 +238,12 @@
     padding: 0.65rem 1.3rem;
   }
 
-  .ctaTitle {
-    font-size: 42px;
-    letter-spacing: -1.68px;
-  }
-
-  .ctaText {
-    font-size: 16px;
-    letter-spacing: -0.64px;
-  }
-
   .ctaButton {
     font-size: 15px;
     padding: 12px 24px;
   }
 }
 
-/* RESPONSIVE - TABLET/MOBILE TRANSITION (keep 2 columns) */
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
@@ -321,19 +259,9 @@
   }
 
   .scrollableRight {
+    flex: none;
+    max-width: 100%;
     width: 100%;
-  }
-
-  .category {
-    font-size: 42px;
-    letter-spacing: -1.68px;
-    margin-bottom: 0.5rem;
-  }
-
-  /* ✅ Keep 2 columns, cards maintain aspect ratio */
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
   }
 
   .imageContainer {
@@ -371,26 +299,6 @@
     gap: 2.5rem;
   }
 
-  .category {
-    font-size: 36px;
-    letter-spacing: -1.44px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-    margin-bottom: 2rem;
-  }
-
-  .allServicesButton {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
   .imageContainer {
     height: 320px;
   }
@@ -405,15 +313,15 @@
     padding: 6px 14px;
   }
 
-  .cta {
-    padding: 2rem;
-  }
-
   .avatar {
     width: 100px;
     height: 100px;
     border-radius: 20px;
     margin-bottom: 1.5rem;
+  }
+
+  .cta {
+    padding: 2rem;
   }
 
   .ctaTitle {
@@ -437,19 +345,6 @@
 @media (max-width: 480px) {
   .container {
     padding: 2.5rem 20px;
-  }
-
-  .category {
-    font-size: 32px;
-    letter-spacing: -1.28px;
-  }
-
-  .subtitle {
-    font-size: 15px;
-  }
-
-  .grid {
-    gap: 1.5rem;
   }
 
   .imageContainer {
