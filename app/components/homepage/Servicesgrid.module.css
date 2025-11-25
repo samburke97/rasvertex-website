@@ -1,10 +1,21 @@
+/* SECTION */
+.section {
+  width: 100%;
+  background: white;
+  position: relative;
+  overflow: visible;
+}
+
 /* CONTAINER */
 .container {
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
+  padding: 6rem 24px 6rem max(24px, calc((100vw - 1600px) / 2));
   display: flex;
-  justify-content: space-between;
+  gap: 3rem;
+  align-items: flex-start;
+  min-height: 100%;
 }
 
 /* LEFT COLUMN - STICKY */
@@ -14,6 +25,7 @@
   bottom: 100px;
   flex: 0 0 28%;
   height: fit-content;
+  align-self: flex-start;
 }
 
 .leftContent {
@@ -78,21 +90,13 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding-right: 24px;
 }
 
-/* SERVICES GRID - TWO COLUMNS */
+/* SERVICES GRID - SINGLE COLUMN */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  width: 100%;
-  align-items: start;
-}
-
-.cardWrapper {
-  display: flex;
-  justify-content: stretch;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   width: 100%;
 }
 
@@ -100,7 +104,6 @@
   display: block;
   text-decoration: none;
   transition: transform 0.3s ease;
-  width: 100%;
 }
 
 .card:hover {
@@ -110,10 +113,9 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 380px;
+  height: 500px;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 1rem;
 }
 
 .tag {
@@ -132,45 +134,6 @@
   white-space: nowrap;
   border-radius: 0 16px 0 0;
   line-height: 1;
-  width: 75%;
-  max-width: 75%;
-}
-
-.description {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--navy);
-  margin: 0 0 1rem 0;
-  opacity: 0.8;
-}
-
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.pill {
-  display: inline-block;
-  padding: 7px 16px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--navy);
-  background: transparent;
-  border: 1px solid rgba(26, 15, 94, 0.25);
-  border-radius: 4px;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.pill:hover {
-  background: rgba(26, 15, 94, 0.05);
-  border-color: rgba(26, 15, 94, 0.4);
 }
 
 /* CTA CARD */
@@ -214,7 +177,7 @@
   }
 
   .imageContainer {
-    height: 340px;
+    height: 320px;
   }
 
   .tag {
@@ -239,7 +202,7 @@
   }
 
   .imageContainer {
-    height: 320px;
+    height: 300px;
   }
 
   .tag {
@@ -271,23 +234,10 @@
     flex: none;
     max-width: 100%;
     width: 100%;
-    padding-right: 0;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cardWrapper {
-    justify-content: center;
-  }
-
-  .card {
-    max-width: 100%;
   }
 
   .imageContainer {
-    height: 300px;
+    height: 280px;
   }
 
   .tag {
@@ -321,6 +271,10 @@
     gap: 2.5rem;
   }
 
+  .grid {
+    gap: 1.5rem;
+  }
+
   .imageContainer {
     height: 320px;
   }
@@ -328,15 +282,6 @@
   .tag {
     font-size: 1.1rem;
     padding: 0.5rem 1rem;
-  }
-
-  .description {
-    font-size: 14px;
-  }
-
-  .pill {
-    font-size: 10px;
-    padding: 6px 14px;
   }
 
   .avatar {
@@ -404,9 +349,5 @@
   .ctaButton {
     font-size: 13px;
     padding: 10px 20px;
-  }
-
-  .description {
-    font-size: 13px;
   }
 }
