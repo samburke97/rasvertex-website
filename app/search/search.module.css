@@ -1,0 +1,136 @@
+.searchPage {
+  min-height: calc(100vh - 80px);
+  background: white;
+  padding: 80px 0;
+}
+
+.searchSection {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.searchTitle {
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 42px;
+  font-weight: 300;
+  margin: 0 0 48px 0;
+  text-align: center;
+}
+
+.resultsTitle {
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 0 48px 0;
+  text-align: center;
+}
+
+.searchForm {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 20px 60px 20px 24px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--navy);
+  border: none;
+  border-bottom: 2px solid var(--navy);
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput::placeholder {
+  color: rgba(26, 15, 94, 0.4);
+}
+
+.searchInput:focus {
+  border-bottom-color: var(--red);
+}
+
+.searchButton {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  transition: color 0.2s;
+}
+
+.searchButton:hover {
+  color: var(--red);
+}
+
+.resultsSection {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(26, 15, 94, 0.1);
+}
+
+.noResults {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 0;
+}
+
+.noResultsTitle {
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+}
+
+.noResultsText {
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .searchPage {
+    padding: 40px 0;
+  }
+
+  .searchTitle {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .resultsTitle {
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
+
+  .searchInput {
+    font-size: 16px;
+    padding: 16px 50px 16px 16px;
+  }
+
+  .noResultsTitle {
+    font-size: 28px;
+  }
+
+  .noResultsText {
+    font-size: 14px;
+  }
+}
