@@ -89,8 +89,8 @@ export default function Navigation() {
                 <Image
                   src="/logo.png"
                   alt="RAS-VERTEX"
-                  width={150}
-                  height={20}
+                  width={175}
+                  height={50}
                   priority
                 />
               </Link>
@@ -149,25 +149,46 @@ export default function Navigation() {
               </button>
             </div>
 
-            {/* CTA buttons - desktop only */}
             <div className={styles.ctaButtons}>
-              <a href="tel:(07)31300226" className={styles.phoneButton}>
-                (07) 3130 0226
+              {/* Search */}
+              <Link href="/search" className={styles.iconButton}>
+                <Image
+                  src="/icons/utility-outline/search.svg"
+                  alt="Search"
+                  width={20}
+                  height={20}
+                />
+              </Link>
+
+              {/* Phone */}
+              <a href="tel:+61754911588" className={styles.iconButton}>
+                <Image
+                  src="/icons/utility-outline/phone.svg"
+                  alt="Call us"
+                  width={20}
+                  height={20}
+                />
               </a>
-              <button className={styles.quoteButton}>Free Quote →</button>
+
+              {/* Free Quote */}
+              <Link href="/quote" className={styles.quoteButton}>
+                Free Quote
+              </Link>
             </div>
           </div>
         </Container>
-
-        <MobileMenu
-          isOpen={mobileMenuOpen}
-          servicesOpen={servicesOpen}
-          setServicesOpen={setServicesOpen}
-          companyOpen={companyOpen}
-          setCompanyOpen={setCompanyOpen}
-          onClose={() => setMobileMenuOpen(false)}
-        />
       </nav>
+
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        servicesOpen={servicesOpen}
+        setServicesOpen={setServicesOpen}
+        activeService={activeService}
+        setActiveService={setActiveService}
+        companyOpen={companyOpen}
+        setCompanyOpen={setCompanyOpen}
+      />
     </>
   );
 }

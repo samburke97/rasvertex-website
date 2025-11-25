@@ -19,16 +19,18 @@ export default function Home() {
           <ExperienceSection />
         </section>
       </Container>
-      <section className="py-[80px]">
+      <section className="py-[150px]">
         <PartnersCarousel />
       </section>
-      <section className="py-[80px]">
+      <section className="py-[150px]">
         <ServicesGrid />
       </section>
       <section className="py-[80px]">
         <ProjectShowcase />
       </section>
-      <CommunitySection />
+      <section className="py-[80px]">
+        <CommunitySection />
+      </section>
     </>
   );
 }
