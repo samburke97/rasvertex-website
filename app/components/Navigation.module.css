@@ -1,4 +1,3 @@
-/* Backdrop overlay */
 .backdrop {
   position: fixed;
   top: 80px;
@@ -119,7 +118,6 @@
   }
 }
 
-/* Icon buttons for search and phone */
 .iconButton {
   display: flex;
   align-items: center;

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { servicesData, type ServiceKey } from "../../data/navigationData";
@@ -24,28 +25,76 @@ export default function ServicesGrid() {
     "height",
   ];
 
+  const [activeService, setActiveService] = useState<ServiceKey>("painting");
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  // Track which service card is currently in view
+  useEffect(() => {
+    const observers = cardRefs.current.map((card, index) => {
+      if (!card) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+              setActiveService(serviceKeys[index]);
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+          rootMargin: "-20% 0px -20% 0px",
+        }
+      );
+
+      observer.observe(card);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, []);
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         {/* STICKY LEFT SIDE */}
         <div className={styles.fixedLeft}>
           <div className={styles.leftContent}>
-            <Image
-              src="/images/people/caro.jpg"
-              alt="Caroline"
-              width={120}
-              height={120}
-              className={styles.avatar}
-            />
-            <h2 className={styles.ctaTitle}>How can we help?</h2>
-            <p className={styles.ctaText}>
-              Before you kick off your project, talk to the Sunshine Coast's
-              experts. With over a decade working in our coastal conditions, we
-              know what your building really needs. Let's chat.
-            </p>
-            <Link href="/contact" className={styles.ctaButton}>
-              Chat to our team
-            </Link>
+            {/* Services list at top */}
+            <div className={styles.servicesList}>
+              {serviceKeys.map((key) => (
+                <button
+                  key={key}
+                  className={`${styles.serviceButton} ${
+                    activeService === key ? styles.active : ""
+                  }`}
+                >
+                  {servicesData[key].name.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
+            {/* CTA at bottom */}
+            <div className={styles.ctaSection}>
+              <Image
+                src="/images/people/caro.jpg"
+                alt="Caroline"
+                width={120}
+                height={120}
+                className={styles.avatar}
+              />
+              <h2 className={styles.ctaTitle}>How can we help?</h2>
+              <p className={styles.ctaText}>
+                Before you kick off your project, talk to the Sunshine Coast's
+                experts. With over a decade working in our coastal conditions,
+                we know what your building really needs. Let's chat.
+              </p>
+              <Link href="/contact" className={styles.ctaButton}>
+                Chat to our team
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -61,6 +110,9 @@ export default function ServicesGrid() {
                 <Link
                   key={key}
                   href={service.href}
+                  ref={(el) => {
+                    cardRefs.current[index] = el;
+                  }}
                   className={`${styles.serviceCard} ${
                     isEven ? styles.imageLeft : styles.imageRight
                   }`}
