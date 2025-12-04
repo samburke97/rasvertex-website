@@ -15,18 +15,12 @@
   flex-shrink: 0;
   height: fit-content;
   max-width: 350px;
-}
-
-.leftContent {
-  position: static !important;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 600px;
+  gap: 80px; /* Clean, even spacing between services list and CTA */
 }
 
-/* Services list - exact styling from spec */
+/* Services list */
 .servicesList {
   display: flex;
   flex-direction: column;
@@ -61,12 +55,11 @@
   opacity: 1;
 }
 
-/* CTA Section - sticky at bottom */
+/* CTA Section */
 .ctaSection {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 60px;
 }
 
 .ctaAvatar {

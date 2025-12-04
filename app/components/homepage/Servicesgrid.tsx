@@ -80,40 +80,38 @@ export default function ServicesGrid() {
       <div className={styles.container} ref={containerRef}>
         {/* STICKY LEFT SIDE */}
         <div className={styles.fixedLeft}>
-          <div className={styles.leftContent}>
-            {/* Services list */}
-            <div className={styles.servicesList}>
-              {serviceKeys.map((key) => (
-                <button
-                  key={key}
-                  className={`${styles.serviceButton} ${
-                    activeService === key ? styles.active : ""
-                  }`}
-                >
-                  {servicesData[key].name.toUpperCase()}
-                </button>
-              ))}
-            </div>
+          {/* Services list */}
+          <div className={styles.servicesList}>
+            {serviceKeys.map((key) => (
+              <button
+                key={key}
+                className={`${styles.serviceButton} ${
+                  activeService === key ? styles.active : ""
+                }`}
+              >
+                {servicesData[key].name.toUpperCase()}
+              </button>
+            ))}
+          </div>
 
-            {/* CTA Section - sticky at bottom */}
-            <div className={styles.ctaSection}>
-              <Image
-                src="/images/people/caro.jpg"
-                alt="Caroline"
-                width={120}
-                height={120}
-                className={styles.ctaAvatar}
-              />
-              <h3 className={styles.ctaTitle}>HOW CAN WE HELP?</h3>
-              <p className={styles.ctaText}>
-                Before you kick off your project, talk to the Sunshine Coast's
-                experts. With over a decade working in our coastal conditions,
-                we know what your building really needs. Let's chat.
-              </p>
-              <Link href="/contact" className={styles.ctaButton}>
-                Chat to our team
-              </Link>
-            </div>
+          {/* CTA Section */}
+          <div className={styles.ctaSection}>
+            <Image
+              src="/images/people/caro.jpg"
+              alt="Caroline"
+              width={120}
+              height={120}
+              className={styles.ctaAvatar}
+            />
+            <h3 className={styles.ctaTitle}>HOW CAN WE HELP?</h3>
+            <p className={styles.ctaText}>
+              Before you kick off your project, talk to the Sunshine Coast's
+              experts. With over a decade working in our coastal conditions, we
+              know what your building really needs. Let's chat.
+            </p>
+            <Link href="/contact" className={styles.ctaButton}>
+              Chat to our team
+            </Link>
           </div>
         </div>
 
