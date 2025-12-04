@@ -5,6 +5,7 @@ import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import ServicesGrid from "./components/homepage/ServicesGrid";
+import Services from "./components/homepage/Services";
 import { mainPanels } from "./data/expandingPanelsData";
 
 export default function Home() {
