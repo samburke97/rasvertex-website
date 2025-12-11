@@ -5,6 +5,7 @@ import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import ServicesGrid from "./components/homepage/ServicesGrid";
+import ServicesDetail from "./components/homepage/ServicesDetail";
 import Services from "./components/homepage/Services";
 import { mainPanels } from "./data/expandingPanelsData";
 
@@ -24,7 +25,7 @@ export default function Home() {
         <PartnersCarousel />
       </section>
       <section className="py-[150px]">
-        <ServicesGrid />
+        <ServicesDetail />
       </section>
       <section className="py-[80px]">
         <ProjectShowcase />
