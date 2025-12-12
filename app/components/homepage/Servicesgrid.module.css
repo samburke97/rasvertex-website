@@ -10,79 +10,107 @@
   max-width: 1600px;
   margin: 0 auto;
   display: flex;
-  gap: 60px;
-  justify-content: space-between;
+  gap: 80px;
+  align-items: flex-start;
 }
 
 /* LEFT COLUMN - STICKY */
-.fixedLeft {
+.leftColumn {
   position: sticky;
   top: 100px;
   flex-shrink: 0;
-  height: fit-content;
-  max-width: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
+  width: 380px;
+  height: calc(100vh - 200px);
 }
 
-/* Services list */
-.servicesList {
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 32px;
+}
+
+/* TOP SECTION - Groups tagline, categories, and button */
+.topSection {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* TAGLINE */
+.tagline {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+}
+
+/* CATEGORIES */
+.categories {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-.serviceButton {
+.categoryButton {
   width: 100%;
   text-align: left;
-  padding: 0px 16px;
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 32px;
-  font-style: normal;
+  padding: 8px 0;
+  font-family: var(--font-display);
+  font-size: 42px;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.1;
   letter-spacing: 0;
+  color: #062460;
   background: none;
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
-  color: #062460;
-  opacity: 0.4;
-  border-radius: 8px;
+  transition: opacity 0.2s ease;
   text-transform: uppercase;
 }
 
-.serviceButton:hover {
-  opacity: 1;
+.categoryButton:hover {
+  opacity: 0.7;
 }
 
-.serviceButton.active {
-  opacity: 1;
+/* ALL SERVICES BUTTON */
+.allServicesButton {
+  width: fit-content;
+  padding: 6px 16px;
+  background: transparent;
+  border: 1px solid rgba(26, 15, 94, 0.25);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #062460;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
 }
 
-/* CTA Section */
+.allServicesButton:hover {
+  background: #062460;
+  color: white;
+  border-color: #062460;
+}
+
+/* CTA SECTION */
 .ctaSection {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .ctaAvatar {
-  border-radius: 16px;
+  border-radius: 12px;
   object-fit: cover;
-  width: 120px;
-  height: 120px;
-}
-
-.ctaTitle {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0;
-  color: #062460;
-  margin: 0;
+  width: 100px;
+  height: 100px;
 }
 
 .ctaText {
@@ -97,145 +125,109 @@
 .ctaButton {
   display: inline-block;
   width: fit-content;
-  padding: 10px 24px;
+  padding: 6px 16px;
   background: transparent;
   color: #062460;
-  border: 2px solid #062460;
+  border: 1px solid rgba(26, 15, 94, 0.25);
   border-radius: 4px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-decoration: none;
   transition: all 0.2s;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .ctaButton:hover {
   background: #062460;
   color: white;
+  border-color: #062460;
 }
 
-/* RIGHT COLUMN - SCROLLABLE, aligned to far right */
-.scrollableRight {
+/* RIGHT COLUMN - SCROLLABLE */
+.rightColumn {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  align-items: flex-end;
 }
 
-/* SERVICES GRID - SINGLE COLUMN */
-.grid {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+/* SERVICES GRID - 2 COLUMN */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
 }
 
-/* Single column card layout - more compact */
+/* SERVICE CARD */
 .serviceCard {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: fit-content;
+  gap: 0;
   text-decoration: none;
-  transition: opacity 0.3s ease, transform 0.2s ease;
-}
-
-.serviceCard.activeCard {
-  opacity: 1;
-}
-
-.serviceCard.inactiveCard {
-  opacity: 0.3;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .serviceCard:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Image container - wider */
+/* IMAGE */
 .imageContainer {
   position: relative;
-  width: 900px;
-  height: 450px;
-  border-radius: 12px;
+  width: 100%;
+  height: 280px;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
-.imageContainer::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60%;
-  height: 100px;
-  background: white;
-  border-radius: 0 20px 0 0;
-  z-index: 1;
+/* CARD CONTENT */
+.cardContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
+/* TITLE */
 .serviceTitle {
-  position: absolute;
-  bottom: 14px;
-  left: 0;
   font-family: "Bebas Neue", var(--font-display);
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0;
   color: #062460;
   margin: 0;
   text-transform: none;
-  z-index: 2;
-  max-width: 380px;
 }
 
-/* Content column - below image, matches image width */
-.contentColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 900px;
-}
-
-/* Description at top */
+/* DESCRIPTION */
 .description {
   color: #000;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
   margin: 0;
   font-family: var(--font-body);
   font-weight: 300;
 }
 
-/* Bottom content: logos + pills */
-.bottomContent {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-}
-
-/* Partner logos row */
-.partnerLogos {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  width: 100%;
-}
-
-/* Pills at very bottom */
+/* PILLS */
 .pills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  width: 100%;
+  margin-top: 4px;
 }
 
 .pill {
   display: inline-block;
-  font-size: 10px;
-  padding: 5px 12px;
+  font-size: 9px;
+  padding: 4px 10px;
   background: transparent;
   border-radius: 4px;
   color: var(--navy);
@@ -243,75 +235,62 @@
   font-family: var(--font-display);
   letter-spacing: 0.05em;
   font-weight: 400;
-  transition: all 0.2s;
   white-space: nowrap;
   text-transform: uppercase;
   line-height: 1;
 }
 
-.pill:hover {
-  background: rgba(26, 15, 94, 0.05);
-  border-color: rgba(26, 15, 94, 0.4);
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .container {
+    gap: 60px;
+  }
+
+  .leftColumn {
+    width: 320px;
+  }
+
+  .categoryButton {
+    font-size: 36px;
+  }
+
+  .servicesGrid {
+    gap: 24px;
+  }
+
+  .imageContainer {
+    height: 240px;
+  }
 }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
   .section {
-    padding: 80px 40px;
+    padding: 80px 32px;
   }
 
   .container {
     flex-direction: column;
-    gap: 3rem;
+    gap: 60px;
   }
 
-  .fixedLeft {
+  .leftColumn {
     position: static;
-    flex: none;
     width: 100%;
+    max-width: 100%;
     height: auto;
   }
 
-  .scrollableRight {
-    flex: none;
-    max-width: 100%;
-    width: 100%;
+  .leftContent {
+    gap: 28px;
+    height: auto;
   }
 
-  .grid {
-    gap: 3rem;
+  .categoryButton {
+    font-size: 32px;
   }
 
-  .imageContainer {
-    width: 100%;
-    max-width: 700px;
-    height: 400px;
-  }
-
-  .imageContainer::before {
-    width: 350px;
-    height: 60px;
-  }
-
-  .serviceTitle {
-    font-size: 36px;
-    bottom: 12px;
-    left: 0;
-    padding-left: 18px;
-    max-width: 320px;
-  }
-
-  .contentColumn {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .description {
-    font-size: 14px;
-  }
-
-  .serviceButton {
-    font-size: 28px;
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -320,73 +299,46 @@
     padding: 60px 24px;
   }
 
-  .container {
-    gap: 2.5rem;
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .categoryButton {
+    font-size: 28px;
   }
 
   .imageContainer {
-    height: 350px;
+    height: 220px;
   }
 
-  .imageContainer::before {
-    width: 300px;
-    height: 55px;
-  }
-
-  .serviceTitle {
-    font-size: 32px;
-    bottom: 11px;
-    left: 0;
-    padding-left: 16px;
-    max-width: 270px;
-  }
-
-  .grid {
-    gap: 2.5rem;
-  }
-
-  .description {
-    font-size: 14px;
-  }
-
-  .pill {
-    font-size: 10px;
-    padding: 6px 12px;
-  }
-
-  .serviceButton {
-    font-size: 24px;
-    padding: 6px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section {
-    padding: 40px 20px;
-  }
-
-  .imageContainer {
-    height: 300px;
-  }
-
-  .imageContainer::before {
-    width: 250px;
-    height: 50px;
+  .cardContent {
+    padding: 20px;
   }
 
   .serviceTitle {
     font-size: 28px;
-    bottom: 10px;
-    left: 0;
-    max-width: 230px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryButton {
+    font-size: 24px;
   }
 
-  .pill {
-    font-size: 10px;
-    padding: 5px 10px;
+  .imageContainer {
+    height: 200px;
   }
 
-  .serviceButton {
-    font-size: 20px;
+  .cardContent {
+    padding: 16px;
+  }
+
+  .serviceTitle {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 13px;
   }
 }
