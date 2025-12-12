@@ -4,105 +4,81 @@
   padding: 100px 40px;
 }
 
-/* CONTAINER */
+/* CONTAINER - Pill shape with maroon background */
 .container {
   max-width: 1600px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 80px;
-  min-height: 500px;
-}
-
-/* LEFT CONTENT - Matches ExperienceSection */
-.content {
-  flex: 0 0 50%;
-  max-width: 50%;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+  background: #6d2932;
+  border-radius: 50px;
+  padding: 80px 60px;
 }
 
-.subtitle {
-  font-family: var(--font-body);
-  font-size: 18px;
-  color: var(--navy);
-  margin: 0 0 12px 0;
-  font-weight: 500;
-}
-
+/* TITLE */
 .title {
-  font-family: "Bebas Neue", var(--font-display);
+  color: #ffffff;
+  font-family: "Bebas Neue";
   font-size: 58.207px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -2.328px;
   text-transform: uppercase;
-  color: var(--navy);
   margin: 0;
 }
 
-/* RIGHT COLUMN - Image card and logos */
-.imageColumn {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+/* DESCRIPTION */
+.description {
+  max-width: 900px;
+  color: #ffffff;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -1.44px;
+  margin: 0;
 }
 
-/* IMAGE CARD - Matches ProjectShowcase style */
-.imageCard {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-/* TAG - Top right like ProjectShowcase */
-.tag {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: white;
-  padding: 0.5rem 24px;
-  font-family: var(--font-body);
-  font-size: 0.65rem;
+/* SUBHEADING */
+.subheading {
+  color: #ffffff;
+  font-family: "Bebas Neue";
+  font-size: 28px;
+  font-style: normal;
   font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.12px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--navy);
-  z-index: 2;
-  white-space: nowrap;
-  border-radius: 0 0 0 4px;
+  margin: 40px 0 0 0;
 }
 
-/* SPONSOR LOGOS - Spread across bottom evenly */
-.sponsorLogos {
+/* LOGOS CONTAINER - Single row */
+.logosContainer {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
 }
 
-.logoCard {
+.logo {
+  width: 120px;
+  height: 120px;
   position: relative;
-  flex: 1;
-  aspect-ratio: 1;
-  background: white;
-  border: 1px solid rgba(26, 15, 94, 0.08);
-  border-radius: 6px;
-  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-.logoCard:hover {
-  border-color: rgba(26, 15, 94, 0.15);
+.logo:hover {
+  transform: scale(1.05);
 }
 
 /* RESPONSIVE */
@@ -112,21 +88,35 @@
   }
 
   .container {
-    gap: 60px;
-    min-height: 400px;
+    gap: 32px;
+    padding: 60px 40px;
+    border-radius: 40px;
   }
 
   .title {
     font-size: 48px;
-    letter-spacing: -1.9px;
+    letter-spacing: -1.92px;
   }
 
-  .subtitle {
-    font-size: 16px;
+  .description {
+    font-size: 28px;
+    letter-spacing: -1.12px;
+    max-width: 700px;
   }
 
-  .imageCard {
-    height: 400px;
+  .subheading {
+    font-size: 24px;
+    letter-spacing: -0.96px;
+    margin: 32px 0 0 0;
+  }
+
+  .logosContainer {
+    gap: 32px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -136,64 +126,74 @@
   }
 
   .container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-    min-height: auto;
-  }
-
-  .content {
-    flex: 1;
-    max-width: 100%;
+    gap: 32px;
+    padding: 50px 30px;
+    border-radius: 30px;
   }
 
   .title {
-    font-size: 36px;
-    letter-spacing: -1.4px;
+    font-size: 40px;
+    letter-spacing: -1.6px;
   }
 
-  .subtitle {
-    font-size: 15px;
+  .description {
+    font-size: 22px;
+    letter-spacing: -0.88px;
+    max-width: 100%;
   }
 
-  .imageColumn {
+  .subheading {
+    font-size: 20px;
+    letter-spacing: -0.8px;
+    margin: 24px 0 0 0;
+  }
+
+  /* Switch to grid on mobile */
+  .logosContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
     width: 100%;
+    max-width: 400px;
   }
 
-  .imageCard {
-    height: 350px;
-  }
-
-  .sponsorLogos {
-    gap: 0.75rem;
-  }
-
-  .logoCard {
-    padding: 0.75rem;
+  .logo {
+    width: 100%;
+    height: 100px;
   }
 }
 
 @media (max-width: 480px) {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .container {
+    padding: 40px 24px;
+    border-radius: 24px;
+  }
+
   .title {
     font-size: 32px;
+    letter-spacing: -1.28px;
   }
 
-  .imageCard {
-    height: 280px;
+  .description {
+    font-size: 18px;
+    letter-spacing: -0.72px;
   }
 
-  .tag {
-    font-size: 0.55rem;
-    padding: 0.4rem 16px;
+  .subheading {
+    font-size: 18px;
+    letter-spacing: -0.72px;
   }
 
-  .sponsorLogos {
-    flex-wrap: wrap;
-    justify-content: center;
+  .logosContainer {
+    gap: 24px;
+    max-width: 320px;
   }
 
-  .logoCard {
-    flex: 0 0 calc(33.333% - 0.5rem);
-    padding: 0.625rem;
+  .logo {
+    height: 90px;
   }
 }

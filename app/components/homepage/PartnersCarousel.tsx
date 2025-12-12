@@ -24,18 +24,17 @@ export default function PartnersCarousel() {
       loop: true,
       dragFree: false,
       containScroll: false,
-      watchDrag: false, // Disable dragging completely
+      watchDrag: false,
     },
     [
       AutoScroll({
         speed: 1,
         stopOnInteraction: false,
-        stopOnMouseEnter: false, // Never stop - infinite scroll
+        stopOnMouseEnter: false,
       }),
     ]
   );
 
-  // Duplicate the partners array multiple times for seamless infinite scroll
   const duplicatedPartners = [...partners, ...partners, ...partners];
 
   return (
