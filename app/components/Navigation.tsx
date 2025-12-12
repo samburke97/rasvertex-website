@@ -155,8 +155,8 @@ export default function Navigation() {
                 <Image
                   src="/icons/utility-outline/search.svg"
                   alt="Search"
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                 />
               </Link>
 
@@ -165,8 +165,8 @@ export default function Navigation() {
                 <Image
                   src="/icons/utility-outline/phone.svg"
                   alt="Call us"
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                 />
               </a>
 

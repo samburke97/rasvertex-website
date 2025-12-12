@@ -5,7 +5,7 @@ import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import ServicesGrid from "./components/homepage/ServicesGrid";
-import ServicesDetail from "./components/homepage/ServicesDetail";
+import ServicesGridPlus from "./components/homepage/ServicesGridPlus";
 import Services from "./components/homepage/Services";
 import { mainPanels } from "./data/expandingPanelsData";
 
@@ -17,20 +17,21 @@ export default function Home() {
         defaultActivePanel="higher-standards"
       />
       <Container>
-        <section className="py-[80px]">
+        <section className="py-[120px]">
           <ExperienceSection />
         </section>
       </Container>
-      <section className="py-[150px]">
+      <section className="py-[120px]">
         <PartnersCarousel />
       </section>
-      <section className="py-[150px]">
-        <ServicesDetail />
+
+      <section className="py-[120px]">
+        <ServicesGrid />
       </section>
-      <section className="py-[80px]">
+      <section className="py-[120px]">
         <ProjectShowcase />
       </section>
-      <section className="py-[80px]">
+      <section className="py-[120px]">
         <CommunitySection />
       </section>
     </>

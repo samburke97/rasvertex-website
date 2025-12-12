@@ -93,8 +93,7 @@ export default function ServicesGrid() {
               </button>
             ))}
           </div>
-
-          {/* CTA Section */}
+          {/* CTA Section
           <div className={styles.ctaSection}>
             <Image
               src="/images/people/caro.jpg"
@@ -112,7 +111,7 @@ export default function ServicesGrid() {
             <Link href="/contact" className={styles.ctaButton}>
               Chat to our team
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* SCROLLABLE RIGHT SIDE */}
