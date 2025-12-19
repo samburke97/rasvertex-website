@@ -28,24 +28,30 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  gap: 32px;
+  gap: 0;
+  position: relative;
 }
 
-/* TOP SECTION - Groups tagline, categories, and button */
+/* Border in the dead center */
+.leftContent::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background: rgba(6, 36, 96, 0.2);
+  transform: translateY(-50%);
+}
+
+/* TOP SECTION - Groups categories and button */
 .topSection {
   display: flex;
   flex-direction: column;
   gap: 32px;
-}
-
-/* TAGLINE */
-.tagline {
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: #000;
-  margin: 0;
+  padding-bottom: 32px;
+  position: relative;
+  z-index: 1;
 }
 
 /* CATEGORIES */
@@ -53,18 +59,21 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  margin-bottom: 0;
+  margin-top: -8px;
 }
 
 .categoryButton {
   width: 100%;
   text-align: left;
-  padding: 8px 0;
-  font-family: var(--font-display);
-  font-size: 42px;
+  padding: 0;
+  margin: -2px 0;
+  font-family: "Bebas Neue";
+  font-size: 40px;
   font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0;
-  color: #062460;
+  line-height: 1;
+  letter-spacing: -2.328px;
+  color: var(--Primary, #062460);
   background: none;
   border: none;
   cursor: pointer;
@@ -79,18 +88,21 @@
 /* ALL SERVICES BUTTON */
 .allServicesButton {
   width: fit-content;
-  padding: 6px 16px;
-  background: transparent;
-  border: 1px solid rgba(26, 15, 94, 0.25);
+  padding: 10px 24px;
+  background: white;
+  color: var(--navy);
+  border: 1px solid var(--navy);
   border-radius: 4px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: #062460;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
-  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.allServicesButton:hover {
+  background: var(--navy);
+  color: white;
 }
 
 .allServicesButton:hover {
@@ -104,6 +116,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-top: 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaAvatar {
@@ -114,36 +129,33 @@
 }
 
 .ctaText {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.5;
   color: #000;
+  font-family: Inter;
+  font-size: 21.091px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -0.844px;
   margin: 0;
 }
 
 .ctaButton {
-  display: inline-block;
   width: fit-content;
-  padding: 6px 16px;
-  background: transparent;
-  color: #062460;
-  border: 1px solid rgba(26, 15, 94, 0.25);
+  padding: 10px 24px;
+  background: white;
+  color: var(--navy);
+  border: 1px solid var(--navy);
   border-radius: 4px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
   text-decoration: none;
+  cursor: pointer;
   transition: all 0.2s;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 .ctaButton:hover {
-  background: #062460;
+  background: var(--navy);
   color: white;
-  border-color: #062460;
 }
 
 /* RIGHT COLUMN - SCROLLABLE */
@@ -153,24 +165,26 @@
   flex-direction: column;
 }
 
-/* SERVICES GRID - 2 COLUMN */
+/* SERVICES GRID - 2 COLUMN with 10px gap */
 .servicesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: 10px 10px;
+  row-gap: 10px;
 }
 
-/* SERVICE CARD */
+/* SERVICE CARD - overlay design like ProjectShowcase */
 .serviceCard {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0;
   text-decoration: none;
   background: white;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 480px;
 }
 
 .serviceCard:hover {
@@ -178,60 +192,72 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* IMAGE */
+/* IMAGE - full card background */
 .imageContainer {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 280px;
+  height: 100%;
   overflow: hidden;
 }
 
-/* CARD CONTENT */
+/* DARK OVERLAY - color will be applied inline per card */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* CARD CONTENT - overlaid on bottom */
 .cardContent {
-  padding: 24px;
+  position: relative;
+  z-index: 2;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: auto;
+  color: white;
 }
 
-/* TITLE */
+/* TITLE - white text */
 .serviceTitle {
   font-family: "Bebas Neue", var(--font-display);
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 400;
   line-height: 1.1;
-  letter-spacing: 0;
-  color: #062460;
+  letter-spacing: 0.05em;
+  color: white;
   margin: 0;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
-/* DESCRIPTION */
+/* DESCRIPTION - white text */
 .description {
-  color: #000;
-  font-size: 14px;
+  color: white;
+  font-size: 16px;
   line-height: 1.5;
   margin: 0;
   font-family: var(--font-body);
   font-weight: 300;
 }
 
-/* PILLS */
+/* PILLS - white borders and text */
 .pills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .pill {
   display: inline-block;
-  font-size: 9px;
-  padding: 4px 10px;
+  font-size: 10px;
+  padding: 6px 12px;
   background: transparent;
   border-radius: 4px;
-  color: var(--navy);
-  border: 1px solid rgba(26, 15, 94, 0.25);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-family: var(--font-display);
   letter-spacing: 0.05em;
   font-weight: 400;
@@ -252,14 +278,32 @@
 
   .categoryButton {
     font-size: 36px;
+    letter-spacing: -1.44px;
   }
 
   .servicesGrid {
-    gap: 24px;
+    gap: 10px 10px;
   }
 
-  .imageContainer {
-    height: 240px;
+  .serviceCard {
+    height: 450px;
+  }
+
+  .serviceTitle {
+    font-size: 36px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .pill {
+    font-size: 9px;
+    padding: 5px 10px;
+  }
+
+  .cardContent {
+    padding: 28px;
   }
 }
 
@@ -285,12 +329,34 @@
     height: auto;
   }
 
+  .leftContent::before {
+    display: none;
+  }
+
+  .topSection {
+    border-bottom: 0.5px solid rgba(6, 36, 96, 0.2);
+  }
+
   .categoryButton {
     font-size: 32px;
+    letter-spacing: -1.28px;
   }
 
   .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px 10px;
+  }
+
+  .serviceCard {
+    height: 420px;
+  }
+
+  .serviceTitle {
+    font-size: 32px;
+  }
+
+  .cardContent {
+    padding: 24px;
   }
 }
 
@@ -301,37 +367,54 @@
 
   .servicesGrid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 10px;
+  }
+
+  .serviceCard {
+    height: 400px;
   }
 
   .categoryButton {
     font-size: 28px;
+    letter-spacing: -1.12px;
   }
 
-  .imageContainer {
-    height: 220px;
-  }
-
-  .cardContent {
-    padding: 20px;
+  .ctaText {
+    font-size: 18px;
+    letter-spacing: -0.72px;
   }
 
   .serviceTitle {
     font-size: 28px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .pill {
+    font-size: 9px;
+    padding: 5px 10px;
+  }
+
+  .cardContent {
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .categoryButton {
     font-size: 24px;
+    letter-spacing: -0.96px;
   }
 
-  .imageContainer {
-    height: 200px;
+  .ctaText {
+    font-size: 16px;
+    letter-spacing: -0.64px;
   }
 
-  .cardContent {
-    padding: 16px;
+  .serviceCard {
+    height: 380px;
   }
 
   .serviceTitle {
@@ -340,5 +423,14 @@
 
   .description {
     font-size: 13px;
+  }
+
+  .pill {
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+
+  .cardContent {
+    padding: 16px;
   }
 }

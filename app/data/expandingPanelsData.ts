@@ -5,8 +5,6 @@ export const mainPanels: PanelData[] = [
   {
     id: "higher-standards",
     title: "Higher Standards",
-    description:
-      "We are the Sunshine Coast's property partner, with 25+ years of experience, serving our community where our neighbours live, learn and work.",
     image: "/images/panels/higher.png",
   },
   {

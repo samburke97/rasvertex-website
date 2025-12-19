@@ -25,6 +25,9 @@ export default function ServicesGrid() {
     "height",
   ];
 
+  // Same darker overlay for all cards
+  const overlayColor = "rgba(6, 20, 27, 0.75)";
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -33,9 +36,6 @@ export default function ServicesGrid() {
           <div className={styles.leftContent}>
             {/* Top Section */}
             <div className={styles.topSection}>
-              {/* Tagline */}
-              <p className={styles.tagline}>Every building, any height.</p>
-
               {/* Category Buttons */}
               <div className={styles.categories}>
                 <button className={styles.categoryButton}>RESIDENTIAL</button>
@@ -58,10 +58,13 @@ export default function ServicesGrid() {
                 height={100}
                 className={styles.ctaAvatar}
               />
+              <button className={styles.categoryButton}>
+                HOW CAN WE HELP?
+              </button>
               <p className={styles.ctaText}>
                 Before you kick off your project, talk to the Sunshine Coast's
                 experts. With over a decade working in our coastal conditions,
-                we know what your building really needs. Let's chat.
+                we know what your building really needs.
               </p>
               <Link href="/contact" className={styles.ctaButton}>
                 Chat to our team
@@ -94,7 +97,13 @@ export default function ServicesGrid() {
                     />
                   </div>
 
-                  {/* Content */}
+                  {/* Dark Overlay - same for all cards */}
+                  <div
+                    className={styles.overlay}
+                    style={{ background: overlayColor }}
+                  />
+
+                  {/* Content - overlaid on bottom */}
                   <div className={styles.cardContent}>
                     <h3 className={styles.serviceTitle}>{service.name}</h3>
                     <p className={styles.description}>{service.description}</p>
