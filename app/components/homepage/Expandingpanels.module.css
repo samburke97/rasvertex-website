@@ -16,6 +16,18 @@
   transition: filter 0.3s ease;
 }
 
+/* First panel - square outer left corners */
+.panel:first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Last panel - square outer right corners */
+.panel:last-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .panel:hover {
   filter: brightness(1.05);
 }
@@ -207,6 +219,12 @@
   .panel {
     min-height: 100px;
     min-width: 100%;
+    border-radius: 6px;
+  }
+
+  /* Reset corner radius rules on mobile */
+  .panel:first-child,
+  .panel:last-child {
     border-radius: 6px;
   }
 
