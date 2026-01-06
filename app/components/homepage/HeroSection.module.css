@@ -1,0 +1,429 @@
+/* HERO SECTION */
+.hero {
+  position: relative;
+  width: 100%;
+  padding: 60px 40px 80px;
+  background: white;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* HEADER SECTION */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.location {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6d2932;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -2.88px;
+  text-transform: uppercase;
+  color: #2c2929;
+  margin: 0;
+  max-width: 100%;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.title:hover {
+  opacity: 0.9;
+}
+
+.animatedWord {
+  display: inline-block;
+  min-width: 320px;
+  text-align: left;
+  position: relative;
+}
+
+.animatedWord::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.partnerWord {
+  color: #6d2932;
+}
+
+/* CARDS GRID */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+/* VISUAL CARD */
+.visualCard {
+  position: relative;
+  height: 460px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  background: #1a1a1a;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.visualCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* CARD IMAGE */
+.cardImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cardImage img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visualCard:hover .cardImage img {
+  transform: scale(1.05);
+}
+
+/* GRADIENT OVERLAY */
+.cardGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+.visualCard:hover .cardGradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+/* CARD CONTENT */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* CATEGORY LABEL */
+.cardCategory {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  display: inline-block;
+}
+
+/* CARD TITLE */
+.cardTitle {
+  font-family: Inter, sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+  color: white;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.cardTitle::first-letter {
+  text-transform: uppercase;
+}
+
+/* CARD DESCRIPTION */
+.cardDesc {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* CARD LINK */
+.cardLink {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.arrow {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.arrowActive {
+  transform: translateX(6px);
+}
+
+/* SUBTITLE SECTION - Integrated Below Cards */
+.subtitleSection {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -8px;
+}
+
+.subtitle {
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(44, 41, 41, 0.7);
+  margin: 0;
+  max-width: 500px;
+  text-align: right;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1280px) {
+  .hero {
+    padding: 50px 40px 70px;
+  }
+
+  .container {
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 64px;
+    letter-spacing: -2.56px;
+  }
+
+  .animatedWord {
+    min-width: 280px;
+  }
+
+  .cardsGrid {
+    gap: 14px;
+  }
+
+  .visualCard {
+    height: 420px;
+  }
+
+  .cardContent {
+    padding: 26px;
+    gap: 9px;
+  }
+
+  .cardTitle {
+    font-size: 27px;
+    letter-spacing: -0.54px;
+  }
+
+  .cardDesc {
+    font-size: 12px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 40px 40px 60px;
+  }
+
+  .container {
+    gap: 26px;
+  }
+
+  .title {
+    font-size: 56px;
+    letter-spacing: -2.24px;
+  }
+
+  .animatedWord {
+    min-width: 250px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .visualCard {
+    height: 380px;
+  }
+
+  .cardContent {
+    padding: 28px;
+  }
+
+  .cardTitle {
+    font-size: 30px;
+  }
+
+  .cardDesc {
+    font-size: 13px;
+  }
+
+  .subtitleSection {
+    justify-content: flex-start;
+  }
+
+  .subtitle {
+    text-align: left;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 32px 24px 50px;
+  }
+
+  .container {
+    gap: 24px;
+  }
+
+  .header {
+    gap: 6px;
+  }
+
+  .location {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .title {
+    font-size: 44px;
+    letter-spacing: -1.76px;
+  }
+
+  .animatedWord {
+    min-width: 200px;
+  }
+
+  .visualCard {
+    height: 340px;
+  }
+
+  .cardContent {
+    padding: 22px;
+    gap: 8px;
+  }
+
+  .cardCategory {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  .cardTitle {
+    font-size: 26px;
+    letter-spacing: -0.52px;
+  }
+
+  .cardDesc {
+    font-size: 12px;
+  }
+
+  .cardLink {
+    font-size: 11px;
+    margin-top: 5px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 24px 20px 40px;
+  }
+
+  .container {
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 36px;
+    letter-spacing: -1.44px;
+  }
+
+  .animatedWord {
+    min-width: 170px;
+  }
+
+  .visualCard {
+    height: 300px;
+  }
+
+  .cardContent {
+    padding: 20px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+    letter-spacing: -0.44px;
+  }
+
+  .cardDesc {
+    font-size: 11px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+}

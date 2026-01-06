@@ -6,14 +6,16 @@ import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import ServicesGrid from "./components/homepage/ServicesGrid";
 import { mainPanels } from "./data/expandingPanelsData";
+import HeroSection from "./components/homepage/HeroSection";
 
 export default function Home() {
   return (
     <>
-      <ExpandingPanels
+      <HeroSection />
+      {/* <ExpandingPanels
         panels={mainPanels}
         defaultActivePanel="higher-standards"
-      />
+      /> */}
       <Container>
         <section className="py-[120px]">
           <ExperienceSection />

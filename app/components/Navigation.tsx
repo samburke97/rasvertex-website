@@ -86,13 +86,7 @@ export default function Navigation() {
           <div className={styles.wrapper}>
             <div className={styles.leftSection}>
               <Link href="/" className={styles.logo}>
-                <Image
-                  src="/logo.png"
-                  alt="RAS-VERTEX"
-                  width={175}
-                  height={50}
-                  priority
-                />
+                <span className={styles.logoText}>RAS-VERTEX</span>
               </Link>
 
               <div className={styles.desktopMenu}>
@@ -101,14 +95,12 @@ export default function Navigation() {
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
                 >
-                  <button className={styles.menuButton}>
+                  <button
+                    className={`${styles.menuButton} ${
+                      servicesOpen ? styles.active : ""
+                    }`}
+                  >
                     Services
-                    <Image
-                      src="/icons/utility-outline/down.svg"
-                      alt="Select"
-                      width={16}
-                      height={16}
-                    />
                   </button>
                   <ServicesDropdown
                     isOpen={servicesOpen}
@@ -122,17 +114,19 @@ export default function Navigation() {
                   onMouseEnter={() => setCompanyOpen(true)}
                   onMouseLeave={() => setCompanyOpen(false)}
                 >
-                  <button className={styles.menuButton}>
+                  <button
+                    className={`${styles.menuButton} ${
+                      companyOpen ? styles.active : ""
+                    }`}
+                  >
                     Company
-                    <Image
-                      src="/icons/utility-outline/down.svg"
-                      alt="Select"
-                      width={16}
-                      height={16}
-                    />
                   </button>
                   <CompanyDropdown isOpen={companyOpen} />
                 </div>
+
+                <Link href="/careers" className={styles.menuLink}>
+                  Careers
+                </Link>
               </div>
 
               {/* Hamburger menu - hidden on desktop */}
@@ -160,19 +154,9 @@ export default function Navigation() {
                 />
               </Link>
 
-              {/* Phone */}
-              <a href="tel:+61754911588" className={styles.iconButton}>
-                <Image
-                  src="/icons/utility-outline/phone.svg"
-                  alt="Call us"
-                  width={24}
-                  height={24}
-                />
-              </a>
-
-              {/* Free Quote */}
-              <Link href="/quote" className={styles.quoteButton}>
-                Free Quote
+              {/* Contact Us Button */}
+              <Link href="/contact" className={styles.contactButton}>
+                Contact Us
               </Link>
             </div>
           </div>
