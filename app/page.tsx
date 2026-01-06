@@ -11,11 +11,11 @@ import HeroSection from "./components/homepage/HeroSection";
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      {/* <ExpandingPanels
+      {/* <HeroSection /> */}
+      <ExpandingPanels
         panels={mainPanels}
         defaultActivePanel="higher-standards"
-      /> */}
+      />
       <Container>
         <section className="py-[120px]">
           <ExperienceSection />
