@@ -3,13 +3,16 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Expandingpanels.module.css";
 
 export type PanelData = {
   id: string;
   title: string;
+  subtitle?: string;
   description: string;
   image: string;
+  href?: string;
 };
 
 type ExpandingPanelsProps = {
@@ -29,14 +32,10 @@ export default function ExpandingPanels({
   );
 
   useEffect(() => {
-    // Clear the fully expanded state immediately
     setFullyExpandedPanel(null);
-
-    // Wait 650ms (slightly longer than 600ms animation) before setting as expanded
     const timer = setTimeout(() => {
       setFullyExpandedPanel(activePanel);
     }, 650);
-
     return () => clearTimeout(timer);
   }, [activePanel]);
 
@@ -52,10 +51,10 @@ export default function ExpandingPanels({
             className={`${styles.panel} ${isActive ? styles.active : ""}`}
             onClick={() => setActivePanel(panel.id)}
             animate={{
-              flex: isActive ? 1 : 0.15,
+              flex: isActive ? 1 : 0.12,
             }}
             transition={{
-              duration: 0.6,
+              duration: 0.7,
               ease: [0.65, 0, 0.35, 1],
             }}
           >
@@ -84,6 +83,7 @@ export default function ExpandingPanels({
               </motion.div>
             )}
 
+            {/* Active State - Full Content */}
             {isActive && isFullyExpanded && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -94,8 +94,16 @@ export default function ExpandingPanels({
                 }}
                 className={styles.expandedContent}
               >
+                {panel.subtitle && (
+                  <span className={styles.subtitle}>{panel.subtitle}</span>
+                )}
                 <h2 className={styles.title}>{panel.title}</h2>
                 <p className={styles.description}>{panel.description}</p>
+                {panel.href && (
+                  <Link href={panel.href} className={styles.learnMore}>
+                    Learn More <span className={styles.arrow}>→</span>
+                  </Link>
+                )}
               </motion.div>
             )}
           </motion.div>
