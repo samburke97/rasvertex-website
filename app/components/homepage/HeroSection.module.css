@@ -2,7 +2,7 @@
 .hero {
   position: relative;
   width: 100%;
-  padding: 50px 40px 80px;
+  padding: 60px 40px 80px;
   background: white;
 }
 
@@ -10,106 +10,405 @@
 .container {
   max-width: 1600px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: stretch;
 }
 
-/* HEADER */
-.header {
+/* LEFT COLUMN - Space between top and bottom */
+.leftColumn {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 900px;
+  justify-content: space-between;
+  min-height: 600px;
 }
 
-.label {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #6d2932;
-  margin: 0;
-  opacity: 0.8;
+/* TOP CONTENT */
+.topContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .headline {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 56px;
+  font-size: 68px;
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -2.24px;
+  line-height: 0.95;
+  letter-spacing: -2.72px;
   text-transform: uppercase;
-  color: #2c2929;
+  color: #1a0f5e;
   margin: 0;
 }
 
-.subheadline {
+.subtext {
   font-family: Inter, sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.5;
-  color: rgba(44, 41, 41, 0.7);
+  color: #1a0f5e;
   margin: 0;
-  max-width: 680px;
+  opacity: 0.8;
+  max-width: 500px;
+}
+
+/* CLEAN CTA ROW - 2 col x 3 row grid */
+.ctaRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0 20px;
+  align-items: start;
+}
+
+.caroImage {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 120px;
+  height: 100%;
+  min-height: 200px;
+  border-radius: 24px;
+  object-fit: cover;
+  align-self: stretch;
+}
+
+.ctaText {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ctaHeading {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.64px;
+  text-transform: uppercase;
+  color: #1a0f5e;
+  margin: 0;
+}
+
+.ctaSubtext {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #1a0f5e;
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.8;
+  max-width: 500px;
+}
+
+.ctaButton {
+  grid-column: 2;
+  grid-row: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  background: #1a0f5e;
+  color: white;
+  border-radius: 4px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.36px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+  width: fit-content;
+  margin-top: 16px;
+}
+
+.ctaButton:hover {
+  background: #04183d;
+  transform: translateY(-1px);
+}
+
+/* SCATTERED BENTO GRID - Truly varied layout */
+.bentoGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 12px;
+  min-height: 600px;
+}
+
+.bentoCard {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bentoCard:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Scattered asymmetric layout */
+.painting {
+  grid-column: 1 / 4;
+  grid-row: 1 / 4;
+}
+
+.cleaning {
+  grid-column: 4 / 7;
+  grid-row: 1 / 3;
+}
+
+.maintenance {
+  grid-column: 4 / 7;
+  grid-row: 3 / 5;
+}
+
+.waterproofing {
+  grid-column: 1 / 3;
+  grid-row: 4 / 7;
+}
+
+.height {
+  grid-column: 3 / 7;
+  grid-row: 5 / 7;
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.cardOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(6, 20, 27, 0.9), transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cardTitle {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.56px;
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+}
+
+.cardSubtitle {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1280px) {
-  .hero {
-    padding: 45px 40px 70px;
+  .container {
+    gap: 60px;
   }
 
-  .container {
-    gap: 36px;
+  .leftColumn {
+    min-height: 520px;
   }
 
   .headline {
-    font-size: 50px;
-    letter-spacing: -2px;
+    font-size: 60px;
+    letter-spacing: -2.4px;
   }
 
-  .subheadline {
+  .subtext {
     font-size: 15px;
+  }
+
+  .bentoGrid {
+    min-height: 520px;
   }
 }
 
 @media (max-width: 1024px) {
   .hero {
-    padding: 40px 40px 60px;
+    padding: 50px 40px 60px;
   }
 
   .container {
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .leftColumn {
+    min-height: auto;
+    gap: 40px;
+    justify-content: flex-start;
   }
 
   .headline {
-    font-size: 44px;
-    letter-spacing: -1.76px;
+    font-size: 52px;
+    letter-spacing: -2.08px;
   }
 
-  .subheadline {
+  .subtext {
     font-size: 14px;
+    max-width: 100%;
+  }
+
+  .caroImage {
+    width: 90px;
+    height: 90px;
+  }
+
+  .ctaHeading {
+    font-size: 28px;
+  }
+
+  .ctaSubtext {
+    font-size: 15px;
+  }
+
+  .bentoGrid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 150px);
+    min-height: auto;
+  }
+
+  .painting {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .cleaning {
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+  }
+
+  .maintenance {
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+  }
+
+  .waterproofing {
+    grid-column: 1 / 2;
+    grid-row: 3 / 5;
+  }
+
+  .height {
+    grid-column: 2 / 5;
+    grid-row: 3 / 5;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 32px 24px 50px;
+    padding: 40px 24px 50px;
   }
 
   .container {
-    gap: 28px;
+    gap: 40px;
   }
 
-  .header {
+  .leftColumn {
+    gap: 32px;
+  }
+
+  .headline {
+    font-size: 42px;
+    letter-spacing: -1.68px;
+  }
+
+  .subtext {
+    font-size: 13px;
+  }
+
+  .caroImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+  }
+
+  .ctaHeading {
+    font-size: 24px;
+  }
+
+  .ctaSubtext {
+    font-size: 14px;
+  }
+
+  .ctaButton {
+    width: 100%;
+  }
+
+  .bentoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 160px);
     gap: 10px;
   }
 
-  .label {
+  .painting {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .cleaning {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .maintenance {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .waterproofing {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .height {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .cardOverlay {
+    padding: 16px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+    letter-spacing: -0.44px;
+  }
+
+  .cardSubtitle {
     font-size: 10px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 32px 20px 40px;
   }
 
   .headline {
@@ -117,26 +416,54 @@
     letter-spacing: -1.44px;
   }
 
-  .subheadline {
+  .subtext {
+    font-size: 12px;
+  }
+
+  .caroImage {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+  }
+
+  .ctaHeading {
+    font-size: 20px;
+  }
+
+  .ctaSubtext {
     font-size: 13px;
   }
-}
 
-@media (max-width: 480px) {
-  .hero {
-    padding: 24px 20px 40px;
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 140px);
   }
 
-  .container {
-    gap: 24px;
+  .painting,
+  .cleaning,
+  .maintenance,
+  .waterproofing,
+  .height {
+    grid-column: 1;
   }
 
-  .headline {
-    font-size: 30px;
-    letter-spacing: -1.2px;
+  .painting {
+    grid-row: 1;
   }
 
-  .subheadline {
-    font-size: 12px;
+  .cleaning {
+    grid-row: 2;
+  }
+
+  .maintenance {
+    grid-row: 3;
+  }
+
+  .waterproofing {
+    grid-row: 4;
+  }
+
+  .height {
+    grid-row: 5;
   }
 }

@@ -5,7 +5,21 @@ export const mainPanels: PanelData[] = [
   {
     id: "higher-standards",
     title: "Higher Standards",
+    tagline:
+      "Your trusted partner for painting, cleaning & building maintenance",
     image: "/images/panels/higher.png",
+    buttons: [
+      {
+        text: "Our Services",
+        href: "/services",
+        variant: "primary",
+      },
+      {
+        text: "Free Quote",
+        href: "/contact",
+        variant: "secondary",
+      },
+    ],
   },
   {
     id: "commercial",
