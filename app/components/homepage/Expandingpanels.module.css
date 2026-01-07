@@ -4,7 +4,7 @@
   height: 650px;
   gap: 8px;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 0;
 }
 
 .panel {
@@ -124,6 +124,60 @@
   font-weight: 300;
 }
 
+.tagline {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  max-width: 560px;
+  font-weight: 400;
+  letter-spacing: -0.4px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.buttonPrimary {
+  background: white;
+  color: #06141b;
+  border-color: white;
+}
+
+.buttonPrimary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.buttonSecondary {
+  background: transparent;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.buttonSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
 .learnMore {
   display: inline-flex;
   align-items: center;
@@ -168,6 +222,20 @@
     max-width: 520px;
   }
 
+  .tagline {
+    font-size: 18px;
+    max-width: 520px;
+  }
+
+  .buttonGroup {
+    gap: 10px;
+  }
+
+  .button {
+    padding: 11px 28px;
+    font-size: 14px;
+  }
+
   .verticalTitle {
     font-size: 26px;
   }
@@ -197,6 +265,20 @@
   .description {
     font-size: 15px;
     max-width: 480px;
+  }
+
+  .tagline {
+    font-size: 17px;
+    max-width: 480px;
+  }
+
+  .buttonGroup {
+    gap: 10px;
+  }
+
+  .button {
+    padding: 10px 24px;
+    font-size: 14px;
   }
 
   .verticalTitle {
@@ -265,6 +347,24 @@
     max-width: 100%;
   }
 
+  .tagline {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .buttonGroup {
+    gap: 8px;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button {
+    padding: 12px 24px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+  }
+
   .learnMore {
     font-size: 13px;
   }
@@ -286,6 +386,15 @@
   }
 
   .description {
+    font-size: 13px;
+  }
+
+  .tagline {
+    font-size: 15px;
+  }
+
+  .button {
+    padding: 11px 20px;
     font-size: 13px;
   }
 

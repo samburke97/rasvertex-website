@@ -58,6 +58,25 @@ export default function ServicesDropdown({
                   {servicesData[key].name.toUpperCase()}
                 </button>
               ))}
+
+              {/* 10 Years Logo - Bottom Left */}
+              {isExpanded && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className={styles.logoContainer}
+                >
+                  {/* <Image
+                    src="/images/projects/10-years.png"
+                    alt="10 Years"
+                    width={80}
+                    height={80}
+                    className={styles.tenYearsLogo}
+                  /> */}
+                </motion.div>
+              )}
             </div>
 
             {/* Expanded content - fades in on the right */}

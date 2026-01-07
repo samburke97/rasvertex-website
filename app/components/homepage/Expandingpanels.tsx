@@ -6,13 +6,21 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Expandingpanels.module.css";
 
+export type PanelButton = {
+  text: string;
+  href: string;
+  variant?: "primary" | "secondary";
+};
+
 export type PanelData = {
   id: string;
   title: string;
   subtitle?: string;
-  description: string;
+  description?: string;
+  tagline?: string;
   image: string;
   href?: string;
+  buttons?: PanelButton[];
 };
 
 type ExpandingPanelsProps = {
@@ -98,8 +106,39 @@ export default function ExpandingPanels({
                   <span className={styles.subtitle}>{panel.subtitle}</span>
                 )}
                 <h2 className={styles.title}>{panel.title}</h2>
-                <p className={styles.description}>{panel.description}</p>
-                {panel.href && (
+
+                {/* Tagline (for intro panel) */}
+                {panel.tagline && (
+                  <p className={styles.tagline}>{panel.tagline}</p>
+                )}
+
+                {/* Description (for service panels) */}
+                {panel.description && (
+                  <p className={styles.description}>{panel.description}</p>
+                )}
+
+                {/* Buttons */}
+                {panel.buttons && panel.buttons.length > 0 && (
+                  <div className={styles.buttonGroup}>
+                    {panel.buttons.map((button, index) => (
+                      <Link
+                        key={index}
+                        href={button.href}
+                        className={`${styles.button} ${
+                          button.variant === "secondary"
+                            ? styles.buttonSecondary
+                            : styles.buttonPrimary
+                        }`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {button.text}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {/* Single learn more link (for service panels) */}
+                {panel.href && !panel.buttons && (
                   <Link href={panel.href} className={styles.learnMore}>
                     Learn More <span className={styles.arrow}>→</span>
                   </Link>

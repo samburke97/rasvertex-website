@@ -4,7 +4,7 @@
   top: 100%;
   left: 0;
   margin-top: 6px;
-  background: #6d2932; /* Burgundy background to match Rochele */
+  background: #6d2932; /* Burgundy background */
   border-radius: 12px;
   padding: 40px;
   overflow: hidden;
@@ -23,6 +23,7 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .serviceButton {
@@ -48,13 +49,28 @@
   opacity: 1;
 }
 
-/* Expanded section - appears on the right - MUCH TALLER */
+/* 10 Years Logo - Bottom Left */
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: auto;
+  padding-top: 20px;
+  padding-left: 16px;
+}
+
+.tenYearsLogo {
+  width: 160px;
+  height: auto;
+}
+
+/* Expanded section - appears on the right */
 .expandedSection {
   display: flex;
   gap: 40px;
   flex: 1;
   min-width: 0;
-  height: 420px; /* Much taller to match Rochele */
+  height: 420px;
 }
 
 /* Column 2: Content Area */
@@ -74,35 +90,35 @@
 
 /* Description at the top */
 .serviceDescription {
-  color: white; /* White text on burgundy background */
+  color: white;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
-  font-family: var(--font-body); /* Inter */
-  font-weight: 300; /* Light */
+  font-family: var(--font-body);
+  font-weight: 300;
 }
 
 /* Pills at the very bottom */
 .servicePills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px; /* Tighter gap between pills */
+  gap: 8px;
   align-items: flex-end;
 }
 
 .pill {
   font-size: 11px;
-  padding: 6px 14px; /* Slightly more compact */
-  background: transparent; /* Transparent background like Rochele */
-  border-radius: 4px; /* Slight rounding, not circular */
-  color: white; /* White text */
-  border: 1px solid rgba(255, 255, 255, 0.25); /* Subtle white border */
-  font-family: var(--font-display); /* Adobe Bebas Neue */
+  padding: 6px 14px;
+  background: transparent;
+  border-radius: 4px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: var(--font-display);
   letter-spacing: 0.05em;
   font-weight: 400;
   transition: all 0.2s;
   white-space: nowrap;
-  text-transform: uppercase; /* Capitalised */
+  text-transform: uppercase;
 }
 
 .pill:hover {
@@ -111,9 +127,9 @@
   transform: translateY(-1px);
 }
 
-/* Column 3: Image - Stretched vertically, not square */
+/* Column 3: Image */
 .serviceImage {
-  width: 480px; /* Wider for more stretched look */
+  width: 480px;
   height: 100%;
   flex-shrink: 0;
   border-radius: 16px;
@@ -122,7 +138,7 @@
 }
 
 .serviceImage img {
-  object-fit: cover; /* Ensures image stretches to fill */
+  object-fit: cover;
   object-position: center;
 }
 
@@ -140,6 +156,14 @@
 
   .expandedSection {
     height: 380px;
+  }
+
+  .logoContainer {
+    padding-top: 16px;
+  }
+
+  .tenYearsLogo {
+    width: 100px;
   }
 }
 
@@ -162,6 +186,10 @@
   .serviceButton {
     font-size: 18px;
     padding: 6px 12px;
+  }
+
+  .logoContainer {
+    display: none;
   }
 
   .expandedSection {

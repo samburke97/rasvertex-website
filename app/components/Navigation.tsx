@@ -123,10 +123,6 @@ export default function Navigation() {
                   </button>
                   <CompanyDropdown isOpen={companyOpen} />
                 </div>
-
-                <Link href="/careers" className={styles.menuLink}>
-                  Careers
-                </Link>
               </div>
 
               {/* Hamburger menu - hidden on desktop */}
