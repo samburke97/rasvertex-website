@@ -7,16 +7,10 @@ import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import ServicesGrid from "./components/homepage/ServicesGrid";
 import { mainPanels } from "./data/expandingPanelsData";
 import HeroSection from "./components/homepage/HeroSection";
-import HeroTest from "./components/homepage/HeroTest";
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <section className="py-[120px]">
-        <PartnersCarousel />
-      </section>
-      <HeroTest />
       <ExpandingPanels
         panels={mainPanels}
         defaultActivePanel="higher-standards"
@@ -26,6 +20,9 @@ export default function Home() {
           <ExperienceSection />
         </section>
       </Container>
+      <section className="py-[120px]">
+        <PartnersCarousel />
+      </section>
 
       <section className="py-[120px]">
         <ServicesGrid />
