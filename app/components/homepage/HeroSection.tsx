@@ -32,8 +32,8 @@ export default function HeroSection() {
             <Image
               src="/images/people/caro.jpg"
               alt="Carolina"
-              width={120}
-              height={120}
+              width={100}
+              height={100}
               className={styles.caroImage}
             />
             <div className={styles.ctaText}>
