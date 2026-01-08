@@ -5,172 +5,122 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./ServicesAlternating.module.css";
 
-const services = [
+const STICKY_TOP = 120;
+const TITLE_SHIFT = 140;
+
+const cards = [
+  { title: "PAINTING", class: "painting", image: "/services/painting.jpg" },
   {
-    id: "painting",
-    name: "Painting",
-    subtext: "Professional painting services",
-    pills: ["Interior", "Exterior", "Roof Painting", "Strata", "Heritage"],
-    image: "/nav/painting.png",
-    href: "/services/painting",
+    title: "MAINTENANCE",
+    class: "maintenance",
+    image: "/services/maintenance.jpg",
   },
   {
-    id: "maintenance",
-    name: "Maintenance",
-    subtext: "Property maintenance solutions",
-    pills: ["Preventative", "Reactive Repairs", "Inspections", "Emergency"],
-    image: "/nav/maintenance.png",
-    href: "/services/maintenance",
+    title: "WATERPROOFING",
+    class: "waterproofing",
+    image: "/services/waterproofing.jpg",
   },
-  {
-    id: "waterproofing",
-    name: "Waterproofing",
-    subtext: "Expert waterproofing",
-    pills: ["Balconies", "Roofs", "Bathrooms", "Leak Detection", "Membranes"],
-    image: "/nav/waterproofing.png",
-    href: "/services/waterproofing",
-  },
-  {
-    id: "cleaning",
-    name: "Cleaning",
-    subtext: "Commercial cleaning services",
-    pills: ["Building Wash", "Window Cleaning", "Pressure Washing", "Facade"],
-    image: "/nav/cleaning.png",
-    href: "/services/cleaning",
-  },
-  {
-    id: "height-safety",
-    name: "Height Safety",
-    subtext: "IRATA certified rope access",
-    pills: ["Rope Access", "Anchor Points", "Safety Lines", "IRATA Certified"],
-    image: "/nav/height.png",
-    href: "/services/height-safety",
-  },
-  {
-    id: "building-inspections",
-    name: "Building Inspections",
-    subtext: "Comprehensive property inspections",
-    pills: ["Pre-Purchase", "Defect", "Maintenance", "Compliance"],
-    image: "/nav/maintenance.png",
-    href: "/services/building-inspections",
-  },
+  { title: "CLEANING", class: "cleaning", image: "/services/cleaning.jpg" },
+  { title: "HEIGHT SAFETY", class: "height", image: "/services/height.jpg" },
 ];
 
 export default function ServicesAlternating() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const gridWrapperRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const stickyRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  const [titleY, setTitleY] = useState(0);
+  const [gridX, setGridX] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || !gridWrapperRef.current) return;
+    const onScroll = () => {
+      if (
+        !sectionRef.current ||
+        !stickyRef.current ||
+        !gridRef.current ||
+        !stageRef.current
+      )
+        return;
 
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = sectionRect.top;
-      const sectionHeight = sectionRect.height;
-      const windowHeight = window.innerHeight;
+      const section = sectionRef.current;
+      const sticky = stickyRef.current;
+      const grid = gridRef.current;
+      const stage = stageRef.current;
 
-      // Section is in view when top is between windowHeight and -sectionHeight
-      if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-        // Calculate progress: 0 when section just enters, 1 when it exits
-        const progress = Math.max(
-          0,
-          Math.min(
-            1,
-            (windowHeight - sectionTop) / (windowHeight + sectionHeight)
-          )
-        );
+      const top = section.getBoundingClientRect().top;
+      const scrollRange = section.offsetHeight - sticky.offsetHeight;
 
-        // Scroll the grid horizontally based on progress
-        const maxScroll =
-          gridWrapperRef.current.scrollWidth -
-          gridWrapperRef.current.clientWidth;
-        gridWrapperRef.current.scrollLeft = progress * maxScroll;
+      if (top <= STICKY_TOP) {
+        const scrolled = Math.abs(top - STICKY_TOP);
+        const p = Math.min(1, scrolled / scrollRange);
 
-        // Update progress bar (cap at 50%)
-        setScrollProgress(Math.min(50, progress * 100));
+        const maxShift = grid.scrollWidth - stage.clientWidth;
+
+        setTitleY(-TITLE_SHIFT * p);
+        setGridX(-maxShift * p);
+        setProgress(p * 100);
+      } else {
+        setTitleY(0);
+        setGridX(0);
+        setProgress(0);
       }
     };
 
-    // Also listen to manual scroll on the grid
-    const handleGridScroll = () => {
-      if (!gridWrapperRef.current) return;
-      const scrollLeft = gridWrapperRef.current.scrollLeft;
-      const maxScroll =
-        gridWrapperRef.current.scrollWidth - gridWrapperRef.current.clientWidth;
-      const progress = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
-      setScrollProgress(Math.min(50, progress));
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    if (gridWrapperRef.current) {
-      gridWrapperRef.current.addEventListener("scroll", handleGridScroll);
-    }
-
-    handleScroll(); // Initial call
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (gridWrapperRef.current) {
-        gridWrapperRef.current.removeEventListener("scroll", handleGridScroll);
-      }
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const renderCard = (service: (typeof services)[0], className: string) => (
-    <Link
-      href={service.href}
-      className={`${styles.card} ${className}`}
-      key={service.id}
-    >
-      <Image
-        src={service.image}
-        alt={service.name}
-        fill
-        className={styles.image}
-      />
-      <div className={styles.overlay} />
-      <h3 className={styles.cardTitle}>{service.name}</h3>
-
-      <div className={styles.hoverDetail}>
-        <h3 className={styles.detailTitle}>{service.name}</h3>
-        <p className={styles.detailSubtext}>{service.subtext}</p>
-        <div className={styles.pills}>
-          {service.pills.map((pill) => (
-            <span key={pill} className={styles.pill}>
-              {pill}
-            </span>
-          ))}
-        </div>
-        <div className={styles.arrow}>→</div>
-      </div>
-    </Link>
-  );
-
   return (
-    <section className={styles.section} ref={sectionRef}>
-      <div className={styles.titleSection}>
-        <p className={styles.label}>[ PROPERTY SERVICES ]</p>
-        <h2 className={styles.title}>WHAT WE DO BEST</h2>
-      </div>
+    <section ref={sectionRef} className={styles.section}>
+      <div ref={stickyRef} className={styles.stickyContainer}>
+        <div ref={stageRef} className={styles.stage}>
+          {/* GRID (behind) */}
+          <div
+            ref={gridRef}
+            className={styles.bentoGrid}
+            style={{ transform: `translateX(${gridX}px)` }}
+          >
+            {cards.map((card) => (
+              <Link
+                key={card.title}
+                href="/services"
+                className={`${styles.card} ${styles[card.class]}`}
+              >
+                <div className={styles.imageWrap}>
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className={styles.image}
+                  />
+                </div>
+                <div className={styles.overlay} />
+                <h3 className={styles.cardTitle}>{card.title}</h3>
+              </Link>
+            ))}
+          </div>
 
-      <div className={styles.gridWrapper} ref={gridWrapperRef}>
-        <div className={styles.bentoGrid}>
-          {renderCard(services[0], styles.painting)}
-          {renderCard(services[3], styles.cleaning)}
-          {renderCard(services[4], styles.height)}
-          {renderCard(services[5], styles.inspections)}
-          {renderCard(services[1], styles.maintenance)}
-          {renderCard(services[2], styles.waterproofing)}
+          {/* TITLE (front mask) */}
+          <div
+            className={styles.titleBlock}
+            style={{ transform: `translateY(${titleY}px)` }}
+          >
+            <p className={styles.label}>[ PROPERTY SERVICES ]</p>
+            <h2 className={styles.title}>WHAT WE DO BEST</h2>
+          </div>
         </div>
-      </div>
 
-      {/* Progress Bar */}
-      <div className={styles.progressBar}>
-        <div
-          className={styles.progressFill}
-          style={{ width: `${scrollProgress}%` }}
-        />
+        <div className={styles.progressWrapper}>
+          <div className={styles.progressBar}>
+            <div
+              className={styles.progressFill}
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
