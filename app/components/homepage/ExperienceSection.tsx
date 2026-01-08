@@ -8,34 +8,33 @@ import styles from "./ExperienceSection.module.css";
 const scrollSections = [
   {
     id: "local",
-    label: "Advantage",
-    title: "We're your neighbour, not just a vendor",
+    label: "ADVANTAGE",
     description:
       "Being locally owned means we care about the Sunshine Coast the way you do. Our reputation is built on knowing the community we serve.",
     image: "/images/projects/1.jpeg",
+    tenYears: true,
   },
   {
     id: "experience",
-    label: "Proven track record",
-    title: "25+ years of consistent, reliable work",
+    label: "PROVEN TRACK RECORD",
     description:
       "Since 1999, we've maintained over 500 properties across SEQ. That's not luck. That's the result of showing up and doing the job right every single time.",
     image: "/images/projects/2.jpeg",
   },
   {
     id: "accountability",
-    label: "Real accountability",
-    title: "You know who to call, and they answer",
+    label: "REAL ACCOUNTABILITY",
     description:
       "No corporate runaround. No excuses. When something needs fixing, we fix it. When we say we'll be there, we show up.",
+    image: "/images/projects/3.jpeg",
     partners: true,
   },
   {
     id: "certified",
-    label: "Certified & Trusted",
-    title: "Backed by the industry's best",
+    label: "CERTIFIED & TRUSTED",
     description:
       "Fully licensed with QBCC, certified professionals, and trusted by Queensland's leading property managers and body corporates.",
+    image: "/images/projects/4.jpeg",
     certifications: true,
   },
 ];
@@ -70,8 +69,8 @@ export default function ExperienceSection() {
               />
               <h3 className={styles.ctaTitle}>HOW CAN WE HELP?</h3>
               <p className={styles.ctaDescription}>
-                Before you start your next project chat to our team and we'll
-                guide you.
+                From small repairs to full repaints,we know every property type
+                and we'll guide you to the right solution for your project.
               </p>
               <a href="/contact" className={styles.ctaButton}>
                 FREE QUOTE
@@ -85,87 +84,102 @@ export default function ExperienceSection() {
           {scrollSections.map((section, index) => (
             <div key={section.id} className={styles.scrollSection}>
               <div className={styles.scrollContent}>
-                <p className={styles.sectionLabel}>{section.label}</p>
-                <h3 className={styles.sectionTitle}>{section.title}</h3>
-                <p className={styles.sectionDescription}>
-                  {section.description}
-                </p>
-
-                {/* Show image */}
+                {/* Image at top */}
                 {section.image && (
                   <div className={styles.sectionImage}>
                     <Image
                       src={section.image}
-                      alt={section.title}
+                      alt={section.label}
                       fill
                       className={styles.image}
                     />
                   </div>
                 )}
 
-                {/* Show partner logos */}
+                {/* Label */}
+                <p className={styles.sectionLabel}>{section.label}</p>
+
+                {/* Description */}
+                <p className={styles.sectionDescription}>
+                  {section.description}
+                </p>
+
+                {/* 10 Years badge if applicable */}
+                {section.tenYears && (
+                  <div className={styles.tenYearsBadge}>
+                    <Image
+                      src="/images/projects/10-years.png"
+                      alt="10+ Years"
+                      width={120}
+                      height={120}
+                      className={styles.tenYearsImage}
+                    />
+                  </div>
+                )}
+
+                {/* Partner logos at bottom if applicable */}
                 {section.partners && (
                   <div className={styles.partnerLogos}>
                     <Image
                       src="/partners/mosaic.svg"
                       alt="Mosaic"
-                      width={100}
-                      height={40}
+                      width={90}
+                      height={36}
                       className={styles.partnerLogo}
                     />
                     <Image
                       src="/partners/pica.png"
                       alt="Pica"
-                      width={80}
-                      height={40}
+                      width={70}
+                      height={36}
                       className={styles.partnerLogo}
                     />
                     <Image
                       src="/partners/novotel.svg.png"
                       alt="Novotel"
-                      width={110}
-                      height={40}
+                      width={100}
+                      height={36}
                       className={styles.partnerLogo}
                     />
                     <Image
                       src="/partners/gov.svg"
                       alt="QLD Gov"
-                      width={100}
-                      height={40}
+                      width={90}
+                      height={36}
                       className={styles.partnerLogo}
                     />
                   </div>
                 )}
 
-                {/* Show certifications */}
+                {/* Certification badges at bottom if applicable */}
                 {section.certifications && (
                   <div className={styles.certifications}>
                     <Image
                       src="/images/associations/qbcc.png"
                       alt="QBCC"
-                      width={80}
-                      height={80}
+                      width={70}
+                      height={70}
                       className={styles.certBadge}
                     />
                     <Image
                       src="/images/associations/mpa.png"
                       alt="MPA"
-                      width={80}
-                      height={80}
+                      width={70}
+                      height={70}
                       className={styles.certBadge}
                     />
                     <Image
                       src="/images/associations/communityselect.png"
                       alt="Community Select"
-                      width={80}
-                      height={80}
+                      width={70}
+                      height={70}
                       className={styles.certBadge}
                     />
                     <Image
                       src="/images/associations/smartstrata.png"
                       alt="Smart Strata"
-                      width={80}
-                      height={80}
+                      width={70}
+                      height={70}
                       className={styles.certBadge}
                     />
                   </div>
