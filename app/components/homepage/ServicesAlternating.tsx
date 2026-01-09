@@ -28,13 +28,14 @@ const cards: CardData[] = [
     type: "service",
   },
   {
-    title: "WATERPROOFING",
-    class: "waterproofing",
-    image: "/nav/waterproofing.png",
-    description: "Expert waterproofing solutions that protect your property",
-    pills: ["BALCONIES", "ROOFS", "WET AREAS", "MEMBRANES"],
+    title: "MAINTENANCE",
+    class: "maintenance",
+    image: "/nav/maintenance.png",
+    description: "Ongoing property maintenance and repair services",
+    pills: ["PREVENTATIVE", "REACTIVE", "INSPECTIONS", "EMERGENCY"],
     type: "service",
   },
+
   {
     title: "CLEANING",
     class: "cleaning",
@@ -52,11 +53,11 @@ const cards: CardData[] = [
     type: "service",
   },
   {
-    title: "MAINTENANCE",
-    class: "maintenance",
-    image: "/nav/maintenance.png",
-    description: "Ongoing property maintenance and repair services",
-    pills: ["PREVENTATIVE", "REACTIVE", "INSPECTIONS", "EMERGENCY"],
+    title: "WATERPROOFING",
+    class: "waterproofing",
+    image: "/nav/waterproofing.png",
+    description: "Expert waterproofing solutions that protect your property",
+    pills: ["BALCONIES", "ROOFS", "WET AREAS", "MEMBRANES"],
     type: "service",
   },
 ];
@@ -180,7 +181,6 @@ export default function ServicesAlternating() {
             </Link>
           </div>
 
-          {/* Property Types - slides in from right */}
           <div
             ref={propertyTypesRef}
             className={styles.propertyTypes}
@@ -233,6 +233,7 @@ export default function ServicesAlternating() {
                 {/* Hover content */}
                 <div className={styles.hoverContent} />
                 <div className={styles.hoverInner}>
+                  <h3 className={styles.hoverTitle}>{card.title}</h3>
                   <p className={styles.hoverDescription}>{card.description}</p>
                   <div className={styles.pills}>
                     {card.pills?.map((pill, i) => (
