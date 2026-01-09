@@ -4,9 +4,8 @@ import { PanelData } from "../components/homepage/Expandingpanels";
 export const mainPanels: PanelData[] = [
   {
     id: "higher-standards",
-    title: "Higher Standards",
-    tagline:
-      "Your trusted partner for painting, cleaning & building maintenance",
+    subtitle: "[ THE SUNSHINE COAST'S PARTNER ]",
+    title: "ANY BUILDING, EVERY HEIGHT",
     image: "/images/panels/higher.png",
     buttons: [
       {
