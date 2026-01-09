@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <ServicesAlternating />
 
-      <section className="py-[120px]">
+      <section className="py-[240px]">
         <PartnersCarousel />
       </section>
 

@@ -70,8 +70,7 @@ export default function ServicesAlternating() {
 
   const [titleY, setTitleY] = useState(0);
   const [gridX, setGridX] = useState(0);
-  const [propertyTypesX, setPropertyTypesX] = useState(100);
-  const [progress, setProgress] = useState(0);
+  const [propertyTypesX, setPropertyTypesX] = useState(110);
   const [fillProgress, setFillProgress] = useState(0);
 
   useEffect(() => {
@@ -91,57 +90,44 @@ export default function ServicesAlternating() {
 
         const section = sectionRef.current;
         const sticky = stickyRef.current;
-        const grid = gridRef.current;
         const stage = stageRef.current;
 
-        const top = section.getBoundingClientRect().top;
+        const rect = section.getBoundingClientRect();
         const scrollRange = section.offsetHeight - sticky.offsetHeight;
 
-        if (top <= STICKY_TOP) {
-          const scrolled = Math.max(0, STICKY_TOP - top);
+        // Calculate how far we've scrolled into the section
+        const scrolled = Math.max(0, STICKY_TOP - rect.top);
+        const progress = Math.min(1, scrolled / scrollRange);
 
-          // Only calculate progress if we've actually scrolled
-          if (scrolled > 0) {
-            const p = Math.min(1, scrolled / scrollRange);
-
-            // Grid starts at 30% from left
-            // Grid needs to end at 80px from left (align with CTA/title)
-            const viewportWidth = stage.clientWidth;
-            const gridInitialLeft = viewportWidth * 0.3; // Starting position
-            const gridFinalLeft = 80; // Where CTA is positioned
-
-            const maxShift = gridInitialLeft - gridFinalLeft;
-
-            const titleShift = Math.min(
-              TITLE_MAX_SHIFT,
-              TITLE_MAX_SHIFT * p * 8
-            );
-
-            setTitleY(-titleShift);
-            setGridX(-maxShift * p);
-            setPropertyTypesX(100 - 100 * p);
-            setProgress(p * 100);
-            setFillProgress(p * 100);
-          } else {
-            // At threshold but not scrolled yet
-            setTitleY(0);
-            setGridX(0);
-            setPropertyTypesX(100);
-            setProgress(0);
-            setFillProgress(0);
-          }
-        } else {
+        // Simple threshold: only animate if scrolled more than 20px
+        if (scrolled < 20) {
+          // At the top - everything is 0
           setTitleY(0);
           setGridX(0);
-          setPropertyTypesX(100);
-          setProgress(0);
+          setPropertyTypesX(110);
           setFillProgress(0);
+          return;
         }
+
+        // We're scrolling - animate everything
+        const viewportWidth = stage.clientWidth;
+        const gridInitialLeft = 0.25 * viewportWidth + 122;
+        const gridFinalLeft = 80;
+        const maxShift = gridInitialLeft - gridFinalLeft;
+
+        const titleShift = Math.min(
+          TITLE_MAX_SHIFT,
+          TITLE_MAX_SHIFT * progress * 8
+        );
+
+        setTitleY(-titleShift);
+        setGridX(-maxShift * progress);
+        setPropertyTypesX(110 - 110 * progress);
+        setFillProgress(progress * 100);
       });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -161,7 +147,10 @@ export default function ServicesAlternating() {
             <h2
               className={styles.title}
               style={{
-                backgroundImage: `linear-gradient(to right, var(--navy) ${fillProgress}%, rgba(6, 20, 27, 0.35) ${fillProgress}%)`,
+                backgroundImage:
+                  fillProgress < 2
+                    ? `linear-gradient(to right, rgba(6, 20, 27, 0.35) 0%, rgba(6, 20, 27, 0.35) 100%)`
+                    : `linear-gradient(to right, var(--navy) ${fillProgress}%, rgba(6, 20, 27, 0.35) ${fillProgress}%)`,
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -197,7 +186,9 @@ export default function ServicesAlternating() {
             className={styles.propertyTypes}
             style={{ transform: `translateX(${propertyTypesX}%)` }}
           >
-            RESIDENTIAL COMMERICAL BODY CORPORATE
+            <span className={styles.propertyType}>[ RESIDENTIAL ]</span>
+            <span className={styles.propertyType}>[ COMMERCIAL ]</span>
+            <span className={styles.propertyType}>[ BODY CORPORATE ]</span>
           </div>
 
           <div
@@ -253,15 +244,6 @@ export default function ServicesAlternating() {
                 </div>
               </Link>
             ))}
-          </div>
-        </div>
-
-        <div className={styles.progressWrapper}>
-          <div className={styles.progressBar}>
-            <div
-              className={styles.progressFill}
-              style={{ width: `${progress}%` }}
-            />
           </div>
         </div>
       </div>
