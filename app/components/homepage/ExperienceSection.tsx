@@ -10,9 +10,9 @@ const scrollSections = [
     id: "local",
     label: "ADVANTAGE",
     description:
-      "Being locally owned means we care about the Sunshine Coast the way you do. Our reputation is built on knowing the community we serve.",
+      "Being locally owned means we care about the Sunshine Coast the way you do. Proud to be local, and proud to support our local community. Our reputation is built on knowing the community we serve.",
     image: "/images/projects/1.jpeg",
-    tenYears: true,
+    communityLogos: true,
   },
   {
     id: "experience",
@@ -104,15 +104,50 @@ export default function ExperienceSection() {
                   {section.description}
                 </p>
 
-                {/* 10 Years badge if applicable */}
-                {section.tenYears && (
-                  <div className={styles.tenYearsBadge}>
+                {/* Community logos if applicable */}
+                {section.communityLogos && (
+                  <div className={styles.communityLogos}>
                     <Image
-                      src="/images/projects/10-years.png"
-                      alt="10+ Years"
-                      width={120}
-                      height={120}
-                      className={styles.tenYearsImage}
+                      src="/images/community/coolumbowls.png"
+                      alt="Coolum Bowls"
+                      width={100}
+                      height={50}
+                      className={styles.communityLogo}
+                    />
+                    <Image
+                      src="/images/community/coolumfc.png"
+                      alt="Coolum FC"
+                      width={60}
+                      height={60}
+                      className={styles.communityLogo}
+                    />
+                    <Image
+                      src="/images/community/coolumnetball.webp"
+                      alt="Coolum Netball"
+                      width={180}
+                      height={60}
+                      className={styles.communityLogo}
+                    />
+                    <Image
+                      src="/images/community/peregianbeachslsc.png"
+                      alt="Peregian Beach SLSC"
+                      width={60}
+                      height={60}
+                      className={styles.communityLogo}
+                    />
+                    <Image
+                      src="/images/community/ruok.png"
+                      alt="R U OK?"
+                      width={180}
+                      height={60}
+                      className={styles.communityLogo}
+                    />
+                    <Image
+                      src="/images/community/yahpitmuaythai.png"
+                      alt="Yahpit Muay Thai"
+                      width={60}
+                      height={60}
+                      className={styles.communityLogo}
                     />
                   </div>
                 )}
@@ -178,8 +213,8 @@ export default function ExperienceSection() {
                     <Image
                       src="/images/associations/smartstrata.png"
                       alt="Smart Strata"
-                      width={70}
-                      height={70}
+                      width={50}
+                      height={50}
                       className={styles.certBadge}
                     />
                   </div>

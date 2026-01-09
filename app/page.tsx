@@ -29,9 +29,6 @@ export default function Home() {
       <section className="py-[120px]">
         <ProjectShowcase />
       </section>
-      <section className="py-[120px]">
-        <CommunitySection />
-      </section>
     </>
   );
 }
