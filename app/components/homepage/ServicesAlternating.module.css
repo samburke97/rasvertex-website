@@ -88,7 +88,6 @@
   );
 }
 
-/* Card title - visible at bottom left by default, moves to top left on hover */
 .cardTitle {
   position: absolute;
   bottom: 18px;
@@ -214,7 +213,6 @@
   width: 700px;
 }
 
-/* Progress - NO transition, pure React updates */
 .progressWrapper {
   padding: 24px 0;
   padding-left: calc(30% + 80px);

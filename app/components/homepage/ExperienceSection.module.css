@@ -174,6 +174,23 @@
     hue-rotate(235deg) brightness(94%) contrast(101%);
 }
 
+/* Community Logos */
+.communityLogos {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.communityLogo {
+  height: 60px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
 /* Partner Logos */
 .partnerLogos {
   display: flex;
@@ -310,6 +327,17 @@
 
   .sectionImage {
     height: 320px;
+  }
+
+  .communityLogos {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .communityLogo {
+    height: 50px;
+    width: auto;
+    max-width: 150px;
   }
 
   .partnerLogos {

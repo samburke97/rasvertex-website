@@ -13,7 +13,7 @@ export default function ServicesDetail() {
 
   const handleScroll = (direction: "up" | "down") => {
     if (scrollRef.current) {
-      const scrollAmount = 160; // height of one card + gap
+      const scrollAmount = 160;
       scrollRef.current.scrollBy({
         top: direction === "down" ? scrollAmount : -scrollAmount,
         behavior: "smooth",
