@@ -40,7 +40,7 @@ export default function PartnersCarousel() {
   return (
     <section className={styles.section}>
       <Container>
-        <h2 className={styles.title}>Trusted by the Sunshine Coast</h2>
+        {/* <h2 className={styles.title}>Trusted by the Sunshine Coast</h2> */}
       </Container>
 
       <div className={styles.embla} ref={emblaRef}>

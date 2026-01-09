@@ -1,98 +1,63 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./ServicesAlternating.module.css";
 
-const STICKY_TOP = 150;
-const TITLE_MAX_SHIFT = 150;
+const STICKY_TOP = 120;
+const TITLE_MAX_SHIFT = 120;
 
-const cards = [
+type CardData = {
+  title: string;
+  class: string;
+  image?: string;
+  video?: string;
+  description?: string;
+  pills?: string[];
+  type?: "service" | "cta";
+};
+
+const cards: CardData[] = [
   {
     title: "PAINTING",
     class: "painting",
-    image: "/nav/painting.png",
-    description:
-      "Professional interior and exterior painting services for commercial and residential properties. Quality finishes that last.",
-    pills: [
-      "INTERIOR PAINTING",
-      "EXTERIOR PAINTING",
-      "HERITAGE PAINTING",
-      "COLOUR CONSULTING",
-      "PRE-SALE PAINTING",
-      "STRATA PAINTING",
-      "RENDER PAINTING",
-      "ROOF PAINTING",
-      "COLORBOND ROOF PAINTING",
-      "METAL ROOF PAINTING",
-      "TILED ROOF PAINTING",
-    ],
-  },
-  {
-    title: "MAINTENANCE",
-    class: "maintenance",
-    image: "/nav/maintenance.png",
-    description:
-      "Comprehensive building maintenance services to keep your property in top condition year-round.",
-    pills: [
-      "GENERAL MAINTENANCE",
-      "PREVENTATIVE MAINTENANCE",
-      "REPAIRS",
-      "FACILITY MANAGEMENT",
-    ],
+    video: "/videos/painting.mp4",
+    description: "Professional painting services for all property types",
+    pills: ["INTERIOR", "EXTERIOR", "HERITAGE", "STRATA"],
+    type: "service",
   },
   {
     title: "WATERPROOFING",
     class: "waterproofing",
     image: "/nav/waterproofing.png",
-    description:
-      "Expert waterproofing solutions protecting your property from water damage and moisture issues.",
-    pills: [
-      "MEMBRANE WATERPROOFING",
-      "BALCONY WATERPROOFING",
-      "BATHROOM WATERPROOFING",
-      "ROOF WATERPROOFING",
-    ],
+    description: "Expert waterproofing solutions that protect your property",
+    pills: ["BALCONIES", "ROOFS", "WET AREAS", "MEMBRANES"],
+    type: "service",
   },
   {
     title: "CLEANING",
     class: "cleaning",
-    image: "/nav/cleaning.png",
-    description:
-      "Professional commercial cleaning services maintaining pristine standards for your business.",
-    pills: [
-      "OFFICE CLEANING",
-      "STRATA CLEANING",
-      "WINDOW CLEANING",
-      "PRESSURE CLEANING",
-    ],
+    video: "/videos/cleaning.mp4",
+    description: "High-rise and commercial cleaning services",
+    pills: ["WINDOWS", "BUILDING WASH", "ROPE ACCESS", "FACADES"],
+    type: "service",
   },
   {
     title: "HEIGHT SAFETY",
-    class: "height",
+    class: "heightSafety",
     image: "/nav/height.png",
-    description:
-      "Certified height safety systems and inspections ensuring workplace safety compliance.",
-    pills: [
-      "ANCHOR POINTS",
-      "SAFETY INSPECTIONS",
-      "ROPE ACCESS",
-      "FALL PROTECTION",
-    ],
+    description: "IRATA certified rope access and height safety systems",
+    pills: ["ANCHOR POINTS", "SAFETY INSPECTIONS", "ROPE ACCESS", "COMPLIANCE"],
+    type: "service",
   },
   {
-    title: "BUILDING INSPECTION",
-    class: "inspection",
-    image: "/nav/inspection.png",
-    description:
-      "Thorough building inspections identifying issues and ensuring property standards.",
-    pills: [
-      "PRE-PURCHASE INSPECTIONS",
-      "BUILDING REPORTS",
-      "DEFECT INSPECTIONS",
-      "COMPLIANCE CHECKS",
-    ],
+    title: "MAINTENANCE",
+    class: "maintenance",
+    image: "/nav/maintenance.png",
+    description: "Ongoing property maintenance and repair services",
+    pills: ["PREVENTATIVE", "REACTIVE", "INSPECTIONS", "EMERGENCY"],
+    type: "service",
   },
 ];
 
@@ -101,19 +66,20 @@ export default function ServicesAlternating() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const propertyTypesRef = useRef<HTMLDivElement>(null);
 
   const [titleY, setTitleY] = useState(0);
   const [gridX, setGridX] = useState(0);
+  const [propertyTypesX, setPropertyTypesX] = useState(100);
   const [progress, setProgress] = useState(0);
+  const [fillProgress, setFillProgress] = useState(0);
 
   useEffect(() => {
     let rafId: number;
 
     const onScroll = () => {
-      // Cancel any pending animation frame
       if (rafId) cancelAnimationFrame(rafId);
 
-      // Schedule update for next frame for smooth animation
       rafId = requestAnimationFrame(() => {
         if (
           !sectionRef.current ||
@@ -132,22 +98,44 @@ export default function ServicesAlternating() {
         const scrollRange = section.offsetHeight - sticky.offsetHeight;
 
         if (top <= STICKY_TOP) {
-          const scrolled = Math.abs(top - STICKY_TOP);
-          const p = Math.min(1, scrolled / scrollRange);
+          const scrolled = Math.max(0, STICKY_TOP - top);
 
-          const viewportWidth = stage.clientWidth;
-          const availableWidth = viewportWidth * 0.7;
-          const maxShift = grid.scrollWidth - availableWidth;
+          // Only calculate progress if we've actually scrolled
+          if (scrolled > 0) {
+            const p = Math.min(1, scrolled / scrollRange);
 
-          const titleShift = Math.min(TITLE_MAX_SHIFT, TITLE_MAX_SHIFT * p * 8);
+            // Grid starts at 30% from left
+            // Grid needs to end at 80px from left (align with CTA/title)
+            const viewportWidth = stage.clientWidth;
+            const gridInitialLeft = viewportWidth * 0.3; // Starting position
+            const gridFinalLeft = 80; // Where CTA is positioned
 
-          setTitleY(-titleShift);
-          setGridX(-maxShift * p);
-          setProgress(p * 100);
+            const maxShift = gridInitialLeft - gridFinalLeft;
+
+            const titleShift = Math.min(
+              TITLE_MAX_SHIFT,
+              TITLE_MAX_SHIFT * p * 8
+            );
+
+            setTitleY(-titleShift);
+            setGridX(-maxShift * p);
+            setPropertyTypesX(100 - 100 * p);
+            setProgress(p * 100);
+            setFillProgress(p * 100);
+          } else {
+            // At threshold but not scrolled yet
+            setTitleY(0);
+            setGridX(0);
+            setPropertyTypesX(100);
+            setProgress(0);
+            setFillProgress(0);
+          }
         } else {
           setTitleY(0);
           setGridX(0);
+          setPropertyTypesX(100);
           setProgress(0);
+          setFillProgress(0);
         }
       });
     };
@@ -169,8 +157,47 @@ export default function ServicesAlternating() {
             className={styles.titleBlock}
             style={{ transform: `translateY(${titleY}px)` }}
           >
-            <p className={styles.label}>[ PROPERTY SERVICES ]</p>
-            <h2 className={styles.title}>WHAT WE DO BEST</h2>
+            <p className={styles.label}>[ SEQ'S PROPERTY PARTNER ]</p>
+            <h2
+              className={styles.title}
+              style={{
+                backgroundImage: `linear-gradient(to right, var(--navy) ${fillProgress}%, rgba(6, 20, 27, 0.35) ${fillProgress}%)`,
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                willChange: "background-image",
+              }}
+            >
+              HIGHER STANDARDS
+            </h2>
+          </div>
+
+          {/* Fixed CTA Block - positioned below title */}
+          <div className={styles.ctaBlock}>
+            <Image
+              src="/images/people/caro.jpg"
+              alt="Caro"
+              width={70}
+              height={70}
+              className={styles.avatar}
+            />
+            <h3 className={styles.ctaTitle}>HOW CAN WE HELP?</h3>
+            <p className={styles.ctaDescription}>
+              From small repairs to full repaints, we know every property type
+              and we'll guide you to the right solution for your project.
+            </p>
+            <Link href="/contact" className={styles.ctaButton}>
+              FREE QUOTE
+            </Link>
+          </div>
+
+          {/* Property Types - slides in from right */}
+          <div
+            ref={propertyTypesRef}
+            className={styles.propertyTypes}
+            style={{ transform: `translateX(${propertyTypesX}%)` }}
+          >
+            RESIDENTIAL COMMERICAL BODY CORPORATE
           </div>
 
           <div
@@ -178,35 +205,47 @@ export default function ServicesAlternating() {
             className={styles.bentoGrid}
             style={{ transform: `translateX(${gridX}px)` }}
           >
-            {cards.map((card) => (
+            {/* Empty spot that will align with CTA */}
+            <div className={`${styles.card} ${styles.empty}`} />
+
+            {cards.map((card, index) => (
               <Link
-                key={card.title}
+                key={`${card.title}-${index}`}
                 href="/services"
                 className={`${styles.card} ${styles[card.class]}`}
               >
-                {/* Image layer */}
+                {/* Video or Image layer */}
                 <div className={styles.imageWrap}>
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    className={styles.image}
-                  />
+                  {card.video ? (
+                    <video
+                      src={card.video}
+                      className={styles.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <Image
+                      src={card.image!}
+                      alt={card.title}
+                      fill
+                      className={styles.image}
+                    />
+                  )}
                 </div>
                 <div className={styles.overlay} />
 
-                {/* Title - visible at bottom left, moves to top on hover */}
+                {/* Title */}
                 <h3 className={styles.cardTitle}>{card.title}</h3>
 
-                {/* White background on hover */}
+                {/* Hover content */}
                 <div className={styles.hoverContent} />
-
-                {/* Description and pills - fade in on hover */}
                 <div className={styles.hoverInner}>
                   <p className={styles.hoverDescription}>{card.description}</p>
                   <div className={styles.pills}>
-                    {card.pills.map((pill, index) => (
-                      <span key={index} className={styles.pill}>
+                    {card.pills?.map((pill, i) => (
+                      <span key={i} className={styles.pill}>
                         {pill}
                       </span>
                     ))}
