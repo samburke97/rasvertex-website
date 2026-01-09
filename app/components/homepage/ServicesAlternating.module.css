@@ -44,17 +44,17 @@
   text-transform: uppercase;
   color: var(--navy);
   margin: 0;
-  padding-right: 4px; /* Prevent cutoff of trailing characters */
+  padding-right: 4px;
 }
 
 /* Fixed CTA Block - positioned below title */
 .ctaBlock {
   position: absolute;
-  top: 408px; /* 100px (titleBlock top) + 300px (row height) + 8px (gap) */
+  top: 408px;
   left: 80px;
   z-index: 3;
-  width: calc((100vw - 160px - 24px) / 4); /* Match grid column width */
-  height: 300px; /* Match grid cell height */
+  width: calc((100vw - 160px - 24px) / 4);
+  height: 300px;
   background: white;
   display: flex;
   flex-direction: column;
