@@ -1,55 +1,63 @@
 .section {
-  min-height: 220vh;
+  min-height: 300vh;
 }
 
-/* Sticky pin */
 .stickyContainer {
   position: sticky;
-  top: 120px;
+  top: 150px;
 }
 
-/* Stage holds both layers */
 .stage {
   position: relative;
   height: 708px;
-  padding-left: 80px;
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* TITLE (mask layer) */
 .titleBlock {
-  position: relative;
-  z-index: 2;
-  width: 420px;
-  background: white; /* curtain */
+  position: absolute;
+  top: 100px;
+  left: 80px;
+  z-index: 3;
+  max-width: 22%;
   will-change: transform;
-  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .label {
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--navy);
+  margin: 0;
 }
 
 .title {
-  font-family: "Bebas Neue";
-  font-size: 58px;
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 58.207px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -2.328px;
+  text-transform: uppercase;
   color: var(--navy);
-  line-height: 1;
+  margin: 0;
 }
 
-/* GRID (full width behind title) */
 .bentoGrid {
   position: absolute;
-  inset: 0;
+  top: 100px;
+  left: 30%;
+  z-index: 1;
   display: grid;
   grid-auto-flow: column dense;
-  grid-template-rows: 350px 350px;
+  grid-template-rows: 300px 300px;
   gap: 8px;
   width: max-content;
-  height: 708px;
-  padding-left: 420px; /* start to the right of the title */
+  height: 608px;
+  padding-left: 80px;
   will-change: transform;
 }
 
@@ -80,48 +88,148 @@
   );
 }
 
+/* Card title - visible at bottom left by default, moves to top left on hover */
 .cardTitle {
   position: absolute;
   bottom: 18px;
   left: 18px;
   color: white;
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  z-index: 2;
+}
+
+/* White background overlay - hidden by default */
+.hoverContent {
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Content container - hidden by default */
+.hoverInner {
+  position: absolute;
+  top: 70px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  overflow-y: auto;
+  z-index: 3;
+}
+
+/* HOVER STATE - smooth animation only on hover IN */
+.card:hover .imageWrap,
+.card:hover .overlay {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .hoverContent {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .cardTitle {
+  bottom: auto;
+  top: 24px;
+  color: var(--navy);
+  transition: all 0.4s ease;
+}
+
+.card:hover .hoverInner {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.2s;
+}
+
+/* Description and pills */
+.hoverDescription {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--navy);
+  margin: 0;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pill {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: 4px;
+  padding: 6px 10px;
+  white-space: nowrap;
 }
 
 /* Bento sizing */
 .painting {
   grid-column: span 2;
-  width: 708px;
+  width: 700px;
 }
+
 .maintenance {
   grid-row: 2;
-  width: 350px;
+  width: 345px;
 }
+
 .waterproofing {
   grid-row: 2;
-  width: 350px;
+  width: 345px;
 }
+
 .cleaning {
   grid-row: span 2;
-  width: 350px;
+  width: 345px;
 }
+
 .height {
   grid-row: span 2;
   grid-column: span 2;
-  width: 708px;
+  width: 700px;
 }
 
-/* Progress */
+.inspection {
+  grid-row: span 2;
+  grid-column: span 2;
+  width: 700px;
+}
+
+/* Progress - NO transition, pure React updates */
 .progressWrapper {
-  padding: 24px 80px;
+  padding: 24px 0;
+  padding-left: calc(30% + 80px);
+  padding-right: 80px;
 }
 
 .progressBar {
   height: 3px;
   background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
 }
 
 .progressFill {
   height: 100%;
   background: var(--navy);
+  border-radius: 2px;
+  will-change: width;
 }
