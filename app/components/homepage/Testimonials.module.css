@@ -1,4 +1,4 @@
-/* TESTIMONIALS - Full Bleed Carousel with Image States */
+/* TESTIMONIALS - Full Bleed Infinite Carousel */
 .section {
   padding: 0;
   background: white;
@@ -18,7 +18,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end; /* Align Google rating with bottom of title */
   padding: 0 80px;
   margin-bottom: 60px;
 }
@@ -26,13 +26,13 @@
 .headerLeft {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .label {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 20px;
-  font-weight: 400;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--navy);
@@ -45,7 +45,6 @@
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -2.328px;
-  text-transform: uppercase;
   color: var(--navy);
   margin: 0;
 }
@@ -91,26 +90,26 @@
 .score {
   font-family: "Bebas Neue", var(--font-display);
   font-size: 24px;
-  font-weight: 400;
-  letter-spacing: -0.48px;
   color: var(--navy);
+  letter-spacing: -0.5px;
 }
 
 .stars {
-  color: var(--navy);
   font-size: 14px;
-  letter-spacing: 1px;
+  color: var(--navy);
+  letter-spacing: 2px;
 }
 
 .reviewCount {
   font-family: var(--font-body);
   font-size: 11px;
   color: var(--navy);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* Embla Carousel */
 .embla {
+  flex: 1;
   overflow: hidden;
 }
 
@@ -119,68 +118,77 @@
   gap: 8px;
   padding-left: 80px;
   padding-right: 80px;
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: grab;
-  align-items: flex-start;
-}
-
-.emblaContainer:active {
-  cursor: grabbing;
 }
 
 .emblaSlide {
   flex: 0 0 auto;
-  width: calc((100vw - 160px - 16px) / 2.5);
-  min-width: 480px;
-  max-width: 560px;
+  min-width: 420px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Card - height determined by content */
+/* Card - MATCHING SERVICESALTERNATING ACTIVE STATE */
+/* Blue border, white background */
 .card {
   position: relative;
-  border-radius: 24px;
+  background: white;
+  border: 1px solid rgba(84, 131, 179, 0.5); /* #5483B3 with opacity */
+  border-radius: 20px;
   overflow: hidden;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Content Layer - IN FLOW, determines card height */
+/* Content layer - sits in flow for auto-height */
 .contentLayer {
-  background: var(--cream, #faf9f6);
-  padding: 40px;
+  position: relative;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+/* Image layer - absolute positioned overlay */
+.imageLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageLayer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Show image on hover */
+.card:hover .imageLayer {
+  opacity: 1;
+}
+
+.card:hover .contentLayer {
+  opacity: 0;
 }
 
 .quote {
   font-family: var(--font-body);
   font-size: 18px;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--navy);
   margin: 0;
 }
 
-/* Image Layer - ABSOLUTE, overlays content when visible */
-.imageLayer {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.imageLayer.imageVisible {
-  opacity: 1;
-}
-
-/* Author - below card, always visible */
+/* Author section - below card */
 .author {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
-  flex-shrink: 0;
 }
 
 .authorLeft {
@@ -201,7 +209,6 @@
   font-family: "Bebas Neue", var(--font-display);
   font-size: 18px;
   font-weight: 400;
-  flex-shrink: 0;
 }
 
 .authorName {
@@ -212,64 +219,17 @@
 }
 
 .cardStars {
-  color: var(--navy);
   font-size: 14px;
+  color: var(--navy);
   letter-spacing: 2px;
 }
 
 /* Responsive */
-@media (max-width: 1400px) {
-  .container {
-    height: 650px;
-  }
-
-  .emblaSlide {
-    width: calc((100vw - 120px - 16px) / 2.5);
-    min-width: 420px;
-    max-width: 520px;
-  }
-}
-
-@media (max-width: 1280px) {
-  .container {
-    height: 600px;
-    padding: 80px 0 60px;
-  }
-
-  .header {
-    padding: 0 60px;
-    margin-bottom: 48px;
-  }
-
-  .title {
-    font-size: 48px;
-    letter-spacing: -1.92px;
-  }
-
-  .emblaContainer {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .emblaSlide {
-    min-width: 400px;
-    max-width: 480px;
-  }
-
-  .contentLayer {
-    padding: 32px;
-  }
-
-  .quote {
-    font-size: 17px;
-  }
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .container {
     height: auto;
-    min-height: 550px;
-    padding: 60px 0 50px;
+    min-height: 600px;
+    padding: 80px 0 60px;
   }
 
   .header {
@@ -291,7 +251,7 @@
 
   .emblaSlide {
     min-width: 360px;
-    max-width: 420px;
+    max-width: 400px;
     gap: 12px;
   }
 
@@ -305,14 +265,14 @@
 
   .quote {
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 }
 
 @media (max-width: 768px) {
   .container {
     min-height: auto;
-    padding: 48px 0 40px;
+    padding: 60px 0 48px;
   }
 
   .header {
@@ -321,7 +281,7 @@
   }
 
   .label {
-    font-size: 18px;
+    font-size: 11px;
   }
 
   .title {
@@ -370,15 +330,11 @@
 
 @media (max-width: 480px) {
   .container {
-    padding: 40px 0 32px;
+    padding: 48px 0 40px;
   }
 
   .header {
     padding: 0 20px;
-  }
-
-  .label {
-    font-size: 16px;
   }
 
   .title {
@@ -398,7 +354,7 @@
   .emblaSlide {
     min-width: 280px;
     max-width: 300px;
-    gap: 8px;
+    gap: 10px;
   }
 
   .card {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/layout/Footer";
+import ChatWidget from "@/app/components/chat/ChatWidget";
 
 export const metadata: Metadata = {
   title:
@@ -22,6 +23,7 @@ export default function RootLayout({
       </head>
       <body>
         <Navigation />
+        <ChatWidget />
         <main style={{ paddingTop: "80px" }}>{children}</main>
         <Footer />
       </body>

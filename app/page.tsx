@@ -27,6 +27,7 @@ export default function Home() {
         defaultActivePanel="higher-standards"
       />
       <Testimonials />
+      <CTA />
     </>
   );
 }
