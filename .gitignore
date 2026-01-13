@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Large media
+*.mp4
+*.mov
+*.avi
+*.webm
+*.psd
+*.ai
+*.tiff
+
+# Next.js build
+.next/
+out/
+
+# OS junk
+.DS_Store
