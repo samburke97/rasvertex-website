@@ -1,0 +1,425 @@
+/* TESTIMONIALS - Full Bleed Carousel with Image States */
+.section {
+  padding: 0;
+  background: white;
+  overflow: hidden;
+}
+
+/* Container matches ServicesAlternating stage */
+.container {
+  position: relative;
+  height: 708px;
+  display: flex;
+  flex-direction: column;
+  padding: 100px 0 80px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 80px;
+  margin-bottom: 60px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+}
+
+.title {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 58.207px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -2.328px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+}
+
+.headerRight {
+  flex-shrink: 0;
+}
+
+/* Rating */
+.rating {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.googleIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--navy);
+}
+
+.ratingContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ratingLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  opacity: 0.6;
+}
+
+.ratingScore {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.score {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.48px;
+  color: var(--navy);
+}
+
+.stars {
+  color: var(--navy);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.reviewCount {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--navy);
+  opacity: 0.5;
+}
+
+/* Embla Carousel */
+.embla {
+  overflow: hidden;
+}
+
+.emblaContainer {
+  display: flex;
+  gap: 8px;
+  padding-left: 80px;
+  padding-right: 80px;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+  align-items: flex-start;
+}
+
+.emblaContainer:active {
+  cursor: grabbing;
+}
+
+.emblaSlide {
+  flex: 0 0 auto;
+  width: calc((100vw - 160px - 16px) / 2.5);
+  min-width: 480px;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card - height determined by content */
+.card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Content Layer - IN FLOW, determines card height */
+.contentLayer {
+  background: var(--cream, #faf9f6);
+  padding: 40px;
+}
+
+.quote {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--navy);
+  margin: 0;
+}
+
+/* Image Layer - ABSOLUTE, overlays content when visible */
+.imageLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.imageLayer.imageVisible {
+  opacity: 1;
+}
+
+/* Author - below card, always visible */
+.author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+.authorLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.authorName {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.cardStars {
+  color: var(--navy);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .container {
+    height: 650px;
+  }
+
+  .emblaSlide {
+    width: calc((100vw - 120px - 16px) / 2.5);
+    min-width: 420px;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    height: 600px;
+    padding: 80px 0 60px;
+  }
+
+  .header {
+    padding: 0 60px;
+    margin-bottom: 48px;
+  }
+
+  .title {
+    font-size: 48px;
+    letter-spacing: -1.92px;
+  }
+
+  .emblaContainer {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .emblaSlide {
+    min-width: 400px;
+    max-width: 480px;
+  }
+
+  .contentLayer {
+    padding: 32px;
+  }
+
+  .quote {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    height: auto;
+    min-height: 550px;
+    padding: 60px 0 50px;
+  }
+
+  .header {
+    padding: 0 40px;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .title {
+    font-size: 42px;
+    letter-spacing: -1.68px;
+  }
+
+  .emblaContainer {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .emblaSlide {
+    min-width: 360px;
+    max-width: 420px;
+    gap: 12px;
+  }
+
+  .card {
+    border-radius: 18px;
+  }
+
+  .contentLayer {
+    padding: 28px;
+  }
+
+  .quote {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    min-height: auto;
+    padding: 48px 0 40px;
+  }
+
+  .header {
+    padding: 0 24px;
+    margin-bottom: 32px;
+  }
+
+  .label {
+    font-size: 18px;
+  }
+
+  .title {
+    font-size: 36px;
+    letter-spacing: -1.44px;
+  }
+
+  .emblaContainer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .emblaSlide {
+    min-width: 300px;
+    max-width: 340px;
+    gap: 12px;
+  }
+
+  .card {
+    border-radius: 16px;
+  }
+
+  .contentLayer {
+    padding: 24px;
+  }
+
+  .quote {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .authorName {
+    font-size: 13px;
+  }
+
+  .cardStars {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 40px 0 32px;
+  }
+
+  .header {
+    padding: 0 20px;
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    letter-spacing: -1.28px;
+  }
+
+  .score {
+    font-size: 20px;
+  }
+
+  .emblaContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .emblaSlide {
+    min-width: 280px;
+    max-width: 300px;
+    gap: 8px;
+  }
+
+  .card {
+    border-radius: 14px;
+  }
+
+  .contentLayer {
+    padding: 20px;
+  }
+
+  .quote {
+    font-size: 14px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .authorName {
+    font-size: 12px;
+  }
+}

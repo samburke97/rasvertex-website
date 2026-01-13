@@ -6,12 +6,13 @@ import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import { mainPanels } from "./data/expandingPanelsData";
 import HeroSection from "./components/homepage/HeroSection";
 import ServicesAlternating from "./components/homepage/ServicesAlternating";
+import Testimonials from "./components/homepage/Testimonials";
+import CTA from "./components/homepage/CTA";
 
 export default function Home() {
   return (
     <>
       <ServicesAlternating />
-
       <section className="py-[240px]">
         <PartnersCarousel />
       </section>
@@ -25,10 +26,7 @@ export default function Home() {
         panels={mainPanels}
         defaultActivePanel="higher-standards"
       />
-
-      {/* <section className="py-[120px]">
-        <ProjectShowcase />
-      </section> */}
+      <Testimonials />
     </>
   );
 }

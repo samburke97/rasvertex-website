@@ -1,0 +1,327 @@
+.section {
+  padding: 120px 80px;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background Pattern */
+.pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.label {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.title {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 58.207px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -2.328px;
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+  max-width: 700px;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  max-width: 560px;
+}
+
+/* Buttons */
+.buttonGroup {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.buttonPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: white;
+  color: var(--navy);
+  border-radius: 4px;
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.36px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.buttonPrimary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.buttonSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.36px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.buttonSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Trust Indicators */
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trustItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trustNumber {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.64px;
+  color: white;
+}
+
+.trustLabel {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.trustDivider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Services List */
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.serviceItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.serviceIcon {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s ease;
+}
+
+.serviceItem:hover .serviceIcon {
+  color: white;
+}
+
+.serviceName {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .section {
+    padding: 100px 60px;
+  }
+
+  .container {
+    gap: 60px;
+  }
+
+  .title {
+    font-size: 48px;
+    letter-spacing: -1.92px;
+  }
+
+  .services {
+    gap: 10px;
+  }
+
+  .serviceItem {
+    padding: 14px 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 40px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .title {
+    font-size: 42px;
+    letter-spacing: -1.68px;
+    max-width: 100%;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 24px;
+  }
+
+  .label {
+    font-size: 18px;
+  }
+
+  .title {
+    font-size: 36px;
+    letter-spacing: -1.44px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .buttonPrimary,
+  .buttonSecondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .trust {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .trustDivider {
+    display: none;
+  }
+
+  .trustItem {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 48px 20px;
+  }
+
+  .title {
+    font-size: 32px;
+    letter-spacing: -1.28px;
+  }
+
+  .trustNumber {
+    font-size: 28px;
+  }
+
+  .trustLabel {
+    font-size: 11px;
+  }
+
+  .serviceItem {
+    padding: 12px 16px;
+  }
+
+  .serviceName {
+    font-size: 14px;
+  }
+}

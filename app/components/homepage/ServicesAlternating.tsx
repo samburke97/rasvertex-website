@@ -137,7 +137,7 @@ export default function ServicesAlternating() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section}>
+    <section ref={sectionRef} className={styles.section} data-nav-fixed="true">
       <div ref={stickyRef} className={styles.stickyContainer}>
         <div ref={stageRef} className={styles.stage}>
           <div

@@ -48,12 +48,17 @@ export default function Navigation() {
       // Check if at top
       setIsAtTop(currentScrollY < 10);
 
-      // Hide/show based on scroll direction
+      const servicesSection = document.querySelector('[data-nav-fixed="true"]');
+      const pastServicesSection = servicesSection
+        ? servicesSection.getBoundingClientRect().bottom < 0
+        : currentScrollY > 300;
+
+      // Hide/show based on scroll direction (only after ServicesAlternating)
       if (currentScrollY < lastScrollY) {
         // Scrolling up
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 300) {
-        // Scrolling down and past 300px (hero section)
+      } else if (currentScrollY > lastScrollY && pastServicesSection) {
+        // Scrolling down and past ServicesAlternating section
         setIsVisible(false);
       }
 
