@@ -1,147 +1,133 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import Container from "../Container";
 import styles from "./Footer.module.css";
-import { footerLinks } from "@/app/data/footer";
-
-interface FooterLinkProps {
-  href: string;
-  label: string;
-  ariaLabel?: string;
-  title?: string;
-  isExternal?: boolean;
-}
-
-interface FooterColumnProps {
-  title: string;
-  links: FooterLinkProps[];
-  isSocial?: boolean;
-}
-
-const FooterColumn = ({
-  title,
-  links,
-  isSocial = false,
-}: FooterColumnProps) => {
-  const headingId = `${title.toLowerCase().replace(/\s+/g, "-")}-heading`;
-
-  return (
-    <nav className={styles.column} aria-labelledby={headingId}>
-      <h2 id={headingId} className={styles.heading}>
-        {title}
-      </h2>
-      <ul className={styles.linkList} role="list">
-        {links.map((link, index) => (
-          <li key={index}>
-            <Link
-              href={link.href}
-              className={isSocial ? styles.socialLink : styles.link}
-              aria-label={link.ariaLabel}
-              title={link.title}
-              {...(link.isExternal
-                ? { rel: "noopener noreferrer", target: "_blank" }
-                : {})}
-            >
-              {link.label}
-              {isSocial && (
-                <Image
-                  src="/icons/utility-outline/forward.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  loading="lazy"
-                />
-              )}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState<number>(2025);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.innerHTML = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "RAS-VERTEX",
-      url: "https://yourdomain.com",
-      sameAs: [
-        "https://instagram.com/rasvertex",
-        "https://facebook.com/rasvertex",
-        "https://linkedin.com/company/rasvertex",
-      ],
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      if (script.parentNode) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log({ name, email });
+  };
 
   return (
-    <footer
-      className={styles.footer}
-      role="contentinfo"
-      aria-label="Site footer"
-    >
-      <Container size="xl">
-        <div className={styles.container}>
-          <div className={styles.topSection}>
-            <FooterColumn title="Discover" links={footerLinks.discover} />
-            <FooterColumn title="Legal" links={footerLinks.legal} />
-            <FooterColumn
-              title="Follow Us"
-              links={footerLinks.social}
-              isSocial={true}
-            />
-            <div className={styles.higherStandardsColumn}>
-              <h2 className={styles.higherStandardsText}>HIGHER STANDARDS.</h2>
-            </div>
+    <footer className={styles.footer}>
+      {/* Top Section */}
+      <div className={styles.topSection}>
+        {/* Left Columns - grouped */}
+        <div className={styles.leftColumns}>
+          <div className={styles.column}>
+            <span className={styles.columnTitle}>Sitemap</span>
+            <Link href="/" className={styles.link}>
+              Home
+            </Link>
+            <Link href="/services" className={styles.link}>
+              Services
+            </Link>
+            <Link href="/projects" className={styles.link}>
+              Projects
+            </Link>
+            <Link href="/about" className={styles.link}>
+              About
+            </Link>
+            <Link href="/contact" className={styles.link}>
+              Contact
+            </Link>
           </div>
 
-          <div className={styles.bottomSection}>
-            <div className={styles.acknowledgementContent}>
-              <Image
-                src="/images/aboriginal.svg"
-                alt="Aboriginal flag"
-                width={60}
-                height={40}
-                className={styles.aboriginalFlag}
-              />
-              <p className={styles.acknowledgementText}>
-                We acknowledge the Traditional Custodians of the lands on which
-                we operate, and recognise their continuing connection to land,
-                water, and community. We pay our respects to Elders past and
-                present, and extend that respect to all Aboriginal and Torres
-                Strait Islander peoples.
-              </p>
-            </div>
+          <div className={styles.column}>
+            <span className={styles.columnTitle}>Company</span>
+            <Link href="/about" className={styles.link}>
+              About Us
+            </Link>
+            <Link href="/terms" className={styles.link}>
+              Terms & Conditions
+            </Link>
+            <Link href="/privacy" className={styles.link}>
+              Privacy Policy
+            </Link>
+          </div>
 
-            <div className={styles.copyrightWrapper}>
-              <p className={styles.copyright}>
-                <span aria-label="Copyright">©</span> {currentYear} Rope Access
-                Services Pty Ltd
-              </p>
-              <p className={styles.businessDetails}>
-                QBCC: 1307234 | ACN 167 652 637
-              </p>
-            </div>
+          <div className={styles.column}>
+            <span className={styles.columnTitle}>Contact</span>
+            <a href="tel:0754379355" className={styles.link}>
+              (07) 5437 9355
+            </a>
+            <a href="mailto:info@rasvertex.com.au" className={styles.link}>
+              info@rasvertex.com.au
+            </a>
           </div>
         </div>
-      </Container>
+
+        {/* Newsletter - far right */}
+        <div className={styles.newsletter}>
+          <span className={styles.columnTitle}>Newsletter</span>
+          <form onSubmit={handleSubmit} className={styles.newsletterForm}>
+            <input
+              type="text"
+              placeholder="First name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={styles.input}
+            />
+            <input
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={styles.input}
+            />
+            <button type="submit" className={styles.submitButton}>
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Watermark */}
+      <div className={styles.watermark}>
+        <span className={styles.watermarkText}>HIGHER STANDARDS</span>
+      </div>
+
+      {/* Bottom Section */}
+      <div className={styles.bottomSection}>
+        <span className={styles.copyright}>
+          ©{new Date().getFullYear()} ROPE ACCESS SERVICES PTY LTD. ALL RIGHTS
+          RESERVED.
+        </span>
+        <div className={styles.socials}>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialLink}
+          >
+            LINKEDIN
+          </a>
+          <span className={styles.socialDivider}>,</span>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialLink}
+          >
+            INSTAGRAM
+          </a>
+          <span className={styles.socialDivider}>,</span>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialLink}
+          >
+            FACEBOOK
+          </a>
+        </div>
+        <span className={styles.location}>SUNSHINE COAST, QLD</span>
+      </div>
     </footer>
   );
 }

@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <>
       <ServicesAlternating />
-      <section className="py-[240px]">
+      <section className="py-[200px]">
         <PartnersCarousel />
       </section>
 
       <Container>
-        <section className="py-[120px]">
+        <section className="pb-[200px]">
           <ExperienceSection />
         </section>
       </Container>
