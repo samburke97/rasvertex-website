@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./ServicesAlternating.module.css";
+import styles from "./Hero.module.css";
 
 const STICKY_TOP = 120;
 const TITLE_MAX_SHIFT = 120;
@@ -62,7 +62,7 @@ const cards: CardData[] = [
   },
 ];
 
-export default function ServicesAlternating() {
+export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);

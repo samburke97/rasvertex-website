@@ -4,7 +4,7 @@ import {
   companyMain,
   companySecondary,
   locations,
-} from "../../data/navigationData";
+} from "../../../data/navigationData";
 import styles from "./CompanyDropdown.module.css";
 
 type CompanyDropdownProps = {

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { servicesData, type ServiceKey } from "../../data/navigationData";
+import { servicesData, type ServiceKey } from "../../../data/navigationData";
 import styles from "./ServicesDropdown.module.css";
 
 type ServicesDropdownProps = {

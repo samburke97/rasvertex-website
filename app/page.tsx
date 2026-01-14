@@ -2,17 +2,16 @@ import Container from "./components/Container";
 import ExpandingPanels from "./components/homepage/Expandingpanels";
 import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
-import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import { mainPanels } from "./data/expandingPanelsData";
-import HeroSection from "./components/homepage/HeroSection";
-import ServicesAlternating from "./components/homepage/ServicesAlternating";
+import Hero from "./components/homepage/Hero";
+import ServicesAlternating from "./components/homepage/Hero";
 import Testimonials from "./components/homepage/Testimonials";
 import CTA from "./components/homepage/CTA";
 
 export default function Home() {
   return (
     <>
-      <ServicesAlternating />
+      <Hero />
       <section className="py-[200px]">
         <PartnersCarousel />
       </section>

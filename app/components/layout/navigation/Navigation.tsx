@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { HambergerMenu, CloseSquare } from "iconsax-react";
-import { type ServiceKey } from "../data/navigationData";
-import ServicesDropdown from "./navigation/ServicesDropdown";
-import CompanyDropdown from "./navigation/CompanyDropdown";
-import MobileMenu from "./navigation/MobileMenu";
+import { type ServiceKey } from "../../../data/navigationData";
+import ServicesDropdown from "./ServicesDropdown";
+import CompanyDropdown from "./CompanyDropdown";
+import MobileMenu from "./MobileMenu";
 import styles from "./Navigation.module.css";
-import Container from "./Container";
+import Container from "../../Container";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

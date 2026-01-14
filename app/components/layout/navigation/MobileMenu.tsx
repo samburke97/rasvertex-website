@@ -7,7 +7,7 @@ import {
   companySecondary,
   locations,
   type ServiceKey,
-} from "../../data/navigationData";
+} from "../../../data/navigationData";
 import styles from "./MobileMenu.module.css";
 
 type MobileMenuProps = {
