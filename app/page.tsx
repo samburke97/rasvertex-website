@@ -10,9 +10,7 @@ import CTA from "./components/homepage/CTA";
 export default function Home() {
   return (
     <>
-      <Container>
-        <Hero />
-      </Container>
+      <Hero />
       <section className="py-[200px]">
         <PartnersCarousel />
       </section>

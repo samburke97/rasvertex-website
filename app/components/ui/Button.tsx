@@ -1,87 +1,120 @@
-"use client";
-
-import { ReactNode } from "react";
-import Image from "next/image";
+import React from "react";
+import Link from "next/link";
 import styles from "./Button.module.css";
 
-export type ButtonVariant =
-  | "primary"
-  | "primary-green"
-  | "secondary"
-  | "outline"
-  | "danger";
-export type ButtonSize = "sm" | "md" | "lg";
-export type IconPosition = "left" | "right";
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "white";
+type ButtonSize = "sm" | "md" | "lg";
 
-interface ButtonProps {
-  children: ReactNode;
+interface ButtonBaseProps {
+  /** Visual style variant */
   variant?: ButtonVariant;
+  /** Size preset */
   size?: ButtonSize;
-  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  className?: string;
+  /** Full width button */
   fullWidth?: boolean;
-  icon?: ReactNode;
-  iconPath?: string;
-  iconPosition?: IconPosition;
-  alt?: string;
+  /** Icon element */
+  icon?: React.ReactNode;
+  /** Icon position */
+  iconPosition?: "left" | "right";
+  /** Additional className */
+  className?: string;
+  /** Button content */
+  children: React.ReactNode;
 }
 
+interface ButtonAsButton extends ButtonBaseProps {
+  as?: "button";
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  href?: never;
+}
+
+interface ButtonAsLink extends ButtonBaseProps {
+  as: "link";
+  href: string;
+  onClick?: never;
+  type?: never;
+  disabled?: never;
+}
+
+type ButtonProps = ButtonAsButton | ButtonAsLink;
+
+/**
+ * Button Component
+ *
+ * Matches the button styles used across RAS-VERTEX:
+ * - Primary: Navy background, white text (CTA, Navigation)
+ * - Secondary: Transparent, navy border (CTA secondary)
+ * - Outline: Transparent with subtle border
+ * - Ghost: No background or border
+ * - White: White background, navy text (Expanding panels)
+ *
+ * Uses Bebas Neue font, 4px border-radius, uppercase text.
+ *
+ * @example
+ * // Primary button
+ * <Button variant="primary">Get a Quote</Button>
+ *
+ * @example
+ * // Secondary outline button
+ * <Button variant="secondary">Our Services</Button>
+ *
+ * @example
+ * // As a link
+ * <Button as="link" href="/contact" variant="primary">Contact Us</Button>
+ *
+ * @example
+ * // Full width on mobile
+ * <Button variant="primary" fullWidth>Submit</Button>
+ */
 export default function Button({
-  children,
   variant = "primary",
   size = "md",
-  onClick,
-  type = "button",
-  disabled = false,
-  className = "",
   fullWidth = false,
   icon,
-  iconPath,
-  iconPosition = "left",
+  iconPosition = "right",
+  className = "",
+  children,
+  ...props
 }: ButtonProps) {
-  // Determine what icon to render
-  let iconElement = icon;
+  const classes = [
+    styles.button,
+    styles[variant],
+    styles[size],
+    fullWidth && styles.fullWidth,
+    icon && styles.withIcon,
+    icon && iconPosition === "left" && styles.iconLeft,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  // If iconPath is provided but no icon, create an Image component
-  if (iconPath && !icon) {
-    // Assume SVG if no extension provided
-    const iconSrc = iconPath.includes(".") ? iconPath : `${iconPath}.svg`;
+  const content = (
+    <>
+      {icon && iconPosition === "left" && (
+        <span className={styles.icon}>{icon}</span>
+      )}
+      <span>{children}</span>
+      {icon && iconPosition === "right" && (
+        <span className={styles.icon}>{icon}</span>
+      )}
+    </>
+  );
 
-    iconElement = (
-      <Image
-        src={iconSrc}
-        alt=""
-        width={size === "sm" ? 16 : size === "md" ? 20 : 24}
-        height={size === "sm" ? 16 : size === "md" ? 20 : 24}
-        className={variant === "danger" ? styles.whiteIcon : ""}
-      />
+  if (props.as === "link") {
+    return (
+      <Link href={props.href} className={classes}>
+        {content}
+      </Link>
     );
   }
 
+  const { as, ...buttonProps } = props as ButtonAsButton;
+
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`
-        ${styles.button}
-        ${styles[variant]}
-        ${styles[size]}
-        ${iconElement ? styles.withIcon : ""}
-        ${iconElement && iconPosition === "left" ? styles.iconRight : ""}
-        ${fullWidth ? styles.fullWidth : ""}
-        ${className}
-      `}
-    >
-      {iconElement && iconPosition === "left" && (
-        <span className={styles.iconContainer}>{iconElement}</span>
-      )}
-      {children}
-      {iconElement && iconPosition === "right" && (
-        <span className={styles.iconContainer}>{iconElement}</span>
-      )}
+    <button className={classes} {...buttonProps}>
+      {content}
     </button>
   );
 }
