@@ -118,7 +118,7 @@ export default function Hero() {
 
         const titleShift = Math.min(
           TITLE_MAX_SHIFT,
-          TITLE_MAX_SHIFT * progress * 8
+          TITLE_MAX_SHIFT * progress * 8,
         );
 
         setTitleY(-titleShift);

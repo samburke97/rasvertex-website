@@ -64,8 +64,8 @@
 }
 
 .avatar {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -74,20 +74,9 @@
   font-family: "Bebas Neue", var(--font-display);
   font-size: 32px;
   font-weight: 400;
-  line-height: 1.1;
   letter-spacing: -1.3px;
-  text-transform: uppercase;
   color: var(--navy);
   margin: 0;
-}
-
-.ctaDescription {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--navy);
-  margin: 0;
-  opacity: 0.85;
 }
 
 .ctaButton {
@@ -123,7 +112,7 @@
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(6, 20, 27, 0.35); /* Match gray unfilled text */
+  color: rgba(6, 20, 27, 0.35);
   will-change: transform;
   white-space: nowrap;
   padding-right: 80px;
@@ -178,7 +167,9 @@
   border: 1px solid var(--navy);
   opacity: 0;
   transform: scale(0.985);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
   pointer-events: none;
   z-index: 6;
 }
@@ -231,7 +222,9 @@
   z-index: 5;
 
   transform: translateY(0);
-  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.25s ease;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    color 0.25s ease;
 }
 
 /* White hover surface */
@@ -264,7 +257,9 @@
   justify-content: space-between;
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   z-index: 5;
 }
 
@@ -278,7 +273,9 @@
   color: var(--navy);
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
   z-index: 7;
 }
 
