@@ -19,25 +19,25 @@ export default function Navigation() {
   const [isVisible, setIsVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
 
-  // Reset activeService when dropdown closes for clean two-stage behavior
+  // Reset activeService when dropdown closes
   useEffect(() => {
     if (!servicesOpen) {
       setActiveService(null);
     }
   }, [servicesOpen]);
 
+  // Close mobile menu on desktop resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [mobileMenuOpen]);
 
-  // Handle scroll behavior
+  // Hide/show on scroll + track if at top
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -45,20 +45,17 @@ export default function Navigation() {
     const updateNavbar = () => {
       const currentScrollY = window.scrollY;
 
-      // Check if at top
       setIsAtTop(currentScrollY < 10);
 
-      const servicesSection = document.querySelector('[data-nav-fixed="true"]');
-      const pastServicesSection = servicesSection
-        ? servicesSection.getBoundingClientRect().bottom < 0
+      // Hide as soon as we've scrolled past the hero headline block
+      const headlineBlock = document.querySelector("[data-headline]");
+      const pastHeadline = headlineBlock
+        ? headlineBlock.getBoundingClientRect().bottom < 72 // 72 = nav height
         : currentScrollY > 300;
 
-      // Hide/show based on scroll direction (only after ServicesAlternating)
       if (currentScrollY < lastScrollY) {
-        // Scrolling up
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && pastServicesSection) {
-        // Scrolling down and past ServicesAlternating section
+      } else if (currentScrollY > lastScrollY && pastHeadline) {
         setIsVisible(false);
       }
 
@@ -79,7 +76,7 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Backdrop overlay */}
+      {/* Backdrop overlay when dropdown open */}
       {(servicesOpen || companyOpen) && <div className={styles.backdrop} />}
 
       <nav
@@ -89,73 +86,86 @@ export default function Navigation() {
       >
         <Container size="xl">
           <div className={styles.wrapper}>
+            {/* ── Col 1: Logo (left) ── */}
             <div className={styles.leftSection}>
               <Link href="/" className={styles.logo}>
                 <span className={styles.logoText}>RAS-VERTEX</span>
               </Link>
 
-              <div className={styles.desktopMenu}>
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
-                >
-                  <button
-                    className={`${styles.menuButton} ${
-                      servicesOpen ? styles.active : ""
-                    }`}
-                  >
-                    Services
-                  </button>
-                  <ServicesDropdown
-                    isOpen={servicesOpen}
-                    activeService={activeService}
-                    setActiveService={setActiveService}
-                  />
-                </div>
-
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setCompanyOpen(true)}
-                  onMouseLeave={() => setCompanyOpen(false)}
-                >
-                  <button
-                    className={`${styles.menuButton} ${
-                      companyOpen ? styles.active : ""
-                    }`}
-                  >
-                    Company
-                  </button>
-                  <CompanyDropdown isOpen={companyOpen} />
-                </div>
-              </div>
-
-              {/* Hamburger menu - hidden on desktop */}
+              {/* Hamburger — mobile only */}
               <button
                 className={styles.mobileMenuButton}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
-                  <CloseSquare size={32} />
+                  <CloseSquare size={28} />
                 ) : (
-                  <HambergerMenu size={32} />
+                  <HambergerMenu size={28} />
                 )}
               </button>
             </div>
 
+            {/* ── Col 2: Nav links (center) ── */}
+            <div className={styles.desktopMenu}>
+              <div
+                className={styles.dropdown}
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button
+                  className={`${styles.menuButton} ${
+                    servicesOpen ? styles.active : ""
+                  }`}
+                >
+                  Services
+                </button>
+                <ServicesDropdown
+                  isOpen={servicesOpen}
+                  activeService={activeService}
+                  setActiveService={setActiveService}
+                />
+              </div>
+
+              <div
+                className={styles.dropdown}
+                onMouseEnter={() => setCompanyOpen(true)}
+                onMouseLeave={() => setCompanyOpen(false)}
+              >
+                <button
+                  className={`${styles.menuButton} ${
+                    companyOpen ? styles.active : ""
+                  }`}
+                >
+                  Company
+                </button>
+                <CompanyDropdown isOpen={companyOpen} />
+              </div>
+
+              <Link href="/process" className={styles.menuLink}>
+                Process
+              </Link>
+
+              <Link href="/work" className={styles.menuLink}>
+                Work
+              </Link>
+            </div>
+
+            {/* ── Col 3: Search + Contact (right) ── */}
             <div className={styles.ctaButtons}>
-              {/* Search */}
-              <Link href="/search" className={styles.iconButton}>
+              <Link
+                href="/search"
+                className={styles.iconButton}
+                aria-label="Search"
+              >
                 <Image
                   src="/icons/utility-outline/search.svg"
                   alt="Search"
-                  width={24}
-                  height={24}
+                  width={20}
+                  height={20}
                 />
               </Link>
 
-              {/* Contact Us Button */}
               <Link href="/contact" className={styles.contactButton}>
                 Contact Us
               </Link>

@@ -4,14 +4,13 @@ import ExperienceSection from "./components/homepage/ExperienceSection";
 import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import { mainPanels } from "./data/expandingPanelsData";
 import Hero from "./components/homepage/Hero";
-import ServicesAlternating from "./components/homepage/Hero";
-import Testimonials from "./components/homepage/Testimonials";
-import CTA from "./components/homepage/CTA";
+import HeroMeta from "./components/homepage/HeroMeta";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <HeroMeta />
       <section className="py-[200px]">
         <PartnersCarousel />
       </section>
@@ -25,8 +24,6 @@ export default function Home() {
         panels={mainPanels}
         defaultActivePanel="higher-standards"
       />
-      <Testimonials />
-      <CTA />
     </>
   );
 }

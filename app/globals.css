@@ -6,16 +6,24 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #141826;
 
-  --navy: #1a0f5e;
-  --navy-dark: #0f172a;
-  --red: #dc2626;
-  --red-dark: #991b1b;
-  --cream: #fbf7f0;
-  --sky-from: #e8f4f8;
-  --sky-to: #d4e7ed;
+  /* Brand */
+  --navy: #011955;
+  --navy-dark: #010f3a;
+  --red: #c7242e;
+  --burgundy: #6b1f24;
 
+  /* Lines */
+  --line: rgba(1, 25, 85, 0.12);
+  --line-soft: rgba(1, 25, 85, 0.07);
+
+  /* Ink */
+  --ink: #141826;
+  --ink-soft: rgba(20, 24, 38, 0.55);
+  --ink-soft-2: rgba(20, 24, 38, 0.35);
+
+  /* Typography */
   --font-display: "Bebas Neue", Arial, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
@@ -43,4 +51,9 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+::selection {
+  background: var(--navy);
+  color: #ffffff;
 }
