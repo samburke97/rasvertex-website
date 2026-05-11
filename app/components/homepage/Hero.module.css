@@ -1,28 +1,13 @@
+/* ─── Section ───────────────────────────────────────────────── */
 .section {
-  min-height: 300vh;
+  min-height: auto;
+  overflow: hidden;
 }
 
-.stickyContainer {
-  position: sticky;
-  top: 150px;
-}
-
+/* ─── Stage ──────────────────────────────────────────────────── */
 .stage {
   position: relative;
-  height: 708px;
-  overflow: visible;
-}
-
-.titleBlock {
-  position: absolute;
-  top: 100px;
-  left: 80px;
-  z-index: 3;
-  max-width: 22%;
-  will-change: transform;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 40px 80px 80px;
 }
 
 .label {
@@ -37,153 +22,129 @@
 
 .title {
   font-family: "Bebas Neue", var(--font-display);
-  font-size: 58.207px;
+  font-size: 58px;
   font-weight: 400;
   line-height: 1.1;
-  letter-spacing: -2.328px;
+  letter-spacing: -2.3px;
   text-transform: uppercase;
   color: var(--navy);
   margin: 0;
-  padding-right: 4px;
 }
 
-/* Fixed CTA Block - positioned below title */
-.ctaBlock {
-  position: absolute;
-  top: 408px;
-  left: 80px;
-  z-index: 3;
-  width: calc((100vw - 160px - 24px) / 4);
-  height: 300px;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: center;
-  border-radius: 12px;
-}
-
-.avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.ctaTitle {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 32px;
-  font-weight: 400;
-  letter-spacing: -1.3px;
-  color: var(--navy);
-  margin: 0;
-}
-
-.ctaButton {
-  display: inline-block;
-  padding: 12px 28px;
-  background: var(--navy);
-  color: white;
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: -0.36px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.2s;
-  text-align: center;
-  width: fit-content;
-}
-
-.ctaButton:hover {
-  background: #0a1f2e;
-  transform: translateY(-2px);
-}
-
-/* Property Types - Animated Text */
+/* ─── Property types ─────────────────────────────────────────── */
 .propertyTypes {
   position: absolute;
-  top: 40px; /* Align with top of stage */
-  right: 0;
-  z-index: 3;
+  top: 40px;
+  right: 80px;
+  z-index: 5;
   font-family: "Bebas Neue", var(--font-display);
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(6, 20, 27, 0.35);
-  will-change: transform;
   white-space: nowrap;
-  padding-right: 80px;
   display: flex;
   gap: 16px;
 }
 
 .propertyType {
+  pointer-events: auto;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .propertyType:hover {
-  color: var(--navy); /* Full blue like HIGHER STANDARDS */
+  color: var(--navy);
 }
 
+/* ─── Bento Grid ─────────────────────────────────────────────── */
 .bentoGrid {
-  position: absolute;
-  top: 100px;
-  left: calc(
-    25vw + 122px
-  ); /* Increased to hide column 4 without overflow clipping */
+  position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(4, calc((100vw - 160px - 24px) / 4));
-  grid-template-rows: 300px 300px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 340px 340px;
   gap: 8px;
-  width: max-content;
-  height: 608px;
-  will-change: transform;
+  height: 688px;
 }
 
-/* Cards */
+/* ─── Grid positions ─────────────────────────────────────────── */
+
+/* Row 1, col 1–2 */
+.painting {
+  grid-row: 1;
+  grid-column: 1 / 3;
+}
+
+/* Row 2, col 1 */
+.maintenance {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+/* Row 2, col 4 — hero heading tile */
+.heroTile {
+  grid-row: 2;
+  grid-column: 4;
+  background: var(--cream, #f5f0e8);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.heroBody {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--navy);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Row 2, col 2 */
+.waterproofing {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+/* Col 3, rows 1–2 — tall tile */
+.cleaning {
+  grid-row: 1 / 3;
+  grid-column: 3;
+}
+
+/* Row 1, col 4 */
+.heightSafety {
+  grid-row: 1;
+  grid-column: 4;
+}
+
+/* Row 2, col 4 — empty, no card */
+
+/* ─── Card base ──────────────────────────────────────────────── */
 .card {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-
-  border: 1px solid transparent;
-  transition: border-color 0.25s ease;
+  display: block;
 }
 
-/* Animated hover border */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  border: 1px solid var(--navy);
-  opacity: 0;
-  transform: scale(0.985);
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-  pointer-events: none;
-  z-index: 6;
-}
-
-.card:hover::after {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Media layers */
+/* ─── Media layer (zooms on hover) ──────────────────────────── */
 .imageWrap {
   position: absolute;
   inset: 0;
-  transition: opacity 0.35s ease;
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.card:hover .imageWrap {
+  transform: scale(1.06);
 }
 
 .image {
@@ -196,22 +157,76 @@
   object-fit: cover;
 }
 
+/* ─── Gradient overlay ───────────────────────────────────────── */
 .overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(6, 20, 27, 0.2),
-    rgba(6, 20, 27, 0.6)
+    rgba(6, 20, 27, 0.15),
+    rgba(6, 20, 27, 0.55)
   );
-  transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
-/* Title — glides instead of jumping */
-.cardTitle {
+/* ─── Arrow icon — top-right, fades in on hover ─────────────── */
+.arrowIcon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover .arrowIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Card text ──────────────────────────────────────────────── */
+.cardContent {
   position: absolute;
   left: 18px;
   bottom: 18px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Hero heading inside maintenance tile */
+.heroHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  text-transform: none;
+  color: var(--navy);
+  margin: 0 0 16px 0;
+}
+
+.cardTitle {
   color: white;
   font-family: "Bebas Neue", var(--font-display);
   font-size: 24px;
@@ -219,193 +234,27 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin: 0;
-  z-index: 5;
-
-  transform: translateY(0);
-  transition:
-    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
-    color 0.25s ease;
 }
 
-/* White hover surface */
-.hoverContent {
-  position: absolute;
-  inset: 0;
-  background: white;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  z-index: 2;
-}
-
-.hoverTitle {
-  font-family: "Bebas Neue", var(--font-display);
-  font-weight: 400;
-  font-size: 24px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--navy);
-  margin: 0;
-}
-
-/* Hover layout: title top-left, text mid, pills bottom */
-.hoverInner {
-  position: absolute;
-  inset: 0;
-  padding: 72px 24px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-  z-index: 5;
-}
-
-/* Top-right universal link icon */
-.cardIcon {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  font-size: 18px;
-  font-family: "Bebas Neue", var(--font-display);
-  color: var(--navy);
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-  z-index: 7;
-}
-
-/* Hover behaviour */
-.card:hover .imageWrap,
-.card:hover .overlay {
-  opacity: 0;
-}
-
-.card:hover .hoverContent {
-  opacity: 1;
-}
-
-.card:hover .cardTitle {
-  color: var(--navy);
-  opacity: 0;
-}
-
-.card:hover .hoverInner {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.12s;
-}
-
-.card:hover .cardIcon {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Description and pills */
-.hoverDescription {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--navy);
-  margin: 0;
-}
-
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.pill {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--navy);
-  border: 1px solid var(--navy);
-  border-radius: 4px;
-  padding: 6px 10px;
-  white-space: nowrap;
-}
-
-/* EXACT 4x2 GRID LAYOUT */
-
-/* EMPTY PLACEHOLDER - Row 2, Column 1 (will align with fixed CTA) */
-.empty {
-  grid-row: 2;
-  grid-column: 1;
-  background: transparent;
-  pointer-events: none;
-}
-
-/* PAINTING - Row 1, Columns 1-2 (spans 2 columns) */
-.painting {
-  grid-row: 1;
-  grid-column: 1 / 3;
-}
-
-/* WATERPROOFING - Row 2, Column 2 */
-.waterproofing {
-  grid-row: 2;
-  grid-column: 4;
-}
-
-/* CLEANING - Rows 1-2 (spans 2 rows), Column 3 */
-.cleaning {
-  grid-row: 1 / 3;
-  grid-column: 3;
-}
-
-/* HEIGHT SAFETY - Row 1, Column 4 */
-.heightSafety {
-  grid-row: 1;
-  grid-column: 4;
-}
-
-/* MAINTENANCE - Row 2, Column 4 */
-.maintenance {
-  grid-row: 2;
-  grid-column: 2;
-}
-
-/* Responsive */
-@media (max-width: 1600px) {
-  /* Grid columns auto-adjust via calc() */
-}
-
+/* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1400px) {
   .stage {
     height: 650px;
+    padding: 0 60px;
   }
-
   .titleBlock {
     left: 60px;
     top: 80px;
   }
-
-  .ctaBlock {
-    left: 60px;
-    top: 368px;
-    height: 280px;
-  }
-
   .propertyTypes {
     top: 30px;
-    right: 0;
+    right: 60px;
     font-size: 14px;
-    padding-right: 60px;
   }
-
   .bentoGrid {
-    left: calc(25vw + 92px); /* Adjusted proportionally (122 - 30) */
     top: 80px;
+    left: 60px;
+    right: 60px;
     grid-template-rows: 280px 280px;
     height: 568px;
   }
@@ -415,12 +264,10 @@
   .titleBlock {
     max-width: 26%;
   }
-
   .title {
     font-size: 48px;
-    letter-spacing: -1.92px;
+    letter-spacing: -1.9px;
   }
-
   .bentoGrid {
     grid-template-rows: 260px 260px;
     height: 528px;
@@ -428,72 +275,45 @@
 }
 
 @media (max-width: 1024px) {
-  .section {
-    min-height: auto;
-  }
-
-  .stickyContainer {
-    position: relative;
-    top: 0;
-  }
-
   .stage {
     height: auto;
     padding: 60px 40px;
   }
-
   .titleBlock {
     position: relative;
     top: 0;
     left: 0;
     max-width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    pointer-events: auto;
   }
-
-  .ctaBlock {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    margin-bottom: 40px;
-  }
-
   .propertyTypes {
     position: relative;
     top: 0;
     right: 0;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
-
   .bentoGrid {
     position: relative;
     top: 0;
     left: 0;
+    right: 0;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    width: 100%;
     height: auto;
-    transform: none !important;
   }
-
-  .painting {
+  .painting,
+  .maintenance {
     grid-column: 1 / 3;
     grid-row: auto;
     min-height: 300px;
   }
-
-  .empty {
-    display: none; /* Hide empty placeholder on mobile */
-  }
-
-  .waterproofing,
   .cleaning,
   .heightSafety,
-  .maintenance {
+  .waterproofing {
     grid-column: span 1;
     grid-row: auto;
-    min-height: 300px;
+    min-height: 260px;
   }
 }
 
@@ -501,81 +321,21 @@
   .stage {
     padding: 40px 24px;
   }
-
   .title {
     font-size: 40px;
     letter-spacing: -1.6px;
   }
-
-  .propertyTypes {
-    font-size: 12px;
-  }
-
   .bentoGrid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
-
-  .empty {
-    display: none;
-  }
-
   .painting,
-  .waterproofing,
+  .maintenance,
   .cleaning,
   .heightSafety,
-  .maintenance {
+  .waterproofing {
     grid-column: 1;
     grid-row: auto;
-    min-height: 280px;
-  }
-
-  .ctaTitle {
-    font-size: 28px;
-    letter-spacing: -1.1px;
-  }
-
-  .ctaDescription {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 36px;
-    letter-spacing: -1.44px;
-  }
-
-  .label {
-    font-size: 18px;
-  }
-
-  .propertyTypes {
-    font-size: 11px;
-  }
-
-  .painting,
-  .waterproofing,
-  .cleaning,
-  .heightSafety,
-  .maintenance {
-    min-height: 250px;
-  }
-
-  .cardTitle {
-    font-size: 20px;
-  }
-
-  .ctaTitle {
-    font-size: 24px;
-  }
-
-  .ctaDescription {
-    font-size: 14px;
-  }
-
-  .avatar {
-    width: 60px;
-    height: 60px;
+    min-height: 260px;
   }
 }
