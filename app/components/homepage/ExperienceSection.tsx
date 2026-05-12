@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ExperienceSection.module.css";
 
@@ -72,8 +72,52 @@ const tabIds = tabs.map((t) => t.id);
 
 export default function ExperienceSection() {
   const [active, setActive] = useState<TabId>("certified");
+  const overlayRef = useRef<HTMLSpanElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+
   const currentIndex = tabIds.indexOf(active);
   const current = tabs[currentIndex];
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    const bar = barRef.current;
+    if (!overlay || !bar) return;
+
+    const vh = window.innerHeight;
+
+    // Absolute document Y of the bar's top edge
+    const barDocTop = window.scrollY + bar.getBoundingClientRect().top;
+
+    // Start animating when the bar's top edge is 80% down the viewport
+    // i.e. user has scrolled until bar is near the bottom of the screen
+    const scrollStart = barDocTop - vh * 0.8;
+
+    // Fully revealed when bar's top edge is 30% down the viewport
+    // i.e. bar is comfortably centred/upper portion of screen
+    const scrollEnd = barDocTop - vh * 0.3;
+
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY <= scrollStart) {
+        overlay.style.clipPath = "inset(0 100% 0 0)";
+        return;
+      }
+
+      if (scrollY >= scrollEnd) {
+        overlay.style.clipPath = "inset(0 0% 0 0)";
+        return;
+      }
+
+      const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+      overlay.style.clipPath = `inset(0 ${(1 - progress) * 100}% 0 0)`;
+    };
+
+    overlay.style.clipPath = "inset(0 100% 0 0)";
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const prev = () =>
     setActive(
@@ -87,10 +131,23 @@ export default function ExperienceSection() {
   return (
     <section className={styles.section}>
       {/* ── Top bar: HIGHER STANDARDS + tabs ─────────────────── */}
-      <div className={styles.bar}>
+      <div className={styles.bar} ref={barRef}>
         <div className={styles.barGrid}>
           <div className={styles.barHeadline}>
-            <p className={styles.headline}>HIGHER STANDARDS.</p>
+            <div className={styles.headlineWrap}>
+              <span className={styles.headlineBase} aria-hidden="true">
+                HIGHER STANDARDS.
+              </span>
+              <span
+                ref={overlayRef}
+                className={styles.headlineOverlay}
+                aria-hidden="true"
+                style={{ clipPath: "inset(0 100% 0 0)" }}
+              >
+                HIGHER STANDARDS.
+              </span>
+              <span className={styles.headlineSr}>HIGHER STANDARDS.</span>
+            </div>
           </div>
           {tabs.map((tab) => (
             <button

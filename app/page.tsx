@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Hero />
       <ExperienceSection />
-      <PartnersCarousel />
+      {/* <PartnersCarousel /> */}
 
       <ProcessSection />
       <ProjectShowcase />

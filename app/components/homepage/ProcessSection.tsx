@@ -1,5 +1,8 @@
-import styles from "./ProcessSection.module.css";
+"use client";
+
+import { useRef, useEffect } from "react";
 import Link from "next/link";
+import styles from "./ProcessSection.module.css";
 
 const steps = [
   {
@@ -29,18 +32,56 @@ const steps = [
 ];
 
 export default function ProcessSection() {
+  const overlayRef = useRef<HTMLSpanElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    const bar = barRef.current;
+    if (!overlay || !bar) return;
+
+    const barDocTop = window.scrollY + bar.getBoundingClientRect().top;
+    const scrollStart = barDocTop - window.innerHeight * 0.8;
+    const scrollEnd = barDocTop - window.innerHeight * 0.3;
+
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY <= scrollStart) {
+        overlay.style.clipPath = "inset(0 100% 0 0)";
+        return;
+      }
+      if (scrollY >= scrollEnd) {
+        overlay.style.clipPath = "inset(0 0% 0 0)";
+        return;
+      }
+      const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+      overlay.style.clipPath = `inset(0 ${(1 - progress) * 100}% 0 0)`;
+    };
+
+    overlay.style.clipPath = "inset(0 100% 0 0)";
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section className={styles.section}>
-      {/* ── Header — same bar pattern as ExperienceSection ─── */}
-      <div className={styles.bar}>
+      <div className={styles.bar} ref={barRef}>
         <div className={styles.barGrid}>
-          <div className={styles.barLeft}>
-            <p className={styles.eyebrow}>OUR APPROACH</p>
-            <h2 className={styles.headline}>
-              Four steps,
-              <br />
-              zero surprises.
-            </h2>
+          <div className={styles.barHeadline}>
+            <div className={styles.headlineWrap}>
+              <span className={styles.headlineBase} aria-hidden="true">
+                OUR PROCESS.
+              </span>
+              <span
+                ref={overlayRef}
+                className={styles.headlineOverlay}
+                aria-hidden="true"
+                style={{ clipPath: "inset(0 100% 0 0)" }}
+              >
+                OUR PROCESS.
+              </span>
+              <span className={styles.headlineSr}>OUR PROCESS.</span>
+            </div>
           </div>
           <div className={styles.barRight}>
             <p className={styles.intro}>
@@ -54,13 +95,9 @@ export default function ProcessSection() {
         </div>
       </div>
 
-      {/* ── Steps grid ─────────────────────────────────────── */}
       <div className={styles.grid}>
-        {steps.map((step, i) => (
-          <div
-            key={step.number}
-            className={`${styles.step} ${i === 0 ? styles.stepActive : ""}`}
-          >
+        {steps.map((step) => (
+          <div key={step.number} className={styles.step}>
             <div className={styles.stepTop}>
               <span className={styles.stepNumber}>{step.number}</span>
             </div>

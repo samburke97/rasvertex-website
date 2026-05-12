@@ -1,13 +1,31 @@
-/* Mega menu container - expands to the right only */
-.megaMenu {
+/* Wrapper — fills gap between button and card */
+.megaMenuWrapper {
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 6px;
-  background: #6d2932; /* Burgundy background */
+  padding-top: 8px;
+}
+
+/* Mega menu card */
+.megaMenu {
+  background: #6d2932;
   border-radius: 12px;
   padding: 40px;
   overflow: hidden;
+  position: relative;
+}
+
+/* Arrow pointing up at nav button */
+.megaMenu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 32px;
+  width: 16px;
+  height: 16px;
+  background: #6d2932;
+  border-radius: 3px;
+  transform: rotate(45deg);
 }
 
 /* Content wrapper */
@@ -17,7 +35,7 @@
   min-height: min-content;
 }
 
-/* Column 1: Service Categories - FIXED WIDTH, always visible */
+/* Column 1: Service Categories */
 .servicesList {
   width: 200px;
   flex-shrink: 0;
@@ -49,7 +67,6 @@
   opacity: 1;
 }
 
-/* 10 Years Logo - Bottom Left */
 .logoContainer {
   display: flex;
   align-items: center;
@@ -64,7 +81,7 @@
   height: auto;
 }
 
-/* Expanded section - appears on the right */
+/* Expanded section */
 .expandedSection {
   display: flex;
   gap: 40px;
@@ -73,7 +90,6 @@
   height: 420px;
 }
 
-/* Column 2: Content Area */
 .serviceContent {
   flex: 1;
   display: flex;
@@ -88,7 +104,6 @@
   height: 100%;
 }
 
-/* Description at the top */
 .serviceDescription {
   color: white;
   font-size: 16px;
@@ -98,7 +113,6 @@
   font-weight: 300;
 }
 
-/* Pills at the very bottom */
 .servicePills {
   display: flex;
   flex-wrap: wrap;
@@ -127,7 +141,6 @@
   transform: translateY(-1px);
 }
 
-/* Column 3: Image */
 .serviceImage {
   width: 480px;
   height: 100%;
@@ -148,55 +161,44 @@
   font-family: var(--font-display);
 }
 
-/* Responsive adjustments */
 @media (max-width: 1280px) {
   .serviceImage {
     width: 400px;
   }
-
   .expandedSection {
     height: 380px;
   }
-
   .logoContainer {
     padding-top: 16px;
   }
-
   .tenYearsLogo {
     width: 100px;
   }
 }
 
 @media (max-width: 1024px) {
-  /* Mobile: no two-stage, always full width */
   .megaMenu {
     width: 90vw !important;
     max-width: 900px;
   }
-
   .content {
     min-height: 320px;
   }
-
   .servicesList {
     width: 160px;
     gap: 2px;
   }
-
   .serviceButton {
     font-size: 18px;
     padding: 6px 12px;
   }
-
   .logoContainer {
     display: none;
   }
-
   .expandedSection {
     gap: 24px;
     height: 300px;
   }
-
   .serviceImage {
     width: 340px;
   }

@@ -46,7 +46,6 @@
   transform: translateY(0);
 }
 
-/* At top — solid white, no border */
 .nav.atTop {
   background: #ffffff;
   border-bottom-color: transparent;
@@ -55,7 +54,6 @@
   box-shadow: none;
 }
 
-/* Scrolled — frosted white glass + subtle border */
 .nav:not(.atTop) {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(18px);
@@ -63,18 +61,19 @@
   border-bottom-color: rgba(30, 44, 92, 0.08);
 }
 
-/* ─── Inner wrapper — 3 columns ────────────────────────────── */
+/* ─── Inner wrapper ─────────────────────────────────────────── */
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 72px;
 }
 
-/* ─── Left: logo only ───────────────────────────────────────── */
+/* ─── Left: logo + nav links together ──────────────────────── */
 .leftSection {
   display: flex;
   align-items: center;
+  gap: 48px;
 }
 
 /* ─── Logo ──────────────────────────────────────────────────── */
@@ -104,7 +103,7 @@
 .desktopMenu {
   display: none;
   align-items: center;
-  gap: 48px;
+  gap: 40px;
 }
 
 @media (min-width: 1024px) {
@@ -123,46 +122,43 @@
   gap: 4px;
   color: var(--navy);
   font-family: "Bebas Neue", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   background: none;
   border: none;
   cursor: pointer;
   padding: 24px 0;
-  transition: color 0.2s;
-  opacity: 0.75;
+  transition: color 0.25s;
 }
 
 .menuButton:hover,
 .menuButton.active {
-  color: var(--navy);
-  opacity: 1;
+  color: var(--navy-dark, #010f3a);
 }
 
 .menuLink {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--navy);
   text-decoration: none;
   padding: 24px 0;
-  transition: opacity 0.2s;
-  opacity: 0.75;
+  display: block;
+  transition: color 0.25s;
 }
 
 .menuLink:hover {
-  opacity: 1;
+  color: var(--navy-dark, #010f3a);
 }
 
-/* ─── CTA area (search + contact button) ───────────────────── */
+/* ─── CTA area ──────────────────────────────────────────────── */
 .ctaButtons {
   display: none;
   align-items: center;
-  justify-content: flex-end;
   gap: 20px;
 }
 
@@ -190,7 +186,7 @@
   opacity: 1;
 }
 
-/* Contact button — sharp-cornered, navy fill, arrow */
+/* Contact button — rounded, Bebas Neue, navy fill */
 .contactButton {
   display: inline-flex;
   align-items: center;
@@ -198,11 +194,11 @@
   padding: 11px 24px;
   background: var(--navy);
   color: #ffffff;
-  border-radius: 0;
+  border-radius: 12px;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   transition: background 0.2s;
   border: none;

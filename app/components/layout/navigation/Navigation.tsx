@@ -19,14 +19,12 @@ export default function Navigation() {
   const [isVisible, setIsVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
 
-  // Reset activeService when dropdown closes
   useEffect(() => {
     if (!servicesOpen) {
       setActiveService(null);
     }
   }, [servicesOpen]);
 
-  // Close mobile menu on desktop resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && mobileMenuOpen) {
@@ -37,20 +35,17 @@ export default function Navigation() {
     return () => window.removeEventListener("resize", handleResize);
   }, [mobileMenuOpen]);
 
-  // Hide/show on scroll + track if at top
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
     const updateNavbar = () => {
       const currentScrollY = window.scrollY;
-
       setIsAtTop(currentScrollY < 10);
 
-      // Hide as soon as we've scrolled past the hero headline block
       const headlineBlock = document.querySelector("[data-headline]");
       const pastHeadline = headlineBlock
-        ? headlineBlock.getBoundingClientRect().bottom < 72 // 72 = nav height
+        ? headlineBlock.getBoundingClientRect().bottom < 72
         : currentScrollY > 300;
 
       if (currentScrollY < lastScrollY) {
@@ -76,7 +71,6 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Backdrop overlay when dropdown open */}
       {(servicesOpen || companyOpen) && <div className={styles.backdrop} />}
 
       <nav
@@ -86,7 +80,7 @@ export default function Navigation() {
       >
         <Container size="xl">
           <div className={styles.wrapper}>
-            {/* ── Col 1: Logo (left) ── */}
+            {/* ── Left: logo + nav links ── */}
             <div className={styles.leftSection}>
               <Link href="/" className={styles.logo}>
                 <Image
@@ -98,6 +92,47 @@ export default function Navigation() {
                   style={{ objectFit: "contain" }}
                 />
               </Link>
+
+              {/* Desktop nav links — beside logo */}
+              <div className={styles.desktopMenu}>
+                <div
+                  className={styles.dropdown}
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <button
+                    className={`${styles.menuButton} ${servicesOpen ? styles.active : ""}`}
+                  >
+                    Services
+                  </button>
+                  <ServicesDropdown
+                    isOpen={servicesOpen}
+                    activeService={activeService}
+                    setActiveService={setActiveService}
+                  />
+                </div>
+
+                <div
+                  className={styles.dropdown}
+                  onMouseEnter={() => setCompanyOpen(true)}
+                  onMouseLeave={() => setCompanyOpen(false)}
+                >
+                  <button
+                    className={`${styles.menuButton} ${companyOpen ? styles.active : ""}`}
+                  >
+                    Company
+                  </button>
+                  <CompanyDropdown isOpen={companyOpen} />
+                </div>
+
+                <Link href="/process" className={styles.menuLink}>
+                  Process
+                </Link>
+
+                <Link href="/work" className={styles.menuLink}>
+                  Work
+                </Link>
+              </div>
 
               {/* Hamburger — mobile only */}
               <button
@@ -113,52 +148,7 @@ export default function Navigation() {
               </button>
             </div>
 
-            {/* ── Col 2: Nav links (center) ── */}
-            <div className={styles.desktopMenu}>
-              <div
-                className={styles.dropdown}
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                <button
-                  className={`${styles.menuButton} ${
-                    servicesOpen ? styles.active : ""
-                  }`}
-                >
-                  Services
-                </button>
-                <ServicesDropdown
-                  isOpen={servicesOpen}
-                  activeService={activeService}
-                  setActiveService={setActiveService}
-                />
-              </div>
-
-              <div
-                className={styles.dropdown}
-                onMouseEnter={() => setCompanyOpen(true)}
-                onMouseLeave={() => setCompanyOpen(false)}
-              >
-                <button
-                  className={`${styles.menuButton} ${
-                    companyOpen ? styles.active : ""
-                  }`}
-                >
-                  Company
-                </button>
-                <CompanyDropdown isOpen={companyOpen} />
-              </div>
-
-              <Link href="/process" className={styles.menuLink}>
-                Process
-              </Link>
-
-              <Link href="/work" className={styles.menuLink}>
-                Work
-              </Link>
-            </div>
-
-            {/* ── Col 3: Search + Contact (right) ── */}
+            {/* ── Right: Search + Contact ── */}
             <div className={styles.ctaButtons}>
               <Link
                 href="/search"
