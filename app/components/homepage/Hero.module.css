@@ -5,50 +5,7 @@
 
 /* ─── Stage ──────────────────────────────────────────────────── */
 .stage {
-  position: relative;
-  padding: 100px 80px 80px;
-  overflow-x: clip;
-}
-
-/* ─── Headline block ─────────────────────────────────────────── */
-.headlineBlock {
-  margin-bottom: 48px;
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin: 0 0 20px;
-}
-
-.eyebrowDot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--red);
-  flex-shrink: 0;
-}
-
-.headline {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: clamp(64px, 8.5vw, 130px);
-  line-height: 0.92;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: var(--navy);
-  margin: 0;
-}
-
-.headline em {
-  font-style: italic;
-  color: var(--navy);
+  padding: 24px 80px 80px;
 }
 
 /* ─── Bento Grid ─────────────────────────────────────────────── */
@@ -58,7 +15,6 @@
   grid-template-rows: 340px 340px;
   gap: 8px;
   height: 688px;
-  overflow: visible;
 }
 
 /* ─── Card positions ─────────────────────────────────────────── */
@@ -79,52 +35,56 @@
   grid-column: 3;
 }
 
-/* ─── Col 4 wrapper — flex column, moves as one unit on scroll ── */
+/* ─── Col 4 ──────────────────────────────────────────────────── */
 .col4 {
   grid-row: 1 / 3;
   grid-column: 4;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: 688px; /* 340 + 8 + 340 */
+  height: 688px;
 }
 
-/* One Partner tile — top, exactly one row tall */
-.heroTile {
-  height: 340px;
-  flex-shrink: 0;
-  background: #6d2a33;
-  border-radius: 12px;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.heroTitle {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 56px;
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin: 0;
-}
-
-.heroBody {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.78);
-  margin: 0;
-}
-
-/* Height Safety — bottom, exactly one row tall */
 .heightSafety {
   height: 340px;
   flex-shrink: 0;
+}
+
+/* One Partner tile — cream */
+.heroTile {
+  height: 340px;
+  flex-shrink: 0;
+  background: #f7ece1;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.tileBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Matches .cardTitle exactly — same Bebas style as other cards */
+.tileTitle {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #011955;
+  margin: 0;
+}
+
+.tileBody {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #011955;
+  opacity: 0.65;
+  margin: 0;
 }
 
 /* ─── Card base ──────────────────────────────────────────────── */
@@ -142,7 +102,6 @@
   transform: scale(1);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
 .card:hover .imageWrap {
   transform: scale(1.06);
 }
@@ -180,7 +139,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--navy);
+  color: #011955;
   opacity: 0;
   transform: scale(0.8);
   transition:
@@ -188,7 +147,6 @@
     transform 0.4s ease;
   pointer-events: none;
 }
-
 .card:hover .arrowIcon {
   opacity: 1;
   transform: scale(1);
@@ -213,7 +171,7 @@
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1400px) {
   .stage {
-    padding: 100px 60px 60px;
+    padding: 24px 60px 60px;
   }
   .bentoGrid {
     grid-template-rows: 280px 280px;
@@ -222,18 +180,15 @@
   .col4 {
     height: 568px;
   }
-  .heroTile {
+  .heightSafety {
     height: 280px;
   }
-  .heightSafety {
+  .heroTile {
     height: 280px;
   }
 }
 
 @media (max-width: 1200px) {
-  .headline {
-    font-size: clamp(56px, 7vw, 100px);
-  }
   .bentoGrid {
     grid-template-rows: 260px 260px;
     height: 528px;
@@ -241,77 +196,96 @@
   .col4 {
     height: 528px;
   }
-  .heroTile {
+  .heightSafety {
     height: 260px;
   }
-  .heightSafety {
+  .heroTile {
     height: 260px;
   }
 }
 
 @media (max-width: 1024px) {
   .stage {
-    padding: 100px 40px 60px;
+    padding: 24px 40px 60px;
   }
   .bentoGrid {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: 300px 260px 260px;
     height: auto;
   }
-  .col4 {
+  .painting {
     grid-column: 1 / 3;
-    flex-direction: row;
-    height: 300px;
-    transform: none !important;
+    grid-row: 1;
   }
-  .heroTile {
-    flex: 1;
-    height: 100%;
+  .maintenance {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 260px;
+  }
+  .waterproofing {
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 260px;
+  }
+  .cleaning {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: 260px;
+  }
+  .col4 {
+    grid-column: 2;
+    grid-row: 3;
+    height: auto;
   }
   .heightSafety {
-    flex: 1;
-    height: 100%;
+    height: 260px;
   }
-  .painting,
-  .maintenance {
-    grid-column: 1 / 3;
-    min-height: 300px;
-  }
-  .cleaning,
-  .waterproofing {
-    grid-column: span 1;
-    min-height: 260px;
+  .heroTile {
+    height: 260px;
   }
 }
 
 @media (max-width: 768px) {
   .stage {
-    padding: 90px 24px 40px;
-  }
-  .headlineBlock {
-    margin-bottom: 32px;
+    padding: 24px 24px 40px;
   }
   .bentoGrid {
     grid-template-columns: 1fr;
     gap: 10px;
+    height: auto;
+  }
+  .painting {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 260px;
+  }
+  .maintenance {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 220px;
+  }
+  .waterproofing {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 220px;
+  }
+  .cleaning {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 260px;
   }
   .col4 {
     grid-column: 1;
-    flex-direction: column;
-    height: auto;
-    transform: none !important;
-  }
-  .heroTile {
+    grid-row: auto;
+    flex-direction: row;
     height: 260px;
   }
   .heightSafety {
-    height: 260px;
+    flex: 1;
+    height: 100%;
   }
-  .painting,
-  .maintenance,
-  .cleaning,
-  .waterproofing {
-    grid-column: 1;
-    min-height: 260px;
+  .heroTile {
+    flex: 1;
+    height: 100%;
   }
 }

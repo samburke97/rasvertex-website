@@ -4,14 +4,9 @@ export default function HeroMeta() {
   return (
     <div className={styles.bar}>
       <div className={styles.grid}>
-        {/* Col 1 — What we do */}
+        {/* Col 1 — Higher Standards */}
         <div className={styles.col}>
-          <span className={styles.label}>[ What we do ]</span>
-          <p className={styles.body}>
-            We&apos;re the Sunshine Coast&apos;s property maintenance partner.
-            Built by locals, we care for residential, commercial, and body
-            corporate clients from Caloundra to Noosa.
-          </p>
+          <p className={styles.headline}>HIGHER STANDARDS.</p>
         </div>
 
         {/* Col 2 — Coverage */}
