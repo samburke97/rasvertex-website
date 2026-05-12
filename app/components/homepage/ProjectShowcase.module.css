@@ -1,0 +1,248 @@
+/* ─── Section ────────────────────────────────────────────────── */
+.section {
+  overflow: hidden;
+  padding-bottom: 100px;
+}
+
+/* ─── Bar — identical to ExperienceSection bar ───────────────── */
+.bar {
+  padding: 0 80px;
+}
+
+.barGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.barHeadline {
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+}
+
+/* Exact same as .headline in ExperienceSection */
+.headline {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #c4c9d4;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ─── Embla ──────────────────────────────────────────────────── */
+.viewport {
+  overflow: hidden;
+  padding-left: 80px;
+  margin-top: 24px;
+}
+
+.track {
+  display: flex;
+  gap: 8px;
+  padding-right: 80px;
+}
+
+/* ─── Card — one hero column wide, one hero row tall ─────────── */
+/* Hero: stage padding 80px each side, 4 cols, 3 gaps of 8px     */
+.card {
+  flex: 0 0 calc((100vw - 160px - 16px) / 3);
+  height: 340px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+/* ─── Photo card ─────────────────────────────────────────────── */
+.cardPhoto {
+  background: #0d1e3d;
+}
+
+/* ─── Cream info card ────────────────────────────────────────── */
+.cardCream {
+  background: #f7ece1;
+}
+
+/* ─── Maroon info card ───────────────────────────────────────── */
+.cardMaroon {
+  background: var(--burgundy, #6d2932);
+}
+
+/* ─── Shared image styles ────────────────────────────────────── */
+.image {
+  object-fit: cover;
+}
+
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 25, 85, 0.05),
+    rgba(1, 25, 85, 0.35)
+  );
+  pointer-events: none;
+}
+
+/* ─── Info face — visible by default, fades out on hover ─────── */
+.info {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+  gap: 8px;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover .info {
+  opacity: 0;
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Label — matches heroTile .tileTitle: Bebas Neue, same size */
+.infoLabel {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Value — matches heroTile .tileBody: Inter 14px */
+.infoValue {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.65;
+}
+
+/* Cream: navy text */
+.cardCream .infoLabel {
+  color: var(--navy, #011955);
+}
+.cardCream .infoValue {
+  color: var(--navy, #011955);
+}
+
+/* Maroon: white text */
+.cardMaroon .infoLabel {
+  color: white;
+}
+.cardMaroon .infoValue {
+  color: white;
+}
+
+/* ─── Image face — hidden by default, fades in on hover ─────── */
+.imageFace {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.imageFace .image {
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .imageFace .image {
+  transform: scale(1.06);
+}
+
+.card:hover .imageFace {
+  opacity: 1;
+}
+
+/* ─── Arrow icon — same as hero ──────────────────────────────── */
+.arrowIcon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #011955;
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover .arrowIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1400px) {
+  .card {
+    flex: 0 0 calc((100vw - 120px - 16px) / 3);
+    height: 320px;
+  }
+  .bar {
+    padding: 0 60px;
+  }
+  .viewport {
+    padding-left: 60px;
+  }
+  .track {
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card {
+    flex: 0 0 calc((100vw - 80px - 16px) / 3);
+    height: 280px;
+  }
+  .bar {
+    padding: 0 40px;
+  }
+  .viewport {
+    padding-left: 40px;
+  }
+  .track {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 75vw;
+    height: 260px;
+  }
+  .bar {
+    padding: 0 24px;
+  }
+  .viewport {
+    padding-left: 24px;
+  }
+  .track {
+    padding-right: 24px;
+  }
+}

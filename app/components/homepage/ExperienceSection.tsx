@@ -1,227 +1,176 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./ExperienceSection.module.css";
 
-const scrollSections = [
-  {
-    id: "local",
-    label: "ADVANTAGE",
-    description:
-      "Being locally owned means we care about the Sunshine Coast the way you do. Proud to be local, and proud to support our local community. Our reputation is built on knowing the community we serve.",
-    image: "/images/projects/1.jpeg",
-    communityLogos: true,
-  },
-  {
-    id: "experience",
-    label: "PROVEN TRACK RECORD",
-    description:
-      "Since 1999, we've maintained over 500 properties across SEQ. That's not luck. That's the result of showing up and doing the job right every single time.",
-    image: "/images/projects/2.jpeg",
-  },
-  {
-    id: "accountability",
-    label: "REAL ACCOUNTABILITY",
-    description:
-      "No corporate runaround. No excuses. When something needs fixing, we fix it. When we say we'll be there, we show up.",
-    image: "/images/projects/3.jpeg",
-    partners: true,
-  },
+const tabs = [
   {
     id: "certified",
-    label: "CERTIFIED & TRUSTED",
-    description:
-      "Fully licensed with QBCC, certified professionals, and trusted by Queensland's leading property managers and body corporates.",
-    image: "/images/projects/4.jpeg",
-    certifications: true,
+    number: "01",
+    label: "Certified",
+    heading: "LICENSED & INSURED",
+    body: "Every certification a body corporate, asset manager or insurer expects to see — held current, audited annually, and supplied in your tender pack on request.",
+    image: "/nav/painting.png",
+    imageAlt: "QBCC certified crew on site",
+    logos: [
+      { src: "/images/associations/qbcc.png", alt: "QBCC" },
+      {
+        src: "/images/associations/communityselect.png",
+        alt: "Community Select",
+      },
+      { src: "/images/associations/dulux.png", alt: "Dulux" },
+      { src: "/images/associations/haymes.svg", alt: "Haymes" },
+      { src: "/images/associations/mpa.png", alt: "MPA" },
+      { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
+    ],
   },
-];
+  {
+    id: "accountable",
+    number: "02",
+    label: "Accountable",
+    heading: "ONE PROJECT MANAGER",
+    body: "A named project manager runs every job from quote to warranty. Weekly photo report, single invoice, five-year workmanship warranty issued in writing.",
+    image: "/nav/maintenance.png",
+    imageAlt: "Project manager on site",
+    logos: [
+      { src: "/partners/accor.svg", alt: "Accor" },
+      { src: "/partners/archers.png", alt: "Archers" },
+      { src: "/partners/coolum.png", alt: "Coolum" },
+      { src: "/partners/gov.svg", alt: "Government" },
+      { src: "/partners/maroochy.png", alt: "Maroochy" },
+      { src: "/partners/mosaic.svg", alt: "Mosaic" },
+      { src: "/partners/novotel.svg.png", alt: "Novotel" },
+      { src: "/partners/pica.png", alt: "Pica" },
+      { src: "/partners/racv.png", alt: "RACV" },
+      { src: "/partners/raywhite.png", alt: "Ray White" },
+      { src: "/partners/trafalgar.svg", alt: "Trafalgar" },
+    ],
+  },
+  {
+    id: "proven",
+    number: "03",
+    label: "Proven",
+    heading: "500+ BUILDINGS MANAGED",
+    body: "A quarter-century of facade washes, balcony membranes, repaints and scheduled maintenance from Caloundra to Noosa.",
+    image: "/nav/cleaning.png",
+    imageAlt: "High-rise facade crew",
+  },
+  {
+    id: "local",
+    number: "04",
+    label: "Local",
+    heading: "BUILT HERE",
+    body: "Founded in Maroochydore in 1998. Our trade leads live where they work — response in hours, not weeks, and the relationship lasts beyond the warranty.",
+    image: "/images/projects/1.jpeg",
+    imageAlt: "Sunshine Coast project",
+  },
+] as const;
+
+type TabId = (typeof tabs)[number]["id"];
+const tabIds = tabs.map((t) => t.id);
 
 export default function ExperienceSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  const [active, setActive] = useState<TabId>("certified");
+  const currentIndex = tabIds.indexOf(active);
+  const current = tabs[currentIndex];
+
+  const prev = () =>
+    setActive(
+      tabIds[currentIndex === 0 ? tabIds.length - 1 : currentIndex - 1],
+    );
+  const next = () =>
+    setActive(
+      tabIds[currentIndex === tabIds.length - 1 ? 0 : currentIndex + 1],
+    );
 
   return (
-    <section className={styles.section} ref={containerRef}>
-      <div className={styles.container}>
-        {/* Left Column - Fixed */}
-        <div className={styles.leftColumn}>
-          <div className={styles.stickyContent}>
-            <p className={styles.label}>[ WHO WE ARE ]</p>
-            <h2 className={styles.title}>
-              25+ Years serving the Sunshine Coast community, where our
-              neighbours live, learn and work.
-            </h2>
+    <section className={styles.section}>
+      {/* ── Top bar: HIGHER STANDARDS + tabs ─────────────────── */}
+      <div className={styles.bar}>
+        <div className={styles.barGrid}>
+          <div className={styles.barHeadline}>
+            <p className={styles.headline}>HIGHER STANDARDS.</p>
+          </div>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`${styles.tab} ${active === tab.id ? styles.tabActive : ""}`}
+              onClick={() => setActive(tab.id)}
+            >
+              <span className={styles.tabLine} />
+              <span className={styles.tabNumber}>{tab.number}</span>
+              <span className={styles.tabLabel}>{tab.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
 
-            {/* CTA Block */}
-            <div className={styles.ctaBlock}>
-              <Image
-                src="/images/people/caro.jpg"
-                alt="Caro"
-                width={70}
-                height={70}
-                className={styles.avatar}
-              />
-              <h3 className={styles.ctaTitle}>HOW CAN WE HELP?</h3>
-              <p className={styles.ctaDescription}>
-                From small repairs to full repaints,we know every property type
-                and we'll guide you to the right solution for your project.
-              </p>
-              <a href="/contact" className={styles.ctaButton}>
-                FREE QUOTE
-              </a>
+      {/* ── Content: left text + right image ─────────────────── */}
+      <div className={styles.content} key={active}>
+        <div className={styles.left}>
+          <p className={styles.heading}>{current.heading}</p>
+          <p className={styles.body}>{current.body}</p>
+
+          {"logos" in current && current.logos && (
+            <div className={styles.logoRow}>
+              {current.logos.map((logo) => (
+                <div key={logo.alt} className={styles.logoWrap}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    className={styles.logo}
+                  />
+                </div>
+              ))}
             </div>
+          )}
+
+          <div className={styles.arrows}>
+            <button
+              className={styles.arrowBtn}
+              onClick={prev}
+              aria-label="Previous"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path
+                  d="M10.5 13.5L6 9l4.5-4.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              className={`${styles.arrowBtn} ${styles.arrowBtnActive}`}
+              onClick={next}
+              aria-label="Next"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path
+                  d="M7.5 4.5L12 9l-4.5 4.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* Right Column - Scrolling sections */}
-        <div className={styles.rightColumn}>
-          {scrollSections.map((section, index) => (
-            <div key={section.id} className={styles.scrollSection}>
-              <div className={styles.scrollContent}>
-                {/* Image at top */}
-                {section.image && (
-                  <div className={styles.sectionImage}>
-                    <Image
-                      src={section.image}
-                      alt={section.label}
-                      fill
-                      className={styles.image}
-                    />
-                  </div>
-                )}
-
-                {/* Label */}
-                <p className={styles.sectionLabel}>{section.label}</p>
-
-                {/* Description */}
-                <p className={styles.sectionDescription}>
-                  {section.description}
-                </p>
-
-                {/* Community logos if applicable */}
-                {section.communityLogos && (
-                  <div className={styles.communityLogos}>
-                    <Image
-                      src="/images/community/coolumbowls.png"
-                      alt="Coolum Bowls"
-                      width={100}
-                      height={50}
-                      className={styles.communityLogo}
-                    />
-                    <Image
-                      src="/images/community/coolumfc.png"
-                      alt="Coolum FC"
-                      width={60}
-                      height={60}
-                      className={styles.communityLogo}
-                    />
-                    <Image
-                      src="/images/community/coolumnetball.webp"
-                      alt="Coolum Netball"
-                      width={180}
-                      height={60}
-                      className={styles.communityLogo}
-                    />
-                    <Image
-                      src="/images/community/peregianbeachslsc.png"
-                      alt="Peregian Beach SLSC"
-                      width={60}
-                      height={60}
-                      className={styles.communityLogo}
-                    />
-                    <Image
-                      src="/images/community/ruok.png"
-                      alt="R U OK?"
-                      width={180}
-                      height={60}
-                      className={styles.communityLogo}
-                    />
-                    <Image
-                      src="/images/community/yahpitmuaythai.png"
-                      alt="Yahpit Muay Thai"
-                      width={60}
-                      height={60}
-                      className={styles.communityLogo}
-                    />
-                  </div>
-                )}
-
-                {/* Partner logos at bottom if applicable */}
-                {section.partners && (
-                  <div className={styles.partnerLogos}>
-                    <Image
-                      src="/partners/mosaic.svg"
-                      alt="Mosaic"
-                      width={90}
-                      height={36}
-                      className={styles.partnerLogo}
-                    />
-                    <Image
-                      src="/partners/pica.png"
-                      alt="Pica"
-                      width={70}
-                      height={36}
-                      className={styles.partnerLogo}
-                    />
-                    <Image
-                      src="/partners/novotel.svg.png"
-                      alt="Novotel"
-                      width={100}
-                      height={36}
-                      className={styles.partnerLogo}
-                    />
-                    <Image
-                      src="/partners/gov.svg"
-                      alt="QLD Gov"
-                      width={90}
-                      height={36}
-                      className={styles.partnerLogo}
-                    />
-                  </div>
-                )}
-
-                {/* Certification badges at bottom if applicable */}
-                {section.certifications && (
-                  <div className={styles.certifications}>
-                    <Image
-                      src="/images/associations/qbcc.png"
-                      alt="QBCC"
-                      width={70}
-                      height={70}
-                      className={styles.certBadge}
-                    />
-                    <Image
-                      src="/images/associations/mpa.png"
-                      alt="MPA"
-                      width={70}
-                      height={70}
-                      className={styles.certBadge}
-                    />
-                    <Image
-                      src="/images/associations/communityselect.png"
-                      alt="Community Select"
-                      width={70}
-                      height={70}
-                      className={styles.certBadge}
-                    />
-                    <Image
-                      src="/images/associations/smartstrata.png"
-                      alt="Smart Strata"
-                      width={50}
-                      height={50}
-                      className={styles.certBadge}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+        <div className={styles.right}>
+          <div className={styles.imageCard}>
+            <Image
+              src={current.image}
+              alt={current.imageAlt}
+              fill
+              className={styles.image}
+              sizes="(max-width: 860px) 100vw, 50vw"
+            />
+          </div>
         </div>
       </div>
     </section>

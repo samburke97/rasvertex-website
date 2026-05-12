@@ -89,7 +89,14 @@ export default function Navigation() {
             {/* ── Col 1: Logo (left) ── */}
             <div className={styles.leftSection}>
               <Link href="/" className={styles.logo}>
-                <span className={styles.logoText}>RAS-VERTEX</span>
+                <Image
+                  src="/logo.png"
+                  alt="RAS-VERTEX"
+                  width={160}
+                  height={40}
+                  priority
+                  style={{ objectFit: "contain" }}
+                />
               </Link>
 
               {/* Hamburger — mobile only */}

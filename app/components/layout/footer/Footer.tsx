@@ -15,9 +15,13 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
+      {/* Watermark — now at the top */}
+      <div className={styles.watermark}>
+        <span className={styles.watermarkText}>HIGHER STANDARDS</span>
+      </div>
+
       {/* Top Section */}
       <div className={styles.topSection}>
-        {/* Left Columns - grouped */}
         <div className={styles.leftColumns}>
           <div className={styles.column}>
             <span className={styles.columnTitle}>Sitemap</span>
@@ -62,7 +66,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter - far right */}
         <div className={styles.newsletter}>
           <span className={styles.columnTitle}>Newsletter</span>
           <form onSubmit={handleSubmit} className={styles.newsletterForm}>
@@ -85,11 +88,6 @@ export default function Footer() {
             </button>
           </form>
         </div>
-      </div>
-
-      {/* Watermark */}
-      <div className={styles.watermark}>
-        <span className={styles.watermarkText}>HIGHER STANDARDS</span>
       </div>
 
       {/* Bottom Section */}
