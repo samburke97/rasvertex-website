@@ -124,16 +124,31 @@
   opacity: 1;
 }
 
-/* ─── Content: left + right ──────────────────────────────────── */
-/* barGrid = 2fr 1fr 1fr 1fr 1fr inside 80px padding each side   */
-/* 01/02 border = 80px + 3/6 of inner = 80px + 50% of inner      */
-/* Left col must be exactly that wide, so image left = 01/02 line */
-.content {
+/* ─── Content wrapper ────────────────────────────────────────── */
+/* position:relative so dots can anchor absolutely to it         */
+.contentWrapper {
   display: grid;
   grid-template-columns: calc(80px + (100% - 160px) / 2 + 28px) 1fr;
   gap: 56px;
-  align-items: center;
+  align-items: stretch;
   padding: 48px 80px 80px 0;
+  position: relative;
+}
+
+/* Left column — content only, no dots */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 80px;
+}
+
+/* ─── Left — animated on tab change ─────────────────────────── */
+.contentLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   animation: fadeIn 0.3s ease both;
 }
 
@@ -148,24 +163,17 @@
   }
 }
 
-/* ─── Left ───────────────────────────────────────────────────── */
-.left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  padding-left: 80px;
-}
-
-.heading {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+/* Content headline — matches hero tileTitle */
+.contentHeadline {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--navy, #011955);
-  opacity: 0.45;
   margin: 0;
+  white-space: nowrap;
 }
 
 .body {
@@ -175,20 +183,21 @@
   color: var(--navy, #011955);
   opacity: 0.7;
   margin: 0;
+  max-width: 90%;
 }
 
 /* ─── Logos ──────────────────────────────────────────────────── */
 .logoRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px 28px;
+  gap: 24px;
   align-items: center;
 }
 
 .logoWrap {
   position: relative;
-  width: 72px;
-  height: 36px;
+  width: 80px;
+  height: 40px;
   flex-shrink: 0;
 }
 
@@ -197,37 +206,8 @@
   object-position: left center;
 }
 
-/* ─── Arrows ─────────────────────────────────────────────────── */
-.arrows {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.arrowBtn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(1, 25, 85, 0.18);
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: rgba(1, 25, 85, 0.3);
-  transition:
-    border-color 0.2s,
-    color 0.2s;
-}
-
-.arrowBtnActive,
-.arrowBtn:hover {
-  border-color: var(--navy, #011955);
-  color: var(--navy, #011955);
-}
-
-/* ─── Right — image ──────────────────────────────────────────── */
-.right {
+/* ─── Right — image card ─────────────────────────────────────── */
+.contentRight {
 }
 
 .imageCard {
@@ -243,6 +223,36 @@
   object-fit: cover;
 }
 
+/* ─── Dots ───────────────────────────────────────────────────── */
+/* Absolutely positioned to contentWrapper                        */
+/* bottom: 80px = wrapper's bottom padding → aligns with image   */
+.dots {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  border: none;
+  background: rgba(1, 25, 85, 0.18);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.25s,
+    width 0.25s;
+}
+
+.dotActive {
+  background: var(--navy, #011955);
+  width: 40px;
+}
+
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .bar {
@@ -251,13 +261,17 @@
   .barGrid {
     grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   }
-  .content {
+  .contentWrapper {
     grid-template-columns: 1fr 1fr;
     padding: 48px 48px 72px;
     gap: 48px;
   }
-  .left {
+  .leftColumn {
     padding-left: 0;
+  }
+  .dots {
+    bottom: 72px;
+    left: 0;
   }
   .tab {
     padding: 20px 16px 22px;
@@ -280,15 +294,19 @@
     border-left: none;
     border-top: 1px solid rgba(15, 42, 74, 0.1);
   }
-  .content {
+  .contentWrapper {
     grid-template-columns: 1fr;
     padding: 40px 32px 60px;
     gap: 36px;
   }
-  .left {
+  .leftColumn {
     padding-left: 0;
   }
-  .right {
+  .dots {
+    position: static;
+    margin-top: 8px;
+  }
+  .contentRight {
     order: -1;
   }
 }
@@ -297,7 +315,7 @@
   .bar {
     padding: 0 20px;
   }
-  .content {
+  .contentWrapper {
     padding: 32px 20px 48px;
   }
 }

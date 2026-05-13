@@ -6,13 +6,28 @@ import styles from "./ExperienceSection.module.css";
 
 const tabs = [
   {
-    id: "certified",
+    id: "every-challenge",
     number: "01",
-    label: "Certified",
-    heading: "LICENSED & INSURED",
-    body: "Every certification a body corporate, asset manager or insurer expects to see — held current, audited annually, and supplied in your tender pack on request.",
+    label: "Every Challenge",
+    headline: "One Partner. Multiple Trades.",
+    body: "From rope access and height safety to painting, waterproofing, cleaning, and remedial maintenance, RAS-VERTEX delivers integrated property services through one experienced in-house team.\n\nBy managing multiple trades under one partner, we simplify communication, reduce contractor overlap, and deliver more efficient project outcomes.",
     image: "/nav/painting.png",
-    imageAlt: "QBCC certified crew on site",
+    imageAlt: "Multi-trade team on commercial project",
+    logos: [
+      { src: "/images/associations/qbcc.png", alt: "QBCC" },
+      { src: "/images/associations/dulux.png", alt: "Dulux" },
+      { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
+      { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
+    ],
+  },
+  {
+    id: "built-for-height",
+    number: "02",
+    label: "Built For Height",
+    headline: "Specialists in\nDifficult Access.",
+    body: "With 30+ trained technicians and IRATA-certified systems, RAS-VERTEX safely delivers work in environments where scaffolding and traditional access methods become costly, disruptive, or impractical.\n\nOur rope access capability allows faster mobilisation, reduced site impact, and safer outcomes across high-rise and difficult-access projects.",
+    image: "/nav/cleaning.png",
+    imageAlt: "Rope access technicians on high-rise exterior",
     logos: [
       { src: "/images/associations/qbcc.png", alt: "QBCC" },
       {
@@ -26,13 +41,13 @@ const tabs = [
     ],
   },
   {
-    id: "accountable",
-    number: "02",
-    label: "Accountable",
-    heading: "ONE PROJECT MANAGER",
-    body: "A named project manager runs every job from quote to warranty. Weekly photo report, single invoice, five-year workmanship warranty issued in writing.",
+    id: "trusted-to-deliver",
+    number: "03",
+    label: "Trusted To Deliver",
+    headline: "Trusted Across\nthe Sunshine Coast.",
+    body: "Trusted by body corporates, resorts, schools, and commercial facilities across the Sunshine Coast to deliver projects with professionalism, clear communication, and minimal disruption.\n\nFrom tendering through to completion, our team works proactively to keep projects running smoothly for residents, guests, and stakeholders.",
     image: "/nav/maintenance.png",
-    imageAlt: "Project manager on site",
+    imageAlt: "Completed commercial building facade",
     logos: [
       { src: "/partners/accor.svg", alt: "Accor" },
       { src: "/partners/archers.png", alt: "Archers" },
@@ -48,20 +63,11 @@ const tabs = [
     ],
   },
   {
-    id: "proven",
-    number: "03",
-    label: "Proven",
-    heading: "500+ BUILDINGS MANAGED",
-    body: "A quarter-century of facade washes, balcony membranes, repaints and scheduled maintenance from Caloundra to Noosa.",
-    image: "/nav/cleaning.png",
-    imageAlt: "High-rise facade crew",
-  },
-  {
-    id: "local",
+    id: "local-partners",
     number: "04",
-    label: "Local",
-    heading: "BUILT HERE",
-    body: "Founded in Maroochydore in 1998. Our trade leads live where they work — response in hours, not weeks, and the relationship lasts beyond the warranty.",
+    label: "Local Partners",
+    headline: "Built for\nLocal Conditions.",
+    body: "Based on the Sunshine Coast, RAS-VERTEX understands the unique demands of coastal properties — from salt exposure and waterproofing to long-term preventative maintenance.\n\nWe partner with clients to help protect assets, extend building life, and maintain presentation year-round.",
     image: "/images/projects/1.jpeg",
     imageAlt: "Sunshine Coast project",
   },
@@ -71,62 +77,42 @@ type TabId = (typeof tabs)[number]["id"];
 const tabIds = tabs.map((t) => t.id);
 
 export default function ExperienceSection() {
-  const [active, setActive] = useState<TabId>("certified");
+  const [active, setActive] = useState<TabId>("every-challenge");
   const overlayRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
 
   const currentIndex = tabIds.indexOf(active);
   const current = tabs[currentIndex];
 
+  // Scroll wipe effect
   useEffect(() => {
     const overlay = overlayRef.current;
     const bar = barRef.current;
     if (!overlay || !bar) return;
 
     const vh = window.innerHeight;
-
-    // Absolute document Y of the bar's top edge
     const barDocTop = window.scrollY + bar.getBoundingClientRect().top;
-
-    // Start animating when the bar's top edge is 80% down the viewport
-    // i.e. user has scrolled until bar is near the bottom of the screen
     const scrollStart = barDocTop - vh * 0.8;
-
-    // Fully revealed when bar's top edge is 30% down the viewport
-    // i.e. bar is comfortably centred/upper portion of screen
     const scrollEnd = barDocTop - vh * 0.3;
 
     const onScroll = () => {
       const scrollY = window.scrollY;
-
       if (scrollY <= scrollStart) {
         overlay.style.clipPath = "inset(0 100% 0 0)";
         return;
       }
-
       if (scrollY >= scrollEnd) {
         overlay.style.clipPath = "inset(0 0% 0 0)";
         return;
       }
-
       const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
       overlay.style.clipPath = `inset(0 ${(1 - progress) * 100}% 0 0)`;
     };
 
     overlay.style.clipPath = "inset(0 100% 0 0)";
-
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const prev = () =>
-    setActive(
-      tabIds[currentIndex === 0 ? tabIds.length - 1 : currentIndex - 1],
-    );
-  const next = () =>
-    setActive(
-      tabIds[currentIndex === tabIds.length - 1 ? 0 : currentIndex + 1],
-    );
 
   return (
     <section className={styles.section}>
@@ -163,64 +149,47 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      {/* ── Content: left text + right image ─────────────────── */}
-      <div className={styles.content} key={active}>
-        <div className={styles.left}>
-          <p className={styles.heading}>{current.heading}</p>
-          <p className={styles.body}>{current.body}</p>
-
-          {"logos" in current && current.logos && (
-            <div className={styles.logoRow}>
-              {current.logos.map((logo) => (
-                <div key={logo.alt} className={styles.logoWrap}>
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    className={styles.logo}
-                  />
-                </div>
+      {/* ── Content wrapper ───────────────────────────────── */}
+      <div className={styles.contentWrapper}>
+        {/* Left column — animated content only */}
+        <div className={styles.leftColumn}>
+          <div className={styles.contentLeft} key={active}>
+            <h3 className={styles.contentHeadline}>
+              {current.headline.split("\n").map((line, i, arr) => (
+                <span key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </span>
               ))}
-            </div>
-          )}
+            </h3>
+            {current.body.split("\n\n").map((para, i) => (
+              <p key={i} className={styles.body}>
+                {para}
+              </p>
+            ))}
 
-          <div className={styles.arrows}>
-            <button
-              className={styles.arrowBtn}
-              onClick={prev}
-              aria-label="Previous"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path
-                  d="M10.5 13.5L6 9l4.5-4.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            <button
-              className={`${styles.arrowBtn} ${styles.arrowBtnActive}`}
-              onClick={next}
-              aria-label="Next"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path
-                  d="M7.5 4.5L12 9l-4.5 4.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+            {"logos" in current && current.logos && (
+              <div className={styles.logoRow}>
+                {current.logos.map((logo) => (
+                  <div key={logo.alt} className={styles.logoWrap}>
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      fill
+                      className={styles.logo}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        <div className={styles.right}>
+        {/* Right — image card */}
+        <div className={styles.contentRight}>
           <div className={styles.imageCard}>
             <Image
+              key={active}
               src={current.image}
               alt={current.imageAlt}
               fill
@@ -228,6 +197,18 @@ export default function ExperienceSection() {
               sizes="(max-width: 860px) 100vw, 50vw"
             />
           </div>
+        </div>
+
+        {/* Dots — anchored to contentWrapper bottom, aligned with left padding */}
+        <div className={styles.dots}>
+          {tabIds.map((id, i) => (
+            <button
+              key={id}
+              className={`${styles.dot} ${i === currentIndex ? styles.dotActive : ""}`}
+              onClick={() => setActive(id)}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

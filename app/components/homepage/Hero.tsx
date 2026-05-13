@@ -18,6 +18,20 @@ const ArrowIcon = () => (
   </div>
 );
 
+const TileArrow = () => (
+  <div className={styles.tileArrow}>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path
+        d="M4.5 13.5L13.5 4.5M13.5 4.5H6.75M13.5 4.5V11.25"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </div>
+);
+
 export default function Hero() {
   return (
     <section className={styles.section} data-nav-fixed="true">
@@ -128,7 +142,9 @@ export default function Hero() {
               </div>
             </Link>
 
-            <div className={styles.heroTile}>
+            {/* One Partner — permanent arrow, links to about/services */}
+            <Link href="/services" className={styles.heroTile}>
+              <TileArrow />
               <div className={styles.tileBottom}>
                 <p className={styles.tileTitle}>ONE PARTNER</p>
                 <p className={styles.tileBody}>
@@ -136,7 +152,7 @@ export default function Hero() {
                   and strata across the Sunshine Coast.
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

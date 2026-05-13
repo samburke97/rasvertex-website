@@ -8,7 +8,7 @@ const steps = [
   {
     number: "01",
     title: "Site visit",
-    body: "A trade lead walks the site with you inside 48 hours. No pushy sales rep, no guesswork — we see the job before we price it.",
+    body: "A trade lead walks the site with you inside 48 hours. No pushy sales rep, no guesswork. We see the job before we price it.",
     meta: "48 HR",
   },
   {
@@ -20,7 +20,7 @@ const steps = [
   {
     number: "03",
     title: "Scheduled works",
-    body: "One project manager, one WhatsApp thread, weekly photo updates. No chasing, no surprises — just progress you can see.",
+    body: "One project manager, one WhatsApp thread, weekly photo updates. No chasing, no surprises. Just progress you can see.",
     meta: "BOOKED",
   },
   {
@@ -95,9 +95,13 @@ export default function ProcessSection() {
         </div>
       </div>
 
+      {/* grid class enables CSS-only default-active + hover logic */}
       <div className={styles.grid}>
-        {steps.map((step) => (
-          <div key={step.number} className={styles.step}>
+        {steps.map((step, i) => (
+          <div
+            key={step.number}
+            className={`${styles.step} ${i === 0 ? styles.stepDefault : ""}`}
+          >
             <div className={styles.stepTop}>
               <span className={styles.stepNumber}>{step.number}</span>
             </div>

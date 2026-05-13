@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./TestimonialSection.module.css";
 
 const testimonials = [
@@ -31,20 +31,24 @@ export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
   const current = testimonials[active];
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className={styles.section}>
       <div className={styles.grid}>
         {/* Left */}
         <div className={styles.left}>
-          <p className={styles.eyebrow}>[ In their words ]</p>
           <h2 className={styles.headline}>
-            Trusted by
+            Trusted by the
             <br />
-            the Coast's
+            Coast&apos;s best
             <br />
-            best-run
-            <br />
-            buildings.
+            run buildings.
           </h2>
 
           {/* Dot nav */}
@@ -65,13 +69,15 @@ export default function TestimonialsSection() {
 
         {/* Right */}
         <div className={styles.right} key={active}>
-          <span className={styles.quoteIcon}>"</span>
-          <blockquote className={styles.quote}>{current.quote}</blockquote>
+          <blockquote className={styles.quote}>
+            <span className={styles.quoteIcon}>&ldquo;</span>
+            {current.quote}
+          </blockquote>
           <div className={styles.author}>
             <div className={styles.avatar} />
             <div className={styles.authorInfo}>
               <p className={styles.authorName}>{current.name}</p>
-              <p className={styles.authorRole}>{current.role.toUpperCase()}</p>
+              <p className={styles.authorRole}>{current.role}</p>
             </div>
           </div>
         </div>

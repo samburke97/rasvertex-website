@@ -1,6 +1,5 @@
 import ExpandingPanels from "./components/homepage/Expandingpanels";
 import ExperienceSection from "./components/homepage/ExperienceSection";
-import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import ProcessSection from "./components/homepage/ProcessSection";
 import TestimonialsSection from "./components/homepage/TestimonialSection";
@@ -12,15 +11,14 @@ export default function Home() {
     <>
       <Hero />
       <ExperienceSection />
-      {/* <PartnersCarousel /> */}
-
-      <ProcessSection />
-      <ProjectShowcase />
-      <TestimonialsSection />
       {/* <ExpandingPanels
         panels={mainPanels}
         defaultActivePanel="higher-standards"
       /> */}
+      <ProcessSection />
+
+      <ProjectShowcase />
+      <TestimonialsSection />
     </>
   );
 }
