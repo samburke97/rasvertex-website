@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import SectionHead from "./SectionHead";
 import styles from "./Specialisations.module.css";
 
 const LEDE =
@@ -118,7 +117,6 @@ export default function Specialisations() {
         sr="Our disciplines."
         muted
       >
-        <span className={styles.eyebrow}>What we do</span>
         <p>{LEDE}</p>
       </SectionHead>
 
@@ -177,14 +175,6 @@ export default function Specialisations() {
                     </li>
                   ))}
                 </ul>
-                <div className={styles.stats}>
-                  {sp.stats.map((st) => (
-                    <div className={styles.stat} key={st.l}>
-                      <div className={styles.statV}>{st.v}</div>
-                      <div className={styles.statL}>{st.l}</div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </article>
           ))}

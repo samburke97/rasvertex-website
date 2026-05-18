@@ -1,14 +1,15 @@
+/* ─── Section ────────────────────────────────────────────────── */
 .section {
-  padding: 96px var(--rv-gutter);
+  padding: 96px 80px;
 }
 
 .eyebrow {
-  font-family: var(--rv-font-body);
+  font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--rv-burgundy);
+  color: var(--burgundy);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -17,7 +18,7 @@
   content: "";
   width: 24px;
   height: 1px;
-  background: var(--rv-burgundy);
+  background: var(--burgundy);
 }
 
 /* ─── Layout ─────────────────────────────────────────────────── */
@@ -36,21 +37,23 @@
   display: flex;
   flex-direction: column;
 }
+
 .railEyebrow {
-  font-family: var(--rv-font-body);
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--rv-navy);
+  color: var(--navy);
   opacity: 0.45;
   margin-bottom: 16px;
 }
+
 .railItem {
   display: grid;
   grid-template-columns: 32px 1fr;
   padding: 16px 0;
-  border-top: 1px solid var(--rv-line);
+  border-top: 1px solid var(--line);
   align-items: center;
   gap: 12px;
   cursor: pointer;
@@ -64,7 +67,7 @@
   font-family: inherit;
 }
 .railItem:last-child {
-  border-bottom: 1px solid var(--rv-line);
+  border-bottom: 1px solid var(--line);
 }
 .railItem::before {
   content: "";
@@ -73,7 +76,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--rv-navy);
+  background: var(--navy);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -82,12 +85,12 @@
   transform: scaleX(1);
 }
 
-/* Number — matches ProcessSection .stepNumber exactly */
+/* Number — matches ProcessSection .stepNumber */
 .railNum {
-  font-family: "Bebas Neue", var(--rv-font-display);
+  font-family: var(--font-display);
   font-size: clamp(48px, 5vw, 80px);
   font-weight: 400;
-  color: var(--rv-navy);
+  color: var(--navy);
   opacity: 0.06;
   line-height: 1;
   transition: opacity 0.25s;
@@ -99,14 +102,14 @@
   opacity: 0.12;
 }
 
-/* Label — matches ProcessSection .stepTitle exactly */
+/* Label — matches ProcessSection .stepTitle */
 .railLabel {
-  font-family: "Bebas Neue", var(--rv-font-display);
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--rv-navy);
+  color: var(--navy);
   opacity: 0.28;
   line-height: 1.1;
   transition: opacity 0.25s;
@@ -124,6 +127,7 @@
   flex-direction: column;
   gap: 96px;
 }
+
 .panel {
   display: grid;
   gap: 32px;
@@ -139,10 +143,10 @@
 
 /* Number — matches ProcessSection .stepNumber */
 .panelNum {
-  font-family: "Bebas Neue", var(--rv-font-display);
+  font-family: var(--font-display);
   font-size: clamp(48px, 5vw, 80px);
   font-weight: 400;
-  color: var(--rv-navy);
+  color: var(--navy);
   opacity: 0.06;
   line-height: 1;
   letter-spacing: -0.01em;
@@ -150,24 +154,23 @@
 
 /* Title — matches ProcessSection .stepTitle */
 .panelH {
-  font-family: "Bebas Neue", var(--rv-font-display);
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--rv-navy);
+  color: var(--navy);
   opacity: 0.9;
   line-height: 1.1;
   margin: 0 0 10px;
-  white-space: nowrap;
 }
 
 /* Body — matches ProcessSection .stepBody */
 .panelBody {
-  font-family: var(--rv-font-body);
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.7;
-  color: var(--rv-navy);
+  color: var(--navy);
   opacity: 0.7;
   margin: 0;
   max-width: 620px;
@@ -188,11 +191,8 @@
   transform: scale(1.02);
 }
 
-/* Bottom */
+/* ─── Bottom ─────────────────────────────────────────────────── */
 .panelBot {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
   padding-top: 8px;
 }
 
@@ -200,60 +200,32 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--rv-line);
+  border-top: 1px solid var(--line);
   padding: 0;
   margin: 0;
+  max-width: 620px;
 }
 .points li {
   display: grid;
   grid-template-columns: 56px 1fr;
   padding: 14px 0;
-  border-bottom: 1px solid var(--rv-line);
-  font-family: var(--rv-font-body);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.55;
-  color: var(--rv-navy);
+  color: var(--navy);
   align-items: baseline;
   gap: 16px;
 }
+
 .pointKey {
-  font-family: var(--rv-font-body);
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.45;
-  color: var(--rv-burgundy);
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-self: start;
-  padding-top: 4px;
-}
-.stat {
-  padding: 24px;
-  background: var(--rv-cream);
-  border-radius: 12px;
-}
-.statV {
-  font-family: var(--rv-font-display);
-  font-size: 44px;
-  line-height: 1;
-  color: var(--rv-navy);
-  letter-spacing: -0.01em;
-}
-.statL {
-  font-family: var(--rv-font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rv-navy);
-  opacity: 0.55;
-  margin-top: 10px;
+  color: var(--navy);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
@@ -263,9 +235,10 @@
     gap: 48px;
   }
 }
+
 @media (max-width: 960px) {
   .section {
-    padding: 64px var(--rv-gutter);
+    padding: 64px 32px;
   }
   .layout {
     grid-template-columns: 1fr;
@@ -281,13 +254,10 @@
   .panelNum {
     font-size: 48px;
   }
-  .panelBot {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
 }
+
 @media (max-width: 560px) {
-  .panelBot {
-    grid-template-columns: 1fr;
+  .section {
+    padding: 56px 20px;
   }
 }
