@@ -1,0 +1,70 @@
+.ribbon {
+  background: var(--rv-navy);
+  color: #fff;
+  padding: 32px var(--rv-gutter);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 28px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+.cell:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.value {
+  font-family: var(--rv-font-display);
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.unit {
+  font-size: 0.45em;
+  opacity: 0.55;
+  margin-left: 8px;
+  letter-spacing: 0.04em;
+}
+
+.label {
+  font-family: var(--rv-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rv-burgundy);
+  flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .cell {
+    border-left: none;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .cell:nth-child(1),
+  .cell:nth-child(2) {
+    border-top: none;
+  }
+}

@@ -1,24 +1,27 @@
-// import { paintingServiceMetadata } from "../../components/seo/PageSEO";
-import PaintingHero from "../components/painting/PaintingHero";
-import ProblemSolution from "../components/painting/ProblemSolution";
-import PhotoGrid from "../components/painting/PhotoGrid";
-import ServiceBreakdown from "../components/painting/ServiceBreakdown";
-import TrustStrip from "../components/painting/TrustStrip";
-import PaintingFAQ from "../components/painting/PaintingFAQ";
-import PaintingCTA from "../components/painting/PaintingCTA";
-
-// export const metadata = paintingServiceMetadata;
+import Hero from "../components/painting/Hero";
+import StatsRibbon from "../components/painting/StatsRibbon";
+import Specialisations from "../components/painting/Specialisations";
+import PaintSystems from "../components/painting/PaintSystems";
+import BeforeAfter from "../components/painting/BeforeAfter";
+import FeaturedProject from "../components/painting/FeaturedProject";
+import ProjectIndex from "../components/painting/ProjectIndex";
+import Process from "../components/painting/Process";
+import ServiceAreas from "../components/painting/ServiceAreas";
+import FAQ from "../components/painting/FAQ";
 
 export default function PaintingPage() {
   return (
     <>
-      <PaintingHero />
-      <ProblemSolution />
-      <PhotoGrid />
-      <ServiceBreakdown />
-      <TrustStrip />
-      <PaintingFAQ />
-      <PaintingCTA />
+      <Hero />
+      <StatsRibbon />
+      <Specialisations />
+      <PaintSystems />
+      <BeforeAfter />
+      <FeaturedProject />
+      <ProjectIndex />
+      <Process />
+      <ServiceAreas />
+      <FAQ />
     </>
   );
 }

@@ -1,0 +1,134 @@
+.section {
+  padding: 96px var(--rv-gutter);
+}
+
+.eyebrow {
+  font-family: var(--rv-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rv-burgundy);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--rv-burgundy);
+}
+
+.meta {
+  font-family: var(--rv-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rv-navy);
+  opacity: 0.55;
+  display: flex;
+  gap: 24px;
+}
+.metaV {
+  color: var(--rv-burgundy);
+  opacity: 1;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/8;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0a1733;
+  user-select: none;
+  cursor: ew-resize;
+}
+
+.imgWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.imgWrap img {
+  object-fit: cover;
+}
+
+.label {
+  position: absolute;
+  top: 18px;
+  font-family: var(--rv-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 100px;
+  pointer-events: none;
+}
+.labelBefore {
+  left: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--rv-navy);
+}
+.labelAfter {
+  right: 18px;
+  background: var(--rv-navy);
+  color: #fff;
+}
+
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #fff;
+  pointer-events: none;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+}
+.handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+.handle::before {
+  content: "⟷";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  color: var(--rv-navy);
+  z-index: 2;
+  line-height: 1;
+}
+
+.grip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  cursor: ew-resize;
+  z-index: 3;
+}
+
+@media (max-width: 960px) {
+  .section {
+    padding: 64px var(--rv-gutter);
+  }
+  .stage {
+    aspect-ratio: 4/3;
+  }
+}
