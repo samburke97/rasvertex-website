@@ -5,7 +5,7 @@
 
 /* ─── Stage ──────────────────────────────────────────────────── */
 .stage {
-  padding: 24px 80px 24px;
+  padding: 24px 80px 80px;
 }
 
 /* ─── Bento Grid ─────────────────────────────────────────────── */
@@ -50,60 +50,26 @@
   flex-shrink: 0;
 }
 
-/* One Partner tile — cream */
-.heroTile {
+/* ─── Brand card — maroon ────────────────────────────────────── */
+.brandCard {
   height: 340px;
   flex-shrink: 0;
-  background: #f7ece1;
+  background: var(--burgundy, #6d2932);
   border-radius: 12px;
-  padding: 18px;
+}
+
+.brandCard .cardContent {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  text-decoration: none;
+  gap: 10px;
 }
 
-.tileBottom {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* Matches .cardTitle exactly — same Bebas style as other cards */
-.tileTitle {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 24px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #011955;
-  line-height: 0.85;
-  margin: 0;
-}
-
-.tileBody {
-  font-family: var(--font-body);
+.cardBody {
+  font-family: var(--font-body, "Inter", sans-serif);
   font-size: 14px;
   line-height: 1.6;
-  color: #011955;
-  opacity: 0.65;
+  color: rgba(255, 255, 255, 0.65);
   margin: 0;
-}
-
-/* ─── Permanent arrow for heroTile ──────────────────────────── */
-.tileArrow {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 4;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--navy, #011955);
-  opacity: 1;
-  pointer-events: none;
 }
 
 /* ─── Card base ──────────────────────────────────────────────── */
@@ -121,6 +87,7 @@
   transform: scale(1);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
 .card:hover .imageWrap {
   transform: scale(1.06);
 }
@@ -146,6 +113,7 @@
   pointer-events: none;
 }
 
+/* ─── Arrow ──────────────────────────────────────────────────── */
 .arrowIcon {
   position: absolute;
   top: 14px;
@@ -166,15 +134,24 @@
     transform 0.4s ease;
   pointer-events: none;
 }
+
 .card:hover .arrowIcon {
   opacity: 1;
   transform: scale(1);
 }
 
+/* Arrow on brand card — white circle with maroon icon */
+.brandCard .arrowIcon {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+/* ─── Card content ───────────────────────────────────────────── */
 .cardContent {
   position: absolute;
   left: 18px;
   bottom: 18px;
+  right: 18px;
   z-index: 3;
 }
 
@@ -202,7 +179,7 @@
   .heightSafety {
     height: 280px;
   }
-  .heroTile {
+  .brandCard {
     height: 280px;
   }
 }
@@ -246,7 +223,7 @@
     flex: 1;
     height: 280px;
   }
-  .heroTile {
+  .brandCard {
     flex: 1;
     height: 280px;
   }
@@ -277,7 +254,7 @@
     flex-direction: column;
   }
   .heightSafety,
-  .heroTile {
+  .brandCard {
     height: 240px;
     flex: none;
   }

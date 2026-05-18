@@ -1,0 +1,60 @@
+/* ─── Section ────────────────────────────────────────────────── */
+.section {
+  padding: 56px 0;
+}
+
+/* ─── Marquee ────────────────────────────────────────────────── */
+.marqueeWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 96px;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+  padding: 8px 0;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logoWrap {
+  position: relative;
+  width: 140px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.logo {
+  object-fit: contain;
+  object-position: center;
+}

@@ -1,0 +1,208 @@
+/* ─── Page shell ─────────────────────────────────────────────── */
+.page {
+  background: #ffffff;
+  padding: 64px 0 80px;
+}
+
+/* ─── Blue rounded card ──────────────────────────────────────── */
+.card {
+  background: #d6ecff;
+  border-radius: 24px;
+  padding: 56px 56px 72px;
+  margin: 0 80px;
+}
+
+.cardHeading {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--navy, #011955);
+  margin: 0 0 56px;
+  max-width: 700px;
+}
+
+/* ─── Card body — two columns ────────────────────────────────── */
+.cardBody {
+  display: flex;
+  gap: 80px;
+  align-items: stretch;
+}
+
+/* Left — photo, scrolls normally */
+.photoCol {
+  flex: 1.4;
+  position: relative;
+}
+
+.photoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #c5dff5;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+/* Right — stretches to photo height, text sticks to top of viewport */
+.textCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 96px;
+}
+
+.eyebrow {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--navy, #011955);
+  margin: 0;
+}
+
+.paragraph {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--navy, #011955);
+  margin: 0;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checklist li {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--navy, #011955);
+  position: relative;
+  padding-left: 22px;
+}
+
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 400;
+}
+
+/* ─── Support section — inside the blue card ─────────────────── */
+.support {
+  margin-top: 80px;
+  padding-top: 56px;
+  border-top: 1px solid rgba(1, 25, 85, 0.1);
+}
+
+.supportHeading {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--navy, #011955);
+  margin: 0 0 16px;
+  max-width: 560px;
+}
+
+.supportBody {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--navy, #011955);
+  margin: 0 0 32px;
+  max-width: 480px;
+}
+
+.supportFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.teamRow {
+  display: flex;
+  gap: 8px;
+}
+
+.teamAvatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  background: #d6d6d6;
+  flex-shrink: 0;
+}
+
+.ctaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.ctaLabel {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy, #011955);
+  margin: 0;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: var(--navy, #011955);
+  color: #ffffff;
+  border-radius: 6px;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .card {
+    padding: 32px 24px 40px;
+    margin: 0 24px;
+  }
+  .cardBody {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .photoWrap {
+    aspect-ratio: 4 / 3;
+  }
+  .textBlock {
+    position: static;
+  }
+  .support {
+    margin-top: 48px;
+    padding-top: 32px;
+  }
+}

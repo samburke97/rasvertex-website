@@ -1,0 +1,132 @@
+/* ─── Section ────────────────────────────────────────────────── */
+.section {
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── Row ────────────────────────────────────────────────────── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 64px 0;
+  border-top: 1px solid var(--line, rgba(1, 25, 85, 0.12));
+}
+
+.row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.row:last-child {
+  padding-bottom: 0;
+}
+
+.reversed {
+  direction: rtl;
+}
+
+.reversed > * {
+  direction: ltr;
+}
+
+/* ─── Image ──────────────────────────────────────────────────── */
+.imageCol {
+  position: relative;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8edf2;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ─── Content ────────────────────────────────────────────────── */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy, #011955);
+  opacity: 0.3;
+}
+
+.headline {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--navy, #011955);
+  margin: 0;
+}
+
+.body {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--navy, #011955);
+  opacity: 0.65;
+  margin: 0;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.points li {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--navy, #011955);
+  opacity: 0.8;
+  position: relative;
+  padding-left: 20px;
+}
+
+.points li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--burgundy, #6b1f24);
+  font-weight: 600;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 24px;
+  }
+  .row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 0;
+  }
+  .reversed {
+    direction: ltr;
+  }
+}

@@ -1,0 +1,93 @@
+/* ─── Section ────────────────────────────────────────────────── */
+.section {
+  padding: 100px 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* ─── Shared column styles ───────────────────────────────────── */
+.problem,
+.solution {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 48px 56px;
+}
+
+.problem {
+  border-right: 1px solid var(--line, rgba(1, 25, 85, 0.12));
+  padding-left: 0;
+}
+
+.solution {
+  padding-right: 0;
+}
+
+.label {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy, #011955);
+  opacity: 0.4;
+  margin: 0;
+}
+
+.headline {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--navy, #011955);
+  margin: 0;
+}
+
+.body {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--navy, #011955);
+  opacity: 0.65;
+  margin: 0;
+}
+
+.cta {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy, #011955);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  width: fit-content;
+  margin-top: 8px;
+}
+
+.cta:hover {
+  opacity: 1;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 24px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .problem {
+    border-right: none;
+    border-bottom: 1px solid var(--line, rgba(1, 25, 85, 0.12));
+    padding: 0 0 40px;
+  }
+  .solution {
+    padding: 40px 0 0;
+  }
+}

@@ -17,7 +17,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       {/* Watermark — now at the top */}
       <div className={styles.watermark}>
-        <span className={styles.watermarkText}>HIGHER STANDARDS</span>
+        <span className={styles.watermarkText}>HIGHER STANDARDS.</span>
       </div>
 
       {/* Top Section */}

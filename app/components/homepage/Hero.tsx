@@ -18,26 +18,11 @@ const ArrowIcon = () => (
   </div>
 );
 
-const TileArrow = () => (
-  <div className={styles.tileArrow}>
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path
-        d="M4.5 13.5L13.5 4.5M13.5 4.5H6.75M13.5 4.5V11.25"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </div>
-);
-
 export default function Hero() {
   return (
     <section className={styles.section} data-nav-fixed="true">
       <div className={styles.stage}>
         <div className={styles.bentoGrid}>
-          {/* Painting — row 1, col 1-2 */}
           <Link
             href="/services/painting"
             className={`${styles.card} ${styles.painting}`}
@@ -59,7 +44,6 @@ export default function Hero() {
             </div>
           </Link>
 
-          {/* Maintenance — row 2, col 1 */}
           <Link
             href="/services/maintenance"
             className={`${styles.card} ${styles.maintenance}`}
@@ -79,7 +63,6 @@ export default function Hero() {
             </div>
           </Link>
 
-          {/* Waterproofing — row 2, col 2 */}
           <Link
             href="/services/waterproofing"
             className={`${styles.card} ${styles.waterproofing}`}
@@ -99,7 +82,6 @@ export default function Hero() {
             </div>
           </Link>
 
-          {/* Cleaning — col 3, rows 1-2 */}
           <Link
             href="/services/cleaning"
             className={`${styles.card} ${styles.cleaning}`}
@@ -121,7 +103,6 @@ export default function Hero() {
             </div>
           </Link>
 
-          {/* Col 4 — Height Safety top, One Partner bottom */}
           <div className={styles.col4}>
             <Link
               href="/services/height-safety"
@@ -142,12 +123,15 @@ export default function Hero() {
               </div>
             </Link>
 
-            {/* One Partner — permanent arrow, links to about/services */}
-            <Link href="/services" className={styles.heroTile}>
-              <TileArrow />
-              <div className={styles.tileBottom}>
-                <p className={styles.tileTitle}>ONE PARTNER</p>
-                <p className={styles.tileBody}>
+            {/* Brand card — maroon, same card behaviour as photo cards */}
+            <Link
+              href="/services"
+              className={`${styles.card} ${styles.brandCard}`}
+            >
+              <ArrowIcon />
+              <div className={styles.cardContent}>
+                <p className={styles.cardTitle}>One Partner.</p>
+                <p className={styles.cardBody}>
                   Complete property maintenance for commercial, body corporate,
                   and strata across the Sunshine Coast.
                 </p>

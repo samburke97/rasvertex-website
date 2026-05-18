@@ -1,84 +1,67 @@
 /* ─── Section ────────────────────────────────────────────────── */
 .section {
   overflow: hidden;
-  padding-bottom: 100px;
 }
 
 /* ─── Embla ──────────────────────────────────────────────────── */
 .viewport {
   overflow: hidden;
+  cursor: grab;
+}
+
+.viewport:active {
+  cursor: grabbing;
 }
 
 .track {
   display: flex;
-  gap: 12px;
-  padding: 0 80px;
+  gap: 16px;
   user-select: none;
   -webkit-user-select: none;
 }
 
-/* ─── Card — square, max 950px ───────────────────────────────── */
+/* ─── Card ───────────────────────────────────────────────────── */
 .card {
-  flex: 0 0 calc((100vw - 160px - 36px) / 3);
-  height: calc((100vw - 160px - 36px) / 3);
-  max-width: 950px;
-  max-height: 950px;
-  border-radius: 12px;
-  flex-shrink: 0;
-  text-decoration: none;
   position: relative;
+  flex: 0 0 calc(33vw - 12px);
+  aspect-ratio: 3 / 2;
+  border-radius: 12px;
   overflow: hidden;
   display: block;
-  background: #0d1e3d;
-  cursor: grab;
+  background: #e8edf2;
+  text-decoration: none;
 }
 
-.card:active {
-  cursor: grabbing;
-}
-
-/* ─── Image — always visible ─────────────────────────────────── */
 .image {
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card:hover .image {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
-/* ─── Solid overlay — hidden, full solid colour on hover ─────── */
+/* ─── Hover overlay ──────────────────────────────────────────── */
 .overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  background: var(--navy, #011955);
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.3s ease;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 28px;
+  align-items: flex-end;
+  padding: 32px;
 }
 
 .card:hover .overlay {
   opacity: 1;
 }
 
-.overlay_photo {
-  background: var(--navy, #011955);
-}
-.overlay_cream {
-  background: #f7ece1;
-}
-.overlay_maroon {
-  background: var(--burgundy, #6d2932);
-}
-
-/* ─── Info ───────────────────────────────────────────────────── */
 .info {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .infoRow {
@@ -88,63 +71,21 @@
 }
 
 .infoLabel {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 13px;
-  letter-spacing: 0.1em;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
-  line-height: 1;
-  opacity: 0.5;
 }
 
 .infoValue {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4;
-  margin: 0;
-}
-
-.overlay_cream .infoLabel,
-.overlay_cream .infoValue {
-  color: var(--navy, #011955);
-}
-
-.overlay_photo .infoLabel,
-.overlay_photo .infoValue,
-.overlay_maroon .infoLabel,
-.overlay_maroon .infoValue {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: #ffffff;
-}
-
-/* ─── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .track {
-    padding: 0 48px;
-  }
-  .card {
-    flex: 0 0 calc((100vw - 96px - 24px) / 2);
-    height: calc((100vw - 96px - 24px) / 2);
-  }
-}
-
-@media (max-width: 768px) {
-  .track {
-    padding: 0 32px;
-    gap: 8px;
-  }
-  .card {
-    flex: 0 0 80vw;
-    height: 80vw;
-  }
-}
-
-@media (max-width: 560px) {
-  .track {
-    padding: 0 20px;
-  }
-  .card {
-    flex: 0 0 88vw;
-    height: 88vw;
-  }
+  margin: 0;
 }
