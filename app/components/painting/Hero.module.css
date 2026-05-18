@@ -1,180 +1,329 @@
-.hero {
+/* ─────────────────────────────────────────────────────────────────
+   Painting — Hero
+   Structure mirrors homepage Hero exactly:
+   .section → .stage (padding: 24px 80px 80px) → .inner (two cols)
+   ───────────────────────────────────────────────────────────────── */
+
+.section {
+  --rv-navy: #011955;
+  --rv-burgundy: #6b1f24;
+  --rv-line: rgba(1, 25, 85, 0.12);
+  --rv-line-strong: rgba(1, 25, 85, 0.22);
+  --rv-font-display: "Bebas Neue", Arial, sans-serif;
+  --rv-font-body: "Inter", system-ui, -apple-system, sans-serif;
+
   background: #fff;
-  position: relative;
-  padding: 48px var(--rv-gutter) 0;
+  overflow: visible;
 }
 
-.top {
+/* ── Stage — matches homepage Hero .stage exactly ──────────────── */
+.stage {
+  padding: 24px 80px 80px;
+}
+
+/* ── Two-column inner ──────────────────────────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── Left column ───────────────────────────────────────────────── */
+.left {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  padding-bottom: 32px;
+  height: 688px;
 }
 
-.meta {
-  font-family: var(--rv-font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rv-navy);
-  opacity: 0.6;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border: 1px solid var(--rv-line-strong);
-  border-radius: 100px;
-  color: var(--rv-navy);
-  opacity: 1;
-}
-.pill::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--rv-burgundy);
-}
-
+/* Title — matches ExperienceSection .headlineBase */
 .title {
   font-family: var(--rv-font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  font-size: clamp(120px, 22vw, 360px);
-  line-height: 0.82;
-  letter-spacing: -0.025em;
   color: var(--rv-navy);
   margin: 0;
+  white-space: nowrap;
 }
+
 .accent {
   color: var(--rv-burgundy);
-  letter-spacing: -0.02em;
-  margin-left: -0.02em;
 }
 
 .base {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 80px;
-  padding: 40px 0 56px;
-  border-top: 1px solid var(--rv-line);
-  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
+/* Lede — matches ProcessSection .intro */
 .lede {
   font-family: var(--rv-font-body);
-  font-size: clamp(18px, 1.5vw, 22px);
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.75;
   color: var(--rv-navy);
-  opacity: 0.85;
-  max-width: 620px;
+  opacity: 0.6;
+  margin: 0;
 }
+
 .lede :global(em) {
   font-style: normal;
-  font-weight: 700;
-  color: var(--rv-navy);
+  font-weight: 600;
   opacity: 1;
 }
 
-.factstack {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--rv-line);
-}
-
-.factrow {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 24px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--rv-line);
-  align-items: baseline;
-}
-.factlabel {
-  font-family: var(--rv-font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rv-navy);
-  opacity: 0.5;
-}
-.factvalue {
-  font-family: var(--rv-font-body);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--rv-navy);
-  letter-spacing: -0.005em;
-}
-
-/* ── Photo strip ── */
-.strip {
-  margin: 0 calc(-1 * var(--rv-gutter));
-  height: clamp(360px, 56vh, 620px);
-  position: relative;
-  overflow: hidden;
-  background: #0a1733;
-}
-.strip img {
-  transform: scale(1.04);
-  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.stripIn img {
-  transform: scale(1);
-}
-
-.stripCorner {
-  position: absolute;
-  top: 24px;
-  right: 32px;
-  color: #fff;
-  font-family: var(--rv-font-display);
-  font-size: 72px;
-  line-height: 1;
-  opacity: 0.55;
-  letter-spacing: 0.04em;
-  pointer-events: none;
-}
-.stripCaption {
-  position: absolute;
-  bottom: 24px;
-  left: 32px;
-  color: #fff;
+.location {
   font-family: var(--rv-font-body);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  padding: 9px 14px;
-  border-radius: 100px;
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-.sep {
-  opacity: 0.5;
+  color: var(--rv-navy);
+  opacity: 0.4;
+  margin: 0;
 }
 
-@media (max-width: 960px) {
-  .hero {
-    padding: 32px var(--rv-gutter) 0;
+/* ── Bento — same dimensions as homepage Hero .bentoGrid ────────── */
+.bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 340px 340px;
+  gap: 8px;
+  height: 688px;
+
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.loaded .bento {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bentoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 688px;
+}
+
+/* ── Card base — identical to homepage Hero cards ──────────────── */
+.card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .imageWrap {
+  transform: scale(1.06);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 25, 85, 0.08),
+    rgba(1, 25, 85, 0.45)
+  );
+  pointer-events: none;
+}
+
+.arrowIcon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #011955;
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover .arrowIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cardContent {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  right: 18px;
+  z-index: 3;
+}
+
+.cardTitle {
+  color: white;
+  font-family: var(--rv-font-display);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ── Specific cards ────────────────────────────────────────────── */
+.cardCleaning {
+  grid-row: 1 / 3;
+  grid-column: 1;
+}
+
+.cardHeightSafety {
+  height: 340px;
+  flex-shrink: 0;
+}
+
+.cardFacts {
+  height: 340px;
+  flex-shrink: 0;
+  background: var(--rv-burgundy);
+  border-radius: 12px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.factrow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.factrow:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.factlabel {
+  font-family: var(--rv-font-display);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1;
+}
+
+.factvalue {
+  font-family: var(--rv-font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Responsive — mirrors homepage Hero breakpoints ────────────── */
+@media (max-width: 1400px) {
+  .stage {
+    padding: 24px 60px 60px;
   }
-  .base {
+  .bento {
+    grid-template-rows: 280px 280px;
+    height: 568px;
+  }
+  .bentoCol {
+    height: 568px;
+  }
+  .cardHeightSafety,
+  .cardFacts {
+    height: 280px;
+  }
+  .left {
+    height: 568px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .stage {
+    padding: 24px 40px 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
   }
-  .strip {
-    height: 320px;
+  .left {
+    height: auto;
+    gap: 40px;
   }
-  .stripCorner {
-    font-size: 48px;
+  .title {
+    white-space: normal;
+  }
+  .bento {
+    grid-template-rows: 280px 280px;
+    height: 568px;
+  }
+  .bentoCol {
+    height: 568px;
+  }
+  .cardHeightSafety,
+  .cardFacts {
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stage {
+    padding: 16px 20px 40px;
+  }
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+  .bentoCol {
+    height: auto;
+    flex-direction: row;
+  }
+  .cardCleaning {
+    grid-row: auto;
+    height: 240px;
+  }
+  .cardHeightSafety,
+  .cardFacts {
+    flex: 1;
+    height: 240px;
   }
 }

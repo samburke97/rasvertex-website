@@ -20,6 +20,7 @@
   background: var(--rv-burgundy);
 }
 
+/* ─── Layout ─────────────────────────────────────────────────── */
 .layout {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -27,7 +28,7 @@
   margin-top: 32px;
 }
 
-/* Rail */
+/* ─── Rail ───────────────────────────────────────────────────── */
 .rail {
   position: sticky;
   top: 96px;
@@ -47,7 +48,7 @@
 }
 .railItem {
   display: grid;
-  grid-template-columns: 32px 1fr 16px;
+  grid-template-columns: 32px 1fr;
   padding: 16px 0;
   border-top: 1px solid var(--rv-line);
   align-items: center;
@@ -81,48 +82,43 @@
   transform: scaleX(1);
 }
 
+/* Number — matches ProcessSection .stepNumber exactly */
 .railNum {
-  font-family: var(--rv-font-body);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-family: "Bebas Neue", var(--rv-font-display);
+  font-size: clamp(48px, 5vw, 80px);
+  font-weight: 400;
   color: var(--rv-navy);
-  opacity: 0.35;
+  opacity: 0.06;
+  line-height: 1;
+  transition: opacity 0.25s;
 }
+.railItem:hover .railNum {
+  opacity: 0.12;
+}
+.active .railNum {
+  opacity: 0.12;
+}
+
+/* Label — matches ProcessSection .stepTitle exactly */
 .railLabel {
-  font-family: var(--rv-font-display);
-  font-size: 20px;
+  font-family: "Bebas Neue", var(--rv-font-display);
+  font-size: 18px;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--rv-navy);
-  opacity: 0.32;
+  opacity: 0.28;
+  line-height: 1.1;
   transition: opacity 0.25s;
 }
-.railArrow {
-  font-size: 14px;
-  opacity: 0;
-  transition:
-    opacity 0.25s,
-    transform 0.25s;
-  color: var(--rv-burgundy);
-}
-
 .railItem:hover .railLabel {
   opacity: 1;
 }
 .active .railLabel {
   opacity: 1;
 }
-.active .railNum {
-  opacity: 1;
-  color: var(--rv-burgundy);
-}
-.active .railArrow {
-  opacity: 1;
-  transform: translateX(3px);
-}
 
-/* Panels */
+/* ─── Panels ─────────────────────────────────────────────────── */
 .panels {
   display: flex;
   flex-direction: column;
@@ -140,32 +136,44 @@
   align-items: start;
   gap: 24px;
 }
+
+/* Number — matches ProcessSection .stepNumber */
 .panelNum {
-  font-family: var(--rv-font-display);
-  font-size: 72px;
-  line-height: 0.85;
+  font-family: "Bebas Neue", var(--rv-font-display);
+  font-size: clamp(48px, 5vw, 80px);
+  font-weight: 400;
   color: var(--rv-navy);
-  opacity: 0.12;
-  letter-spacing: -0.02em;
-}
-.panelH {
-  font-family: var(--rv-font-display);
-  font-size: clamp(36px, 4.5vw, 64px);
-  line-height: 0.95;
+  opacity: 0.06;
+  line-height: 1;
   letter-spacing: -0.01em;
+}
+
+/* Title — matches ProcessSection .stepTitle */
+.panelH {
+  font-family: "Bebas Neue", var(--rv-font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--rv-navy);
-  margin-bottom: 16px;
+  opacity: 0.9;
+  line-height: 1.1;
+  margin: 0 0 10px;
+  white-space: nowrap;
 }
+
+/* Body — matches ProcessSection .stepBody */
 .panelBody {
   font-family: var(--rv-font-body);
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--rv-navy);
   opacity: 0.7;
+  margin: 0;
   max-width: 620px;
 }
 
+/* Photo */
 .panelPhoto {
   position: relative;
   border-radius: 12px;
@@ -179,21 +187,8 @@
 .panel:hover .panelPhoto img {
   transform: scale(1.02);
 }
-.photoTag {
-  position: absolute;
-  left: 16px;
-  bottom: 16px;
-  background: rgba(255, 255, 255, 0.95);
-  font-family: var(--rv-font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rv-navy);
-  padding: 7px 12px;
-  border-radius: 100px;
-}
 
+/* Bottom */
 .panelBot {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -206,6 +201,8 @@
   display: flex;
   flex-direction: column;
   border-top: 1px solid var(--rv-line);
+  padding: 0;
+  margin: 0;
 }
 .points li {
   display: grid;
@@ -259,6 +256,7 @@
   margin-top: 10px;
 }
 
+/* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1200px) {
   .layout {
     grid-template-columns: 240px 1fr;
@@ -286,5 +284,10 @@
   .panelBot {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+}
+@media (max-width: 560px) {
+  .panelBot {
+    grid-template-columns: 1fr;
   }
 }

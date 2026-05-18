@@ -13,9 +13,8 @@ const SPECS = [
     id: "interior",
     n: "01",
     label: "Interior",
-    h: "Interior\nPainting.",
+    h: "Interior Painting.",
     body: "Low-VOC systems for occupied buildings — strata corridors, hotel suites, schools and offices. Zone-staged scheduling with dust containment and same-day re-occupancy on most work.",
-    tag: "Hotel · suite refresh · Noosa",
     photo: "/assets/residential.png",
     points: [
       { k: "01", v: "Low-VOC + zero-odour coating systems" },
@@ -32,9 +31,8 @@ const SPECS = [
     id: "exterior",
     n: "02",
     label: "Exterior",
-    h: "Exterior\nCoatings.",
+    h: "Exterior Coatings.",
     body: "Coastal exposure is brutal — salt, UV and humidity. We spec elastomeric and weathershield systems with mandatory chloride rinse and a salt-bonded primer on every project within 5km of the coast.",
-    tag: "Render system · Coolum Beach",
     photo: "/assets/project-2.jpeg",
     points: [
       { k: "01", v: "Chloride-wash + salt-bonded primer" },
@@ -51,9 +49,8 @@ const SPECS = [
     id: "heritage",
     n: "03",
     label: "Heritage",
-    h: "Heritage\nRestoration.",
+    h: "Heritage Restoration.",
     body: "Lime-based and breathable systems for heritage masonry, render and timber. We work with QHR and council heritage officers from sample stage through to documentation lodgement.",
-    tag: "Lime system · Buderim heritage",
     photo: "/assets/body.png",
     points: [
       { k: "01", v: "Lime-based, breathable systems" },
@@ -70,9 +67,8 @@ const SPECS = [
     id: "roof",
     n: "04",
     label: "Roof",
-    h: "Roof\nCoatings.",
+    h: "Roof Coatings.",
     body: "Colorbond, tile and membrane re-coats. Heat-reflective coatings reduce internal building temps by up to 8°C — a measurable energy saving on commercial assets.",
-    tag: "Heat-reflective coat · Maroochydore",
     photo: "/assets/higher.png",
     points: [
       { k: "01", v: "Colorbond · tile · membrane re-coat" },
@@ -117,9 +113,10 @@ export default function Specialisations() {
   return (
     <section className={styles.section}>
       <SectionHead
-        base="FOUR DISCIPLINES."
-        overlay="FOUR DISCIPLINES."
-        sr="Four disciplines."
+        base="OUR DISCIPLINES."
+        overlay="OUR DISCIPLINES."
+        sr="Our disciplines."
+        muted
       >
         <span className={styles.eyebrow}>What we do</span>
         <p>{LEDE}</p>
@@ -138,9 +135,6 @@ export default function Specialisations() {
             >
               <span className={styles.railNum}>{sp.n}</span>
               <span className={styles.railLabel}>{sp.label}</span>
-              <span className={styles.railArrow} aria-hidden="true">
-                →
-              </span>
             </button>
           ))}
         </aside>
@@ -158,24 +152,22 @@ export default function Specialisations() {
                   {sp.n}
                 </div>
                 <div>
-                  <h3
-                    className={styles.panelH}
-                    dangerouslySetInnerHTML={{
-                      __html: sp.h.replace(/\n/g, "<br/>"),
-                    }}
-                  />
+                  <h3 className={styles.panelH}>{sp.h}</h3>
                   <p className={styles.panelBody}>{sp.body}</p>
                 </div>
               </div>
-              <div className={styles.panelPhoto}>
-                <Image
-                  src={sp.photo}
-                  alt={sp.label}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-                <span className={styles.photoTag}>{sp.tag}</span>
-              </div>
+              {sp.photo ? (
+                <div className={styles.panelPhoto}>
+                  <Image
+                    src={sp.photo}
+                    alt={sp.label}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              ) : (
+                <div className={styles.panelPhoto} />
+              )}
               <div className={styles.panelBot}>
                 <ul className={styles.points}>
                   {sp.points.map((p) => (
