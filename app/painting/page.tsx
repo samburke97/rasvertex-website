@@ -15,13 +15,13 @@ export default function PaintingPage() {
       <Hero />
       <StatsRibbon />
       <Specialisations />
-      <PaintSystems />
+      {/* <PaintSystems />
       <BeforeAfter />
       <FeaturedProject />
       <ProjectIndex />
       <Process />
       <ServiceAreas />
-      <FAQ />
+      <FAQ /> */}
     </>
   );
 }
