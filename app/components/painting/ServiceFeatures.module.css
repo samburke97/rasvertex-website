@@ -1,5 +1,9 @@
 /* ─── Section ────────────────────────────────────────────────── */
 .section {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
   padding: 56px 80px 100px;
 }
 

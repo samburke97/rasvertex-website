@@ -1,8 +1,7 @@
 .section {
   padding: 80px 80px;
-  border-top: 1px solid var(--line);
+  padding-top: 20px;
 }
-
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

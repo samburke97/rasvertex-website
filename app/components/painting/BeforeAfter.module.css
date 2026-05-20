@@ -1,6 +1,9 @@
 /* ─── Section ────────────────────────────────────────────────── */
 .section {
-  padding: 0 80px 100px;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 56px 80px 100px;
 }
 
 /* ─── Slider ─────────────────────────────────────────────────── */

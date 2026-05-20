@@ -3,7 +3,6 @@ import Specialisations from "../components/painting/Specialisations";
 import BeforeAfter from "../components/painting/BeforeAfter";
 import ServiceFeatures from "../components/painting/ServiceFeatures";
 import Process from "../components/painting/Process";
-import FAQ from "../components/painting/FAQ";
 import ServicePicker from "../components/painting/ServicePicker";
 import Statement from "../components/painting/Statement";
 import ClientTypes from "../components/painting/ClientTypes";
@@ -15,21 +14,15 @@ export default function PaintingPage() {
     <>
       <Hero />
       <ServicePicker />
-
-      <ServiceFeatures />
-      {/* <ClientTypes /> */}
-      <BeforeAfter />
-
-      {/* <Specialisations /> */}
-      {/* 
-      <ClientTypes />
+      {/* ServiceFeatures sticks, BeforeAfter scrolls over it */}
       <TeamStrip />
-      <CtaStrip />
-      <Specialisations /> */}
+      <div style={{ position: "relative" }}>
+        <ServiceFeatures />
+        <BeforeAfter />
+      </div>
 
-      {/* <Process />
-      <ServiceAreas />
-      <FAQ /> */}
+      <CtaStrip />
+      {/* <Process /> */}
     </>
   );
 }
