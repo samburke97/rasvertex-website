@@ -14,8 +14,9 @@ const DATA = {
   crew: "4 · rope access",
   warranty: "5-yr workmanship · 15-yr manufacturer",
   quote:
-    "The committee never had to chase a single update. Weekly photo logs, zero surprises, finished on time.",
-  quoteAuthor: "Strata Manager · Coolum Resort BC",
+    "The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs.",
+  quoteAuthor: "James Whitfield",
+  quoteRole: "Facilities Manager, Accor Hotels",
   ctaHref: "/contact",
 };
 
@@ -23,7 +24,6 @@ export default function BeforeAfter() {
   const stageRef = useRef<HTMLDivElement>(null);
   const afterRef = useRef<HTMLDivElement>(null);
   const handleRef = useRef<HTMLDivElement>(null);
-  const gripRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
 
   const setPct = useCallback((p: number) => {
@@ -31,7 +31,6 @@ export default function BeforeAfter() {
     if (afterRef.current)
       afterRef.current.style.clipPath = `inset(0 0 0 ${pct}%)`;
     if (handleRef.current) handleRef.current.style.left = `${pct}%`;
-    if (gripRef.current) gripRef.current.style.left = `${pct}%`;
   }, []);
 
   useEffect(() => {
@@ -82,84 +81,80 @@ export default function BeforeAfter() {
 
   return (
     <section className={styles.section}>
-      <div className={styles.card}>
-        <div className={styles.grid}>
-          {/* Left — slider */}
-          <div className={styles.sliderCol}>
-            <div className={styles.stage} ref={stageRef}>
-              <div className={styles.imgWrap}>
-                <Image
-                  src={DATA.beforeSrc}
-                  alt="Before"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div
-                className={styles.imgWrap}
-                ref={afterRef}
-                style={{ clipPath: "inset(0 0 0 50%)" }}
-              >
-                <Image
-                  src={DATA.afterSrc}
-                  alt="After"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div className={`${styles.label} ${styles.labelBefore}`}>
-                BEFORE
-              </div>
-              <div className={`${styles.label} ${styles.labelAfter}`}>
-                AFTER
-              </div>
-              <div
-                className={styles.handle}
-                ref={handleRef}
-                aria-hidden="true"
+      {/* ── Slider ── */}
+      <div className={styles.stage} ref={stageRef}>
+        <div className={styles.imgWrap}>
+          <Image
+            src={DATA.beforeSrc}
+            alt="Before"
+            fill
+            sizes="(max-width:860px) 100vw, calc(100vw - 160px)"
+            priority
+          />
+        </div>
+        <div className={styles.imgWrap} ref={afterRef}>
+          <Image
+            src={DATA.afterSrc}
+            alt="After"
+            fill
+            sizes="(max-width:860px) 100vw, calc(100vw - 160px)"
+          />
+        </div>
+        <span className={`${styles.label} ${styles.labelBefore}`}>BEFORE</span>
+        <span className={`${styles.label} ${styles.labelAfter}`}>AFTER</span>
+        <div className={styles.handle} ref={handleRef}>
+          <div className={styles.grip}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M7 10H13M7 10L4 7M7 10L4 13M13 10L16 7M13 10L16 13"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              <div className={styles.grip} ref={gripRef} aria-hidden="true" />
-            </div>
+            </svg>
           </div>
+        </div>
+      </div>
 
-          {/* Right — project details */}
-          <div className={styles.content}>
-            <h3 className={styles.heading}>{DATA.site}</h3>
-
-            <blockquote className={styles.quote}>
-              <span className={styles.quoteIcon}>&ldquo;</span>
-              {DATA.quote}
-              <div className={styles.author}>
-                <div className={styles.avatar} />
-                <div className={styles.authorInfo}>
-                  <p className={styles.authorName}>
-                    {DATA.quoteAuthor.split(" · ")[0]}
-                  </p>
-                  <p className={styles.authorRole}>
-                    {DATA.quoteAuthor.split(" · ")[1]}
-                  </p>
-                </div>
+      {/* ── Content row ── */}
+      <div className={styles.content}>
+        {/* Left — heading + specs + CTA */}
+        <div className={styles.leftCol}>
+          <h3 className={styles.heading}>{DATA.site}</h3>
+          <div className={styles.specs}>
+            {[
+              { l: "Scope", v: DATA.scope },
+              { l: "System", v: DATA.system },
+              { l: "Warranty", v: DATA.warranty },
+            ].map(({ l, v }) => (
+              <div key={l} className={styles.spec}>
+                <span className={styles.specL}>{l}</span>
+                <span className={styles.specV}>{v}</span>
               </div>
-            </blockquote>
-
-            <div className={styles.specs}>
-              {[
-                { l: "Scope", v: DATA.scope },
-                { l: "System", v: DATA.system },
-                { l: "Crew", v: DATA.crew },
-                { l: "Warranty", v: DATA.warranty },
-              ].map(({ l, v }) => (
-                <div className={styles.spec} key={l}>
-                  <span className={styles.specL}>{l}</span>
-                  <span className={styles.specV}>{v}</span>
-                </div>
-              ))}
-            </div>
-
-            <Link href={DATA.ctaHref} className={styles.cta}>
-              Get a free quote →
-            </Link>
+            ))}
           </div>
+          <Link href={DATA.ctaHref} className={styles.cta}>
+            Get a free quote →
+          </Link>
+        </div>
+
+        {/* Divider */}
+        <div className={styles.divider} />
+
+        {/* Right — quote */}
+        <div className={styles.quoteCol}>
+          <figure className={styles.quote}>
+            <span className={styles.quoteIcon}>&ldquo;</span>
+            <p>{DATA.quote}</p>
+            <figcaption className={styles.author}>
+              <div className={styles.avatar} />
+              <div className={styles.authorInfo}>
+                <p className={styles.authorName}>{DATA.quoteAuthor}</p>
+                <p className={styles.authorRole}>{DATA.quoteRole}</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

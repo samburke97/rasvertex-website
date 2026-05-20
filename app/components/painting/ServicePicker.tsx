@@ -62,13 +62,6 @@ const SERVICES = [
   },
 ];
 
-const LOGOS = [
-  { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-  { src: "/images/associations/dulux2.png", alt: "Dulux" },
-  { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
-  { src: "/images/associations/qbcc2.png", alt: "QBCC" },
-];
-
 export default function ServicePicker() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
@@ -78,33 +71,18 @@ export default function ServicePicker() {
         <div className={styles.left}>
           <div className={styles.stickyCol}>
             <h2 className={styles.heading}>
-              What kind of
+              What kind of paint
               <br />
-              paint job are
-              <br />
-              you thinking
-              <br />
-              about?
+              job are you thinking about?
             </h2>
-          </div>
-
-          <div className={styles.trusted}>
-            <p className={styles.trustedLabel}>TRUSTED TO DELIVER</p>
-            <div className={styles.logoRow}>
-              {LOGOS.map((l) => (
-                <div key={l.alt} className={styles.logoWrap}>
-                  <Image
-                    src={l.src}
-                    alt={l.alt}
-                    fill
-                    style={{
-                      objectFit: "contain",
-                      objectPosition: "left center",
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
+            <p className={styles.statement}>
+              Every painter on the Sunshine Coast will quote you a job. Not
+              every painter will show up on time, document every coat, and back
+              the work with a five-year warranty. We will.
+            </p>
+            <Link href="/contact" className={styles.statementCta}>
+              Get a free quote →
+            </Link>
           </div>
         </div>
 
@@ -160,7 +138,7 @@ export default function ServicePicker() {
           ))}
 
           <Link href="/contact" className={styles.ctaBtn}>
-            Not sure? Let's talk about it →
+            Not sure? Let&apos;s talk about it →
           </Link>
         </div>
       </div>

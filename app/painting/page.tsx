@@ -15,15 +15,17 @@ export default function PaintingPage() {
     <>
       <Hero />
       <ServicePicker />
-      <Statement />
+
+      <ServiceFeatures />
+      {/* <ClientTypes /> */}
+      <BeforeAfter />
+
+      {/* <Specialisations /> */}
+      {/* 
       <ClientTypes />
       <TeamStrip />
       <CtaStrip />
-
-      <Specialisations />
-      <BeforeAfter />
-
-      <ServiceFeatures />
+      <Specialisations /> */}
 
       {/* <Process />
       <ServiceAreas />
