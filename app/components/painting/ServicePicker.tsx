@@ -62,26 +62,52 @@ const SERVICES = [
   },
 ];
 
+const LOGOS = [
+  { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
+  { src: "/images/associations/dulux2.png", alt: "Dulux" },
+  { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
+  { src: "/images/associations/qbcc2.png", alt: "QBCC" },
+];
+
 export default function ServicePicker() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        {/* Left — heading top, scrolls with page so it meets bottom */}
         <div className={styles.left}>
-          <h2 className={styles.heading}>
-            What kind of
-            <br />
-            paint job are
-            <br />
-            you thinking
-            <br />
-            about?
-          </h2>
+          <div className={styles.stickyCol}>
+            <h2 className={styles.heading}>
+              What kind of
+              <br />
+              paint job are
+              <br />
+              you thinking
+              <br />
+              about?
+            </h2>
+          </div>
+
+          <div className={styles.trusted}>
+            <p className={styles.trustedLabel}>TRUSTED TO DELIVER</p>
+            <div className={styles.logoRow}>
+              {LOGOS.map((l) => (
+                <div key={l.alt} className={styles.logoWrap}>
+                  <Image
+                    src={l.src}
+                    alt={l.alt}
+                    fill
+                    style={{
+                      objectFit: "contain",
+                      objectPosition: "left center",
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Right — accordion + CTA */}
         <div className={styles.list}>
           {SERVICES.map((s, i) => (
             <div

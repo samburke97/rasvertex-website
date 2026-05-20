@@ -10,13 +10,21 @@
   align-items: start;
 }
 
-/* ─── Left col — sticky heading ─────────────────────────────── */
+/* ─── Left col ───────────────────────────────────────────────── */
 .left {
-  position: sticky;
-  top: 96px;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+/* ─── Sticky zone ────────────────────────────────────────────── */
+.stickyCol {
+  flex: 1;
 }
 
 .heading {
+  position: sticky;
+  top: 96px;
   font-family: var(--font-body);
   font-size: clamp(28px, 3vw, 44px);
   font-weight: 700;
@@ -24,6 +32,39 @@
   letter-spacing: -0.02em;
   color: var(--navy);
   margin: 0;
+}
+
+/* ─── Trusted to deliver ─────────────────────────────────────── */
+.trusted {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 32px;
+}
+
+.trustedLabel {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoWrap {
+  position: relative;
+  width: 80px;
+  height: 44px;
+  flex-shrink: 0;
 }
 
 /* ─── List ───────────────────────────────────────────────────── */
@@ -38,6 +79,7 @@
   border-radius: 12px;
   background: #f0f2f7;
   overflow: hidden;
+  transition: background 0.2s;
 }
 
 .open {
@@ -56,6 +98,10 @@
   cursor: pointer;
   text-align: left;
   gap: 16px;
+}
+
+.open .row {
+  padding-bottom: 0;
 }
 
 .label {
@@ -91,7 +137,7 @@
   opacity: 1;
 }
 
-/* ─── Panel — clean grid expand ─────────────────────────────── */
+/* ─── Panel ──────────────────────────────────────────────────── */
 .panel {
   display: grid;
   grid-template-rows: 0fr;
@@ -108,6 +154,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 0 24px;
+  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .open .panelInner {
@@ -129,14 +176,6 @@
   margin: 0;
 }
 
-.panelPhoto {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #c5dff5;
-}
-
 /* ─── Panel footer ───────────────────────────────────────────── */
 .panelFooter {
   display: grid;
@@ -151,6 +190,7 @@
 .panelFooterInner {
   overflow: hidden;
   padding: 0 24px;
+  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .open .panelFooterInner {
@@ -163,7 +203,7 @@
   padding: 10px 20px;
   background: var(--navy);
   color: #fff;
-  border-radius: 12px;
+  border-radius: 100px;
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
@@ -175,7 +215,15 @@
   background: var(--navy-dark);
 }
 
-/* ─── Bottom CTA ─────────────────────────────────────────────── */
+/* ─── Panel photo ────────────────────────────────────────────── */
+.panelPhoto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #c5dff5;
+}
+
 .ctaBtn {
   display: inline-flex;
   align-items: center;
@@ -187,13 +235,12 @@
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  width: fit-content;
   transition: background 0.2s;
+  width: fit-content;
 }
 .ctaBtn:hover {
   background: var(--navy-dark);
 }
-
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .section {
@@ -213,7 +260,16 @@
     gap: 40px;
   }
   .left {
+    align-self: auto;
+  }
+  .stickyCol {
+    flex: none;
+  }
+  .heading {
     position: static;
+  }
+  .trusted {
+    padding-top: 24px;
   }
   .panelInner {
     grid-template-columns: 1fr;

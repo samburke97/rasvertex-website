@@ -16,7 +16,7 @@ const PHOTOS = [
 const slides = [...PHOTOS, ...PHOTOS, ...PHOTOS, ...PHOTOS];
 
 const LEDE =
-  "From first phone call to warranty sign-off, one project manager runs the whole job. You get one number, one invoice, one thread.";
+  "One project manager, from first phone call to warranty sign-off. One number, one invoice, one thread.";
 
 export default function Hero() {
   const [emblaRef] = useEmblaCarousel({
