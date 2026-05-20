@@ -1,4 +1,3 @@
-import SectionHead from "./SectionHead";
 import styles from "./ServiceAreas.module.css";
 
 const REGIONS = [
@@ -80,19 +79,6 @@ const REGIONS = [
 export default function ServiceAreas() {
   return (
     <section className={styles.section}>
-      <SectionHead
-        base="WHERE WE WORK."
-        overlay="WHERE WE WORK."
-        sr="Where we work."
-      >
-        <span className={styles.eyebrow}>Service areas</span>
-        <p>
-          We're based in Maroochydore and service the entire Sunshine Coast —
-          from Caloundra in the south to Gympie in the north, coastline to
-          hinterland.
-        </p>
-      </SectionHead>
-
       <div className={styles.grid}>
         {REGIONS.map(({ n, h, tag, suburbs }) => (
           <div className={styles.region} key={n}>

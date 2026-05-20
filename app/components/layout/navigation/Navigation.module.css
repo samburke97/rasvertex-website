@@ -195,11 +195,11 @@
   background: var(--navy);
   color: #ffffff;
   border-radius: 12px;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   transition: background 0.2s;
   border: none;
   cursor: pointer;

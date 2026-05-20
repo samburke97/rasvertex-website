@@ -1,4 +1,3 @@
-import SectionHead from "./SectionHead";
 import styles from "./Process.module.css";
 
 const Arrow = () => (
@@ -63,16 +62,6 @@ const STEPS = [
 export default function Process() {
   return (
     <section className={styles.section}>
-      <SectionHead
-        base="OUR PROCESS."
-        overlay="OUR PROCESS."
-        sr="Our process."
-        muted
-      >
-        <span className={styles.eyebrow}>How we actually run a job</span>
-        <p>{LEDE}</p>
-      </SectionHead>
-
       <div className={styles.timeline}>
         <div className={styles.rail} aria-hidden="true" />
 

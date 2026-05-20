@@ -1,18 +1,22 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useRef } from "react";
-import SectionHead from "./SectionHead";
 import styles from "./BeforeAfter.module.css";
 
 const DATA = {
   beforeSrc: "/assets/project-1.jpeg",
   afterSrc: "/assets/project-2.jpeg",
-  fileId: "PT-2024-014",
-  site: "COOLUM RESORT",
-  daysOnSite: "21",
-  beforeLabel: "Before · Day 0",
-  afterLabel: "After · Day 21",
+  site: "Coolum Resort.",
+  scope: "Full exterior repaint · render & masonry · 4 storeys",
+  system: "Dulux Weathershield Pure · elastomeric topcoat",
+  crew: "4 · rope access",
+  warranty: "5-yr workmanship · 15-yr manufacturer",
+  quote:
+    "The committee never had to chase a single update. Weekly photo logs, zero surprises, finished on time.",
+  quoteAuthor: "Strata Manager · Coolum Resort BC",
+  ctaHref: "/contact",
 };
 
 export default function BeforeAfter() {
@@ -78,50 +82,85 @@ export default function BeforeAfter() {
 
   return (
     <section className={styles.section}>
-      <SectionHead
-        base="BEFORE, AFTER."
-        overlay="BEFORE, AFTER."
-        sr="Before, after."
-      >
-        <span className={styles.eyebrow}>Measured proof</span>
-        <div className={styles.meta}>
-          <span>
-            FILE <span className={styles.metaV}>{DATA.fileId}</span>
-          </span>
-          <span>{DATA.site}</span>
-          <span>{DATA.daysOnSite} DAYS ON SITE</span>
-        </div>
-      </SectionHead>
+      <div className={styles.card}>
+        <div className={styles.grid}>
+          {/* Left — slider */}
+          <div className={styles.sliderCol}>
+            <div className={styles.stage} ref={stageRef}>
+              <div className={styles.imgWrap}>
+                <Image
+                  src={DATA.beforeSrc}
+                  alt="Before"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div
+                className={styles.imgWrap}
+                ref={afterRef}
+                style={{ clipPath: "inset(0 0 0 50%)" }}
+              >
+                <Image
+                  src={DATA.afterSrc}
+                  alt="After"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className={`${styles.label} ${styles.labelBefore}`}>
+                BEFORE
+              </div>
+              <div className={`${styles.label} ${styles.labelAfter}`}>
+                AFTER
+              </div>
+              <div
+                className={styles.handle}
+                ref={handleRef}
+                aria-hidden="true"
+              />
+              <div className={styles.grip} ref={gripRef} aria-hidden="true" />
+            </div>
+          </div>
 
-      <div className={styles.stage} ref={stageRef}>
-        <div className={styles.imgWrap}>
-          <Image
-            src={DATA.beforeSrc}
-            alt="Before"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {/* Right — project details */}
+          <div className={styles.content}>
+            <h3 className={styles.heading}>{DATA.site}</h3>
+
+            <blockquote className={styles.quote}>
+              <span className={styles.quoteIcon}>&ldquo;</span>
+              {DATA.quote}
+              <div className={styles.author}>
+                <div className={styles.avatar} />
+                <div className={styles.authorInfo}>
+                  <p className={styles.authorName}>
+                    {DATA.quoteAuthor.split(" · ")[0]}
+                  </p>
+                  <p className={styles.authorRole}>
+                    {DATA.quoteAuthor.split(" · ")[1]}
+                  </p>
+                </div>
+              </div>
+            </blockquote>
+
+            <div className={styles.specs}>
+              {[
+                { l: "Scope", v: DATA.scope },
+                { l: "System", v: DATA.system },
+                { l: "Crew", v: DATA.crew },
+                { l: "Warranty", v: DATA.warranty },
+              ].map(({ l, v }) => (
+                <div className={styles.spec} key={l}>
+                  <span className={styles.specL}>{l}</span>
+                  <span className={styles.specV}>{v}</span>
+                </div>
+              ))}
+            </div>
+
+            <Link href={DATA.ctaHref} className={styles.cta}>
+              Get a free quote →
+            </Link>
+          </div>
         </div>
-        <div
-          className={styles.imgWrap}
-          ref={afterRef}
-          style={{ clipPath: "inset(0 0 0 50%)" }}
-        >
-          <Image
-            src={DATA.afterSrc}
-            alt="After"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-        <div className={`${styles.label} ${styles.labelBefore}`}>
-          {DATA.beforeLabel}
-        </div>
-        <div className={`${styles.label} ${styles.labelAfter}`}>
-          {DATA.afterLabel}
-        </div>
-        <div className={styles.handle} ref={handleRef} aria-hidden="true" />
-        <div className={styles.grip} ref={gripRef} aria-hidden="true" />
       </div>
     </section>
   );

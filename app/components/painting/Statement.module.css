@@ -1,0 +1,131 @@
+.section {
+  padding: 56px 80px 80px;
+}
+
+/* ─── Bar grid: headline left, lede right ────────────────────── */
+.bar {
+  padding: 24px 0;
+}
+
+.barGrid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 80px;
+  align-items: center;
+}
+
+.barHeadline {
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Headline scroll wipe ───────────────────────────────────── */
+.headlineWrap {
+  position: relative;
+  display: inline-block;
+}
+
+.headlineSr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.headlineBase,
+.headlineOverlay {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  display: block;
+}
+
+.headlineBase {
+  color: #c4c9d4;
+}
+.headlineOverlay {
+  color: var(--navy);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ─── Right col ──────────────────────────────────────────────── */
+.barRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 500px;
+}
+
+/* Subtle burgundy rule */
+.accent {
+  width: 32px;
+  height: 2px;
+  background: var(--burgundy);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.lede {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+}
+
+.cta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  width: fit-content;
+}
+.cta:hover {
+  opacity: 1;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .section {
+    padding: 56px 48px 72px;
+  }
+  .barGrid {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 56px 32px 64px;
+  }
+  .barGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .barRight {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 20px 56px;
+  }
+}

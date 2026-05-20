@@ -1,329 +1,134 @@
-/* ─────────────────────────────────────────────────────────────────
-   Painting — Hero
-   Structure mirrors homepage Hero exactly:
-   .section → .stage (padding: 24px 80px 80px) → .inner (two cols)
-   ───────────────────────────────────────────────────────────────── */
-
 .section {
-  --rv-navy: #011955;
-  --rv-burgundy: #6b1f24;
-  --rv-line: rgba(1, 25, 85, 0.12);
-  --rv-line-strong: rgba(1, 25, 85, 0.22);
-  --rv-font-display: "Bebas Neue", Arial, sans-serif;
-  --rv-font-body: "Inter", system-ui, -apple-system, sans-serif;
-
-  background: #fff;
-  overflow: visible;
+  padding-top: 24px;
+  overflow: hidden;
 }
 
-/* ── Stage — matches homepage Hero .stage exactly ──────────────── */
-.stage {
-  padding: 24px 80px 80px;
-}
-
-/* ── Two-column inner ──────────────────────────────────────────── */
-.inner {
+/* ─── Top row: title left, lede right ───────────────────────── */
+.top {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
   align-items: start;
+  padding: 0 80px 24px;
+  gap: 48px;
 }
 
-/* ── Left column ───────────────────────────────────────────────── */
-.left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 688px;
-}
-
-/* Title — matches ExperienceSection .headlineBase */
 .title {
-  font-family: var(--rv-font-display);
+  font-family: var(--font-display);
+  font-size: clamp(64px, 10vw, 160px);
   font-weight: 400;
-  font-size: clamp(40px, 5vw, 72px);
-  line-height: 1;
-  letter-spacing: -0.01em;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: var(--rv-navy);
+  color: var(--navy);
   margin: 0;
   white-space: nowrap;
 }
 
-.accent {
-  color: var(--rv-burgundy);
-}
-
-.base {
+.topRight {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+  padding-top: 8px;
+  max-width: 420px;
+  justify-self: end;
 }
 
-/* Lede — matches ProcessSection .intro */
 .lede {
-  font-family: var(--rv-font-body);
+  font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 400;
   line-height: 1.75;
-  color: var(--rv-navy);
+  color: var(--navy);
   opacity: 0.6;
   margin: 0;
 }
 
-.lede :global(em) {
-  font-style: normal;
-  font-weight: 600;
+.cta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  width: fit-content;
+}
+.cta:hover {
   opacity: 1;
 }
 
-.location {
-  font-family: var(--rv-font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rv-navy);
-  opacity: 0.4;
-  margin: 0;
+/* ─── Carousel ───────────────────────────────────────────────── */
+.carouselWrap {
+  overflow: hidden;
 }
 
-/* ── Bento — same dimensions as homepage Hero .bentoGrid ────────── */
-.bento {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 340px 340px;
-  gap: 8px;
-  height: 688px;
-
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+.carousel {
+  overflow: hidden;
+  cursor: grab;
+  padding-left: 80px;
+  box-sizing: content-box;
+}
+.carousel:active {
+  cursor: grabbing;
 }
 
-.loaded .bento {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.bentoCol {
+.carouselTrack {
   display: flex;
-  flex-direction: column;
   gap: 8px;
-  height: 688px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-/* ── Card base — identical to homepage Hero cards ──────────────── */
-.card {
+.slide {
   position: relative;
+  flex: 0 0 calc(33vw - 12px);
+  aspect-ratio: 3 / 2;
   border-radius: 12px;
   overflow: hidden;
-  text-decoration: none;
-  display: block;
+  background: #e8edf2;
 }
 
-.imageWrap {
-  position: absolute;
-  inset: 0;
-  transform: scale(1);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.card:hover .imageWrap {
-  transform: scale(1.06);
-}
-
-.image {
+.slide img {
   object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slide:hover img {
+  transform: scale(1.03);
 }
 
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(1, 25, 85, 0.08),
-    rgba(1, 25, 85, 0.45)
-  );
-  pointer-events: none;
-}
-
-.arrowIcon {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 4;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #011955;
-  opacity: 0;
-  transform: scale(0.8);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-  pointer-events: none;
-}
-
-.card:hover .arrowIcon {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.cardContent {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  right: 18px;
-  z-index: 3;
-}
-
-.cardTitle {
-  color: white;
-  font-family: var(--rv-font-display);
-  font-weight: 400;
-  font-size: 24px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-/* ── Specific cards ────────────────────────────────────────────── */
-.cardCleaning {
-  grid-row: 1 / 3;
-  grid-column: 1;
-}
-
-.cardHeightSafety {
-  height: 340px;
-  flex-shrink: 0;
-}
-
-.cardFacts {
-  height: 340px;
-  flex-shrink: 0;
-  background: var(--rv-burgundy);
-  border-radius: 12px;
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.factrow {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.factrow:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.factlabel {
-  font-family: var(--rv-font-display);
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  line-height: 1;
-}
-
-.factvalue {
-  font-family: var(--rv-font-body);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* ── Responsive — mirrors homepage Hero breakpoints ────────────── */
-@media (max-width: 1400px) {
-  .stage {
-    padding: 24px 60px 60px;
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .top {
+    padding: 0 48px 24px;
   }
-  .bento {
-    grid-template-rows: 280px 280px;
-    height: 568px;
-  }
-  .bentoCol {
-    height: 568px;
-  }
-  .cardHeightSafety,
-  .cardFacts {
-    height: 280px;
-  }
-  .left {
-    height: 568px;
+  .carousel {
+    padding-left: 48px;
   }
 }
 
-@media (max-width: 1200px) {
-  .stage {
-    padding: 24px 40px 60px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .inner {
+@media (max-width: 860px) {
+  .top {
     grid-template-columns: 1fr;
-    gap: 40px;
+    padding: 0 32px 24px;
   }
-  .left {
-    height: auto;
-    gap: 40px;
+  .carousel {
+    padding-left: 32px;
   }
-  .title {
-    white-space: normal;
-  }
-  .bento {
-    grid-template-rows: 280px 280px;
-    height: 568px;
-  }
-  .bentoCol {
-    height: 568px;
-  }
-  .cardHeightSafety,
-  .cardFacts {
-    height: 280px;
+  .slide {
+    flex: 0 0 72vw;
   }
 }
 
-@media (max-width: 768px) {
-  .stage {
-    padding: 16px 20px 40px;
+@media (max-width: 560px) {
+  .section {
+    padding-top: 16px;
   }
-  .bento {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    height: auto;
+  .top {
+    padding: 0 20px 20px;
   }
-  .bentoCol {
-    height: auto;
-    flex-direction: row;
+  .carousel {
+    padding-left: 20px;
   }
-  .cardCleaning {
-    grid-row: auto;
-    height: 240px;
-  }
-  .cardHeightSafety,
-  .cardFacts {
-    flex: 1;
-    height: 240px;
+  .slide {
+    flex: 0 0 85vw;
   }
 }

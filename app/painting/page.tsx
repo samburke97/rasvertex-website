@@ -1,25 +1,31 @@
 import Hero from "../components/painting/Hero";
-import StatsRibbon from "../components/painting/StatsRibbon";
 import Specialisations from "../components/painting/Specialisations";
-import PaintSystems from "../components/painting/PaintSystems";
 import BeforeAfter from "../components/painting/BeforeAfter";
-import FeaturedProject from "../components/painting/FeaturedProject";
-import ProjectIndex from "../components/painting/ProjectIndex";
+import ServiceFeatures from "../components/painting/ServiceFeatures";
 import Process from "../components/painting/Process";
-import ServiceAreas from "../components/painting/ServiceAreas";
 import FAQ from "../components/painting/FAQ";
+import ServicePicker from "../components/painting/ServicePicker";
+import Statement from "../components/painting/Statement";
+import ClientTypes from "../components/painting/ClientTypes";
+import TeamStrip from "../components/painting/TeamStrip";
+import CtaStrip from "../components/painting/CTAStrip";
 
 export default function PaintingPage() {
   return (
     <>
       <Hero />
-      <StatsRibbon />
+      <ServicePicker />
+      <Statement />
+      <ClientTypes />
+      <TeamStrip />
+      <CtaStrip />
+
       <Specialisations />
-      {/* <PaintSystems />
       <BeforeAfter />
-      <FeaturedProject />
-      <ProjectIndex />
-      <Process />
+
+      <ServiceFeatures />
+
+      {/* <Process />
       <ServiceAreas />
       <FAQ /> */}
     </>

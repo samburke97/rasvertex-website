@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import Link from "next/link";
 import styles from "./ProcessSection.module.css";
+import SectionBar from "../ui/SectionBar";
 
 const steps = [
   {
@@ -32,70 +31,15 @@ const steps = [
 ];
 
 export default function ProcessSection() {
-  const overlayRef = useRef<HTMLSpanElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const overlay = overlayRef.current;
-    const bar = barRef.current;
-    if (!overlay || !bar) return;
-
-    const barDocTop = window.scrollY + bar.getBoundingClientRect().top;
-    const scrollStart = barDocTop - window.innerHeight * 0.8;
-    const scrollEnd = barDocTop - window.innerHeight * 0.3;
-
-    const onScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY <= scrollStart) {
-        overlay.style.clipPath = "inset(0 100% 0 0)";
-        return;
-      }
-      if (scrollY >= scrollEnd) {
-        overlay.style.clipPath = "inset(0 0% 0 0)";
-        return;
-      }
-      const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
-      overlay.style.clipPath = `inset(0 ${(1 - progress) * 100}% 0 0)`;
-    };
-
-    overlay.style.clipPath = "inset(0 100% 0 0)";
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <section className={styles.section}>
-      <div className={styles.bar} ref={barRef}>
-        <div className={styles.barGrid}>
-          <div className={styles.barHeadline}>
-            <div className={styles.headlineWrap}>
-              <span className={styles.headlineBase} aria-hidden="true">
-                OUR PROCESS.
-              </span>
-              <span
-                ref={overlayRef}
-                className={styles.headlineOverlay}
-                aria-hidden="true"
-                style={{ clipPath: "inset(0 100% 0 0)" }}
-              >
-                OUR PROCESS.
-              </span>
-              <span className={styles.headlineSr}>OUR PROCESS.</span>
-            </div>
-          </div>
-          <div className={styles.barRight}>
-            <p className={styles.intro}>
-              From first phone call to warranty sign-off, one project manager
-              runs the whole job. You get one number, one invoice, one thread.
-            </p>
-            <Link href="/contact" className={styles.cta}>
-              Get a free quote →
-            </Link>
-          </div>
-        </div>
-      </div>
+      <SectionBar
+        headline="OUR PROCESS."
+        description="From first phone call to warranty sign-off, one project manager runs the whole job. You get one number, one invoice, one thread."
+        ctaLabel="Get a free quote →"
+        ctaHref="/contact"
+      />
 
-      {/* grid class enables CSS-only default-active + hover logic */}
       <div className={styles.grid}>
         {steps.map((step, i) => (
           <div

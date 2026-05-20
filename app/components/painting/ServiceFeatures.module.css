@@ -1,0 +1,125 @@
+.section {
+  padding: 80px 80px 100px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.feature {
+  padding: 40px 40px 40px 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+/* Top navy wipe on hover */
+.feature::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--navy);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feature:hover::before {
+  transform: scaleX(1);
+}
+
+/* Remove right border on every 3rd col */
+.feature:nth-child(3n) {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* Remove bottom border on last row */
+.feature:nth-last-child(-n + 3) {
+  border-bottom: none;
+}
+
+.num {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--navy);
+  margin: 0;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .section {
+    padding: 64px 48px 80px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 56px 32px 72px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feature:nth-child(3n) {
+    border-right: 1px solid var(--line);
+    padding-right: 40px;
+  }
+  .feature:nth-child(2n) {
+    border-right: none;
+    padding-right: 0;
+  }
+  .feature:nth-last-child(-n + 3) {
+    border-bottom: 1px solid var(--line);
+  }
+  .feature:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 20px 64px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .feature {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .feature:last-child {
+    border-bottom: none;
+  }
+  .feature:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+}
