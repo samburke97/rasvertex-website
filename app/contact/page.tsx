@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import styles from "./Contact.module.css";
 
 type Step = 1 | 2 | 3;
@@ -13,7 +14,6 @@ const SERVICES = [
   "Maintenance",
   "Height Safety",
 ];
-
 const PROPERTY_TYPES = [
   "Strata / Body Corporate",
   "Commercial Building",
@@ -35,25 +35,19 @@ export default function ContactPage() {
     message: "",
   });
 
-  const toggleService = (service: string) => {
+  const toggleService = (s: string) =>
     setSelectedServices((prev) =>
-      prev.includes(service)
-        ? prev.filter((s) => s !== service)
-        : [...prev, service],
+      prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s],
     );
-  };
 
   const handleNext = () => {
     if (currentStep < 3) setCurrentStep((currentStep + 1) as Step);
   };
-
   const handleBack = () => {
     if (currentStep > 1) setCurrentStep((currentStep - 1) as Step);
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitted:", { selectedServices, ...formData });
   };
 
   const canContinue =
@@ -68,72 +62,77 @@ export default function ContactPage() {
   return (
     <main className={styles.page}>
       <div className={styles.container}>
-        {/* ── Left column ── */}
+        {/* ── Left ── */}
         <div className={styles.left}>
-          <p className={styles.eyebrow}>[ Get a quote ]</p>
+          <div className={styles.leftTop}>
+            <h1 className={styles.headline}>
+              How can
+              <br />
+              we help?
+            </h1>
 
-          <h1 className={styles.headline}>
-            Tell us
-            <br />
-            what the
-            <br />
-            job needs.
-          </h1>
+            <dl className={styles.contactList}>
+              <div className={styles.contactRow}>
+                <dt className={styles.contactLabel}>Call</dt>
+                <dd>
+                  <a href="tel:0754430000" className={styles.contactValue}>
+                    07 5443 0000
+                  </a>
+                </dd>
+              </div>
+              <div className={styles.contactRow}>
+                <dt className={styles.contactLabel}>Email</dt>
+                <dd>
+                  <a
+                    href="mailto:hello@rasvertex.com.au"
+                    className={styles.contactValue}
+                  >
+                    hello@rasvertex.com.au
+                  </a>
+                </dd>
+              </div>
+              <div className={styles.contactRow}>
+                <dt className={styles.contactLabel}>Visit</dt>
+                <dd className={styles.contactValue}>Maroochydore QLD 4558</dd>
+              </div>
+            </dl>
+          </div>
 
-          <p className={styles.subline}>
-            Three short steps. No call-centre. Your request lands on the desk of
-            a trade lead who'll call within 48 hours.
-          </p>
-
-          <hr className={styles.divider} />
-
-          <dl className={styles.contactList}>
-            <div className={styles.contactRow}>
-              <dt className={styles.contactLabel}>Call</dt>
-              <dd>
-                <a href="tel:0754430000" className={styles.contactValue}>
-                  07 5443 0000
-                </a>
-              </dd>
+          {/* Person block */}
+          <div className={styles.person}>
+            <div className={styles.personAvatar}>
+              <Image
+                src="/images/people/caro.jpg"
+                alt="Dedicated project manager"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top" }}
+              />
             </div>
-            <div className={styles.contactRow}>
-              <dt className={styles.contactLabel}>Email</dt>
-              <dd>
-                <a
-                  href="mailto:hello@rasvertex.com.au"
-                  className={styles.contactValue}
-                >
-                  hello@rasvertex.com.au
-                </a>
-              </dd>
-            </div>
-            <div className={styles.contactRow}>
-              <dt className={styles.contactLabel}>Visit</dt>
-              <dd className={styles.contactValue}>Maroochydore QLD 4558</dd>
-            </div>
-          </dl>
+            <p className={styles.personName}>Hylton Denton</p>
+            <p className={styles.personRole}>Dedicated Project Manager</p>
+            <p className={styles.personBody}>
+              One person runs your job from site visit to sign-off. One number,
+              one thread, no chasing. You always know who to call.
+            </p>
+          </div>
         </div>
 
-        {/* ── Right column — form card ── */}
+        {/* ── Right — form ── */}
         <div className={styles.right}>
           <div className={styles.card}>
-            {/* Progress bar */}
             <div className={styles.progressHeader}>
               <span className={styles.stepLabel}>Step {currentStep} / 3</span>
               <div className={styles.progressTrack}>
                 {[1, 2, 3].map((s) => (
                   <div
                     key={s}
-                    className={`${styles.progressSegment} ${
-                      s <= currentStep ? styles.progressActive : ""
-                    }`}
+                    className={`${styles.progressSegment} ${s <= currentStep ? styles.progressActive : ""}`}
                   />
                 ))}
               </div>
             </div>
 
             <form onSubmit={handleSubmit} className={styles.form}>
-              {/* Step 1 — Services */}
               {currentStep === 1 && (
                 <div className={styles.stepBody}>
                   <h2 className={styles.stepTitle}>
@@ -145,9 +144,7 @@ export default function ContactPage() {
                         key={s}
                         type="button"
                         onClick={() => toggleService(s)}
-                        className={`${styles.pill} ${
-                          selectedServices.includes(s) ? styles.pillActive : ""
-                        }`}
+                        className={`${styles.pill} ${selectedServices.includes(s) ? styles.pillActive : ""}`}
                       >
                         {s.toUpperCase()}
                       </button>
@@ -156,7 +153,6 @@ export default function ContactPage() {
                 </div>
               )}
 
-              {/* Step 2 — Property */}
               {currentStep === 2 && (
                 <div className={styles.stepBody}>
                   <h2 className={styles.stepTitle}>
@@ -172,9 +168,7 @@ export default function ContactPage() {
                           onClick={() =>
                             setFormData({ ...formData, propertyType: t })
                           }
-                          className={`${styles.pill} ${
-                            formData.propertyType === t ? styles.pillActive : ""
-                          }`}
+                          className={`${styles.pill} ${formData.propertyType === t ? styles.pillActive : ""}`}
                         >
                           {t.toUpperCase()}
                         </button>
@@ -201,7 +195,6 @@ export default function ContactPage() {
                 </div>
               )}
 
-              {/* Step 3 — Contact details */}
               {currentStep === 3 && (
                 <div className={styles.stepBody}>
                   <h2 className={styles.stepTitle}>How do we reach you?</h2>
@@ -243,7 +236,7 @@ export default function ContactPage() {
                   </div>
                   <div className={styles.fieldGroup}>
                     <label className={styles.fieldLabel}>
-                      Anything else we should know?{" "}
+                      Anything else?{" "}
                       <span className={styles.optional}>(optional)</span>
                     </label>
                     <textarea
@@ -259,7 +252,6 @@ export default function ContactPage() {
                 </div>
               )}
 
-              {/* Footer — nav buttons */}
               <div className={styles.cardFooter}>
                 {currentStep > 1 && (
                   <button

@@ -1,87 +1,20 @@
 "use client";
 
 import { ReactNode } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import styles from "./Button.module.css";
 
-export type ButtonVariant =
-  | "primary"
-  | "primary-green"
-  | "secondary"
-  | "outline"
-  | "danger";
+export type ButtonVariant = "primary" | "secondary" | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";
-export type IconPosition = "left" | "right";
 
-interface ButtonProps {
-  children: ReactNode;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  className?: string;
-  fullWidth?: boolean;
-  icon?: ReactNode;
-  iconPath?: string;
-  iconPosition?: IconPosition;
-  alt?: string;
-}
+interface BaseProps { children: ReactNode; variant?: ButtonVariant; size?: ButtonSize; disabled?: boolean; className?: string; fullWidth?: boolean; }
+interface ButtonAsButton extends BaseProps { as?: "button"; href?: never; onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; type?: "button" | "submit" | "reset"; }
+interface ButtonAsLink extends BaseProps { as: "link"; href: string; onClick?: never; type?: never; }
+type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-export default function Button({
-  children,
-  variant = "primary",
-  size = "md",
-  onClick,
-  type = "button",
-  disabled = false,
-  className = "",
-  fullWidth = false,
-  icon,
-  iconPath,
-  iconPosition = "left",
-}: ButtonProps) {
-  // Determine what icon to render
-  let iconElement = icon;
-
-  // If iconPath is provided but no icon, create an Image component
-  if (iconPath && !icon) {
-    // Assume SVG if no extension provided
-    const iconSrc = iconPath.includes(".") ? iconPath : `${iconPath}.svg`;
-
-    iconElement = (
-      <Image
-        src={iconSrc}
-        alt=""
-        width={size === "sm" ? 16 : size === "md" ? 20 : 24}
-        height={size === "sm" ? 16 : size === "md" ? 20 : 24}
-        className={variant === "danger" ? styles.whiteIcon : ""}
-      />
-    );
-  }
-
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`
-        ${styles.button}
-        ${styles[variant]}
-        ${styles[size]}
-        ${iconElement ? styles.withIcon : ""}
-        ${iconElement && iconPosition === "left" ? styles.iconRight : ""}
-        ${fullWidth ? styles.fullWidth : ""}
-        ${className}
-      `}
-    >
-      {iconElement && iconPosition === "left" && (
-        <span className={styles.iconContainer}>{iconElement}</span>
-      )}
-      {children}
-      {iconElement && iconPosition === "right" && (
-        <span className={styles.iconContainer}>{iconElement}</span>
-      )}
-    </button>
-  );
+export default function Button({ children, variant = "primary", size = "md", disabled = false, className = "", fullWidth = false, ...props }: ButtonProps) {
+  const classes = [styles.button, styles[variant], styles[size], fullWidth ? styles.fullWidth : "", className].filter(Boolean).join(" ");
+  if (props.as === "link" && props.href) return <Link href={props.href} className={classes}>{children}</Link>;
+  const { onClick, type = "button" } = props as ButtonAsButton;
+  return <button type={type} onClick={onClick} disabled={disabled} className={classes}>{children}</button>;
 }

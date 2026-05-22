@@ -1,10 +1,10 @@
 export const servicesData = {
   painting: {
     name: "Painting",
-    href: "/services/painting",
+    href: "/painting",
     description:
       "Professional interior and exterior painting services for commercial and residential properties. Quality finishes that last.",
-    image: "/images/services/painting.jpg",
+    image: "/nav/painting.png",
     subServices: [
       "Interior Painting",
       "Exterior Painting",
@@ -14,17 +14,14 @@ export const servicesData = {
       "Strata Painting",
       "Render Painting",
       "Roof Painting",
-      "Colorbond Roof Painting",
-      "Metal Roof Painting",
-      "Tiled Roof Painting",
     ],
   },
   building: {
     name: "Building Cleaning",
-    href: "/services/building-cleaning",
+    href: "/cleaning",
     description:
       "Comprehensive building maintenance and cleaning services. Pressure washing, facade cleaning, and complete building care.",
-    image: "/images/services/building-cleaning.jpg",
+    image: "/nav/cleaning.png",
     subServices: [
       "Pressure Washing",
       "Facade Cleaning",
@@ -33,15 +30,14 @@ export const servicesData = {
       "Concrete Cleaning",
       "Building Wash",
       "Driveway Cleaning",
-      "Paver Cleaning",
     ],
   },
   window: {
     name: "Window Cleaning",
-    href: "/services/window-cleaning",
+    href: "/cleaning",
     description:
       "High-rise and commercial window cleaning with full IRATA certification. Safe, professional, and compliant services.",
-    image: "/images/services/window-cleaning.jpg",
+    image: "/nav/window.png",
     subServices: [
       "High-Rise Windows",
       "Rope Access",
@@ -49,15 +45,14 @@ export const servicesData = {
       "Strata Windows",
       "Solar Panel Cleaning",
       "Gutter Cleaning",
-      "Skylight Cleaning",
     ],
   },
   waterproofing: {
     name: "Waterproofing",
-    href: "/services/waterproofing",
+    href: "/waterproofing",
     description:
       "Expert waterproofing solutions for balconies, roofs, and wet areas. Long-term warranties and proven protection.",
-    image: "/images/services/waterproofing.jpg",
+    image: "/nav/waterproofing.png",
     subServices: [
       "Balcony Waterproofing",
       "Roof Waterproofing",
@@ -66,15 +61,14 @@ export const servicesData = {
       "Leak Detection",
       "Membrane Systems",
       "Tanking",
-      "Water Damage Repair",
     ],
   },
   maintenance: {
     name: "Maintenance",
-    href: "/services/maintenance",
+    href: "/maintenance",
     description:
       "Ongoing building maintenance and repair services to keep your property in top condition year-round.",
-    image: "/images/services/maintenance.jpg",
+    image: "/nav/maintenance.png",
     subServices: [
       "Preventative Maintenance",
       "Reactive Repairs",
@@ -90,7 +84,7 @@ export const servicesData = {
     href: "/services/height-safety",
     description:
       "Complete height safety systems, certification, and compliance. IRATA certified technicians and full safety compliance.",
-    image: "/images/services/height-safety.jpg",
+    image: "/nav/height.png",
     subServices: [
       "Anchor Point Installation",
       "Safety Line Systems",

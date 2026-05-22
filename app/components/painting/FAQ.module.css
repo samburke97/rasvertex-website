@@ -1,182 +1,27 @@
-.section {
-  padding: 96px var(--rv-gutter);
-  background: #fff;
-}
-
-.inner {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 80px;
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-}
-
-.eyebrow {
-  font-family: var(--rv-font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rv-burgundy);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.eyebrow::before {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: var(--rv-burgundy);
-}
-
-.h {
-  font-family: var(--rv-font-display);
-  font-size: clamp(40px, 5vw, 72px);
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: var(--rv-navy);
-  margin-top: 16px;
-  margin-bottom: 24px;
-}
-
-.lede {
-  font-family: var(--rv-font-body);
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--rv-navy);
-  opacity: 0.7;
-  max-width: 320px;
-  margin-bottom: 32px;
-}
-
-.contact {
-  padding-top: 24px;
-  border-top: 1px solid var(--rv-line);
-  font-family: var(--rv-font-body);
-  font-size: 13px;
-  color: var(--rv-navy);
-}
-.contact strong {
-  font-family: var(--rv-font-display);
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 8px;
-}
-.contactLine {
-  opacity: 0.7;
-  margin-top: 4px;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-}
-.item {
-  border-bottom: 1px solid var(--rv-line);
-}
-.item:first-child {
-  border-top: 1px solid var(--rv-line);
-}
-
-.question {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
-  align-items: center;
-  gap: 16px;
-  padding: 24px 0;
-  text-align: left;
-  font-family: var(--rv-font-body);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--rv-navy);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.qNum {
-  font-family: var(--rv-font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--rv-burgundy);
-  opacity: 0.7;
-}
-
-.plus {
-  position: relative;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid var(--rv-line-strong);
-  flex-shrink: 0;
-  transition:
-    background 0.25s,
-    border-color 0.25s,
-    color 0.25s;
-  color: var(--rv-navy);
-  display: block;
-}
-.plus::before,
-.plus::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: currentColor;
-}
-.plus::before {
-  width: 12px;
-  height: 1.5px;
-  transform: translate(-50%, -50%);
-}
-.plus::after {
-  width: 1.5px;
-  height: 12px;
-  transform: translate(-50%, -50%);
-  transition: transform 0.25s;
-}
-
-.open .plus {
-  background: var(--rv-navy);
-  border-color: var(--rv-navy);
-  color: #fff;
-}
-.open .plus::after {
-  transform: translate(-50%, -50%) scaleY(0);
-}
-
-.answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.open .answer {
-  max-height: 400px;
-}
-.answerInner {
-  padding: 0 0 28px 48px;
-  font-family: var(--rv-font-body);
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--rv-navy);
-  opacity: 0.75;
-  max-width: 640px;
-}
-
-@media (max-width: 960px) {
-  .section {
-    padding: 64px var(--rv-gutter);
-  }
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-}
+.section { padding: 96px 80px; background: #fff; }
+.inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: stretch; }
+.left { position: sticky; top: 96px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.leftTop { display: flex; flex-direction: column; gap: 20px; max-width: 70%; }
+.h { font-family: var(--font-body); font-size: clamp(22px, 2vw, 30px); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--navy); margin: 0; }
+.lede { font-family: var(--font-body); font-size: 14px; line-height: 1.75; color: var(--navy); opacity: 0.6; margin: 0; }
+.contact { display: flex; flex-direction: column; gap: 16px; }
+.avatar { position: relative; width: 120px; height: 120px; border-radius: 20px; overflow: hidden; background: #d6e4f0; }
+.contactHeading { font-family: var(--font-body); font-size: 20px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.25; }
+.contactBody { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--navy); opacity: 0.6; margin: 0; }
+.contactBtn { width: fit-content; }
+.list { display: flex; flex-direction: column; }
+.item { border-bottom: 1px solid rgba(1, 25, 85, 0.1); }
+.item:first-child { border-top: 1px solid rgba(1, 25, 85, 0.1); }
+.question { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left; gap: 16px; }
+.qNum { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: var(--navy); opacity: 0.35; flex-shrink: 0; }
+.qText { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--navy); opacity: 0.35; line-height: 1.3; transition: opacity 0.2s; flex: 1; }
+.item:hover .qText, .open .qText { opacity: 1; }
+.chevron { flex-shrink: 0; color: var(--navy); opacity: 0.4; transition: transform 0.25s ease, opacity 0.2s; display: flex; align-items: center; }
+.open .chevron { transform: rotate(180deg); opacity: 1; }
+.answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.open .answer { grid-template-rows: 1fr; }
+.answerInner { overflow: hidden; font-family: var(--font-body); font-size: 14px; line-height: 1.75; color: var(--navy); opacity: 0.65; max-width: 560px; transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.open .answerInner { padding-bottom: 24px; }
+@media (max-width: 1100px) { .section { padding: 72px 48px; } .inner { gap: 48px; } }
+@media (max-width: 860px) { .section { padding: 64px 32px; } .inner { grid-template-columns: 1fr; gap: 40px; } .left { position: static; height: auto; } }
+@media (max-width: 560px) { .section { padding: 56px 20px; } }

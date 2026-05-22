@@ -1,0 +1,162 @@
+.section {
+  padding: 80px 80px 100px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1.8fr;
+  gap: 0 64px;
+  align-items: center;
+  min-height: 360px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.headline {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  border: none;
+  background: rgba(1, 25, 85, 0.18);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.25s,
+    width 0.25s;
+}
+.dotActive {
+  background: var(--navy);
+  width: 40px;
+}
+
+.divider {
+  background: rgba(15, 42, 74, 0.15);
+  align-self: stretch;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  animation: fadeIn 0.4s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quoteIcon {
+  font-family: Georgia, serif;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--burgundy, #6d2932);
+  display: block;
+}
+
+.quote {
+  font-family: var(--font-body);
+  font-size: clamp(22px, 2.8vw, 38px);
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(1, 25, 85, 0.08);
+  flex-shrink: 0;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.authorName {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+}
+
+.authorRole {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.4;
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .section {
+    padding: 72px 48px 88px;
+  }
+  .grid {
+    gap: 0 48px;
+  }
+}
+@media (max-width: 860px) {
+  .section {
+    padding: 60px 32px 72px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .divider {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 20px 60px;
+  }
+  .quote {
+    font-size: 22px;
+  }
+}

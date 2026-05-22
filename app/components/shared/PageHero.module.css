@@ -1,0 +1,130 @@
+.section {
+  padding-top: 24px;
+  overflow: hidden;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 80px 24px;
+  gap: 48px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 10vw, 160px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.topRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 420px;
+  justify-self: end;
+}
+
+.lede {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+}
+
+.cta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  width: fit-content;
+}
+.cta:hover {
+  opacity: 1;
+}
+
+.carouselWrap {
+  overflow: hidden;
+}
+
+.carousel {
+  overflow: hidden;
+  cursor: grab;
+  padding-left: 80px;
+  box-sizing: content-box;
+}
+.carousel:active {
+  cursor: grabbing;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 calc(33vw - 12px);
+  aspect-ratio: 3 / 2;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8edf2;
+}
+
+.slide img {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slide:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 1100px) {
+  .top {
+    padding: 0 48px 24px;
+  }
+  .carousel {
+    padding-left: 48px;
+  }
+}
+
+@media (max-width: 860px) {
+  .top {
+    grid-template-columns: 1fr;
+    padding: 0 32px 24px;
+  }
+  .carousel {
+    padding-left: 32px;
+  }
+  .slide {
+    flex: 0 0 72vw;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding-top: 16px;
+  }
+  .top {
+    padding: 0 20px 20px;
+  }
+  .carousel {
+    padding-left: 20px;
+  }
+  .slide {
+    flex: 0 0 85vw;
+  }
+}

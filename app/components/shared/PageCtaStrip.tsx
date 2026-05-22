@@ -1,21 +1,29 @@
 import Link from "next/link";
-import styles from "./CTAStrip.module.css";
+import styles from "./PageCtaStrip.module.css";
+
+interface PageCtaStripProps {
+  heading?: string;
+  sub?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
 
 const STARS = "★★★★★";
 
-export default function CtaStrip() {
+export default function PageCtaStrip({
+  heading = "Ready to get started?",
+  sub = "We'll be on site within 48 hours. No obligation, no pushy sales rep — just a trade lead who knows what they're looking at.",
+  ctaLabel = "Let's talk about your project →",
+  ctaHref = "/contact",
+}: PageCtaStripProps) {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.left}>
-          <p className={styles.heading}>Ready to get started?</p>
-          <p className={styles.sub}>
-            We&rsquo;ll be on site within 48 hours. No obligation, no pushy
-            sales rep — just a trade lead who knows what they&rsquo;re looking
-            at.
-          </p>
-          <Link href="/contact" className={styles.cta}>
-            Let&rsquo;s talk about your project →
+          <p className={styles.heading}>{heading}</p>
+          <p className={styles.sub}>{sub}</p>
+          <Link href={ctaHref} className={styles.cta}>
+            {ctaLabel}
           </Link>
         </div>
 

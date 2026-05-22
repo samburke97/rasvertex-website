@@ -1,36 +1,52 @@
+// Shared accordion — used by ServicePicker (painting) and maintenance services
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./ServicePicker.module.css";
-import { SERVICES } from "../../data/servicePickerData";
+import styles from "./ServiceAccordion.module.css";
 
-export default function ServicePicker() {
+export interface AccordionService {
+  label: string;
+  body: string;
+  photo: string;
+  href: string;
+}
+
+interface ServiceAccordionProps {
+  heading: string;
+  statement: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  services: AccordionService[];
+}
+
+export default function ServiceAccordion({
+  heading,
+  statement,
+  ctaLabel = "Not sure? Let's talk →",
+  ctaHref = "/contact",
+  services,
+}: ServiceAccordionProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
+        {/* Left sticky col */}
         <div className={styles.left}>
-          <div className={styles.stickyCol}>
-            <h2 className={styles.heading}>
-              What kind of paint
-              <br />
-              job are you thinking about?
-            </h2>
-            <p className={styles.statement}>
-              Every painter on the Sunshine Coast will quote you a job. Not
-              every painter will show up on time, document every coat, and back
-              the work with a five-year warranty. We will.
-            </p>
+          <div className={styles.sticky}>
+            <h2 className={styles.heading}>{heading}</h2>
+            <p className={styles.statement}>{statement}</p>
             <Link href="/contact" className={styles.statementCta}>
               Get a free quote →
             </Link>
           </div>
         </div>
+
+        {/* Accordion */}
         <div className={styles.list}>
-          {SERVICES.map((s, i) => (
+          {services.map((s, i) => (
             <div
               key={s.label}
               className={`${styles.item} ${openIdx === i ? styles.open : ""}`}
@@ -53,6 +69,7 @@ export default function ServicePicker() {
                   </svg>
                 </span>
               </button>
+
               <div className={styles.panel}>
                 <div className={styles.panelInner}>
                   <div className={styles.panelLeft}>
@@ -78,8 +95,9 @@ export default function ServicePicker() {
               </div>
             </div>
           ))}
-          <Link href="/contact" className={styles.ctaBtn}>
-            Not sure? Let&apos;s talk about it →
+
+          <Link href={ctaHref} className={styles.ctaBtn}>
+            {ctaLabel}
           </Link>
         </div>
       </div>

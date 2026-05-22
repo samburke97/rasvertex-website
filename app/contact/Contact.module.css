@@ -1,80 +1,62 @@
-/* ─── Page shell ────────────────────────────────────────────── */
+/* ─── Page ───────────────────────────────────────────────────── */
 .page {
   min-height: 100vh;
-  background: var(--background);
-  padding: 120px 0 80px; /* 120px clears the fixed nav */
+  background: #fff;
+  padding: 120px 0 80px;
 }
 
-/* ─── Two-column layout ──────────────────────────────────────── */
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 56px;
+  padding: 0 80px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 120px;
   align-items: start;
 }
 
-/* ─── Left column ────────────────────────────────────────────── */
+/* ─── Left ───────────────────────────────────────────────────── */
 .left {
   display: flex;
   flex-direction: column;
-  padding-top: 24px;
+  justify-content: space-between;
+  min-height: 70vh;
+  position: sticky;
+  top: 120px;
 }
 
-.eyebrow {
-  font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin: 0 0 24px;
+.leftTop {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .headline {
-  font-family: var(--font-body);
-  font-size: clamp(52px, 5.5vw, 80px);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 6vw, 88px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
   color: var(--navy);
-  margin: 0 0 28px;
-}
-
-.subline {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--navy);
-  opacity: 0.6;
-  max-width: 420px;
-  margin: 0 0 40px;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 0 0 40px;
+  margin: 0 0 48px;
 }
 
 /* ─── Contact list ───────────────────────────────────────────── */
 .contactList {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .contactRow {
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 72px 1fr;
   align-items: baseline;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line-soft);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(1, 25, 85, 0.08);
+  gap: 24px;
 }
 
-.contactRow:last-child {
-  border-bottom: none;
+.contactRow:first-child {
+  border-top: 1px solid rgba(1, 25, 85, 0.08);
 }
 
 .contactLabel {
@@ -84,64 +66,111 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .contactValue {
   font-family: var(--font-body);
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 15px;
   color: var(--navy);
   text-decoration: none;
   transition: opacity 0.2s;
 }
 
 a.contactValue:hover {
-  opacity: 0.65;
+  opacity: 0.6;
 }
 
-/* ─── Right column ───────────────────────────────────────────── */
-.right {
+/* ─── Person card — bottom left ─────────────────────────────── */
+.person {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  padding-top: 40px;
 }
 
-/* ─── Card ───────────────────────────────────────────────────── */
-.card {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+.personAvatar {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
   overflow: hidden;
+  background: #d6e4f0;
 }
 
-/* ─── Progress header ────────────────────────────────────────── */
-.progressHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 32px 20px;
-  border-bottom: 1px solid var(--line);
+.personName {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+  line-height: 1;
 }
 
-.stepLabel {
+.personRole {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.45;
+  opacity: 0.4;
+  margin: 0;
+}
+
+.personBody {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--navy);
+  opacity: 0.55;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* ─── Right — bare form ──────────────────────────────────────── */
+.right {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Progress ───────────────────────────────────────────────── */
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid rgba(1, 25, 85, 0.1);
+}
+
+.stepLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.4;
 }
 
 .progressTrack {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .progressSegment {
-  width: 64px;
+  width: 72px;
   height: 2px;
-  background: var(--line);
+  background: rgba(1, 25, 85, 0.1);
   border-radius: 2px;
   transition: background 0.3s ease;
 }
@@ -150,30 +179,30 @@ a.contactValue:hover {
   background: var(--navy);
 }
 
-/* ─── Form ───────────────────────────────────────────────────── */
+/* ─── Form body ──────────────────────────────────────────────── */
 .form {
   display: flex;
   flex-direction: column;
 }
 
 .stepBody {
-  padding: 32px 32px 24px;
-  min-height: 320px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 36px;
 }
 
 .stepTitle {
   font-family: var(--font-body);
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1.3;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--navy);
   margin: 0;
 }
 
-/* ─── Service / property pills ───────────────────────────────── */
+/* ─── Pills ──────────────────────────────────────────────────── */
 .pills {
   display: flex;
   flex-wrap: wrap;
@@ -181,12 +210,12 @@ a.contactValue:hover {
 }
 
 .pill {
-  padding: 8px 16px;
-  border: 1px solid var(--line);
-  border-radius: 0;
+  padding: 10px 18px;
+  border: 1px solid rgba(1, 25, 85, 0.15);
+  border-radius: 10px;
   background: transparent;
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--navy);
@@ -204,7 +233,7 @@ a.contactValue:hover {
 .pill.pillActive {
   background: var(--navy);
   border-color: var(--navy);
-  color: #ffffff;
+  color: #fff;
 }
 
 /* ─── Field group ────────────────────────────────────────────── */
@@ -221,27 +250,25 @@ a.contactValue:hover {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .optional {
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
-  opacity: 0.7;
 }
 
-/* ─── Inputs ─────────────────────────────────────────────────── */
 .input,
 .textarea {
   width: 100%;
-  padding: 14px 0;
+  padding: 16px 0;
   font-family: var(--font-body);
   font-size: 16px;
   color: var(--navy);
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(1, 25, 85, 0.15);
   outline: none;
   transition: border-color 0.2s;
   border-radius: 0;
@@ -250,7 +277,7 @@ a.contactValue:hover {
 .input::placeholder,
 .textarea::placeholder {
   color: var(--navy);
-  opacity: 0.3;
+  opacity: 0.22;
 }
 
 .input:focus,
@@ -262,13 +289,14 @@ a.contactValue:hover {
   resize: none;
 }
 
-/* ─── Card footer ────────────────────────────────────────────── */
+/* ─── Footer ─────────────────────────────────────────────────── */
 .cardFooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 32px 28px;
-  border-top: 1px solid var(--line);
+  padding-top: 40px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(1, 25, 85, 0.1);
 }
 
 .footerRight {
@@ -276,70 +304,71 @@ a.contactValue:hover {
 }
 
 .backButton {
-  font-family: var(--font-display);
-  font-size: 15px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--navy);
-  opacity: 0.45;
+  opacity: 0.4;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   transition: opacity 0.2s;
 }
-
 .backButton:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .continueButton {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 13px 28px;
+  padding: 14px 28px;
   background: var(--navy);
-  color: #ffffff;
+  color: #fff;
   border: none;
-  border-radius: 0;
-  font-family: var(--font-display);
-  font-size: 15px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition:
     background 0.2s,
     opacity 0.2s;
 }
 
+.continueButton:hover:not(:disabled) {
+  background: var(--navy-dark);
+}
 .continueButton:disabled {
-  background: var(--line);
-  color: var(--navy);
-  opacity: 0.5;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
-.continueButton:not(:disabled):hover {
-  background: var(--navy-dark, #14204a);
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .container {
+    padding: 0 48px;
+    gap: 80px;
+  }
 }
 
-/* ─── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    padding: 0 24px;
-  }
-
+@media (max-width: 860px) {
   .page {
     padding: 100px 0 60px;
   }
-
-  .headline {
-    font-size: clamp(44px, 10vw, 64px);
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0 32px;
+    gap: 56px;
   }
+  .left {
+    position: static;
+    min-height: auto;
+  }
+}
 
-  .progressSegment {
-    width: 40px;
+@media (max-width: 560px) {
+  .container {
+    padding: 0 20px;
   }
 }

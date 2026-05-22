@@ -1,0 +1,251 @@
+.section {
+  padding: 96px 80px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.sticky {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+}
+
+.statement {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+}
+
+.statementCta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  width: fit-content;
+}
+.statementCta:hover {
+  opacity: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  border-radius: 12px;
+  background: #f0f2f7;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+.open {
+  background: #d6ecff;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+.open .row {
+  padding-bottom: 0;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.28;
+  line-height: 1.1;
+  transition: opacity 0.2s;
+}
+.open .label,
+.row:hover .label {
+  opacity: 1;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--navy);
+  opacity: 0.4;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s;
+  display: flex;
+  align-items: center;
+}
+.open .chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.open .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 0 24px;
+  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.open .panelInner {
+  padding: 20px 24px 0;
+}
+
+.panelLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.panelBody {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--navy);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.panelFooter {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.open .panelFooter {
+  grid-template-rows: 1fr;
+}
+
+.panelFooterInner {
+  overflow: hidden;
+  padding: 0 24px;
+  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.open .panelFooterInner {
+  padding: 16px 24px 24px;
+}
+
+.panelPhoto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #c5dff5;
+}
+
+.panelCta {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s;
+}
+.panelCta:hover {
+  background: var(--navy-dark);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  width: fit-content;
+}
+.ctaBtn:hover {
+  background: var(--navy-dark);
+}
+
+@media (max-width: 1100px) {
+  .section {
+    padding: 72px 48px;
+  }
+  .inner {
+    gap: 48px;
+  }
+}
+@media (max-width: 860px) {
+  .section {
+    padding: 64px 32px;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .sticky {
+    position: static;
+  }
+  .panelInner {
+    grid-template-columns: 1fr;
+  }
+  .panelPhoto {
+    order: -1;
+  }
+}
+@media (max-width: 560px) {
+  .section {
+    padding: 56px 20px;
+  }
+}
