@@ -54,6 +54,47 @@
   margin: 0;
 }
 
+/* ─── Divider ────────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid rgba(1, 25, 85, 0.1);
+  margin: 8px 0 0;
+}
+
+/* ─── Stats row ──────────────────────────────────────────────── */
+.stats {
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.statValue {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  text-transform: uppercase;
+}
+
+.statLabel {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.4;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .section {
     padding: 72px 48px;
@@ -62,6 +103,7 @@
     gap: 48px;
   }
 }
+
 @media (max-width: 860px) {
   .section {
     padding: 64px 32px;
@@ -73,7 +115,11 @@
   .left {
     position: static;
   }
+  .stats {
+    gap: 40px;
+  }
 }
+
 @media (max-width: 560px) {
   .section {
     padding: 56px 20px;
