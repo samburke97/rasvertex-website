@@ -1,236 +1,157 @@
 /* ─── Section ────────────────────────────────────────────────── */
 .section {
-  padding-top: 36px;
-}
-
-/* ─── Top bar ────────────────────────────────────────────────── */
-.bar {
-  padding: 0 80px;
-}
-
-.barGrid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  border-top: 1px solid rgba(15, 42, 74, 0.15);
-}
-
-.barHeadline {
-  display: flex;
-  align-items: center;
-  padding: 24px 40px 24px 0;
-}
-
-/* ─── Headline scroll-driven wipe ────────────────────────────── */
-.headlineWrap {
-  position: relative;
-  display: inline-block;
-}
-
-.headlineSr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+  padding: 40px 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
-.headlineBase,
-.headlineOverlay {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: clamp(40px, 5vw, 72px);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  margin: 0;
-  white-space: nowrap;
-  display: block;
+/* ─── Carousel ───────────────────────────────────────────────── */
+.carouselWrap {
+  overflow: hidden;
 }
 
-.headlineBase {
-  color: #c4c9d4;
+.carousel {
+  overflow: hidden;
+  cursor: grab;
+  padding-left: var(--space-x);
+  box-sizing: content-box;
 }
 
-.headlineOverlay {
-  color: var(--navy, #011955);
-  position: absolute;
-  top: 0;
-  left: 0;
+.carousel:active {
+  cursor: grabbing;
 }
 
-/* ─── Tabs ───────────────────────────────────────────────────── */
-.tab {
-  position: relative;
+.track {
   display: flex;
-  flex-direction: column;
   gap: 8px;
-  padding: 20px 24px 22px;
-  background: none;
-  border: none;
-  border-left: 1px solid rgba(15, 42, 74, 0.1);
-  cursor: pointer;
-  text-align: left;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.tabLine {
-  position: absolute;
-  top: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: transparent;
-  transition: background 0.25s;
-}
-
-.tab:hover .tabLine,
-.tabActive .tabLine {
-  background: var(--navy, #011955);
-}
-
-.tabNumber {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--navy, #011955);
-  opacity: 0.3;
-  line-height: 1;
-}
-
-.tabActive .tabNumber {
-  opacity: 0.5;
-}
-
-.tabLabel {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--navy, #011955);
-  opacity: 0.28;
-  line-height: 1.1;
-  transition: opacity 0.25s;
-}
-
-.tab:hover .tabLabel,
-.tabActive .tabLabel {
-  opacity: 1;
-}
-
-/* ─── Content wrapper ────────────────────────────────────────── */
-/* position:relative so dots can anchor absolutely to it         */
-.contentWrapper {
-  display: grid;
-  grid-template-columns: calc(80px + (100% - 160px) / 2 + 28px) 1fr;
-  gap: 56px;
-  align-items: stretch;
-  padding: 48px 80px 80px 0;
-  position: relative;
-}
-
-/* Left column — content only, no dots */
-.leftColumn {
+/* ─── Slide ──────────────────────────────────────────────────── */
+.slide {
+  flex: 0 0 850px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  padding-left: 80px;
+  gap: 16px;
 }
 
-/* ─── Left — animated on tab change ─────────────────────────── */
-.contentLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  animation: fadeIn 0.3s ease both;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Content headline — matches hero tileTitle */
-.contentHeadline {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--navy, #011955);
-  margin: 0;
-  white-space: nowrap;
-}
-
-.body {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--navy, #011955);
-  opacity: 0.7;
-  margin: 0;
-  max-width: 90%;
-}
-
-/* ─── Logos ──────────────────────────────────────────────────── */
-.logoRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  align-items: center;
-}
-
-.logoWrap {
+/* ─── Image ──────────────────────────────────────────────────── */
+.imageWrap {
   position: relative;
-  width: 80px;
-  height: 40px;
+  width: 850px;
   flex-shrink: 0;
-}
-
-.logo {
-  object-fit: contain;
-  object-position: left center;
-}
-
-/* ─── Right — image card ─────────────────────────────────────── */
-.contentRight {
-}
-
-.imageCard {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 2;
+  height: 500px;
   border-radius: 12px;
   overflow: hidden;
   background: #e8edf2;
 }
 
-.image {
-  object-fit: cover;
+/* Decorative — standalone track item, text flush with image bottom */
+.decorative {
+  flex-shrink: 0;
+  width: calc(100vw - 850px - var(--space-x));
+  height: 500px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-/* ─── Dots ───────────────────────────────────────────────────── */
-/* Absolutely positioned to contentWrapper                        */
-/* bottom: 80px = wrapper's bottom padding → aligns with image   */
-.dots {
-  position: absolute;
-  bottom: 80px;
-  left: 80px;
+.decorative span:first-child {
+  margin-top: auto;
+}
+
+.decorative span:last-child {
+  margin-bottom: -0.1em;
+}
+
+.decorative span {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 10.5vw;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  color: rgba(6, 20, 27, 0.04);
+  white-space: nowrap;
+  line-height: 0.82;
+  display: block;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide:hover .image {
+  transform: scale(1.03);
+}
+
+/* ─── Content ────────────────────────────────────────────────── */
+.content {
   display: flex;
+  flex-direction: column;
   gap: 10px;
+}
+
+.heading {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin: 0;
+  max-width: 70%;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+  max-width: 70%;
+}
+
+.cta {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  opacity: 0.75;
+  text-decoration: none;
+  width: fit-content;
+  transition: opacity 0.2s;
+}
+
+.cta:hover {
+  opacity: 1;
+}
+
+/* ─── Logos ──────────────────────────────────────────────────── */
+.logos {
+  display: flex;
   align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.logoWrap {
+  position: relative;
+  width: 64px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+/* ─── Dots — bottom left ─────────────────────────────────────── */
+.dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 40px 0 0 var(--space-x);
 }
 
 .dot {
@@ -247,73 +168,40 @@
 }
 
 .dotActive {
-  background: var(--navy, #011955);
+  background: var(--navy);
   width: 40px;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .bar {
-    padding: 0 48px;
-  }
-  .barGrid {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-  }
-  .contentWrapper {
-    grid-template-columns: 1fr 1fr;
-    padding: 48px 48px 72px;
-    gap: 48px;
-  }
-  .leftColumn {
-    padding-left: 0;
+  .carousel {
+    padding-left: var(--space-x-sm);
   }
   .dots {
-    bottom: 72px;
-    left: 0;
-  }
-  .tab {
-    padding: 20px 16px 22px;
+    padding-left: var(--space-x-sm);
   }
 }
 
 @media (max-width: 860px) {
-  .bar {
-    padding: 0 32px;
+  .carousel {
+    padding-left: var(--space-x-xs);
   }
-  .barGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .barHeadline {
-    grid-column: 1 / 3;
-    border-bottom: 1px solid rgba(15, 42, 74, 0.1);
-    padding: 20px 0;
-  }
-  .tab {
-    border-left: none;
-    border-top: 1px solid rgba(15, 42, 74, 0.1);
-  }
-  .contentWrapper {
-    grid-template-columns: 1fr;
-    padding: 40px 32px 60px;
-    gap: 36px;
-  }
-  .leftColumn {
-    padding-left: 0;
+  .slide {
+    flex: 0 0 72vw;
   }
   .dots {
-    position: static;
-    margin-top: 8px;
-  }
-  .contentRight {
-    order: -1;
+    padding-left: var(--space-x-xs);
   }
 }
 
 @media (max-width: 560px) {
-  .bar {
-    padding: 0 20px;
+  .carousel {
+    padding-left: var(--space-x-2xs);
   }
-  .contentWrapper {
-    padding: 32px 20px 48px;
+  .slide {
+    flex: 0 0 85vw;
+  }
+  .dots {
+    padding-left: var(--space-x-2xs);
   }
 }

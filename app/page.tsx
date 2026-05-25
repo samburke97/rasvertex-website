@@ -1,4 +1,5 @@
-import ExperienceSection from "./components/homepage/ExperienceSection";
+import HomeIntro from "./components/homepage/HomeIntro";
+import ScrollFeatures from "./components/homepage/ScrollFeatures";
 import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import ProcessSection from "./components/homepage/ProcessSection";
 import TestimonialsSection from "./components/homepage/TestimonialSection";
@@ -7,17 +8,20 @@ import CaseStudy from "./components/homepage/CaseStudy";
 import Hero from "./components/homepage/Hero";
 import ServiceAreas from "./components/ServiceAreas";
 import PageCtaStrip from "./components/shared/PageCtaStrip";
+import ExperienceSection from "./components/homepage/ExperienceSection";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ExperienceSection />
+      <HomeIntro />
       <PartnersCarousel />
+      <ExperienceSection />
       <CaseStudy />
       <ProcessSection />
-      <ProjectShowcase />
       <TestimonialsSection />
+      <ProjectShowcase />
+
       <ServiceAreas />
       <PageCtaStrip
         heading="Ready to get started?"

@@ -1,4 +1,4 @@
-// Shared two-column intro section — eyebrow, heading, body paragraphs, optional stat callouts
+import Link from "next/link";
 import styles from "./PageIntro.module.css";
 
 export interface PageIntroStat {
@@ -8,44 +8,63 @@ export interface PageIntroStat {
 
 interface PageIntroProps {
   eyebrow?: string;
+  statement?: string;
   heading: string;
   paragraphs: string[];
-  /** Up to 3 stat callouts shown below a divider. Optional. */
   stats?: PageIntroStat[];
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export default function PageIntro({
-  eyebrow = "Our approach",
+  eyebrow,
+  statement,
   heading,
   paragraphs,
   stats,
+  ctaLabel,
+  ctaHref,
 }: PageIntroProps) {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
+        {/* Left — sticky */}
         <div className={styles.left}>
-          <span className={styles.eyebrow}>{eyebrow}</span>
+          {eyebrow && <span className={styles.eyebrow}>{eyebrow}</span>}
+          {statement && (
+            <p className={styles.statement}>
+              {statement.split("\n").map((line, i, arr) => (
+                <span key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+          )}
           <h2 className={styles.heading}>{heading}</h2>
+          {stats && stats.length > 0 && (
+            <div className={styles.stats}>
+              {stats.map((s) => (
+                <div key={s.label} className={styles.stat}>
+                  <span className={styles.statValue}>{s.value}</span>
+                  <span className={styles.statLabel}>{s.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+
+        {/* Right — content */}
         <div className={styles.right}>
           {paragraphs.map((p, i) => (
             <p key={i} className={styles.body}>
               {p}
             </p>
           ))}
-
-          {stats && stats.length > 0 && (
-            <>
-              <div className={styles.divider} />
-              <div className={styles.stats}>
-                {stats.map((s) => (
-                  <div key={s.label} className={styles.stat}>
-                    <span className={styles.statValue}>{s.value}</span>
-                    <span className={styles.statLabel}>{s.label}</span>
-                  </div>
-                ))}
-              </div>
-            </>
+          {ctaLabel && ctaHref && (
+            <Link href={ctaHref} className={styles.cta}>
+              {ctaLabel}
+            </Link>
           )}
         </div>
       </div>

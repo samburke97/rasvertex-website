@@ -5,7 +5,7 @@
 
 /* ─── Stage ──────────────────────────────────────────────────── */
 .stage {
-  padding: 24px 80px 80px;
+  padding: 0 var(--space-x) var(--space-section);
 }
 
 /* ─── Bento Grid ─────────────────────────────────────────────── */
@@ -13,7 +13,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 340px 340px;
-  gap: 8px;
+  gap: var(--space-card-gap);
   height: 688px;
 }
 
@@ -21,6 +21,8 @@
 .painting {
   grid-row: 1;
   grid-column: 1 / 3;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .maintenance {
   grid-row: 2;
@@ -33,6 +35,8 @@
 .cleaning {
   grid-row: 1 / 3;
   grid-column: 3;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 /* ─── Col 4 ──────────────────────────────────────────────────── */
@@ -41,35 +45,23 @@
   grid-column: 4;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-card-gap);
   height: 688px;
 }
 
 .heightSafety {
   height: 340px;
   flex-shrink: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 /* ─── Brand card — maroon ────────────────────────────────────── */
 .brandCard {
   height: 340px;
   flex-shrink: 0;
-  background: var(--burgundy, #6d2932);
+  background: var(--burgundy);
   border-radius: 12px;
-}
-
-.brandCard .cardContent {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.cardBody {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.65);
-  margin: 0;
 }
 
 /* ─── Card base ──────────────────────────────────────────────── */
@@ -108,9 +100,15 @@
   background: linear-gradient(
     to bottom,
     rgba(1, 25, 85, 0.08),
-    rgba(1, 25, 85, 0.45)
+    rgba(1, 25, 85, 0.55)
   );
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+  opacity: 1;
 }
 
 /* ─── Arrow ──────────────────────────────────────────────────── */
@@ -126,7 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #011955;
+  color: var(--navy);
   opacity: 0;
   transform: scale(0.8);
   transition:
@@ -140,7 +138,6 @@
   transform: scale(1);
 }
 
-/* Arrow on brand card — white circle with maroon icon */
 .brandCard .arrowIcon {
   background: rgba(255, 255, 255, 0.15);
   color: white;
@@ -153,21 +150,55 @@
   bottom: 18px;
   right: 18px;
   z-index: 3;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
+/* Show on hover for image cards */
+.card:hover .cardContent {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Brand card — always visible */
+.brandCard .cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Card label — Bebas (service names + "One Partner.") */
 .cardTitle {
-  color: white;
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 24px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-family: var(--text-card-label-font);
+  font-size: var(--text-card-label-size);
+  font-weight: var(--text-card-label-weight);
+  line-height: var(--text-card-label-leading);
+  letter-spacing: var(--text-card-label-tracking);
+  text-transform: var(--text-card-label-transform);
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Card body — Inter regular (brand card only) */
+.cardBody {
+  font-family: var(--text-body-font);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-leading);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
   margin: 0;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1400px) {
   .stage {
-    padding: 24px 60px 60px;
+    padding: 24px var(--space-x) var(--space-section);
   }
   .bentoGrid {
     grid-template-rows: 280px 280px;
@@ -186,7 +217,7 @@
 
 @media (max-width: 1200px) {
   .stage {
-    padding: 24px 40px 60px;
+    padding: 24px var(--space-x-sm) var(--space-section);
   }
 }
 
@@ -231,13 +262,12 @@
 
 @media (max-width: 768px) {
   .stage {
-    padding: 16px 20px 40px;
+    padding: 16px var(--space-x-2xs) var(--space-section-sm);
   }
   .bentoGrid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     height: auto;
-    gap: 8px;
   }
   .painting,
   .maintenance,

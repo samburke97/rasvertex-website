@@ -16,6 +16,8 @@ export default function PaintingIntro() {
           label: "Strata, commercial & residential",
         },
       ]}
+      ctaLabel="Get a free quote →"
+      ctaHref="/contact"
     />
   );
 }
