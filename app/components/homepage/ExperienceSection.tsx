@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "../ui/Button";
 import styles from "./ExperienceSection.module.css";
 
 const SLIDES = [
@@ -25,12 +26,7 @@ const SLIDES = [
     heading: "We go where others can't.",
     body: "30+ IRATA-certified technicians. Faster mobilisation, reduced site impact, safer outcomes on high-rise and difficult-access projects.",
     cta: { label: "How rope access works →", href: "/services/maintenance" },
-    logos: [
-      { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
-      { src: "/images/associations/archers.png", alt: "Archers" },
-      { src: "/images/associations/picagroup.png", alt: "Pica Group" },
-      { src: "/images/associations/qbcc.png", alt: "QBCC" },
-    ],
+    logos: [],
   },
   {
     image: "/images/projects/1.jpeg",
@@ -38,11 +34,7 @@ const SLIDES = [
     heading: "The Coast's most trusted partner.",
     body: "Body corporates, resorts, schools and commercial facilities trust us to deliver with professionalism, clear communication, and minimal disruption.",
     cta: { label: "See our work →", href: "/work" },
-    logos: [
-      { src: "/images/associations/coolumfc.png", alt: "Coolum FC" },
-      { src: "/images/associations/coolumnetball.png", alt: "Coolum Netball" },
-      { src: "/images/associations/maroochyrsl.png", alt: "Maroochy RSL" },
-    ],
+    logos: [],
   },
 ];
 
@@ -63,65 +55,78 @@ export default function ExperienceSection() {
 
   return (
     <section className={styles.section}>
+      {/* ── Dots — top right ── */}
+      <div className={styles.header}>
+        <div className={styles.dots}>
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.dot} ${i === active ? styles.dotActive : ""}`}
+              onClick={() => emblaApi?.scrollTo(i)}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Carousel ── */}
       <div className={styles.carouselWrap}>
         <div className={styles.carousel} ref={emblaRef}>
           <div className={styles.track}>
             {SLIDES.map((s, i) => (
-              <div key={i} className={styles.slide}>
-                <div className={styles.imageRow}>
-                  <div className={styles.imageWrap}>
-                    <Image
-                      src={s.image}
-                      alt={s.imageAlt}
-                      fill
-                      className={styles.image}
-                      sizes="850px"
-                    />
-                  </div>
+              <div
+                key={i}
+                className={`${styles.slide} ${i !== active ? styles.slideInactive : ""}`}
+                onClick={() => emblaApi?.scrollTo(i)}
+              >
+                <div className={styles.imageWrap}>
+                  <Image
+                    src={s.image}
+                    alt={s.imageAlt}
+                    fill
+                    className={styles.image}
+                    sizes="850px"
+                  />
                 </div>
                 <div className={styles.content}>
                   <h3 className={styles.heading}>{s.heading}</h3>
                   <p className={styles.body}>{s.body}</p>
-                  <Link href={s.cta.href} className={styles.cta}>
-                    {s.cta.label}
-                  </Link>
-                  <div className={styles.logos}>
-                    {s.logos.map((l) => (
-                      <div key={l.alt} className={styles.logoWrap}>
-                        <Image
-                          src={l.src}
-                          alt={l.alt}
-                          fill
-                          style={{
-                            objectFit: "contain",
-                            objectPosition: "left center",
-                          }}
-                        />
-                      </div>
-                    ))}
+                  {s.logos.length > 0 && (
+                    <div className={styles.logos}>
+                      {s.logos.map((l) => (
+                        <div key={l.alt} className={styles.logoWrap}>
+                          <Image
+                            src={l.src}
+                            alt={l.alt}
+                            fill
+                            style={{
+                              objectFit: "contain",
+                              objectPosition: "left center",
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <div className={styles.btnWrap}>
+                    <Button
+                      as="link"
+                      href={s.cta.href}
+                      variant="primary"
+                      size="md"
+                    >
+                      {s.cta.label}
+                    </Button>
                   </div>
                 </div>
               </div>
             ))}
-            {/* Decorative — standalone track item so slide 3 can reach start position */}
             <div className={styles.decorative} aria-hidden="true">
               <span>HIGHER</span>
               <span>STANDARDS.</span>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Dots — bottom left */}
-      <div className={styles.dots}>
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            className={`${styles.dot} ${i === active ? styles.dotActive : ""}`}
-            onClick={() => emblaApi?.scrollTo(i)}
-            aria-label={`Slide ${i + 1}`}
-          />
-        ))}
       </div>
     </section>
   );

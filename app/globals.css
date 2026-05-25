@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #141826;
+  --foreground: #011955;
 
   /* ─── Brand colours ──────────────────────────────────────────── */
   --navy: #011955;
@@ -162,7 +160,7 @@ body {
 body {
   font-family: var(--font-body);
   background: var(--background);
-  color: var(--foreground);
+  color: var(--navy);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -321,7 +319,6 @@ a {
   font-weight: var(--text-body-weight);
   line-height: var(--text-body-leading);
   color: var(--navy);
-  opacity: 0.65;
   margin: 0;
 }
 

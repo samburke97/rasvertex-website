@@ -1,7 +1,39 @@
 /* ─── Section ────────────────────────────────────────────────── */
 .section {
-  padding: 40px 0;
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
   overflow: hidden;
+}
+
+/* ─── Header — dots top-right ────────────────────────────────── */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 var(--space-x) 24px;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.dot {
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  border: none;
+  background: rgba(1, 25, 85, 0.18);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.25s,
+    width 0.25s;
+}
+
+.dotActive {
+  background: var(--navy);
+  width: 28px;
 }
 
 /* ─── Carousel ───────────────────────────────────────────────── */
@@ -32,7 +64,13 @@
   flex: 0 0 850px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  transition: opacity 0.4s ease;
+}
+
+.slideInactive {
+  opacity: 0.35;
+  cursor: pointer;
 }
 
 /* ─── Image ──────────────────────────────────────────────────── */
@@ -46,7 +84,63 @@
   background: #e8edf2;
 }
 
-/* Decorative — standalone track item, text flush with image bottom */
+.image {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide:hover .image {
+  transform: scale(1.03);
+}
+
+/* ─── Content ────────────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.heading {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ─── Logos ──────────────────────────────────────────────────── */
+.logos {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logoWrap {
+  position: relative;
+  width: 80px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+/* ─── Button spacing ────────────────────────────────────────── */
+.btnWrap {
+  margin-top: 10px;
+}
+
+/* ─── Decorative ─────────────────────────────────────────────── */
 .decorative {
   flex-shrink: 0;
   width: calc(100vw - 850px - var(--space-x));
@@ -78,130 +172,44 @@
   display: block;
 }
 
-.image {
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.slide:hover .image {
-  transform: scale(1.03);
-}
-
-/* ─── Content ────────────────────────────────────────────────── */
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.heading {
-  font-family: var(--font-body);
-  font-size: clamp(20px, 1.8vw, 26px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--navy);
-  margin: 0;
-  max-width: 70%;
-}
-
-.body {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--navy);
-  opacity: 0.6;
-  margin: 0;
-  max-width: 70%;
-}
-
-.cta {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--navy);
-  opacity: 0.75;
-  text-decoration: none;
-  width: fit-content;
-  transition: opacity 0.2s;
-}
-
-.cta:hover {
-  opacity: 1;
-}
-
-/* ─── Logos ──────────────────────────────────────────────────── */
-.logos {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding-top: 4px;
-}
-
-.logoWrap {
-  position: relative;
-  width: 64px;
-  height: 28px;
-  flex-shrink: 0;
-}
-
-/* ─── Dots — bottom left ─────────────────────────────────────── */
-.dots {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 40px 0 0 var(--space-x);
-}
-
-.dot {
-  width: 28px;
-  height: 3px;
-  border-radius: 2px;
-  border: none;
-  background: rgba(1, 25, 85, 0.18);
-  cursor: pointer;
-  padding: 0;
-  transition:
-    background 0.25s,
-    width 0.25s;
-}
-
-.dotActive {
-  background: var(--navy);
-  width: 40px;
-}
-
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .carousel {
-    padding-left: var(--space-x-sm);
+  .header {
+    padding-right: var(--space-x-sm);
   }
-  .dots {
+  .carousel {
     padding-left: var(--space-x-sm);
   }
 }
 
 @media (max-width: 860px) {
+  .header {
+    padding-right: var(--space-x-xs);
+  }
   .carousel {
     padding-left: var(--space-x-xs);
   }
   .slide {
     flex: 0 0 72vw;
   }
-  .dots {
-    padding-left: var(--space-x-xs);
+  .imageWrap {
+    width: 72vw;
+    height: 320px;
   }
 }
 
 @media (max-width: 560px) {
+  .header {
+    padding-right: var(--space-x-2xs);
+  }
   .carousel {
     padding-left: var(--space-x-2xs);
   }
   .slide {
     flex: 0 0 85vw;
   }
-  .dots {
-    padding-left: var(--space-x-2xs);
+  .imageWrap {
+    width: 85vw;
+    height: 260px;
   }
 }

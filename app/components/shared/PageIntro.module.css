@@ -1,6 +1,9 @@
 /* ─── Section ────────────────────────────────────────────────── */
 .section {
-  padding: 40px var(--space-x);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: var(--space-x);
+  padding-right: var(--space-x);
 }
 
 /* ─── Two-column layout ──────────────────────────────────────── */
@@ -122,7 +125,8 @@
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .section {
-    padding: 40px var(--space-x-sm);
+    padding-left: var(--space-x-sm);
+    padding-right: var(--space-x-sm);
   }
   .inner {
     gap: var(--space-col-gap-sm);
@@ -131,7 +135,8 @@
 
 @media (max-width: 860px) {
   .section {
-    padding: 40px var(--space-x-xs);
+    padding-left: var(--space-x-xs);
+    padding-right: var(--space-x-xs);
   }
   .inner {
     grid-template-columns: 1fr;
@@ -154,7 +159,8 @@
 
 @media (max-width: 560px) {
   .section {
-    padding: 40px var(--space-x-2xs);
+    padding-left: var(--space-x-2xs);
+    padding-right: var(--space-x-2xs);
   }
   .stats {
     flex-direction: column;

@@ -78,46 +78,21 @@ export default function CaseStudy() {
         </h2>
 
         <div className={styles.cardBody}>
-          {/* Left — 3-cell image bento */}
+          {/* Left — single tall image */}
           <div className={styles.photoCol}>
-            <div className={styles.bento}>
-              {/* A — tall left, spans rows 1–2 */}
-              <div className={`${styles.bentoCell} ${styles.cellA}`}>
-                <Image
-                  src="/images/case/racv_1.jpg"
-                  alt="RACV Resort Noosa — building wash"
-                  fill
-                  className={styles.bentoImg}
-                  sizes="(max-width: 900px) 50vw, 35vw"
-                  priority
-                />
-              </div>
-
-              {/* B — top right */}
-              <div className={`${styles.bentoCell} ${styles.cellB}`}>
-                <Image
-                  src="/images/case/racv_2.jpg"
-                  alt="RACV Resort Noosa — painting works"
-                  fill
-                  className={styles.bentoImg}
-                  sizes="(max-width: 900px) 50vw, 25vw"
-                />
-              </div>
-
-              {/* C — bottom right */}
-              <div className={`${styles.bentoCell} ${styles.cellC}`}>
-                <Image
-                  src="/images/case/racv_1.jpg"
-                  alt="RACV Resort Noosa — complex overview"
-                  fill
-                  className={styles.bentoImg}
-                  sizes="(max-width: 900px) 50vw, 25vw"
-                />
-              </div>
+            <div className={styles.photo}>
+              <Image
+                src="/images/case/racv_1.jpg"
+                alt="RACV Resort Noosa"
+                fill
+                className={styles.photoImg}
+                sizes="(max-width: 900px) 100vw, 55vw"
+                priority
+              />
             </div>
           </div>
 
-          {/* Right — sticky text (unchanged) */}
+          {/* Right — sticky text */}
           <div className={styles.textCol}>
             <div className={styles.textBlock}>
               <div className={styles.eyebrowRow}>
@@ -153,7 +128,7 @@ export default function CaseStudy() {
           </div>
         </div>
 
-        {/* ── Support section ───────────────────────────────── */}
+        {/* Support section */}
         <div className={styles.support}>
           <div className={styles.supportLeft}>
             <h3 className={styles.supportHeading}>

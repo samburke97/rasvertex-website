@@ -14,7 +14,7 @@ const partners = [
   { src: "/partners/coolum.png", alt: "Coolum" },
   { src: "/partners/maroochy.png", alt: "Maroochy" },
   { src: "/partners/trafalgar.svg", alt: "Trafalgar" },
-  { src: "/partners/gov.svg", alt: "Government" },
+  { src: "/partners/sskb.svg", alt: "SSKB" },
 ];
 
 export default function PartnersCarousel() {
