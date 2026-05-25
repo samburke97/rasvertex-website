@@ -13,44 +13,38 @@ const POINTS = [
   },
 ];
 
-interface HomeIntroProps {
-  className?: string;
-}
-
-export default function HomeIntro({ className = "" }: HomeIntroProps) {
+export default function HomeIntro() {
   return (
-    <section className={`${styles.section} ${className}`}>
-      <div className={styles.inner}>
-        {/* ── Left — sticky heading ── */}
-        <div className={styles.left}>
-          <h2 className={styles.heading}>
-            The Sunshine Coast's Property Maintenance Partner.
-          </h2>
-        </div>
+    <div className={styles.inner}>
+      {/* ── Left — sticky heading ── */}
+      <div className={styles.left}>
+        <h2 className={styles.heading}>
+          The Sunshine Coast's Property Maintenance Partner.
+        </h2>
+      </div>
 
-        {/* ── Right — body + process-style points ── */}
-        <div className={styles.right}>
-          <p className={styles.body}>
-            Coastal work isn't the same as anywhere else — the salt air off
-            Mooloolaba, the UV intensity up through Noosa, the humidity rolling
-            in off the hinterland all eat paint that isn't specced correctly.
-            One project manager, on-site from day one, reachable on a single
-            number until the warranty is signed.
-          </p>
+      {/* ── Right — body + process-style points ── */}
+      <div className={styles.right}>
+        <p className={styles.body}>
+          Coastal work isn't the same as anywhere else — the salt air off
+          Mooloolaba, the UV intensity up through Noosa, the humidity rolling in
+          off the hinterland all eat paint that isn't specced correctly. One
+          project manager, on-site from day one, reachable on a single number
+          until the warranty is signed.
+        </p>
 
-          <div className={styles.grid}>
-            {POINTS.map((p) => (
-              <div key={p.title} className={styles.step}>
-                <div className={styles.stepBottom}>
-                  <h3 className={styles.stepTitle}>{p.title}</h3>
-                  <p className={styles.stepBody}>{p.body}</p>
-                  <span className={styles.stepMeta}>↓ {p.meta}</span>
-                </div>
+        <div className={styles.grid}>
+          {POINTS.map((p) => (
+            <div key={p.title} className={styles.step}>
+              <div className={styles.stepBottom}>
+                <h3 className={styles.stepTitle}>{p.title}</h3>
+                <p className={styles.stepBody}>{p.body}</p>
+                <span className={styles.stepMeta}>↓ {p.meta}</span>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

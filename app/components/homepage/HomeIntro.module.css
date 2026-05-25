@@ -1,7 +1,3 @@
-/* ─── Section ────────────────────────────────────────────────── */
-.section {
-}
-
 /* ─── Two-column layout ──────────────────────────────────────── */
 .inner {
   display: grid;
@@ -145,21 +141,7 @@
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .section {
-    padding-left: var(--space-x-sm);
-    padding-right: var(--space-x-sm);
-  }
-  .inner {
-    gap: var(--space-col-gap-sm);
-  }
-}
-
 @media (max-width: 860px) {
-  .section {
-    padding-left: var(--space-x-xs);
-    padding-right: var(--space-x-xs);
-  }
   .inner {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -170,10 +152,6 @@
 }
 
 @media (max-width: 560px) {
-  .section {
-    padding-left: var(--space-x-2xs);
-    padding-right: var(--space-x-2xs);
-  }
   .grid {
     grid-template-columns: 1fr;
   }

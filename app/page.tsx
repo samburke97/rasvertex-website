@@ -13,7 +13,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <HomeIntro className="py-20 px-20" />
+      <div className="pt-20 px-20">
+        <HomeIntro />
+      </div>
       <div className="pb-24">
         <ExperienceSection />
       </div>
