@@ -13,28 +13,28 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="pt-20 px-20">
+      <section className="px-10 pt-20">
         <HomeIntro />
-      </div>
-      <div className="pb-24">
         <ExperienceSection />
-      </div>
-      <div className="pb-8">
+      </section>
+
+      <div className="pt-30">
         <PartnersCarousel />
       </div>
-      <div className="pb-24">
+      <div className="pt-30">
         <CaseStudy />
       </div>
-      <div className="pb-24">
+      <div className="pt-30">
         <ProcessSection />
       </div>
-      <div className="pb-24">
-        <TestimonialsSection />
-      </div>
-      <div className="pb-24">
+      <div className="pt-10">
         <ProjectShowcase />
       </div>
-      <div className="pb-24">
+      <div className="pt-10">
+        <TestimonialsSection />
+      </div>
+
+      <div className="pt-10">
         <ServiceAreas />
       </div>
       <PageCtaStrip

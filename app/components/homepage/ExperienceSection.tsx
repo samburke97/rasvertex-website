@@ -3,38 +3,26 @@
 import { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import Link from "next/link";
-import Button from "../ui/Button";
 import styles from "./ExperienceSection.module.css";
 
 const SLIDES = [
   {
+    image: "/images/projects/1.jpeg",
+    imageAlt: "25 years on the Sunshine Coast",
+    heading: "25 years on the Coast.",
+    body: "We started here before half the foreshore developments were built. Same postcode, same salt air, same substrate conditions — every system we spec is chosen for this environment, not borrowed from a Brisbane job sheet.",
+  },
+  {
     image: "/nav/painting.png",
-    imageAlt: "Multi-trade team on commercial project",
-    heading: "One partner. Every trade.",
-    body: "From rope access and height safety to painting, waterproofing, cleaning, and remedial maintenance — one experienced in-house team.",
-    cta: { label: "See our services →", href: "/services" },
-    logos: [
-      { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.png", alt: "Dulux" },
-      { src: "/images/associations/qbcc.png", alt: "QBCC" },
-    ],
+    imageAlt: "One partner, every challenge",
+    heading: "One partner. Every challenge.",
+    body: "Every person on your site is a direct RAS-VERTEX employee. One dedicated project manager runs your job from site visit to sign-off — one number, one thread, weekly photo updates, no handoffs, no subbies turning up unannounced.",
   },
   {
     image: "/nav/cleaning.png",
-    imageAlt: "Rope access technicians on high-rise exterior",
+    imageAlt: "Rope access technicians on high-rise",
     heading: "We go where others can't.",
-    body: "30+ IRATA-certified technicians. Faster mobilisation, reduced site impact, safer outcomes on high-rise and difficult-access projects.",
-    cta: { label: "How rope access works →", href: "/services/maintenance" },
-    logos: [],
-  },
-  {
-    image: "/images/projects/1.jpeg",
-    imageAlt: "Completed project on the Sunshine Coast",
-    heading: "The Coast's most trusted partner.",
-    body: "Body corporates, resorts, schools and commercial facilities trust us to deliver with professionalism, clear communication, and minimal disruption.",
-    cta: { label: "See our work →", href: "/work" },
-    logos: [],
+    body: "30+ IRATA-certified rope access technicians trained in-house to L1–L3. We reach what scaffold can't — faster, with less disruption to tenants and operations, and at a fraction of the cost.",
   },
 ];
 
@@ -54,22 +42,7 @@ export default function ExperienceSection() {
   }, [emblaApi]);
 
   return (
-    <section className={styles.section}>
-      {/* ── Dots — top right ── */}
-      <div className={styles.header}>
-        <div className={styles.dots}>
-          {SLIDES.map((_, i) => (
-            <button
-              key={i}
-              className={`${styles.dot} ${i === active ? styles.dotActive : ""}`}
-              onClick={() => emblaApi?.scrollTo(i)}
-              aria-label={`Slide ${i + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* ── Carousel ── */}
+    <>
       <div className={styles.carouselWrap}>
         <div className={styles.carousel} ref={emblaRef}>
           <div className={styles.track}>
@@ -85,49 +58,31 @@ export default function ExperienceSection() {
                     alt={s.imageAlt}
                     fill
                     className={styles.image}
-                    sizes="850px"
+                    sizes="720px"
                   />
                 </div>
                 <div className={styles.content}>
                   <h3 className={styles.heading}>{s.heading}</h3>
                   <p className={styles.body}>{s.body}</p>
-                  {s.logos.length > 0 && (
-                    <div className={styles.logos}>
-                      {s.logos.map((l) => (
-                        <div key={l.alt} className={styles.logoWrap}>
-                          <Image
-                            src={l.src}
-                            alt={l.alt}
-                            fill
-                            style={{
-                              objectFit: "contain",
-                              objectPosition: "left center",
-                            }}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  <div className={styles.btnWrap}>
-                    <Button
-                      as="link"
-                      href={s.cta.href}
-                      variant="primary"
-                      size="md"
-                    >
-                      {s.cta.label}
-                    </Button>
-                  </div>
                 </div>
               </div>
             ))}
-            <div className={styles.decorative} aria-hidden="true">
-              <span>HIGHER</span>
-              <span>STANDARDS.</span>
-            </div>
           </div>
         </div>
       </div>
-    </section>
+
+      <div className={styles.footer}>
+        <div className={styles.dots}>
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.dot} ${i === active ? styles.dotActive : ""}`}
+              onClick={() => emblaApi?.scrollTo(i)}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

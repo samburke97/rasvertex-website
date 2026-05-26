@@ -1,43 +1,58 @@
 /* ─── Page shell ─────────────────────────────────────────────── */
 .page {
-  padding: var(--space-x);
-  padding-top: 0px;
+  padding: 0 var(--space-x);
 }
 
-/* ─── Blue rounded card ──────────────────────────────────────── */
+/* ─── Card ───────────────────────────────────────────────────── */
 .card {
-  background: #d6ecff;
+  background: #deeeff;
   border-radius: 24px;
   padding: var(--space-section) var(--space-x);
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ─── Card top ───────────────────────────────────────────────── */
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.racvLogo {
+  position: relative;
+  width: 100px;
+  height: 52px;
+  flex-shrink: 0;
 }
 
 .cardHeading {
   font-family: var(--font-body);
-  font-size: clamp(32px, 3.4vw, 48px);
+  font-size: clamp(32px, 3.4vw, 52px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--navy);
-  margin: 0 0 56px;
-  max-width: 700px;
+  margin: 0;
+  max-width: 780px;
 }
 
-/* ─── Card body — two columns ────────────────────────────────── */
+/* ─── Card body ──────────────────────────────────────────────── */
 .cardBody {
   display: flex;
-  gap: 80px;
-  align-items: stretch;
+  gap: 64px;
+  align-items: start;
 }
 
-/* ─── Left — single tall image ───────────────────────────────── */
 .photoCol {
-  flex: 0 0 52%;
+  flex: 0 0 45%;
 }
 
 .photo {
   position: relative;
   width: 100%;
-  height: 680px;
+  height: 560px;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -46,11 +61,12 @@
   object-fit: cover;
 }
 
-/* ─── Right col — sticky text ────────────────────────────────── */
+/* ─── Text col ───────────────────────────────────────────────── */
 .textCol {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 
 .textBlock {
@@ -61,25 +77,16 @@
   top: 96px;
 }
 
-.eyebrowRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.racvLogo {
-  position: relative;
-  width: 48px;
-  height: 32px;
-  flex-shrink: 0;
-}
-
-.eyebrow {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 700;
+.client {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--navy);
+  opacity: 1;
   margin: 0;
+  line-height: 1.1;
 }
 
 .paragraph {
@@ -91,139 +98,44 @@
   margin: 0;
 }
 
-/* ─── Accordion ──────────────────────────────────────────────── */
+/* ─── Services list ──────────────────────────────────────────── */
 .list {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(1, 25, 85, 0.12);
-  margin-top: 8px;
+  gap: 8px;
+  margin-top: 4px;
 }
 
-.item {
-  border-bottom: 1px solid rgba(1, 25, 85, 0.12);
-}
-
-.row {
+.serviceRow {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 16px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.label {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.serviceTick {
+  font-size: 14px;
+  font-weight: 700;
   color: var(--navy);
-  opacity: 0.5;
-  transition: opacity 0.2s;
-}
-
-.open .label {
-  opacity: 1;
-}
-
-.chevron {
   flex-shrink: 0;
-  color: var(--navy);
-  opacity: 0.4;
-  transition:
-    transform 0.25s ease,
-    opacity 0.2s;
-  display: flex;
-  align-items: center;
+  margin-top: 2px;
 }
 
-.open .chevron {
-  transform: rotate(180deg);
-  opacity: 1;
-}
-
-.panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.open .panel {
-  grid-template-rows: 1fr;
-}
-
-.panelInner {
-  overflow: hidden;
-  padding: 0;
-  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.open .panelInner {
-  padding: 0 0 16px;
-}
-
-.panelBody {
+.serviceLabel {
   font-family: var(--font-body);
   font-size: 14px;
-  line-height: 1.7;
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--navy);
-  opacity: 0.7;
-  margin: 0;
 }
 
-.panelFooter {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.open .panelFooter {
-  grid-template-rows: 1fr;
-}
-
-.panelFooterInner {
-  overflow: hidden;
-  padding: 0;
-  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.open .panelFooterInner {
-  padding: 0 0 20px;
-}
-
-.panelCta {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 20px;
-  background: var(--navy);
-  color: #fff;
-  border-radius: 100px;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  width: fit-content;
-  transition: background 0.2s;
-}
-
-.panelCta:hover {
-  background: var(--navy-dark);
-}
-
-/* ─── Support section ────────────────────────────────────────── */
+/* ─── Support ────────────────────────────────────────────────── */
 .support {
-  margin-top: 64px;
-  padding-top: 48px;
-  border-top: 1px solid rgba(1, 25, 85, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 80px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(1, 25, 85, 0.12);
 }
 
 .supportLeft {
@@ -231,14 +143,6 @@
   flex-direction: column;
   gap: 12px;
   max-width: 480px;
-}
-
-.supportRight {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
-  flex-shrink: 0;
 }
 
 .supportHeading {
@@ -260,11 +164,20 @@
   margin: 0;
 }
 
+.supportRight {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
 .ctaLabel {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--navy);
+  opacity: 0.5;
   margin: 0;
 }
 
@@ -275,7 +188,7 @@
   padding: 14px 24px;
   background: var(--navy);
   color: #ffffff;
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
@@ -290,29 +203,26 @@
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .page {
-    padding-left: var(--space-x-sm);
-    padding-right: var(--space-x-sm);
+    padding: 0 var(--space-x-sm);
   }
   .card {
-    padding-left: var(--space-x-sm);
-    padding-right: var(--space-x-sm);
+    padding: var(--space-section) var(--space-x-sm);
   }
   .cardBody {
     gap: 48px;
   }
   .photo {
-    height: 560px;
+    height: 480px;
   }
 }
 
 @media (max-width: 900px) {
   .page {
-    padding-left: var(--space-x-xs);
-    padding-right: var(--space-x-xs);
+    padding: 0 var(--space-x-xs);
   }
   .card {
-    padding-left: var(--space-x-xs);
-    padding-right: var(--space-x-xs);
+    padding: var(--space-section) var(--space-x-xs);
+    gap: 40px;
   }
   .cardBody {
     flex-direction: column;
@@ -323,7 +233,7 @@
     width: 100%;
   }
   .photo {
-    height: 400px;
+    height: 360px;
   }
   .textBlock {
     position: static;
@@ -332,21 +242,18 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
-    margin-top: 48px;
-    padding-top: 32px;
   }
 }
 
 @media (max-width: 560px) {
   .page {
-    padding-left: var(--space-x-2xs);
-    padding-right: var(--space-x-2xs);
+    padding: 0 var(--space-x-2xs);
   }
   .card {
-    padding-left: var(--space-x-2xs);
-    padding-right: var(--space-x-2xs);
+    padding: var(--space-section) var(--space-x-2xs);
+    border-radius: 16px;
   }
   .photo {
-    height: 300px;
+    height: 280px;
   }
 }

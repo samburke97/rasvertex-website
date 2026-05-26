@@ -21,7 +21,7 @@ export default function PartnersCarousel() {
   const track = [...partners, ...partners];
 
   return (
-    <section className={styles.section}>
+    <section>
       <div className={styles.marqueeWrap}>
         <div className={styles.fadeLeft} aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />

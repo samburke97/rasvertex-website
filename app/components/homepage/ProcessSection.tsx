@@ -32,7 +32,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className={styles.section}>
+    <>
       <SectionBar
         headline="OUR PROCESS."
         description="From first phone call to warranty sign-off, one project manager runs the whole job. You get one number, one invoice, one thread."
@@ -57,6 +57,6 @@ export default function ProcessSection() {
           </div>
         ))}
       </div>
-    </section>
+    </>
   );
 }

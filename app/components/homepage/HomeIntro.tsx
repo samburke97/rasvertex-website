@@ -1,49 +1,67 @@
-import styles from "./HomeIntro.module.css";
+"use client";
 
-const POINTS = [
-  {
-    title: "25 years of local expertise",
-    body: "We've been on the Sunshine Coast since before half the developments along the foreshore were built. Every system is chosen for the substrate, the exposure, and the specific conditions of your building.",
-    meta: "25 YEARS",
-  },
-  {
-    title: "Fully employed — no contractors",
-    body: "Every person on your site is a direct RAS-VERTEX employee. No subbies turning up unannounced. No quoting one crew and sending another.",
-    meta: "IN-HOUSE",
-  },
-];
+import { useRef, useEffect } from "react";
+import styles from "./HomeIntro.module.css";
+import Link from "next/link";
 
 export default function HomeIntro() {
-  return (
-    <div className={styles.inner}>
-      {/* ── Left — sticky heading ── */}
-      <div className={styles.left}>
-        <h2 className={styles.heading}>
-          The Sunshine Coast's Property Maintenance Partner.
-        </h2>
-      </div>
+  const overlayRef = useRef<HTMLSpanElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
 
-      {/* ── Right — body + process-style points ── */}
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    const wrap = wrapRef.current;
+    if (!overlay || !wrap) return;
+
+    const docTop = window.scrollY + wrap.getBoundingClientRect().top;
+    const scrollStart = docTop - window.innerHeight * 0.8;
+    const scrollEnd = docTop - window.innerHeight * 0.2;
+
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY <= scrollStart) {
+        overlay.style.clipPath = "inset(0 100% 0 0)";
+        return;
+      }
+      if (scrollY >= scrollEnd) {
+        overlay.style.clipPath = "inset(0 0% 0 0)";
+        return;
+      }
+      const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+      overlay.style.clipPath = `inset(0 ${(1 - progress) * 100}% 0 0)`;
+    };
+
+    overlay.style.clipPath = "inset(0 100% 0 0)";
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className={styles.wrap} ref={wrapRef}>
+      <div className={styles.left}>
+        <div className={styles.headlineWrap}>
+          <span className={styles.headlineBase} aria-hidden="true">
+            HIGHER STANDARDS.
+          </span>
+          <span
+            ref={overlayRef}
+            className={styles.headlineOverlay}
+            aria-hidden="true"
+            style={{ clipPath: "inset(0 100% 0 0)" }}
+          >
+            HIGHER STANDARDS.
+          </span>
+          <span className={styles.headlineSr}>Higher Standards.</span>
+        </div>
+      </div>
       <div className={styles.right}>
         <p className={styles.body}>
-          Coastal work isn't the same as anywhere else — the salt air off
-          Mooloolaba, the UV intensity up through Noosa, the humidity rolling in
-          off the hinterland all eat paint that isn't specced correctly. One
-          project manager, on-site from day one, reachable on a single number
-          until the warranty is signed.
+          For 25 years, we've serviced the Sunshine Coast, dropping in on the
+          buildings our neighbours live, learn and work in.
         </p>
-
-        <div className={styles.grid}>
-          {POINTS.map((p) => (
-            <div key={p.title} className={styles.step}>
-              <div className={styles.stepBottom}>
-                <h3 className={styles.stepTitle}>{p.title}</h3>
-                <p className={styles.stepBody}>{p.body}</p>
-                <span className={styles.stepMeta}>↓ {p.meta}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Link href="/contact" className={styles.cta}>
+          Talk to our team →
+        </Link>
       </div>
     </div>
   );

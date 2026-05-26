@@ -1,41 +1,3 @@
-/* ─── Section ────────────────────────────────────────────────── */
-.section {
-  padding-top: var(--space-section);
-  padding-bottom: var(--space-section);
-  overflow: hidden;
-}
-
-/* ─── Header — dots top-right ────────────────────────────────── */
-.header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 var(--space-x) 24px;
-}
-
-.dots {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.dot {
-  width: 20px;
-  height: 2px;
-  border-radius: 2px;
-  border: none;
-  background: rgba(1, 25, 85, 0.18);
-  cursor: pointer;
-  padding: 0;
-  transition:
-    background 0.25s,
-    width 0.25s;
-}
-
-.dotActive {
-  background: var(--navy);
-  width: 28px;
-}
-
 /* ─── Carousel ───────────────────────────────────────────────── */
 .carouselWrap {
   overflow: hidden;
@@ -44,7 +6,6 @@
 .carousel {
   overflow: hidden;
   cursor: grab;
-  padding-left: var(--space-x);
   box-sizing: content-box;
 }
 
@@ -61,24 +22,24 @@
 
 /* ─── Slide ──────────────────────────────────────────────────── */
 .slide {
-  flex: 0 0 850px;
+  flex: 0 0 720px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   transition: opacity 0.4s ease;
+  cursor: pointer;
 }
 
 .slideInactive {
-  opacity: 0.35;
-  cursor: pointer;
+  opacity: 0.3;
 }
 
 /* ─── Image ──────────────────────────────────────────────────── */
 .imageWrap {
   position: relative;
-  width: 850px;
+  width: 720px;
   flex-shrink: 0;
-  height: 500px;
+  height: 430px;
   border-radius: 12px;
   overflow: hidden;
   background: #e8edf2;
@@ -117,99 +78,56 @@
   color: var(--navy);
   opacity: 0.6;
   margin: 0;
-  max-width: 520px;
+  max-width: 600px;
 }
 
-/* ─── Logos ──────────────────────────────────────────────────── */
-.logos {
+/* ─── Footer — dots bottom left ──────────────────────────────── */
+.footer {
+  padding-top: 40px;
+}
+
+.dots {
   display: flex;
+  gap: 5px;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
 }
 
-.logoWrap {
-  position: relative;
-  width: 80px;
-  height: 36px;
-  flex-shrink: 0;
+.dot {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  border: none;
+  background: rgba(1, 25, 85, 0.15);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.25s,
+    width 0.25s;
 }
 
-/* ─── Button spacing ────────────────────────────────────────── */
-.btnWrap {
-  margin-top: 10px;
-}
-
-/* ─── Decorative ─────────────────────────────────────────────── */
-.decorative {
-  flex-shrink: 0;
-  width: calc(100vw - 850px - var(--space-x));
-  height: 500px;
-  align-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  padding-left: 8px;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.decorative span:first-child {
-  margin-top: auto;
-}
-
-.decorative span:last-child {
-  margin-bottom: -0.1em;
-}
-
-.decorative span {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 10.5vw;
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  color: rgba(6, 20, 27, 0.04);
-  white-space: nowrap;
-  line-height: 0.82;
-  display: block;
+.dotActive {
+  background: var(--navy);
+  width: 24px;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .header {
-    padding-right: var(--space-x-sm);
-  }
-  .carousel {
-    padding-left: var(--space-x-sm);
-  }
-}
 
 @media (max-width: 860px) {
-  .header {
-    padding-right: var(--space-x-xs);
-  }
-  .carousel {
-    padding-left: var(--space-x-xs);
-  }
   .slide {
     flex: 0 0 72vw;
   }
   .imageWrap {
     width: 72vw;
-    height: 320px;
+    height: 300px;
   }
 }
 
 @media (max-width: 560px) {
-  .header {
-    padding-right: var(--space-x-2xs);
-  }
-  .carousel {
-    padding-left: var(--space-x-2xs);
-  }
   .slide {
     flex: 0 0 85vw;
   }
   .imageWrap {
     width: 85vw;
-    height: 260px;
+    height: 240px;
   }
 }
