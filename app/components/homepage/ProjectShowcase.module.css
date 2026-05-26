@@ -23,8 +23,8 @@
 /* ─── Card ───────────────────────────────────────────────────── */
 .card {
   position: relative;
-  flex: 0 0 calc(33vw - 12px);
-  aspect-ratio: 3 / 2;
+  flex: 0 0 720px;
+  height: 430px;
   border-radius: 12px;
   overflow: hidden;
   display: block;

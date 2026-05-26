@@ -8,39 +8,42 @@ import Hero from "./components/homepage/Hero";
 import ServiceAreas from "./components/ServiceAreas";
 import PageCtaStrip from "./components/shared/PageCtaStrip";
 import ExperienceSection from "./components/homepage/ExperienceSection";
+import Carousel from "./components/homepage/Carousel";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <section className="px-10 pt-20">
+      <section className="px-10 pt-10 pb-20">
         <HomeIntro />
+        <Carousel />
         <ExperienceSection />
       </section>
-
-      <div className="pt-30">
+      <div className="pt-10">
         <PartnersCarousel />
       </div>
-      <div className="pt-30">
+      <section className="pt-10">
+        <ProcessSection />
+      </section>
+
+      <div className=" px-10 pt-30">
         <CaseStudy />
       </div>
       <div className="pt-30">
-        <ProcessSection />
-      </div>
-      <div className="pt-10">
-        <ProjectShowcase />
-      </div>
-      <div className="pt-10">
         <TestimonialsSection />
       </div>
 
-      <div className="pt-10">
+      <div className="pt-30">
+        <ProjectShowcase />
+      </div>
+
+      <div className="pt-30">
         <ServiceAreas />
       </div>
       <PageCtaStrip
-        heading="Ready to get started?"
-        sub="We'll be on site within 48 hours. No obligation, no pushy sales rep — just a trade lead who knows what they're looking at."
-        ctaLabel="Let's talk about your project →"
+        heading="Get a quote that holds up at handover."
+        sub="Tell us the building, the scope, and when you need to be done. We'll come and look, then send a scoped quote inside five business days — line-itemed, not lump-sum."
+        ctaLabel="Request a quote →"
         ctaHref="/contact"
       />
     </>

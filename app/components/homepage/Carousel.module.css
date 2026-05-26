@@ -1,0 +1,103 @@
+/* ─── Carousel ───────────────────────────────────────────────── */
+.carouselWrap {
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+.carousel {
+  overflow: hidden;
+  cursor: grab;
+  box-sizing: content-box;
+}
+
+.carousel:active {
+  cursor: grabbing;
+}
+
+.track {
+  display: flex;
+  gap: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ─── Slide ──────────────────────────────────────────────────── */
+.slide {
+  flex: 0 0 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.slideInactive {
+  opacity: 0.3;
+}
+
+/* ─── Image ──────────────────────────────────────────────────── */
+.imageWrap {
+  position: relative;
+  width: 720px;
+  flex-shrink: 0;
+  height: 430px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8edf2;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide:hover .image {
+  transform: scale(1.03);
+}
+
+/* ─── Content ────────────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heading {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+@media (max-width: 860px) {
+  .slide {
+    flex: 0 0 72vw;
+  }
+  .imageWrap {
+    width: 72vw;
+    height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .slide {
+    flex: 0 0 85vw;
+  }
+  .imageWrap {
+    width: 85vw;
+    height: 240px;
+  }
+}

@@ -12,7 +12,7 @@ const SERVICES = [
 
 export default function CaseStudy() {
   return (
-    <div className={styles.page}>
+    <>
       <section className={styles.card}>
         <div className={styles.cardTop}>
           <div className={styles.racvLogo}>
@@ -89,6 +89,6 @@ export default function CaseStudy() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

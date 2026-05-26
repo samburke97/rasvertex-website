@@ -7,17 +7,17 @@
 .card {
   background: #deeeff;
   border-radius: 24px;
-  padding: var(--space-section) var(--space-x);
+  padding: 56px var(--space-x);
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 40px;
 }
 
 /* ─── Card top ───────────────────────────────────────────────── */
 .cardTop {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 16px;
 }
 
 .racvLogo {
@@ -29,7 +29,7 @@
 
 .cardHeading {
   font-family: var(--font-body);
-  font-size: clamp(32px, 3.4vw, 52px);
+  font-size: clamp(24px, 2.8vw, 40px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -42,7 +42,7 @@
 .cardBody {
   display: flex;
   gap: 64px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .photoCol {
@@ -52,7 +52,7 @@
 .photo {
   position: relative;
   width: 100%;
-  height: 560px;
+  height: 440px;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -66,7 +66,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  position: relative;
 }
 
 .textBlock {
@@ -134,20 +134,20 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 80px;
-  padding-top: 48px;
+  padding-top: 32px;
   border-top: 1px solid rgba(1, 25, 85, 0.12);
 }
 
 .supportLeft {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   max-width: 480px;
 }
 
 .supportHeading {
   font-family: var(--font-body);
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: clamp(18px, 1.8vw, 24px);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -167,7 +167,7 @@
 .supportRight {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   align-items: flex-start;
   flex-shrink: 0;
 }
@@ -185,7 +185,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 24px;
+  padding: 13px 22px;
   background: var(--navy);
   color: #ffffff;
   border-radius: 8px;
@@ -206,13 +206,13 @@
     padding: 0 var(--space-x-sm);
   }
   .card {
-    padding: var(--space-section) var(--space-x-sm);
+    padding: 48px var(--space-x-sm);
   }
   .cardBody {
     gap: 48px;
   }
   .photo {
-    height: 480px;
+    height: 380px;
   }
 }
 
@@ -221,19 +221,23 @@
     padding: 0 var(--space-x-xs);
   }
   .card {
-    padding: var(--space-section) var(--space-x-xs);
-    gap: 40px;
+    padding: 48px var(--space-x-xs);
+    gap: 32px;
   }
   .cardBody {
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
+    align-items: start;
   }
   .photoCol {
     flex: none;
     width: 100%;
   }
   .photo {
-    height: 360px;
+    height: 320px;
+  }
+  .textCol {
+    position: static;
   }
   .textBlock {
     position: static;
@@ -241,7 +245,7 @@
   .support {
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
+    gap: 24px;
   }
 }
 
@@ -250,10 +254,10 @@
     padding: 0 var(--space-x-2xs);
   }
   .card {
-    padding: var(--space-section) var(--space-x-2xs);
+    padding: 40px var(--space-x-2xs);
     border-radius: 16px;
   }
   .photo {
-    height: 280px;
+    height: 260px;
   }
 }

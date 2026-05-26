@@ -1,119 +1,131 @@
-/* ─── Header bar ─────────────────────────────────────────────── */
-.bar {
-  padding: 24px 0;
+/* ─── Section ────────────────────────────────────────────────── */
+.section {
+  padding: var(--space-section) var(--space-x);
 }
 
-.barGrid {
+/* ─── Two-column layout ──────────────────────────────────────── */
+.inner {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 80px;
-  align-items: center;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-col-gap);
+  align-items: start;
 }
 
-.barHeadline {
+/* ─── Left ───────────────────────────────────────────────────── */
+.left {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  position: sticky;
+  top: 96px;
+  min-height: 560px;
 }
 
-/* ─── Headline scroll wipe ───────────────────────────────────── */
-.headlineWrap {
-  position: relative;
-  display: inline-block;
-}
-
-.headlineSr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.headlineBase,
-.headlineOverlay {
+.heading {
   font-family: "Bebas Neue", var(--font-display);
   font-size: clamp(40px, 5vw, 72px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.01em;
   text-transform: uppercase;
+  color: var(--navy);
   margin: 0;
-  white-space: nowrap;
-  display: block;
 }
 
-.headlineBase {
-  color: #c4c9d4;
-}
-
-.headlineOverlay {
-  color: var(--navy, #011955);
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.barRight {
+/* ─── Team card ──────────────────────────────────────────────── */
+.teamCard {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 16px;
-  width: 500px;
+  margin-top: auto;
+  max-width: 80%;
 }
 
-.intro {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--navy, #011955);
-  opacity: 0.6;
+.avatar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(1, 25, 85, 0.08);
+  flex-shrink: 0;
+}
+
+.teamInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.teamName {
+  font-family: "Bebas Neue", var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
   margin: 0;
-  text-align: left;
-}
-
-.cta {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--navy, #011955);
-  text-decoration: none;
-  opacity: 0.75;
-  transition: opacity 0.2s;
-  width: fit-content;
-}
-
-.cta:hover {
+  line-height: 1.1;
   opacity: 1;
 }
 
-/* ─── Steps grid ─────────────────────────────────────────────── */
+.teamBody {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+  max-width: 100%;
+}
+
+.teamCta {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--navy);
+  color: #ffffff;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s;
+}
+
+.teamCta:hover {
+  background: var(--navy-dark);
+}
+
+/* ─── Steps grid — 2x2 ───────────────────────────────────────── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border-top: 1px solid rgba(15, 42, 74, 0.12);
-  margin-top: 48px;
 }
 
 .step {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 320px;
-  padding: 28px 28px 28px 28px;
+  min-height: 280px;
+  padding: 28px;
   border-right: 1px solid rgba(15, 42, 74, 0.12);
+  border-bottom: 1px solid rgba(15, 42, 74, 0.12);
   position: relative;
   overflow: hidden;
 }
 
-.step:last-child {
+.step:nth-child(2n) {
   border-right: none;
 }
 
-/* Navy top border — wipes left to right */
+.step:nth-child(3),
+.step:nth-child(4) {
+  border-bottom: none;
+}
+
 .step::after {
   content: "";
   position: absolute;
@@ -121,13 +133,12 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--navy, #011955);
+  background: var(--navy);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ─── Default active: step 01 is active until grid is hovered ── */
 .stepDefault::after {
   transform: scaleX(1);
 }
@@ -148,7 +159,6 @@
   opacity: 1;
 }
 
-/* When grid is hovered but NOT on step 01 itself, deactivate default */
 .grid:hover .stepDefault:not(:hover)::after {
   transform: scaleX(0);
 }
@@ -169,16 +179,19 @@
   opacity: 0.4;
 }
 
-/* ─── Hover state for any step ───────────────────────────────── */
 .step:hover::after {
   transform: scaleX(1);
+}
+
+.stepTop {
+  margin-bottom: auto;
 }
 
 .stepNumber {
   font-family: "Bebas Neue", var(--font-display);
   font-size: clamp(48px, 5vw, 80px);
   font-weight: 400;
-  color: var(--navy, #011955);
+  color: var(--navy);
   opacity: 0.06;
   line-height: 1;
   transition: opacity 0.25s;
@@ -200,7 +213,7 @@
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--navy, #011955);
+  color: var(--navy);
   opacity: 0.28;
   line-height: 1.1;
   transition: opacity 0.25s;
@@ -212,10 +225,10 @@
 }
 
 .stepBody {
-  font-family: var(--font-body, "Inter", sans-serif);
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.7;
-  color: var(--navy, #011955);
+  color: var(--navy);
   opacity: 0.3;
   margin: 0;
   transition: opacity 0.25s;
@@ -226,12 +239,12 @@
 }
 
 .stepMeta {
-  font-family: var(--font-body, "Inter", sans-serif);
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--burgundy, #6d2932);
+  color: var(--burgundy);
   margin-top: 4px;
   opacity: 0.4;
   transition: opacity 0.25s;
@@ -244,54 +257,38 @@
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .section {
-    padding: 56px 48px 80px;
-  }
-  .barGrid {
-    gap: 48px;
+    padding: var(--space-section) var(--space-x-sm);
   }
 }
 
 @media (max-width: 860px) {
   .section {
-    padding: 56px 32px 72px;
+    padding: var(--space-section) var(--space-x-xs);
   }
-  .barGrid {
+  .inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
   }
-  .barRight {
-    align-items: flex-end;
-  }
-  .intro {
-    text-align: left;
-  }
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 32px;
-  }
-  .step {
-    padding: 24px;
-    min-height: 260px;
-  }
-  .step:nth-child(2) {
-    border-right: none;
-  }
-  .step:nth-child(3) {
-    border-top: 1px solid rgba(15, 42, 74, 0.12);
+  .left {
+    position: static;
+    min-height: auto;
   }
 }
 
 @media (max-width: 560px) {
   .section {
-    padding: 56px 20px 56px;
+    padding: var(--space-section) var(--space-x-2xs);
   }
   .grid {
     grid-template-columns: 1fr;
   }
   .step {
     border-right: none;
-    border-top: 1px solid rgba(15, 42, 74, 0.12);
+    border-bottom: 1px solid rgba(15, 42, 74, 0.12);
     min-height: auto;
     padding: 24px 0;
+  }
+  .step:last-child {
+    border-bottom: none;
   }
 }

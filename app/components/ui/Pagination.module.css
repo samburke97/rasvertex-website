@@ -1,0 +1,22 @@
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 24px;
+  height: 6px;
+  border-radius: 3px;
+  border: none;
+  background: rgba(1, 25, 85, 0.15);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.25s,
+    width 0.25s;
+}
+
+.dotActive {
+  background: var(--navy);
+  width: 36px;
+}
