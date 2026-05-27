@@ -34,7 +34,7 @@ export default function Carousel() {
     loop: false,
     dragFree: true,
     align: "start",
-    containScroll: false,
+    containScroll: "keepSnaps",
   });
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Carousel() {
   }, [emblaApi]);
 
   return (
-    <>
+    <div className={styles.root}>
       <div className={styles.carouselWrap}>
         <div className={styles.carousel} ref={emblaRef}>
           <div className={styles.track}>
@@ -59,7 +59,7 @@ export default function Carousel() {
                     alt={s.imageAlt}
                     fill
                     className={styles.image}
-                    sizes="720px"
+                    sizes="(max-width: 860px) 72vw, (max-width: 560px) 85vw, 50vw"
                   />
                 </div>
                 <div className={styles.content}>
@@ -79,6 +79,6 @@ export default function Carousel() {
           onChange={(i) => emblaApi?.scrollTo(i)}
         />
       </div>
-    </>
+    </div>
   );
 }

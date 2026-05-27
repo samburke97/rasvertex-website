@@ -1,12 +1,22 @@
+/* ─── Root ───────────────────────────────────────────────────── */
+.root {
+  /* Break out of the px-10 / --space-x parent padding */
+  margin-left: calc(-1 * var(--space-x));
+  margin-right: calc(-1 * var(--space-x));
+}
+
 /* ─── Carousel ───────────────────────────────────────────────── */
 .carouselWrap {
   overflow: hidden;
-  padding-bottom: 40px;
 }
 
 .carousel {
   overflow: hidden;
   cursor: grab;
+  /* Restore left inset so slide 1 aligns with page content */
+  padding-left: var(--space-x);
+  /* Right padding so the last slide is inset, not flush to the edge */
+  padding-right: var(--space-x);
   box-sizing: content-box;
 }
 
@@ -23,7 +33,13 @@
 
 /* ─── Slide ──────────────────────────────────────────────────── */
 .slide {
-  flex: 0 0 720px;
+  /*
+    Two slides fill the viewport:
+    viewport - left padding - right padding - 1 gap
+    = 100vw - 40px - 40px - 8px = 100vw - 88px
+    Each slide = half of that
+  */
+  flex: 0 0 calc((100vw - var(--space-x) * 2 - 8px) / 2);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -38,9 +54,9 @@
 /* ─── Image ──────────────────────────────────────────────────── */
 .imageWrap {
   position: relative;
-  width: 720px;
+  width: 100%;
+  aspect-ratio: 3 / 2;
   flex-shrink: 0;
-  height: 430px;
   border-radius: 12px;
   overflow: hidden;
   background: #e8edf2;
@@ -79,25 +95,55 @@
   color: var(--navy);
   opacity: 0.6;
   margin: 0;
-  max-width: 600px;
+}
+
+/* ─── Footer (pagination) ────────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 8px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .root {
+    margin-left: calc(-1 * var(--space-x-sm));
+    margin-right: calc(-1 * var(--space-x-sm));
+  }
+  .carousel {
+    padding-left: var(--space-x-sm);
+    padding-right: var(--space-x-sm);
+  }
+  .slide {
+    flex: 0 0 calc((100vw - var(--space-x-sm) * 2 - 8px) / 2);
+  }
 }
 
 @media (max-width: 860px) {
+  .root {
+    margin-left: calc(-1 * var(--space-x-xs));
+    margin-right: calc(-1 * var(--space-x-xs));
+  }
+  .carousel {
+    padding-left: var(--space-x-xs);
+    padding-right: var(--space-x-xs);
+  }
   .slide {
     flex: 0 0 72vw;
-  }
-  .imageWrap {
-    width: 72vw;
-    height: 300px;
   }
 }
 
 @media (max-width: 560px) {
+  .root {
+    margin-left: calc(-1 * var(--space-x-2xs));
+    margin-right: calc(-1 * var(--space-x-2xs));
+  }
+  .carousel {
+    padding-left: var(--space-x-2xs);
+    padding-right: var(--space-x-2xs);
+  }
   .slide {
     flex: 0 0 85vw;
-  }
-  .imageWrap {
-    width: 85vw;
-    height: 240px;
   }
 }

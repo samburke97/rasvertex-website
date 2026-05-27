@@ -1,11 +1,12 @@
 .dots {
   display: flex;
   gap: 6px;
+  padding-top: 40px;
 }
 
 .dot {
   width: 24px;
-  height: 6px;
+  height: 3px;
   border-radius: 3px;
   border: none;
   background: rgba(1, 25, 85, 0.15);

@@ -14,14 +14,18 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <section className="px-10 pt-10 pb-20">
+      <section className="px-10 pt-20 pb-20">
         <HomeIntro />
-        <Carousel />
-        <ExperienceSection />
+
+        {/* <ExperienceSection /> */}
       </section>
-      <div className="pt-10">
+
+      <section className="px-10">
+        <Carousel />
+      </section>
+      <section className="pt-20">
         <PartnersCarousel />
-      </div>
+      </section>
       <section className="pt-10">
         <ProcessSection />
       </section>

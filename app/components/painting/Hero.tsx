@@ -29,9 +29,12 @@ export default function Hero() {
 
   return (
     <section className={styles.section}>
-      {/* ── Top row: title left, lede right ────────────────── */}
+      {/* ── Top row: title block, then lede/CTA ─────────────── */}
       <div className={styles.top}>
-        <h1 className={styles.title}>PAINTING.</h1>
+        <h1 className={styles.title}>
+          Painting the Sunshine Coast for 25 years. Body corporate, strata,
+          residential, and commercial painters.
+        </h1>
         <div className={styles.topRight}>
           <p className={styles.lede}>{LEDE}</p>
           <Link href="/contact" className={styles.cta}>

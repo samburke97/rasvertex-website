@@ -30,8 +30,13 @@ export default function PaintingPage() {
   return (
     <>
       <ServicePickerSEO />
-      <Hero />
-      <PaintingIntro />
+      <section className="pt-20">
+        <Hero />
+      </section>
+      <section className="pt-20">
+        <PaintingIntro />
+      </section>
+
       <TeamStrip />
       <ServicePicker />
 
