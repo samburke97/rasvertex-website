@@ -1,0 +1,79 @@
+/* ─────────────────────────────────────────────────────────────
+   animations.css
+   Reusable keyframes + duration / easing tokens.
+
+   Components reference these via:
+     animation: fadeIn var(--duration-md) var(--ease-out);
+   Stops keyframes being redefined in every module.
+───────────────────────────────────────────────────────────── */
+
+:root {
+  /* ─── Duration ─────────────────────────────────────────── */
+  --duration-fast: 150ms;
+  --duration-md: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+
+  /* ─── Easing ───────────────────────────────────────────── */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasis: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Fade in (used by dropdowns, testimonial swaps) ─────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ─── Fade in + small upward slide (content reveals) ─────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Fade in + tiny upward slide (subtle, 6px) ──────────── */
+@keyframes fadeInUpSm {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Marquee (logo strips, partner carousels) ───────────── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ─── Respect user motion preference ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

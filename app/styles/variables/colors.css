@@ -1,0 +1,35 @@
+:root {
+  /* ─── Base ─────────────────────────────────────────────── */
+  --background: #ffffff;
+  --foreground: #011955;
+
+  /* ─── Brand ────────────────────────────────────────────── */
+  --navy: #011955;
+  --navy-dark: #010f3a;
+  --red: #c7242e;
+  --burgundy: #6b1f24;
+  --cream: #f7ece1;
+
+  /* ─── Navy at opacity (supporting text, dividers, etc.) ── */
+  --navy-90: rgba(1, 25, 85, 0.9);
+  --navy-75: rgba(1, 25, 85, 0.75);
+  --navy-65: rgba(1, 25, 85, 0.65); /* .p-soft paragraph */
+  --navy-45: rgba(1, 25, 85, 0.45);
+  --navy-25: rgba(1, 25, 85, 0.25);
+  --navy-12: rgba(1, 25, 85, 0.12);
+  --navy-08: rgba(1, 25, 85, 0.08);
+
+  /* ─── Lines ────────────────────────────────────────────── */
+  --line: var(--navy-12);
+  --line-soft: rgba(1, 25, 85, 0.07);
+
+  /* ─── Ink (neutral text — rarely used, prefer navy) ────── */
+  --ink: #141826;
+  --ink-soft: rgba(20, 24, 38, 0.55);
+  --ink-soft-2: rgba(20, 24, 38, 0.35);
+
+  /* ─── Surfaces ─────────────────────────────────────────── */
+  --surface-white: #ffffff;
+  --surface-cream: var(--cream);
+  --surface-navy: var(--navy);
+}

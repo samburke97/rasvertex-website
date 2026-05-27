@@ -1,0 +1,94 @@
+:root {
+  /* ─── Base spacing scale ───────────────────────────────── */
+  --space-xs: 0.25rem; /* 4px  */
+  --space-sm: 0.5rem; /* 8px  */
+  --space-md: 1rem; /* 16px */
+  --space-lg: 1.5rem; /* 24px */
+  --space-xl: 2rem; /* 32px */
+  --space-2xl: 2.5rem; /* 40px */
+  --space-3xl: 3rem; /* 48px */
+  --space-4xl: 4rem; /* 64px */
+  --space-5xl: 6rem; /* 96px */
+  --space-6xl: 8rem; /* 128px */
+
+  /* ─── Section vertical rhythm ──────────────────────────── */
+  --space-section: 96px;
+  --space-section-sm: 64px;
+  --space-section-lg: 128px;
+
+  /* ─── Semantic spacing tokens ──────────────────────────── */
+  --space-title-to-cta: var(--space-lg); /* 24px — H1 → button row */
+  --space-title-to-body: var(--space-md); /* 16px — heading → paragraph */
+  --space-body-to-cta: var(--space-lg); /* 24px — paragraph → ghost link */
+
+  /* ─── Horizontal gutter ────────────────────────────────── */
+  --space-x: 40px;
+  --space-x-sm: 48px;
+  --space-x-xs: 24px;
+  --space-x-2xs: 20px;
+
+  /* ─── Column / card gaps ───────────────────────────────── */
+  --space-card-gap: 8px;
+  --space-col-gap: 80px;
+  --space-col-gap-sm: 48px;
+
+  /* ─── Border radius ────────────────────────────────────── */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ─── Layout dimensions ────────────────────────────────── */
+  --header-height: 72px;
+  --footer-height: auto;
+  --container-max: 1280px;
+  --content-max: 768px;
+
+  /* ─── Z-index layers ───────────────────────────────────── */
+  --z-base: 1;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ─── Shadows ──────────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --space-x: var(--space-x-sm);
+    --space-col-gap: var(--space-col-gap-sm);
+  }
+}
+
+@media (max-width: 860px) {
+  :root {
+    --space-section: 72px;
+    --space-section-sm: 48px;
+    --space-section-lg: 96px;
+    --space-x: var(--space-x-xs);
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --space-section: 56px;
+    --space-section-sm: 40px;
+    --space-section-lg: 72px;
+    --space-x: var(--space-x-2xs);
+  }
+}

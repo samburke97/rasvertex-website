@@ -1,3 +1,5 @@
+// app/components/homepage/PartnersCarousel.tsx
+
 "use client";
 
 import Image from "next/image";
@@ -10,22 +12,34 @@ const partners = [
   { src: "/partners/raywhite.png", alt: "Ray White" },
   { src: "/partners/mosaic.svg", alt: "Mosaic" },
   { src: "/partners/archers.png", alt: "Archers" },
-  { src: "/partners/pica.png", alt: "Pica" },
-  { src: "/partners/coolum.png", alt: "Coolum" },
-  { src: "/partners/maroochy.png", alt: "Maroochy" },
+  { src: "/partners/pica.png", alt: "Pica Group" },
+  { src: "/partners/coolum.png", alt: "Coolum Surf Club" },
+  { src: "/partners/maroochy.png", alt: "Maroochy RSL" },
   { src: "/partners/trafalgar.svg", alt: "Trafalgar" },
   { src: "/partners/sskb.svg", alt: "SSKB" },
 ];
 
-export default function PartnersCarousel() {
+interface PartnersCarouselProps {
+  heading?: string;
+}
+
+export default function PartnersCarousel({
+  heading = "Trusted by the Coast's best run buildings.",
+}: PartnersCarouselProps) {
   const track = [...partners, ...partners];
 
   return (
-    <section>
+    <section className={styles.section} aria-label={heading}>
+      {heading && (
+        <div className={styles.headingRow}>
+          <h3 className={styles.heading}>{heading}</h3>
+        </div>
+      )}
+
       <div className={styles.marqueeWrap}>
         <div className={styles.fadeLeft} aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />
-        <div className={styles.track}>
+        <div className={styles.track} aria-hidden="true" role="presentation">
           {track.map((p, i) => (
             <div key={i} className={styles.logoWrap}>
               <Image

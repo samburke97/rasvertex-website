@@ -1,0 +1,31 @@
+/* app/components/ui/ScrollSweepText.module.css */
+
+.wrap {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.textBase,
+.textFill {
+  font-family: var(--font-display);
+  font-size: 100px;
+  font-weight: var(--weight-regular);
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+.textBase {
+  fill: var(--navy-12);
+}
+
+.textFill {
+  fill: var(--navy);
+}

@@ -9,7 +9,7 @@ import ServicesDropdown from "./ServicesDropdown";
 import CompanyDropdown from "./CompanyDropdown";
 import MobileMenu from "./MobileMenu";
 import styles from "./Navigation.module.css";
-import Container from "../../Container";
+import Container from "../../../components/ui/Container";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

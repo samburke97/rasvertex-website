@@ -1,0 +1,122 @@
+/* app/components/homepage/ServiceBento.module.css */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 340px 340px;
+  gap: var(--space-card-gap);
+  height: 688px;
+}
+
+.slotPainting {
+  grid-row: 1;
+  grid-column: 1 / 3;
+}
+
+.slotMaintenance {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.slotWaterproofing {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.slotCleaning {
+  grid-row: 1 / 3;
+  grid-column: 3;
+}
+
+.col4 {
+  grid-row: 1 / 3;
+  grid-column: 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-card-gap);
+  height: 688px;
+}
+
+.slotHeight,
+.slotBrand {
+  height: 340px;
+  flex-shrink: 0;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1400px) {
+  .grid {
+    grid-template-rows: 280px 280px;
+    height: 568px;
+  }
+  .col4 {
+    height: 568px;
+  }
+  .slotHeight,
+  .slotBrand {
+    height: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 280px 280px 280px;
+    height: auto;
+  }
+  .slotPainting {
+    grid-row: 1;
+    grid-column: 1 / 3;
+  }
+  .slotMaintenance {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .slotWaterproofing {
+    grid-row: 2;
+    grid-column: 2;
+  }
+  .slotCleaning {
+    grid-row: 3;
+    grid-column: 1;
+    height: 280px;
+  }
+  .col4 {
+    grid-row: 3;
+    grid-column: 2;
+    height: 280px;
+    flex-direction: row;
+  }
+  .slotHeight,
+  .slotBrand {
+    flex: 1;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+  .slotPainting,
+  .slotMaintenance,
+  .slotWaterproofing,
+  .slotCleaning {
+    grid-column: 1;
+    grid-row: auto;
+    height: 240px;
+  }
+  .col4 {
+    grid-column: 1;
+    grid-row: auto;
+    height: auto;
+    flex-direction: column;
+  }
+  .slotHeight,
+  .slotBrand {
+    height: 240px;
+    flex: none;
+  }
+}

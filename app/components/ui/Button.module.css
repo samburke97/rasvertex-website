@@ -1,12 +1,97 @@
-.button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-body); font-weight: 600; text-decoration: none; border: none; cursor: pointer; border-radius: 12px; transition: background 0.2s, opacity 0.2s; white-space: nowrap; line-height: 1; width: fit-content; }
-.button:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
-.primary { background: var(--navy); color: #fff; }
-.primary:hover:not(:disabled) { background: var(--navy-dark, #0f2035); }
-.secondary { background: rgba(1, 25, 85, 0.07); color: var(--navy); }
-.secondary:hover:not(:disabled) { background: rgba(1, 25, 85, 0.13); }
-.ghost { background: transparent; color: var(--navy); opacity: 0.75; border-radius: 0; padding-left: 0; padding-right: 0; }
-.ghost:hover:not(:disabled) { opacity: 1; }
-.sm { font-size: 13px; padding: 9px 16px; }
-.md { font-size: 14px; padding: 12px 22px; }
-.lg { font-size: 15px; padding: 14px 28px; }
-.fullWidth { width: 100%; }
+/* app/components/ui/Button.module.css */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+  line-height: 1;
+  width: fit-content;
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── Primary ───────────────────────────────────────────────── */
+.primary {
+  background: var(--navy);
+  color: #ffffff;
+  border-color: var(--navy);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--navy-dark);
+  border-color: var(--navy-dark);
+}
+
+/* ─── Secondary — outline navy ──────────────────────────────── */
+.secondary {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+/* ─── Ghost — arrow link, no chrome ─────────────────────────── */
+.ghost {
+  background: transparent;
+  color: var(--navy);
+  border-color: transparent;
+  border-radius: 0;
+  font-weight: var(--weight-medium);
+  opacity: 0.75;
+  padding: 0;
+}
+
+.ghost:hover:not(:disabled) {
+  opacity: 1;
+}
+
+/* ─── Sizes ─────────────────────────────────────────────────── */
+.sm {
+  font-size: 0.8125rem;
+  padding: 0 var(--space-md);
+  height: 40px;
+}
+
+.md {
+  font-size: var(--button-size);
+  padding: 0 var(--space-lg);
+  height: 48px;
+}
+
+.lg {
+  font-size: 0.9375rem;
+  padding: 0 var(--space-xl);
+  height: 56px;
+}
+
+.ghost.sm,
+.ghost.md,
+.ghost.lg {
+  padding: 0;
+  height: auto;
+}
+
+.fullWidth {
+  width: 100%;
+}
