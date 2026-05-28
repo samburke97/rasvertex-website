@@ -58,7 +58,7 @@ export default function ServiceBento() {
         <div className={styles.slotBrand}>
           <ServiceCard
             href="/services"
-            title="One Partner."
+            title="Higher Standards."
             body="Complete property maintenance for commercial, body corporate, and strata across the Sunshine Coast."
             variant="brand"
           />

@@ -5,20 +5,21 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: var(--space-card-gap);
   row-gap: 0;
-  padding-bottom: 0;
+  padding-bottom: var(--space-md);
 }
 
 .intro[data-has-right="false"] {
   grid-template-columns: 1fr;
 }
 
+/* ─── Left column: headline + CTA row stacked tight ─────────── */
 .leftStack {
   grid-column: 1 / 4;
   grid-row: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-xl);
+  gap: var(--space-title-to-cta);
 }
 
 .intro[data-has-right="false"] .leftStack {
@@ -41,6 +42,7 @@
   gap: var(--space-md);
 }
 
+/* ─── Right column: anchored to bottom of left stack ────────── */
 .right {
   grid-column: 4;
   grid-row: 1;
@@ -60,6 +62,7 @@
   margin: 0;
 }
 
+/* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .intro {
     grid-template-columns: 1fr;

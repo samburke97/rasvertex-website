@@ -2,7 +2,6 @@
 
 import HeroIntro from "./HeroIntro";
 import ServiceBento from "./ServiceBento";
-import ScrollSweepText from "../ui/ScrollSweepText";
 import styles from "./Hero.module.css";
 
 const HEADLINE =
@@ -20,9 +19,6 @@ export default function Hero() {
         primaryCta={{ label: "Book a free quote →", href: "/contact" }}
         secondaryCta={{ label: "Call us →", href: "tel:0731300226" }}
       />
-      <div className={styles.sweepRow}>
-        <ScrollSweepText text="HIGHER STANDARDS." />
-      </div>
       <div className={styles.bento}>
         <ServiceBento />
       </div>

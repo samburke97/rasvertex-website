@@ -4,18 +4,6 @@
   overflow: visible;
 }
 
-.sweepRow {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: var(--space-card-gap);
-  margin-top: var(--space-2xl);
-  margin-bottom: var(--space-sm);
-}
-
-.sweepRow > * {
-  grid-column: 4;
-}
-
 .bento {
-  /* no extra margin — sweepRow's margin-bottom handles the 8px gap to cards */
+  margin-top: 20px;
 }
