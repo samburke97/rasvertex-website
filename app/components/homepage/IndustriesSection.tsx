@@ -17,41 +17,58 @@ export default function IndustriesSection({
   const [activeId, setActiveId] = useState(tabs[0].id);
 
   return (
-    <section className={styles.section} aria-label="Industries we serve">
-      <nav
-        className={styles.tabs}
-        role="tablist"
-        aria-label="Industry selector"
-      >
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            role="tab"
-            aria-selected={activeId === tab.id}
-            aria-controls={`panel-${tab.id}`}
-            id={`tab-${tab.id}`}
-            className={`${styles.tab} ${activeId === tab.id ? styles.tabActive : ""}`}
-            onClick={() => setActiveId(tab.id)}
-          >
-            {tab.label} →
-          </button>
-        ))}
-      </nav>
+    <section className={styles.section} aria-labelledby="industries-heading">
+      {/* ── Section title ──────────────────────────────────── */}
+      <h2 id="industries-heading" className={styles.heading}>
+        Painting the Sunshine Coast for 25 years. Body&nbsp;corporate, strata,
+        residential, and commercial painters.
+      </h2>
 
-      <div className={styles.content}>
-        {tabs.map((tab) => (
-          <div
-            key={tab.id}
-            role="tabpanel"
-            id={`panel-${tab.id}`}
-            aria-labelledby={`tab-${tab.id}`}
-            className={`${styles.panel} ${activeId === tab.id ? styles.panelActive : ""}`}
-            hidden={activeId !== tab.id}
-          >
-            <h3 className={styles.heading}>{tab.heading}</h3>
-            <p className={styles.body}>{tab.body}</p>
-          </div>
-        ))}
+      {/* ── Tabs + content row ─────────────────────────────── */}
+      <div className={styles.row}>
+        {/* Left column — tab buttons */}
+        <nav
+          className={styles.tabs}
+          role="tablist"
+          aria-label="Select an industry to learn more"
+        >
+          {tabs.map((tab) => {
+            const isActive = activeId === tab.id;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${tab.id}`}
+                id={`tab-${tab.id}`}
+                className={`${styles.tab} ${isActive ? styles.tabActive : ""}`}
+                onClick={() => setActiveId(tab.id)}
+              >
+                {tab.label}&nbsp;&rarr;
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Right column — panel content, vertically centred */}
+        <div className={styles.content}>
+          {tabs.map((tab) => {
+            const isActive = activeId === tab.id;
+            return (
+              <article
+                key={tab.id}
+                role="tabpanel"
+                id={`panel-${tab.id}`}
+                aria-labelledby={`tab-${tab.id}`}
+                className={`${styles.panel} ${isActive ? styles.panelActive : ""}`}
+                hidden={!isActive}
+              >
+                <h3>{tab.heading}</h3>
+                <p className="p-soft">{tab.body}</p>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

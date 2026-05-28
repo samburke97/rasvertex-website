@@ -1,7 +1,39 @@
+/* app/components/ui/Pagination.module.css */
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--line);
+  margin-top: var(--space-xl);
+}
+
+.arrows {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.arrow {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity var(--duration-fast);
+}
+.arrow:hover {
+  opacity: 0.5;
+}
+
 .dots {
   display: flex;
   gap: 6px;
-  padding-top: 40px;
 }
 
 .dot {
@@ -9,7 +41,7 @@
   height: 3px;
   border-radius: 3px;
   border: none;
-  background: rgba(1, 25, 85, 0.15);
+  background: var(--navy-12);
   cursor: pointer;
   padding: 0;
   transition:

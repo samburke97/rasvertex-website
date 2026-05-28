@@ -1,0 +1,55 @@
+/* app/components/homepage/RopeAccessSection.module.css */
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: var(--space-col-gap);
+}
+
+/* ─── Left — image sets the height ───────────────────────────── */
+.imageCol {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ─── Right — stretches to image height, text sticks inside ──── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.textBlock {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title-to-body);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .imageCol {
+    aspect-ratio: 4 / 3;
+  }
+
+  .textCol {
+    align-self: auto;
+  }
+
+  .textBlock {
+    position: static;
+  }
+}

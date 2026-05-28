@@ -1,7 +1,7 @@
-import type { AccordionService } from "../../components/shared/ServiceAccordion";
-import type { Project } from "../../components/shared/PageProjects";
-import type { FAQItem, FAQContact } from "../../components/shared/PageFAQ";
-import type { HeroSlide } from "../../components/shared/PageHero";
+import type { AccordionService } from "../components/shared/ServiceAccordion";
+import type { Project } from "../components/shared/PageProjects";
+import type { FAQItem, FAQContact } from "../components/shared/PageFAQ";
+import type { HeroSlide } from "../components/shared/PageHero";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
@@ -132,54 +132,3 @@ export const FAQ_CONTACT: FAQContact = {
   ctaLabel: "Chat to Hylton →",
   photo: "/images/people/caro.jpg",
 };
-
-import type { Testimonial } from "../../components/shared/PageTestimonials";
-import type { PageCard } from "../../components/shared/PageCards";
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "We've used them for three years of scheduled maintenance across seven buildings. Zero callbacks.",
-    name: "Priya Raman",
-    role: "BC Manager, Peppers Noosa",
-  },
-  {
-    quote:
-      "The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs.",
-    name: "James Whitfield",
-    role: "Facilities Manager, Accor Hotels",
-  },
-  {
-    quote:
-      "They showed up within 48 hours for the site visit and had a full itemised quote within the week. Refreshing.",
-    name: "Sandra Koh",
-    role: "Strata Manager, Archers Body Corporate",
-  },
-];
-
-export const CARDS: PageCard[] = [
-  {
-    photo: "/images/projects/1.jpeg",
-    alt: "Rope access building maintenance Sunshine Coast",
-    title: "We show up. Every time.",
-    body: "No ghost quotes, no subcontractors you've never met. Your project manager is on site from day one — reachable on a single number until the job is signed off.",
-    cta: "Meet the team",
-    href: "/about",
-  },
-  {
-    photo: "/images/projects/2.jpeg",
-    alt: "High-rise maintenance Mooloolaba",
-    title: "Built for coastal conditions.",
-    body: "Salt air, UV, humidity — we've been maintaining Sunshine Coast buildings for over 25 years. Every system and access method is matched to your building's specific exposure.",
-    cta: "See our process",
-    href: "/process",
-  },
-  {
-    photo: "/nav/maintenance.png",
-    alt: "Building inspection Sunshine Coast",
-    title: "Documented. Warranted. Lodged.",
-    body: "Every job is photographed, reported and lodged in your ROCO portal. You always know what was done, when, and what's coming next.",
-    cta: "Get a quote",
-    href: "/contact",
-  },
-];

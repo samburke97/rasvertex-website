@@ -1,111 +1,66 @@
-/* ─── Root ───────────────────────────────────────────────────── */
+/* app/components/homepage/Carousel.module.css */
+
 .root {
-  /* Break out of the px-10 / --space-x parent padding */
   margin-left: calc(-1 * var(--space-x));
   margin-right: calc(-1 * var(--space-x));
-}
-
-/* ─── Carousel ───────────────────────────────────────────────── */
-.carouselWrap {
-  overflow: hidden;
 }
 
 .carousel {
   overflow: hidden;
   cursor: grab;
-  /* Restore left inset so slide 1 aligns with page content */
   padding-left: var(--space-x);
-  /* Right padding so the last slide is inset, not flush to the edge */
   padding-right: var(--space-x);
   box-sizing: content-box;
 }
-
 .carousel:active {
   cursor: grabbing;
 }
-
 .track {
   display: flex;
-  gap: 8px;
+  gap: var(--space-card-gap);
   user-select: none;
   -webkit-user-select: none;
 }
 
-/* ─── Slide ──────────────────────────────────────────────────── */
 .slide {
-  /*
-    Two slides fill the viewport:
-    viewport - left padding - right padding - 1 gap
-    = 100vw - 40px - 40px - 8px = 100vw - 88px
-    Each slide = half of that
-  */
-  flex: 0 0 calc((100vw - var(--space-x) * 2 - 8px) / 2);
+  flex: 0 0 calc((100vw - var(--space-x) * 2 - var(--space-card-gap)) / 2);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: opacity 0.4s ease;
+  gap: var(--space-md);
+  transition: opacity var(--duration-slow) var(--ease-out);
   cursor: pointer;
 }
-
 .slideInactive {
   opacity: 0.3;
 }
 
-/* ─── Image ──────────────────────────────────────────────────── */
 .imageWrap {
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 2;
-  flex-shrink: 0;
-  border-radius: 12px;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  background: #e8edf2;
+  background: var(--navy-08);
 }
-
 .image {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 .slide:hover .image {
   transform: scale(1.03);
 }
 
-/* ─── Content ────────────────────────────────────────────────── */
 .content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-sm);
+  max-width: 70%;
 }
 
-.heading {
-  font-family: var(--font-body);
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--navy);
-  margin: 0;
-}
-
-.body {
-  font-family: var(--font-body);
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--navy);
-  opacity: 0.6;
-  margin: 0;
-}
-
-/* ─── Footer (pagination) ────────────────────────────────────── */
 .footer {
-  display: flex;
-  justify-content: center;
-  padding-top: 24px;
-  padding-bottom: 8px;
+  padding: 0 var(--space-x);
 }
 
-/* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .root {
     margin-left: calc(-1 * var(--space-x-sm));
@@ -115,11 +70,13 @@
     padding-left: var(--space-x-sm);
     padding-right: var(--space-x-sm);
   }
+  .footer {
+    padding: 0 var(--space-x-sm);
+  }
   .slide {
-    flex: 0 0 calc((100vw - var(--space-x-sm) * 2 - 8px) / 2);
+    flex: 0 0 calc((100vw - var(--space-x-sm) * 2 - var(--space-card-gap)) / 2);
   }
 }
-
 @media (max-width: 860px) {
   .root {
     margin-left: calc(-1 * var(--space-x-xs));
@@ -129,11 +86,13 @@
     padding-left: var(--space-x-xs);
     padding-right: var(--space-x-xs);
   }
+  .footer {
+    padding: 0 var(--space-x-xs);
+  }
   .slide {
     flex: 0 0 72vw;
   }
 }
-
 @media (max-width: 560px) {
   .root {
     margin-left: calc(-1 * var(--space-x-2xs));
@@ -142,6 +101,9 @@
   .carousel {
     padding-left: var(--space-x-2xs);
     padding-right: var(--space-x-2xs);
+  }
+  .footer {
+    padding: 0 var(--space-x-2xs);
   }
   .slide {
     flex: 0 0 85vw;

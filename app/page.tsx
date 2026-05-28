@@ -8,6 +8,7 @@ import Hero from "./components/homepage/Hero";
 import PageCtaStrip from "./components/shared/PageCtaStrip";
 import Carousel from "./components/homepage/Carousel";
 import IndustriesSection from "./components/homepage/IndustriesSection";
+import RopeAccessSection from "./components/homepage/RopeAccessSection";
 
 export default function Home() {
   return (
@@ -18,34 +19,28 @@ export default function Home() {
       <section className="py-20">
         <PartnersCarousel />
       </section>
-      <section className="py-20">
+      <section className="px-10 py-20">
         <IndustriesSection />
       </section>
-      <section className="px-10 py-10">
+      <section className="px-10 py-20">
         <Carousel />
       </section>
-
-      <section className="pt-10">
+      <section className="px-10 py-20">
+        <RopeAccessSection />
+      </section>
+      <section className="px-10 py-20 ">
         <ProcessSection />
       </section>
-
+      <div className="px-10 py-20">
+        <TestimonialsSection />
+      </div>
       <div className=" px-10 pt-30">
         <CaseStudy />
-      </div>
-      <div className="pt-30">
-        <TestimonialsSection />
       </div>
 
       <div className="pt-30">
         <ProjectShowcase />
       </div>
-
-      <PageCtaStrip
-        heading="Get a quote that holds up at handover."
-        sub="Tell us the building, the scope, and when you need to be done. We'll come and look, then send a scoped quote inside five business days — line-itemed, not lump-sum."
-        ctaLabel="Request a quote →"
-        ctaHref="/contact"
-      />
     </>
   );
 }

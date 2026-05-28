@@ -1,22 +1,77 @@
-/* ─── Section ────────────────────────────────────────────────── */
-.section {
-  padding: var(--space-section) var(--space-x);
-}
+/* app/components/homepage/ProcessSection.module.css */
 
 /* ─── Header ─────────────────────────────────────────────────── */
-.header {
-  padding-bottom: 32px;
+.headerTitle {
   max-width: 50%;
 }
 
-.heading {
+.headerSub {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 40%;
+  margin-top: var(--space-xl);
+}
+
+.teamStrip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+.teamLeft {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
+.avatar {
+  position: relative;
+  width: 68px;
+  height: 80px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--navy-08);
+}
+.teamMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.teamEyebrow {
   font-family: var(--font-body);
-  font-size: clamp(18px, 1.8vw, 26px);
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
   color: var(--navy);
-  margin: 0;
+}
+.teamName {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--nav-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1.1;
+  opacity: 0.5;
+}
+.teamCta {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: var(--button-size);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--duration-fast);
+}
+.teamCta:hover {
+  background: var(--navy-dark);
 }
 
 /* ─── Two-column body ────────────────────────────────────────── */
@@ -24,62 +79,58 @@
   display: grid;
   grid-template-columns: 1fr 1.6fr;
   gap: var(--space-col-gap);
-  align-items: start;
+  align-items: stretch;
+  margin-top: var(--space-5xl);
 }
 
-/* ─── Left — photo ───────────────────────────────────────────── */
+/* ─── Left — sticky photo ────────────────────────────────────── */
 .left {
   position: sticky;
   top: 96px;
 }
-
 .photoWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 16px;
+  height: 100%;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  background: #e8edf2;
+  background: var(--navy-08);
 }
-
 .photo {
   position: absolute;
   inset: 0;
   opacity: 0;
   transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 .photoActive {
   opacity: 1;
 }
+.photoImg {
+  object-fit: cover;
+}
 
-/* ─── Right ──────────────────────────────────────────────────── */
+/* ─── Right — accordion ──────────────────────────────────────── */
 .right {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
-
-/* ─── List ───────────────────────────────────────────────────── */
 .list {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 10px;
+  flex: 1;
 }
-
-/* ─── Item ───────────────────────────────────────────────────── */
 .item {
   border-radius: 12px;
   background: #f0f2f7;
   overflow: hidden;
-  transition: background 0.2s;
+  transition: background var(--duration-fast);
 }
-
 .open {
-  background: #d6ecff;
+  background: #deeeff;
 }
 
-/* ─── Row ────────────────────────────────────────────────────── */
 .row {
   width: 100%;
   display: flex;
@@ -90,316 +141,117 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  gap: 16px;
+  gap: var(--space-md);
 }
-
 .open .row {
   padding-bottom: 0;
 }
-
 .rowLeft {
   display: flex;
   align-items: center;
   gap: 14px;
 }
-
 .stepNumber {
-  font-family: "Bebas Neue", var(--font-display);
+  font-family: var(--font-display);
   font-size: 13px;
-  font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--navy);
   opacity: 0.35;
   line-height: 1;
-  flex-shrink: 0;
 }
-
 .open .stepNumber {
   opacity: 0.6;
 }
-
 .label {
   font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-size: var(--nav-size);
+  letter-spacing: var(--nav-tracking);
   text-transform: uppercase;
   color: var(--navy);
   opacity: 0.28;
   line-height: 1.1;
-  transition: opacity 0.2s;
+  transition: opacity var(--duration-fast);
 }
-
 .open .label,
 .row:hover .label {
   opacity: 1;
 }
-
 .chevron {
   flex-shrink: 0;
   color: var(--navy);
   opacity: 0.4;
   transition:
     transform 0.25s ease,
-    opacity 0.2s;
+    opacity var(--duration-fast);
   display: flex;
   align-items: center;
 }
-
 .open .chevron {
   transform: rotate(180deg);
   opacity: 1;
 }
 
-/* ─── Panel ──────────────────────────────────────────────────── */
 .panel {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 .open .panel {
   grid-template-rows: 1fr;
 }
-
 .panelInner {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--space-md);
   padding: 0 24px;
   transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 .open .panelInner {
-  padding: 20px 24px 0;
+  padding: 20px 24px 24px;
 }
-
-/* ─── Panel heading — bold Inter, matches screenshot ─────────── */
-.panelHeading {
-  font-family: var(--font-body);
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--navy);
-  margin: 0;
-}
-
-.panelBody {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--navy);
-  opacity: 0.7;
-  margin: 0;
-}
-
-/* ─── Checklist points ───────────────────────────────────────── */
-.points {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.point {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-family: var(--font-body);
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--navy);
-  opacity: 0.75;
-}
-
-.tick {
-  color: var(--navy);
-  opacity: 0.5;
-  flex-shrink: 0;
-  font-size: 12px;
-  margin-top: 1px;
-}
-
-/* ─── Logos ──────────────────────────────────────────────────── */
-.logos {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.logoWrap {
-  position: relative;
-  width: 80px;
-  height: 30px;
-  flex-shrink: 0;
-}
-
-/* ─── Meta ───────────────────────────────────────────────────── */
-.meta {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--burgundy);
-  opacity: 0.8;
-}
-
-/* ─── Panel footer ───────────────────────────────────────────── */
-.panelFooter {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.open .panelFooter {
-  grid-template-rows: 1fr;
-}
-
-.panelFooterInner {
-  overflow: hidden;
-  padding: 0 24px;
-  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.open .panelFooterInner {
-  padding: 16px 24px 24px;
-}
-
 .panelCta {
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
   background: var(--navy);
   color: #fff;
-  border-radius: 100px;
+  border-radius: var(--radius-full);
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--button-size);
+  font-weight: var(--weight-semibold);
   text-decoration: none;
   width: fit-content;
-  transition: background 0.2s;
+  transition: background var(--duration-fast);
 }
-
 .panelCta:hover {
-  background: var(--navy-dark);
-}
-
-/* ─── Team strip ─────────────────────────────────────────────── */
-.teamStrip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px 24px;
-  border-radius: 12px;
-  background: #f0f2f7;
-}
-
-.teamLeft {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-}
-
-.avatar {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: rgba(1, 25, 85, 0.08);
-}
-
-.teamMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.teamEyebrow {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.4;
-}
-
-.teamName {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--navy);
-  line-height: 1.1;
-}
-
-.teamCta {
-  display: inline-flex;
-  align-items: center;
-  padding: 11px 22px;
-  background: var(--navy);
-  color: #ffffff;
-  border-radius: 8px;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: background 0.2s;
-}
-
-.teamCta:hover {
   background: var(--navy-dark);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .section {
-    padding: var(--space-section) var(--space-x-sm);
+  .headerTitle {
+    max-width: 60%;
   }
-  .inner {
-    gap: var(--space-col-gap-sm);
-  }
-  .header {
-    max-width: 65%;
+  .headerSub {
+    max-width: 50%;
   }
 }
-
 @media (max-width: 860px) {
-  .section {
-    padding: var(--space-section) var(--space-x-xs);
-  }
-  .header {
+  .headerTitle,
+  .headerSub {
     max-width: 100%;
   }
   .inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: var(--space-xl);
   }
   .left {
     position: static;
   }
   .photoWrap {
+    height: auto;
     aspect-ratio: 16 / 9;
-  }
-}
-
-@media (max-width: 560px) {
-  .section {
-    padding: var(--space-section) var(--space-x-2xs);
   }
   .teamStrip {
     flex-direction: column;

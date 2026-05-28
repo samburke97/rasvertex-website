@@ -1,16 +1,24 @@
 /* app/components/homepage/IndustriesSection.module.css */
 
-.section {
-  display: flex;
-  align-items: center;
-  gap: var(--space-col-gap);
+/* ─── H2 constrained to ~45% so it doesn't dominate ─────────── */
+.heading {
+  max-width: 45%;
 }
 
+/* ─── Row: tabs left (auto), panel right (takes remaining) ───── */
+.row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-col-gap);
+  margin-top: var(--space-3xl);
+}
+
+/* ─── Tab buttons (left column) ──────────────────────────────── */
 .tabs {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  flex-shrink: 0;
 }
 
 .tab {
@@ -24,7 +32,7 @@
   color: var(--navy);
   font-family: var(--font-body);
   font-size: var(--button-size);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-semibold);
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
@@ -38,6 +46,11 @@
   background: var(--navy-08);
 }
 
+.tab:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
 .tabActive {
   background: var(--navy);
   color: #ffffff;
@@ -47,9 +60,10 @@
   background: var(--navy-dark);
 }
 
+/* ─── Panel content (right column, capped at half the section) ── */
 .content {
-  flex: 1;
-  max-width: 640px;
+  justify-self: end;
+  max-width: 70%;
 }
 
 .panel {
@@ -62,34 +76,24 @@
   display: flex;
 }
 
-.heading {
-  font-family: var(--font-body);
-  font-size: var(--h3-size);
-  font-weight: var(--weight-bold);
-  line-height: var(--h3-leading);
-  letter-spacing: var(--h3-tracking);
-  color: var(--navy);
-  margin: 0;
-}
-
-.body {
-  font-family: var(--font-body);
-  font-size: var(--p-size);
-  font-weight: var(--weight-regular);
-  line-height: var(--p-leading);
-  color: var(--navy);
-  opacity: 0.65;
-  margin: 0;
-}
-
+/* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .section {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-xl);
+  .heading {
+    max-width: 100%;
   }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+
   .tabs {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .content {
+    justify-self: start;
   }
 }
