@@ -1,263 +1,203 @@
-/* ─── Page shell ─────────────────────────────────────────────── */
-.page {
-  padding: 0 var(--space-x);
-}
+/* app/components/homepage/CaseStudy.module.css */
 
-/* ─── Card ───────────────────────────────────────────────────── */
-.card {
-  background: #deeeff;
-  border-radius: 24px;
-  padding: 56px var(--space-x);
+/* ─── Section ────────────────────────────────────────────────── */
+.section {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: var(--space-3xl);
 }
 
-/* ─── Card top ───────────────────────────────────────────────── */
-.cardTop {
+/* ─── Header ─────────────────────────────────────────────────── */
+.header {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-.racvLogo {
-  position: relative;
-  width: 100px;
-  height: 52px;
-  flex-shrink: 0;
-}
-
-.cardHeading {
-  font-family: var(--font-body);
-  font-size: clamp(24px, 2.8vw, 40px);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--navy);
-  margin: 0;
+.heading {
   max-width: 780px;
 }
 
-/* ─── Card body ──────────────────────────────────────────────── */
-.cardBody {
-  display: flex;
-  gap: 64px;
-  align-items: stretch;
-}
-
-.photoCol {
-  flex: 0 0 45%;
-}
-
-.photo {
+/* ─── Video ──────────────────────────────────────────────────── */
+.videoWrap {
   position: relative;
   width: 100%;
-  height: 440px;
-  border-radius: 12px;
+  height: 520px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
 }
 
-.photoImg {
+.video {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* ─── Text col ───────────────────────────────────────────────── */
-.textCol {
-  flex: 1;
+.videoOverlay {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.textBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: sticky;
-  top: 96px;
-}
-
-.client {
-  font-family: "Bebas Neue", var(--font-display);
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 1;
-  margin: 0;
-  line-height: 1.1;
-}
-
-.paragraph {
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--navy);
-  opacity: 0.7;
-  margin: 0;
-}
-
-/* ─── Services list ──────────────────────────────────────────── */
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.serviceRow {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.serviceTick {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--navy);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.serviceLabel {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--navy);
-}
-
-/* ─── Support ────────────────────────────────────────────────── */
-.support {
-  display: flex;
-  justify-content: space-between;
   align-items: flex-end;
-  gap: 80px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(1, 25, 85, 0.12);
+  padding: var(--space-xl);
+  background: linear-gradient(to top, rgba(1, 25, 85, 0.5) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-.supportLeft {
+.clientName {
+  font-family: var(--font-display);
+  font-size: var(--nav-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--nav-leading);
+  letter-spacing: var(--nav-tracking);
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* ─── Content grid ───────────────────────────────────────────── */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-col-gap);
+  align-items: start;
+}
+
+/* ─── Left — summary ─────────────────────────────────────────── */
+.left {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 480px;
+  gap: var(--space-md);
 }
 
-.supportHeading {
+.body {
   font-family: var(--font-body);
-  font-size: clamp(18px, 1.8vw, 24px);
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: var(--p-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--p-leading);
+  color: var(--navy);
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* ─── Right — quote ──────────────────────────────────────────── */
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Quote ──────────────────────────────────────────────────── */
+.quote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin: 0;
+}
+
+.quoteText {
+  margin: 0;
+}
+
+.quoteText p {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  font-weight: var(--weight-light);
+  line-height: 1.45;
   letter-spacing: -0.01em;
   color: var(--navy);
   margin: 0;
 }
 
-.supportBody {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--navy);
-  opacity: 0.6;
-  margin: 0;
+.quoteAuthor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
 }
 
-.supportRight {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
+.authorLogo {
+  position: relative;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
 }
 
-.ctaLabel {
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authorName {
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--p-size);
+  font-weight: var(--weight-semibold);
   color: var(--navy);
-  opacity: 0.5;
+  font-style: normal;
+}
+
+.authorRole {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-regular);
+  color: var(--navy);
+  opacity: 0.45;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--line);
+}
+
+.footerText {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
   margin: 0;
 }
 
-.ctaButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 22px;
-  background: var(--navy);
-  color: #ffffff;
-  border-radius: 8px;
+.footerCta {
   font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
   text-decoration: none;
-  transition: background 0.2s;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
-.ctaButton:hover {
-  background: var(--navy-dark);
+.footerCta:hover {
+  opacity: 0.55;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .page {
-    padding: 0 var(--space-x-sm);
-  }
-  .card {
-    padding: 48px var(--space-x-sm);
-  }
-  .cardBody {
-    gap: 48px;
-  }
-  .photo {
-    height: 380px;
+  .content {
+    gap: var(--space-col-gap-sm);
   }
 }
 
-@media (max-width: 900px) {
-  .page {
-    padding: 0 var(--space-x-xs);
+@media (max-width: 860px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
   }
-  .card {
-    padding: 48px var(--space-x-xs);
-    gap: 32px;
+  .videoWrap {
+    height: 380px;
   }
-  .cardBody {
-    flex-direction: column;
-    gap: 32px;
-    align-items: start;
-  }
-  .photoCol {
-    flex: none;
-    width: 100%;
-  }
-  .photo {
-    height: 320px;
-  }
-  .textCol {
-    position: static;
-  }
-  .textBlock {
-    position: static;
-  }
-  .support {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
+  .body {
+    max-width: none;
   }
 }
 
 @media (max-width: 560px) {
-  .page {
-    padding: 0 var(--space-x-2xs);
+  .videoWrap {
+    height: 280px;
   }
-  .card {
-    padding: 40px var(--space-x-2xs);
-    border-radius: 16px;
-  }
-  .photo {
-    height: 260px;
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
   }
 }

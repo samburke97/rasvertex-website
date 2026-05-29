@@ -5,7 +5,7 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: var(--space-card-gap);
   row-gap: 0;
-  padding-bottom: var(--space-md);
+  padding-bottom: var(--space-lg);
 }
 
 .intro[data-has-right="false"] {

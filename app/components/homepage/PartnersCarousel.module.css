@@ -1,24 +1,51 @@
 /* app/components/homepage/PartnersCarousel.module.css */
 
 .section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5xl);
   overflow: hidden;
 }
 
-.headingRow {
+/* ─── Intro grid ─────────────────────────────────────────────── */
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-col-gap);
+  align-items: start;
+  justify-content: space-between;
   padding: 0 var(--space-x);
-  padding-bottom: var(--space-3xl);
 }
 
 .heading {
+  max-width: 600px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 650px;
+  margin-left: auto;
+}
+
+.body {
   font-family: var(--font-body);
-  font-size: var(--h3-size);
-  font-weight: var(--weight-bold);
-  line-height: var(--h3-leading);
-  letter-spacing: var(--h3-tracking);
+  font-size: var(--p-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--p-leading);
   color: var(--navy);
+  opacity: 0.65;
   margin: 0;
 }
 
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* ─── Logo marquee ───────────────────────────────────────────── */
 .marqueeWrap {
   position: relative;
   overflow: hidden;
@@ -72,4 +99,22 @@
 .logo {
   object-fit: contain;
   object-position: center;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    padding: 0 var(--space-x-xs);
+  }
+  .right {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .intro {
+    padding: 0 var(--space-x-2xs);
+  }
 }

@@ -4,8 +4,7 @@ import HeroIntro from "./HeroIntro";
 import ServiceBento from "./ServiceBento";
 import styles from "./Hero.module.css";
 
-const HEADLINE =
-  "Painting the Sunshine Coast for 25 years. Body corporate, strata, residential, and commercial painters.";
+const HEADLINE = "The Sunshine Coast’s Trusted Property Maintenance Partner";
 
 export default function Hero() {
   return (

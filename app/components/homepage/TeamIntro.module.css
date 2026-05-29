@@ -1,0 +1,72 @@
+/* app/components/homepage/TeamIntro.module.css */
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-col-gap);
+  align-items: center;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--line);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 420px;
+  margin-left: auto;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--p-leading);
+  color: var(--navy);
+  opacity: 0.65;
+  margin: 0;
+}
+
+.textLink {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  text-decoration: none;
+  width: fit-content;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.textLink:hover {
+  opacity: 0.55;
+}
+
+.avatar {
+  position: relative;
+  width: 80px;
+  height: 96px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  .right {
+    max-width: none;
+    margin-left: 0;
+  }
+}

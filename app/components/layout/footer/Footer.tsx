@@ -1,7 +1,10 @@
+// app/components/layout/footer/Footer.tsx
+
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
+import Button from "@/app/components/ui/Button";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -14,67 +17,44 @@ export default function Footer() {
   };
 
   return (
-    <footer className={styles.footer}>
-      {/* Watermark — now at the top */}
-      <div className={styles.watermark}>
+    <footer className={styles.footer} role="contentinfo">
+      <div className={styles.watermark} aria-hidden="true">
         <span className={styles.watermarkText}>HIGHER STANDARDS.</span>
       </div>
 
-      {/* Top Section */}
-      <div className={styles.topSection}>
-        <div className={styles.leftColumns}>
+      <div className={styles.top}>
+        <nav className={styles.columns} aria-label="Footer navigation">
           <div className={styles.column}>
-            <span className={styles.columnTitle}>Sitemap</span>
-            <Link href="/" className={styles.link}>
-              Home
-            </Link>
-            <Link href="/services" className={styles.link}>
-              Services
-            </Link>
-            <Link href="/projects" className={styles.link}>
-              Projects
-            </Link>
-            <Link href="/about" className={styles.link}>
-              About
-            </Link>
-            <Link href="/contact" className={styles.link}>
-              Contact
-            </Link>
+            <span className={styles.title}>Sitemap</span>
+            <Link href="/">Home</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
           </div>
-
           <div className={styles.column}>
-            <span className={styles.columnTitle}>Company</span>
-            <Link href="/about" className={styles.link}>
-              About Us
-            </Link>
-            <Link href="/terms" className={styles.link}>
-              Terms & Conditions
-            </Link>
-            <Link href="/privacy" className={styles.link}>
-              Privacy Policy
-            </Link>
+            <span className={styles.title}>Company</span>
+            <Link href="/about">About Us</Link>
+            <Link href="/terms">Terms & Conditions</Link>
+            <Link href="/privacy">Privacy Policy</Link>
           </div>
-
           <div className={styles.column}>
-            <span className={styles.columnTitle}>Contact</span>
-            <a href="tel:0754379355" className={styles.link}>
-              (07) 5437 9355
-            </a>
-            <a href="mailto:info@rasvertex.com.au" className={styles.link}>
-              info@rasvertex.com.au
-            </a>
+            <span className={styles.title}>Contact</span>
+            <a href="tel:0754379355">(07) 5437 9355</a>
+            <a href="mailto:info@rasvertex.com.au">info@rasvertex.com.au</a>
           </div>
-        </div>
+        </nav>
 
         <div className={styles.newsletter}>
-          <span className={styles.columnTitle}>Newsletter</span>
-          <form onSubmit={handleSubmit} className={styles.newsletterForm}>
+          <span className={styles.title}>Newsletter</span>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <input
               type="text"
               placeholder="First name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className={styles.input}
+              aria-label="First name"
             />
             <input
               type="email"
@@ -82,49 +62,46 @@ export default function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={styles.input}
+              aria-label="Email address"
             />
-            <button type="submit" className={styles.submitButton}>
+            <Button as="button" type="submit" variant="primary" size="sm">
               Sign Up
-            </button>
+            </Button>
           </form>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className={styles.bottomSection}>
-        <span className={styles.copyright}>
-          ©{new Date().getFullYear()} ROPE ACCESS SERVICES PTY LTD. ALL RIGHTS
-          RESERVED.
+      <div className={styles.bottom}>
+        <span className={styles.small}>
+          ©{new Date().getFullYear()} Rope Access Services Pty Ltd. All rights
+          reserved.
         </span>
         <div className={styles.socials}>
           <a
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.socialLink}
           >
-            LINKEDIN
+            LinkedIn
           </a>
-          <span className={styles.socialDivider}>,</span>
+          <span aria-hidden="true">,</span>
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.socialLink}
           >
-            INSTAGRAM
+            Instagram
           </a>
-          <span className={styles.socialDivider}>,</span>
+          <span aria-hidden="true">,</span>
           <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.socialLink}
           >
-            FACEBOOK
+            Facebook
           </a>
         </div>
-        <span className={styles.location}>SUNSHINE COAST, QLD</span>
+        <span className={styles.small}>Sunshine Coast, QLD</span>
       </div>
     </footer>
   );

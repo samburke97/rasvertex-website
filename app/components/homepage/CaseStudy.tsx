@@ -1,94 +1,91 @@
-"use client";
+// app/components/homepage/CaseStudy.tsx
 
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./CaseStudy.module.css";
 
-const SERVICES = [
-  "Full building wash across all 96 units and the main precinct",
-  "Complete exterior repaint using coastal-spec systems and Dulux Weathershield",
-  "Ongoing garden and grounds maintenance integrated into the resort schedule",
-];
-
 export default function CaseStudy() {
   return (
-    <>
-      <section className={styles.card}>
-        <div className={styles.cardTop}>
-          <div className={styles.racvLogo}>
-            <Image
-              src="/partners/racv.png"
-              alt="RACV"
-              fill
-              style={{ objectFit: "contain", objectPosition: "left center" }}
-            />
-          </div>
-          <h2 className={styles.cardHeading}>
-            From Brisbane contractors to a local partner, the right team,
-            finally on the Sunshine Coast.
-          </h2>
+    <section className={styles.section} aria-labelledby="case-study-heading">
+      {/* ── Header ── */}
+      <header className={styles.header}>
+        <h2 id="case-study-heading" className={styles.heading}>
+          From Brisbane contractors to a local partner — the right team, finally
+          on the Coast.
+        </h2>
+      </header>
+
+      {/* ── Video ── */}
+      <div className={styles.videoWrap}>
+        <video
+          className={styles.video}
+          src="/videos/racv.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-label="RACV Resort Noosa — project footage by RAS-VERTEX"
+        />
+        <div className={styles.videoOverlay}>
+          <span className={styles.clientName}>RACV Noosa Resort</span>
+        </div>
+      </div>
+
+      {/* ── Content grid ── */}
+      <div className={styles.content}>
+        {/* Left — summary */}
+        <div className={styles.left}>
+          <h3>Dedicated maintenance for the full resort complex.</h3>
+          <p className={styles.body}>
+            RACV Resort Noosa had been managing building maintenance through
+            Brisbane-based contractors — and the distance showed. We now run a
+            dedicated program across the full resort complex. One project
+            manager, one team, on their schedule.
+          </p>
         </div>
 
-        <div className={styles.cardBody}>
-          <div className={styles.photoCol}>
-            <div className={styles.photo}>
-              <Image
-                src="/images/case/racv_1.jpg"
-                alt="RACV Resort Noosa"
-                fill
-                className={styles.photoImg}
-                sizes="(max-width: 900px) 100vw, 45vw"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className={styles.textCol}>
-            <div className={styles.textBlock}>
-              <p className={styles.client}>RACV Noosa Resort</p>
-              <p className={styles.paragraph}>
-                RACV Resort Noosa had been managing building maintenance through
-                Brisbane-based contractors — and the distance showed. Slow
-                mobilisation, unfamiliar crews on site, and no local
-                accountability. They needed a Sunshine Coast partner who could
-                actually be there when it mattered.
+        {/* Right — quote */}
+        <div className={styles.right}>
+          <figure className={styles.quote}>
+            <blockquote className={styles.quoteText}>
+              <p>
+                They showed up within 48 hours for the site visit and had a full
+                itemised quote within the week. Refreshing.
               </p>
-              <p className={styles.paragraph}>
-                We now run a dedicated maintenance program across the full
-                resort complex. One project manager, one team, working through
-                RACV&rsquo;s schedule so the resort never misses a beat.
-              </p>
-              <div className={styles.list}>
-                {SERVICES.map((s) => (
-                  <div key={s} className={styles.serviceRow}>
-                    <span className={styles.serviceTick}>✓</span>
-                    <span className={styles.serviceLabel}>{s}</span>
-                  </div>
-                ))}
+            </blockquote>
+            <figcaption className={styles.quoteAuthor}>
+              <div className={styles.authorLogo}>
+                <Image
+                  src="/partners/racv.png"
+                  alt="RACV"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
               </div>
-            </div>
-          </div>
+              <div className={styles.authorInfo}>
+                <cite className={styles.authorName}>Sandra Koh</cite>
+                <span className={styles.authorRole}>
+                  Strata Manager, Archers Body Corporate
+                </span>
+              </div>
+            </figcaption>
+          </figure>
         </div>
+      </div>
 
-        <div className={styles.support}>
-          <div className={styles.supportLeft}>
-            <h3 className={styles.supportHeading}>
-              Local team. Local knowledge. One number to call.
-            </h3>
-            <p className={styles.supportBody}>
-              We work with resorts, body corporates, and commercial properties
-              across the Sunshine Coast — on your schedule, with a dedicated
-              project manager from day one.
-            </p>
-          </div>
-          <div className={styles.supportRight}>
-            <p className={styles.ctaLabel}>Ready to start your project?</p>
-            <Link href="/contact" className={styles.ctaButton}>
-              Get a free quote →
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
+      {/* ── Footer ── */}
+      <footer className={styles.footer}>
+        <p className={styles.footerText}>
+          Local team. Local knowledge. One number to call.
+        </p>
+        <Link
+          href="/contact"
+          className={styles.footerCta}
+          aria-label="Get a free quote for your property"
+        >
+          Get a free quote →
+        </Link>
+      </footer>
+    </section>
   );
 }

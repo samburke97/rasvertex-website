@@ -3,6 +3,7 @@
 "use client";
 
 import Image from "next/image";
+import Button from "../ui/Button";
 import styles from "./PartnersCarousel.module.css";
 
 const partners = [
@@ -19,23 +20,46 @@ const partners = [
   { src: "/partners/sskb.svg", alt: "SSKB" },
 ];
 
-interface PartnersCarouselProps {
-  heading?: string;
-}
+const SERVICES = [
+  { label: "Body Corporate →", href: "/painting/body-corporate" },
+  { label: "Commercial →", href: "/painting/commercial" },
+  { label: "Residential →", href: "/painting/residential" },
+];
 
-export default function PartnersCarousel({
-  heading = "Trusted by the Coast's best run buildings.",
-}: PartnersCarouselProps) {
+export default function PartnersCarousel() {
   const track = [...partners, ...partners];
 
   return (
-    <section className={styles.section} aria-label={heading}>
-      {heading && (
-        <div className={styles.headingRow}>
-          <h3 className={styles.heading}>{heading}</h3>
-        </div>
-      )}
+    <section className={styles.section} aria-labelledby="partners-heading">
+      {/* ── Intro grid ── */}
+      <div className={styles.intro}>
+        <h2 id="partners-heading" className={styles.heading}>
+          Trusted by the Coast&rsquo;s best run buildings.
+        </h2>
 
+        <div className={styles.right}>
+          <p className={styles.body}>
+            25 years painting across every building type on the Sunshine Coast —
+            body corporates, commercial properties, and homes. One standard
+            across all of them.
+          </p>
+          <nav className={styles.links} aria-label="Our services">
+            {SERVICES.map((s) => (
+              <Button
+                key={s.href}
+                as="link"
+                href={s.href}
+                variant="secondary"
+                aria-label={`Learn more about our ${s.label.replace(" →", "").toLowerCase()} services`}
+              >
+                {s.label}
+              </Button>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* ── Logo marquee ── */}
       <div className={styles.marqueeWrap}>
         <div className={styles.fadeLeft} aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />
