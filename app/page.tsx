@@ -23,7 +23,7 @@ export default function Home() {
       <section className="px-10 py-20">
         <TeamIntro />
       </section>
-      <section className="px-10 py-20">
+      <section className="px-10 pt-20 pb-10">
         <Carousel />
       </section>
       <section className="px-10 py-20 ">

@@ -39,7 +39,7 @@ export default function ProcessSection() {
 
   return (
     <section className={styles.section} aria-labelledby="process-heading">
-      {/* ── Header block — all constrained to left half ────── */}
+      {/* ── Header ── */}
       <div className={styles.header}>
         <h2 id="process-heading" className={styles.headerTitle}>
           25+ years on the Sunshine Coast. We&rsquo;ve picked up a thing or two
@@ -52,30 +52,10 @@ export default function ProcessSection() {
             line-by-line scope, one project manager, every person on site
             directly employed by us.
           </p>
-
-          <div className={styles.teamStrip}>
-            <div className={styles.teamLeft}>
-              <div className={styles.avatar}>
-                <Image
-                  src="/images/people/caro.jpg"
-                  alt="Hylton — Operations Lead"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div className={styles.teamMeta}>
-                <span className={styles.teamEyebrow}>Your Project Lead</span>
-                <span className={styles.teamName}>Hylton, Operations</span>
-              </div>
-            </div>
-            <Link href="/contact" className={styles.teamCta}>
-              Talk to Hylton&nbsp;&rarr;
-            </Link>
-          </div>
         </div>
       </div>
 
-      {/* ── Two-column: photo + accordion ───────────────────── */}
+      {/* ── Two-column: photo + accordion ── */}
       <div className={styles.inner}>
         <div className={styles.left}>
           <div className={styles.photoWrap}>
@@ -112,10 +92,9 @@ export default function ProcessSection() {
                 >
                   <button
                     className={styles.row}
-                    onClick={() => setActiveIdx(i)}
                     role="tab"
                     aria-selected={isOpen}
-                    aria-controls={`step-panel-${s.number}`}
+                    onClick={() => setActiveIdx(i)}
                   >
                     <div className={styles.rowLeft}>
                       <span className={styles.stepNumber}>{s.number}</span>
@@ -138,22 +117,24 @@ export default function ProcessSection() {
                       </svg>
                     </span>
                   </button>
-
-                  <div
-                    className={styles.panel}
-                    id={`step-panel-${s.number}`}
-                    role="tabpanel"
-                  >
+                  <div className={styles.panel}>
                     <div className={styles.panelInner}>
                       <p className="p-soft">{s.body}</p>
-                      <Link href="/contact" className={styles.panelCta}>
-                        Get a quote&nbsp;&rarr;
-                      </Link>
                     </div>
                   </div>
                 </div>
               );
             })}
+          </div>
+
+          <div className={styles.bottomRow}>
+            <Link
+              href="/contact"
+              className={styles.bottomCta}
+              aria-label="Start your project with RAS-VERTEX"
+            >
+              Ready to start your project? →
+            </Link>
           </div>
         </div>
       </div>

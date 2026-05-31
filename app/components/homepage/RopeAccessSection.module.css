@@ -7,10 +7,10 @@
   gap: var(--space-col-gap);
 }
 
-/* ─── Left — image sets the height ───────────────────────────── */
+/* ─── Left — image ───────────────────────────────────────────── */
 .imageCol {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-2xl);
   overflow: hidden;
 }
@@ -19,7 +19,7 @@
   object-fit: cover;
 }
 
-/* ─── Right — stretches to image height, text sticks inside ──── */
+/* ─── Right — text ───────────────────────────────────────────── */
 .textCol {
   display: flex;
   flex-direction: column;

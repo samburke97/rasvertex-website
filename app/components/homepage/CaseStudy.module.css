@@ -141,34 +141,25 @@
   opacity: 0.45;
 }
 
-/* ─── Footer ─────────────────────────────────────────────────── */
-.footer {
-  display: flex;
-  justify-content: space-between;
+/* ─── Projects CTA ───────────────────────────────────────────── */
+.projectsCta {
+  display: inline-flex;
   align-items: center;
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--line);
-}
-
-.footerText {
+  height: 48px;
+  padding: 0 28px;
+  border-radius: var(--radius-xl);
+  background: var(--navy);
+  color: #ffffff;
   font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
-  color: var(--navy);
-  margin: 0;
-}
-
-.footerCta {
-  font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
-  color: var(--navy);
+  font-size: var(--button-size);
+  font-weight: var(--weight-bold);
   text-decoration: none;
-  transition: opacity var(--duration-fast) var(--ease-out);
+  width: fit-content;
+  transition: background var(--duration-fast) var(--ease-out);
 }
 
-.footerCta:hover {
-  opacity: 0.55;
+.projectsCta:hover {
+  background: var(--navy-dark);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
@@ -194,10 +185,5 @@
 @media (max-width: 560px) {
   .videoWrap {
     height: 280px;
-  }
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-sm);
   }
 }

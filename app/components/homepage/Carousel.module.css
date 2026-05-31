@@ -37,7 +37,7 @@
 .imageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: var(--navy-08);

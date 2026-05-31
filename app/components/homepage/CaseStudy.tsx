@@ -73,19 +73,13 @@ export default function CaseStudy() {
         </div>
       </div>
 
-      {/* ── Footer ── */}
-      <footer className={styles.footer}>
-        <p className={styles.footerText}>
-          Local team. Local knowledge. One number to call.
-        </p>
-        <Link
-          href="/contact"
-          className={styles.footerCta}
-          aria-label="Get a free quote for your property"
-        >
-          Get a free quote →
-        </Link>
-      </footer>
+      <Link
+        href="/projects"
+        className={styles.projectsCta}
+        aria-label="View our projects"
+      >
+        Our projects →
+      </Link>
     </section>
   );
 }
