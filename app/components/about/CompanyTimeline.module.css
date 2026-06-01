@@ -1,0 +1,107 @@
+/* app/components/about/CompanyTimeline.module.css */
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-col-gap);
+  align-items: start;
+}
+
+/* ─── Left sticky ────────────────────────────────────────────── */
+.left {
+  align-self: stretch;
+}
+
+.sticky {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ─── Right timeline ─────────────────────────────────────────── */
+.right {
+  padding-top: 4px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* ─── Rail: dot + vertical connector ────────────────────────── */
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--navy);
+  flex-shrink: 0;
+}
+
+.line {
+  width: 1px;
+  background: var(--line);
+  flex: 1;
+  min-height: 64px;
+  margin-top: 8px;
+}
+
+/* ─── Content ────────────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-4xl);
+}
+
+.item:last-child .content {
+  padding-bottom: 0;
+}
+
+.year {
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+}
+
+.event {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  line-height: var(--leading-relaxed);
+  color: var(--navy);
+  opacity: 0.55;
+  margin: 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky {
+    position: static;
+  }
+}

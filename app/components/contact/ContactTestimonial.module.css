@@ -1,0 +1,63 @@
+/* app/components/contact/ContactTestimonial.module.css */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.quoteMark {
+  font-family: var(--font-body);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: var(--weight-bold);
+  line-height: 0.6;
+  color: var(--burgundy);
+}
+
+.quote {
+  margin: 0;
+}
+
+.quote p {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: var(--weight-light);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.logo {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+  font-style: normal;
+}
+
+.role {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+}

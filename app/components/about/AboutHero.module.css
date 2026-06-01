@@ -1,0 +1,186 @@
+/* app/components/about/AboutHero.module.css */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4xl);
+}
+
+/* ─── Top row ────────────────────────────────────────────────── */
+.top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-col-gap);
+  align-items: end;
+}
+
+.headline {
+  /* inherits h1 from globals */
+  max-width: 20ch;
+}
+
+.topRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cta {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+  text-decoration: none;
+  width: fit-content;
+  opacity: 0.7;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover {
+  opacity: 1;
+}
+
+/* ─── Stats row ──────────────────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 4px;
+  padding: var(--space-lg) 0;
+  border-right: 1px solid var(--line);
+  padding-right: var(--space-xl);
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat:not(:first-child) {
+  padding-left: var(--space-xl);
+}
+
+.statValue {
+  font-family: var(--font-body);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+}
+
+.statLabel {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.4;
+}
+
+/* ─── Image ──────────────────────────────────────────────────── */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--navy-08);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(1, 25, 85, 0.5) 0%, transparent 50%);
+}
+
+/* ─── Badge — bottom left of image ──────────────────────────── */
+.imageBadge {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.badgeYear {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.badgeName {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.badgeLocation {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .stat:nth-child(3) {
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-lg);
+  }
+
+  .stat:nth-child(4) {
+    border-right: none;
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 860px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .imageWrap {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 560px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .imageWrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .imageBadge {
+    bottom: var(--space-lg);
+    left: var(--space-lg);
+  }
+}

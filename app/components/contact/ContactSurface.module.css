@@ -1,0 +1,412 @@
+/* app/components/contact/ContactSurface.module.css */
+
+/* ─── Surface ────────────────────────────────────────────────── */
+.surface {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: calc(100vh - 140px);
+  background: var(--navy-08);
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+}
+
+/* ═══════════════════════
+   INFO column
+═══════════════════════ */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4xl);
+  padding: var(--space-4xl) var(--space-3xl);
+  border-right: 1px solid var(--navy-12);
+}
+
+.infoTop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.headline {
+  font-family: var(--font-body);
+  font-size: clamp(1.75rem, 2.2vw, 2.25rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  margin: 0;
+}
+
+/* ── Google rating ── */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.ratingText {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+  opacity: 0.55;
+}
+
+/* ── Contact list ── */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.contactRow {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--navy-08);
+}
+
+.contactRow:first-child {
+  border-top: 1px solid var(--navy-08);
+}
+
+.contactLabel {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.35;
+}
+
+.contactValue {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a.contactValue:hover {
+  opacity: 0.5;
+}
+
+/* ── Person ── */
+.person {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.avatarWrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar {
+  object-fit: cover;
+  object-position: top;
+}
+
+.personName {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  margin: 0;
+}
+
+.personRole {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.4;
+  margin: 0;
+}
+
+/* ═══════════════════════
+   FORM column
+═══════════════════════ */
+.formCol {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4xl);
+  gap: var(--space-3xl);
+}
+
+/* ── Top row: step dots + thumbnail ── */
+.formTopRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Step dots — exact Pagination style */
+.stepDots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.dot {
+  height: 3px;
+  width: 24px;
+  border-radius: 3px;
+  background: var(--navy-25);
+  transition:
+    background 0.25s,
+    width 0.25s;
+}
+
+.dotActive {
+  width: 36px;
+  background: var(--navy);
+}
+
+.dotDone {
+  background: var(--navy-65);
+}
+
+/* Thumbnail — small, rounded, top-right of form */
+.thumbWrap {
+  position: relative;
+  width: 140px;
+  height: 100px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.thumb {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* ── Form body ── */
+.formBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  flex: 1;
+}
+
+.stepTitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.375rem, 1.8vw, 1.875rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.pill {
+  padding: 9px 16px;
+  border: 1px solid var(--navy-25);
+  border-radius: var(--radius-xl);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
+}
+
+.pill:hover {
+  border-color: var(--navy);
+}
+
+.pillActive {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.fieldLabel {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.4;
+}
+
+.optional {
+  font-weight: var(--weight-regular);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: var(--space-md) 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--navy);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--navy-25);
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 0;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--navy);
+  opacity: 0.22;
+}
+
+.input:focus,
+.textarea:focus {
+  border-bottom-color: var(--navy);
+}
+
+.textarea {
+  resize: none;
+}
+
+/* ── Footer ── */
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+
+.back {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  opacity: 0.4;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.back:hover {
+  opacity: 1;
+}
+
+/* ── Success ── */
+.success {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  flex: 1;
+  justify-content: center;
+}
+
+.successLink {
+  color: var(--navy);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ═══════════════════════
+   RESPONSIVE
+═══════════════════════ */
+@media (max-width: 1100px) {
+  .surface {
+    grid-template-columns: 260px 1fr;
+  }
+
+  .thumbWrap {
+    width: 110px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 860px) {
+  .surface {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .info {
+    border-right: none;
+    border-bottom: 1px solid var(--navy-12);
+    padding: var(--space-3xl) var(--space-2xl);
+    gap: var(--space-2xl);
+  }
+
+  .formCol {
+    padding: var(--space-2xl);
+  }
+}
+
+@media (max-width: 560px) {
+  .info,
+  .formCol {
+    padding: var(--space-xl);
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+
+  .thumbWrap {
+    display: none;
+  }
+}

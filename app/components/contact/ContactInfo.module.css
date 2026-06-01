@@ -1,0 +1,157 @@
+/* app/components/contact/ContactInfo.module.css */
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+/* ─── Top: headline + lede ───────────────────────────────────── */
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.headline {
+  /* h1 inherits Inter bold from globals */
+  margin: 0;
+}
+
+/* ─── Trust stats ────────────────────────────────────────────── */
+.trust {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.trustItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.trustValue {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.trustLabel {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.5;
+}
+
+/* ─── Contact details ────────────────────────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.row:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.35;
+}
+
+.value {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a.value:hover {
+  opacity: 0.5;
+}
+
+/* ─── Person ─────────────────────────────────────────────────── */
+.person {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.avatarWrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar {
+  object-fit: cover;
+  object-position: top;
+}
+
+.personName {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  margin: 0;
+}
+
+.personRole {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.4;
+  margin: 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .aside {
+    gap: var(--space-2xl);
+  }
+
+  .trust {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .trustItem {
+    border-bottom: none;
+    padding: 0;
+    flex: 1;
+    min-width: 120px;
+  }
+}

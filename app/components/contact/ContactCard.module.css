@@ -1,0 +1,76 @@
+/* app/components/contact/ContactCard.module.css */
+
+/* ─── Outer tinted surface ───────────────────────────────────── */
+.card {
+  background: var(--navy-08);
+  border-radius: var(--radius-3xl);
+  padding: var(--space-4xl);
+  overflow: hidden;
+}
+
+/* ─── Inner: image top-right + form ─────────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* ─── Image — top right corner ──────────────────────────────── */
+.imageWrap {
+  position: relative;
+  width: 260px;
+  height: 200px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  flex-shrink: 0;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* ─── Form — spans full column left ─────────────────────────── */
+.formWrap {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .imageWrap {
+    width: 200px;
+    height: 160px;
+  }
+
+  .card {
+    padding: var(--space-3xl);
+  }
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .imageWrap {
+    display: none;
+  }
+
+  .formWrap {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    padding: var(--space-xl);
+    border-radius: var(--radius-2xl);
+  }
+}

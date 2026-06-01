@@ -1,0 +1,65 @@
+/* app/components/contact/ContactHero.module.css */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 55vw, 660px);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(1, 25, 85, 0.72) 0%,
+    rgba(1, 25, 85, 0.18) 55%,
+    transparent 100%
+  );
+}
+
+.headlineWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4xl);
+}
+
+.headline {
+  font-family: var(--font-body);
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .hero {
+    height: clamp(340px, 70vw, 480px);
+  }
+
+  .headlineWrap {
+    padding: var(--space-xl);
+  }
+}
+
+@media (max-width: 560px) {
+  .headlineWrap {
+    padding: var(--space-lg);
+  }
+}

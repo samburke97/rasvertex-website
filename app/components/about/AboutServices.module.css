@@ -1,0 +1,130 @@
+/* app/components/about/AboutServices.module.css */
+
+/* ─── Two-column wrapper ─────────────────────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-col-gap);
+  align-items: start;
+}
+
+/* ─── Left — sticky ──────────────────────────────────────────── */
+.left {
+  align-self: stretch;
+}
+
+.sticky {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* h2 inherits from globals */
+
+.cta {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity var(--duration-fast) var(--ease-out);
+  width: fit-content;
+}
+
+.cta:hover {
+  opacity: 1;
+}
+
+/* ─── Right — stacked cards ──────────────────────────────────── */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5xl);
+}
+
+/* ─── Card: image → title → para → pills → link ─────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ─── Image — full width, generous height ────────────────────── */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--navy-08);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform var(--duration-slow)
+    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .image {
+  transform: scale(1.03);
+}
+
+/* ─── Text block ─────────────────────────────────────────────── */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* h3 inherits from globals — intentionally large */
+
+/* ─── Tags ───────────────────────────────────────────────────── */
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.tag {
+  padding: 5px 14px;
+  border: 1px solid var(--navy-25);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  opacity: 0.65;
+}
+
+/* ─── Learn more link ────────────────────────────────────────── */
+.link {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+  text-decoration: none;
+  opacity: 0.45;
+  transition: opacity var(--duration-fast) var(--ease-out);
+  width: fit-content;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky {
+    position: static;
+  }
+}
