@@ -1,28 +1,29 @@
-/* ─── Section ────────────────────────────────────────────────── */
+/* app/components/shared/ServiceFeatures.module.css */
+
 .section {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #fff;
-  padding: 56px 80px 100px;
+  background: var(--background);
+  padding: 56px var(--space-x) 100px;
 }
 
-/* ─── Grid ───────────────────────────────────────────────────── */
+/* ── Grid ───────────────────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(15, 42, 74, 0.12);
+  border-top: 1px solid var(--line);
 }
 
-/* ─── Standard feature cell ──────────────────────────────────── */
+/* ── Feature cell ───────────────────────────────────────────── */
 .feature {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 280px;
   padding: 28px;
-  border-right: 1px solid rgba(15, 42, 74, 0.12);
-  border-bottom: 1px solid rgba(15, 42, 74, 0.12);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   position: relative;
   overflow: hidden;
 }
@@ -44,25 +45,29 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--navy, #011955);
+  background: var(--navy);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .feature:hover::after {
   transform: scaleX(1);
 }
 
-/* ─── Default active (01) ────────────────────────────────────── */
+/* ── Default active (first cell) ────────────────────────────── */
 .featureDefault::after {
   transform: scaleX(1);
 }
+
 .featureDefault .num {
   opacity: 0.12;
 }
+
 .featureDefault .title {
   opacity: 1;
 }
+
 .featureDefault .body {
   opacity: 0.7;
 }
@@ -70,31 +75,35 @@
 .grid:hover .featureDefault:not(:hover)::after {
   transform: scaleX(0);
 }
+
 .grid:hover .featureDefault:not(:hover) .num {
   opacity: 0.06;
 }
+
 .grid:hover .featureDefault:not(:hover) .title {
   opacity: 0.28;
 }
+
 .grid:hover .featureDefault:not(:hover) .body {
   opacity: 0.3;
 }
 
-/* ─── Ghost number ───────────────────────────────────────────── */
+/* ── Ghost number ───────────────────────────────────────────── */
 .num {
-  font-family: "Bebas Neue", var(--font-display);
+  font-family: var(--font-display);
   font-size: clamp(48px, 4vw, 80px);
   font-weight: 400;
-  color: var(--navy, #011955);
+  color: var(--navy);
   opacity: 0.06;
   line-height: 1;
   transition: opacity 0.25s;
 }
+
 .feature:hover .num {
   opacity: 0.12;
 }
 
-/* ─── Content ────────────────────────────────────────────────── */
+/* ── Content ────────────────────────────────────────────────── */
 .content {
   display: flex;
   flex-direction: column;
@@ -102,35 +111,37 @@
 }
 
 .title {
-  font-family: "Bebas Neue", var(--font-display);
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--navy, #011955);
+  color: var(--navy);
   opacity: 0.28;
   line-height: 1.1;
   transition: opacity 0.25s;
   margin: 0;
 }
+
 .feature:hover .title {
   opacity: 1;
 }
 
 .body {
-  font-family: var(--font-body, "Inter", sans-serif);
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.7;
-  color: var(--navy, #011955);
+  color: var(--navy);
   opacity: 0.3;
   margin: 0;
   transition: opacity 0.25s;
 }
+
 .feature:hover .body {
   opacity: 0.7;
 }
 
-/* ─── Logo strip ─────────────────────────────────────────────── */
+/* ── Logo strip ─────────────────────────────────────────────── */
 .logos {
   display: flex;
   align-items: center;
@@ -146,57 +157,64 @@
   opacity: 0.45;
   transition: opacity 0.25s;
 }
+
 .feature:hover .logoWrap {
   opacity: 1;
 }
 
-/* ─── Hero cell — "HIGHER STANDARDS." ───────────────────────── */
+/* ── Hero cell — display text ───────────────────────────────── */
 .heroCell {
   display: flex;
   align-items: flex-end;
   padding: 28px;
-  border-right: 1px solid rgba(15, 42, 74, 0.12);
+  border-right: 1px solid var(--line);
   border-bottom: none;
   min-height: 280px;
 }
 
 .heroText {
-  font-family: "Bebas Neue", var(--font-display);
+  font-family: var(--font-display);
   font-size: clamp(40px, 5vw, 72px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: var(--navy, #011955);
+  color: var(--navy);
 }
 
-/* ─── Responsive ─────────────────────────────────────────────── */
+/* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .section {
-    padding: 56px 48px 80px;
+    padding: 56px var(--space-x-sm) 80px;
   }
 }
 
 @media (max-width: 860px) {
   .section {
     position: static;
-    padding: 56px 32px 72px;
+    padding: 56px var(--space-x-xs) 72px;
   }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .feature:nth-child(3n) {
-    border-right: 1px solid rgba(15, 42, 74, 0.12);
+    border-right: 1px solid var(--line);
   }
+
   .feature:nth-child(2n) {
     border-right: none;
   }
+
   .heroCell {
     border-right: none;
   }
+
   .feature:nth-last-child(-n + 3) {
-    border-bottom: 1px solid rgba(15, 42, 74, 0.12);
+    border-bottom: 1px solid var(--line);
   }
+
   .feature:nth-last-child(-n + 2) {
     border-bottom: none;
   }
@@ -204,18 +222,21 @@
 
 @media (max-width: 560px) {
   .section {
-    padding: 48px 20px 64px;
+    padding: 48px var(--space-x-2xs) 64px;
   }
+
   .grid {
     grid-template-columns: 1fr;
   }
+
   .feature,
   .heroCell {
     border-right: none;
-    border-bottom: 1px solid rgba(15, 42, 74, 0.12);
+    border-bottom: 1px solid var(--line);
     min-height: auto;
     padding: 24px 0;
   }
+
   .feature:last-child {
     border-bottom: none;
   }

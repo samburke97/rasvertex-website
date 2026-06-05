@@ -1,89 +1,141 @@
 // app/painting/page.tsx
 
-import type { Metadata } from "next";
-import Hero from "../components/painting/Hero";
-import PaintingIntro from "../components/painting/PaintingIntro";
-import TeamStrip from "../components/painting/TeamStrip";
-import ServicePicker from "../components/painting/ServicePicker";
-import ServicePickerSEO from "../components/painting/ServicePickerSEO";
-import BeforeAfter from "../components/painting/BeforeAfter";
-import ServiceFeatures from "../components/painting/ServiceFeatures";
-import PaintingProjects from "../components/painting/PaintingProjects";
-import FAQ from "../components/painting/FAQ";
-import TestimonialsSection from "../components/homepage/TestimonialSection";
+import { generatePageMetadata } from "../components/seo/PageSEO";
+import { ServiceSchema } from "../components/seo/StructuredData";
+import ServiceSEO from "../components/shared/ServiceSEO";
+import ServiceHero from "../components/shared/ServiceHero";
+import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceAccordion from "../components/shared/ServiceAccordion";
+import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
+import ServiceFeatures from "../components/shared/ServiceFeatures";
+import ServiceProjects from "../components/shared/ServiceProjects";
+import ServiceCards from "../components/shared/ServiceCards";
+import ServiceFAQ from "../components/shared/ServiceFAQ";
+import PhotoGrid from "../components/shared/PhotoGrid";
 
-export const metadata: Metadata = {
-  title: "Painting Services Sunshine Coast | RAS-VERTEX",
+import {
+  HERO_SLIDES,
+  SERVICES,
+  FEATURES,
+  BEFORE_AFTER_SPECS,
+  PROJECTS,
+  CARDS,
+  FAQS,
+  FAQ_CONTACT,
+} from "../data/paintingData";
+
+export const metadata = generatePageMetadata({
+  title: "Painting Services Sunshine Coast",
   description:
     "Residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, 5-year written warranty, one project manager from quote to sign-off.",
+  path: "/painting",
   keywords: [
     "painting Sunshine Coast",
     "commercial painting Sunshine Coast",
-    "body corporate painting Sunshine Coast",
+    "body corporate painting",
     "residential painter Noosa",
     "exterior painting Caloundra",
     "strata painting Maroochydore",
     "painter Mooloolaba",
     "exterior painting Sunshine Coast",
+    "QBCC licensed painter",
+    "rope access painting",
   ],
-  openGraph: {
-    title: "Painting Services Sunshine Coast | RAS-VERTEX",
-    description:
-      "QBCC licensed painting contractor for body corporates, strata, commercial and residential properties across the Sunshine Coast.",
-    url: "https://rasvertex.com.au/painting",
-    siteName: "RAS-VERTEX",
-    type: "website",
-  },
-};
+});
 
 export default function PaintingPage() {
   return (
-    <main aria-label="Painting services — RAS-VERTEX Sunshine Coast">
-      {/* SEO-only hidden service content for crawlers */}
-      <ServicePickerSEO />
+    <>
+      <ServiceSchema
+        name="Painting Services Sunshine Coast"
+        description="Professional residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, IRATA rope access, 5-year written warranty."
+        image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
+        url="https://www.ras-vertex.com.au/painting"
+        serviceType="Painting"
+        areaServed={[
+          "Sunshine Coast",
+          "Noosa",
+          "Caloundra",
+          "Maroochydore",
+          "Mooloolaba",
+        ]}
+      />
 
-      {/* 1. Hero — h1 + scrolling image carousel */}
-      <section className="px-10 pt-10 pb-20">
-        <Hero />
+      <ServiceSEO
+        heading="Painting services on the Sunshine Coast"
+        services={SERVICES}
+      />
+
+      <section className="pt-20">
+        <ServiceHero
+          heading="Painting the Sunshine Coast for 25 years. Body corporate, strata, residential, and commercial painters."
+          lede="One project manager, from first phone call to warranty sign-off. One number, one invoice, one thread."
+          slides={HERO_SLIDES}
+          headingId="painting-hero-heading"
+        />
       </section>
 
-      {/* 2. Intro — sticky h2 left, copy right */}
-      <section className="px-10 pb-20">
-        <PaintingIntro />
+      <section className="pt-20 pb-20">
+        <ServiceIntro
+          heading="Painting done properly, by people who live here."
+          paragraphs={[
+            "We've been painting buildings on the Sunshine Coast since before half the developments along the foreshore were built. In that time we've learned one thing above everything else: coastal painting is not the same as painting anywhere else. The salt air off Mooloolaba, the UV intensity up through Noosa, the humidity that rolls in off the hinterland — they all eat paint that isn't specced correctly. Every system we use is chosen for the substrate, the exposure, and the specific conditions of your building's location.",
+            "Whether it's a residential repaint in Buderim, exterior painting for a body corporate in Caloundra, commercial painting for a retail centre in Maroochydore, or a high-rise strata job in Mooloolaba — we run every project the same way. One project manager, on-site from day one, reachable on a single number until the warranty is signed. No subcontractors turning up unannounced. No quoting one crew and sending another.",
+          ]}
+          headingId="painting-intro-heading"
+        />
+      </section>
+      <section className="px-10 pt-20 pb-20">
+        <PhotoGrid showHeader={false} />
       </section>
 
-      {/* 3. Team cards — residential / commercial / strata */}
-      <section className="px-10 pb-20">
-        <TeamStrip />
+      <section className="py-20 px-10">
+        <ServiceAccordion
+          heading="What kind of paint job are you thinking about?"
+          statement="Every painter on the Sunshine Coast will quote you a job. Not every painter will show up on time, document every coat, and back the work with a five-year warranty. We will."
+          services={SERVICES}
+          headingId="painting-services-heading"
+        />
       </section>
 
-      {/* 4. Service picker accordion — body corp, commercial, residential */}
-      <ServicePicker />
-
-      {/* 5. Before / after slider + project specs + quote */}
-      <section className="px-10 py-20">
-        <BeforeAfter />
+      <section className="px-20 pb-20">
+        <ServiceBeforeAfter
+          beforeSrc="/assets/project-1.jpeg"
+          afterSrc="/assets/project-2.jpeg"
+          beforeAlt="Coolum Resort before exterior repaint"
+          afterAlt="Coolum Resort after exterior repaint by RAS-VERTEX"
+          heading="Coolum Resort"
+          specs={BEFORE_AFTER_SPECS}
+          quote="The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs."
+          quoteAuthor="James Whitfield"
+          quoteRole="Facilities Manager, Accor Hotels"
+          headingId="before-after-heading"
+        />
+      </section>
+      <section className="py-20">
+        <ServiceProjects
+          heading="Work we're proud of, from Noosa to Caloundra."
+          subheading="Twenty-five years of painting across the Sunshine Coast. High-rise body corporates in Mooloolaba, heritage homes in Buderim, resort complexes in Coolum — every job gets the same crew, the same prep, and the same five-year warranty."
+          projects={PROJECTS}
+          footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour, Yandina and throughout the hinterland."
+          headingId="painting-projects-heading"
+        />
       </section>
 
-      {/* 6. Features grid — differentiators */}
-      <section className="px-10 pb-20">
-        <ServiceFeatures />
+      <section className="pb-20">
+        <ServiceCards
+          cards={CARDS}
+          ariaLabel="Why choose RAS-VERTEX for painting"
+        />
       </section>
 
-      {/* 7. Projects — 3-col grid, SEO-rich suburb copy */}
-      <section className="px-10 py-20">
-        <PaintingProjects />
+      <section className="pb-24">
+        <ServiceFAQ
+          items={FAQS}
+          contact={FAQ_CONTACT}
+          headingId="painting-faq-heading"
+        />
       </section>
-
-      {/* 8. Testimonials — reused shared component */}
-      <section className="px-10 py-20">
-        <TestimonialsSection />
-      </section>
-
-      {/* 9. FAQ — structured data + sticky left contact */}
-      <section className="px-10 py-20">
-        <FAQ />
-      </section>
-    </main>
+    </>
   );
 }

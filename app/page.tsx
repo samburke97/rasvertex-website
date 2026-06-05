@@ -7,6 +7,8 @@ import Hero from "./components/homepage/Hero";
 import Carousel from "./components/homepage/Carousel";
 import RopeAccessSection from "./components/homepage/RopeAccessSection";
 import TeamIntro from "./components/homepage/TeamIntro";
+import ReviewCard from "./components/shared/ReviewCard";
+import PhotoGrid from "./components/shared/PhotoGrid";
 
 export default function Home() {
   return (
@@ -35,7 +37,12 @@ export default function Home() {
       <div className=" px-10 py-20">
         <CaseStudy />
       </div>
-
+      <div className=" px-10 py-20">
+        <ReviewCard />
+      </div>
+      <div className=" px-10 py-20">
+        <PhotoGrid />
+      </div>
       <div className="pt-30 py-20">
         <ProjectShowcase />
       </div>

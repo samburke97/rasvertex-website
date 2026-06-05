@@ -1,0 +1,97 @@
+/* app/components/shared/ServiceHero.module.css */
+
+.section {
+  overflow: hidden;
+}
+
+/* ── Two-column top row ─────────────────────────────────────── */
+.top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-col-gap);
+  padding-left: var(--space-x);
+  padding-right: var(--space-x);
+  padding-bottom: var(--space-3xl);
+}
+
+/* h1 from globals — flex handles sizing */
+.top h1 {
+  flex: 1 1 55%;
+}
+
+.topRight {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-top: 6px; /* optical cap-height alignment */
+}
+
+.cta {
+  font-family: var(--font-body);
+  font-size: var(--button-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy-25);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: border-color 0.2s;
+}
+
+.cta:hover {
+  border-color: var(--navy);
+}
+
+/* ── Carousel ───────────────────────────────────────────────── */
+.carouselWrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 32vw;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--navy-12);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .top {
+    gap: var(--space-col-gap-sm);
+  }
+}
+
+@media (max-width: 860px) {
+  .top {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .top h1,
+  .topRight {
+    flex: 1 1 auto;
+  }
+
+  .slide {
+    flex: 0 0 60vw;
+  }
+}
+
+@media (max-width: 560px) {
+  .slide {
+    flex: 0 0 80vw;
+  }
+}

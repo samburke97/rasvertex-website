@@ -1,0 +1,51 @@
+/* app/components/shared/ServiceIntro.module.css */
+
+.section {
+  padding-left: var(--space-x);
+  padding-right: var(--space-x);
+}
+
+.inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-col-gap);
+  padding-top: var(--space-4xl);
+}
+
+.left {
+  flex: 0 0 38%;
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-xl));
+}
+
+/* h2 from globals */
+
+.right {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .inner {
+    gap: var(--space-col-gap-sm);
+  }
+
+  .left {
+    flex: 0 0 42%;
+  }
+}
+
+@media (max-width: 860px) {
+  .inner {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .left {
+    flex: 1 1 auto;
+    position: static;
+  }
+}

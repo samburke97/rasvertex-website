@@ -1,10 +1,11 @@
-// Shared FAQ — accepts data, contact person, generates schema
+// app/components/shared/ServiceFAQ.tsx
+
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Button from "../ui/Button";
-import styles from "./PageFAQ.module.css";
+import styles from "./ServiceFAQ.module.css";
 
 export interface FAQItem {
   q: string;
@@ -14,25 +15,27 @@ export interface FAQItem {
 export interface FAQContact {
   name: string;
   role: string;
+  photo: string;
   email: string;
   ctaLabel?: string;
-  photo: string;
 }
 
-interface PageFAQProps {
+interface ServiceFAQProps {
   heading?: string;
   lede?: string;
   items: FAQItem[];
   contact: FAQContact;
 }
 
-export default function PageFAQ({
+export default function ServiceFAQ({
   heading = "Things you'll probably want to ask.",
-  lede = "Couldn't find what you're after? Our lead will be on the phone within an hour during business days.",
+  lede,
   items,
   contact,
-}: PageFAQProps) {
+}: ServiceFAQProps) {
   const [openIdx, setOpenIdx] = useState(0);
+
+  const defaultLede = `Our ${contact.role.toLowerCase()} will be on the phone within an hour during business days.`;
 
   const schema = {
     "@context": "https://schema.org",
@@ -56,13 +59,13 @@ export default function PageFAQ({
           <div className={styles.left}>
             <div className={styles.leftTop}>
               <h2 className={styles.h}>{heading}</h2>
-              <p className={styles.lede}>{lede}</p>
+              <p className={styles.lede}>{lede ?? defaultLede}</p>
             </div>
             <div className={styles.contact}>
               <div className={styles.avatar}>
                 <Image
                   src={contact.photo}
-                  alt={contact.name}
+                  alt={`${contact.name} — ${contact.role}`}
                   fill
                   style={{ objectFit: "cover", objectPosition: "top" }}
                 />
@@ -95,6 +98,8 @@ export default function PageFAQ({
                   className={styles.question}
                   onClick={() => setOpenIdx(openIdx === i ? -1 : i)}
                   aria-expanded={openIdx === i}
+                  aria-controls={`faq-answer-${i}`}
+                  id={`faq-btn-${i}`}
                 >
                   <span className={styles.qNum}>0{i + 1}</span>
                   <span className={styles.qText}>{f.q}</span>
@@ -110,7 +115,12 @@ export default function PageFAQ({
                     </svg>
                   </span>
                 </button>
-                <div className={styles.answer}>
+                <div
+                  className={styles.answer}
+                  id={`faq-answer-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-btn-${i}`}
+                >
                   <div className={styles.answerInner}>{f.a}</div>
                 </div>
               </div>

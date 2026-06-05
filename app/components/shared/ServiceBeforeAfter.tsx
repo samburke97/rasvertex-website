@@ -1,26 +1,29 @@
+// app/components/shared/ServiceBeforeAfter.tsx
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef } from "react";
-import styles from "./BeforeAfter.module.css";
+import styles from "./ServiceBeforeAfter.module.css";
 
 const DATA = {
   beforeSrc: "/assets/project-1.jpeg",
   afterSrc: "/assets/project-2.jpeg",
-  site: "Coolum Resort.",
-  scope: "Full exterior repaint · render & masonry · 4 storeys",
-  system: "Dulux Weathershield Pure · elastomeric topcoat",
-  crew: "4 · rope access",
-  warranty: "5-yr workmanship · 15-yr manufacturer",
+  clientName: "Coolum Resort",
+  heading: "Dedicated maintenance for the full resort complex.",
+  body: "RACV Resort Noosa had been managing building maintenance through Brisbane-based contractors — and the distance showed. We now run a dedicated program across the full resort complex. One project manager, one team, on their schedule.",
   quote:
     "The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs.",
   quoteAuthor: "James Whitfield",
   quoteRole: "Facilities Manager, Accor Hotels",
-  ctaHref: "/contact",
-};
+  authorLogo: "/partners/accor.svg",
+  authorLogoAlt: "Accor Hotels",
+  ctaHref: "/projects",
+  ctaLabel: "Our projects →",
+} as const;
 
-export default function BeforeAfter() {
+export default function ServiceBeforeAfter() {
   const stageRef = useRef<HTMLDivElement>(null);
   const afterRef = useRef<HTMLDivElement>(null);
   const handleRef = useRef<HTMLDivElement>(null);
@@ -37,8 +40,10 @@ export default function BeforeAfter() {
     setPct(50);
     const stage = stageRef.current;
     if (!stage) return;
+
     const getX = (e: MouseEvent | TouchEvent) =>
       "clientX" in e ? e.clientX : e.touches[0].clientX;
+
     const onMove = (e: MouseEvent | TouchEvent) => {
       if (!dragging.current) return;
       setPct(
@@ -80,31 +85,52 @@ export default function BeforeAfter() {
   }, [setPct]);
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} aria-labelledby="before-after-heading">
       {/* ── Slider ── */}
-      <div className={styles.stage} ref={stageRef}>
+      <div
+        className={styles.stage}
+        ref={stageRef}
+        role="img"
+        aria-label={`Before and after — ${DATA.clientName}`}
+      >
         <div className={styles.imgWrap}>
           <Image
             src={DATA.beforeSrc}
-            alt="Before"
+            alt={`${DATA.clientName} before`}
             fill
-            sizes="(max-width:860px) 100vw, calc(100vw - 160px)"
+            sizes="(max-width:860px) 100vw, calc(100vw - 80px)"
             priority
           />
         </div>
         <div className={styles.imgWrap} ref={afterRef}>
           <Image
             src={DATA.afterSrc}
-            alt="After"
+            alt={`${DATA.clientName} after`}
             fill
-            sizes="(max-width:860px) 100vw, calc(100vw - 160px)"
+            sizes="(max-width:860px) 100vw, calc(100vw - 80px)"
           />
         </div>
-        <span className={`${styles.label} ${styles.labelBefore}`}>BEFORE</span>
-        <span className={`${styles.label} ${styles.labelAfter}`}>AFTER</span>
-        <div className={styles.handle} ref={handleRef}>
+        <span
+          className={`${styles.sliderLabel} ${styles.before}`}
+          aria-hidden="true"
+        >
+          Before
+        </span>
+        <span
+          className={`${styles.sliderLabel} ${styles.after}`}
+          aria-hidden="true"
+        >
+          After
+        </span>
+        <div className={styles.handle} ref={handleRef} aria-hidden="true">
           <div className={styles.grip}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+            >
               <path
                 d="M7 10H13M7 10L4 7M7 10L4 13M13 10L16 7M13 10L16 13"
                 stroke="currentColor"
@@ -115,48 +141,48 @@ export default function BeforeAfter() {
             </svg>
           </div>
         </div>
+        <div className={styles.overlay} aria-hidden="true">
+          <span className={styles.clientName}>{DATA.clientName}</span>
+        </div>
       </div>
 
-      {/* ── Content row ── */}
+      {/* ── Content — matches CaseStudy structure exactly ── */}
       <div className={styles.content}>
-        {/* Left — heading + specs + CTA */}
-        <div className={styles.leftCol}>
-          <h3 className={styles.heading}>{DATA.site}</h3>
-          <div className={styles.specs}>
-            {[
-              { l: "Scope", v: DATA.scope },
-              { l: "System", v: DATA.system },
-              { l: "Warranty", v: DATA.warranty },
-            ].map(({ l, v }) => (
-              <div key={l} className={styles.spec}>
-                <span className={styles.specL}>{l}</span>
-                <span className={styles.specV}>{v}</span>
-              </div>
-            ))}
-          </div>
-          <Link href={DATA.ctaHref} className={styles.cta}>
-            Get a free quote →
-          </Link>
+        <div className={styles.left}>
+          <h3 id="before-after-heading">{DATA.heading}</h3>
+          <p className={styles.body}>{DATA.body}</p>
         </div>
 
-        {/* Divider */}
-        <div className={styles.divider} />
-
-        {/* Right — quote */}
-        <div className={styles.quoteCol}>
+        <div className={styles.right}>
           <figure className={styles.quote}>
-            <span className={styles.quoteIcon}>&ldquo;</span>
-            <p>{DATA.quote}</p>
-            <figcaption className={styles.author}>
-              <div className={styles.avatar} />
+            <blockquote className={styles.quoteText}>
+              <p>{DATA.quote}</p>
+            </blockquote>
+            <figcaption className={styles.quoteAuthor}>
+              <div className={styles.authorLogo}>
+                <Image
+                  src={DATA.authorLogo}
+                  alt={DATA.authorLogoAlt}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
               <div className={styles.authorInfo}>
-                <p className={styles.authorName}>{DATA.quoteAuthor}</p>
-                <p className={styles.authorRole}>{DATA.quoteRole}</p>
+                <cite className={styles.authorName}>{DATA.quoteAuthor}</cite>
+                <span className={styles.authorRole}>{DATA.quoteRole}</span>
               </div>
             </figcaption>
           </figure>
         </div>
       </div>
+
+      <Link
+        href={DATA.ctaHref}
+        className={styles.cta}
+        aria-label="View our projects"
+      >
+        {DATA.ctaLabel}
+      </Link>
     </section>
   );
 }

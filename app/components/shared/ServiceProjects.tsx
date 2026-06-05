@@ -1,39 +1,40 @@
-// Shared project gallery — blue card, photo + text below
+// app/components/shared/ServiceProjects.tsx
+
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./PageProjects.module.css";
+import styles from "./ServiceProjects.module.css";
 
-export interface Project {
+export interface ServiceProject {
   suburb: string;
   name: string;
   type: string;
   system: string;
   image: string;
+  alt?: string;
 }
 
-interface PageProjectsProps {
+interface ServiceProjectsProps {
   heading: string;
   subheading: string;
-  projects: Project[];
+  projects: ServiceProject[];
   footerNote: string;
   ctaLabel?: string;
   ctaHref?: string;
 }
 
-export default function PageProjects({
+export default function ServiceProjects({
   heading,
   subheading,
   projects,
   footerNote,
   ctaLabel = "Start your project →",
   ctaHref = "/contact",
-}: PageProjectsProps) {
+}: ServiceProjectsProps) {
   return (
     <div className={styles.page}>
       <section className={styles.card}>
         <div className={styles.header}>
           <div className={styles.headerLeft}>
-            <span className={styles.eyebrow}>Recent projects</span>
             <h2 className={styles.heading}>{heading}</h2>
           </div>
           <p className={styles.headerBody}>{subheading}</p>
@@ -45,7 +46,7 @@ export default function PageProjects({
               <div className={styles.photo}>
                 <Image
                   src={p.image}
-                  alt={`${p.name} — ${p.suburb}`}
+                  alt={p.alt ?? `${p.name} — ${p.suburb}`}
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 860px) 100vw, 33vw"

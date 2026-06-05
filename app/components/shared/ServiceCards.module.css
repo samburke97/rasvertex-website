@@ -1,0 +1,71 @@
+/* app/components/shared/ServiceCards.module.css */
+
+.section {
+  padding-left: var(--space-x);
+  padding-right: var(--space-x);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-4xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--navy-08);
+}
+
+.photo img {
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.card:hover .photo img {
+  transform: scale(1.03);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* h3 from globals */
+/* p-soft on element */
+
+.cta {
+  font-family: var(--font-body);
+  font-size: var(--button-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy-25);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: border-color 0.2s;
+}
+
+.cta:hover {
+  border-color: var(--navy);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+}

@@ -1,0 +1,104 @@
+/* app/components/shared/PhotoGrid.module.css */
+
+/* ─── Header ─────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-col-gap);
+  margin-bottom: var(--space-3xl);
+}
+
+.header h2 {
+  max-width: 14ch;
+  flex-shrink: 0;
+}
+
+.supporting {
+  max-width: 32ch;
+  text-align: left;
+}
+
+/* ─── Grid ───────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-card-gap);
+  align-items: stretch;
+}
+
+/* ─── Large image ─────────────────────────────────────────────── */
+
+.large {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+/* ─── Right stack ─────────────────────────────────────────────── */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-card-gap);
+}
+
+.small {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  flex: 1;
+}
+
+/* ─── Caption ─────────────────────────────────────────────────── */
+
+.caption {
+  margin-top: var(--space-lg);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .header {
+    flex-direction: column;
+    align-items: start;
+    gap: var(--space-lg);
+  }
+
+  .header h2 {
+    max-width: none;
+  }
+
+  .supporting {
+    max-width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .large {
+    aspect-ratio: 16 / 9;
+  }
+
+  .stack {
+    flex-direction: row;
+  }
+
+  .small {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .stack {
+    flex-direction: column;
+  }
+
+  .small {
+    aspect-ratio: 16 / 9;
+  }
+}

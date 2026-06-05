@@ -1,38 +1,37 @@
+/* app/components/shared/ServiceProjects.module.css */
+
 .page {
-  background: #ffffff;
+  background: var(--background);
   padding: 0 0 80px;
 }
+
+/* ── Blue card ──────────────────────────────────────────────── */
 .card {
-  background: #d6ecff;
+  background: var(--surface-blue);
   border-radius: 24px;
   padding: 56px 56px 64px;
-  margin: 0 80px;
+  margin: 0 var(--space-x);
   display: flex;
   flex-direction: column;
   gap: 48px;
 }
+
+/* ── Header ─────────────────────────────────────────────────── */
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: end;
   padding-bottom: 48px;
-  border-bottom: 1px solid rgba(1, 25, 85, 0.1);
+  border-bottom: 1px solid var(--line);
 }
+
 .headerLeft {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-.eyebrow {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.45;
-}
+
 .heading {
   font-family: var(--font-body);
   font-size: clamp(28px, 3vw, 42px);
@@ -42,6 +41,7 @@
   color: var(--navy);
   margin: 0;
 }
+
 .headerBody {
   font-family: var(--font-body);
   font-size: 15px;
@@ -50,36 +50,45 @@
   opacity: 0.65;
   margin: 0;
 }
+
+/* ── Grid ───────────────────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   align-items: start;
 }
+
 .project {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
+
 .photo {
   position: relative;
   aspect-ratio: 3 / 2;
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  background: #aac8e0;
+  background: var(--surface-blue-dark);
 }
+
 .photo img {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .project:hover .photo img {
   transform: scale(1.03);
 }
+
+/* ── Meta ───────────────────────────────────────────────────── */
 .meta {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
+
 .suburb {
   font-family: var(--font-body);
   font-size: 11px;
@@ -90,6 +99,7 @@
   opacity: 0.4;
   margin: 0;
 }
+
 .name {
   font-family: var(--font-body);
   font-size: clamp(15px, 1.3vw, 18px);
@@ -98,6 +108,7 @@
   color: var(--navy);
   margin: 0;
 }
+
 .type {
   font-family: var(--font-body);
   font-size: 13px;
@@ -106,15 +117,18 @@
   opacity: 0.5;
   margin: 0;
 }
+
+/* ── Footer ─────────────────────────────────────────────────── */
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
   padding-top: 40px;
-  border-top: 1px solid rgba(1, 25, 85, 0.1);
+  border-top: 1px solid var(--line);
   flex-wrap: wrap;
 }
+
 .footerNote {
   font-family: var(--font-body);
   font-size: 14px;
@@ -124,13 +138,14 @@
   margin: 0;
   max-width: 560px;
 }
+
 .cta {
   display: inline-flex;
   align-items: center;
   padding: 14px 28px;
   background: var(--navy);
-  color: #fff;
-  border-radius: 12px;
+  color: var(--background);
+  border-radius: var(--radius-xl);
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
@@ -139,39 +154,48 @@
   transition: background 0.2s;
   flex-shrink: 0;
 }
+
 .cta:hover {
-  background: var(--navy-dark, #14204a);
+  background: var(--navy-dark);
 }
+
+/* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .card {
-    margin: 0 48px;
+    margin: 0 var(--space-x-sm);
     padding: 48px 40px 56px;
   }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 860px) {
   .card {
-    margin: 0 24px;
+    margin: 0 var(--space-x-xs);
     padding: 36px 28px 44px;
     gap: 36px;
   }
+
   .header {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .grid {
     grid-template-columns: 1fr;
   }
+
   .footer {
     flex-direction: column;
     align-items: flex-start;
   }
 }
+
 @media (max-width: 560px) {
   .card {
-    margin: 0 16px;
+    margin: 0 var(--space-x-2xs);
     padding: 28px 20px 36px;
   }
 }
