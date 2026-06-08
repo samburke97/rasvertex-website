@@ -16,12 +16,13 @@ export interface AccordionService {
 
 interface ServiceAccordionProps {
   heading: string;
-  statement: string;
+  statement?: string;
   ctaLabel?: string;
   ctaHref?: string;
   statementCtaLabel?: string;
   statementCtaHref?: string;
   services: AccordionService[];
+  headingId?: string;
 }
 
 export default function ServiceAccordion({
@@ -32,20 +33,25 @@ export default function ServiceAccordion({
   statementCtaLabel = "Get a free quote →",
   statementCtaHref = "/contact",
   services,
+  headingId = "accordion-heading",
 }: ServiceAccordionProps) {
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState<number>(0);
 
   return (
-    <section className={styles.section} aria-labelledby="accordion-heading">
+    <section className={styles.section} aria-labelledby={headingId}>
       {/* ── Header ── */}
-      <div className={styles.header}>
-        <h2 id="accordion-heading">{heading}</h2>
-        <div className={styles.headerRight}>
-          <p className="p-soft">{statement}</p>
-          <Link href={statementCtaHref} className={styles.statementCta}>
-            {statementCtaLabel}
-          </Link>
-        </div>
+      <div
+        className={`${styles.header} ${!statement ? styles.headerSimple : ""}`}
+      >
+        <h2 id={headingId}>{heading}</h2>
+        {statement && (
+          <div className={styles.headerRight}>
+            <p className="p-soft">{statement}</p>
+            <Link href={statementCtaHref} className={styles.statementCta}>
+              {statementCtaLabel}
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* ── Two-column body ── */}
@@ -86,7 +92,7 @@ export default function ServiceAccordion({
                     role="tab"
                     aria-selected={isOpen}
                     aria-expanded={isOpen}
-                    onClick={() => setActiveIdx(isOpen ? null : i)}
+                    onClick={() => setActiveIdx(i)}
                   >
                     <div className={styles.rowLeft}>
                       <span className={styles.stepNumber} aria-hidden="true">
@@ -115,7 +121,7 @@ export default function ServiceAccordion({
                   <div
                     className={styles.panel}
                     role="tabpanel"
-                    hidden={!isOpen}
+                    aria-labelledby={`${headingId}-tab-${i}`}
                   >
                     <div className={styles.panelInner}>
                       <p className="p-soft">{s.body}</p>

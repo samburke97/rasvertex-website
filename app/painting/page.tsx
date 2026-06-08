@@ -17,7 +17,6 @@ import {
   HERO_SLIDES,
   SERVICES,
   FEATURES,
-  BEFORE_AFTER_SPECS,
   PROJECTS,
   CARDS,
   FAQS,
@@ -83,35 +82,67 @@ export default function PaintingPage() {
             "Whether it's a residential repaint in Buderim, exterior painting for a body corporate in Caloundra, commercial painting for a retail centre in Maroochydore, or a high-rise strata job in Mooloolaba — we run every project the same way. One project manager, on-site from day one, reachable on a single number until the warranty is signed. No subcontractors turning up unannounced. No quoting one crew and sending another.",
           ]}
           headingId="painting-intro-heading"
+          logos={[
+            {
+              src: "/images/associations/haymes.svg",
+              alt: "Haymes Paint",
+              width: 80,
+              height: 40,
+            },
+            {
+              src: "/images/associations/dulux.png",
+              alt: "Dulux",
+              width: 80,
+              height: 40,
+            },
+            {
+              src: "/images/associations/qbcc.png",
+              alt: "QBCC Licensed",
+              width: 60,
+              height: 40,
+            },
+          ]}
         />
       </section>
+
       <section className="px-10 pt-20 pb-20">
-        <PhotoGrid showHeader={false} />
+        <PhotoGrid
+          showHeader={false}
+          cta={{
+            body: "Every painter on the Sunshine Coast will quote you a job. Not every painter will show up on time, document every coat, and back the work with a five-year warranty. We will.",
+            link: { label: "Get a free quote →", href: "/contact" },
+          }}
+        />
       </section>
 
       <section className="py-20 px-10">
         <ServiceAccordion
           heading="What kind of paint job are you thinking about?"
-          statement="Every painter on the Sunshine Coast will quote you a job. Not every painter will show up on time, document every coat, and back the work with a five-year warranty. We will."
           services={SERVICES}
           headingId="painting-services-heading"
         />
       </section>
 
-      <section className="px-20 pb-20">
+      <section className="px-10 py-20" aria-labelledby="before-after-heading">
         <ServiceBeforeAfter
-          beforeSrc="/assets/project-1.jpeg"
-          afterSrc="/assets/project-2.jpeg"
-          beforeAlt="Coolum Resort before exterior repaint"
+          beforeSrc="/images/projects/1.jpeg"
+          afterSrc="/images/projects/2.jpeg"
+          beforeAlt="Coolum Resort before exterior repaint by RAS-VERTEX"
           afterAlt="Coolum Resort after exterior repaint by RAS-VERTEX"
-          heading="Coolum Resort"
-          specs={BEFORE_AFTER_SPECS}
+          clientName="Coolum Resort"
+          heading="Dedicated maintenance for the full resort complex."
+          body="RACV Resort Noosa had been managing building maintenance through Brisbane-based contractors — and the distance showed. We now run a dedicated program across the full resort complex. One project manager, one team, on their schedule."
           quote="The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs."
           quoteAuthor="James Whitfield"
           quoteRole="Facilities Manager, Accor Hotels"
+          authorLogo="/partners/accor.svg"
+          authorLogoAlt="Accor Hotels"
+          ctaHref="/work"
+          ctaLabel="Our projects →"
           headingId="before-after-heading"
         />
       </section>
+
       <section className="py-20">
         <ServiceProjects
           heading="Work we're proud of, from Noosa to Caloundra."
@@ -125,11 +156,12 @@ export default function PaintingPage() {
       <section className="pb-20">
         <ServiceCards
           cards={CARDS}
-          ariaLabel="Why choose RAS-VERTEX for painting"
+          heading="Who we work for."
+          ariaLabel="Who we work for — painting services"
         />
       </section>
 
-      <section className="pb-24">
+      <section className="px-10 pb-24">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}

@@ -53,10 +53,34 @@
   flex: 1;
 }
 
-/* ─── Caption ─────────────────────────────────────────────────── */
+/* ─── Footer — mirrors grid columns exactly ──────────────────── */
 
-.caption {
+.footer {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-card-gap);
   margin-top: var(--space-lg);
+}
+
+.ctaBlock {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.ctaLink {
+  font-size: var(--p-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  text-decoration: none;
+  opacity: 0.65;
+  width: fit-content;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.ctaLink:hover {
+  opacity: 1;
 }
 
 /* ─── Responsive ──────────────────────────────────────────────── */
@@ -90,6 +114,14 @@
 
   .small {
     aspect-ratio: 1 / 1;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaBlock {
+    grid-column: 1;
   }
 }
 

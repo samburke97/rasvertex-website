@@ -7,23 +7,46 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef } from "react";
 import styles from "./ServiceBeforeAfter.module.css";
 
-const DATA = {
-  beforeSrc: "/assets/project-1.jpeg",
-  afterSrc: "/assets/project-2.jpeg",
-  clientName: "Coolum Resort",
-  heading: "Dedicated maintenance for the full resort complex.",
-  body: "RACV Resort Noosa had been managing building maintenance through Brisbane-based contractors — and the distance showed. We now run a dedicated program across the full resort complex. One project manager, one team, on their schedule.",
-  quote:
-    "The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs.",
-  quoteAuthor: "James Whitfield",
-  quoteRole: "Facilities Manager, Accor Hotels",
-  authorLogo: "/partners/accor.svg",
-  authorLogoAlt: "Accor Hotels",
-  ctaHref: "/projects",
-  ctaLabel: "Our projects →",
-} as const;
+export interface BeforeAfterSpec {
+  label: string;
+  value: string;
+}
 
-export default function ServiceBeforeAfter() {
+interface ServiceBeforeAfterProps {
+  beforeSrc: string;
+  afterSrc: string;
+  beforeAlt: string;
+  afterAlt: string;
+  clientName: string;
+  heading: string;
+  body: string;
+  quote: string;
+  quoteAuthor: string;
+  quoteRole: string;
+  authorLogo: string;
+  authorLogoAlt: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  headingId?: string;
+}
+
+export default function ServiceBeforeAfter({
+  beforeSrc,
+  afterSrc,
+  beforeAlt,
+  afterAlt,
+  clientName,
+  heading,
+  body,
+  quote,
+  quoteAuthor,
+  quoteRole,
+  authorLogo,
+  authorLogoAlt,
+  ctaHref = "/work",
+  ctaLabel = "Our projects →",
+  headingId = "before-after-heading",
+}: ServiceBeforeAfterProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const afterRef = useRef<HTMLDivElement>(null);
   const handleRef = useRef<HTMLDivElement>(null);
@@ -85,18 +108,18 @@ export default function ServiceBeforeAfter() {
   }, [setPct]);
 
   return (
-    <section className={styles.section} aria-labelledby="before-after-heading">
+    <article aria-labelledby={headingId}>
       {/* ── Slider ── */}
       <div
         className={styles.stage}
         ref={stageRef}
         role="img"
-        aria-label={`Before and after — ${DATA.clientName}`}
+        aria-label={`Before and after — ${clientName}`}
       >
         <div className={styles.imgWrap}>
           <Image
-            src={DATA.beforeSrc}
-            alt={`${DATA.clientName} before`}
+            src={beforeSrc}
+            alt={beforeAlt}
             fill
             sizes="(max-width:860px) 100vw, calc(100vw - 80px)"
             priority
@@ -104,8 +127,8 @@ export default function ServiceBeforeAfter() {
         </div>
         <div className={styles.imgWrap} ref={afterRef}>
           <Image
-            src={DATA.afterSrc}
-            alt={`${DATA.clientName} after`}
+            src={afterSrc}
+            alt={afterAlt}
             fill
             sizes="(max-width:860px) 100vw, calc(100vw - 80px)"
           />
@@ -142,34 +165,33 @@ export default function ServiceBeforeAfter() {
           </div>
         </div>
         <div className={styles.overlay} aria-hidden="true">
-          <span className={styles.clientName}>{DATA.clientName}</span>
+          <span className={styles.clientName}>{clientName}</span>
         </div>
       </div>
 
-      {/* ── Content — matches CaseStudy structure exactly ── */}
+      {/* ── Content ── */}
       <div className={styles.content}>
         <div className={styles.left}>
-          <h3 id="before-after-heading">{DATA.heading}</h3>
-          <p className={styles.body}>{DATA.body}</p>
+          <h3 id={headingId}>{heading}</h3>
+          <p className="p-soft">{body}</p>
         </div>
-
         <div className={styles.right}>
           <figure className={styles.quote}>
             <blockquote className={styles.quoteText}>
-              <p>{DATA.quote}</p>
+              <p>{quote}</p>
             </blockquote>
             <figcaption className={styles.quoteAuthor}>
               <div className={styles.authorLogo}>
                 <Image
-                  src={DATA.authorLogo}
-                  alt={DATA.authorLogoAlt}
+                  src={authorLogo}
+                  alt={authorLogoAlt}
                   fill
                   style={{ objectFit: "contain" }}
                 />
               </div>
               <div className={styles.authorInfo}>
-                <cite className={styles.authorName}>{DATA.quoteAuthor}</cite>
-                <span className={styles.authorRole}>{DATA.quoteRole}</span>
+                <cite className={styles.authorName}>{quoteAuthor}</cite>
+                <span className={styles.authorRole}>{quoteRole}</span>
               </div>
             </figcaption>
           </figure>
@@ -177,12 +199,12 @@ export default function ServiceBeforeAfter() {
       </div>
 
       <Link
-        href={DATA.ctaHref}
+        href={ctaHref}
         className={styles.cta}
         aria-label="View our projects"
       >
-        {DATA.ctaLabel}
+        {ctaLabel}
       </Link>
-    </section>
+    </article>
   );
 }

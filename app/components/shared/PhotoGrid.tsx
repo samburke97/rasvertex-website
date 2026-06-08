@@ -1,14 +1,13 @@
 // app/components/shared/PhotoGrid.tsx
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./PhotoGrid.module.css";
 
 const DATA = {
   heading: "Recent work across the Coast.",
   supporting:
     "From beachfront towers to body-corporate complexes, Noosa to Caloundra.",
-  caption:
-    "A selection of recent projects across the Sunshine Coast. More available on request.",
   images: [
     {
       src: "/images/projects/1.jpeg",
@@ -27,10 +26,19 @@ const DATA = {
 
 interface PhotoGridProps {
   showHeader?: boolean;
+  caption?: string;
+  cta?: {
+    body: string;
+    link: { label: string; href: string };
+  };
 }
 
-export default function PhotoGrid({ showHeader = true }: PhotoGridProps) {
-  const { heading, supporting, caption, images } = DATA;
+export default function PhotoGrid({
+  showHeader = true,
+  caption,
+  cta,
+}: PhotoGridProps) {
+  const { heading, supporting, images } = DATA;
 
   return (
     <section
@@ -79,7 +87,19 @@ export default function PhotoGrid({ showHeader = true }: PhotoGridProps) {
         </div>
       </div>
 
-      {caption && <p className={`${styles.caption} p-soft`}>{caption}</p>}
+      {(caption || cta) && (
+        <div className={styles.footer}>
+          {caption && <p className="p-soft">{caption}</p>}
+          {cta && (
+            <div className={styles.ctaBlock}>
+              <p className="p-soft">{cta.body}</p>
+              <Link href={cta.link.href} className={styles.ctaLink}>
+                {cta.link.label}
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
     </section>
   );
 }

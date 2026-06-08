@@ -15,10 +15,16 @@ export const HERO_SLIDES: HeroSlide[] = [
   },
   {
     src: "/images/projects/2.jpeg",
-    alt: "Coolum Resort exterior facade painting",
+    alt: "Coolum Resort exterior facade painting by RAS-VERTEX",
   },
-  { src: "/nav/height.png", alt: "Rope access painting on the Sunshine Coast" },
-  { src: "/nav/waterproofing.png", alt: "Waterproofing and membrane coating" },
+  {
+    src: "/nav/height.png",
+    alt: "Rope access painting on the Sunshine Coast",
+  },
+  {
+    src: "/nav/waterproofing.png",
+    alt: "Waterproofing and membrane coating — Sunshine Coast",
+  },
   {
     src: "/nav/maintenance.png",
     alt: "Building maintenance and painting — Sunshine Coast",
@@ -64,7 +70,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Strata & Body Corporate",
-    body: "Committee-ready proposals, staged scheduling around occupancy, resident communication handled end-to-end. Over 50 body corporate projects completed.",
+    body: "Committee-ready proposals, staged scheduling around occupancy, resident communication handled end-to-end. Over 50 body corporate projects completed across the Sunshine Coast.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
@@ -77,7 +83,7 @@ export const SERVICES: AccordionService[] = [
   {
     label: "Colour Consulting",
     body: "On-site sample blocks at no charge for projects over $25k. Full colour schedules and heritage-compliant palettes available.",
-    photo: "/nav/painting.png",
+    photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
 ];
@@ -113,7 +119,7 @@ export const FEATURES: Feature[] = [
     body: "QBCC licensed, $20M public liability, full workers' comp. Certificates of currency issued automatically at quote stage.",
     logos: [
       { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
-      { src: "/images/associations/qbcc.png", alt: "QBCC" },
+      { src: "/images/associations/qbcc.png", alt: "QBCC Licensed" },
     ],
   },
 ];
@@ -123,9 +129,18 @@ export const BEFORE_AFTER_SPECS: BeforeAfterSpec[] = [
     label: "Scope",
     value: "Full exterior repaint · render & masonry · 4 storeys",
   },
-  { label: "System", value: "Dulux Weathershield Pure · elastomeric topcoat" },
-  { label: "Crew", value: "4 technicians · rope access" },
-  { label: "Warranty", value: "5-yr workmanship · 15-yr manufacturer" },
+  {
+    label: "System",
+    value: "Dulux Weathershield Pure · elastomeric topcoat",
+  },
+  {
+    label: "Crew",
+    value: "4 technicians · rope access",
+  },
+  {
+    label: "Warranty",
+    value: "5-yr workmanship · 15-yr manufacturer",
+  },
 ];
 
 export const PROJECTS: ServiceProject[] = [
@@ -150,56 +165,56 @@ export const PROJECTS: ServiceProject[] = [
     name: "CBD Office Tower",
     type: "Commercial · 12 storeys",
     system: "Dulux AcraTex · render & texture coat",
-    image: "/nav/painting.png",
-    alt: "Maroochydore CBD office tower commercial painting",
+    image: "/images/projects/1.jpeg",
+    alt: "Maroochydore CBD office tower commercial painting by RAS-VERTEX",
   },
   {
     suburb: "Noosa Heads",
     name: "Hastings Street Strata",
     type: "Body Corporate · 5 storeys",
     system: "Haymes Proofex · chloride rinse system",
-    image: "/assets/bodycorporate.png",
-    alt: "Noosa Heads strata building exterior repaint",
+    image: "/images/projects/2.jpeg",
+    alt: "Noosa Heads strata building exterior repaint by RAS-VERTEX",
   },
   {
     suburb: "Caloundra",
     name: "Kings Beach Residential Complex",
     type: "Strata · 24 units",
     system: "Dulux Weathershield · full exterior repaint",
-    image: "/assets/residential.png",
-    alt: "Caloundra Kings Beach residential complex painting",
+    image: "/images/projects/1.jpeg",
+    alt: "Caloundra Kings Beach residential complex painting by RAS-VERTEX",
   },
   {
     suburb: "Buderim",
     name: "Heritage Queenslander Repaint",
     type: "Residential · heritage listed",
     system: "Haymes Heritage Collection · lime-based system",
-    image: "/assets/commercial.png",
-    alt: "Heritage Queenslander repaint in Buderim",
+    image: "/images/projects/2.jpeg",
+    alt: "Heritage Queenslander repaint in Buderim by RAS-VERTEX",
   },
 ];
 
 export const CARDS: ServiceCard[] = [
   {
     photo: "/images/projects/1.jpeg",
-    alt: "Residential painting project — RAS-VERTEX Sunshine Coast",
-    title: "Your home deserves better than a rushed quote.",
+    alt: "Residential painting — RAS-VERTEX Sunshine Coast",
+    title: "Residential.",
     body: "We've been painting homes on the Sunshine Coast for 25 years — and we still treat every one like it's our own. You'll meet your project manager before a brush touches anything. They'll walk the job, explain what we're using and why, and be on the other end of the phone until you're happy.",
     cta: "Get a quote",
     href: "/contact",
   },
   {
     photo: "/images/projects/2.jpeg",
-    alt: "Commercial painting — working around your business",
-    title: "We work around your business, not the other way.",
+    alt: "Commercial painting — RAS-VERTEX Sunshine Coast",
+    title: "Commercial.",
     body: "We know a closed shopfront or disrupted tenant costs you money. That's why we schedule around you — after hours, weekends, whatever it takes. Our crew are locals too, so when we say we'll be there Tuesday morning, we mean it.",
     cta: "See our process",
-    href: "/contact",
+    href: "/process",
   },
   {
-    photo: "/assets/bodycorporate.png",
+    photo: "/images/projects/2.jpeg",
     alt: "Body corporate and strata painting — RAS-VERTEX",
-    title: "Body corporate & strata done right — the first time.",
+    title: "Body corporate & strata.",
     body: "We've worked with enough committees to know what matters: clear communication before the work starts, no surprises for residents, and a finished result the whole building is proud of. We handle the scheduling, the access, the documentation — and we back every job with a five-year written warranty.",
     cta: "Learn more",
     href: "/contact",
@@ -213,15 +228,15 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Can you paint while the building stays occupied?",
-    a: "Yes — that's the default. We use low-VOC systems, work in zones, and schedule disruptive prep outside trading hours for hotels and offices.",
+    a: "Yes — almost all our strata and commercial work is done in occupied buildings. We schedule noisy or disruptive work outside business hours and notify residents at least 48 hours before we're on their level.",
   },
   {
     q: "What's covered by the 5-year warranty?",
-    a: "Workmanship across all coated surfaces — adhesion, peeling, blistering and finish failure. The manufacturer warranty covers the paint film for up to 15 years. Both are issued in writing and lodged in ROCO.",
+    a: "All workmanship — adhesion failure, peeling, blistering, or any defect caused by application. It doesn't cover damage from substrate movement, flooding, or impact. Manufacturer warranties (up to 15 years) run separately and are lodged at product level.",
   },
   {
     q: "Do you do pre-sale painting?",
-    a: "Yes — we run a dedicated pre-sale program for agents and vendors across the Sunshine Coast. Quick-turn interior and exterior refresh, ready in 5–10 business days.",
+    a: "Yes. We do interior and exterior refreshes for agents and vendors. Most jobs turn around in 5–10 business days. We can work around open homes and settlement dates.",
   },
   {
     q: "Do you provide colour consulting?",

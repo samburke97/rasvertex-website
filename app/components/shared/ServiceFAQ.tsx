@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Button from "../ui/Button";
+import Link from "next/link";
 import styles from "./ServiceFAQ.module.css";
 
 export interface FAQItem {
@@ -25,6 +25,7 @@ interface ServiceFAQProps {
   lede?: string;
   items: FAQItem[];
   contact: FAQContact;
+  headingId?: string;
 }
 
 export default function ServiceFAQ({
@@ -32,6 +33,7 @@ export default function ServiceFAQ({
   lede,
   items,
   contact,
+  headingId = "faq-heading",
 }: ServiceFAQProps) {
   const [openIdx, setOpenIdx] = useState(0);
 
@@ -53,37 +55,39 @@ export default function ServiceFAQ({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <section className={styles.section}>
+      <section className={styles.section} aria-labelledby={headingId}>
         <div className={styles.inner}>
           {/* Left */}
           <div className={styles.left}>
             <div className={styles.leftTop}>
-              <h2 className={styles.h}>{heading}</h2>
-              <p className={styles.lede}>{lede ?? defaultLede}</p>
+              <h2 id={headingId}>{heading}</h2>
+              <p className="p-soft">{lede ?? defaultLede}</p>
             </div>
+
             <div className={styles.contact}>
-              <div className={styles.avatar}>
-                <Image
-                  src={contact.photo}
-                  alt={`${contact.name} — ${contact.role}`}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                />
-              </div>
+              {contact.photo && (
+                <div className={styles.avatarWrap}>
+                  <Image
+                    src={contact.photo}
+                    alt={`${contact.name} — ${contact.role}`}
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "top" }}
+                    sizes="96px"
+                  />
+                </div>
+              )}
               <p className={styles.contactHeading}>
                 Talk to our {contact.role.toLowerCase()}.
               </p>
-              <p className={styles.contactBody}>
+              <p className="p-soft">
                 {contact.name} will give you a straight answer.
               </p>
-              <Button
-                as="link"
+              <Link
                 href={`mailto:${contact.email}`}
-                size="md"
                 className={styles.contactBtn}
               >
                 {contact.ctaLabel ?? `Chat to ${contact.name.split(" ")[0]} →`}
-              </Button>
+              </Link>
             </div>
           </div>
 
@@ -101,7 +105,9 @@ export default function ServiceFAQ({
                   aria-controls={`faq-answer-${i}`}
                   id={`faq-btn-${i}`}
                 >
-                  <span className={styles.qNum}>0{i + 1}</span>
+                  <span className={styles.qNum}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <span className={styles.qText}>{f.q}</span>
                   <span className={styles.chevron} aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
