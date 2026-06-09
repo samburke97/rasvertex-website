@@ -67,7 +67,7 @@ export default function PaintingPage() {
 
       <section className="pt-20">
         <ServiceHero
-          heading="Painting the Sunshine Coast for 25 years. Body corporate, strata, residential, and commercial painters."
+          heading="Painting the Sunshine Coast for 25 years"
           lede="One project manager, from first phone call to warranty sign-off. One number, one invoice, one thread."
           slides={HERO_SLIDES}
           headingId="painting-hero-heading"
@@ -105,7 +105,7 @@ export default function PaintingPage() {
         />
       </section>
 
-      <section className="px-10 pt-20 pb-20">
+      <section className="pt-20 px-10">
         <PhotoGrid
           showHeader={false}
           cta={{
@@ -115,7 +115,7 @@ export default function PaintingPage() {
         />
       </section>
 
-      <section className="py-20 px-10">
+      <section className="pt-20 px-10">
         <ServiceAccordion
           heading="What kind of paint job are you thinking about?"
           services={SERVICES}
@@ -123,7 +123,14 @@ export default function PaintingPage() {
         />
       </section>
 
-      <section className="px-10 py-20" aria-labelledby="before-after-heading">
+      <section className="pt-20">
+        <ServiceCards
+          cards={CARDS}
+          heading="Who we work for."
+          ariaLabel="Who we work for — painting services"
+        />
+      </section>
+      <section className="px-10 pt-20" aria-labelledby="before-after-heading">
         <ServiceBeforeAfter
           beforeSrc="/images/projects/1.jpeg"
           afterSrc="/images/projects/2.jpeg"
@@ -143,25 +150,16 @@ export default function PaintingPage() {
         />
       </section>
 
-      <section className="py-20">
+      <section className="pt-20">
         <ServiceProjects
           heading="Work we're proud of, from Noosa to Caloundra."
           subheading="Twenty-five years of painting across the Sunshine Coast. High-rise body corporates in Mooloolaba, heritage homes in Buderim, resort complexes in Coolum — every job gets the same crew, the same prep, and the same five-year warranty."
           projects={PROJECTS}
           footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour, Yandina and throughout the hinterland."
-          headingId="painting-projects-heading"
         />
       </section>
 
-      <section className="pb-20">
-        <ServiceCards
-          cards={CARDS}
-          heading="Who we work for."
-          ariaLabel="Who we work for — painting services"
-        />
-      </section>
-
-      <section className="px-10 pb-24">
+      <section className="px-10 py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}

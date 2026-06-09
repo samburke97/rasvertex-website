@@ -50,12 +50,7 @@ export const SERVICES: AccordionService[] = [
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
-  {
-    label: "Heritage Restoration",
-    body: "Lime-based and breathable systems for heritage masonry, render and timber. We work with QHR and council heritage officers from sample stage through to documentation lodgement.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
+
   {
     label: "Rope Access Painting",
     body: "IRATA L1–L3 certified technicians for high-rise and difficult-access facades. Faster mobilisation, no scaffolding cost, zero footprint on your site.",
@@ -72,12 +67,6 @@ export const SERVICES: AccordionService[] = [
     label: "Strata & Body Corporate",
     body: "Committee-ready proposals, staged scheduling around occupancy, resident communication handled end-to-end. Over 50 body corporate projects completed across the Sunshine Coast.",
     photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Pre-Sale Painting",
-    body: "Quick-turn interior and exterior refresh for agents and vendors across the Sunshine Coast. Ready in 5–10 business days.",
-    photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
@@ -256,5 +245,6 @@ export const FAQ_CONTACT: FAQContact = {
   name: "Hylton Denton",
   role: "Painting Lead",
   photo: "/images/people/caro.jpg",
-  email: "team@rasvertex.com.au",
+  ctaHref: "/contact",
+  ctaLabel: "Let’s talk about your project →",
 };

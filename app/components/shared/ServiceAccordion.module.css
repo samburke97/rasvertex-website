@@ -40,14 +40,12 @@
   display: grid;
   grid-template-columns: 1fr 1.6fr;
   gap: var(--space-col-gap);
-  align-items: start;
+  align-items: stretch;
 }
 
-/* ─── Left — sticky photo ────────────────────────────────────── */
+/* ─── Left — static photo ────────────────────────────────────── */
 
 .left {
-  position: sticky;
-  top: 96px;
   aspect-ratio: 3 / 4;
 }
 
@@ -75,11 +73,14 @@
   object-fit: cover;
 }
 
-/* ─── Right — accordion ──────────────────────────────────────── */
+/* ─── Right — sticky accordion ──────────────────────────────── */
 
 .right {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-xl));
   display: flex;
   flex-direction: column;
+  align-self: start;
 }
 
 .list {
@@ -199,7 +200,6 @@
 .bottomRow {
   display: flex;
   justify-content: flex-start;
-  margin-top: auto;
   padding-top: var(--space-xl);
 }
 

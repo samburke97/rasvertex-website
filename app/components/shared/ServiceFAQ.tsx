@@ -16,7 +16,7 @@ export interface FAQContact {
   name: string;
   role: string;
   photo: string;
-  email: string;
+  ctaHref?: string;
   ctaLabel?: string;
 }
 
@@ -57,46 +57,59 @@ export default function ServiceFAQ({
       />
       <section className={styles.section} aria-labelledby={headingId}>
         <div className={styles.inner}>
-          {/* Left */}
+          {/* ── Left — sticky header + CTA at bottom ── */}
           <div className={styles.left}>
-            <div className={styles.leftTop}>
+            {/* Header — sticky, slides down as page scrolls */}
+            <div className={styles.header}>
               <h2 id={headingId}>{heading}</h2>
               <p className="p-soft">{lede ?? defaultLede}</p>
             </div>
 
-            <div className={styles.contact}>
-              {contact.photo && (
-                <div className={styles.avatarWrap}>
-                  <Image
-                    src={contact.photo}
-                    alt={`${contact.name} — ${contact.role}`}
-                    fill
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                    sizes="96px"
-                  />
-                </div>
-              )}
-              <p className={styles.contactHeading}>
-                Talk to our {contact.role.toLowerCase()}.
-              </p>
-              <p className="p-soft">
-                {contact.name} will give you a straight answer.
-              </p>
-              <Link
-                href={`mailto:${contact.email}`}
-                className={styles.contactBtn}
-              >
-                {contact.ctaLabel ?? `Chat to ${contact.name.split(" ")[0]} →`}
-              </Link>
+            {/* CTA — sits at bottom of left col */}
+            <div
+              className={styles.ctaRow}
+              aria-label={`Contact ${contact.name}`}
+            >
+              <div className={styles.avatar} aria-hidden="true">
+                <Image
+                  src={contact.photo}
+                  alt={`${contact.name} — ${contact.role} at RAS-VERTEX`}
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                  sizes="100px"
+                />
+              </div>
+              <div className={styles.ctaContent}>
+                <h3>Ready to talk about your project?</h3>
+                <p className="p-soft">
+                  Building projects can feel like a lot. Don&rsquo;t stress —
+                  we&rsquo;ve been doing this for 25 years. One call to{" "}
+                  {contact.name.split(" ")[0]} and you&rsquo;ll know exactly
+                  where you stand.
+                </p>
+                <Link
+                  href={contact.ctaHref ?? "/contact"}
+                  className={styles.ctaButton}
+                  aria-label={`Talk to ${contact.name.split(" ")[0]} about your project`}
+                >
+                  {contact.ctaLabel ??
+                    "Let\u2019s talk about your project \u2192"}
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Accordion */}
-          <div className={styles.list}>
+          {/* ── Right — Accordion ── */}
+          <div
+            className={styles.list}
+            role="list"
+            aria-label={`${heading} — frequently asked questions`}
+          >
             {items.map((f, i) => (
               <div
                 key={i}
                 className={`${styles.item} ${openIdx === i ? styles.open : ""}`}
+                role="listitem"
               >
                 <button
                   className={styles.question}
@@ -105,7 +118,7 @@ export default function ServiceFAQ({
                   aria-controls={`faq-answer-${i}`}
                   id={`faq-btn-${i}`}
                 >
-                  <span className={styles.qNum}>
+                  <span className={styles.qNum} aria-hidden="true">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className={styles.qText}>{f.q}</span>
@@ -127,7 +140,7 @@ export default function ServiceFAQ({
                   role="region"
                   aria-labelledby={`faq-btn-${i}`}
                 >
-                  <div className={styles.answerInner}>{f.a}</div>
+                  <p className={`${styles.answerInner} p-soft`}>{f.a}</p>
                 </div>
               </div>
             ))}

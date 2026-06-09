@@ -19,11 +19,10 @@ export default function Navigation() {
   const [isVisible, setIsVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
 
-  useEffect(() => {
-    if (!servicesOpen) {
-      setActiveService(null);
-    }
-  }, [servicesOpen]);
+  const closeServices = () => {
+    setServicesOpen(false);
+    setActiveService(null);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,8 +30,12 @@ export default function Navigation() {
         setMobileMenuOpen(false);
       }
     };
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [mobileMenuOpen]);
 
   useEffect(() => {
@@ -41,9 +44,11 @@ export default function Navigation() {
 
     const updateNavbar = () => {
       const currentScrollY = window.scrollY;
+
       setIsAtTop(currentScrollY < 10);
 
       const headlineBlock = document.querySelector("[data-headline]");
+
       const pastHeadline = headlineBlock
         ? headlineBlock.getBoundingClientRect().bottom < 72
         : currentScrollY > 300;
@@ -66,7 +71,10 @@ export default function Navigation() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -80,7 +88,6 @@ export default function Navigation() {
       >
         <Container size="xl">
           <div className={styles.wrapper}>
-            {/* ── Left: logo + nav links ── */}
             <div className={styles.leftSection}>
               <Link href="/" className={styles.logo}>
                 <Image
@@ -93,18 +100,20 @@ export default function Navigation() {
                 />
               </Link>
 
-              {/* Desktop nav links — beside logo */}
               <div className={styles.desktopMenu}>
                 <div
                   className={styles.dropdown}
                   onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseLeave={closeServices}
                 >
                   <button
-                    className={`${styles.menuButton} ${servicesOpen ? styles.active : ""}`}
+                    className={`${styles.menuButton} ${
+                      servicesOpen ? styles.active : ""
+                    }`}
                   >
                     Services
                   </button>
+
                   <ServicesDropdown
                     isOpen={servicesOpen}
                     activeService={activeService}
@@ -118,10 +127,13 @@ export default function Navigation() {
                   onMouseLeave={() => setCompanyOpen(false)}
                 >
                   <button
-                    className={`${styles.menuButton} ${companyOpen ? styles.active : ""}`}
+                    className={`${styles.menuButton} ${
+                      companyOpen ? styles.active : ""
+                    }`}
                   >
                     Company
                   </button>
+
                   <CompanyDropdown isOpen={companyOpen} />
                 </div>
 
@@ -134,7 +146,6 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              {/* Hamburger — mobile only */}
               <button
                 className={styles.mobileMenuButton}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -148,7 +159,6 @@ export default function Navigation() {
               </button>
             </div>
 
-            {/* ── Right: Search + Contact ── */}
             <div className={styles.ctaButtons}>
               <Link
                 href="/search"
@@ -176,8 +186,6 @@ export default function Navigation() {
         onClose={() => setMobileMenuOpen(false)}
         servicesOpen={servicesOpen}
         setServicesOpen={setServicesOpen}
-        activeService={activeService}
-        setActiveService={setActiveService}
         companyOpen={companyOpen}
         setCompanyOpen={setCompanyOpen}
       />

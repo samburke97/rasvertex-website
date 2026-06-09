@@ -25,28 +25,48 @@ export default function Footer() {
       <div className={styles.top}>
         <nav className={styles.columns} aria-label="Footer navigation">
           <div className={styles.column}>
-            <span className={styles.title}>Sitemap</span>
-            <Link href="/">Home</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
+            <span className="nav-text">Sitemap</span>
+            <Link href="/" className="p-soft">
+              Home
+            </Link>
+            <Link href="/services" className="p-soft">
+              Services
+            </Link>
+            <Link href="/projects" className="p-soft">
+              Projects
+            </Link>
+            <Link href="/about" className="p-soft">
+              About
+            </Link>
+            <Link href="/contact" className="p-soft">
+              Contact
+            </Link>
           </div>
           <div className={styles.column}>
-            <span className={styles.title}>Company</span>
-            <Link href="/about">About Us</Link>
-            <Link href="/terms">Terms & Conditions</Link>
-            <Link href="/privacy">Privacy Policy</Link>
+            <span className="nav-text">Company</span>
+            <Link href="/about" className="p-soft">
+              About Us
+            </Link>
+            <Link href="/terms" className="p-soft">
+              Terms &amp; Conditions
+            </Link>
+            <Link href="/privacy" className="p-soft">
+              Privacy Policy
+            </Link>
           </div>
           <div className={styles.column}>
-            <span className={styles.title}>Contact</span>
-            <a href="tel:0754379355">(07) 5437 9355</a>
-            <a href="mailto:info@rasvertex.com.au">info@rasvertex.com.au</a>
+            <span className="nav-text">Contact</span>
+            <a href="tel:0754379355" className="p-soft">
+              (07) 5437 9355
+            </a>
+            <a href="mailto:info@rasvertex.com.au" className="p-soft">
+              info@rasvertex.com.au
+            </a>
           </div>
         </nav>
 
         <div className={styles.newsletter}>
-          <span className={styles.title}>Newsletter</span>
+          <span className="nav-text">Newsletter</span>
           <form onSubmit={handleSubmit} className={styles.form}>
             <input
               type="text"
@@ -73,8 +93,8 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <span className={styles.small}>
-          ©{new Date().getFullYear()} Rope Access Services Pty Ltd. All rights
-          reserved.
+          &copy;{new Date().getFullYear()} Rope Access Services Pty Ltd. All
+          rights reserved.
         </span>
         <div className={styles.socials}>
           <a

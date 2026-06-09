@@ -11,7 +11,7 @@
   gap: var(--space-col-gap);
   padding-left: var(--space-x);
   padding-right: var(--space-x);
-  padding-bottom: var(--space-3xl);
+  padding-bottom: var(--space-4xl);
 }
 
 /* h1 from globals — flex handles sizing */

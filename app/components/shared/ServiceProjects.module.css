@@ -1,16 +1,8 @@
-/* app/components/shared/ServiceProjects.module.css */
-
-.page {
-  background: var(--background);
-  padding: 0 0 80px;
-}
-
 /* ── Blue card ──────────────────────────────────────────────── */
 .card {
   background: var(--surface-blue);
   border-radius: 24px;
   padding: 56px 56px 64px;
-  margin: 0 var(--space-x);
   display: flex;
   flex-direction: column;
   gap: 48px;

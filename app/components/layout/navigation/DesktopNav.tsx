@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowDown2 } from "iconsax-react";
-import { ServiceKey } from "../../data/navigationData";
+import { ServiceKey } from "../../../data/navigationData";
 import styles from "./DesktopNav.module.css";
 
 type DesktopNavProps = {
