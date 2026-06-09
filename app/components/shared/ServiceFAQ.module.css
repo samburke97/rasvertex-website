@@ -1,9 +1,3 @@
-/* app/components/shared/ServiceFAQ.module.css */
-
-.section {
-  /* padding owned by page.tsx */
-}
-
 .inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
