@@ -12,6 +12,7 @@ import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import PhotoGrid from "../components/shared/PhotoGrid";
+import WarrantyCard from "../components/shared/WarrantyCard";
 
 import {
   HERO_SLIDES,
@@ -148,6 +149,9 @@ export default function PaintingPage() {
           ctaLabel="Our projects →"
           headingId="before-after-heading"
         />
+      </section>
+      <section className="px-10 py-20" aria-label="Warranty">
+        <WarrantyCard />
       </section>
 
       <section className="pt-20">

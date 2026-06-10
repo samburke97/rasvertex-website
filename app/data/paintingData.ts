@@ -157,30 +157,6 @@ export const PROJECTS: ServiceProject[] = [
     image: "/images/projects/1.jpeg",
     alt: "Maroochydore CBD office tower commercial painting by RAS-VERTEX",
   },
-  {
-    suburb: "Noosa Heads",
-    name: "Hastings Street Strata",
-    type: "Body Corporate · 5 storeys",
-    system: "Haymes Proofex · chloride rinse system",
-    image: "/images/projects/2.jpeg",
-    alt: "Noosa Heads strata building exterior repaint by RAS-VERTEX",
-  },
-  {
-    suburb: "Caloundra",
-    name: "Kings Beach Residential Complex",
-    type: "Strata · 24 units",
-    system: "Dulux Weathershield · full exterior repaint",
-    image: "/images/projects/1.jpeg",
-    alt: "Caloundra Kings Beach residential complex painting by RAS-VERTEX",
-  },
-  {
-    suburb: "Buderim",
-    name: "Heritage Queenslander Repaint",
-    type: "Residential · heritage listed",
-    system: "Haymes Heritage Collection · lime-based system",
-    image: "/images/projects/2.jpeg",
-    alt: "Heritage Queenslander repaint in Buderim by RAS-VERTEX",
-  },
 ];
 
 export const CARDS: ServiceCard[] = [
