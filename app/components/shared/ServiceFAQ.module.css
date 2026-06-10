@@ -1,33 +1,57 @@
+/* app/components/shared/ServiceFAQ.module.css */
+
+/* ── Section — no padding, owned by page.tsx ────────────────── */
+
+.section {
+  /* padding owned by page.tsx */
+}
+
+/* ── Two-column layout ──────────────────────────────────────── */
+
 .inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: var(--space-col-gap);
   align-items: stretch;
 }
 
-/* ── Left ───────────────────────────────────────────────────── */
+/* ── Left col — stretches to full section height ────────────── */
 
 .left {
+  flex: 1;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
 }
+
+/* ── Optional heading block ─────────────────────────────────── */
 
 .header {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  margin-bottom: var(--space-4xl);
 }
 
-/* h2 from globals */
+/* h2 inherits from globals — Inter bold, --h2-size */
 
-/* ── CTA block ──────────────────────────────────────────────── */
+/* ── CTA row — sticky to bottom of left col ─────────────────── */
+/*
+   position: sticky + bottom: 0 means the CTA anchors to the
+   bottom of the viewport and travels down with the user until
+   the section ends, at which point it naturally scrolls away.
+   margin-top: auto pushes it to the bottom when the section
+   is shorter than the viewport.
+*/
 
 .ctaRow {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  padding-bottom: var(--space-xl);
   display: flex;
   gap: var(--space-xl);
   align-items: flex-start;
+  background: var(--background);
 }
 
 .avatar {
@@ -46,11 +70,7 @@
   gap: var(--space-lg);
 }
 
-.ctaContent h3 {
-  font-size: var(--h3-size);
-  line-height: var(--h3-leading);
-  letter-spacing: var(--h3-tracking);
-}
+/* h3 inherits from globals — Inter bold, --h3-size */
 
 .ctaButton {
   display: inline-flex;
@@ -73,12 +93,15 @@
   background: var(--navy-dark);
 }
 
-/* ── Accordion ──────────────────────────────────────────────── */
+/* ── Right col — accordion ──────────────────────────────────── */
 
 .list {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
+
+/* ── Accordion items ────────────────────────────────────────── */
 
 .item {
   border-bottom: 1px solid var(--line);
@@ -101,6 +124,8 @@
   gap: var(--space-md);
 }
 
+/* Question number — Bebas, display label only */
+
 .qNum {
   font-family: var(--font-display);
   font-size: 13px;
@@ -111,19 +136,22 @@
   line-height: 1;
 }
 
+/* Question text — Bebas nav-text treatment, same as .nav-text in globals */
+
 .qText {
   font-family: var(--font-display);
   font-size: var(--nav-size);
   letter-spacing: var(--nav-tracking);
   text-transform: uppercase;
-  color: var(--navy-65);
+  color: var(--navy);
+  opacity: 0.65;
   flex: 1;
   line-height: 1.1;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 .open .qText {
-  color: var(--navy);
+  opacity: 1;
 }
 
 .chevron {
@@ -140,7 +168,7 @@
   opacity: 1;
 }
 
-/* ── Answer panel ───────────────────────────────────────────── */
+/* ── Answer panel — grid animation, no hidden attr ──────────── */
 
 .answer {
   display: grid;
@@ -166,8 +194,14 @@
 
 @media (max-width: 860px) {
   .inner {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: var(--space-3xl);
+  }
+
+  .ctaRow {
+    position: static;
+    padding-bottom: 0;
+    margin-top: 0;
   }
 }
 

@@ -15,7 +15,7 @@ export interface HeroSlide {
 interface ServiceHeroProps {
   /** Page h1 — full sentence, SEO-rich */
   heading: string;
-  /** Short lede paragraph below h1 on right col */
+  /** Short lede paragraph below h1 */
   lede: string;
   ctaLabel?: string;
   ctaHref?: string;
@@ -32,19 +32,20 @@ export default function ServiceHero({
   slides,
   headingId = "service-hero-heading",
 }: ServiceHeroProps) {
+  // Manual tripling — no Embla loop clones, so CSS gap works at every seam
   const looped = [...slides, ...slides, ...slides];
 
   const [emblaRef] = useEmblaCarousel({
-    loop: true,
+    loop: false, // Embla does NOT loop — manual triple provides the buffer
     dragFree: true,
     align: "start",
     containScroll: false,
-    startIndex: slides.length,
+    startIndex: slides.length, // start in the middle set
   });
 
   return (
     <section className={styles.section} aria-labelledby={headingId}>
-      {/* ── Top: h1 left, lede + CTA right ─── */}
+      {/* ── Top: h1 left, lede + CTA right ── */}
       <header className={styles.top}>
         <h1 id={headingId}>{heading}</h1>
         <div className={styles.topRight}>
@@ -55,7 +56,7 @@ export default function ServiceHero({
         </div>
       </header>
 
-      {/* ── Carousel ─── */}
+      {/* ── Staggered carousel ── */}
       <div
         className={styles.carouselWrap}
         role="region"
@@ -64,7 +65,10 @@ export default function ServiceHero({
         <div className={styles.carousel} ref={emblaRef}>
           <div className={styles.track} aria-hidden="true">
             {looped.map((slide, i) => (
-              <div key={i} className={styles.slide}>
+              <div
+                key={i}
+                className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""}`}
+              >
                 <Image
                   src={slide.src}
                   alt={slide.alt}

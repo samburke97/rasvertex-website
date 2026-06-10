@@ -29,15 +29,13 @@ interface ServiceFAQProps {
 }
 
 export default function ServiceFAQ({
-  heading = "Things you'll probably want to ask.",
+  heading,
   lede,
   items,
   contact,
   headingId = "faq-heading",
 }: ServiceFAQProps) {
   const [openIdx, setOpenIdx] = useState(0);
-
-  const defaultLede = `Our ${contact.role.toLowerCase()} will be on the phone within an hour during business days.`;
 
   const schema = {
     "@context": "https://schema.org",
@@ -55,17 +53,21 @@ export default function ServiceFAQ({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <section className={styles.section} aria-labelledby={headingId}>
+      <section
+        className={styles.section}
+        aria-labelledby={heading ? headingId : undefined}
+      >
         <div className={styles.inner}>
-          {/* ── Left — sticky header + CTA at bottom ── */}
+          {/* ── Left — optional header + CTA pinned at bottom ── */}
           <div className={styles.left}>
-            {/* Header — sticky, slides down as page scrolls */}
-            <div className={styles.header}>
-              <h2 id={headingId}>{heading}</h2>
-              <p className="p-soft">{lede ?? defaultLede}</p>
-            </div>
+            {(heading || lede) && (
+              <div className={styles.header}>
+                {heading && <h2 id={headingId}>{heading}</h2>}
+                {lede && <p className="p">{lede}</p>}
+              </div>
+            )}
 
-            {/* CTA — sits at bottom of left col */}
+            {/* CTA block — avatar beside name/copy/button */}
             <div
               className={styles.ctaRow}
               aria-label={`Contact ${contact.name}`}
@@ -76,7 +78,7 @@ export default function ServiceFAQ({
                   alt={`${contact.name} — ${contact.role} at RAS-VERTEX`}
                   fill
                   style={{ objectFit: "cover", objectPosition: "top" }}
-                  sizes="100px"
+                  sizes="160px"
                 />
               </div>
               <div className={styles.ctaContent}>
@@ -99,11 +101,11 @@ export default function ServiceFAQ({
             </div>
           </div>
 
-          {/* ── Right — Accordion ── */}
+          {/* ── Right — accordion ── */}
           <div
             className={styles.list}
             role="list"
-            aria-label={`${heading} — frequently asked questions`}
+            aria-label="Frequently asked questions"
           >
             {items.map((f, i) => (
               <div
@@ -123,7 +125,13 @@ export default function ServiceFAQ({
                   </span>
                   <span className={styles.qText}>{f.q}</span>
                   <span className={styles.chevron} aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
                       <path
                         d="M4 6l4 4 4-4"
                         stroke="currentColor"
