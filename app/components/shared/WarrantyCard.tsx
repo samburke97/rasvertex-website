@@ -24,7 +24,7 @@ export default function WarrantyCard() {
           and our products.
         </h2>
         <p className="p-soft">
-          We back every exterior paint job with an 8-year written warranty —
+          e We back every exterior paint job with an 8-year written warranty —
           covering both workmanship and the paint system itself. We only specify
           Haymes and Dulux commercial systems because we know they perform in
           coastal Queensland conditions, and we're confident enough in our

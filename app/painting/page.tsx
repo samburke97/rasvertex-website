@@ -68,14 +68,20 @@ export default function PaintingPage() {
 
       <section className="pt-20">
         <ServiceHero
-          heading="Painting the Sunshine Coast for 25 years"
+          heading={
+            <>
+              Painting the Sunshine Coast
+              <br />
+              for 25 years.
+            </>
+          }
           lede="One project manager, from first phone call to warranty sign-off. One number, one invoice, one thread."
           slides={HERO_SLIDES}
           headingId="painting-hero-heading"
         />
       </section>
 
-      <section className="pt-20 pb-20">
+      <section className="pt-10">
         <ServiceIntro
           heading="Painting done properly, by people who live here."
           paragraphs={[
@@ -131,6 +137,7 @@ export default function PaintingPage() {
           ariaLabel="Who we work for — painting services"
         />
       </section>
+
       <section className="px-10 pt-20" aria-labelledby="before-after-heading">
         <ServiceBeforeAfter
           beforeSrc="/images/projects/1.jpeg"
@@ -150,7 +157,8 @@ export default function PaintingPage() {
           headingId="before-after-heading"
         />
       </section>
-      <section className="px-10 py-20" aria-label="Warranty">
+
+      <section className="px-10 pt-20" aria-label="Warranty">
         <WarrantyCard />
       </section>
 

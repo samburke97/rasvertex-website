@@ -12,6 +12,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr; /* all rows equal height */
   border-top: 1px solid var(--line);
 }
 
@@ -20,7 +21,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 280px;
   padding: 28px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -32,6 +32,7 @@
   border-right: none;
 }
 
+/* Remove bottom border from last row of features and the heroCell */
 .feature:nth-last-child(-n + 3),
 .heroCell {
   border-bottom: none;
@@ -169,7 +170,6 @@
   padding: 28px;
   border-right: 1px solid var(--line);
   border-bottom: none;
-  min-height: 280px;
 }
 
 .heroText {
@@ -182,10 +182,45 @@
   color: var(--navy);
 }
 
+/* ── Nav row — pagination buttons, bottom-right ─────────────── */
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--line);
+  margin-top: 0; /* grid already has bottom border on last row */
+  padding-right: var(--space-x); /* inset matching page-level padding */
+}
+
+/* Override Pagination's own internal layout — we only use the arrows */
+.navBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity var(--duration-fast);
+}
+
+.navBtn:hover {
+  opacity: 0.5;
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .section {
     padding: 56px var(--space-x-sm) 80px;
+  }
+
+  .nav {
+    padding-right: var(--space-x-sm);
   }
 }
 
@@ -195,8 +230,13 @@
     padding: 56px var(--space-x-xs) 72px;
   }
 
+  .nav {
+    padding-right: var(--space-x-xs);
+  }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
   }
 
   .feature:nth-child(3n) {
@@ -225,15 +265,19 @@
     padding: 48px var(--space-x-2xs) 64px;
   }
 
+  .nav {
+    padding-right: var(--space-x-2xs);
+  }
+
   .grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
   }
 
   .feature,
   .heroCell {
     border-right: none;
     border-bottom: 1px solid var(--line);
-    min-height: auto;
     padding: 24px 0;
   }
 

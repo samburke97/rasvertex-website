@@ -8,24 +8,24 @@
 
 .top {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: var(--space-col-gap);
   padding-left: var(--space-x);
   padding-right: var(--space-x);
   padding-bottom: var(--space-4xl);
 }
 
-/* h1 from globals */
 .top h1 {
   flex: 1 1 55%;
 }
 
 .topRight {
-  flex: 1 1 40%;
+  flex: 0 0 28%;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  padding-top: 6px; /* optical cap-height alignment */
+  justify-content: flex-end;
+  padding-bottom: 4px; /* optical baseline alignment with h1 */
 }
 
 .cta {
@@ -46,34 +46,23 @@
 
 /* ── Carousel ───────────────────────────────────────────────── */
 
-/*
-  overflow: visible lets the stagger breathe below.
-  Horizontal overflow is clipped by the outer .section.
-  padding-bottom absorbs the 40px stagger so the section
-  has breathing room before the next component.
-*/
 .carouselWrap {
   width: 100%;
-  overflow: visible;
-  padding-bottom: 40px;
 }
 
 .carousel {
   overflow: hidden;
 }
 
-/*
-  No Embla loop — CSS gap is the single source of truth for spacing.
-  Every seam, including between the last and first cards of each set,
-  gets identical gap. align-items: flex-start is required so the
-  staggered margin-top on .slideDown has somewhere to push toward.
-*/
 .track {
   display: flex;
-  gap: var(--space-md);
   align-items: flex-start;
 }
 
+/*
+  margin-right instead of gap — Embla loop clones inherit margin,
+  not flex gap, so this ensures consistent spacing at every seam.
+*/
 .slide {
   position: relative;
   flex: 0 0 30vw;
@@ -81,14 +70,42 @@
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: var(--navy-12);
+  margin-right: var(--space-md);
+  margin-top: 0;
 }
 
-/*
-  Alternate slides drop 40px — a clear rhythm without being
-  so aggressive it looks broken.
-*/
+/* Every second slide nudges down — subtle stagger */
 .slideDown {
-  margin-top: 40px;
+  margin-top: 12px;
+}
+
+/* ── Nav buttons — bottom-right ─────────────────────────────── */
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  padding-top: var(--space-xl);
+  padding-right: var(--space-x);
+  margin-top: var(--space-xl);
+}
+
+.navBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity var(--duration-fast);
+}
+
+.navBtn:hover {
+  opacity: 0.5;
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
@@ -100,6 +117,10 @@
 
   .slide {
     flex: 0 0 36vw;
+  }
+
+  .nav {
+    padding-right: var(--space-x-sm);
   }
 }
 
@@ -118,12 +139,8 @@
     flex: 0 0 60vw;
   }
 
-  .slideDown {
-    margin-top: 24px;
-  }
-
-  .carouselWrap {
-    padding-bottom: 24px;
+  .nav {
+    padding-right: var(--space-x-xs);
   }
 }
 
@@ -132,12 +149,11 @@
     flex: 0 0 80vw;
   }
 
-  /* Flatten completely on small mobile — single row is cleaner */
   .slideDown {
     margin-top: 0;
   }
 
-  .carouselWrap {
-    padding-bottom: 0;
+  .nav {
+    padding-right: var(--space-x-2xs);
   }
 }

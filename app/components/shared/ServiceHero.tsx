@@ -5,6 +5,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback } from "react";
 import styles from "./ServiceHero.module.css";
 
 export interface HeroSlide {
@@ -13,14 +14,11 @@ export interface HeroSlide {
 }
 
 interface ServiceHeroProps {
-  /** Page h1 — full sentence, SEO-rich */
-  heading: string;
-  /** Short lede paragraph below h1 */
+  heading: React.ReactNode;
   lede: string;
   ctaLabel?: string;
   ctaHref?: string;
   slides: HeroSlide[];
-  /** Used for aria-labelledby — must be unique per page */
   headingId?: string;
 }
 
@@ -32,16 +30,14 @@ export default function ServiceHero({
   slides,
   headingId = "service-hero-heading",
 }: ServiceHeroProps) {
-  // Manual tripling — no Embla loop clones, so CSS gap works at every seam
-  const looped = [...slides, ...slides, ...slides];
-
-  const [emblaRef] = useEmblaCarousel({
-    loop: false, // Embla does NOT loop — manual triple provides the buffer
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
     dragFree: true,
     align: "start",
-    containScroll: false,
-    startIndex: slides.length, // start in the middle set
   });
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <section className={styles.section} aria-labelledby={headingId}>
@@ -56,7 +52,7 @@ export default function ServiceHero({
         </div>
       </header>
 
-      {/* ── Staggered carousel ── */}
+      {/* ── Looping carousel ── */}
       <div
         className={styles.carouselWrap}
         role="region"
@@ -64,7 +60,7 @@ export default function ServiceHero({
       >
         <div className={styles.carousel} ref={emblaRef}>
           <div className={styles.track} aria-hidden="true">
-            {looped.map((slide, i) => (
+            {slides.map((slide, i) => (
               <div
                 key={i}
                 className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""}`}
@@ -81,6 +77,66 @@ export default function ServiceHero({
             ))}
           </div>
         </div>
+      </div>
+
+      {/* ── Prev / next — bottom-right ── */}
+      <div className={styles.nav} role="group" aria-label="Browse photos">
+        <button
+          className={styles.navBtn}
+          onClick={scrollPrev}
+          aria-label="Previous photos"
+        >
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="10"
+              cy="10"
+              r="9.25"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M11.5 6.5L8 10L11.5 13.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+        <button
+          className={styles.navBtn}
+          onClick={scrollNext}
+          aria-label="Next photos"
+        >
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="10"
+              cy="10"
+              r="9.25"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M8.5 6.5L12 10L8.5 13.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </div>
     </section>
   );
