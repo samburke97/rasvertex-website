@@ -15,7 +15,9 @@ export interface AccordionService {
 }
 
 interface ServiceAccordionProps {
-  heading: string;
+  heading: React.ReactNode;
+  /** Plain text version for aria-label — required when heading is JSX */
+  ariaLabel?: string;
   statement?: string;
   ctaLabel?: string;
   ctaHref?: string;
@@ -27,6 +29,7 @@ interface ServiceAccordionProps {
 
 export default function ServiceAccordion({
   heading,
+  ariaLabel,
   statement,
   ctaLabel = "Not sure? Let's talk about it →",
   ctaHref = "/contact",
@@ -79,7 +82,13 @@ export default function ServiceAccordion({
 
         {/* Right — accordion + CTA */}
         <div className={styles.right}>
-          <div className={styles.list} role="tablist" aria-label={heading}>
+          <div
+            className={styles.list}
+            role="tablist"
+            aria-label={
+              ariaLabel ?? (typeof heading === "string" ? heading : undefined)
+            }
+          >
             {services.map((s, i) => {
               const isOpen = activeIdx === i;
               return (

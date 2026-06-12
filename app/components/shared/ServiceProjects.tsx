@@ -14,7 +14,7 @@ export interface ServiceProject {
 }
 
 interface ServiceProjectsProps {
-  heading: string;
+  heading: React.ReactNode;
   subheading: string;
   projects: ServiceProject[];
   footerNote: string;

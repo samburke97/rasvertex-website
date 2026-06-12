@@ -27,7 +27,7 @@ export default function ServiceCards({
   return (
     <section className={styles.wrap} aria-label={ariaLabel}>
       <div className={styles.card}>
-        <h2 className={styles.heading}>{heading}</h2>
+        <h2>{heading}</h2>
         <div className={styles.grid} role="list">
           {cards.map((c) => (
             <article key={c.title} className={styles.item} role="listitem">

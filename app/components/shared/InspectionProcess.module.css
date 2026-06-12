@@ -1,0 +1,135 @@
+/* app/components/shared/InspectionProcess.module.css */
+
+.section {
+  padding: 0 var(--space-x);
+  display: flex;
+  gap: var(--space-col-gap);
+  align-items: flex-start;
+}
+
+/* ── Left — sticky heading + lede ───────────────────────────── */
+.left {
+  flex: 0 0 32%;
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-xl));
+}
+
+.left h2 {
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Right — scrolling steps ────────────────────────────────── */
+.steps {
+  flex: 1 1 auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Single step ────────────────────────────────────────────── */
+.step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2xl);
+  padding: var(--space-2xl) 0;
+  border-top: 1px solid var(--line);
+}
+
+.step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── Number ─────────────────────────────────────────────────── */
+.num {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 3.5vw, 4.5rem);
+  font-weight: 400;
+  color: var(--navy);
+  opacity: 0.12;
+  line-height: 1;
+  width: 3ch;
+}
+
+/* ── Content ────────────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-top: 4px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--nav-size);
+  letter-spacing: var(--nav-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--navy);
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* ── Deliverable tag ────────────────────────────────────────── */
+.deliverable {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: var(--space-md) 0 0;
+  padding: var(--space-md) var(--space-lg);
+  background: #deeeff;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--navy);
+  width: fit-content;
+}
+
+.deliverableLabel {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  display: block;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .section {
+    padding: 0 var(--space-x-sm);
+  }
+
+  .left {
+    flex: 0 0 36%;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    flex-direction: column;
+    gap: var(--space-3xl);
+    padding: 0 var(--space-x-xs);
+  }
+
+  .left {
+    position: static;
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 0 var(--space-x-2xs);
+  }
+}
