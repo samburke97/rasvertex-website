@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "name": "RAS-VERTEX",
+  "description": "Sunshine Coast commercial property maintenance — painting, building cleaning, waterproofing, height safety, and IRATA rope access for body corporates, strata, and commercial buildings.",
+  "url": "https://www.rasvertex.com.au",
+  "capabilities": ["contact", "quote-request", "service-information", "blog"],
+  "services": [
+    "Commercial painting",
+    "Strata painting",
+    "Building cleaning",
+    "High-rise window cleaning",
+    "Waterproofing",
+    "Height safety compliance",
+    "IRATA rope access",
+    "Building maintenance"
+  ],
+  "location": {
+    "region": "Sunshine Coast",
+    "state": "QLD",
+    "country": "AU"
+  },
+  "contact": "info@rasvertex.com.au",
+  "contact_page": "https://www.rasvertex.com.au/contact",
+  "sitemap": "https://www.rasvertex.com.au/sitemap.xml",
+  "llms_txt": "https://www.rasvertex.com.au/llms.txt"
+}

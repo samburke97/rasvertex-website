@@ -1,19 +1,13 @@
 // app/components/about/AboutHero.tsx
 
-import Image from "next/image";
 import Link from "next/link";
+import PhotoGrid from "../shared/PhotoGrid";
 import styles from "./AboutHero.module.css";
-
-const STATS = [
-  { value: "2009", label: "Founded on the Sunshine Coast" },
-  { value: "25+", label: "Years combined experience" },
-  { value: "500+", label: "Buildings maintained" },
-  { value: "30+", label: "IRATA-certified technicians" },
-];
 
 export default function AboutHero() {
   return (
     <section className={styles.section} aria-labelledby="about-heading">
+      {/* ── Top: headline left, lede + CTA right ── */}
       <div className={styles.top}>
         <h1 id="about-heading">
           The Sunshine Coast&rsquo;s complete property maintenance partner.
@@ -31,32 +25,8 @@ export default function AboutHero() {
         </div>
       </div>
 
-      <dl className={styles.stats}>
-        {STATS.map((s) => (
-          <div key={s.label} className={styles.stat}>
-            <dt className={styles.statLabel}>{s.label}</dt>
-            <dd className={styles.statValue}>{s.value}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <div className={styles.imageWrap}>
-        <Image
-          src="/images/projects/1.jpeg"
-          alt="RAS-VERTEX team working on a Sunshine Coast high-rise building"
-          fill
-          className={styles.image}
-          priority
-          sizes="100vw"
-        />
-        <div className={styles.imageOverlay} aria-hidden="true" />
-        <div className={styles.imageBadge} aria-hidden="true">
-          <span className={styles.badgeName}>RAS-VERTEX</span>
-          <span className={styles.badgeLocation}>
-            Sunshine Coast, QLD · Est. 2009
-          </span>
-        </div>
-      </div>
+      {/* ── PhotoGrid replaces the single banner image ── */}
+      <PhotoGrid showHeader={false} />
     </section>
   );
 }

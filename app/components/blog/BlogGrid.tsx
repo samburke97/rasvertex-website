@@ -92,16 +92,23 @@ function BlogCard({
 }
 
 export default function BlogGrid() {
-  const [featured, ...rest] = BLOG_POSTS;
+  // Always newest-first — sort by publishedAt descending.
+  // Spread to avoid mutating the source array.
+  const sorted = [...BLOG_POSTS].sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  );
+
+  const [featured, ...rest] = sorted;
 
   return (
     <div className={styles.wrap}>
-      {/* Featured post */}
+      {/* Featured post — most recent */}
       <div className={styles.featuredRow}>
         <BlogCard post={featured} featured />
       </div>
 
-      {/* Grid of remaining posts */}
+      {/* Remaining posts grid */}
       {rest.length > 0 && (
         <div className={styles.grid}>
           {rest.map((post) => (

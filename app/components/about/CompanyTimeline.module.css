@@ -1,5 +1,9 @@
 /* app/components/about/CompanyTimeline.module.css */
 
+.section {
+  /* padding owned by page.tsx */
+}
+
 .inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -7,20 +11,52 @@
   align-items: start;
 }
 
-/* ─── Left sticky ────────────────────────────────────────────── */
+/* ─── Left — sticky copy ─────────────────────────────────────── */
 .left {
   align-self: stretch;
 }
 
 .sticky {
   position: sticky;
-  top: 96px;
+  top: 108px;
+  /* Establish stacking context so ghost year z-index works */
+  isolation: isolate;
+}
+
+/* Ghost year — massive, sits behind copy at z-index 0 */
+.ghostYear {
+  position: absolute;
+  top: -0.15em;
+  left: -0.05em;
+  z-index: 0;
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(7rem, 14vw, 12rem);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--navy);
+  opacity: 0.055;
+  pointer-events: none;
+  user-select: none;
+  /* Transition when year changes */
+  transition: opacity 0.3s var(--ease-out);
+}
+
+/* Copy block sits above the ghost year */
+.copyBlock {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  /* Push copy down so the ghost year peeks above the h2 */
+  padding-top: 4.5rem;
 }
 
-/* ─── Right timeline ─────────────────────────────────────────── */
+/* h2 inherits globals — Inter bold */
+
+/* ─── Right — timeline list ──────────────────────────────────── */
 .right {
   padding-top: 4px;
 }
@@ -33,49 +69,73 @@
   flex-direction: column;
 }
 
+/* ─── Each item ──────────────────────────────────────────────── */
 .item {
   display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: var(--space-xl);
+  grid-template-columns: 28px 1fr;
+  gap: var(--space-lg);
   align-items: start;
+  cursor: default;
 }
 
-/* ─── Rail: dot + vertical connector ────────────────────────── */
+/* ─── Rail ───────────────────────────────────────────────────── */
 .rail {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 16px;
+  padding-top: 12px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--navy);
+  border: 2px solid var(--navy-25);
+  background: transparent;
   flex-shrink: 0;
+  transition:
+    background 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    transform 0.25s var(--ease-out);
+}
+
+.dotPast {
+  background: var(--navy-45);
+  border-color: var(--navy-45);
+}
+
+.dotActive {
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: scale(1.4);
 }
 
 .line {
-  width: 1px;
-  background: var(--line);
+  width: 2px;
+  background: var(--navy-12);
   flex: 1;
-  min-height: 64px;
-  margin-top: 8px;
+  min-height: 88px;
+  margin-top: 6px;
+  transition: background 0.4s var(--ease-out);
+}
+
+.lineFilled {
+  background: var(--navy-45);
 }
 
 /* ─── Content ────────────────────────────────────────────────── */
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  padding-bottom: var(--space-4xl);
+  gap: 4px;
+  padding-bottom: var(--space-5xl);
 }
 
 .item:last-child .content {
-  padding-bottom: 0;
+  padding-bottom: var(--space-4xl);
 }
 
+/* Year number — large, fades between inactive/past/active */
 .year {
   display: block;
   font-family: var(--font-body);
@@ -84,24 +144,62 @@
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--navy);
+  opacity: 0.12;
+  transition:
+    opacity 0.3s var(--ease-out),
+    font-size 0.3s var(--ease-out);
 }
 
-.event {
+.itemPast .year {
+  opacity: 0.3;
+}
+
+.itemActive .year {
+  opacity: 1;
+  font-size: clamp(3rem, 5vw, 5rem);
+}
+
+/* Label — eyebrow below the year */
+.label {
+  display: block;
   font-family: var(--font-body);
-  font-size: var(--p-size);
-  line-height: var(--leading-relaxed);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.55;
-  margin: 0;
+  opacity: 0.25;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.itemPast .label {
+  opacity: 0.4;
+}
+
+.itemActive .label {
+  opacity: 0.6;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
   .inner {
     grid-template-columns: 1fr;
+    gap: var(--space-3xl);
   }
 
   .sticky {
     position: static;
+  }
+
+  .ghostYear {
+    display: none;
+  }
+
+  .copyBlock {
+    padding-top: 0;
+  }
+
+  .content {
+    padding-bottom: var(--space-4xl);
   }
 }

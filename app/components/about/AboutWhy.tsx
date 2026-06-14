@@ -31,7 +31,7 @@ const REASONS = [
 
 export default function AboutWhy() {
   return (
-    <section className={styles.section} aria-labelledby="why-heading">
+    <div className={styles.card} aria-labelledby="why-heading">
       <div className={styles.header}>
         <h2 id="why-heading">
           Why Sunshine Coast building managers choose RAS-VERTEX.
@@ -45,12 +45,12 @@ export default function AboutWhy() {
 
       <dl className={styles.grid}>
         {REASONS.map((r) => (
-          <div key={r.title} className={styles.card}>
-            <dt className={styles.cardTitle}>{r.title}</dt>
-            <dd className={styles.cardBody}>{r.body}</dd>
+          <div key={r.title} className={styles.item}>
+            <dt className={styles.title}>{r.title}</dt>
+            <dd className={styles.body}>{r.body}</dd>
           </div>
         ))}
       </dl>
-    </section>
+    </div>
   );
 }

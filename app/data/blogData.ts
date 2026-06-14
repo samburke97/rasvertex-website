@@ -1,5 +1,6 @@
 // app/data/blogData.ts
 // Add new posts here — the index and article pages pick them up automatically.
+// Posts are rendered newest-first; add new entries anywhere in the array.
 
 export interface BlogPost {
   slug: string;
@@ -34,6 +35,7 @@ const HYLTON = {
 };
 
 // ─── Posts ────────────────────────────────────────────────────
+// Declaration order doesn't matter — BlogGrid and helpers sort by publishedAt.
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "how-to-paint-a-house-sunshine-coast",
@@ -66,153 +68,52 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Once the surface is clean, every crack, dent or hole gets patched or rendered properly before priming. Skip this and you'll end up with uneven textures and shadows that only show up after the final coat — especially in full coastal sun. Most repainting jobs around here are dealing with sun-damaged, flaky paint. That means sanding down to a sound base.",
-      },
-      {
-        type: "p",
-        text: "Then comes priming — just as important as the paint itself. The right base coat sets the tone for the final finish. If the base isn't clean and prepped, even the best paint will look average. We spend more time preparing than painting, and there's a good reason for it.",
+        text: "Once the surface is clean, every crack, dent or hole gets patched or rendered properly before priming. Skip this and you'll end up with uneven textures and shadows that only show up after the final coat — especially in full coastal sun.",
       },
       {
         type: "h2",
-        text: "The Right Paint System for the Right Job",
+        text: "Primer Is Not Optional",
       },
       {
         type: "p",
-        text: "Not all paint is made to handle the Sunshine Coast. What works in Brisbane or down south often doesn't cut it here. We see it regularly — well-known brands peeling off after a year because the wrong product was used in the wrong environment.",
+        text: "A quality primer seals the surface, improves topcoat adhesion, and in many cases provides the first layer of mould and moisture resistance. On the Sunshine Coast, a primer with anti-fungal properties isn't a luxury — it's a necessity. We specify primers based on the substrate: bare timber, repainted surfaces, render, masonry and metal all require different primer systems.",
+      },
+      {
+        type: "h2",
+        text: "Product Selection for the Coastal Climate",
       },
       {
         type: "p",
-        text: "For exteriors, we look for strong UV resistance, flexibility and weatherproofing. Bathrooms, ceilings and eaves need moisture-resistant coatings. Render needs something different to timber. Metal, brick and fibre cement each have their own requirements. It's not about picking a brand name — it's about matching the system to the substrate and the exposure so it holds up over time.",
+        text: "Not every paint performs the same in coastal conditions. We specify products proven to handle UV intensity, salt air and high humidity. For exterior work, that typically means a premium acrylic with a 10-year weathering guarantee — not the builder's grade product from the local hardware store.",
       },
       {
         type: "ul",
         items: [
-          "Coastal exteriors within 5km of the ocean — salt-bonded primer and elastomeric topcoat as standard",
-          "Rendered walls — flexible acrylic systems that accommodate thermal movement",
-          "Timber — penetrating oil or UV-stable varnish, not film-forming coatings that trap moisture",
-          "Wet areas and eaves — moisture-resistant coatings rated for high-humidity environments",
+          "Dulux Weathershield or equivalent for exterior masonry and render",
+          "Two-pack epoxy systems for high-traffic floors and wet areas",
+          "Low-sheen or flat finishes for interior ceilings — never semi-gloss",
+          "UV-stable colours — darker shades absorb more heat and cycle harder",
         ],
       },
       {
         type: "h2",
-        text: "Edge Work and Precision",
+        text: "Timing Around the Weather",
       },
       {
         type: "p",
-        text: "Clean, straight edges. No bleed lines. Perfect cutting-in where wall meets ceiling. This is the craftsmanship that separates a professional result from a rushed one — and it's the part most people don't notice until they do. Everything gets masked and protected properly. Floors, windows, fixtures — nothing is left to chance.",
+        text: "On the Sunshine Coast, you're working around afternoon storms from November through March. Paint applied in humid conditions or washed by rain before it cures will peel within months. Professional painters plan around the forecast — early starts, morning sessions, and staged drying cycles between coats.",
       },
       {
         type: "h2",
-        text: "Timing and the Sunshine Coast Climate",
+        text: "Working With Strata Managers and Body Corporate Committees",
       },
       {
         type: "p",
-        text: "Even the best surface preparation and paint won't deliver a lasting finish if applied in the wrong conditions. Humidity affects how paint cures. Heat can make it dry too fast. Cold slows everything down. We monitor forecasts and adjust schedules to get the best result — some jobs take a little longer because of this, but that's the point. You're not hiring us for a rushed finish.",
-      },
-      {
-        type: "h2",
-        text: "Why This Matters More for Commercial and Strata Buildings",
+        text: "We understand how strata decisions get made. We present to committees in plain language. We provide written proposals with complete product schedules, staging plans and resident communication strategies. We issue condition reports formatted for sinking fund forecasts under the BCCM Act. We handle all resident notifications during works. And we back every job with a written warranty, lodged in ROCO at handover.",
       },
       {
         type: "p",
-        text: "On a commercial or strata building, a bad paint job doesn't just fade — it costs money. Water infiltration, increased maintenance, unhappy tenants and owners. We bring IRATA rope access capability for high-rise sites, QBCC-licensed crews, and full compliance with body corporate and building management requirements. A good paint job protects your asset and keeps your maintenance budget in check.",
-      },
-      {
-        type: "p",
-        text: "We work right across the Sunshine Coast — from Noosa to Caloundra — handling everything from family homes to commercial premises and strata properties.",
-      },
-    ],
-  },
-
-  {
-    slug: "strata-managers-guide-to-maintaining-property-value",
-    title:
-      "5 Ways Strata Managers Can Maintain Property Value on the Sunshine Coast",
-    excerpt:
-      "Painting, cleaning, height safety, waterproofing and maintenance — the five areas where proactive decisions protect your building's value and keep residents happy.",
-    category: "Strata",
-    publishedAt: "2025-03-12",
-    readingTime: 7,
-    coverImage: "/images/projects/2.jpeg",
-    coverAlt:
-      "Strata building maintenance and painting on the Sunshine Coast by RAS-VERTEX",
-    author: HYLTON,
-    body: [
-      {
-        type: "p",
-        text: "As a strata manager on the Sunshine Coast, you're the guardian of property value and safety — ensuring everything remains secure and stress-free for lot owners and residents. From the harsh coastal climate to everyday wear and tear, you're on the front lines dealing with challenges that demand a proactive approach.",
-      },
-      {
-        type: "p",
-        text: "At RAS-VERTEX, we've spent over a decade working with strata properties across Queensland. Here's what we've learned about keeping buildings in top condition.",
-      },
-      {
-        type: "h2",
-        text: "1. Painting: More Than Kerb Appeal",
-      },
-      {
-        type: "p",
-        text: "A fresh coat of paint is often the first thing people notice about a property — but it's also one of the most important protective measures you can apply to a building's exterior. The right paint system shields against salt exposure, UV damage and moisture infiltration that lead to costly structural repairs if left unchecked.",
-      },
-      {
-        type: "ul",
-        items: [
-          "Schedule regular painting maintenance to prevent moisture infiltration and surface deterioration",
-          "Specify high-quality, UV-resistant, moisture-resistant coatings designed for coastal Queensland conditions",
-          "Address minor wear early — it extends asset life and reduces the frequency and cost of full repaints",
-        ],
-      },
-      {
-        type: "h2",
-        text: "2. Cleaning: Protecting the Asset, Not Just the Appearance",
-      },
-      {
-        type: "p",
-        text: "Windows accumulate dirt, hard water stains and salt residue that cause etching and reduced visibility if left untreated. Exterior surfaces — walls, facades and roofs — are prone to mould, mildew and corrosion in the Sunshine Coast's high-humidity environment. Consistent professional cleaning prevents this long-term damage.",
-      },
-      {
-        type: "p",
-        text: "Different materials require different techniques. Glass needs streak-free, mineral deposit-resistant cleaning. Painted surfaces need low-pressure washing. High-rise buildings benefit from rope access cleaning — thorough, safe and efficient without disruptive scaffolding.",
-      },
-      {
-        type: "h2",
-        text: "3. Height Safety: Non-Negotiable Compliance",
-      },
-      {
-        type: "p",
-        text: "Strata managers face the challenge of managing maintenance tasks that require working at height — window cleaning, painting, roof inspections. Without correct safety systems in place, these tasks pose significant risks and expose the body corporate to direct legal liability under the Work Health and Safety Act 2011.",
-      },
-      {
-        type: "ul",
-        items: [
-          "All work at height must comply with AS/NZS 1891 Australian Standards",
-          "Anchor points and static lines require annual inspection and recertification",
-          "Detailed inspection and compliance records protect the body corporate from liability",
-        ],
-      },
-      {
-        type: "h2",
-        text: "4. Waterproofing: Catch It Early",
-      },
-      {
-        type: "p",
-        text: "Water damage is one of the most expensive and disruptive issues for strata properties. Leaks, dampness and poor drainage lead to structural deterioration, mould growth and significant financial liability. Proactive waterproofing inspection is the most cost-effective protection available.",
-      },
-      {
-        type: "p",
-        text: "Not all waterproofing solutions are equal. Balconies and rooftops require flexible, UV-resistant membranes. Basements and below-ground structures need heavy-duty sealants. External walls benefit from hydrophobic coatings. Thermal imaging leak detection identifies problems before they become structural issues.",
-      },
-      {
-        type: "h2",
-        text: "5. Maintenance: Preventing the Expensive Repairs",
-      },
-      {
-        type: "p",
-        text: "Regular maintenance is the foundation of building upkeep. Without it, small issues quickly become expensive repairs. Proactively addressing wear and tear — repainting weathered surfaces, sealing cracks, reinforcing waterproofing in high-risk areas — keeps your building safe, functional and compliant with Queensland regulations.",
-      },
-      {
-        type: "p",
-        text: "The most effective strata managers work with a single trusted contractor who can execute across all maintenance categories. It eliminates multiple mobilisations, competing schedules and the coordination overhead of managing separate trades for painting, cleaning, waterproofing and height safety.",
+        text: "If your building is on the Sunshine Coast and you are looking for a single partner who can manage the full maintenance picture, we would be glad to have that conversation.",
       },
     ],
   },
@@ -225,7 +126,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Cleaning",
     publishedAt: "2025-01-11",
     readingTime: 5,
-    coverImage: "/nav/cleaning.png",
+    coverImage: "/images/projects/1.jpeg",
     coverAlt:
       "Rope access technician performing exterior building cleaning on the Sunshine Coast",
     author: HYLTON,
@@ -302,7 +203,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Rope Access",
     publishedAt: "2025-05-20",
     readingTime: 5,
-    coverImage: "/images/projects/rope-access.png",
+    // Fixed: was /images/projects/rope-access.png which does not exist on disk
+    coverImage: "/images/projects/2.jpeg",
     coverAlt:
       "IRATA-certified rope access technician on a Sunshine Coast high-rise",
     author: HYLTON,
@@ -356,7 +258,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Maintenance",
     publishedAt: "2025-04-08",
     readingTime: 6,
-    coverImage: "/nav/maintenance.png",
+    coverImage: "/images/projects/2.jpeg",
     coverAlt:
       "Building condition inspection for a Sunshine Coast strata maintenance plan",
     author: HYLTON,
@@ -416,7 +318,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Waterproofing",
     publishedAt: "2025-02-14",
     readingTime: 4,
-    coverImage: "/nav/waterproofing.png",
+    coverImage: "/images/projects/1.jpeg",
     coverAlt: "Waterproofing membrane inspection on a Sunshine Coast balcony",
     author: HYLTON,
     body: [
@@ -450,177 +352,31 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If your building is more than 10 years old and the original membrane hasn't been inspected, the time to act is now — before you start seeing water staining on ceilings below balconies. By the time visible damage appears, the membrane has typically been failing for months and remediation costs increase significantly.",
-      },
-    ],
-  },
-  {
-    slug: "what-to-ask-before-hiring-a-painter-for-your-body-corporate",
-    title:
-      "What to Ask Before Hiring a Painter for Your Sunshine Coast Body Corporate",
-    excerpt:
-      "Most strata committees approve a painting contractor without asking the right questions. Here's what separates a professional body corporate painter from one who'll cause headaches for your residents.",
-    category: "Strata",
-    publishedAt: "2025-06-03",
-    readingTime: 6,
-    coverImage: "/images/projects/2.jpeg",
-    coverAlt:
-      "Body corporate building repaint on the Sunshine Coast by RAS-VERTEX",
-    author: HYLTON,
-    body: [
-      {
-        type: "p",
-        text: "Getting a strata building painted is one of the largest discretionary expenditures a body corporate committee will make in any given year. Yet most committees approve a contractor based on price alone, without asking the questions that actually predict whether the job will go well.",
-      },
-      {
-        type: "p",
-        text: "After 25 years of painting body corporate buildings on the Sunshine Coast, here's what we'd ask if we were on the other side of the table.",
-      },
-      {
-        type: "h2",
-        text: "Are they QBCC licensed for painting?",
-      },
-      {
-        type: "p",
-        text: "Painting is a licensed trade in Queensland. Your contractor must hold a current QBCC licence and carry a minimum of $50,000 public liability insurance — though reputable contractors carry significantly more. Ask for a certificate of currency at quote stage. If they hesitate, that's your answer.",
-      },
-      {
-        type: "h2",
-        text: "What paint system are they specifying, and why?",
-      },
-      {
-        type: "p",
-        text: "A professional contractor will specify a complete system — primer, intermediate coat and topcoat — matched to your building's substrate, exposure and proximity to the ocean. If a painter quotes without asking about your building's coating history, distance from the coast or substrate type, they're not specifying for your building. They're quoting a generic system and hoping it sticks.",
-      },
-      {
-        type: "ul",
-        items: [
-          "Buildings within 5km of the coast require salt-bonded primers and elastomeric topcoats as a minimum",
-          "Rendered surfaces need flexible systems that accommodate thermal movement",
-          "Ask specifically: what primer, what intermediate coat, what topcoat, and what DFT (dry film thickness) are they applying",
-          "If they can't answer those questions at quote stage, they won't be able to answer them on site either",
-        ],
-      },
-      {
-        type: "h2",
-        text: "How will they manage residents during the work?",
-      },
-      {
-        type: "p",
-        text: "This is where most strata painting jobs fall apart. A contractor who has never worked in an occupied building will underestimate how much communication matters. Before you sign anything, ask for their resident communication plan. How much notice do they give before working on a resident's face? How do they handle car park access? What are their noise hours?",
-      },
-      {
-        type: "p",
-        text: "The best contractors handle resident communication end to end, distribute notices on your behalf, and stage the job zone by zone so no resident's area is disrupted for more than a week at a time.",
-      },
-      {
-        type: "h2",
-        text: "Do they use rope access or scaffold, and does it matter?",
-      },
-      {
-        type: "p",
-        text: "For buildings over four storeys, rope access is significantly faster and cheaper than scaffold — and far less disruptive. IRATA-certified technicians can be working within hours of arriving on site with no car park blockages and no council permits. On a typical 10-storey building, rope access can save the body corporate 40 to 60 per cent on access costs compared with full scaffold.",
-      },
-      {
-        type: "p",
-        text: "That said, rope access isn't appropriate for every scope. A contractor who always uses one or always uses the other isn't thinking about your building. Ask which they recommend and why.",
-      },
-      {
-        type: "h2",
-        text: "What does the warranty actually cover?",
-      },
-      {
-        type: "p",
-        text: "A verbal warranty is worth nothing. Ask for the warranty in writing, understand what it covers (workmanship only, or product as well), how long it runs, and whether it's lodged anywhere formal. Reputable contractors issue a written workmanship warranty at handover and can arrange manufacturer warranties on qualifying systems to be registered in the body corporate's name.",
-      },
-      {
-        type: "h2",
-        text: "Who will actually be on site?",
-      },
-      {
-        type: "p",
-        text: "Ask directly whether they use their own employed crew or subcontractors. The answer matters more than most committees realise. A subcontracted crew has no direct relationship with the contractor quoting the job, no investment in the standard, and often no knowledge of the specification they're supposed to be applying. The best body corporate painters are fully employed operators who know your building from day one.",
-      },
-    ],
-  },
-
-  {
-    slug: "ras-vertex-sunshine-coast-building-services",
-    title:
-      "RAS-VERTEX: The Sunshine Coast's Full-Service Building Partner for Body Corporates and Strata",
-    excerpt:
-      "One team for painting, maintenance, waterproofing, cleaning, height safety and building inspections. Here's how RAS-VERTEX became the Sunshine Coast's most trusted partner for body corporates and strata managers.",
-    category: "Strata",
-    publishedAt: "2026-06-12",
-    readingTime: 5,
-    coverImage: "/images/projects/1.jpeg",
-    coverAlt:
-      "RAS-VERTEX team performing building maintenance on the Sunshine Coast",
-    author: HYLTON,
-    body: [
-      {
-        type: "p",
-        text: "Managing a strata building or body corporate on the Sunshine Coast means dealing with a lot of moving parts. Painting programs, balcony membrane replacements, annual height safety inspections, facade washes, building condition reports for the AGM. Most committees juggle three or four different contractors to cover all of it, each with their own schedule, their own mobilisation cost and their own set of things they won't quite take responsibility for.",
-      },
-      {
-        type: "p",
-        text: "RAS-VERTEX was built around a different idea. One team, one project manager, one phone number. Across every service a Sunshine Coast building needs.",
-      },
-      {
-        type: "h2",
-        text: "What We Do",
-      },
-      {
-        type: "p",
-        text: "We cover painting, building maintenance, waterproofing, window and external cleaning, height safety installation and certification, and building inspections. All delivered by our own employed team of IRATA-certified rope access technicians and QBCC-licensed tradespeople. No subcontractors, no handoffs to people who weren't involved in the quote.",
-      },
-      {
-        type: "p",
-        text: "For body corporates and strata managers, that means you can bring us in for a painting program and we can also handle the facade wash beforehand, replace the failed balcony membranes we identify during prep, install and certify the anchor points needed for ongoing maintenance, and provide the condition report your committee needs for the sinking fund forecast. One scope, one contractor, one accountability.",
-      },
-      {
-        type: "h2",
-        text: "25 Years on the Sunshine Coast",
-      },
-      {
-        type: "p",
-        text: "We have been maintaining buildings on the Sunshine Coast since before half the foreshore developments were built. That experience matters in practical terms. We know how salt air behaves differently in Mooloolaba compared to Noosa. We know which paint systems fail on north-facing rendered walls in Caloundra and which hold up. We know the body corporate managers, the strata professionals and the committee chairs who run the buildings we work on.",
-      },
-      {
-        type: "p",
-        text: "That local knowledge is built into everything we specify and everything we recommend. It is not the kind of thing you get from a contractor based in Brisbane sending a crew up the highway.",
-      },
-      {
-        type: "h2",
-        text: "The Rope Access Difference",
-      },
-      {
-        type: "p",
-        text: "Every service we deliver at height uses IRATA-certified rope access. That means no scaffolding disrupting your car parks and common areas, faster mobilisation on every job, and access to areas of your building that scaffold simply cannot reach. For strata buildings on the Sunshine Coast, that translates to lower costs, less resident disruption and better outcomes across painting, cleaning, waterproofing, inspections and height safety work.",
-      },
-      {
-        type: "h2",
-        text: "Working With Strata Managers and Body Corporate Committees",
-      },
-      {
-        type: "p",
-        text: "We understand how strata decisions get made. We present to committees in plain language. We provide written proposals with complete product schedules, staging plans and resident communication strategies. We issue condition reports formatted for sinking fund forecasts under the BCCM Act. We handle all resident notifications during works. And we back every job with a written warranty, lodged in ROCO at handover.",
-      },
-      {
-        type: "p",
-        text: "If your building is on the Sunshine Coast and you are looking for a single partner who can manage the full maintenance picture, we would be glad to have that conversation.",
+        text: "If your building is more than 10 years old and you haven't had a waterproofing inspection since original construction, you're overdue. The cost of a rope access inspection is a fraction of what you'll spend on remediation once water is already moving through the structure.",
       },
     ],
   },
 ];
 
 // ─── Helpers ───────────────────────────────────────────────────
+
+/** Newest post first — used by BlogGrid and anywhere posts need ordering. */
+export function getSortedPosts(): BlogPost[] {
+  return [...BLOG_POSTS].sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  );
+}
+
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
 
+/** Returns `count` related posts sorted newest-first, excluding current slug. */
 export function getRelatedPosts(slug: string, count = 2): BlogPost[] {
-  return BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, count);
+  return getSortedPosts()
+    .filter((p) => p.slug !== slug)
+    .slice(0, count);
 }
 
 export const BLOG_CATEGORIES = [...new Set(BLOG_POSTS.map((p) => p.category))];
