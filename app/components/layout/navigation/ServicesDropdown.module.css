@@ -1,9 +1,16 @@
-/* Wrapper — fills gap between button and card */
+/* app/components/layout/navigation/ServicesDropdown.module.css */
+
+/* Wrapper — pointer-events none prevents hover capture during hydration flash */
 .megaMenuWrapper {
   position: absolute;
   top: 100%;
   left: 0;
   padding-top: 8px;
+  pointer-events: none;
+}
+
+.megaMenuWrapper > * {
+  pointer-events: auto;
 }
 
 /* Mega menu card */
@@ -15,7 +22,7 @@
   position: relative;
 }
 
-/* Arrow pointing up at nav button */
+/* Arrow */
 .megaMenu::before {
   content: "";
   position: absolute;
@@ -35,35 +42,36 @@
   min-height: min-content;
 }
 
-/* Column 1: Service Categories */
+/* Column 1: Service list */
 .servicesList {
   width: 200px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 2px;
 }
 
 .serviceButton {
   width: 100%;
   text-align: left;
-  padding: 0px 16px;
+  padding: 0 16px;
   font-family: var(--font-display);
   font-size: 24px;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--nav-tracking);
   background: none;
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
-  color: white;
+  transition: opacity 0.2s;
+  color: #ffffff;
   opacity: 0.4;
   border-radius: 8px;
   text-transform: uppercase;
+  line-height: 1.15;
 }
 
 .serviceButton:hover,
 .serviceButton.active {
-  color: white;
   opacity: 1;
 }
 
@@ -105,12 +113,12 @@
 }
 
 .serviceDescription {
-  color: white;
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 0;
+  color: #ffffff;
   font-family: var(--font-body);
-  font-weight: 300;
+  font-size: var(--p-size);
+  font-weight: var(--weight-light);
+  line-height: var(--p-leading);
+  margin: 0;
 }
 
 .servicePills {
@@ -121,18 +129,17 @@
 }
 
 .pill {
+  font-family: var(--font-display);
   font-size: 11px;
+  letter-spacing: var(--nav-tracking);
+  text-transform: uppercase;
   padding: 6px 14px;
   background: transparent;
   border-radius: 4px;
-  color: white;
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  font-family: var(--font-display);
-  letter-spacing: 0.05em;
-  font-weight: 400;
-  transition: all 0.2s;
   white-space: nowrap;
-  text-transform: uppercase;
+  transition: all 0.2s;
 }
 
 .pill:hover {

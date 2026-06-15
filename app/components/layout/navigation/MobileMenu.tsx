@@ -1,149 +1,181 @@
+// app/components/layout/navigation/MobileMenu.tsx
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown2 } from "iconsax-react";
 import {
   servicesData,
-  companyMain,
-  companySecondary,
-  locations,
+  companyLinks,
   type ServiceKey,
 } from "../../../data/navigationData";
 import styles from "./MobileMenu.module.css";
 
 type MobileMenuProps = {
   isOpen: boolean;
-  servicesOpen: boolean;
-  setServicesOpen: (open: boolean) => void;
-  companyOpen: boolean;
-  setCompanyOpen: (open: boolean) => void;
   onClose: () => void;
 };
 
-export default function MobileMenu({
-  isOpen,
-  servicesOpen,
-  setServicesOpen,
-  companyOpen,
-  setCompanyOpen,
-  onClose,
-}: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setServicesOpen(false);
+      setCompanyOpen(false);
+    }
+  }, [isOpen]);
+
+  const serviceKeys = Object.keys(servicesData) as ServiceKey[];
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          className={styles.mobileMenu}
+          className={styles.overlay}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
         >
-          <div className={styles.mobileMenuContent}>
-            <div className={styles.mobileSection}>
+          {/* Header */}
+          <div className={styles.header}>
+            <Link href="/" onClick={onClose} aria-label="RAS-VERTEX home">
+              <Image
+                src="/logo.png"
+                alt="RAS-VERTEX"
+                width={140}
+                height={36}
+                style={{ objectFit: "contain" }}
+              />
+            </Link>
+            <button
+              className={styles.closeBtn}
+              onClick={onClose}
+              aria-label="Close menu"
+            >
+              <span />
+              <span />
+            </button>
+          </div>
+
+          {/* Nav */}
+          <nav className={styles.nav}>
+            <div className={styles.group}>
               <button
+                className={styles.toggle}
                 onClick={() => setServicesOpen(!servicesOpen)}
-                className={styles.mobileSectionButton}
+                aria-expanded={servicesOpen}
               >
-                SERVICES
-                <ArrowDown2
-                  size={20}
-                  className={`${styles.arrowIcon} ${
-                    servicesOpen ? styles.open : ""
-                  }`}
+                <span>Services</span>
+                <span
+                  className={`${styles.chevron} ${servicesOpen ? styles.chevronOpen : ""}`}
                 />
               </button>
-              {servicesOpen && (
-                <div className={styles.mobileDropdownContent}>
-                  <div className={styles.mobileServicesList}>
-                    {(Object.keys(servicesData) as ServiceKey[]).map((key) => (
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    className={styles.servicePanel}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ overflow: "hidden" }}
+                  >
+                    {serviceKeys.map((key, i) => (
                       <Link
                         key={key}
                         href={servicesData[key].href}
-                        className={styles.mobileServiceLink}
+                        className={styles.serviceItem}
                         onClick={onClose}
                       >
-                        {servicesData[key].name.toUpperCase()}
+                        <span className={styles.serviceNum}>
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className={styles.serviceLabel}>
+                          {servicesData[key].name}
+                        </span>
                       </Link>
                     ))}
-                  </div>
-                </div>
-              )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            <div className={styles.mobileSection}>
+            <div className={styles.rule} />
+
+            <div className={styles.group}>
               <button
+                className={styles.toggle}
                 onClick={() => setCompanyOpen(!companyOpen)}
-                className={styles.mobileSectionButton}
+                aria-expanded={companyOpen}
               >
-                COMPANY
-                <ArrowDown2
-                  size={20}
-                  className={`${styles.arrowIcon} ${
-                    companyOpen ? styles.open : ""
-                  }`}
+                <span>Company</span>
+                <span
+                  className={`${styles.chevron} ${companyOpen ? styles.chevronOpen : ""}`}
                 />
               </button>
-              {companyOpen && (
-                <div
-                  className={`${styles.mobileDropdownContent} ${styles.company}`}
-                >
-                  <div className={styles.mobileCompanyContent}>
-                    <div className={styles.mobileCompanySection}>
-                      {companyMain.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className={styles.mobileCompanyLink}
-                          onClick={onClose}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                    <div
-                      className={`${styles.mobileCompanySection} ${styles.mobileCompanySectionDivider}`}
-                    >
-                      {companySecondary.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className={`${styles.mobileCompanyLink} ${styles.secondary}`}
-                          onClick={onClose}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                    <div
-                      className={`${styles.mobileCompanySection} ${styles.mobileCompanySectionDivider}`}
-                    >
-                      <p className={styles.mobileLocationsLabel}>LOCATIONS</p>
-                      {locations.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className={`${styles.mobileCompanyLink} ${styles.secondary}`}
-                          onClick={onClose}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
+              <AnimatePresence>
+                {companyOpen && (
+                  <motion.div
+                    className={styles.links}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ overflow: "hidden" }}
+                  >
+                    {companyLinks.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className={styles.link}
+                        onClick={onClose}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            <div className={styles.mobileCtaButtons}>
-              <a href="tel:0731300226" className={styles.mobileCallButton}>
-                Call
-              </a>
-              <Link
-                href="/quote"
-                className={styles.mobileQuoteButton}
-                onClick={onClose}
-              >
-                Quote →
-              </Link>
+            <div className={styles.rule} />
+          </nav>
+
+          {/* CTA — ctaInner is photo+text only. Buttons are direct .cta children */}
+          <div className={styles.cta}>
+            <div className={styles.ctaInner}>
+              <div className={styles.avatar} aria-hidden="true">
+                <Image
+                  src="/images/people/caro.jpg"
+                  alt="Hylton Denton — Project Manager at RAS-VERTEX"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                  sizes="90px"
+                />
+              </div>
+              <div className={styles.ctaText}>
+                <p className={styles.ctaHeading}>
+                  Ready to talk about your project?
+                </p>
+                <p className={styles.ctaBody}>
+                  One call to Hylton and you'll know exactly where you stand.
+                </p>
+              </div>
             </div>
+
+            <Link href="/contact" className={styles.ctaBtn} onClick={onClose}>
+              Let's talk about your project →
+            </Link>
+            <a href="tel:0731300226" className={styles.callBtn}>
+              Call us
+            </a>
           </div>
         </motion.div>
       )}

@@ -1,58 +1,67 @@
-.companyDropdown {
+/* app/components/layout/navigation/CompanyDropdown.module.css */
+
+.companyDropdownWrapper {
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 6px;
-  background: var(--cream, #f7ece1);
-  border-radius: 12px;
-  padding: 40px;
-  min-width: 500px;
-  z-index: 10;
+  padding-top: 8px;
+  pointer-events: none;
 }
 
-/* Row 1: Bebas headings */
-.headingsSection {
+.companyDropdownWrapper > * {
+  pointer-events: auto;
+}
+
+.companyDropdown {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 32px 40px;
+  min-width: 220px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 32px;
+  gap: 0;
+}
+
+.primary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 20px;
 }
 
 .heading {
   color: var(--navy);
   font-family: var(--font-display);
   font-size: 24px;
-  letter-spacing: 0.05em;
-  transition: color 0.2s;
+  letter-spacing: var(--nav-tracking);
+  text-transform: uppercase;
   text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.2s;
 }
 
 .heading:hover {
-  color: #6d2932;
+  color: var(--burgundy);
 }
 
-/* Row 2: Two columns of Inter links */
-.linksSection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: end;
-}
-
-.column {
+.secondary {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--navy-12);
 }
 
 .link {
   color: var(--navy);
   font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 400;
-  transition: color 0.2s;
+  font-size: var(--p-size);
+  font-weight: var(--weight-regular);
   text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
 }
 
 .link:hover {
-  color: #6d2932;
+  opacity: 1;
 }

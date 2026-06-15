@@ -1,12 +1,11 @@
+// app/components/layout/navigation/Navigation.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { HambergerMenu, CloseSquare } from "iconsax-react";
-import { type ServiceKey } from "../../../data/navigationData";
+import { type ServiceKey, companyLinks } from "../../../data/navigationData";
 import ServicesDropdown from "./ServicesDropdown";
-import CompanyDropdown from "./CompanyDropdown";
 import MobileMenu from "./MobileMenu";
 import styles from "./Navigation.module.css";
 import Container from "../../../components/ui/Container";
@@ -15,9 +14,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [activeService, setActiveService] = useState<ServiceKey | null>(null);
-  const [companyOpen, setCompanyOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [isAtTop, setIsAtTop] = useState(true);
 
   const closeServices = () => {
     setServicesOpen(false);
@@ -25,71 +22,69 @@ export default function Navigation() {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024 && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
+    document.body.style.overflow =
+      servicesOpen || mobileMenuOpen ? "hidden" : "";
     return () => {
-      window.removeEventListener("resize", handleResize);
+      document.body.style.overflow = "";
     };
+  }, [servicesOpen, mobileMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && mobileMenuOpen) setMobileMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [mobileMenuOpen]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
-    const updateNavbar = () => {
+    const update = () => {
       const currentScrollY = window.scrollY;
-
-      setIsAtTop(currentScrollY < 10);
-
       const headlineBlock = document.querySelector("[data-headline]");
-
       const pastHeadline = headlineBlock
         ? headlineBlock.getBoundingClientRect().bottom < 72
         : currentScrollY > 300;
 
-      if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && pastHeadline) {
+      if (currentScrollY < lastScrollY) setIsVisible(true);
+      else if (currentScrollY > lastScrollY && pastHeadline)
         setIsVisible(false);
-      }
 
       lastScrollY = currentScrollY;
       ticking = false;
     };
 
-    const handleScroll = () => {
+    const onScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateNavbar);
+        window.requestAnimationFrame(update);
         ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navVisible = isVisible || servicesOpen || mobileMenuOpen;
 
   return (
     <>
-      {(servicesOpen || companyOpen) && <div className={styles.backdrop} />}
+      {servicesOpen && <div className={styles.backdrop} />}
 
       <nav
-        className={`${styles.nav} ${
-          isVisible ? styles.visible : styles.hidden
-        } ${isAtTop ? styles.atTop : ""}`}
+        aria-label="Main navigation"
+        className={`${styles.nav} ${navVisible ? styles.visible : styles.hidden}`}
       >
         <Container size="xl">
           <div className={styles.wrapper}>
-            <div className={styles.leftSection}>
-              <Link href="/" className={styles.logo}>
+            <div className={styles.left}>
+              <Link
+                href="/"
+                className={styles.logo}
+                aria-label="RAS-VERTEX home"
+              >
                 <Image
                   src="/logo.png"
                   alt="RAS-VERTEX"
@@ -101,19 +96,19 @@ export default function Navigation() {
               </Link>
 
               <div className={styles.desktopMenu}>
+                {/* Services dropdown */}
                 <div
                   className={styles.dropdown}
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={closeServices}
                 >
                   <button
-                    className={`${styles.menuButton} ${
-                      servicesOpen ? styles.active : ""
-                    }`}
+                    className={`${styles.menuButton} ${servicesOpen ? styles.active : ""}`}
+                    aria-expanded={servicesOpen}
+                    aria-haspopup="true"
                   >
                     Services
                   </button>
-
                   <ServicesDropdown
                     isOpen={servicesOpen}
                     activeService={activeService}
@@ -121,61 +116,33 @@ export default function Navigation() {
                   />
                 </div>
 
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setCompanyOpen(true)}
-                  onMouseLeave={() => setCompanyOpen(false)}
-                >
-                  <button
-                    className={`${styles.menuButton} ${
-                      companyOpen ? styles.active : ""
-                    }`}
+                {/* Flat company links */}
+                {companyLinks.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={styles.menuLink}
                   >
-                    Company
-                  </button>
-
-                  <CompanyDropdown isOpen={companyOpen} />
-                </div>
-
-                <Link href="/process" className={styles.menuLink}>
-                  Process
-                </Link>
-
-                <Link href="/work" className={styles.menuLink}>
-                  Work
-                </Link>
+                    {item.name}
+                  </Link>
+                ))}
               </div>
-
-              <button
-                className={styles.mobileMenuButton}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                {mobileMenuOpen ? (
-                  <CloseSquare size={28} />
-                ) : (
-                  <HambergerMenu size={28} />
-                )}
-              </button>
             </div>
 
-            <div className={styles.ctaButtons}>
-              <Link
-                href="/search"
-                className={styles.iconButton}
-                aria-label="Search"
-              >
-                <Image
-                  src="/icons/utility-outline/search.svg"
-                  alt="Search"
-                  width={20}
-                  height={20}
-                />
-              </Link>
-
+            <div className={styles.right}>
               <Link href="/contact" className={styles.contactButton}>
                 Contact Us
               </Link>
+              <button
+                className={styles.mobileMenuButton}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+              >
+                <span />
+                <span />
+                <span />
+              </button>
             </div>
           </div>
         </Container>
@@ -184,10 +151,6 @@ export default function Navigation() {
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        servicesOpen={servicesOpen}
-        setServicesOpen={setServicesOpen}
-        companyOpen={companyOpen}
-        setCompanyOpen={setCompanyOpen}
       />
     </>
   );

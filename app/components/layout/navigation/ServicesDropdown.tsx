@@ -1,3 +1,7 @@
+// app/components/layout/navigation/ServicesDropdown.tsx
+"use client";
+
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { servicesData, type ServiceKey } from "../../../data/navigationData";
@@ -16,6 +20,7 @@ const serviceImages: Record<ServiceKey, string> = {
   waterproofing: "/nav/waterproofing.png",
   maintenance: "/nav/maintenance.png",
   height: "/nav/height.png",
+  inspections: "/nav/maintenance.png",
 };
 
 export default function ServicesDropdown({
@@ -23,7 +28,17 @@ export default function ServicesDropdown({
   activeService,
   setActiveService,
 }: ServicesDropdownProps) {
-  const isExpanded = activeService !== null;
+  const keys = Object.keys(servicesData) as ServiceKey[];
+
+  // Auto-select first service on open so expanded panel shows immediately
+  useEffect(() => {
+    if (isOpen && activeService === null) {
+      setActiveService(keys[0]);
+    }
+    if (!isOpen) {
+      setActiveService(null);
+    }
+  }, [isOpen]);
 
   return (
     <AnimatePresence>
@@ -32,21 +47,14 @@ export default function ServicesDropdown({
           <motion.div
             className={styles.megaMenu}
             initial={{ opacity: 0, y: 6 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              width: isExpanded ? 1200 : 280,
-            }}
+            animate={{ opacity: 1, y: 0, width: 1200 }}
             exit={{ opacity: 0, y: 6 }}
-            transition={{
-              opacity: { duration: 0.2 },
-              y: { duration: 0.2 },
-              width: { duration: 0.25, ease: [0.4, 0, 0.2, 1] },
-            }}
+            transition={{ opacity: { duration: 0.2 }, y: { duration: 0.2 } }}
           >
             <div className={styles.content}>
+              {/* Service list */}
               <div className={styles.servicesList}>
-                {(Object.keys(servicesData) as ServiceKey[]).map((key) => (
+                {keys.map((key) => (
                   <button
                     key={key}
                     onMouseEnter={() => setActiveService(key)}
@@ -55,19 +63,11 @@ export default function ServicesDropdown({
                     {servicesData[key].name.toUpperCase()}
                   </button>
                 ))}
-                {isExpanded && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    className={styles.logoContainer}
-                  />
-                )}
               </div>
 
-              <AnimatePresence>
-                {isExpanded && (
+              {/* Expanded panel — always visible */}
+              <AnimatePresence mode="wait">
+                {activeService && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -86,13 +86,13 @@ export default function ServicesDropdown({
                           className={styles.contentColumn}
                         >
                           <p className={styles.serviceDescription}>
-                            {servicesData[activeService!].description}
+                            {servicesData[activeService].description}
                           </p>
                           <div className={styles.servicePills}>
-                            {servicesData[activeService!].subServices.map(
-                              (service) => (
-                                <span key={service} className={styles.pill}>
-                                  {service}
+                            {servicesData[activeService].subServices.map(
+                              (s) => (
+                                <span key={s} className={styles.pill}>
+                                  {s}
                                 </span>
                               ),
                             )}
@@ -111,10 +111,10 @@ export default function ServicesDropdown({
                         className={styles.serviceImage}
                       >
                         <Image
-                          src={serviceImages[activeService!]}
-                          alt={servicesData[activeService!].name}
+                          src={serviceImages[activeService]}
+                          alt={servicesData[activeService].name}
                           fill
-                          sizes="400px"
+                          sizes="480px"
                           style={{ objectFit: "cover" }}
                           priority
                         />

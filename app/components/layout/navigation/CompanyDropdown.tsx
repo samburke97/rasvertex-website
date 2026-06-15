@@ -1,10 +1,7 @@
+// app/components/layout/navigation/CompanyDropdown.tsx
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  companyMain,
-  companySecondary,
-  locations,
-} from "../../../data/navigationData";
+import { companyLinks, companySecondary } from "../../../data/navigationData";
 import styles from "./CompanyDropdown.module.css";
 
 type CompanyDropdownProps = {
@@ -23,8 +20,8 @@ export default function CompanyDropdown({ isOpen }: CompanyDropdownProps) {
             transition={{ duration: 0.2 }}
             className={styles.companyDropdown}
           >
-            <div className={styles.headingsSection}>
-              {companyMain.map((item) => (
+            <div className={styles.primary}>
+              {companyLinks.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -34,30 +31,12 @@ export default function CompanyDropdown({ isOpen }: CompanyDropdownProps) {
                 </Link>
               ))}
             </div>
-
-            <div className={styles.linksSection}>
-              <div className={styles.column}>
-                {companySecondary.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={styles.link}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              <div className={styles.column}>
-                {locations.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={styles.link}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
+            <div className={styles.secondary}>
+              {companySecondary.map((item) => (
+                <Link key={item.name} href={item.href} className={styles.link}>
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </motion.div>
         </div>

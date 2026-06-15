@@ -1,4 +1,5 @@
-/* ─── Backdrop (dropdown open overlay) ─────────────────────── */
+/* app/components/layout/navigation/Navigation.module.css */
+
 .backdrop {
   position: fixed;
   top: 72px;
@@ -21,7 +22,6 @@
   }
 }
 
-/* ─── Nav shell ─────────────────────────────────────────────── */
 .nav {
   position: fixed;
   top: 0;
@@ -29,39 +29,18 @@
   right: 0;
   z-index: 50;
   background: #ffffff;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--navy-08);
   transform: translateY(0);
-  transition:
-    transform 0.3s ease-in-out,
-    background 0.35s ease,
-    border-color 0.35s ease,
-    backdrop-filter 0.35s ease;
+  transition: transform 0.3s ease-in-out;
 }
 
 .nav.hidden {
   transform: translateY(-100%);
 }
-
 .nav.visible {
   transform: translateY(0);
 }
 
-.nav.atTop {
-  background: #ffffff;
-  border-bottom-color: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: none;
-}
-
-.nav:not(.atTop) {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom-color: rgba(30, 44, 92, 0.08);
-}
-
-/* ─── Inner wrapper ─────────────────────────────────────────── */
 .wrapper {
   display: flex;
   align-items: center;
@@ -69,37 +48,19 @@
   height: 72px;
 }
 
-/* ─── Left: logo + nav links together ──────────────────────── */
-.leftSection {
+.left {
   display: flex;
   align-items: center;
   gap: 48px;
 }
 
-/* ─── Logo ──────────────────────────────────────────────────── */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
-  color: inherit;
+  flex-shrink: 0;
 }
 
-.logoText {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--navy);
-  transition: color 0.2s;
-}
-
-.logo:hover .logoText {
-  color: var(--red);
-}
-
-/* ─── Desktop menu ──────────────────────────────────────────── */
 .desktopMenu {
   display: none;
   align-items: center;
@@ -121,10 +82,10 @@
   align-items: center;
   gap: 4px;
   color: var(--navy);
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-family: var(--font-display);
+  font-size: var(--nav-size);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--nav-tracking);
   text-transform: uppercase;
   background: none;
   border: none;
@@ -135,99 +96,71 @@
 
 .menuButton:hover,
 .menuButton.active {
-  color: var(--navy-dark, #010f3a);
+  color: var(--navy-dark);
 }
 
-.menuLink {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--navy);
-  text-decoration: none;
-  padding: 24px 0;
-  display: block;
-  transition: color 0.25s;
-}
-
-.menuLink:hover {
-  color: var(--navy-dark, #010f3a);
-}
-
-/* ─── CTA area ──────────────────────────────────────────────── */
-.ctaButtons {
-  display: none;
-  align-items: center;
-  gap: 20px;
-}
-
-@media (min-width: 1024px) {
-  .ctaButtons {
-    display: flex;
-  }
-}
-
-.iconButton {
+.right {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  color: var(--navy);
-  opacity: 0.6;
-  transition: opacity 0.2s;
-  background: transparent;
-  cursor: pointer;
-  text-decoration: none;
+  gap: 16px;
 }
 
-.iconButton:hover {
-  opacity: 1;
-}
-
-/* Contact button — rounded, Bebas Neue, navy fill */
 .contactButton {
-  display: inline-flex;
+  display: none;
   align-items: center;
-  gap: 10px;
-  padding: 11px 24px;
+  gap: 8px;
+  padding: 10px 20px;
   background: var(--navy);
   color: #ffffff;
-  border-radius: 12px;
+  border-radius: 10px;
   font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-  transition: background 0.2s;
-  border: none;
-  cursor: pointer;
+  font-size: var(--button-size);
+  font-weight: var(--weight-semibold);
   text-decoration: none;
   white-space: nowrap;
+  transition: background 0.2s;
 }
 
 .contactButton::after {
   content: "→";
-  font-size: 14px;
   transition: transform 0.2s;
 }
 
 .contactButton:hover {
-  background: var(--navy-dark, #0f2035);
+  background: var(--navy-dark);
 }
-
 .contactButton:hover::after {
   transform: translateX(3px);
 }
 
-/* ─── Mobile hamburger ──────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .contactButton {
+    display: inline-flex;
+  }
+}
+
+/* Hamburger — three navy lines, always visible on mobile */
 .mobileMenuButton {
-  display: block;
-  color: var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 24px;
+  height: 24px;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.mobileMenuButton span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: all 0.2s;
 }
 
 @media (min-width: 1024px) {

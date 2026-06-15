@@ -1,9 +1,11 @@
+// app/data/navigationData.ts
+
 export const servicesData = {
   painting: {
     name: "Painting",
     href: "/painting",
     description:
-      "Professional interior and exterior painting services for commercial and residential properties. Quality finishes that last.",
+      "Professional interior and exterior painting for commercial, strata and residential properties. Quality finishes that last.",
     image: "/nav/painting.png",
     subServices: [
       "Interior Painting",
@@ -20,7 +22,7 @@ export const servicesData = {
     name: "Building Cleaning",
     href: "/cleaning",
     description:
-      "Comprehensive building maintenance and cleaning services. Pressure washing, facade cleaning, and complete building care.",
+      "Pressure washing, facade cleaning and complete building care for strata and commercial properties.",
     image: "/nav/cleaning.png",
     subServices: [
       "Pressure Washing",
@@ -36,7 +38,7 @@ export const servicesData = {
     name: "Window Cleaning",
     href: "/cleaning",
     description:
-      "High-rise and commercial window cleaning with full IRATA certification. Safe, professional, and compliant services.",
+      "High-rise and commercial window cleaning with full IRATA certification. Safe, professional and compliant.",
     image: "/nav/window.png",
     subServices: [
       "High-Rise Windows",
@@ -51,7 +53,7 @@ export const servicesData = {
     name: "Waterproofing",
     href: "/waterproofing",
     description:
-      "Expert waterproofing solutions for balconies, roofs, and wet areas. Long-term warranties and proven protection.",
+      "Expert waterproofing for balconies, roofs and wet areas. Long-term warranties and proven protection.",
     image: "/nav/waterproofing.png",
     subServices: [
       "Balcony Waterproofing",
@@ -72,7 +74,6 @@ export const servicesData = {
     subServices: [
       "Preventative Maintenance",
       "Reactive Repairs",
-      "Building Inspections",
       "Gutter Cleaning",
       "Minor Repairs",
       "Scheduled Servicing",
@@ -81,9 +82,9 @@ export const servicesData = {
   },
   height: {
     name: "Height Safety",
-    href: "/services/height-safety",
+    href: "/height-safety",
     description:
-      "Complete height safety systems, certification, and compliance. IRATA certified technicians and full safety compliance.",
+      "Complete height safety systems, certification and compliance. IRATA certified technicians.",
     image: "/nav/height.png",
     subServices: [
       "Anchor Point Installation",
@@ -95,28 +96,34 @@ export const servicesData = {
       "Rescue Plans",
     ],
   },
+  inspections: {
+    name: "Building Inspections",
+    href: "/building-inspections",
+    description:
+      "Comprehensive facade and building condition inspections using rope access, drone and thermal imaging. Full condition reports with risk ratings and remediation schedules.",
+    image: "/nav/maintenance.png",
+    subServices: [
+      "Facade Inspections",
+      "Drone Surveys",
+      "Thermal Imaging",
+      "Condition Reports",
+      "Sinking Fund Reports",
+      "Pre-Purchase Inspections",
+      "Remediation Scoping",
+    ],
+  },
 };
 
-export const companyMain = [
-  { name: "About Us", href: "/about" },
-  { name: "Our Team", href: "/team" },
+export const companyLinks = [
+  { name: "About Us", href: "/company" },
   { name: "Careers", href: "/careers" },
-  { name: "Project Portfolio", href: "/projects" },
-  { name: "Certifications", href: "/certifications" },
+  { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
 ];
 
 export const companySecondary = [
   { name: "Contact", href: "/contact" },
-  { name: "FAQ", href: "/faq" },
-  { name: "Get a Quote", href: "/quote" },
-  { name: "Reviews", href: "/reviews" },
-  { name: "Blog", href: "/blog" },
-];
-
-export const locations = [
   { name: "Sunshine Coast", href: "/locations/sunshine-coast" },
-  { name: "Brisbane", href: "/locations/brisbane" },
-  { name: "Gold Coast", href: "/locations/gold-coast" },
 ];
 
 export type ServiceKey = keyof typeof servicesData;
