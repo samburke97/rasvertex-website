@@ -4,7 +4,7 @@ import HeroIntro from "./HeroIntro";
 import ServiceBento from "./ServiceBento";
 import styles from "./Hero.module.css";
 
-const HEADLINE = "The Sunshine Coast’s Trusted Property Maintenance Partner";
+const HEADLINE = "The Sunshine Coast's Trusted Property Maintenance Partner.";
 
 export default function Hero() {
   return (
@@ -13,11 +13,7 @@ export default function Hero() {
       aria-labelledby="hero-heading"
       data-nav-fixed="true"
     >
-      <HeroIntro
-        headline={HEADLINE}
-        primaryCta={{ label: "Book a free quote →", href: "/contact" }}
-        secondaryCta={{ label: "Call us →", href: "tel:0731300226" }}
-      />
+      <HeroIntro headline={HEADLINE} />
       <div className={styles.bento}>
         <ServiceBento />
       </div>

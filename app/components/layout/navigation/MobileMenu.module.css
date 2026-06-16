@@ -10,7 +10,8 @@
   overflow-y: auto;
 }
 
-/* ── Header ─────────────────────────────────────────────────── */
+/* ── Header ── */
+
 .header {
   display: flex;
   align-items: center;
@@ -49,148 +50,126 @@
   transform: translateY(-50%) rotate(-45deg);
 }
 
-/* ── Nav ────────────────────────────────────────────────────── */
+/* ── Nav ── */
+
 .nav {
   display: flex;
   flex-direction: column;
-  padding: 0 var(--space-xl);
+  padding: var(--space-xl) var(--space-xl) 0;
+  gap: 0;
 }
 
-.group {
+/* Section headings — Inter bold h2, inherits from globals */
+.sectionHeading {
+  margin: 0 0 var(--space-md);
+}
+
+.sectionHeading + .companyList {
+  margin-top: 0;
+}
+
+/* ── Service pills ── */
+
+.serviceList {
   display: flex;
   flex-direction: column;
-}
-
-.toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: var(--space-lg) 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: var(--weight-regular);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
-  color: var(--navy);
-  text-align: left;
-}
-
-.chevron {
-  width: 12px;
-  height: 12px;
-  border-right: 2px solid var(--navy);
-  border-bottom: 2px solid var(--navy);
-  transform: rotate(45deg);
-  opacity: 0.3;
-  transition:
-    transform 0.2s,
-    opacity 0.2s;
-  flex-shrink: 0;
-  margin-bottom: 3px;
-}
-
-.chevronOpen {
-  transform: rotate(-135deg);
-  opacity: 0.7;
-  margin-bottom: -3px;
-}
-
-/* ── Services ───────────────────────────────────────────────── */
-.servicePanel {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
 .serviceItem {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 0;
+  justify-content: space-between;
+  padding: 14px 0;
   border-bottom: 1px solid var(--line);
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-regular);
+  color: var(--navy);
   text-decoration: none;
   transition: opacity 0.15s;
 }
 
-.serviceItem:last-child {
+.serviceItem:last-of-type {
   border-bottom: none;
 }
 .serviceItem:hover {
   opacity: 0.6;
 }
 
-.serviceNum {
-  font-family: var(--font-display);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: var(--navy);
-  opacity: 0.35;
-  line-height: 1;
-  flex-shrink: 0;
+.serviceItemActive {
+  opacity: 1;
 }
-
-.serviceLabel {
-  font-family: var(--font-display);
-  font-size: var(--nav-size);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
-  color: var(--navy);
-  line-height: 1.1;
+.serviceItemActive .serviceLabel {
+  opacity: 1;
 }
-
-/* ── Company ────────────────────────────────────────────────── */
-.links {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: var(--space-lg);
-}
-
-.link {
-  display: block;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  font-family: var(--font-display);
-  font-size: var(--nav-size);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
-  color: var(--navy);
-  text-decoration: none;
-  transition: opacity 0.15s;
-}
-
-.link:last-of-type {
-  border-bottom: none;
-}
-.link:hover {
+.serviceItemActive .arrow {
   opacity: 0.6;
 }
 
-.linkSoft {
-  display: block;
-  padding: 10px 0;
+/* Service name — same as company item */
+.serviceLabel {
+  flex: 1;
+}
+
+/* Arrow */
+.arrow {
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.3;
+  flex-shrink: 0;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+}
+
+.serviceItemActive .arrow,
+.serviceItem:hover .arrow {
+  opacity: 0.6;
+  transform: translateX(2px);
+}
+
+/* ── Company flat rows ── */
+
+.companyList {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-xl);
+}
+
+.companyItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
   font-family: var(--font-body);
   font-size: var(--p-size);
   font-weight: var(--weight-regular);
   color: var(--navy);
-  opacity: 0.5;
   text-decoration: none;
   transition: opacity 0.15s;
 }
 
-.linkSoft:hover {
-  opacity: 1;
+.companyItem:last-of-type {
+  border-bottom: none;
+}
+.companyItem:hover {
+  opacity: 0.6;
 }
 
-.rule {
-  height: 1px;
-  background: var(--line);
+.companyItem .arrow {
+  color: var(--navy);
+  opacity: 0.25;
 }
 
-/* ── CTA block ──────────────────────────────────────────────── */
+.companyItem:hover .arrow {
+  opacity: 0.5;
+  transform: translateX(2px);
+}
+
+/* ── CTA block ── */
+
 .cta {
   margin-top: auto;
   padding: var(--space-xl);
@@ -200,17 +179,16 @@
   border-top: 1px solid var(--line);
 }
 
-/* Photo + text side by side */
 .ctaInner {
   display: flex;
   gap: var(--space-lg);
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .avatar {
   position: relative;
-  width: 90px;
-  height: 115px;
+  width: 80px;
+  height: 100px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   flex-shrink: 0;
@@ -244,7 +222,6 @@
   margin: 0;
 }
 
-/* Both buttons are direct children of .cta — guaranteed full width */
 .ctaBtn {
   display: flex;
   align-items: center;

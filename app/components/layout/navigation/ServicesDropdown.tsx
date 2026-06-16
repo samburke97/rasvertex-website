@@ -30,7 +30,6 @@ export default function ServicesDropdown({
 }: ServicesDropdownProps) {
   const keys = Object.keys(servicesData) as ServiceKey[];
 
-  // Auto-select first service on open so expanded panel shows immediately
   useEffect(() => {
     if (isOpen && activeService === null) {
       setActiveService(keys[0]);
@@ -47,7 +46,7 @@ export default function ServicesDropdown({
           <motion.div
             className={styles.megaMenu}
             initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0, width: 1200 }}
+            animate={{ opacity: 1, y: 0, width: 1100 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ opacity: { duration: 0.2 }, y: { duration: 0.2 } }}
           >
@@ -65,7 +64,7 @@ export default function ServicesDropdown({
                 ))}
               </div>
 
-              {/* Expanded panel — always visible */}
+              {/* Expanded panel */}
               <AnimatePresence mode="wait">
                 {activeService && (
                   <motion.div
@@ -114,7 +113,7 @@ export default function ServicesDropdown({
                           src={serviceImages[activeService]}
                           alt={servicesData[activeService].name}
                           fill
-                          sizes="480px"
+                          sizes="320px"
                           style={{ objectFit: "cover" }}
                           priority
                         />

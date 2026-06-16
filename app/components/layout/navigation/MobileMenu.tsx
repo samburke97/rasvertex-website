@@ -1,7 +1,7 @@
 // app/components/layout/navigation/MobileMenu.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,16 +18,7 @@ type MobileMenuProps = {
 };
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [companyOpen, setCompanyOpen] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen) {
-      setServicesOpen(false);
-      setCompanyOpen(false);
-    }
-  }, [isOpen]);
-
+  const [activeService, setActiveService] = useState<ServiceKey | null>(null);
   const serviceKeys = Object.keys(servicesData) as ServiceKey[];
 
   return (
@@ -65,90 +56,57 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </div>
 
           {/* Nav */}
-          <nav className={styles.nav}>
-            <div className={styles.group}>
-              <button
-                className={styles.toggle}
-                onClick={() => setServicesOpen(!servicesOpen)}
-                aria-expanded={servicesOpen}
-              >
-                <span>Services</span>
-                <span
-                  className={`${styles.chevron} ${servicesOpen ? styles.chevronOpen : ""}`}
-                />
-              </button>
-              <AnimatePresence>
-                {servicesOpen && (
-                  <motion.div
-                    className={styles.servicePanel}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    style={{ overflow: "hidden" }}
+          <nav className={styles.nav} aria-label="Mobile navigation links">
+            <h2 className={styles.sectionHeading}>Services</h2>
+
+            <div className={styles.serviceList}>
+              {serviceKeys.map((key, i) => {
+                const isActive = activeService === key;
+                return (
+                  <Link
+                    key={key}
+                    href={servicesData[key].href}
+                    className={`${styles.serviceItem} ${isActive ? styles.serviceItemActive : ""}`}
+                    onClick={(e) => {
+                      if (!isActive) {
+                        e.preventDefault();
+                        setActiveService(key);
+                      } else {
+                        onClose();
+                      }
+                    }}
                   >
-                    {serviceKeys.map((key, i) => (
-                      <Link
-                        key={key}
-                        href={servicesData[key].href}
-                        className={styles.serviceItem}
-                        onClick={onClose}
-                      >
-                        <span className={styles.serviceNum}>
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className={styles.serviceLabel}>
-                          {servicesData[key].name}
-                        </span>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    <span className={styles.serviceLabel}>
+                      {servicesData[key].name}
+                    </span>
+                    <span className={styles.arrow} aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
 
-            <div className={styles.rule} />
+            <h2 className={styles.sectionHeading}>Company</h2>
 
-            <div className={styles.group}>
-              <button
-                className={styles.toggle}
-                onClick={() => setCompanyOpen(!companyOpen)}
-                aria-expanded={companyOpen}
-              >
-                <span>Company</span>
-                <span
-                  className={`${styles.chevron} ${companyOpen ? styles.chevronOpen : ""}`}
-                />
-              </button>
-              <AnimatePresence>
-                {companyOpen && (
-                  <motion.div
-                    className={styles.links}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    {companyLinks.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className={styles.link}
-                        onClick={onClose}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            <div className={styles.companyList}>
+              {companyLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={styles.companyItem}
+                  onClick={onClose}
+                >
+                  <span>{item.name}</span>
+                  <span className={styles.arrow} aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              ))}
             </div>
-
-            <div className={styles.rule} />
           </nav>
 
-          {/* CTA — ctaInner is photo+text only. Buttons are direct .cta children */}
+          {/* CTA */}
           <div className={styles.cta}>
             <div className={styles.ctaInner}>
               <div className={styles.avatar} aria-hidden="true">
@@ -157,7 +115,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   alt="Hylton Denton — Project Manager at RAS-VERTEX"
                   fill
                   style={{ objectFit: "cover", objectPosition: "top" }}
-                  sizes="90px"
+                  sizes="80px"
                 />
               </div>
               <div className={styles.ctaText}>
@@ -169,7 +127,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </p>
               </div>
             </div>
-
             <Link href="/contact" className={styles.ctaBtn} onClick={onClose}>
               Let's talk about your project →
             </Link>

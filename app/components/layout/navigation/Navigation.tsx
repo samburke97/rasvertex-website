@@ -130,8 +130,15 @@ export default function Navigation() {
             </div>
 
             <div className={styles.right}>
+              <a
+                href="tel:0731300226"
+                className={styles.phoneButton}
+                aria-label="Call RAS-VERTEX on 07 3130 0226"
+              >
+                07 3130 0226
+              </a>
               <Link href="/contact" className={styles.contactButton}>
-                Contact Us
+                Contact Us →
               </Link>
               <button
                 className={styles.mobileMenuButton}
