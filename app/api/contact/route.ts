@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data: emailData, error } = await resend.emails.send({
-      from: "RAS-VERTEX <sam@rasvertex.com>",
+      from: "RAS-VERTEX <sam@rasvertex.com.au>",
       to: "team@rasvertex.com.au",
       subject: `New Quote Request — ${data.name || "Unknown"}`,
       text: `
