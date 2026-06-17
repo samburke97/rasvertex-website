@@ -86,6 +86,30 @@ export default function ContactSurface() {
         ? form.propertyType !== "" && form.propertyAddress !== ""
         : form.name !== "" && form.email !== "" && form.phone !== "";
 
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          services,
+          ...form,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to send");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Contact form error:", err);
+      alert("Something went wrong sending your request.");
+    }
+  };
+
   return (
     <div className={styles.surface}>
       {/* ── LEFT ── */}
@@ -177,7 +201,15 @@ export default function ContactSurface() {
               className={styles.form}
               onSubmit={(e) => {
                 e.preventDefault();
-                if (canAdvance && step === 3) setSubmitted(true);
+
+                if (!canAdvance) return;
+
+                if (step < 3) {
+                  setStep((s) => (s + 1) as Step);
+                  return;
+                }
+
+                handleSubmit();
               }}
               aria-label="Request a free quote"
               noValidate
