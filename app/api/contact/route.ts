@@ -1,4 +1,6 @@
 // app/api/contact/route.ts
+
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 export async function POST(req: Request) {
@@ -8,27 +10,31 @@ export async function POST(req: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: "RAS-VERTEX <quotes@rasvertex.com>",
+      from: "RAS-VERTEX <sam@rasvertex.com>",
       to: "team@rasvertex.com.au",
-      subject: `New Quote Request — ${data.name}`,
+      subject: `New Quote Request — ${data.name || "Unknown"}`,
       text: `
-Services: ${data.services?.join(", ")}
+Services: ${data.services?.join(", ") || "None"}
 
-Property Type: ${data.propertyType}
-Address: ${data.propertyAddress}
+Property Type: ${data.propertyType || ""}
+Address: ${data.propertyAddress || ""}
 
-Name: ${data.name}
-Phone: ${data.phone}
-Email: ${data.email}
+Name: ${data.name || ""}
+Phone: ${data.phone || ""}
+Email: ${data.email || ""}
 
 Message:
-${data.message}
+${data.message || ""}
       `,
     });
 
-    return Response.json({ success: true });
+    return NextResponse.json({ success: true });
   } catch (err) {
-    console.error(err);
-    return Response.json({ success: false }, { status: 500 });
+    console.error("Contact API error:", err);
+
+    return NextResponse.json(
+      { success: false, error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }
