@@ -1,374 +1,151 @@
-/* ─── Page ───────────────────────────────────────────────────── */
-.page {
-  min-height: 100vh;
-  background: #fff;
-  padding: 120px 0 80px;
+/* app/contact/contact.module.css */
+
+/* ── Header: h1 left, lede right ───────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-col-gap);
+  padding-bottom: var(--space-4xl);
 }
 
-.container {
-  padding: 0 80px;
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 120px;
-  align-items: start;
+.header h1 {
+  flex: 1 1 50%;
 }
 
-/* ─── Left ───────────────────────────────────────────────────── */
-.left {
+.header p {
+  flex: 0 0 38%;
+  opacity: 0.65;
+  padding-bottom: 4px;
+}
+
+/* ── Divider ────────────────────────────────────────────────── */
+.rule {
+  height: 1px;
+  background: var(--line);
+}
+
+/* ── Two-column body ────────────────────────────────────────── */
+.body {
+  display: flex;
+  gap: var(--space-col-gap);
+  align-items: flex-start;
+  padding-top: var(--space-4xl);
+}
+
+/* ── Left: contact details ──────────────────────────────────── */
+.details {
+  flex: 0 0 28%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 70vh;
+  gap: var(--space-3xl);
   position: sticky;
-  top: 120px;
+  top: calc(var(--header-height) + var(--space-xl));
 }
 
-.leftTop {
+.detailList {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.headline {
-  font-family: var(--font-display);
-  font-size: clamp(56px, 6vw, 88px);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: var(--navy);
-  margin: 0 0 48px;
-}
-
-/* ─── Contact list ───────────────────────────────────────────── */
-.contactList {
-  display: flex;
-  flex-direction: column;
-}
-
-.contactRow {
+.detailRow {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-md);
   align-items: baseline;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(1, 25, 85, 0.08);
-  gap: 24px;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.contactRow:first-child {
-  border-top: 1px solid rgba(1, 25, 85, 0.08);
+.detailRow:first-child {
+  border-top: 1px solid var(--line);
 }
 
-.contactLabel {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.detailRow dt {
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
   color: var(--navy);
-  opacity: 0.35;
+  opacity: 0.4;
+  letter-spacing: 0.02em;
 }
 
-.contactValue {
-  font-family: var(--font-body);
-  font-size: 15px;
+.detailRow dd {
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  margin: 0;
+}
+
+.detailRow a {
   color: var(--navy);
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
-a.contactValue:hover {
-  opacity: 0.6;
-}
-
-/* ─── Person card — bottom left ─────────────────────────────── */
-.person {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-top: 40px;
-}
-
-.personAvatar {
-  position: relative;
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #d6e4f0;
-}
-
-.personName {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--navy);
-  margin: 0;
-  line-height: 1;
-}
-
-.personRole {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.4;
-  margin: 0;
-}
-
-.personBody {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--navy);
+.detailRow a:hover {
   opacity: 0.55;
-  margin: 0;
-  max-width: 320px;
 }
 
-/* ─── Right — bare form ──────────────────────────────────────── */
-.right {
-  display: flex;
-  flex-direction: column;
-  padding-top: 8px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ─── Progress ───────────────────────────────────────────────── */
-.progressHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 32px;
-  margin-bottom: 48px;
-  border-bottom: 1px solid rgba(1, 25, 85, 0.1);
-}
-
-.stepLabel {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.detailNote {
+  font-size: var(--p-sm-size);
+  line-height: var(--leading-relaxed);
   color: var(--navy);
-  opacity: 0.4;
-}
-
-.progressTrack {
-  display: flex;
-  gap: 8px;
-}
-
-.progressSegment {
-  width: 72px;
-  height: 2px;
-  background: rgba(1, 25, 85, 0.1);
-  border-radius: 2px;
-  transition: background 0.3s ease;
-}
-
-.progressSegment.progressActive {
-  background: var(--navy);
-}
-
-/* ─── Form body ──────────────────────────────────────────────── */
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.stepBody {
-  min-height: 360px;
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-}
-
-.stepTitle {
-  font-family: var(--font-body);
-  font-size: clamp(24px, 2.4vw, 34px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--navy);
+  opacity: 0.45;
   margin: 0;
 }
 
-/* ─── Pills ──────────────────────────────────────────────────── */
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.pill {
-  padding: 10px 18px;
-  border: 1px solid rgba(1, 25, 85, 0.15);
-  border-radius: 10px;
-  background: transparent;
-  font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.projectsLink {
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
   color: var(--navy);
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    background 0.15s,
-    color 0.15s;
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity var(--duration-fast) var(--ease-out);
+  width: fit-content;
 }
 
-.pill:hover {
-  border-color: var(--navy);
-}
-
-.pill.pillActive {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #fff;
-}
-
-/* ─── Field group ────────────────────────────────────────────── */
-.fieldGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.fieldLabel {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.4;
-}
-
-.optional {
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-.input,
-.textarea {
-  width: 100%;
-  padding: 16px 0;
-  font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--navy);
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(1, 25, 85, 0.15);
-  outline: none;
-  transition: border-color 0.2s;
-  border-radius: 0;
-}
-
-.input::placeholder,
-.textarea::placeholder {
-  color: var(--navy);
-  opacity: 0.22;
-}
-
-.input:focus,
-.textarea:focus {
-  border-bottom-color: var(--navy);
-}
-
-.textarea {
-  resize: none;
-}
-
-/* ─── Footer ─────────────────────────────────────────────────── */
-.cardFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 40px;
-  margin-top: 16px;
-  border-top: 1px solid rgba(1, 25, 85, 0.1);
-}
-
-.footerRight {
-  margin-left: auto;
-}
-
-.backButton {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--navy);
-  opacity: 0.4;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.2s;
-}
-.backButton:hover {
+.projectsLink:hover {
   opacity: 1;
 }
 
-.continueButton {
-  display: inline-flex;
-  align-items: center;
-  padding: 14px 28px;
-  background: var(--navy);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    opacity 0.2s;
+/* ── Right: form ────────────────────────────────────────────── */
+.formWrap {
+  flex: 1;
 }
 
-.continueButton:hover:not(:disabled) {
-  background: var(--navy-dark);
-}
-.continueButton:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-/* ─── Responsive ─────────────────────────────────────────────── */
+/* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .container {
-    padding: 0 48px;
-    gap: 80px;
+  .header {
+    gap: var(--space-col-gap-sm);
+  }
+
+  .body {
+    gap: var(--space-col-gap-sm);
   }
 }
 
 @media (max-width: 860px) {
-  .page {
-    padding: 100px 0 60px;
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    padding-bottom: var(--space-3xl);
   }
-  .container {
-    grid-template-columns: 1fr;
-    padding: 0 32px;
-    gap: 56px;
-  }
-  .left {
-    position: static;
-    min-height: auto;
-  }
-}
 
-@media (max-width: 560px) {
-  .container {
-    padding: 0 20px;
+  .header h1,
+  .header p {
+    flex: 1 1 auto;
+    padding-bottom: 0;
+  }
+
+  .body {
+    flex-direction: column;
+    gap: var(--space-3xl);
+  }
+
+  .details {
+    flex: 1 1 auto;
+    position: static;
+    width: 100%;
   }
 }

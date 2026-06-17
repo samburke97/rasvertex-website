@@ -1,16 +1,13 @@
 // app/page.tsx
 
-import ProjectShowcase from "./components/homepage/ProjectShowcase";
-import ServiceAccordion from "./components/shared/ServiceAccordion";
-import TestimonialsSection from "./components/homepage/TestimonialSection";
-import PartnersCarousel from "./components/homepage/PartnersCarousel";
-import CaseStudy from "./components/homepage/CaseStudy";
 import Hero from "./components/homepage/Hero";
-import Carousel from "./components/homepage/Carousel";
+import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import RopeAccessSection from "./components/homepage/RopeAccessSection";
-import TeamIntro from "./components/homepage/TeamIntro";
-import ReviewCard from "./components/shared/ReviewCard";
-import PhotoGrid from "./components/shared/PhotoGrid";
+import PartnersSection from "./components/homepage/PatnersSection";
+import ServiceAccordion from "./components/shared/ServiceAccordion";
+import CaseStudy from "./components/homepage/CaseStudy";
+import TestimonialsSection from "./components/homepage/TestimonialSection";
+import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import { PROCESS_STEPS, PROCESS_STATEMENT } from "./data/homepageProcessData";
 
 export default function Home() {
@@ -19,19 +16,23 @@ export default function Home() {
       <section className="px-10 py-10">
         <Hero />
       </section>
-      <section className="py-20">
+
+      <section
+        className="py-20"
+        aria-label="Industry partners and accreditations"
+      >
         <PartnersCarousel />
       </section>
-      <section className="px-10 py-20">
+
+      <section className="px-10 py-20" aria-labelledby="rope-access-heading">
         <RopeAccessSection />
       </section>
-      <section className="px-10 py-20">
-        <TeamIntro />
+
+      <section className="px-10 py-20" aria-labelledby="partner-heading">
+        <PartnersSection />
       </section>
-      <section className="px-10 pt-20 pb-10">
-        <Carousel />
-      </section>
-      <section className="px-10 py-20">
+
+      <section className="px-10 py-20" aria-labelledby="process-heading">
         <ServiceAccordion
           heading={
             <>
@@ -48,21 +49,18 @@ export default function Home() {
           headingId="process-heading"
         />
       </section>
-      <div className="px-10 py-20">
-        <TestimonialsSection />
-      </div>
-      <div className="px-10 py-20">
+
+      <section className="px-10 py-20" aria-labelledby="case-study-heading">
         <CaseStudy />
-      </div>
-      <div className="px-10 py-20">
-        <ReviewCard />
-      </div>
-      <div className="px-10 py-20">
-        <PhotoGrid />
-      </div>
-      <div className="pt-30 py-20">
+      </section>
+
+      <section className="px-10 py-20" aria-label="Client testimonials">
+        <TestimonialsSection />
+      </section>
+
+      <section className="py-20" aria-label="Recent projects">
         <ProjectShowcase />
-      </div>
+      </section>
     </>
   );
 }

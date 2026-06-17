@@ -46,12 +46,14 @@
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  gap: var(--space-lg);
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 40px;
+  min-width: 0;
 }
 
 .logo {
@@ -64,7 +66,8 @@
 .desktopMenu {
   display: none;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
+  min-width: 0;
 }
 
 @media (min-width: 1024px) {
@@ -76,8 +79,6 @@
 .dropdown {
   position: relative;
 }
-
-/* ── Top-nav items — Inter semibold, no uppercase ── */
 
 .menuButton {
   display: flex;
@@ -92,6 +93,7 @@
   border: none;
   cursor: pointer;
   padding: 24px 0;
+  white-space: nowrap;
   transition: color 0.25s;
 }
 
@@ -110,6 +112,7 @@
   letter-spacing: 0;
   text-decoration: none;
   padding: 24px 0;
+  white-space: nowrap;
   transition: color 0.25s;
 }
 
@@ -123,6 +126,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .phoneButton {
@@ -149,7 +153,8 @@
   color: #ffffff;
 }
 
-@media (min-width: 1024px) {
+/* Phone only appears once there's enough room */
+@media (min-width: 1180px) {
   .phoneButton {
     display: inline-flex;
   }

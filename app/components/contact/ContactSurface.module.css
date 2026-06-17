@@ -1,79 +1,101 @@
 /* app/components/contact/ContactSurface.module.css */
 
-/* ─── Surface ────────────────────────────────────────────────── */
+/* ─── Two-column surface ─────────────────────────────────────── */
 .surface {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  min-height: calc(100vh - 140px);
-  background: var(--navy-08);
-  border-radius: var(--radius-3xl);
-  overflow: hidden;
+  display: flex;
+  gap: var(--space-col-gap);
+  align-items: flex-start;
 }
 
 /* ═══════════════════════
-   INFO column
+   LEFT column
 ═══════════════════════ */
-.info {
+.left {
+  flex: 0 0 44%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4xl);
-  padding: var(--space-4xl) var(--space-3xl);
-  border-right: 1px solid var(--navy-12);
+  gap: var(--space-2xl);
 }
 
-.infoTop {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.headline {
-  font-family: var(--font-body);
-  font-size: clamp(1.75rem, 2.2vw, 2.25rem);
-  font-weight: var(--weight-bold);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  color: var(--navy);
-  margin: 0;
-}
-
-/* ── Google rating ── */
-.rating {
+/* ── Step indicator ──────────────────────────────────────────── */
+.stepIndicator {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-md);
 }
 
-.stars {
-  display: flex;
-  gap: 2px;
-}
-
-.ratingText {
+.stepLabelText {
   font-family: var(--font-body);
-  font-size: var(--p-sm-size);
+  font-size: var(--eyebrow-size);
   font-weight: var(--weight-semibold);
-  color: var(--navy);
-  opacity: 0.55;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--red);
 }
 
-/* ── Contact list ── */
+.stepDots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.stepDot {
+  width: 32px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: var(--navy-12);
+  transition: background 0.3s;
+}
+
+.stepDotActive {
+  background: var(--navy);
+}
+
+.stepDotDone {
+  background: var(--navy-45);
+}
+
+/* h2 inherits globals */
+
+/* ── Project image ───────────────────────────────────────────── */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--navy-08);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ── Divider ─────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--line);
+}
+
+/* ── Contact list ────────────────────────────────────────────── */
 .contactList {
   display: flex;
   flex-direction: column;
-  margin-top: auto;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
 }
 
 .contactRow {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--navy-08);
+  gap: 4px;
 }
 
-.contactRow:first-child {
-  border-top: 1px solid var(--navy-08);
+.contactRowGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
 }
 
 .contactLabel {
@@ -84,158 +106,97 @@
   text-transform: uppercase;
   color: var(--navy);
   opacity: 0.35;
+  margin: 0;
+  padding: 0;
+  display: block;
 }
 
-.contactValue {
-  font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
+.contactPhone {
+  font-size: var(--h3-size);
+  line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking);
+  font-weight: var(--weight-bold);
   color: var(--navy);
   text-decoration: none;
   transition: opacity 0.2s;
 }
 
-a.contactValue:hover {
-  opacity: 0.5;
+.contactPhone:hover {
+  opacity: 0.55;
 }
 
-/* ── Person ── */
-.person {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.avatarWrap {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.avatar {
-  object-fit: cover;
-  object-position: top;
-}
-
-.personName {
+.contactValue {
   font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-bold);
+  font-size: var(--p-size);
   color: var(--navy);
   margin: 0;
+  padding: 0;
 }
 
-.personRole {
-  font-family: var(--font-body);
-  font-size: var(--eyebrow-size);
-  letter-spacing: var(--eyebrow-tracking);
-  text-transform: uppercase;
+.contactLink {
   color: var(--navy);
-  opacity: 0.4;
-  margin: 0;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.contactLink:hover {
+  opacity: 0.55;
 }
 
 /* ═══════════════════════
-   FORM column
+   RIGHT column
 ═══════════════════════ */
-.formCol {
+.right {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  padding: var(--space-4xl);
-  gap: var(--space-3xl);
-}
-
-/* ── Top row: step dots + thumbnail ── */
-.formTopRow {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-xl);
-  padding-bottom: var(--space-xl);
-  border-bottom: 1px solid var(--line);
-}
-
-/* Step dots — exact Pagination style */
-.stepDots {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  padding-top: 6px;
-}
-
-.dot {
-  height: 3px;
-  width: 24px;
-  border-radius: 3px;
-  background: var(--navy-25);
-  transition:
-    background 0.25s,
-    width 0.25s;
-}
-
-.dotActive {
-  width: 36px;
-  background: var(--navy);
-}
-
-.dotDone {
-  background: var(--navy-65);
-}
-
-/* Thumbnail — small, rounded, top-right of form */
-.thumbWrap {
-  position: relative;
-  width: 140px;
-  height: 100px;
-  border-radius: var(--radius-xl);
+  background: #deeeff;
+  border-radius: var(--radius-3xl);
   overflow: hidden;
-  flex-shrink: 0;
 }
 
-.thumb {
-  object-fit: cover;
-  object-position: center 30%;
-}
-
-/* ── Form body ── */
-.formBody {
+/* ── Form area ───────────────────────────────────────────────── */
+.formWrap {
+  padding: var(--space-4xl);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
   flex: 1;
 }
 
-.stepTitle {
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-3xl);
+}
+
+.selectLabel {
   font-family: var(--font-body);
-  font-size: clamp(1.375rem, 1.8vw, 1.875rem);
-  font-weight: var(--weight-bold);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
   color: var(--navy);
+  opacity: 0.55;
   margin: 0;
 }
 
-.fieldset {
+/* ── Chips ───────────────────────────────────────────────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
   border: none;
   margin: 0;
   padding: 0;
 }
 
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
-}
-
-.pill {
-  padding: 9px 16px;
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-full);
   border: 1px solid var(--navy-25);
-  border-radius: var(--radius-xl);
-  background: transparent;
+  background: #ffffff;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-medium);
@@ -245,22 +206,24 @@ a.contactValue:hover {
     border-color 0.15s,
     background 0.15s,
     color 0.15s;
+  white-space: nowrap;
 }
 
-.pill:hover {
+.chip:hover {
   border-color: var(--navy);
 }
 
-.pillActive {
+.chipActive {
   background: var(--navy);
   border-color: var(--navy);
   color: #ffffff;
 }
 
+/* ── Fields ──────────────────────────────────────────────────── */
 .fields {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
 }
 
 .fieldRow {
@@ -272,7 +235,7 @@ a.contactValue:hover {
 .field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 6px;
 }
 
 .fieldLabel {
@@ -282,7 +245,7 @@ a.contactValue:hover {
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.4;
+  opacity: 0.45;
 }
 
 .optional {
@@ -293,17 +256,17 @@ a.contactValue:hover {
 
 .input,
 .textarea {
-  width: 100%;
-  padding: var(--space-md) 0;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--p-size);
   color: var(--navy);
   background: transparent;
+  padding: var(--space-sm) 0;
   border: none;
   border-bottom: 1px solid var(--navy-25);
   outline: none;
   transition: border-color 0.2s;
   border-radius: 0;
+  width: 100%;
 }
 
 .input::placeholder,
@@ -321,14 +284,14 @@ a.contactValue:hover {
   resize: none;
 }
 
-/* ── Footer ── */
+/* ── Form footer ─────────────────────────────────────────────── */
 .formFooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--line);
   margin-top: auto;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--navy-12);
 }
 
 .back {
@@ -348,13 +311,13 @@ a.contactValue:hover {
   opacity: 1;
 }
 
-/* ── Success ── */
+/* ── Success ─────────────────────────────────────────────────── */
 .success {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  flex: 1;
   justify-content: center;
+  gap: var(--space-lg);
 }
 
 .successLink {
@@ -364,49 +327,98 @@ a.contactValue:hover {
   text-underline-offset: 3px;
 }
 
+/* ── Carousel — same pattern as ServiceHero ─────────────────── */
+.carouselWrap {
+  width: 100%;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  align-items: flex-start;
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 30vw;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--navy-12);
+  margin-right: var(--space-md);
+  margin-top: 0;
+}
+
+.slideDown {
+  margin-top: 12px;
+}
+
+.carouselNav {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  padding-top: var(--space-xl);
+  padding-right: var(--space-x);
+  margin-top: var(--space-xl);
+}
+
+.navBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity var(--duration-fast);
+}
+
+.navBtn:hover {
+  opacity: 0.5;
+}
+
 /* ═══════════════════════
    RESPONSIVE
 ═══════════════════════ */
-@media (max-width: 1100px) {
-  .surface {
-    grid-template-columns: 260px 1fr;
-  }
-
-  .thumbWrap {
-    width: 110px;
-    height: 80px;
-  }
-}
-
 @media (max-width: 860px) {
   .surface {
-    grid-template-columns: 1fr;
-    min-height: auto;
+    flex-direction: column;
+    gap: var(--space-3xl);
   }
 
-  .info {
-    border-right: none;
-    border-bottom: 1px solid var(--navy-12);
-    padding: var(--space-3xl) var(--space-2xl);
-    gap: var(--space-2xl);
+  .left {
+    flex: 1 1 auto;
   }
 
-  .formCol {
-    padding: var(--space-2xl);
+  .slide {
+    flex: 0 0 60vw;
   }
 }
 
 @media (max-width: 560px) {
-  .info,
-  .formCol {
-    padding: var(--space-xl);
+  .formWrap {
+    padding: var(--space-2xl);
   }
 
   .fieldRow {
     grid-template-columns: 1fr;
   }
 
-  .thumbWrap {
-    display: none;
+  .contactRowGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .slide {
+    flex: 0 0 80vw;
+  }
+
+  .slideDown {
+    margin-top: 0;
   }
 }

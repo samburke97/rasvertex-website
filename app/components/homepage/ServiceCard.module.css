@@ -43,7 +43,6 @@
   transition: opacity var(--duration-md) var(--ease-out);
 }
 
-.media.card:hover .overlay,
 .card:hover .overlay {
   opacity: 1;
 }
@@ -109,22 +108,46 @@
   transition: none;
 }
 
+/* ─── Title — media cards ────────────────────────────────────── */
 .title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: var(--weight-regular);
   line-height: 1;
   letter-spacing: var(--nav-tracking);
   text-transform: uppercase;
   color: #ffffff;
   margin: 0;
+  white-space: pre-line;
 }
 
+/* ─── Title — brand card ─────────────────────────────────────── */
+.brand .title {
+  font-size: 1.75rem;
+}
+
+/* ─── Body ──────────────────────────────────────────────────── */
 .body {
   font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  line-height: var(--p-sm-leading);
+  font-size: var(--p-size);
+  line-height: var(--p-leading);
   font-weight: var(--weight-regular);
   color: rgba(255, 255, 255, 0.65);
   margin: 0;
+}
+
+/* ─── Touch devices — always show overlay + title, hide arrow ── */
+@media (hover: none) {
+  .overlay {
+    opacity: 0.35;
+  }
+
+  .content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .arrow {
+    display: none;
+  }
 }

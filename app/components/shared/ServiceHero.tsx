@@ -18,7 +18,7 @@ interface ServiceHeroProps {
   lede: string;
   ctaLabel?: string;
   ctaHref?: string;
-  slides: HeroSlide[];
+  slides?: HeroSlide[];
   headingId?: string;
 }
 
@@ -30,8 +30,10 @@ export default function ServiceHero({
   slides,
   headingId = "service-hero-heading",
 }: ServiceHeroProps) {
+  const tripled = slides ? [...slides, ...slides, ...slides] : [];
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
+    loop: false,
     dragFree: true,
     align: "start",
   });
@@ -46,98 +48,104 @@ export default function ServiceHero({
         <h1 id={headingId}>{heading}</h1>
         <div className={styles.topRight}>
           <p className="p-soft">{lede}</p>
-          <Link href={ctaHref} className={styles.cta} aria-label={ctaLabel}>
-            {ctaLabel}
-          </Link>
+          {ctaLabel && (
+            <Link href={ctaHref} className={styles.cta} aria-label={ctaLabel}>
+              {ctaLabel}
+            </Link>
+          )}
         </div>
       </header>
 
-      {/* ── Looping carousel ── */}
-      <div
-        className={styles.carouselWrap}
-        role="region"
-        aria-label="Project photo gallery"
-      >
-        <div className={styles.carousel} ref={emblaRef}>
-          <div className={styles.track} aria-hidden="true">
-            {slides.map((slide, i) => (
-              <div
-                key={i}
-                className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""}`}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  sizes="33vw"
-                  priority={i < 3}
-                />
+      {/* ── Looping carousel — only rendered when slides provided ── */}
+      {slides && slides.length > 0 && (
+        <>
+          <div
+            className={styles.carouselWrap}
+            role="region"
+            aria-label="Project photo gallery"
+          >
+            <div className={styles.carousel} ref={emblaRef}>
+              <div className={styles.track} aria-hidden="true">
+                {tripled.map((slide, i) => (
+                  <div
+                    key={i}
+                    className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""}`}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="33vw"
+                      priority={i < 3}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* ── Prev / next — bottom-right ── */}
-      <div className={styles.nav} role="group" aria-label="Browse photos">
-        <button
-          className={styles.navBtn}
-          onClick={scrollPrev}
-          aria-label="Previous photos"
-        >
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 20 20"
-            fill="none"
-            aria-hidden="true"
-          >
-            <circle
-              cx="10"
-              cy="10"
-              r="9.25"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M11.5 6.5L8 10L11.5 13.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-        <button
-          className={styles.navBtn}
-          onClick={scrollNext}
-          aria-label="Next photos"
-        >
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 20 20"
-            fill="none"
-            aria-hidden="true"
-          >
-            <circle
-              cx="10"
-              cy="10"
-              r="9.25"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M8.5 6.5L12 10L8.5 13.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
+          {/* ── Prev / next — bottom-right ── */}
+          <div className={styles.nav} role="group" aria-label="Browse photos">
+            <button
+              className={styles.navBtn}
+              onClick={scrollPrev}
+              aria-label="Previous photos"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="10"
+                  cy="10"
+                  r="9.25"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M11.5 6.5L8 10L11.5 13.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              className={styles.navBtn}
+              onClick={scrollNext}
+              aria-label="Next photos"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="10"
+                  cy="10"
+                  r="9.25"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M8.5 6.5L12 10L8.5 13.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </>
+      )}
     </section>
   );
 }

@@ -13,20 +13,17 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-col-gap);
   align-items: start;
-  justify-content: space-between;
   padding: 0 var(--space-x);
 }
 
-.heading {
-  max-width: 600px;
-}
-
-.right {
+.left {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  max-width: 650px;
-  margin-left: auto;
+}
+
+.left h2 {
+  max-width: 18ch;
 }
 
 .body {
@@ -35,14 +32,76 @@
   font-weight: var(--weight-regular);
   line-height: var(--p-leading);
   color: var(--navy);
-  opacity: 0.65;
   margin: 0;
 }
 
-.links {
+.right {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 650px;
+  margin-left: auto;
+}
+
+/* ─── CTA card ───────────────────────────────────────────────── */
+.ctaCard {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-end;
+}
+
+.avatar {
+  position: relative;
+  width: 120px;
+  height: 150px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ctaContent {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-sm);
+}
+
+.ctaHeading {
+  font-family: var(--font-body);
+  font-size: var(--h3-size);
+  font-weight: var(--weight-bold);
+  line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking);
+  color: var(--navy);
+  margin: 0;
+}
+
+.ctaBody {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  line-height: var(--p-sm-leading);
+  color: var(--navy);
+  margin: 0;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: var(--radius-xl);
+  background: var(--navy);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  white-space: nowrap;
+  width: fit-content;
+  margin-top: var(--space-xs);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.ctaButton:hover {
+  background: var(--navy-dark);
 }
 
 /* ─── Logo marquee ───────────────────────────────────────────── */
@@ -94,6 +153,7 @@
   width: 140px;
   height: 60px;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .logo {
@@ -116,5 +176,13 @@
 @media (max-width: 560px) {
   .intro {
     padding: 0 var(--space-x-2xs);
+  }
+  .ctaCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .avatar {
+    width: 100%;
+    height: 200px;
   }
 }

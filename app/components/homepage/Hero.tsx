@@ -8,11 +8,7 @@ const HEADLINE = "The Sunshine Coast's Trusted Property Maintenance Partner.";
 
 export default function Hero() {
   return (
-    <section
-      className={styles.section}
-      aria-labelledby="hero-heading"
-      data-nav-fixed="true"
-    >
+    <section aria-labelledby="hero-heading" data-nav-fixed="true">
       <HeroIntro headline={HEADLINE} />
       <div className={styles.bento}>
         <ServiceBento />

@@ -3,7 +3,7 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../ui/Button";
+import Link from "next/link";
 import styles from "./PartnersCarousel.module.css";
 
 const partners = [
@@ -20,46 +20,55 @@ const partners = [
   { src: "/partners/sskb.svg", alt: "SSKB" },
 ];
 
-const SERVICES = [
-  { label: "Body Corporate →", href: "/painting/body-corporate" },
-  { label: "Commercial →", href: "/painting/commercial" },
-  { label: "Residential →", href: "/painting/residential" },
-];
-
 export default function PartnersCarousel() {
   const track = [...partners, ...partners];
 
   return (
     <section className={styles.section} aria-labelledby="partners-heading">
-      {/* ── Intro grid ── */}
       <div className={styles.intro}>
-        <h2 id="partners-heading" className={styles.heading}>
-          Trusted by the Coast&rsquo;s best run buildings.
-        </h2>
+        <div className={styles.left}>
+          <h2 id="partners-heading">
+            Trusted by the Coast&rsquo;s best run buildings.
+          </h2>
+          <p className={styles.body}>
+            25 years working with Sunshine Coast body corporates, strata
+            committees, commercial property managers and hotels. One standard
+            across every building type, every time.
+          </p>
+        </div>
 
         <div className={styles.right}>
-          <p className={styles.body}>
-            25 years painting across every building type on the Sunshine Coast —
-            body corporates, commercial properties, and homes. One standard
-            across all of them.
-          </p>
-          <nav className={styles.links} aria-label="Our services">
-            {SERVICES.map((s) => (
-              <Button
-                key={s.href}
-                as="link"
-                href={s.href}
-                variant="secondary"
-                aria-label={`Learn more about our ${s.label.replace(" →", "").toLowerCase()} services`}
+          <div className={styles.ctaCard}>
+            <div className={styles.avatar}>
+              <Image
+                src="/images/people/caro.jpg"
+                alt="Hylton Denton — Project Manager at RAS-VERTEX"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top" }}
+                sizes="100px"
+              />
+            </div>
+            <div className={styles.ctaContent}>
+              <h3 className={styles.ctaHeading}>
+                Ready to talk about your project?
+              </h3>
+              <p className={styles.ctaBody}>
+                Building projects can feel like a lot. Don&rsquo;t stress —
+                we&rsquo;ve been doing this for 25 years. One call to Hylton and
+                you&rsquo;ll know exactly where you stand.
+              </p>
+              <Link
+                href="/contact"
+                className={styles.ctaButton}
+                aria-label="Talk to Hylton about your project"
               >
-                {s.label}
-              </Button>
-            ))}
-          </nav>
+                Let&rsquo;s talk about your project →
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* ── Logo marquee ── */}
       <div className={styles.marqueeWrap}>
         <div className={styles.fadeLeft} aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />
