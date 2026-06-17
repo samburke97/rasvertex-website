@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    await resend.emails.send({
+    const { data: emailData, error } = await resend.emails.send({
       from: "RAS-VERTEX <sam@rasvertex.com>",
       to: "team@rasvertex.com.au",
       subject: `New Quote Request — ${data.name || "Unknown"}`,
@@ -28,7 +28,15 @@ ${data.message || ""}
       `,
     });
 
-    return NextResponse.json({ success: true });
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 },
+      );
+    }
+
+    return NextResponse.json({ success: true, id: emailData?.id });
   } catch (err) {
     console.error("Contact API error:", err);
 
