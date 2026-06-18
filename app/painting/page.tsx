@@ -7,7 +7,6 @@ import ServiceHero from "../components/shared/ServiceHero";
 import ServiceIntro from "../components/shared/ServiceIntro";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceFeatures from "../components/shared/ServiceFeatures";
 import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
@@ -17,7 +16,6 @@ import WarrantyCard from "../components/shared/WarrantyCard";
 import {
   HERO_SLIDES,
   SERVICES,
-  FEATURES,
   PROJECTS,
   CARDS,
   FAQS,
@@ -68,7 +66,13 @@ export default function PaintingPage() {
 
       <section className="pt-20">
         <ServiceHero
-          heading="Painting the Sunshine Coast for 25 years"
+          heading={
+            <>
+              Painting the Sunshine Coast
+              <br />
+              for 25 years.
+            </>
+          }
           lede="One project manager, from first phone call to warranty sign-off. One number, one invoice, one thread."
           slides={HERO_SLIDES}
           headingId="painting-hero-heading"
@@ -106,7 +110,7 @@ export default function PaintingPage() {
         />
       </section>
 
-      <section className="pt-20 px-10">
+      <section className="pt-10 px-10">
         <PhotoGrid
           showHeader={false}
           cta={{
@@ -116,9 +120,16 @@ export default function PaintingPage() {
         />
       </section>
 
-      <section className="pt-20 px-10">
+      <section className="pt-10 px-10">
         <ServiceAccordion
-          heading="What kind of paint job are you thinking about?"
+          heading={
+            <>
+              What kind of paint job
+              <br />
+              are you thinking about?
+            </>
+          }
+          ariaLabel="What kind of paint job are you thinking about?"
           services={SERVICES}
           headingId="painting-services-heading"
         />
@@ -131,6 +142,7 @@ export default function PaintingPage() {
           ariaLabel="Who we work for — painting services"
         />
       </section>
+
       <section className="px-10 pt-20" aria-labelledby="before-after-heading">
         <ServiceBeforeAfter
           beforeSrc="/images/projects/1.jpeg"
@@ -150,13 +162,20 @@ export default function PaintingPage() {
           headingId="before-after-heading"
         />
       </section>
-      <section className="px-10 py-20" aria-label="Warranty">
+
+      <section className="px-10 pt-20" aria-label="Warranty">
         <WarrantyCard />
       </section>
 
       <section className="pt-20">
         <ServiceProjects
-          heading="Work we're proud of, from Noosa to Caloundra."
+          heading={
+            <>
+              Work we're proud of,
+              <br />
+              from Noosa to Caloundra.
+            </>
+          }
           subheading="Twenty-five years of painting across the Sunshine Coast. High-rise body corporates in Mooloolaba, heritage homes in Buderim, resort complexes in Coolum — every job gets the same crew, the same prep, and the same five-year warranty."
           projects={PROJECTS}
           footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour, Yandina and throughout the hinterland."
