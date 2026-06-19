@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import ContactSurface from "../components/contact/ContactSurface";
+import PhotoCarousel from "../components/shared/PhotoCarousel";
 
 export const metadata: Metadata = {
   title: "Contact Us | RAS-VERTEX — Sunshine Coast Painting & Maintenance",
@@ -17,32 +18,28 @@ export const metadata: Metadata = {
   },
 };
 
+const CONTACT_SLIDES = [
+  {
+    src: "/images/projects/1.jpeg",
+    alt: "Commercial repaint — Sunshine Coast",
+  },
+  { src: "/images/projects/2.jpeg", alt: "Facade restoration — Maroochydore" },
+  { src: "/nav/painting.png", alt: "Painting project — Mooloolaba" },
+  { src: "/nav/waterproofing.png", alt: "Waterproofing — Noosa" },
+  { src: "/nav/maintenance.png", alt: "Building maintenance — Sunshine Coast" },
+];
+
 export default function ContactPage() {
   return (
     <main aria-label="Contact RAS-VERTEX — request a free quote">
-      {/* ── Intro — h1 left, lede right ── */}
+      {/* ── Hero: h1 only. Google badge, image, and contact details
+          now live inside ContactSurface's left column. ── */}
       <section className="px-10 pt-20 pb-10" aria-labelledby="contact-heading">
-        <div
-          style={{
-            display: "flex",
-            gap: "var(--space-col-gap)",
-            alignItems: "flex-end",
-          }}
-        >
-          <h1 id="contact-heading" style={{ flex: "1 1 55%" }}>
-            Let&rsquo;s talk about
-            <br />
-            your building.
-          </h1>
-          <p
-            className="p-soft"
-            style={{ flex: "0 0 28%", paddingBottom: "4px" }}
-          >
-            On site within 48 hours, no obligation. One call and you&rsquo;ll
-            know exactly where you stand — and you&rsquo;ll deal with the same
-            person from quote to sign-off.
-          </p>
-        </div>
+        <h1 id="contact-heading">
+          Let&rsquo;s talk about
+          <br />
+          your building.
+        </h1>
       </section>
 
       {/* ── Step form surface ── */}
@@ -50,11 +47,16 @@ export default function ContactPage() {
         <ContactSurface />
       </section>
 
-      {/* ── Project image carousel ── */}
+      {/* ── Photo carousel — bottom of page ── */}
       <section
-        className="py-20"
+        className="pb-20"
         aria-label="Recent projects across the Sunshine Coast"
-      ></section>
+      >
+        <PhotoCarousel
+          slides={CONTACT_SLIDES}
+          ariaLabel="Recent RAS-VERTEX projects"
+        />
+      </section>
     </main>
   );
 }

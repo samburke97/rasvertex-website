@@ -132,6 +132,7 @@
 .phoneButton {
   display: none;
   align-items: center;
+  gap: 8px;
   height: 40px;
   padding: 0 var(--space-lg);
   border: 1.5px solid var(--navy);
@@ -146,6 +147,15 @@
   transition:
     background var(--duration-fast) var(--ease-out),
     color var(--duration-fast) var(--ease-out);
+}
+
+/* iconsax components render an inline SVG with fill="currentColor" by
+   default — it inherits the button's text color automatically, so it
+   flips navy → white on hover with no extra rule needed. This class
+   just locks the size/alignment. */
+.phoneIcon {
+  flex-shrink: 0;
+  display: block;
 }
 
 .phoneButton:hover {

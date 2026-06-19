@@ -44,83 +44,11 @@
   border-color: var(--navy);
 }
 
-/* ── Carousel ───────────────────────────────────────────────── */
-
-.carouselWrap {
-  width: 100%;
-}
-
-.carousel {
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  align-items: flex-start;
-}
-
-/*
-  margin-right instead of gap — Embla loop clones inherit margin,
-  not flex gap, so this ensures consistent spacing at every seam.
-*/
-.slide {
-  position: relative;
-  flex: 0 0 30vw;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  background: var(--navy-12);
-  margin-right: var(--space-md);
-  margin-top: 0;
-}
-
-/* Every second slide nudges down — subtle stagger */
-.slideDown {
-  margin-top: 12px;
-}
-
-/* ── Nav buttons — bottom-right ─────────────────────────────── */
-
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-sm);
-  padding-top: var(--space-xl);
-  padding-right: var(--space-x);
-  margin-top: var(--space-xl);
-}
-
-.navBtn {
-  width: 28px;
-  height: 28px;
-  border: none;
-  background: none;
-  color: var(--navy);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  transition: opacity var(--duration-fast);
-}
-
-.navBtn:hover {
-  opacity: 0.5;
-}
-
 /* ── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
   .top {
     gap: var(--space-col-gap-sm);
-  }
-
-  .slide {
-    flex: 0 0 36vw;
-  }
-
-  .nav {
-    padding-right: var(--space-x-sm);
   }
 }
 
@@ -133,27 +61,5 @@
   .top h1,
   .topRight {
     flex: 1 1 auto;
-  }
-
-  .slide {
-    flex: 0 0 60vw;
-  }
-
-  .nav {
-    padding-right: var(--space-x-xs);
-  }
-}
-
-@media (max-width: 560px) {
-  .slide {
-    flex: 0 0 80vw;
-  }
-
-  .slideDown {
-    margin-top: 0;
-  }
-
-  .nav {
-    padding-right: var(--space-x-2xs);
   }
 }

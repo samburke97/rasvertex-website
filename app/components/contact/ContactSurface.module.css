@@ -8,7 +8,7 @@
 }
 
 /* ═══════════════════════
-   LEFT column
+   LEFT column — scrolls normally
 ═══════════════════════ */
 .left {
   flex: 0 0 44%;
@@ -17,45 +17,30 @@
   gap: var(--space-2xl);
 }
 
-/* ── Step indicator ──────────────────────────────────────────── */
-.stepIndicator {
+/* ── Google rating badge ──────────────────────────────────────── */
+.ratingBadge {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 8px;
 }
 
-.stepLabelText {
-  font-family: var(--font-body);
-  font-size: var(--eyebrow-size);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--red);
+.googleIcon {
+  flex-shrink: 0;
 }
 
-.stepDots {
+.stars {
   display: flex;
-  gap: 6px;
   align-items: center;
 }
 
-.stepDot {
-  width: 32px;
-  height: 3px;
-  border-radius: var(--radius-full);
-  background: var(--navy-12);
-  transition: background 0.3s;
+.star {
+  flex-shrink: 0;
+  margin-left: -3px;
 }
 
-.stepDotActive {
-  background: var(--navy);
+.star:first-child {
+  margin-left: 0;
 }
-
-.stepDotDone {
-  background: var(--navy-45);
-}
-
-/* h2 inherits globals */
 
 /* ── Project image ───────────────────────────────────────────── */
 .imageWrap {
@@ -71,12 +56,6 @@
   object-fit: cover;
 }
 
-/* ── Divider ─────────────────────────────────────────────────── */
-.divider {
-  height: 1px;
-  background: var(--line);
-}
-
 /* ── Contact list ────────────────────────────────────────────── */
 .contactList {
   display: flex;
@@ -84,6 +63,8 @@
   gap: var(--space-md);
   margin: 0;
   padding: 0;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--line);
 }
 
 .contactRow {
@@ -144,10 +125,13 @@
 }
 
 /* ═══════════════════════
-   RIGHT column
+   RIGHT column — sticky form panel
 ═══════════════════════ */
 .right {
   flex: 1;
+  position: sticky;
+  top: calc(var(--header-height, 72px) + var(--space-xl));
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
   background: #deeeff;
@@ -155,7 +139,6 @@
   overflow: hidden;
 }
 
-/* ── Form area ───────────────────────────────────────────────── */
 .formWrap {
   padding: var(--space-4xl);
   display: flex;
@@ -167,29 +150,77 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: var(--space-3xl);
+  gap: var(--space-2xl);
 }
 
-.selectLabel {
+/* ── Progress bar — the only one on the page ──────────────────── */
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.progressLabel {
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold);
   color: var(--navy);
-  opacity: 0.55;
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.progressOf {
+  font-weight: var(--weight-regular);
+  opacity: 0.35;
+}
+
+.progressTrack {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+}
+
+.progressSegment {
+  flex: 1;
+  height: 2px;
+  background: var(--navy-12);
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.progressSegmentActive {
+  background: var(--navy);
+}
+
+/* ── Step title inside the form panel ─────────────────────────── */
+.stepTitle {
+  font-family: var(--font-body);
+  font-size: var(--h3-size);
+  line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
   margin: 0;
 }
 
-/* ── Chips ───────────────────────────────────────────────────── */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
+/* ── Fieldset reset ──────────────────────────────────────────── */
+.fieldset {
   border: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
-.chip {
+/* ── Pills ───────────────────────────────────────────────────── */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.pill {
   display: inline-flex;
   align-items: center;
   height: 40px;
@@ -209,11 +240,11 @@
   white-space: nowrap;
 }
 
-.chip:hover {
+.pill:hover {
   border-color: var(--navy);
 }
 
-.chipActive {
+.pillActive {
   background: var(--navy);
   border-color: var(--navy);
   color: #ffffff;
@@ -327,62 +358,6 @@
   text-underline-offset: 3px;
 }
 
-/* ── Carousel — same pattern as ServiceHero ─────────────────── */
-.carouselWrap {
-  width: 100%;
-}
-
-.carousel {
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  align-items: flex-start;
-}
-
-.slide {
-  position: relative;
-  flex: 0 0 30vw;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  background: var(--navy-12);
-  margin-right: var(--space-md);
-  margin-top: 0;
-}
-
-.slideDown {
-  margin-top: 12px;
-}
-
-.carouselNav {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-sm);
-  padding-top: var(--space-xl);
-  padding-right: var(--space-x);
-  margin-top: var(--space-xl);
-}
-
-.navBtn {
-  width: 28px;
-  height: 28px;
-  border: none;
-  background: none;
-  color: var(--navy);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  transition: opacity var(--duration-fast);
-}
-
-.navBtn:hover {
-  opacity: 0.5;
-}
-
 /* ═══════════════════════
    RESPONSIVE
 ═══════════════════════ */
@@ -396,8 +371,8 @@
     flex: 1 1 auto;
   }
 
-  .slide {
-    flex: 0 0 60vw;
+  .right {
+    position: static;
   }
 }
 
@@ -412,13 +387,5 @@
 
   .contactRowGrid {
     grid-template-columns: 1fr;
-  }
-
-  .slide {
-    flex: 0 0 80vw;
-  }
-
-  .slideDown {
-    margin-top: 0;
   }
 }

@@ -131,11 +131,21 @@ export default function Navigation() {
 
             <div className={styles.right}>
               <a
-                href="tel:0731300226"
+                href="tel:0753710201"
                 className={styles.phoneButton}
-                aria-label="Call RAS-VERTEX on 07 3130 0226"
+                aria-label="Call RAS-VERTEX on 07 5371 0201"
               >
-                07 3130 0226
+                <svg
+                  className={styles.phoneIcon}
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M4.04 1.5c-.4 0-.79.16-1.07.45L1.7 3.22c-.5.5-.65 1.25-.38 1.9.95 2.27 2.4 4.36 4.26 6.22 1.86 1.86 3.95 3.3 6.22 4.26.65.27 1.4.12 1.9-.38l1.27-1.27c.59-.6.59-1.55 0-2.15l-1.86-1.86c-.5-.5-1.27-.62-1.9-.3l-1.02.51a.85.85 0 0 1-.95-.16L6.3 7.05a.85.85 0 0 1-.16-.95l.51-1.02c.32-.63.2-1.4-.3-1.9L4.49 1.32a1.5 1.5 0 0 0-.45-.21V1.5z" />
+                </svg>
+                07 5371 0201
               </a>
               <Link href="/contact" className={styles.contactButton}>
                 Contact Us →

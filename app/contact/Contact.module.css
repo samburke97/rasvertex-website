@@ -1,151 +1,115 @@
-/* app/contact/contact.module.css */
+/* app/contact/Contact.module.css */
 
-/* ── Header: h1 left, lede right ───────────────────────────── */
-.header {
+/* ── Hero: h1 left, Google rating badge right, flush on baseline ── */
+.heroRow {
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
   gap: var(--space-col-gap);
-  padding-bottom: var(--space-4xl);
 }
 
-.header h1 {
-  flex: 1 1 50%;
-}
-
-.header p {
-  flex: 0 0 38%;
-  opacity: 0.65;
-  padding-bottom: 4px;
-}
-
-/* ── Divider ────────────────────────────────────────────────── */
-.rule {
-  height: 1px;
-  background: var(--line);
-}
-
-/* ── Two-column body ────────────────────────────────────────── */
-.body {
+/* ── Rating badge — navy G + tight overlapping row of navy stars ── */
+.ratingBadge {
   display: flex;
-  gap: var(--space-col-gap);
-  align-items: flex-start;
-  padding-top: var(--space-4xl);
+  align-items: center;
+  gap: 8px;
 }
 
-/* ── Left: contact details ──────────────────────────────────── */
-.details {
-  flex: 0 0 28%;
+.googleIcon {
+  flex-shrink: 0;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  flex-shrink: 0;
+  margin-left: -3px;
+}
+
+.star:first-child {
+  margin-left: 0;
+}
+
+/* ── Contact info — 4-up row below the surface ── */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-col-gap);
+  margin: 0;
+  padding: 0;
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--line);
+}
+
+.infoItem {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
-  position: sticky;
-  top: calc(var(--header-height) + var(--space-xl));
+  gap: var(--space-sm);
 }
 
-.detailList {
-  display: flex;
-  flex-direction: column;
+.infoLabel {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.35;
   margin: 0;
   padding: 0;
 }
 
-.detailRow {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: var(--space-md);
-  align-items: baseline;
-  padding: var(--space-md) 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.detailRow:first-child {
-  border-top: 1px solid var(--line);
-}
-
-.detailRow dt {
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-semibold);
-  color: var(--navy);
-  opacity: 0.4;
-  letter-spacing: 0.02em;
-}
-
-.detailRow dd {
-  font-size: var(--p-sm-size);
-  color: var(--navy);
-  margin: 0;
-}
-
-.detailRow a {
+.infoPhone {
+  font-size: var(--h3-size);
+  line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking);
+  font-weight: var(--weight-bold);
   color: var(--navy);
   text-decoration: none;
-  transition: opacity var(--duration-fast) var(--ease-out);
+  transition: opacity 0.2s;
 }
 
-.detailRow a:hover {
+.infoPhone:hover {
   opacity: 0.55;
 }
 
-.detailNote {
-  font-size: var(--p-sm-size);
-  line-height: var(--leading-relaxed);
+.infoValue {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
   color: var(--navy);
-  opacity: 0.45;
   margin: 0;
+  padding: 0;
 }
 
-.projectsLink {
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
+.infoLink {
   color: var(--navy);
   text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.infoLink:hover {
   opacity: 0.55;
-  transition: opacity var(--duration-fast) var(--ease-out);
-  width: fit-content;
 }
 
-.projectsLink:hover {
-  opacity: 1;
-}
-
-/* ── Right: form ────────────────────────────────────────────── */
-.formWrap {
-  flex: 1;
-}
-
-/* ── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .header {
-    gap: var(--space-col-gap-sm);
-  }
-
-  .body {
-    gap: var(--space-col-gap-sm);
-  }
-}
-
+/* ── Responsive ── */
 @media (max-width: 860px) {
-  .header {
+  .heroRow {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-lg);
-    padding-bottom: var(--space-3xl);
   }
 
-  .header h1,
-  .header p {
-    flex: 1 1 auto;
-    padding-bottom: 0;
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
   }
+}
 
-  .body {
-    flex-direction: column;
-    gap: var(--space-3xl);
-  }
-
-  .details {
-    flex: 1 1 auto;
-    position: static;
-    width: 100%;
+@media (max-width: 560px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
   }
 }

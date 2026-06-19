@@ -1,17 +1,10 @@
 // app/components/shared/ServiceHero.tsx
 
-"use client";
-
-import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
 import Link from "next/link";
-import { useCallback } from "react";
+import PhotoCarousel, { type PhotoCarouselSlide } from "./PhotoCarousel";
 import styles from "./ServiceHero.module.css";
 
-export interface HeroSlide {
-  src: string;
-  alt: string;
-}
+export type HeroSlide = PhotoCarouselSlide;
 
 interface ServiceHeroProps {
   heading: React.ReactNode;
@@ -30,17 +23,6 @@ export default function ServiceHero({
   slides,
   headingId = "service-hero-heading",
 }: ServiceHeroProps) {
-  const tripled = slides ? [...slides, ...slides, ...slides] : [];
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    dragFree: true,
-    align: "start",
-  });
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
   return (
     <section className={styles.section} aria-labelledby={headingId}>
       {/* ── Top: h1 left, lede + CTA right ── */}
@@ -58,93 +40,7 @@ export default function ServiceHero({
 
       {/* ── Looping carousel — only rendered when slides provided ── */}
       {slides && slides.length > 0 && (
-        <>
-          <div
-            className={styles.carouselWrap}
-            role="region"
-            aria-label="Project photo gallery"
-          >
-            <div className={styles.carousel} ref={emblaRef}>
-              <div className={styles.track} aria-hidden="true">
-                {tripled.map((slide, i) => (
-                  <div
-                    key={i}
-                    className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""}`}
-                  >
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="33vw"
-                      priority={i < 3}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* ── Prev / next — bottom-right ── */}
-          <div className={styles.nav} role="group" aria-label="Browse photos">
-            <button
-              className={styles.navBtn}
-              onClick={scrollPrev}
-              aria-label="Previous photos"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 20 20"
-                fill="none"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="9.25"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M11.5 6.5L8 10L11.5 13.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            <button
-              className={styles.navBtn}
-              onClick={scrollNext}
-              aria-label="Next photos"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 20 20"
-                fill="none"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="9.25"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M8.5 6.5L12 10L8.5 13.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-        </>
+        <PhotoCarousel slides={slides} ariaLabel="Project photo gallery" />
       )}
     </section>
   );
