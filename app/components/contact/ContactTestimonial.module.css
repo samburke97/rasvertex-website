@@ -3,7 +3,11 @@
 .wrap {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-xl);
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
 }
 
 .quoteMark {
@@ -20,30 +24,33 @@
 
 .quote p {
   font-family: var(--font-body);
-  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: var(--weight-light);
-  line-height: 1.4;
+  line-height: 1.35;
   letter-spacing: -0.015em;
   color: var(--navy);
   margin: 0;
+  text-align: center;
 }
 
 .author {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .logo {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   flex-shrink: 0;
 }
 
 .info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2px;
 }
 

@@ -1,31 +1,62 @@
 /* app/components/contact/ContactSurface.module.css */
 
-/* ─── Two-column surface ─────────────────────────────────────── */
 .surface {
   display: flex;
   gap: var(--space-col-gap);
   align-items: flex-start;
 }
 
-/* ═══════════════════════
-   LEFT column — scrolls normally
-═══════════════════════ */
 .left {
   flex: 0 0 44%;
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
+  width: 100%;
 }
 
-/* ── Google rating badge ──────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title-to-body);
+  width: 100%;
+}
+
 .ratingBadge {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .googleIcon {
   flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ratingText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ratingTitle {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+}
+
+.ratingScoreRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ratingScore {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  line-height: 1;
 }
 
 .stars {
@@ -35,14 +66,22 @@
 
 .star {
   flex-shrink: 0;
-  margin-left: -3px;
+  margin-left: -2px;
 }
 
 .star:first-child {
   margin-left: 0;
 }
 
-/* ── Project image ───────────────────────────────────────────── */
+.ratingCount {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.45;
+}
+
 .imageWrap {
   position: relative;
   width: 100%;
@@ -56,27 +95,33 @@
   object-fit: cover;
 }
 
-/* ── Contact list ────────────────────────────────────────────── */
-.contactList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  margin: 0;
-  padding: 0;
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--line);
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.contactRow {
+.contactBox {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: var(--space-lg);
 }
 
-.contactRowGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
+.contactBox:nth-child(1) {
+  border-right: 1px solid var(--navy-12);
+}
+
+.contactBox:nth-child(2) {
+  border-bottom: 1px solid var(--navy-12);
+}
+
+.contactBox:nth-child(3) {
+  border-right: 1px solid var(--navy-12);
+  border-top: 1px solid var(--navy-12);
+}
+
+.contactBox:nth-child(4) {
+  border-top: 1px solid var(--navy-12);
 }
 
 .contactLabel {
@@ -87,53 +132,31 @@
   text-transform: uppercase;
   color: var(--navy);
   opacity: 0.35;
-  margin: 0;
-  padding: 0;
-  display: block;
 }
 
-.contactPhone {
-  font-size: var(--h3-size);
-  line-height: var(--h3-leading);
-  letter-spacing: var(--h3-tracking);
-  font-weight: var(--weight-bold);
-  color: var(--navy);
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.contactPhone:hover {
-  opacity: 0.55;
-}
-
-.contactValue {
+.contactValue,
+.contactValueLink {
   font-family: var(--font-body);
   font-size: var(--p-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--p-leading);
   color: var(--navy);
-  margin: 0;
-  padding: 0;
 }
 
-.contactLink {
-  color: var(--navy);
+.contactValueLink {
   text-decoration: none;
   transition: opacity 0.2s;
 }
 
-.contactLink:hover {
+.contactValueLink:hover {
   opacity: 0.55;
 }
 
-/* ═══════════════════════
-   RIGHT column — sticky form panel
-═══════════════════════ */
 .right {
   flex: 1;
   position: sticky;
-  top: calc(var(--header-height, 72px) + var(--space-xl));
+  top: var(--header-height, 72px);
   align-self: flex-start;
-  display: flex;
-  flex-direction: column;
   background: #deeeff;
   border-radius: var(--radius-3xl);
   overflow: hidden;
@@ -143,7 +166,7 @@
   padding: var(--space-4xl);
   display: flex;
   flex-direction: column;
-  flex: 1;
+  min-height: 720px;
 }
 
 .form {
@@ -153,7 +176,16 @@
   gap: var(--space-2xl);
 }
 
-/* ── Progress bar — the only one on the page ──────────────────── */
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
+}
+
 .progress {
   display: flex;
   align-items: center;
@@ -192,7 +224,6 @@
   background: var(--navy);
 }
 
-/* ── Step title inside the form panel ─────────────────────────── */
 .stepTitle {
   font-family: var(--font-body);
   font-size: var(--h3-size);
@@ -203,7 +234,10 @@
   margin: 0;
 }
 
-/* ── Fieldset reset ──────────────────────────────────────────── */
+.stepBody {
+  flex: 1;
+}
+
 .fieldset {
   border: none;
   margin: 0;
@@ -213,7 +247,12 @@
   gap: var(--space-lg);
 }
 
-/* ── Pills ───────────────────────────────────────────────────── */
+.fieldset legend {
+  margin: 0 0 6px 0;
+  padding: 0;
+  width: 100%;
+}
+
 .pills {
   display: flex;
   flex-wrap: wrap;
@@ -225,8 +264,8 @@
   align-items: center;
   height: 40px;
   padding: 0 var(--space-lg);
-  border-radius: var(--radius-full);
-  border: 1px solid var(--navy-25);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--navy);
   background: #ffffff;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
@@ -234,14 +273,13 @@
   color: var(--navy);
   cursor: pointer;
   transition:
-    border-color 0.15s,
     background 0.15s,
     color 0.15s;
   white-space: nowrap;
 }
 
 .pill:hover {
-  border-color: var(--navy);
+  background: var(--navy-08);
 }
 
 .pillActive {
@@ -250,7 +288,6 @@
   color: #ffffff;
 }
 
-/* ── Fields ──────────────────────────────────────────────────── */
 .fields {
   display: flex;
   flex-direction: column;
@@ -279,6 +316,12 @@
   opacity: 0.45;
 }
 
+.required {
+  color: var(--burgundy);
+  opacity: 1;
+  font-weight: var(--weight-bold);
+}
+
 .optional {
   font-weight: var(--weight-regular);
   text-transform: none;
@@ -300,12 +343,6 @@
   width: 100%;
 }
 
-.input::placeholder,
-.textarea::placeholder {
-  color: var(--navy);
-  opacity: 0.22;
-}
-
 .input:focus,
 .textarea:focus {
   border-bottom-color: var(--navy);
@@ -315,40 +352,143 @@
   resize: none;
 }
 
-/* ── Form footer ─────────────────────────────────────────────── */
+/* ── Browser autofill override ─────────────────────────────────
+   Chrome/Safari paint autofilled fields with their own internal
+   background (pale yellow/grey) and force a dark text color,
+   ignoring normal background/color rules. The reliable
+   cross-browser override: animate background-color/color via a
+   near-infinite transition-delay, and use -webkit-text-fill-color
+   (the property these browsers actually use for autofilled text)
+   instead of plain "color". This keeps autofilled fields visually
+   identical to every other input on the form. ─────────────────── */
+.input:-webkit-autofill,
+.textarea:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.textarea:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--navy);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
+  caret-color: var(--navy);
+}
+
+.fileInputHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.uploadBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  border: 1px dashed var(--navy-25);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--navy);
+  opacity: 0.45;
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    opacity 0.15s;
+}
+
+.uploadBox:hover {
+  border-color: var(--navy);
+  background: rgba(255, 255, 255, 0.65);
+  opacity: 0.7;
+}
+
+.uploadBoxSub {
+  font-weight: var(--weight-regular);
+}
+
+.photoError {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--burgundy);
+  margin: 0;
+}
+
+.photoList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.photoChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 var(--space-sm) 0 var(--space-md);
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  border: 1px solid var(--navy-12);
+  max-width: 220px;
+}
+
+.photoChipName {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.photoChipRemove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: var(--navy-08);
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.photoChipRemove:hover {
+  background: var(--navy-25);
+}
+
 .formFooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
   padding-top: var(--space-xl);
-  border-top: 1px solid var(--navy-12);
 }
 
-.back {
-  font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
-  color: var(--navy);
-  opacity: 0.4;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.2s;
-}
-
-.back:hover {
-  opacity: 1;
-}
-
-/* ── Success ─────────────────────────────────────────────────── */
 .success {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--space-lg);
+  min-height: 720px;
 }
 
 .successLink {
@@ -358,9 +498,6 @@
   text-underline-offset: 3px;
 }
 
-/* ═══════════════════════
-   RESPONSIVE
-═══════════════════════ */
 @media (max-width: 860px) {
   .surface {
     flex-direction: column;
@@ -374,6 +511,14 @@
   .right {
     position: static;
   }
+
+  .formWrap {
+    min-height: 0;
+  }
+
+  .success {
+    min-height: 0;
+  }
 }
 
 @media (max-width: 560px) {
@@ -385,7 +530,20 @@
     grid-template-columns: 1fr;
   }
 
-  .contactRowGrid {
+  .contactGrid {
     grid-template-columns: 1fr;
+  }
+
+  .contactBox:nth-child(1) {
+    border-right: none;
+  }
+
+  .contactBox:nth-child(2) {
+    border-bottom: none;
+    border-top: 1px solid var(--navy-12);
+  }
+
+  .contactBox:nth-child(3) {
+    border-right: none;
   }
 }

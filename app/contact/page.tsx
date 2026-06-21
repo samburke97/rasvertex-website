@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import ContactSurface from "../components/contact/ContactSurface";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
 import PhotoCarousel from "../components/shared/PhotoCarousel";
 
 export const metadata: Metadata = {
@@ -32,22 +33,19 @@ const CONTACT_SLIDES = [
 export default function ContactPage() {
   return (
     <main aria-label="Contact RAS-VERTEX — request a free quote">
-      {/* ── Hero: h1 only. Google badge, image, and contact details
-          now live inside ContactSurface's left column. ── */}
-      <section className="px-10 pt-20 pb-10" aria-labelledby="contact-heading">
-        <h1 id="contact-heading">
-          Let&rsquo;s talk about
-          <br />
-          your building.
-        </h1>
-      </section>
-
-      {/* ── Step form surface ── */}
-      <section className="px-10 py-10" aria-label="Request a free quote">
+      <section className="px-10 pt-20" aria-label="Request a free quote">
         <ContactSurface />
       </section>
 
-      {/* ── Photo carousel — bottom of page ── */}
+      {/* ── Testimonial — its own full, centered section ── */}
+      <section
+        className="px-10 py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial />
+      </section>
+
       <section
         className="pb-20"
         aria-label="Recent projects across the Sunshine Coast"
