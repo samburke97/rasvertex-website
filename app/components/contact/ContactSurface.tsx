@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Button from "../ui/Button";
 import styles from "./ContactSurface.module.css";
@@ -44,6 +44,7 @@ export default function ContactSurface() {
   const [step, setStep] = useState<Step>(1);
   const [services, setServices] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]);
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photoError, setPhotoError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState({
@@ -63,6 +64,18 @@ export default function ContactSurface() {
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
   const showCtsField = CTS_ELIGIBLE_TYPES.includes(form.propertyType);
+
+  // Build a real thumbnail preview URL for each selected file. Object
+  // URLs are revoked whenever the photo list changes or the component
+  // unmounts, so we never leak memory.
+  useEffect(() => {
+    const urls = photos.map((file) => URL.createObjectURL(file));
+    setPhotoPreviews(urls);
+
+    return () => {
+      urls.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [photos]);
 
   const addPhotos = (fileList: FileList | null) => {
     if (!fileList) return;
@@ -210,7 +223,7 @@ export default function ContactSurface() {
             <span className={styles.contactValue}>Mon–Fri, 7am–5pm</span>
           </div>
           <div className={styles.contactBox}>
-            <span className={styles.contactLabel}>VISIT / POST</span>
+            <span className={styles.contactLabel}>VISIT US</span>
             <span className={styles.contactValue}>
               1–3 Kessling Avenue, Kunda Park QLD 4556
             </span>
@@ -506,19 +519,38 @@ export default function ContactSurface() {
                       )}
 
                       {photos.length > 0 && (
-                        <ul className={styles.photoList}>
+                        <ul
+                          className={styles.photoGrid}
+                          aria-label="Uploaded photos"
+                        >
                           {photos.map((file, i) => (
-                            <li key={i} className={styles.photoChip}>
-                              <span className={styles.photoChipName}>
-                                {file.name}
-                              </span>
+                            <li key={i} className={styles.photoThumb}>
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={photoPreviews[i]}
+                                alt={`Preview of ${file.name}`}
+                                className={styles.photoThumbImage}
+                              />
                               <button
                                 type="button"
                                 onClick={() => removePhoto(i)}
                                 aria-label={`Remove ${file.name}`}
-                                className={styles.photoChipRemove}
+                                className={styles.photoThumbRemove}
                               >
-                                ×
+                                <svg
+                                  width="10"
+                                  height="10"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M6 6l12 12M18 6L6 18"
+                                    stroke="currentColor"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                  />
+                                </svg>
                               </button>
                             </li>
                           ))}

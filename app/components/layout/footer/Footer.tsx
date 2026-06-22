@@ -25,12 +25,33 @@ export default function Footer() {
       <div className={styles.top}>
         <nav className={styles.columns} aria-label="Footer navigation">
           <div className={styles.column}>
+            <span className="nav-text">Services</span>
+            <Link href="/painting" className="p-soft">
+              Painting
+            </Link>
+            <Link href="/external-cleaning" className="p-soft">
+              Building Cleaning
+            </Link>
+            <Link href="/window-cleaning" className="p-soft">
+              Window Cleaning
+            </Link>
+            <Link href="/waterproofing" className="p-soft">
+              Waterproofing
+            </Link>
+            <Link href="/maintenance" className="p-soft">
+              Maintenance
+            </Link>
+            <Link href="/height-safety" className="p-soft">
+              Height Safety
+            </Link>
+            <Link href="/building-inspections" className="p-soft">
+              Building Inspections
+            </Link>
+          </div>
+          <div className={styles.column}>
             <span className="nav-text">Sitemap</span>
             <Link href="/" className="p-soft">
               Home
-            </Link>
-            <Link href="/services" className="p-soft">
-              Services
             </Link>
             <Link href="/projects" className="p-soft">
               Projects
@@ -40,18 +61,6 @@ export default function Footer() {
             </Link>
             <Link href="/contact" className="p-soft">
               Contact
-            </Link>
-          </div>
-          <div className={styles.column}>
-            <span className="nav-text">Company</span>
-            <Link href="/about" className="p-soft">
-              About Us
-            </Link>
-            <Link href="/terms" className="p-soft">
-              Terms &amp; Conditions
-            </Link>
-            <Link href="/privacy" className="p-soft">
-              Privacy Policy
             </Link>
           </div>
           <div className={styles.column}>
