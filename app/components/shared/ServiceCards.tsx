@@ -9,24 +9,28 @@ export interface ServiceCard {
   alt: string;
   title: string;
   body: string;
-  cta: string;
-  href: string;
+  cta?: string;
+  href?: string;
 }
 
 interface ServiceCardsProps {
   cards: ServiceCard[];
   heading?: string;
   ariaLabel?: string;
+  variant?: "cream" | "burgundy";
 }
 
 export default function ServiceCards({
   cards,
   heading = "Who we work for.",
   ariaLabel = "Who we work for",
+  variant = "cream",
 }: ServiceCardsProps) {
   return (
     <section className={styles.wrap} aria-label={ariaLabel}>
-      <div className={styles.card}>
+      <div
+        className={`${styles.card} ${variant === "burgundy" ? styles.burgundy : ""}`}
+      >
         <h2>{heading}</h2>
         <div className={styles.grid} role="list">
           {cards.map((c) => (
@@ -43,13 +47,15 @@ export default function ServiceCards({
               <div className={styles.content}>
                 <h3>{c.title}</h3>
                 <p className="p-soft">{c.body}</p>
-                <Link
-                  href={c.href}
-                  className={styles.cta}
-                  aria-label={`${c.cta} — ${c.title}`}
-                >
-                  {c.cta} →
-                </Link>
+                {c.cta && c.href && (
+                  <Link
+                    href={c.href}
+                    className={styles.cta}
+                    aria-label={`${c.cta} — ${c.title}`}
+                  >
+                    {c.cta} →
+                  </Link>
+                )}
               </div>
             </article>
           ))}

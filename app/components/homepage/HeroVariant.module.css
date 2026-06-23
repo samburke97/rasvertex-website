@@ -1,0 +1,129 @@
+/* app/components/homepage/HeroVariant.module.css */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+.headerRow {
+  padding: 0 var(--space-x);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.45;
+  margin: 0;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: var(--space-card-gap);
+  align-items: end;
+}
+
+.headline {
+  grid-column: 1 / 4;
+  font-family: var(--font-body);
+  font-size: var(--h1-size);
+  font-weight: var(--weight-bold);
+  line-height: var(--h1-leading);
+  letter-spacing: var(--h1-tracking);
+  color: var(--navy);
+  margin: 0;
+}
+
+.right {
+  grid-column: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: var(--space-md);
+}
+
+.ratingBadge {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.googleIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ratingText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ratingTitle {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+}
+
+.ratingScoreRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ratingScore {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  line-height: 1;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  flex-shrink: 0;
+  margin-left: -2px;
+}
+
+.star:first-child {
+  margin-left: 0;
+}
+
+.ratingCount {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.45;
+}
+
+@media (max-width: 1100px) {
+  .intro {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-xl);
+    align-items: start;
+  }
+  .headline {
+    grid-column: 1;
+  }
+  .right {
+    grid-column: 1;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}

@@ -102,3 +102,21 @@
     gap: var(--space-3xl);
   }
 }
+
+/* ─── Burgundy variant ───────────────────────────────────────── */
+.burgundy {
+  background: var(--burgundy);
+}
+
+.burgundy h2,
+.burgundy h3 {
+  color: #ffffff;
+}
+
+.burgundy p {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.burgundy .photo {
+  background: rgba(255, 255, 255, 0.08);
+}

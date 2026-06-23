@@ -83,7 +83,7 @@ export default function Navigation() {
               <Image
                 src="/logo.png"
                 alt="RAS-VERTEX"
-                width={160}
+                width={100}
                 height={40}
                 priority
                 style={{ objectFit: "contain" }}
@@ -145,6 +145,22 @@ export default function Navigation() {
                 aria-label="Get a free quote from RAS-VERTEX"
               >
                 Get a free quote
+                <svg
+                  className={styles.quoteArrow}
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
               <button
                 className={styles.mobileMenuButton}

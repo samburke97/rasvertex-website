@@ -41,6 +41,10 @@
   transform: translateY(0);
 }
 
+/* ── Wrapper — flex row, logo and right rails forced to equal
+   width via flex: 1 each, so the centred menu sits at the true
+   midpoint regardless of how wide the logo vs. the right cluster
+   actually are. ── */
 .wrapper {
   position: relative;
   display: flex;
@@ -53,20 +57,18 @@
 .logo {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   text-decoration: none;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 0;
 }
 
-/* Centre nav — absolutely centred in the bar so it sits dead-centre
-   regardless of logo width or right-side action width. */
 .desktopMenu {
   display: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   align-items: center;
+  justify-content: center;
   gap: 40px;
+  flex-shrink: 0;
 }
 
 @media (min-width: 1024px) {
@@ -116,8 +118,10 @@
 .right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .phoneButton {
@@ -135,6 +139,7 @@
   font-weight: var(--weight-bold);
   text-decoration: none;
   white-space: nowrap;
+  flex-shrink: 0;
   transition:
     background var(--duration-fast) var(--ease-out),
     color var(--duration-fast) var(--ease-out);
@@ -161,22 +166,33 @@
   display: none;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   height: 44px;
   padding: 0 var(--space-xl);
   background: var(--navy);
   color: #ffffff;
-  border: none;
-  border-radius: var(--radius-full);
+  border: 1.5px solid var(--navy);
+  border-radius: var(--radius-xl);
   font-family: var(--font-body);
   font-size: var(--button-size);
   font-weight: var(--weight-bold);
   text-decoration: none;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: background var(--duration-fast) var(--ease-out);
 }
 
 .quoteButton:hover {
   background: var(--navy-dark);
+}
+
+.quoteArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.quoteButton:hover .quoteArrow {
+  transform: translateX(3px);
 }
 
 @media (min-width: 1024px) {

@@ -3,108 +3,17 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5xl);
+  gap: var(--space-3xl);
   overflow: hidden;
 }
 
-/* ─── Intro grid ─────────────────────────────────────────────── */
-.intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-col-gap);
-  align-items: start;
+/* ── Heading — left-aligned h3, inherits Inter bold from globals ── */
+.label {
+  margin: 0;
   padding: 0 var(--space-x);
 }
 
-.left {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.left h2 {
-  max-width: 18ch;
-}
-
-.body {
-  font-family: var(--font-body);
-  font-size: var(--p-size);
-  font-weight: var(--weight-regular);
-  line-height: var(--p-leading);
-  color: var(--navy);
-  margin: 0;
-}
-
-.right {
-  display: flex;
-  flex-direction: column;
-  max-width: 650px;
-  margin-left: auto;
-}
-
-/* ─── CTA card ───────────────────────────────────────────────── */
-.ctaCard {
-  display: flex;
-  gap: var(--space-md);
-  align-items: flex-end;
-}
-
-.avatar {
-  position: relative;
-  width: 120px;
-  height: 150px;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.ctaContent {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.ctaHeading {
-  font-family: var(--font-body);
-  font-size: var(--h3-size);
-  font-weight: var(--weight-bold);
-  line-height: var(--h3-leading);
-  letter-spacing: var(--h3-tracking);
-  color: var(--navy);
-  margin: 0;
-}
-
-.ctaBody {
-  font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  line-height: var(--p-sm-leading);
-  color: var(--navy);
-  margin: 0;
-}
-
-.ctaButton {
-  display: inline-flex;
-  align-items: center;
-  height: 40px;
-  padding: 0 20px;
-  border-radius: var(--radius-xl);
-  background: var(--navy);
-  color: #ffffff;
-  font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-bold);
-  text-decoration: none;
-  white-space: nowrap;
-  width: fit-content;
-  margin-top: var(--space-xs);
-  transition: background var(--duration-fast) var(--ease-out);
-}
-
-.ctaButton:hover {
-  background: var(--navy-dark);
-}
-
-/* ─── Logo marquee ───────────────────────────────────────────── */
+/* ── Logo marquee ───────────────────────────────────────────── */
 .marqueeWrap {
   position: relative;
   overflow: hidden;
@@ -163,26 +72,19 @@
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .intro {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
+  .label {
     padding: 0 var(--space-x-xs);
-  }
-  .right {
-    margin-left: 0;
   }
 }
 
 @media (max-width: 560px) {
-  .intro {
+  .label {
     padding: 0 var(--space-x-2xs);
   }
-  .ctaCard {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .avatar {
-    width: 100%;
-    height: 200px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
   }
 }
