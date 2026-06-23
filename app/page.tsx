@@ -7,7 +7,6 @@ import PartnersSection from "./components/homepage/PatnersSection";
 import ServiceAccordion from "./components/shared/ServiceAccordion";
 import CaseStudy from "./components/homepage/CaseStudy";
 import TestimonialsSection from "./components/homepage/TestimonialSection";
-import ProjectShowcase from "./components/homepage/ProjectShowcase";
 import { PROCESS_STEPS, PROCESS_STATEMENT } from "./data/homepageProcessData";
 
 export default function Home() {
@@ -56,10 +55,6 @@ export default function Home() {
 
       <section className="px-10 py-20" aria-label="Client testimonials">
         <TestimonialsSection />
-      </section>
-
-      <section className="py-20" aria-label="Recent projects">
-        <ProjectShowcase />
       </section>
     </>
   );

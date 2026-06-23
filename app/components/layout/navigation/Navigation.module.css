@@ -42,18 +42,12 @@
 }
 
 .wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 72px;
   gap: var(--space-lg);
-}
-
-.left {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  min-width: 0;
 }
 
 .logo {
@@ -63,11 +57,16 @@
   flex-shrink: 0;
 }
 
+/* Centre nav — absolutely centred in the bar so it sits dead-centre
+   regardless of logo width or right-side action width. */
 .desktopMenu {
   display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   align-items: center;
-  gap: 32px;
-  min-width: 0;
+  gap: 40px;
 }
 
 @media (min-width: 1024px) {
@@ -80,44 +79,36 @@
   position: relative;
 }
 
+/* Bebas + tracking come from the global .nav-text utility — these
+   classes only own layout, cursor and hover state. */
 .menuButton {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: var(--navy);
-  font-family: var(--font-body);
-  font-size: var(--p-size);
-  font-weight: var(--weight-regular);
-  letter-spacing: 0;
   background: none;
   border: none;
   cursor: pointer;
   padding: 24px 0;
   white-space: nowrap;
-  transition: color 0.25s;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 .menuButton:hover,
 .menuButton.active {
-  color: var(--navy-dark);
+  opacity: 0.6;
 }
 
 .menuLink {
   display: flex;
   align-items: center;
-  color: var(--navy);
-  font-family: var(--font-body);
-  font-size: var(--p-size);
-  font-weight: var(--weight-regular);
-  letter-spacing: 0;
   text-decoration: none;
   padding: 24px 0;
   white-space: nowrap;
-  transition: color 0.25s;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 .menuLink:hover {
-  color: var(--navy-dark);
+  opacity: 0.6;
 }
 
 /* ── Right side ── */
@@ -149,10 +140,6 @@
     color var(--duration-fast) var(--ease-out);
 }
 
-/* iconsax components render an inline SVG with fill="currentColor" by
-   default — it inherits the button's text color automatically, so it
-   flips navy → white on hover with no extra rule needed. This class
-   just locks the size/alignment. */
 .phoneIcon {
   flex-shrink: 0;
   display: block;
@@ -170,15 +157,16 @@
   }
 }
 
-.contactButton {
+.quoteButton {
   display: none;
   align-items: center;
-  height: 40px;
-  padding: 0 var(--space-lg);
+  justify-content: center;
+  height: 44px;
+  padding: 0 var(--space-xl);
   background: var(--navy);
   color: #ffffff;
-  border: 1.5px solid var(--navy);
-  border-radius: var(--radius-xl);
+  border: none;
+  border-radius: var(--radius-full);
   font-family: var(--font-body);
   font-size: var(--button-size);
   font-weight: var(--weight-bold);
@@ -187,13 +175,12 @@
   transition: background var(--duration-fast) var(--ease-out);
 }
 
-.contactButton:hover {
+.quoteButton:hover {
   background: var(--navy-dark);
-  border-color: var(--navy-dark);
 }
 
 @media (min-width: 1024px) {
-  .contactButton {
+  .quoteButton {
     display: inline-flex;
   }
 }

@@ -79,54 +79,46 @@ export default function Navigation() {
       >
         <Container size="xl">
           <div className={styles.wrapper}>
-            <div className={styles.left}>
-              <Link
-                href="/"
-                className={styles.logo}
-                aria-label="RAS-VERTEX home"
+            <Link href="/" className={styles.logo} aria-label="RAS-VERTEX home">
+              <Image
+                src="/logo.png"
+                alt="RAS-VERTEX"
+                width={160}
+                height={40}
+                priority
+                style={{ objectFit: "contain" }}
+              />
+            </Link>
+
+            <div className={styles.desktopMenu}>
+              <div
+                className={styles.dropdown}
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={closeServices}
               >
-                <Image
-                  src="/logo.png"
-                  alt="RAS-VERTEX"
-                  width={160}
-                  height={40}
-                  priority
-                  style={{ objectFit: "contain" }}
-                />
-              </Link>
-
-              <div className={styles.desktopMenu}>
-                {/* Services dropdown */}
-                <div
-                  className={styles.dropdown}
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={closeServices}
+                <button
+                  className={`${styles.menuButton} nav-text ${servicesOpen ? styles.active : ""}`}
+                  aria-expanded={servicesOpen}
+                  aria-haspopup="true"
                 >
-                  <button
-                    className={`${styles.menuButton} ${servicesOpen ? styles.active : ""}`}
-                    aria-expanded={servicesOpen}
-                    aria-haspopup="true"
-                  >
-                    Services
-                  </button>
-                  <ServicesDropdown
-                    isOpen={servicesOpen}
-                    activeService={activeService}
-                    setActiveService={setActiveService}
-                  />
-                </div>
-
-                {/* Flat company links */}
-                {companyLinks.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={styles.menuLink}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                  Services
+                </button>
+                <ServicesDropdown
+                  isOpen={servicesOpen}
+                  activeService={activeService}
+                  setActiveService={setActiveService}
+                />
               </div>
+
+              {companyLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`${styles.menuLink} nav-text`}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
 
             <div className={styles.right}>
@@ -147,8 +139,12 @@ export default function Navigation() {
                 </svg>
                 07 5371 0201
               </a>
-              <Link href="/contact" className={styles.contactButton}>
-                Contact Us →
+              <Link
+                href="/contact"
+                className={styles.quoteButton}
+                aria-label="Get a free quote from RAS-VERTEX"
+              >
+                Get a free quote
               </Link>
               <button
                 className={styles.mobileMenuButton}
