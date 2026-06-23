@@ -5,6 +5,10 @@
   padding: 0 var(--space-x);
 }
 
+.embedded {
+  padding: 0;
+}
+
 /* ─── Cream card ─────────────────────────────────────────────── */
 .card {
   background: var(--cream);
@@ -69,6 +73,39 @@
   border-color: var(--navy);
 }
 
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footerCta {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--navy);
+  color: #ffffff;
+  font-size: var(--button-size);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.footerCta:hover {
+  background: var(--navy-dark);
+}
+
+.burgundy .footerCta {
+  background: #ffffff;
+  color: var(--burgundy);
+}
+
+.burgundy .footerCta:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .card {
@@ -119,4 +156,13 @@
 
 .burgundy .photo {
   background: rgba(255, 255, 255, 0.08);
+}
+
+.burgundy .cta {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.burgundy .cta:hover {
+  border-color: #ffffff;
 }

@@ -1,0 +1,36 @@
+.form {
+  color: var(--navy);
+}
+
+.step {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--navy);
+}
+
+.pill {
+  color: var(--navy);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.pillActive {
+  background: var(--navy);
+  color: white;
+  border-color: var(--navy);
+}
+
+.input,
+.textarea {
+  color: var(--navy);
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--navy);
+  opacity: 0.25;
+}
+
+.success h2,
+.success p {
+  color: var(--navy);
+}

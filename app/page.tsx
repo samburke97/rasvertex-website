@@ -4,6 +4,8 @@ import PartnersCarousel from "./components/homepage/PartnersCarousel";
 import RopeAccessSection from "./components/homepage/RopeAccessSection";
 import PartnersSection from "./components/homepage/PatnersSection";
 import ServiceAccordion from "./components/shared/ServiceAccordion";
+import ServiceCards from "./components/shared/ServiceCards";
+import { WHO_WE_WORK_FOR_CARDS } from "./data/homepageWhoWeWorkForData";
 import CaseStudy from "./components/homepage/CaseStudy";
 import TestimonialsSection from "./components/homepage/TestimonialSection";
 import { PROCESS_STEPS, PROCESS_STATEMENT } from "./data/homepageProcessData";
@@ -25,6 +27,16 @@ export default function Home() {
 
       <section className="px-10 py-20" aria-labelledby="rope-access-heading">
         <RopeAccessSection />
+      </section>
+
+      <section className="px-10 py-20" aria-label="Who we work for">
+        <ServiceCards
+          embedded
+          cards={WHO_WE_WORK_FOR_CARDS}
+          heading="Who we work for."
+          footerCtaLabel="Get a free quote →"
+          footerCtaHref="/contact"
+        />
       </section>
 
       <section className="px-10 py-20" aria-labelledby="partner-heading">

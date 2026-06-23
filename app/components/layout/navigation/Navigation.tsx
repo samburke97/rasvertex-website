@@ -83,7 +83,7 @@ export default function Navigation() {
               <Image
                 src="/logo.png"
                 alt="RAS-VERTEX"
-                width={100}
+                width={160}
                 height={40}
                 priority
                 style={{ objectFit: "contain" }}

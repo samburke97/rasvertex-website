@@ -18,6 +18,9 @@ interface ServiceCardsProps {
   heading?: string;
   ariaLabel?: string;
   variant?: "cream" | "burgundy";
+  embedded?: boolean;
+  footerCtaLabel?: string;
+  footerCtaHref?: string;
 }
 
 export default function ServiceCards({
@@ -25,9 +28,17 @@ export default function ServiceCards({
   heading = "Who we work for.",
   ariaLabel = "Who we work for",
   variant = "cream",
+  embedded = false,
+  footerCtaLabel,
+  footerCtaHref,
 }: ServiceCardsProps) {
+  const Wrapper = embedded ? "div" : "section";
+
   return (
-    <section className={styles.wrap} aria-label={ariaLabel}>
+    <Wrapper
+      className={`${styles.wrap} ${embedded ? styles.embedded : ""}`}
+      aria-label={embedded ? undefined : ariaLabel}
+    >
       <div
         className={`${styles.card} ${variant === "burgundy" ? styles.burgundy : ""}`}
       >
@@ -60,7 +71,15 @@ export default function ServiceCards({
             </article>
           ))}
         </div>
+
+        {footerCtaLabel && footerCtaHref && (
+          <div className={styles.footer}>
+            <Link href={footerCtaHref} className={styles.footerCta}>
+              {footerCtaLabel}
+            </Link>
+          </div>
+        )}
       </div>
-    </section>
+    </Wrapper>
   );
 }
