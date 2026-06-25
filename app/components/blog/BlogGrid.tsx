@@ -1,5 +1,8 @@
+"use client";
+
 // app/components/blog/BlogGrid.tsx
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BLOG_POSTS, type BlogPost } from "../../data/blogData";
@@ -13,107 +16,117 @@ function formatDate(iso: string) {
   });
 }
 
-function BlogCard({
-  post,
-  featured = false,
-}: {
-  post: BlogPost;
-  featured?: boolean;
-}) {
+function FeaturedCard({ post }: { post: BlogPost }) {
   return (
-    <article
-      className={`${styles.card} ${featured ? styles.cardFeatured : ""}`}
-      aria-labelledby={`post-${post.slug}`}
-    >
-      <Link
-        href={`/blog/${post.slug}`}
-        className={styles.cardLink}
-        tabIndex={-1}
-        aria-hidden="true"
-      >
-        <div className={styles.imageWrap}>
-          <Image
-            src={post.coverImage}
-            alt={post.coverAlt}
-            fill
-            className={styles.image}
-            sizes={
-              featured
-                ? "(max-width: 860px) 100vw, 55vw"
-                : "(max-width: 860px) 100vw, 33vw"
-            }
-          />
-        </div>
-      </Link>
-
-      <div className={styles.body}>
+    <Link href={`/blog/${post.slug}`} className={styles.featuredCard} aria-label={post.title}>
+      {/* Left — text */}
+      <div className={styles.featuredBody}>
         <div className={styles.meta}>
           <span className={styles.category}>{post.category}</span>
           <span className={styles.dot} aria-hidden="true" />
           <time dateTime={post.publishedAt} className={styles.date}>
             {formatDate(post.publishedAt)}
           </time>
-          <span className={styles.dot} aria-hidden="true" />
-          <span className={styles.read}>{post.readingTime} min read</span>
         </div>
 
-        <h2 id={`post-${post.slug}`} className={styles.title}>
+        <h2>{post.title}</h2>
+
+        <p className={styles.featuredExcerpt}>{post.excerpt}</p>
+
+        <div className={styles.featuredFooter}>
+          <span className={styles.readMore}>Read article →</span>
+        </div>
+      </div>
+
+      {/* Right — image */}
+      <div className={styles.featuredImageWrap}>
+        <Image
+          src={post.coverImage}
+          alt={post.coverAlt}
+          fill
+          className={styles.image}
+          sizes="(max-width: 860px) 100vw, 50vw"
+          priority
+        />
+      </div>
+    </Link>
+  );
+}
+
+function GridCard({ post }: { post: BlogPost }) {
+  return (
+    <article className={styles.card} aria-labelledby={`post-${post.slug}`}>
+      <Link href={`/blog/${post.slug}`} className={styles.cardImageLink} tabIndex={-1} aria-hidden="true">
+        <div className={styles.imageWrap}>
+          <Image
+            src={post.coverImage}
+            alt={post.coverAlt}
+            fill
+            className={styles.image}
+            sizes="(max-width: 860px) 100vw, 33vw"
+          />
+        </div>
+      </Link>
+
+      <div className={styles.cardBody}>
+        <span className={styles.category}>{post.category}</span>
+        <h3 id={`post-${post.slug}`}>
           <Link href={`/blog/${post.slug}`} className={styles.titleLink}>
             {post.title}
           </Link>
-        </h2>
-
-        <p className={styles.excerpt}>{post.excerpt}</p>
-
-        <div className={styles.footer}>
-          <div className={styles.author}>
-            <div className={styles.avatarWrap}>
-              <Image
-                src={post.author.avatar}
-                alt={post.author.name}
-                fill
-                className={styles.avatar}
-              />
-            </div>
-            <span className={styles.authorName}>{post.author.name}</span>
-          </div>
-
-          <Link
-            href={`/blog/${post.slug}`}
-            className={styles.readMore}
-            aria-label={`Read: ${post.title}`}
-          >
-            Read →
-          </Link>
-        </div>
+        </h3>
+        <p className={styles.cardExcerpt}>{post.excerpt}</p>
+        <Link href={`/blog/${post.slug}`} className={styles.readMore} aria-label={`Read: ${post.title}`}>
+          Read more →
+        </Link>
       </div>
     </article>
   );
 }
 
+const INITIAL_COUNT = 3;
+
 export default function BlogGrid() {
-  // Always newest-first — sort by publishedAt descending.
-  // Spread to avoid mutating the source array.
   const sorted = [...BLOG_POSTS].sort(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
 
   const [featured, ...rest] = sorted;
+  const [showAll, setShowAll] = useState(false);
+
+  const visible = showAll ? rest : rest.slice(0, INITIAL_COUNT);
+  const hasMore = !showAll && rest.length > INITIAL_COUNT;
 
   return (
     <div className={styles.wrap}>
-      {/* Featured post — most recent */}
-      <div className={styles.featuredRow}>
-        <BlogCard post={featured} featured />
+      {/* Hero featured post */}
+      <FeaturedCard post={featured} />
+
+      {/* Section heading */}
+      <div className={styles.sectionHead}>
+        <h1>Insights from<br />the field.</h1>
       </div>
 
-      {/* Remaining posts grid */}
+      {/* Grid */}
       {rest.length > 0 && (
         <div className={styles.grid}>
-          {rest.map((post) => (
-            <BlogCard key={post.slug} post={post} />
+          {visible.map((post) => (
+            <GridCard key={post.slug} post={post} />
           ))}
+        </div>
+      )}
+
+      {/* Load more */}
+      {hasMore && (
+        <div className={styles.loadMoreWrap}>
+          <button
+            onClick={() => setShowAll(true)}
+            className={styles.loadMoreBtn}
+            aria-label="Load more articles"
+          >
+            Load more ↓
+          </button>
         </div>
       )}
     </div>

@@ -373,7 +373,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 }
 
 /** Returns `count` related posts sorted newest-first, excluding current slug. */
-export function getRelatedPosts(slug: string, count = 2): BlogPost[] {
+export function getRelatedPosts(slug: string, count = 3): BlogPost[] {
   return getSortedPosts()
     .filter((p) => p.slug !== slug)
     .slice(0, count);

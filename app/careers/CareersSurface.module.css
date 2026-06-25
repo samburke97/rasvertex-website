@@ -1,63 +1,152 @@
+/* app/careers/CareersSurface.module.css */
+
 .surface {
-  display: grid;
-  grid-template-columns: 1fr 520px;
+  display: flex;
   gap: var(--space-col-gap);
+  align-items: flex-start;
 }
 
+/* ── Left ──────────────────────────────────────────────────────── */
 .left {
+  flex: 0 0 44%;
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
+  width: 100%;
 }
 
-.eyebrow {
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title-to-body);
+  width: 100%;
+}
+
+/* ── Google rating badge ───────────────────────────────────────── */
+.ratingBadge {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.googleIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ratingText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ratingTitle {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+}
+
+.ratingScoreRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ratingScore {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  line-height: 1;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  flex-shrink: 0;
+  margin-left: -2px;
+}
+
+.star:first-child {
+  margin-left: 0;
+}
+
+.ratingCount {
+  font-family: var(--font-body);
   font-size: var(--eyebrow-size);
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
+  color: var(--navy);
   opacity: 0.45;
 }
 
-.heading {
-  max-width: 12ch;
+/* ── Photo ─────────────────────────────────────────────────────── */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--navy-08);
 }
 
-.intro {
-  max-width: 60ch;
+.image {
+  object-fit: cover;
 }
 
+/* ── Benefits checklist ────────────────────────────────────────── */
 .benefits {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .benefit {
   display: flex;
+  align-items: center;
   gap: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-regular);
+  color: var(--navy);
+  line-height: var(--p-leading);
 }
 
-.stats {
-  display: flex;
-  gap: var(--space-2xl);
-  padding-top: var(--space-2xl);
-  border-top: 1px solid var(--line);
+.benefitIcon {
+  flex-shrink: 0;
 }
 
-.stats div {
-  display: flex;
-  flex-direction: column;
+/* ── Right — burgundy form card ────────────────────────────────── */
+.right {
+  flex: 1;
+  position: sticky;
+  top: var(--header-height, 72px);
+  align-self: flex-start;
+  background: var(--cream);
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
 }
 
-.stats strong {
-  font-size: var(--h2-size);
-}
-
-.stats span {
-  opacity: 0.6;
-}
-
-@media (max-width: 960px) {
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 860px) {
   .surface {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: var(--space-3xl);
+  }
+
+  .left {
+    flex: 1 1 auto;
+  }
+
+  .right {
+    position: static;
+    width: 100%;
   }
 }

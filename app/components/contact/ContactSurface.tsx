@@ -299,7 +299,7 @@ export default function ContactSurface() {
                 </div>
               </div>
 
-              <h3 className={styles.stepTitle}>{STEP_LABELS[step]}</h3>
+              <h3>{STEP_LABELS[step]}</h3>
 
               <div className={styles.stepBody}>
                 {step === 1 && (

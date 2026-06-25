@@ -7,10 +7,71 @@
   overflow: hidden;
 }
 
-/* ── Heading — left-aligned h3, inherits Inter bold from globals ── */
+/* ── Header row: title left, rating badge right ─────────────── */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-col-gap);
+  padding: 0 var(--space-x);
+}
+
 .label {
   margin: 0;
-  padding: 0 var(--space-x);
+}
+
+/* ── Google rating badge ─────────────────────────────────────── */
+.ratingBadge {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.googleIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ratingText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ratingTitle {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+}
+
+.ratingScoreRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ratingScore {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  line-height: 1;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.ratingCount {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.45;
 }
 
 /* ── Logo marquee ───────────────────────────────────────────── */
@@ -72,13 +133,16 @@
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .label {
+  .header {
     padding: 0 var(--space-x-xs);
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-xl);
   }
 }
 
 @media (max-width: 560px) {
-  .label {
+  .header {
     padding: 0 var(--space-x-2xs);
   }
 }

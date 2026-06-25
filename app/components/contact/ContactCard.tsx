@@ -1,7 +1,7 @@
 // app/components/contact/ContactCard.tsx
 
 import Image from "next/image";
-import ContactForm from "./ContactForm";
+import ContactForm from "../../contact/ContactForm";
 import styles from "./ContactCard.module.css";
 
 export default function ContactCard() {

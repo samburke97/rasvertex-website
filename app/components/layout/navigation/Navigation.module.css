@@ -29,7 +29,6 @@
   right: 0;
   z-index: 50;
   background: #ffffff;
-  border-bottom: 1px solid var(--navy-08);
   transform: translateY(0);
   transition: transform 0.3s ease-in-out;
 }

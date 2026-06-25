@@ -1,27 +1,35 @@
 /* app/components/homepage/TestimonialSection.module.css */
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: var(--space-col-gap);
-  align-items: start;
-}
-
-.heading {
-  /* h2 inherits from globals */
-}
-
-.right {
+.section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-xl);
-  animation: fadeIn var(--duration-slow) var(--ease-out) both;
+  cursor: grab;
+  user-select: none;
+}
+
+.section:active {
+  cursor: grabbing;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  text-align: center;
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  pointer-events: none;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -31,7 +39,7 @@
 
 .quoteMark {
   font-family: var(--font-body);
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: var(--weight-bold);
   line-height: 0.6;
   color: var(--burgundy);
@@ -43,30 +51,33 @@
 
 .quote p {
   font-family: var(--font-body);
-  font-size: clamp(1.375rem, 2.8vw, 2.25rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: var(--weight-light);
   line-height: 1.35;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   color: var(--navy);
   margin: 0;
+  text-align: center;
 }
 
 .author {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .authorLogo {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   flex-shrink: 0;
 }
 
 .authorInfo {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2px;
 }
 
@@ -85,9 +96,29 @@
   opacity: 0.45;
 }
 
-@media (max-width: 860px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
+/* ─── Dots ─────────────────────────────────────────────────── */
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: all;
+}
+
+.dot {
+  width: 24px;
+  height: 3px;
+  border-radius: 3px;
+  border: none;
+  background: var(--navy-12);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.3s ease,
+    width 0.3s ease;
+}
+
+.dotActive {
+  background: var(--navy);
+  width: 36px;
 }

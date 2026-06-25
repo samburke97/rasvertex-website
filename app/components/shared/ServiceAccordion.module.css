@@ -38,7 +38,7 @@
 
 .inner {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-col-gap);
   align-items: stretch;
 }
@@ -46,7 +46,7 @@
 /* ─── Left — static photo ────────────────────────────────────── */
 
 .left {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
 }
 
 .photoWrap {

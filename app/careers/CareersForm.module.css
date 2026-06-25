@@ -1,36 +1,331 @@
+/* app/careers/CareersForm.module.css — navy on cream, mirrors ContactSurface form */
+
+.formWrap {
+  padding: var(--space-4xl);
+  display: flex;
+  flex-direction: column;
+  min-height: 720px;
+}
+
 .form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-2xl);
+}
+
+/* ── Honeypot ──────────────────────────────────────────────────── */
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
+}
+
+/* ── Progress ──────────────────────────────────────────────────── */
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.progressLabel {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.progressOf {
+  font-weight: var(--weight-regular);
+  opacity: 0.35;
+}
+
+.progressTrack {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+}
+
+.progressSegment {
+  flex: 1;
+  height: 2px;
+  background: var(--navy-12);
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.progressSegmentActive {
+  background: var(--navy);
+}
+
+/* ── Step title ────────────────────────────────────────────────── */
+.stepTitle {
+  font-family: var(--font-body);
+  font-size: var(--h3-size);
+  line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  margin: 0;
+}
+
+.stepBody {
+  flex: 1;
+}
+
+/* ── Fieldset / fields ─────────────────────────────────────────── */
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
   color: var(--navy);
 }
 
-.step {
-  border-color: rgba(0, 0, 0, 0.15);
-  color: var(--navy);
+.required {
+  color: var(--burgundy);
+  opacity: 1;
+  font-weight: var(--weight-bold);
+}
+
+.optional {
+  font-weight: var(--weight-regular);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ── Pills ─────────────────────────────────────────────────────── */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
 }
 
 .pill {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--navy);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-bold);
   color: var(--navy);
-  border-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  background: var(--navy);
+  color: #ffffff;
 }
 
 .pillActive {
   background: var(--navy);
-  color: white;
   border-color: var(--navy);
+  color: #ffffff;
 }
 
+/* ── Inputs ────────────────────────────────────────────────────── */
 .input,
 .textarea {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
   color: var(--navy);
-  border-bottom-color: rgba(0, 0, 0, 0.15);
+  background: transparent;
+  padding: var(--space-sm) 0;
+  border: none;
+  border-bottom: 1px solid var(--navy-25);
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 0;
+  width: 100%;
 }
 
-.input::placeholder,
-.textarea::placeholder {
-  color: var(--navy);
-  opacity: 0.25;
+.input:focus,
+.textarea:focus {
+  border-bottom-color: var(--navy);
 }
 
-.success h2,
-.success p {
+.textarea {
+  resize: none;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--navy);
+  -webkit-box-shadow: 0 0 0px 1000px var(--cream) inset;
+  box-shadow: 0 0 0px 1000px var(--cream) inset;
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
+  caret-color: var(--navy);
+}
+
+/* ── Resume upload ─────────────────────────────────────────────── */
+.fileInputHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.uploadBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  border: 1px dashed var(--navy-25);
+  border-radius: var(--radius-lg);
+  background: transparent;
   color: var(--navy);
+  opacity: 0.45;
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    opacity 0.15s;
+}
+
+.uploadBox:hover {
+  border-color: var(--navy);
+  opacity: 0.7;
+}
+
+.uploadBoxSub {
+  font-weight: var(--weight-regular);
+}
+
+.resumeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--navy-12);
+}
+
+.resumeName {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  font-weight: var(--weight-medium);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resumeRemove {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.4;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.resumeRemove:hover {
+  opacity: 0.7;
+}
+
+.fileError {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--burgundy);
+  margin: 0;
+}
+
+/* ── Footer ────────────────────────────────────────────────────── */
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-xl);
+}
+
+/* ── Success ───────────────────────────────────────────────────── */
+.success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-lg);
+  min-height: 720px;
+}
+
+.successLink {
+  color: var(--navy);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .formWrap {
+    min-height: 0;
+  }
+
+  .success {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .formWrap {
+    padding: var(--space-2xl);
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
 }

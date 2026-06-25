@@ -168,6 +168,8 @@
   }
 
   .watermarkText {
-    font-size: 28vw;
+    font-size: 20vw;
+    white-space: normal;
+    word-break: normal;
   }
 }

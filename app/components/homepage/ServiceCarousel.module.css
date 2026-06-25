@@ -56,7 +56,8 @@
     cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.slide:hover .mediaWrap {
+.slide:hover .mediaWrap,
+.slideActive .mediaWrap {
   transform: scale(1.06);
 }
 
@@ -75,7 +76,8 @@
   transition: opacity var(--duration-md) var(--ease-out);
 }
 
-.slide:hover .overlay {
+.slide:hover .overlay,
+.slideActive .overlay {
   opacity: 1;
 }
 
@@ -100,7 +102,8 @@
   pointer-events: none;
 }
 
-.slide:hover .cardArrow {
+.slide:hover .cardArrow,
+.slideActive .cardArrow {
   opacity: 1;
   transform: scale(1);
 }
@@ -118,7 +121,8 @@
     transform var(--duration-md) var(--ease-out);
 }
 
-.slide:hover .content {
+.slide:hover .content,
+.slideActive .content {
   opacity: 1;
   transform: translateY(0);
 }
@@ -156,15 +160,16 @@
   }
 }
 
-/* ── Footer row — nav bottom-left, CTA bottom-right, both inset ── */
+/* ── Footer row — mirrors .top column proportions for alignment ── */
 .footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--space-col-gap);
   padding: 0 var(--space-x);
 }
 
 .nav {
+  margin-left: auto;
   display: flex;
   gap: var(--space-sm);
 }
@@ -185,6 +190,58 @@
 
 .navBtn:hover {
   opacity: 0.5;
+}
+
+.ratingBadge {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.googleIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ratingText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ratingTitle {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+}
+
+.ratingScoreRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ratingScore {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  line-height: 1;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.ratingCount {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.45;
 }
 
 .cta {
@@ -223,6 +280,9 @@
   .slide {
     flex: 0 0 42vw;
   }
+  .footer {
+    gap: var(--space-col-gap-sm);
+  }
 }
 
 @media (max-width: 860px) {
@@ -237,15 +297,5 @@
   }
   .slideDown {
     margin-top: 0;
-  }
-  .footer {
-    flex-direction: column-reverse;
-    gap: var(--space-md);
-    align-items: stretch;
-    padding: 0 var(--space-x-2xs);
-  }
-  .cta {
-    width: 100%;
-    justify-content: center;
   }
 }

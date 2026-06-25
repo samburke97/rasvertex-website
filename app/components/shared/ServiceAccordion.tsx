@@ -19,7 +19,7 @@ interface ServiceAccordionProps {
   /** Plain text version for aria-label — required when heading is JSX */
   ariaLabel?: string;
   statement?: string;
-  ctaLabel?: string;
+  ctaLabel?: string | null;
   ctaHref?: string;
   statementCtaLabel?: string;
   statementCtaHref?: string;
@@ -31,10 +31,10 @@ export default function ServiceAccordion({
   heading,
   ariaLabel,
   statement,
-  ctaLabel = "Not sure? Let's talk about it →",
+  ctaLabel,
   ctaHref = "/contact",
-  statementCtaLabel = "Get a free quote →",
-  statementCtaHref = "/contact",
+  statementCtaLabel = "Learn more about RAS-VERTEX →",
+  statementCtaHref = "/about",
   services,
   headingId = "accordion-heading",
 }: ServiceAccordionProps) {
@@ -59,7 +59,7 @@ export default function ServiceAccordion({
 
       {/* ── Two-column body ── */}
       <div className={styles.inner}>
-        {/* Left — sticky photo */}
+        {/* Left — photo */}
         <div className={styles.left}>
           <div className={styles.photoWrap}>
             {services.map((s, i) => (
@@ -80,7 +80,7 @@ export default function ServiceAccordion({
           </div>
         </div>
 
-        {/* Right — accordion + CTA */}
+        {/* Right — sticky accordion + CTA */}
         <div className={styles.right}>
           <div
             className={styles.list}
@@ -141,11 +141,13 @@ export default function ServiceAccordion({
             })}
           </div>
 
-          <div className={styles.bottomRow}>
-            <Link href={ctaHref} className={styles.bottomCta}>
-              {ctaLabel}
-            </Link>
-          </div>
+          {ctaLabel && (
+            <div className={styles.bottomRow}>
+              <Link href={ctaHref} className={styles.bottomCta}>
+                {ctaLabel}
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

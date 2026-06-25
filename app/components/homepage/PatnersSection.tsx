@@ -1,85 +1,88 @@
 // app/components/homepage/PartnerSection.tsx
 
 import Image from "next/image";
-import Link from "next/link";
+import Button from "../ui/Button";
 import styles from "./PartnersSection.module.css";
 
 const CARDS = [
   {
     image: "/images/projects/1.jpeg",
-    imageAlt: "25 years painting buildings on the Sunshine Coast",
-    heading: "25 years on the Coast.",
-    body: "We started here before half the foreshore developments were built. Same postcode, same salt air, same substrate conditions — every system we spec is chosen for this environment, not borrowed from a Brisbane job sheet.",
+    imageAlt: "Residential property maintenance — RAS-VERTEX Sunshine Coast",
+    heading: "Residential.",
+    body: "We've been looking after homes on the Sunshine Coast for 25 years — painting, cleaning, waterproofing and maintenance. You'll meet your project manager before work starts, and they'll be on the other end of the phone until you're happy.",
   },
   {
-    image: "/nav/painting.png",
-    imageAlt: "RAS-VERTEX project manager on a Sunshine Coast job site",
-    heading: "One partner. Every challenge.",
-    body: "Every person on your site is a direct RAS-VERTEX employee. One dedicated project manager runs your job from site visit to sign-off — one number, one thread, weekly photo updates, no handoffs, no subbies turning up unannounced.",
+    image: "/images/projects/2.jpeg",
+    imageAlt: "Commercial property maintenance — RAS-VERTEX Sunshine Coast",
+    heading: "Commercial.",
+    body: "We know a closed shopfront or disrupted tenant costs you money. That's why we schedule around you — after hours, weekends, whatever it takes. One team across every trade, so you're not coordinating separate contractors.",
   },
   {
-    image: "/nav/maintenance.png",
-    imageAlt: "Dedicated building maintenance team on the Sunshine Coast",
-    heading: "One team for your entire building.",
-    body: "Painting, cleaning, waterproofing, height safety, remedial repairs — one dedicated team across every trade, every floor, every quarter. We've been doing this for 25 years because property managers don't want five contractors. They want one partner who actually knows the building.",
+    image: "/images/projects/2.jpeg",
+    imageAlt: "Body corporate and strata maintenance — RAS-VERTEX",
+    heading: "Body corporate & strata.",
+    body: "We've worked with enough committees to know what matters: clear communication before work starts, no surprises for residents, and results the whole building is proud of. We handle the scheduling, the access, the documentation — across every service.",
   },
 ];
 
 export default function PartnerSection() {
   return (
-    <section className={styles.section} aria-labelledby="partner-heading">
-      {/* ── Header: h2 left, body right ── */}
-      <header className={styles.header}>
-        <h2 id="partner-heading">Your partner on the Coast.</h2>
-        <p>
-          Every person on your site is a direct RAS-VERTEX employee — no
-          subbies, no labour hire. One dedicated project manager runs your job
-          from first call to sign-off, with weekly photo updates and a single
-          thread to keep everything on track. We service body corporates,
-          commercial properties, and homes from Noosa to Caloundra.
-        </p>
-      </header>
+    <div className={styles.inner}>
 
-      <div className={styles.rule} aria-hidden="true" />
+      {/* ── Left col: sticky wrapper — flattened on mobile via display:contents ── */}
+      <div className={styles.leftCol}>
+        <div className={styles.leftTop}>
+          <h2 id="partner-heading">Your partner on the Coast.</h2>
+          <p className="p-soft">
+            Every person on your site is a direct RAS-VERTEX employee — no
+            subbies, no labour hire. One dedicated project manager runs your
+            job from first call to sign-off, with weekly photo updates and a
+            single thread to keep everything on track.
+          </p>
+        </div>
 
-      {/* ── Cards ── */}
-      <ul
-        className={styles.grid}
-        role="list"
-        aria-label="Why choose RAS-VERTEX"
-      >
+        <div className={styles.ctaCard}>
+          <div className={styles.ctaAvatar}>
+            <Image
+              src="/images/people/caro.jpg"
+              alt="Hylton — Operations Lead at RAS-VERTEX"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <h3 className={styles.ctaHeading}>
+            Ready to talk about your project?
+          </h3>
+          <p className={styles.ctaBody}>
+            One call to Hylton and you&rsquo;ll know exactly where you stand.
+          </p>
+          <Button as="link" href="/contact" variant="primary" size="sm" aria-label="Talk to Hylton about your project">
+            Let&rsquo;s talk about your project →
+          </Button>
+        </div>
+      </div>
+
+      {/* ── Right: stacked cards ── */}
+      <div className={styles.right}>
         {CARDS.map((c) => (
-          <li key={c.heading} className={styles.card}>
-            <div className={styles.photo}>
+          <article key={c.heading} className={styles.card} aria-label={c.heading}>
+            <div className={styles.imageWrap}>
               <Image
                 src={c.image}
                 alt={c.imageAlt}
                 fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 860px) 100vw, 33vw"
+                className={styles.image}
+                sizes="(max-width: 860px) 100vw, 50vw"
               />
             </div>
-            <div className={styles.content}>
+            <div className={styles.cardBody}>
               <h3>{c.heading}</h3>
-              <p>{c.body}</p>
+              <p className="p-soft">{c.body}</p>
             </div>
-          </li>
+          </article>
         ))}
-      </ul>
-
-      {/* ── Footer ── */}
-      <div className={styles.footer}>
-        <Link href="/company" className={styles.textLink}>
-          More about our team →
-        </Link>
-        <Link
-          href="/contact"
-          className={styles.cta}
-          aria-label="Get a free quote from RAS-VERTEX"
-        >
-          Get a free quote →
-        </Link>
       </div>
-    </section>
+
+    </div>
   );
 }

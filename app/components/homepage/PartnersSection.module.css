@@ -1,157 +1,133 @@
 /* app/components/homepage/PartnerSection.module.css */
 
-.section {
+/* ─── Two-column wrapper ─────────────────────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-col-gap);
+  align-items: start;
+}
+
+/* ─── Left col: sticky container, heading top / CTA bottom ───── */
+.leftCol {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  height: calc(100vh - 96px - var(--space-col-gap));
+  max-height: 900px;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
-/* ── Header ─────────────────────────────────────────────────── */
-.header {
+.leftTop {
   display: flex;
-  align-items: flex-end;
-  gap: var(--space-col-gap);
-  padding-bottom: var(--space-4xl);
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
-.header h2 {
-  flex: 1 1 45%;
-}
-
-.header p {
-  flex: 0 0 42%;
-  opacity: 0.65;
-  padding-bottom: 4px;
-}
-
-/* ── Divider ────────────────────────────────────────────────── */
-.rule {
-  height: 1px;
-  background: var(--line);
-}
-
-/* ── Grid ───────────────────────────────────────────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3xl) var(--space-lg);
-  padding-top: var(--space-4xl);
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.card {
+/* ─── CTA card — pushed to bottom of sticky col ─────────────── */
+.ctaCard {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  align-items: flex-start;
 }
 
-.photo {
+.ctaAvatar {
   position: relative;
-  aspect-ratio: 3 / 2;
+  width: 80px;
+  height: 96px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--navy-08);
+}
+
+.ctaHeading {
+  font-family: var(--font-body);
+  font-size: var(--h3-size);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--h3-tracking);
+  color: var(--navy);
+  margin: 0;
+  line-height: var(--h3-leading);
+}
+
+.ctaBody {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--p-leading);
+  color: var(--navy);
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* ─── Right: stacked cards ───────────────────────────────────── */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5xl);
+}
+
+/* ─── Card ───────────────────────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: var(--navy-08);
 }
 
-.photo img {
+.image {
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--duration-slow)
+    cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.card:hover .photo img {
+.card:hover .image {
   transform: scale(1.03);
 }
 
-.content {
+.cardBody {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-lg);
 }
 
-/* h3 inherits globals */
-
-.content p {
-  opacity: 0.65;
-}
-
-/* ── Footer ─────────────────────────────────────────────────── */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: var(--space-4xl);
-  margin-top: var(--space-4xl);
-  border-top: 1px solid var(--line);
-}
-
-.textLink {
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
-  color: var(--navy);
-  text-decoration: none;
-  opacity: 0.55;
-  transition: opacity var(--duration-fast) var(--ease-out);
-}
-
-.textLink:hover {
-  opacity: 1;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  padding: 14px 28px;
-  background: var(--navy);
-  color: var(--background);
-  border-radius: var(--radius-xl);
-  font-family: var(--font-body);
-  font-size: var(--button-size);
-  font-weight: var(--weight-semibold);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background var(--duration-fast) var(--ease-out);
-}
-
-.cta:hover {
-  background: var(--navy-dark);
-}
-
-/* ── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .header {
-    gap: var(--space-col-gap-sm);
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .header {
+  .inner {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-lg);
-    padding-bottom: var(--space-3xl);
+    gap: var(--space-3xl);
   }
 
-  .header h2,
-  .header p {
-    flex: 1 1 auto;
-    padding-bottom: 0;
+  /* Flatten the wrapper so children join the flex column flow */
+  .leftCol {
+    display: contents;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
+  /* Reorder: heading → cards → CTA */
+  .leftTop {
+    order: 1;
   }
 
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-lg);
+  .right {
+    order: 2;
+    gap: var(--space-3xl);
+  }
+
+  .ctaCard {
+    order: 3;
+    margin-top: 0;
   }
 }

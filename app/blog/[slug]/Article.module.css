@@ -1,26 +1,59 @@
 /* app/blog/[slug]/Article.module.css */
 
-/* ─── Header ─────────────────────────────────────────────────── */
+/* ─── Hero section wrapper ───────────────────────────────────── */
+.heroSection {
+  padding-bottom: var(--space-3xl);
+}
+
+/* ─── Two-column hero grid ───────────────────────────────────── */
+.articleHero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-col-gap);
+  align-items: start;
+}
+
+/* ─── Left column — text (sticks while image scrolls) ───────── */
 .articleHeader {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
-  max-width: 720px;
+  gap: var(--space-md);
+  position: sticky;
+  top: 88px;
 }
 
-.back {
+/* ─── Breadcrumb ─────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.breadcrumbLink {
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-medium);
   color: var(--navy);
-  opacity: 0.45;
   text-decoration: none;
   transition: opacity 0.2s;
-  width: fit-content;
 }
 
-.back:hover {
-  opacity: 1;
+.breadcrumbLink:hover {
+  opacity: 0.55;
+}
+
+.breadcrumbSep {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.3;
+}
+
+.breadcrumbCurrent {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
 }
 
 .headerMeta {
@@ -44,7 +77,6 @@
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   color: var(--navy);
-  opacity: 0.5;
 }
 
 .metaDot {
@@ -66,7 +98,6 @@
   font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
   line-height: 1.65;
   color: var(--navy);
-  opacity: 0.65;
   margin: 0;
   max-width: 58ch;
 }
@@ -75,15 +106,14 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--line);
+  margin-top: var(--space-lg);
 }
 
 .avatarWrap {
   position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 44px;
+  height: 56px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -107,18 +137,24 @@
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.4;
   margin: 0;
 }
 
-/* ─── Cover image ────────────────────────────────────────────── */
+.authorDate {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+  margin-top: 2px;
+}
+
+/* ─── Right column — cover image ────────────────────────────── */
 .coverWrap {
   position: relative;
-  width: 100%;
-  aspect-ratio: 21 / 9;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: var(--navy-08);
+  min-height: 640px;
 }
 
 .cover {
@@ -137,7 +173,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
-  max-width: 680px;
+  max-width: 80%;
+}
+
+@media (max-width: 1100px) {
+  .prose {
+    max-width: 100%;
+  }
 }
 
 .bodyP {
@@ -258,8 +300,8 @@
 
 .relatedGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-col-gap);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-col-gap) var(--space-3xl);
 }
 
 .relatedCard {
@@ -321,7 +363,12 @@
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
+  .articleHero {
+    grid-template-columns: 1fr;
+  }
+
   .coverWrap {
+    min-height: 260px;
     aspect-ratio: 16 / 9;
   }
 

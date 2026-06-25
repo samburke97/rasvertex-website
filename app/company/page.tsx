@@ -1,12 +1,12 @@
 // app/company/page.tsx
 
 import type { Metadata } from "next";
-import Link from "next/link";
-import AboutHero from "../components/about/AboutHero";
-import CompanyTimeline from "../components/about/CompanyTimeline";
-import AboutServices from "../components/about/AboutServices";
-import Carousel from "../components/homepage/Carousel";
-import TestimonialsSection from "../components/homepage/TestimonialSection";
+import ServiceHero from "../components/shared/ServiceHero";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+import PhotoGrid from "../components/shared/PhotoGrid";
+import TeamSection from "../components/about/TeamSection";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import TrustBanner from "../components/about/TrustBanner";
 import PartnersCarousel from "../components/homepage/PartnersCarousel";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import { FAQS, FAQ_CONTACT } from "../data/companyData";
@@ -40,130 +40,56 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main aria-label="About RAS-VERTEX">
-      {/* ── Hero: headline + lede + PhotoGrid ── */}
-      <section className="px-10 pt-10 pb-20" aria-labelledby="about-heading">
-        <AboutHero />
-      </section>
-
-      {/* ── Interactive scroll timeline ── */}
-      <section className="px-10 pb-20" aria-labelledby="timeline-heading">
-        <CompanyTimeline />
-      </section>
-
-      {/* ── Why us carousel ── */}
-      <section className="px-10 pb-20" aria-label="Why choose RAS-VERTEX">
-        <Carousel />
-      </section>
-
-      {/* ── Partners marquee — full bleed ── */}
-      <section
-        className="py-20"
-        aria-label="Industry partners and associations"
-      >
-        <PartnersCarousel />
-      </section>
-
-      {/* ── Services: sticky left + stacked cards ── */}
-      <section className="px-10 py-20" aria-labelledby="services-heading">
-        <AboutServices />
-      </section>
-
-      {/* ── Testimonials — homepage component ── */}
-      <section className="px-10 py-20" aria-label="Client testimonials">
-        <TestimonialsSection />
-      </section>
-
-      {/* ── FAQ + contact CTA ── */}
-      <section className="px-10 py-20" aria-labelledby="company-faq-heading">
-        <ServiceFAQ
-          heading="Common questions."
-          items={FAQS}
-          contact={FAQ_CONTACT}
-          headingId="company-faq-heading"
+      {/* ── Hero ── */}
+      <section className="pt-20" aria-labelledby="about-hero-heading">
+        <ServiceHero
+          heading={
+            <>
+              The Sunshine Coast&rsquo;s complete
+              <br />
+              property maintenance partner.
+            </>
+          }
+          lede="Painting, cleaning, waterproofing, height safety and rope access — for body corporates, strata, commercial properties, and homes from Noosa to Caloundra."
+          headingId="about-hero-heading"
         />
       </section>
 
-      {/* ── Closing CTA ── */}
-      <section
-        className="px-10 py-20"
-        aria-label="Get in touch with RAS-VERTEX"
-        style={{ borderTop: "1px solid var(--line)" }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "var(--space-col-gap)",
-            alignItems: "end",
-          }}
-        >
-          <h2>
-            Ready to talk about
-            <br />
-            your building?
-          </h2>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "var(--space-md)",
-            }}
-          >
-            <p className="p-soft">
-              One call to Hylton and you&rsquo;ll know exactly where you stand.
-              We&rsquo;ll be on site within 48 hours, no obligation.
-            </p>
-            <div
-              style={{
-                display: "flex",
-                gap: "var(--space-md)",
-                flexWrap: "wrap",
-              }}
-            >
-              <Link
-                href="/contact"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  height: "48px",
-                  padding: "0 var(--space-xl)",
-                  borderRadius: "var(--radius-full)",
-                  background: "var(--navy)",
-                  color: "#ffffff",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--button-size)",
-                  fontWeight: "var(--weight-bold)",
-                  textDecoration: "none",
-                  whiteSpace: "nowrap",
-                }}
-                aria-label="Request a free quote from RAS-VERTEX"
-              >
-                Get a free quote
-              </Link>
-              <a
-                href="tel:0754379355"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  height: "48px",
-                  padding: "0 var(--space-xl)",
-                  borderRadius: "var(--radius-full)",
-                  border: "1px solid var(--navy)",
-                  background: "transparent",
-                  color: "var(--navy)",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--button-size)",
-                  fontWeight: "var(--weight-bold)",
-                  textDecoration: "none",
-                  whiteSpace: "nowrap",
-                }}
-                aria-label="Call RAS-VERTEX on (07) 5437 9355"
-              >
-                (07) 5437 9355
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* ── Photo grid ── */}
+      <section className="px-10 pb-30" aria-label="Recent work">
+        <PhotoGrid showHeader={false} />
+      </section>
+
+      {/* ── Team section ── */}
+      <section className="px-10 pb-30" aria-labelledby="team-section-heading">
+        <TeamSection />
+      </section>
+
+      {/* ── Trust banner ── */}
+      <section className="px-10 pb-30" aria-label="Why trust RAS-VERTEX">
+        <TrustBanner />
+      </section>
+
+      {/* ── Services carousel ── */}
+      <section className="py-30" aria-labelledby="services-label">
+        <h2 id="services-label" className="px-10 pb-20">
+          We partner with sunshine coast locals to take care of <br /> their
+          complete property maintenance needs.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES}
+          ariaLabel="RAS-VERTEX services"
+        />
+      </section>
+
+      {/* ── Partners marquee — no header ── */}
+      <section aria-label="Industry partners">
+        <PartnersCarousel />
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="px-10 py-30" aria-label="Frequently asked questions">
+        <ServiceFAQ items={FAQS} contact={FAQ_CONTACT} />
       </section>
     </main>
   );

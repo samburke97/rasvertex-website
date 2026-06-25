@@ -1,5 +1,12 @@
 /* app/components/ui/Pagination.module.css */
 
+.centeredRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
 .row {
   display: flex;
   align-items: center;

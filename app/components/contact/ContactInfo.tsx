@@ -14,7 +14,7 @@ export default function ContactInfo() {
     <aside className={styles.aside} aria-label="Contact information">
       {/* ── Headline ── */}
       <div className={styles.top}>
-        <h1 className={styles.headline}>
+        <h1>
           Let&rsquo;s talk
           <br />
           about your

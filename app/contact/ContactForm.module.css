@@ -84,7 +84,7 @@
   background: none;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold);
   color: #ffffff;
   cursor: pointer;
   transition:

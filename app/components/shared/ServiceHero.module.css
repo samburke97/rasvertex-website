@@ -12,6 +12,7 @@
   gap: var(--space-col-gap);
   padding-left: var(--space-x);
   padding-right: var(--space-x);
+  padding-top: var(--space-x);
   padding-bottom: var(--space-4xl);
 }
 
@@ -20,7 +21,7 @@
 }
 
 .topRight {
-  flex: 0 0 28%;
+  flex: 0 0 36%;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);

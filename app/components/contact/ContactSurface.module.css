@@ -111,10 +111,6 @@
   border-right: 1px solid var(--navy-12);
 }
 
-.contactBox:nth-child(2) {
-  border-bottom: 1px solid var(--navy-12);
-}
-
 .contactBox:nth-child(3) {
   border-right: 1px solid var(--navy-12);
   border-top: 1px solid var(--navy-12);
@@ -268,7 +264,7 @@
   background: #ffffff;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold);
   color: var(--navy);
   cursor: pointer;
   transition:
@@ -314,7 +310,6 @@
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.45;
 }
 
 .required {
@@ -470,7 +465,8 @@
 }
 
 .photoThumbRemove:hover {
-  background: var(--navy-08);
+  background: var(--navy);
+  color: #ffffff;
 }
 
 .formFooter {

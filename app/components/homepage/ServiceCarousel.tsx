@@ -5,14 +5,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import styles from "./ServiceCarousel.module.css";
 
 export interface ServiceCarouselSlide {
   src: string;
   alt: string;
   title: string;
-  body: string;
+  body?: string;
   href: string;
   mediaType: "image" | "video";
 }
@@ -46,6 +46,8 @@ export default function ServiceCarousel({
     align: "start",
   });
 
+  const [activeIdx, setActiveIdx] = useState(0);
+
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
@@ -55,13 +57,14 @@ export default function ServiceCarousel({
     <div className={styles.wrap}>
       <div className={styles.carouselWrap} role="region" aria-label={ariaLabel}>
         <div className={styles.carousel} ref={emblaRef}>
-          <div className={styles.track}>
+          <div className={styles.track} onMouseLeave={() => setActiveIdx(0)}>
             {slides.map((slide, i) => (
               <Link
                 key={i}
                 href={slide.href}
-                className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""}`}
+                className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""} ${activeIdx === i ? styles.slideActive : ""}`}
                 aria-label={`${slide.title} — learn more`}
+                onMouseEnter={() => setActiveIdx(i)}
               >
                 <div className={styles.mediaWrap}>
                   {slide.mediaType === "video" ? (
@@ -99,7 +102,7 @@ export default function ServiceCarousel({
         </div>
       </div>
 
-      {/* ── Footer row — arrows bottom-left, CTA bottom-right ── */}
+      {/* ── Footer row — CTA left, arrows right ── */}
       <div className={styles.footer}>
         <div className={styles.nav} role="group" aria-label="Browse services">
           <button
@@ -159,30 +162,6 @@ export default function ServiceCarousel({
             </svg>
           </button>
         </div>
-
-        <Link
-          href="/contact"
-          className={styles.cta}
-          aria-label="Let's talk about your project"
-        >
-          Let&rsquo;s talk about your project
-          <svg
-            className={styles.ctaArrow}
-            width="14"
-            height="14"
-            viewBox="0 0 16 16"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
       </div>
     </div>
   );
