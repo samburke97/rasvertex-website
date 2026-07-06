@@ -1,96 +1,55 @@
 /* app/components/shared/ServiceBeforeAfter.module.css */
 
-/* ─── Slider ─────────────────────────────────────────────────── */
+/* ─── Photos ─────────────────────────────────────────────────── */
 
-.stage {
+.photosRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.photo {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 7;
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 16 / 10;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  background: var(--navy-dark);
-  user-select: none;
-  cursor: ew-resize;
+  background: var(--navy-08);
 }
 
-.imgWrap {
+/* Second photo nudges down — subtle stagger, same idea as PhotoCarousel */
+.photoDown {
+  margin-top: 28px;
+}
+
+.tag {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.imgWrap img {
-  object-fit: cover;
-}
-
-.sliderLabel {
-  position: absolute;
-  top: var(--space-xl);
-  font-family: var(--font-display);
-  font-size: var(--nav-size);
-  line-height: var(--nav-leading);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.before {
-  left: var(--space-xl);
-}
-
-.after {
-  right: var(--space-xl);
-}
-
-.handle {
-  position: absolute;
-  top: 0;
+  left: 0;
   bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.55);
-  pointer-events: none;
-  z-index: 3;
-  transform: translateX(-50%);
-}
-
-.grip {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--navy);
-  box-shadow: var(--shadow-lg);
-  cursor: ew-resize;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: var(--space-xl);
-  background: linear-gradient(to top, rgba(1, 25, 85, 0.5) 0%, transparent 50%);
-  pointer-events: none;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 0 var(--radius-xl) 0 0;
 }
 
-.clientName {
-  font-family: var(--font-display);
-  font-size: var(--nav-size);
-  line-height: var(--nav-leading);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
-  color: #ffffff;
+.tagTitle {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--p-size);
+  line-height: 1.2;
+  color: var(--navy);
+  margin: 0;
+}
+
+.tagLocation {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+  line-height: 1.2;
 }
 
 /* ─── Content grid ───────────────────────────────────────────── */
@@ -99,14 +58,23 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-col-gap);
-  align-items: start;
-  margin-top: var(--space-xl);
+  align-items: stretch;
+  margin-top: var(--space-lg);
+}
+
+.contentSingle {
+  grid-template-columns: 1fr;
+}
+
+.contentSingle .left {
+  max-width: calc(50% - var(--space-lg) / 2);
 }
 
 .left {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  justify-content: space-between;
 }
 
 .right {
@@ -119,8 +87,16 @@
 .quote {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
   margin: 0;
+}
+
+.quoteMark {
+  font-family: var(--font-body);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: var(--weight-bold);
+  line-height: 0.6;
+  color: var(--burgundy);
 }
 
 .quoteText {
@@ -174,6 +150,7 @@
 .cta {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   height: 48px;
   padding: 0 var(--space-xl);
   border-radius: var(--radius-xl);
@@ -183,12 +160,20 @@
   font-weight: var(--weight-bold);
   text-decoration: none;
   width: fit-content;
-  margin-top: var(--space-xl);
   transition: background var(--duration-fast) var(--ease-out);
 }
 
 .cta:hover {
   background: var(--navy-dark);
+}
+
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
@@ -200,18 +185,20 @@
 }
 
 @media (max-width: 860px) {
-  .stage {
-    aspect-ratio: 4 / 3;
+  .photosRow {
+    flex-direction: column;
+  }
+
+  .photoDown {
+    margin-top: 0;
   }
 
   .content {
     grid-template-columns: 1fr;
     gap: var(--space-3xl);
   }
-}
 
-@media (max-width: 560px) {
-  .stage {
-    aspect-ratio: 3 / 2;
+  .contentSingle .left {
+    max-width: none;
   }
 }

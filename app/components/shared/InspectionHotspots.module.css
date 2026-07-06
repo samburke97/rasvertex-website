@@ -1,330 +1,181 @@
 /* app/components/shared/InspectionHotspots.module.css */
 
+/* ── Section card ────────────────────────────────────────────── */
+
 .section {
-  padding: 0 var(--space-x);
+  background: var(--navy-08);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3xl);
 }
 
-/* ── Header ─────────────────────────────────────────────────── */
-.header {
+/* ── Top: text left + photos right ──────────────────────────── */
+
+.top {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-col-gap);
-  align-items: end;
-  margin-bottom: var(--space-3xl);
+  align-items: start;
 }
 
-/* ── Legend ─────────────────────────────────────────────────── */
-.legend {
+.textCol {
   display: flex;
-  align-items: center;
-  gap: var(--space-xl);
-  margin-bottom: var(--space-2xl);
-}
-
-.legendItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-size: 12px;
-  color: var(--navy);
-  opacity: 0.55;
-}
-
-.legendDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.dot1 {
-  background: #f2a9a5;
-}
-.dot2 {
-  background: #f7c98a;
-}
-.dot3 {
-  background: #a8c8f0;
-}
-
-/* ── Two-col body ───────────────────────────────────────────── */
-.inner {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: var(--space-col-gap);
-  align-items: stretch;
-}
-
-/* ── Left — sticky photo ────────────────────────────────────── */
-.left {
-  aspect-ratio: 3 / 4;
-}
-
-.photoWrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  background: var(--navy-08);
-}
-
-/* ── Pins on photo ──────────────────────────────────────────── */
-.pin {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(6px);
-  transition:
-    transform 0.2s var(--ease-out),
-    background 0.2s,
-    border-color 0.2s;
-}
-
-.pin:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-}
-.pinActive {
-  transform: translate(-50%, -50%) scale(1.15) !important;
-}
-
-.priority1.pinActive {
-  background: #f2a9a5;
-  border-color: #f2a9a5;
-}
-.priority2.pinActive {
-  background: #f7c98a;
-  border-color: #f7c98a;
-}
-.priority3.pinActive {
-  background: #a8c8f0;
-  border-color: #a8c8f0;
-}
-
-.pinNum {
-  font-family: var(--font-display);
-  font-size: 12px;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: 0.03em;
-}
-
-/* ── Right — accordion ──────────────────────────────────────── */
-.right {
+  flex-direction: column;
+  gap: var(--space-lg);
   position: sticky;
   top: calc(var(--header-height) + var(--space-xl));
   align-self: start;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* ── Item ───────────────────────────────────────────────────── */
-.item {
-  border-radius: var(--radius-xl);
-  background: var(--navy-08);
-  overflow: hidden;
-  transition: background var(--duration-fast) var(--ease-out);
-}
-
-.open {
-  background: #f2f3f5;
-}
-
-/* ── Row ────────────────────────────────────────────────────── */
-.row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  gap: var(--space-md);
-}
-
-.open .row {
-  padding-bottom: 0;
-}
-
-.rowLeft {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-}
-
-/* ── Inline pin circle ──────────────────────────────────────── */
-.pinInline {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-family: var(--font-display);
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  color: rgba(1, 25, 85, 0.35);
-  background: rgba(1, 25, 85, 0.07);
-  transition:
-    background var(--duration-fast),
-    color var(--duration-fast);
-}
-
-.priority1.pinInlineActive {
-  background: #f2a9a5;
-  color: #fff;
-}
-.priority2.pinInlineActive {
-  background: #f7c98a;
-  color: #fff;
-}
-.priority3.pinInlineActive {
-  background: #a8c8f0;
-  color: #fff;
-}
-
-/* ── Label ──────────────────────────────────────────────────── */
-.label {
+.eyebrow {
   font-family: var(--font-display);
   font-size: var(--nav-size);
   letter-spacing: var(--nav-tracking);
   text-transform: uppercase;
   color: var(--navy);
-  opacity: 0.28;
-  line-height: 1.1;
-  flex: 1;
-  transition: opacity var(--duration-fast);
+  opacity: 0.45;
 }
 
-.open .label,
-.row:hover .label {
-  opacity: 1;
-}
-
-/* ── Priority badge ─────────────────────────────────────────── */
-.badge {
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 48px;
+  padding: 0 var(--space-lg);
+  background: var(--navy);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: var(--button-size);
   font-weight: var(--weight-bold);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 100px;
-  flex-shrink: 0;
+  text-decoration: none;
+  width: fit-content;
+  margin-top: var(--space-sm);
+  transition: background var(--duration-fast) var(--ease-out);
 }
 
-.badge1 {
-  background: #fad5d3;
-  color: #8b2a24;
-}
-.badge2 {
-  background: #fde9c4;
-  color: #7a5210;
-}
-.badge3 {
-  background: #cce0f5;
-  color: #1a3f6b;
+.cta:hover {
+  background: var(--navy-dark);
 }
 
-/* ── Panel ──────────────────────────────────────────────────── */
-.panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
+/* ── Video column ────────────────────────────────────────────── */
 
-.open .panel {
-  grid-template-rows: 1fr;
-}
-
-.panelInner {
+.videoCard {
+  position: relative;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  padding: 0 20px;
+  aspect-ratio: 1 / 1;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Divider ─────────────────────────────────────────────────── */
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(1, 25, 85, 0.12);
+  margin: var(--space-3xl) 0;
+}
+
+/* ── Bottom: what the report finds — hover reveal ────────────── */
+
+.bottom {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  gap: var(--space-2xl);
 }
 
-.open .panelInner {
-  padding: 16px 20px 20px;
+.findGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-xl);
 }
 
-/* ── Consequence ────────────────────────────────────────────── */
-.consequence {
+.findItem {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding-top: var(--space-md);
-  border-top: 1px solid rgba(1, 25, 85, 0.08);
+  gap: 8px;
+  padding: var(--space-md);
+  border-radius: var(--radius-xl);
+  transition: background 0.2s;
+  cursor: default;
 }
 
-.consequenceLabel {
+.findItem:hover {
+  background: rgba(1, 25, 85, 0.06);
+}
+
+.findNum {
   font-family: var(--font-display);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   color: var(--navy);
   opacity: 0.35;
-  margin: 0;
 }
 
-.consequenceBody {
+.findTitle {
   font-family: var(--font-body);
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
   color: var(--navy);
-  opacity: 0.6;
-  margin: 0;
+  line-height: 1.2;
 }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+.findBody {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  line-height: 1.55;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+.findItem:hover .findBody {
+  max-height: 300px;
+  opacity: 0.65;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+
 @media (max-width: 1100px) {
   .section {
-    padding: 0 var(--space-x-sm);
+    padding: var(--space-2xl);
+  }
+
+  .findGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 860px) {
-  .section {
-    padding: 0 var(--space-x-xs);
-  }
-  .header {
+  .top {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
   }
-  .inner {
-    grid-template-columns: 1fr;
-  }
-  .left {
-    aspect-ratio: 16 / 9;
-  }
-  .right {
+
+  .textCol {
     position: static;
+  }
+
+  .findGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 560px) {
   .section {
-    padding: 0 var(--space-x-2xs);
+    padding: var(--space-xl);
+  }
+
+  .findGrid {
+    grid-template-columns: 1fr;
   }
 }

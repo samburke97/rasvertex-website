@@ -49,6 +49,17 @@
   color: #ffffff;
 }
 
+.white {
+  background: #ffffff;
+  color: var(--navy);
+  border-color: #ffffff;
+}
+
+.white:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
 .ghost {
   background: transparent;
   color: var(--navy);

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main aria-label="RAS-VERTEX Blog">
-      <section className="px-10 pt-10 pb-30" aria-label="Blog posts">
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Blog posts">
         <BlogGrid />
       </section>
     </main>

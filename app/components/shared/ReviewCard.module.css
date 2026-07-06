@@ -1,7 +1,7 @@
 /* app/components/shared/ReviewCard.module.css */
 
 .card {
-  background: var(--cream);
+  background: var(--navy-08);
   border-radius: var(--radius-2xl);
   padding: var(--space-4xl);
   display: flex;

@@ -3,21 +3,23 @@
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
-import ServiceHero from "../components/shared/ServiceHero";
-import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceFeatures from "../components/shared/ServiceFeatures";
 import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
-import PhotoGrid from "../components/shared/PhotoGrid";
 import WarrantyCard from "../components/shared/WarrantyCard";
+import ProcessCards from "../components/shared/ProcessCards";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
 import {
   HERO_SLIDES,
   SERVICES,
-  FEATURES,
+  WHY_CHOOSE_US,
+  PREP_STEPS,
   PROJECTS,
   CARDS,
   FAQS,
@@ -70,108 +72,61 @@ export default function WaterproofingPage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
-        <ServiceHero
+      <section className="pt-10">
+        <ServiceHeroSplit
           heading={
             <>
-              Waterproofing the
-              <br />
-              Sunshine Coast.
+              The Sunshine Coast’s leading commercial and body corporate
+              waterproofing team.
             </>
           }
-          lede="From preparation, crack repair, diamond grinding and membrane application — we protect your property from when the Sunshine Coast doesn't live up to its name."
-          slides={HERO_SLIDES}
+          lede="From crack repair and surface preparation through to diamond grinding and membrane application, we deliver end to end waterproofing across Sunshine Coast schools, body corporate communities and commercial buildings, keeping structures protected, watertight and built to handle our coastal conditions."
           headingId="waterproofing-hero-heading"
+          image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
         />
       </section>
 
-      <section className="pt-20 pb-20">
-        <ServiceIntro
-          heading="Don't wait for the cracks to appear."
-          paragraphs={[
-            "Waterproofing is only as good as the surface beneath it. Before we apply any membrane, all existing coatings are removed, the concrete is diamond-ground to a clean profile, and every crack is properly repaired — square-cut, backed, and sealed to allow for future structural movement. No surface-only treatment that bridges the crack and fails within a season.",
-            "We specialise in rooftop waterproofing for the Sunshine Coast's specific conditions — UV intensity, thermal cycling and salt air that degrade generic inland membrane systems within a few years. Every system we apply is specified for the substrate and the exposure, applied to manufacturer thickness, and backed by a written workmanship warranty. QBCC licensed for waterproofing works in Queensland.",
-          ]}
-          headingId="waterproofing-intro-heading"
-          logos={[
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={[
             {
-              src: "/images/associations/qbcc.png",
-              alt: "QBCC Licensed",
-              width: 60,
-              height: 40,
+              photo: HERO_SLIDES[1].src,
+              alt: HERO_SLIDES[1].alt,
+              title: "Preparation done properly",
+              body: "Waterproofing only performs as well as the surface underneath it. We repair, grind and prime properly before any membrane goes down, ensuring long term adhesion and durability.",
+            },
+            {
+              photo: HERO_SLIDES[2].src,
+              alt: HERO_SLIDES[2].alt,
+              title: "Systems built for coastal conditions",
+              body: "We use waterproofing systems selected for Sunshine Coast exposure, including heat, salt and moisture, applied using equipment and methods that ensure proper bonding and coverage.",
+            },
+            {
+              photo: HERO_SLIDES[3].src,
+              alt: HERO_SLIDES[3].alt,
+              title: "Backed and documented",
+              body: "Every project is handed over with clear documentation and written warranty coverage, giving building managers confidence in performance and long term maintenance planning.",
             },
           ]}
-        />
-      </section>
-
-      <section className="pt-20 px-10">
-        <PhotoGrid
-          showHeader={false}
-          cta={{
-            body: "By the time water staining appears on a ceiling or damp shows on a wall, the membrane has typically been failing for some time. A thermal imaging inspection costs a fraction of the remediation it prevents.",
-            link: { label: "Book an inspection →", href: "/contact" },
-          }}
-        />
-      </section>
-
-      <section className="pt-20 px-10">
-        <ServiceAccordion
           heading={
             <>
-              What waterproofing service
-              <br />
-              are you looking for?
+              Here’s why building managers and property owners choose our
+              waterproofing team.
             </>
           }
-          ariaLabel="What waterproofing service are you looking for?"
-          services={SERVICES}
-          headingId="waterproofing-services-heading"
-          ctaLabel="Not sure? Let's talk about it →"
+          ariaLabel="Why body corporates trust RAS-VERTEX waterproofing"
+          footerCtaLabel="Get a free quote →"
+          footerCtaHref="/contact"
+          display="grid"
+          variant="white"
         />
       </section>
-
-      <section className="pt-20">
-        <ServiceCards
-          cards={CARDS}
-          heading="Who we work for."
-          ariaLabel="Who we work for — waterproofing services"
-        />
-      </section>
-
-      <section className="pt-20">
-        <ServiceFeatures
-          features={FEATURES}
-          displayText={"Dry.\nWarranted."}
-          ariaLabel="Why choose RAS-VERTEX for waterproofing"
-        />
-      </section>
-
       <section
-        className="px-10 pt-20"
-        aria-labelledby="waterproofing-before-after-heading"
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="Waterproofing warranty"
       >
-        <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
-          beforeAlt="Mooloolaba strata balconies before waterproofing membrane replacement"
-          afterAlt="Mooloolaba strata balconies after waterproofing membrane replacement by RAS-VERTEX"
-          clientName="Mooloolaba Oceanfront Strata"
-          heading="52 balconies. Staged across two sinking fund cycles."
-          body="This Mooloolaba strata had 52 balconies with failing membranes — the full scope was beyond a single sinking fund allocation. We assessed every balcony with thermal imaging, prioritised by severity, and staged the program across two years. Full replacement on the critical balconies first, monitored maintenance on those with time remaining."
-          quote="They gave us a condition report we could put straight into our sinking fund forecast. No drama, no surprises — exactly what a body corporate needs."
-          quoteAuthor="Karen Holloway"
-          quoteRole="Strata Manager, Mooloolaba"
-          authorLogo="/partners/accor.svg"
-          authorLogoAlt="Mooloolaba Oceanfront Strata"
-          ctaHref="/work"
-          ctaLabel="Our projects →"
-          headingId="waterproofing-before-after-heading"
-        />
-      </section>
-
-      <section className="px-10 py-20" aria-label="Waterproofing warranty">
         <WarrantyCard
-          stat="15"
+          stat="8"
           statLabel={"year\nwarranty"}
           heading={
             <>
@@ -180,30 +135,73 @@ export default function WaterproofingPage() {
               Warranted in writing.
             </>
           }
-          body="Membrane systems installed by RAS-VERTEX are backed by a written workmanship warranty at completion. Where manufacturer warranties apply — up to 15 years on qualifying membrane systems — these are lodged in the building owner's name and form part of the body corporate or owner's compliance file. We don't cut corners on specification or preparation, because we're the ones standing behind the result."
+          body="All membrane systems installed by RAS-VERTEX include a written workmanship warranty on completion. Where applicable, manufacturer warranties of up to 8 years are applied and included in the building record."
         />
       </section>
-
-      <section className="pt-20">
-        <ServiceProjects
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceAccordion
           heading={
             <>
-              Work we're proud of,
+              What waterproofing service
               <br />
-              from Noosa to Caloundra.
+              are you looking for?
             </>
           }
-          subheading="Concrete roof restorations, balcony membrane programs and leak detection across the Sunshine Coast — every surface prepared properly, every system warranted in writing."
-          projects={PROJECTS}
-          footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour and throughout the hinterland."
+          paragraph="From rooftops and balconies to podiums, planter boxes and wet areas, we deliver waterproofing systems designed for real coastal exposure and long term performance."
+          ariaLabel="What waterproofing service are you looking for?"
+          services={SERVICES}
+          headingId="waterproofing-services-heading"
+          ctaLabel="Not sure? Let's talk about it →"
+        />
+      </section>
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ProcessCards
+          heading="Three steps before a drop of membrane goes down."
+          lede="Waterproofing that lasts is determined long before the membrane goes down. The preparation stage is what prevents early failure, not the coating itself."
+          steps={PREP_STEPS}
+          headingId="waterproofing-prep-heading"
+        />
+      </section>
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial
+          quote="The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs."
+          name="James Whitfield"
+          role="Facilities Manager, Accor Hotels"
+          logoSrc="/partners/accor.svg"
+          logoAlt="Accor Hotels"
         />
       </section>
 
-      <section className="px-10 py-20">
+      <section
+        className="py-10 md:py-20"
+        aria-labelledby="waterproofing-services-carousel-label"
+      >
+        <h2
+          id="waterproofing-services-carousel-label"
+          className="px-5 md:px-10 pb-10 md:pb-20"
+        >
+          We do more than waterproofing, with specialist services
+          <br />
+          that support every part of your building.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES.filter(
+            (slide) => slide.href !== "/waterproofing",
+          )}
+          ariaLabel="RAS-VERTEX services"
+        />
+      </section>
+
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="waterproofing-faq-heading"
+          ctaHeading="Have a question about waterproofing?"
         />
       </section>
     </>

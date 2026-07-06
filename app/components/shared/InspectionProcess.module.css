@@ -3,7 +3,13 @@
 .section {
   padding: 0 var(--space-x);
   display: flex;
-  gap: var(--space-col-gap);
+  flex-direction: column;
+  gap: 0;
+}
+
+.row {
+  display: flex;
+  gap: calc(var(--space-col-gap) + var(--space-xl));
   align-items: flex-start;
 }
 
@@ -15,41 +21,54 @@
 }
 
 .left h2 {
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-title-to-body);
+}
+
+.cta {
+  margin-top: var(--space-xl);
 }
 
 /* ── Right — scrolling steps ────────────────────────────────── */
 .steps {
   flex: 1 1 auto;
+  max-width: 52%;
+  margin-left: auto;
   list-style: none;
   padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
 }
 
 /* ── Single step ────────────────────────────────────────────── */
 .step {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   padding: var(--space-2xl) 0;
   border-top: 1px solid var(--line);
 }
 
-.step:last-child {
-  border-bottom: 1px solid var(--line);
+.step:first-child {
+  border-top: none;
 }
 
 /* ── Number ─────────────────────────────────────────────────── */
 .num {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 3.5vw, 4.5rem);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
   font-weight: 400;
   color: var(--navy);
-  opacity: 0.12;
+  opacity: 0.35;
   line-height: 1;
   width: 3ch;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  color: var(--navy);
+  opacity: 0.45;
+  flex-shrink: 0;
 }
 
 /* ── Content ────────────────────────────────────────────────── */
@@ -61,21 +80,19 @@
 }
 
 .title {
-  font-family: var(--font-display);
-  font-size: var(--nav-size);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--h4-size);
   color: var(--navy);
-  line-height: 1.1;
+  line-height: 1.2;
   margin: 0;
 }
 
 .body {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--p-size);
   line-height: 1.7;
   color: var(--navy);
-  opacity: 0.6;
   margin: 0;
 }
 
@@ -104,6 +121,82 @@
   display: block;
 }
 
+/* ── What the report finds ───────────────────────────────────── */
+
+.finds {
+  margin-top: var(--space-3xl);
+}
+
+.findsDivider {
+  border: none;
+  border-top: 1px solid rgba(1, 25, 85, 0.12);
+  margin-bottom: var(--space-2xl);
+}
+
+.findsEyebrow {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--nav-size);
+  letter-spacing: var(--nav-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.45;
+  margin-bottom: var(--space-2xl);
+}
+
+.findsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-xl);
+}
+
+.findItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--space-md);
+  border-radius: var(--radius-xl);
+  transition: background 0.2s;
+  cursor: default;
+}
+
+.findItem:hover {
+  background: rgba(1, 25, 85, 0.06);
+}
+
+.findNum {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+  opacity: 0.35;
+}
+
+.findTitle {
+  font-family: var(--font-body);
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.findBody {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  line-height: 1.55;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+.findItem:hover .findBody {
+  max-height: 300px;
+  opacity: 0.65;
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .section {
@@ -113,10 +206,14 @@
   .left {
     flex: 0 0 36%;
   }
+
+  .findsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 860px) {
-  .section {
+  .row {
     flex-direction: column;
     gap: var(--space-3xl);
     padding: 0 var(--space-x-xs);
@@ -126,10 +223,23 @@
     position: static;
     flex: 1 1 auto;
   }
+
+  .steps {
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .findsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 560px) {
   .section {
     padding: 0 var(--space-x-2xs);
+  }
+
+  .findsGrid {
+    grid-template-columns: 1fr;
   }
 }

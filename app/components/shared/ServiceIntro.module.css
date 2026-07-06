@@ -1,15 +1,66 @@
 /* app/components/shared/ServiceIntro.module.css */
 
-.section {
-  padding-left: var(--space-x);
-  padding-right: var(--space-x);
-}
-
 .inner {
   display: flex;
   align-items: flex-start;
   gap: var(--space-col-gap);
   padding-top: var(--space-4xl);
+}
+
+/* ── Stacked variant — full-width heading on top, paragraphs below ── */
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title-to-body);
+  padding-top: var(--space-4xl);
+}
+
+.stackedRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-lg);
+}
+
+.stackedText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 85ch;
+  flex: 1 1 auto;
+}
+
+.stackedCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--navy);
+  color: #ffffff;
+  font-size: var(--button-size);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.stackedCta:hover {
+  background: var(--navy-dark);
+}
+
+.stackedCtaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.stackedCta:hover .stackedCtaArrow {
+  transform: translateX(3px);
 }
 
 .left {
@@ -46,6 +97,24 @@
   gap: var(--space-xl);
 }
 
+/* ── Compact variant — denser vertical spacing, narrower paragraph
+   column pinned to the far right, leaving visible space between it
+   and the heading ── */
+
+.compact {
+  padding-top: var(--space-xl);
+}
+
+.compact .left {
+  flex: 0 0 44%;
+}
+
+.compact .right {
+  flex: 0 1 40%;
+  max-width: 40%;
+  margin-left: auto;
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .inner {
@@ -66,5 +135,10 @@
   .left {
     flex: 1 1 auto;
     position: static;
+  }
+
+  .stackedRow {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

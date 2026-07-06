@@ -3,6 +3,7 @@
 import Image from "next/image";
 import CareersForm from "./CareersForm";
 import styles from "./CareersSurface.module.css";
+import { cld } from "../lib/cloudinary";
 
 const BENEFITS = [
   "IRATA-funded progression",
@@ -20,13 +21,7 @@ export default function CareersSurface() {
       {/* ── LEFT ── */}
       <div className={styles.left}>
         <header className={styles.header}>
-          <h1>
-            Good people.
-            <br />
-            Hard work.
-            <br />
-            High places.
-          </h1>
+          <h1>Good people. Hard work. High places.</h1>
           <p className="p-soft">
             We&rsquo;re a rope-access-first business. We invest heavily in
             training, safety and long-term career development for people who
@@ -73,7 +68,7 @@ export default function CareersSurface() {
         {/* Photo */}
         <div className={styles.imageWrap} aria-hidden="true">
           <Image
-            src="/images/projects/1.jpeg"
+            src={cld("team", { width: 1200 })}
             alt="RAS-VERTEX crew on site — Sunshine Coast"
             fill
             className={styles.image}

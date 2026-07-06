@@ -76,7 +76,7 @@
 }
 
 .dropdown {
-  position: relative;
+  position: static;
 }
 
 /* Bebas + tracking come from the global .nav-text utility — these

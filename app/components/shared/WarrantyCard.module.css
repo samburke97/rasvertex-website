@@ -1,16 +1,23 @@
 /* app/components/shared/WarrantyCard.module.css */
 
 .card {
+  position: relative;
   background: #deeeff;
   border-radius: var(--radius-3xl);
   padding: var(--space-4xl);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: var(--space-4xl);
 }
 
-.badge {
+.badgeCol {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.badge {
   display: flex;
   align-items: flex-end;
   gap: var(--space-md);
@@ -19,6 +26,7 @@
 .badgeNumber {
   font-family: var(--font-display);
   font-size: clamp(10rem, 18vw, 16rem);
+  letter-spacing: -0.04em;
   color: var(--navy);
   line-height: 1;
   margin-bottom: -0.18em;
@@ -37,9 +45,49 @@
 }
 
 .content {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+}
+
+.logosCol {
+  flex-shrink: 0;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.logosHeading {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--h3-size);
+  color: var(--navy);
+  margin: 0;
+}
+
+.logos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: nowrap;
+}
+
+.logo {
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (max-width: 1100px) {
+  .logosCol {
+    width: 220px;
+  }
 }
 
 @media (max-width: 860px) {
@@ -48,5 +96,9 @@
     align-items: flex-start;
     gap: var(--space-xl);
     padding: var(--space-3xl) var(--space-2xl);
+  }
+
+  .logosCol {
+    width: 100%;
   }
 }

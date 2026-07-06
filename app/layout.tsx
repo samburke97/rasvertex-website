@@ -1,7 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Bebas_Neue } from "next/font/google";
 import "./styles/globals.css";
 import Navigation from "./components/layout/navigation/Navigation";
 import Footer from "./components/layout/footer/Footer";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--inter-font",
+});
+
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--bebas-font",
+});
 import {
   LocalBusinessSchema,
   OrganizationSchema,
@@ -172,15 +187,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" dir="ltr">
+    <html lang="en-AU" dir="ltr" className={`${inter.variable} ${bebasNeue.variable}`}>
       <head>
-        {/* Preconnect to external resources for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        {/* Preconnect to Adobe Fonts */}
         <link
           rel="preconnect"
           href="https://use.typekit.net"
@@ -193,13 +202,6 @@ export default function RootLayout({
 
         {/* Adobe Fonts (Typekit) */}
         <link rel="stylesheet" href="https://use.typekit.net/nuk5csv.css" />
-
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
-          as="style"
-        />
       </head>
       <body>
         {/* Skip to main content for accessibility */}

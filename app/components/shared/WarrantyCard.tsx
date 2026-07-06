@@ -1,12 +1,23 @@
 // app/components/shared/WarrantyCard.tsx
 
+import Image from "next/image";
 import styles from "./WarrantyCard.module.css";
+
+export interface WarrantyCardLogo {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
 
 interface WarrantyCardProps {
   stat: string;
   statLabel: string;
   heading: React.ReactNode;
-  body: string;
+  body: string | string[];
+  logos?: WarrantyCardLogo[];
+  /** Small heading above the logos column, e.g. "Backed by the best." */
+  logosHeading?: string;
 }
 
 const DEFAULTS: WarrantyCardProps = {
@@ -27,28 +38,57 @@ export default function WarrantyCard({
   statLabel = DEFAULTS.statLabel,
   heading = DEFAULTS.heading,
   body = DEFAULTS.body,
+  logos,
+  logosHeading,
 }: Partial<WarrantyCardProps>) {
   return (
     <article
       className={styles.card}
       aria-label={typeof heading === "string" ? heading : undefined}
     >
-      <div className={styles.badge} aria-hidden="true">
-        <span className={styles.badgeNumber}>{stat}</span>
-        <span className={styles.badgeLabel}>
-          {statLabel.split("\n").map((line, i, arr) => (
-            <span key={i}>
-              {line}
-              {i < arr.length - 1 && <br />}
-            </span>
-          ))}
-        </span>
+      <div className={styles.badgeCol}>
+        <div className={styles.badge} aria-hidden="true">
+          <span className={styles.badgeNumber}>{stat}</span>
+          <span className={styles.badgeLabel}>
+            {statLabel.split("\n").map((line, i, arr) => (
+              <span key={i}>
+                {line}
+                {i < arr.length - 1 && <br />}
+              </span>
+            ))}
+          </span>
+        </div>
       </div>
 
       <div className={styles.content}>
         <h2>{heading}</h2>
-        <p className="p-soft">{body}</p>
+        {Array.isArray(body) ? (
+          body.map((p, i) => (
+            <p key={i} className="p-soft">{p}</p>
+          ))
+        ) : (
+          <p className="p-soft">{body}</p>
+        )}
       </div>
+
+      {logos && logos.length > 0 && (
+        <div className={styles.logosCol}>
+          {logosHeading && <h3 className={styles.logosHeading}>{logosHeading}</h3>}
+          <ul className={styles.logos} aria-label="Accreditations and partners">
+            {logos.map((logo) => (
+              <li key={logo.alt}>
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                  className={styles.logo}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </article>
   );
 }

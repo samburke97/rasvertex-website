@@ -1,0 +1,128 @@
+/* app/components/about/ServiceAreas.module.css */
+
+.section {
+  background: #deeeff;
+  border-radius: var(--radius-3xl);
+  padding: var(--space-4xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-col-gap);
+  align-items: end;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 18px;
+  border: 1px solid var(--navy-25);
+  border-radius: var(--radius-xl);
+  background: none;
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-bold);
+  color: var(--navy);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.tab:hover {
+  border-color: var(--navy);
+}
+
+.tabActive {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.count {
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  opacity: 0.5;
+}
+
+.tabActive .count {
+  opacity: 0.65;
+}
+
+/* ── Suburb panels ───────────────────────────────────────────── */
+.panel {
+  display: none;
+}
+
+.panelActive {
+  display: block;
+}
+
+.suburbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.suburb {
+  padding: 8px 16px;
+  border-radius: var(--radius-xl);
+  background: var(--navy-08);
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meta {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: var(--space-3xl) var(--space-2xl);
+  }
+}
+
+@media (max-width: 560px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+}

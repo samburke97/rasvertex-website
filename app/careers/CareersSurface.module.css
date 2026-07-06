@@ -123,13 +123,13 @@
   flex-shrink: 0;
 }
 
-/* ── Right — burgundy form card ────────────────────────────────── */
+/* ── Right — form card ─────────────────────────────────────────── */
 .right {
   flex: 1;
   position: sticky;
   top: var(--header-height, 72px);
   align-self: flex-start;
-  background: var(--cream);
+  background: var(--navy-08);
   border-radius: var(--radius-3xl);
   overflow: hidden;
 }

@@ -7,27 +7,32 @@ import type { BeforeAfterSpec } from "../components/shared/ServiceBeforeAfter";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
+import { cld } from "../lib/cloudinary";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    src: "/images/projects/1.jpeg",
-    alt: "Mooloolaba oceanfront high-rise repaint by RAS-VERTEX",
+    src: cld("c1", { width: 1600 }),
+    alt: "Painting project — Sunshine Coast",
   },
   {
-    src: "/images/projects/2.jpeg",
-    alt: "Coolum Resort exterior facade painting by RAS-VERTEX",
+    src: cld("c2", { width: 1600 }),
+    alt: "Painting project — Sunshine Coast",
   },
   {
-    src: "/nav/height.png",
-    alt: "Rope access painting on the Sunshine Coast",
+    src: cld("c3", { width: 1600 }),
+    alt: "Painting project — Sunshine Coast",
   },
   {
-    src: "/nav/waterproofing.png",
-    alt: "Waterproofing and membrane coating — Sunshine Coast",
+    src: cld("c4", { width: 1600 }),
+    alt: "Painting project — Sunshine Coast",
   },
   {
-    src: "/nav/maintenance.png",
-    alt: "Building maintenance and painting — Sunshine Coast",
+    src: cld("c5", { width: 1600 }),
+    alt: "Painting project — Sunshine Coast",
+  },
+  {
+    src: cld("c6", { width: 1600 }),
+    alt: "Painting project — Sunshine Coast",
   },
 ];
 
@@ -35,26 +40,20 @@ export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Painting",
     body: "Full exterior repaints for strata, commercial and residential buildings. Chloride rinse, salt-bonded primer and Dulux Weathershield systems as standard within 5km of the coast.",
-    photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Interior Painting",
-    body: "Low-VOC systems for occupied buildings — strata corridors, hotel suites, schools and offices. Zone-staged scheduling with dust containment and same-day re-occupancy on most work.",
-    photo: "/images/projects/1.jpeg",
+    photo: cld("exterior", { width: 1800 }),
     href: "/contact",
   },
   {
     label: "Roof Coatings",
     body: "Colorbond, tile and membrane re-coats. Heat-reflective coatings reduce internal building temps by up to 8°C — a measurable energy saving on commercial assets.",
-    photo: "/images/projects/2.jpeg",
+    photo: cld("roof-coatings", { width: 1800 }),
     href: "/contact",
   },
 
   {
     label: "Rope Access Painting",
     body: "IRATA L1–L3 certified technicians for high-rise and difficult-access facades. Faster mobilisation, no scaffolding cost, zero footprint on your site.",
-    photo: "/images/projects/1.jpeg",
+    photo: cld("rope-access-painting", { width: 1800 }),
     href: "/contact",
   },
   {
@@ -66,14 +65,35 @@ export const SERVICES: AccordionService[] = [
   {
     label: "Strata & Body Corporate",
     body: "Committee-ready proposals, staged scheduling around occupancy, resident communication handled end-to-end. Over 50 body corporate projects completed across the Sunshine Coast.",
-    photo: "/images/projects/2.jpeg",
+    photo: cld("strata", { width: 1800 }),
     href: "/contact",
   },
   {
     label: "Colour Consulting",
     body: "On-site sample blocks at no charge for projects over $25k. Full colour schedules and heritage-compliant palettes available.",
-    photo: "/images/projects/2.jpeg",
+    photo: cld("colour-consulting", { width: 1800 }),
     href: "/contact",
+  },
+];
+
+export const WHY_CHOOSE_US: ServiceCard[] = [
+  {
+    photo: cld("exterior", { width: 1800 }),
+    alt: "RAS-VERTEX project manager on a Sunshine Coast painting job site",
+    title: "Dedicated project manager",
+    body: "One person runs your job from first site visit to warranty sign off. One number, one thread, so you always know exactly who to call.",
+  },
+  {
+    photo: cld("rope-access-painting", { width: 1800 }),
+    alt: "IRATA certified rope access painting technician, RAS-VERTEX Sunshine Coast",
+    title: "IRATA certified access",
+    body: "Thirty plus rope access technicians trained in house to IRATA L1 to L3 reach what scaffold can't, faster, safer and without the setup cost.",
+  },
+  {
+    photo: cld("avere-repaint", { width: 1800 }),
+    alt: "Coastal spec paint system applied to a Sunshine Coast high-rise, RAS-VERTEX",
+    title: "Coastal spec paint systems",
+    body: "Salt bonded primers, chloride rinse and elastomeric topcoats, every system matched to the substrate and the exposure your building actually faces.",
   },
 ];
 
@@ -99,7 +119,7 @@ export const FEATURES: Feature[] = [
     body: "Salt-bonded primers, chloride rinse, elastomeric topcoats. Every system is matched to the substrate and the exposure.",
     logos: [
       { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.png", alt: "Dulux" },
+      { src: "/images/associations/dulux.svg", alt: "Dulux" },
     ],
   },
   {
@@ -161,28 +181,29 @@ export const PROJECTS: ServiceProject[] = [
 
 export const CARDS: ServiceCard[] = [
   {
-    photo: "/images/projects/1.jpeg",
-    alt: "Residential painting — RAS-VERTEX Sunshine Coast",
-    title: "Residential.",
-    body: "We've been painting homes on the Sunshine Coast for 25 years — and we still treat every one like it's our own. You'll meet your project manager before a brush touches anything. They'll walk the job, explain what we're using and why, and be on the other end of the phone until you're happy.",
-    cta: "Get a quote",
-    href: "/contact",
-  },
-  {
-    photo: "/images/projects/2.jpeg",
+    photo: cld("commercial-painting", { width: 1200 }),
     alt: "Commercial painting — RAS-VERTEX Sunshine Coast",
-    title: "Commercial.",
-    body: "We know a closed shopfront or disrupted tenant costs you money. That's why we schedule around you — after hours, weekends, whatever it takes. Our crew are locals too, so when we say we'll be there Tuesday morning, we mean it.",
-    cta: "See our process",
-    href: "/process",
+    title: "Commercial Painting",
+    body: "Twenty five years working across Sunshine Coast commercial buildings has taught us that disruption has a real cost. Tenants, customers and operations can’t afford delays or inconsistent crews. We plan properly, show up when we say we will, and deliver painting that fits around how your site actually runs.",
+    cta: "Commercial painting",
+    href: "/commercial-painting",
   },
   {
-    photo: "/images/projects/2.jpeg",
+    photo: cld("body-corp-painting", { width: 1200 }),
     alt: "Body corporate and strata painting — RAS-VERTEX",
-    title: "Body corporate & strata.",
-    body: "We've worked with enough committees to know what matters: clear communication before the work starts, no surprises for residents, and a finished result the whole building is proud of. We handle the scheduling, the access, the documentation — and we back every job with a five-year written warranty.",
-    cta: "Learn more",
-    href: "/contact",
+    title: "Body Corporate & Strata Painting",
+    body: "We’ve worked with strata committees long enough to know that painting projects rely on clear communication. Residents want clarity, committees want certainty, and no one wants surprises mid-project. We structure our work to keep everyone informed and the building running smoothly.",
+    cta: "Body corporate painting",
+    href: "/body-corporate-painting",
+  },
+  {
+    photo: cld("house-painting", { width: 1200 }),
+    alt: "Residential painting — RAS-VERTEX Sunshine Coast",
+    objectPosition: "top",
+    title: "Residential Painting",
+    body: "Your home is one of your biggest investments, and on the Sunshine Coast it needs the right protection to stay looking its best over time. We prepare properly and use coating systems chosen for local coastal conditions, so the finish holds up and your home continues to look it's best.",
+    cta: "Residential painting",
+    href: "/residential-painting",
   },
 ];
 

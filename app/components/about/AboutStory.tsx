@@ -1,13 +1,43 @@
 // app/components/about/AboutStory.tsx
-// Image left + copy right split. Timeline handled by CompanyTimeline below.
 
 import Image from "next/image";
 import styles from "./AboutStory.module.css";
+
+const CREDENTIALS = [
+  "QBCC Licensed",
+  "Dulux Accredited",
+  "Haymes Paint",
+  "Master Painters Association",
+];
 
 export default function AboutStory() {
   return (
     <section className={styles.section} aria-labelledby="story-heading">
       <div className={styles.split}>
+        <div className={styles.copyCol}>
+          <h2 id="story-heading">
+            A maintenance partner,<br />not a middleman.
+          </h2>
+
+          <div className={styles.credentials} aria-label="Accreditations">
+            {CREDENTIALS.map((c) => (
+              <span key={c} className={styles.credential}>{c}</span>
+            ))}
+          </div>
+
+          <div className={styles.body}>
+            <p className="p-soft">
+              RAS-VERTEX didn&rsquo;t come from a boardroom. It started with fifteen years of rope access experience, a move to the Sunshine Coast, and a stubborn belief that property maintenance should be done properly — by the people who quoted the job, not whoever was free that week.
+            </p>
+            <p className="p-soft">
+              We don&rsquo;t farm work out to subbies. Every painter, technician and rope access specialist on your building is directly employed, QBCC licensed and IRATA certified. One project manager runs your job from the first site visit to the final sign-off — one number, one thread, weekly photo updates.
+            </p>
+            <p className="p-soft">
+              Because we live and work here, we build for here: salt air off Mooloolaba, UV up through Noosa, the humidity that rolls in off the hinterland. Every system we specify is chosen for the substrate, the exposure, and the exact conditions of your site.
+            </p>
+          </div>
+        </div>
+
         <div className={styles.imageCol}>
           <div className={styles.imageWrap}>
             <Image
@@ -19,26 +49,6 @@ export default function AboutStory() {
               priority
             />
           </div>
-        </div>
-
-        <div className={styles.copyCol}>
-          <h2 id="story-heading">
-            Built on the Coast.
-            <br />
-            Built to last.
-          </h2>
-          <p className="p-soft">
-            RAS-VERTEX didn&rsquo;t come from a boardroom. It came from 15 years
-            of rope access experience, a move to the Sunshine Coast, and a
-            determination to do the work properly.
-          </p>
-          <p className="p-soft">
-            From a small local operation, RAS grew into the Coast&rsquo;s most
-            trusted property maintenance partner — handling painting, cleaning,
-            waterproofing, height safety, and maintenance without farming work
-            out to subbies. 25+ directly employed team members, one project
-            manager per job, and a standard that never moves.
-          </p>
         </div>
       </div>
     </section>

@@ -1,22 +1,23 @@
 import type { ServiceCard } from "../components/shared/ServiceCards";
+import { cld } from "../lib/cloudinary";
 
 export const WHO_WE_WORK_FOR_CARDS: ServiceCard[] = [
   {
-    photo: "/images/projects/1.jpeg",
-    alt: "25 years painting buildings on the Sunshine Coast",
-    title: "25 years on the Coast.",
-    body: "We started here before half the foreshore developments were built. Same postcode, same salt air, same substrate conditions — every system we spec is chosen for this environment, not borrowed from a Brisbane job sheet.",
+    photo: cld("coastal-buildings.jpg", { width: 900 }),
+    alt: "25 years working on Sunshine Coast buildings",
+    title: "We know coastal buildings.",
+    body: "Salt air within 5km of the ocean degrades generic coatings in two to three years. UV intensity on the Sunshine Coast is not the same as Brisbane. We've been speccing paint systems, waterproofing membranes and maintenance programs for these buildings since before half of them were built. That knowledge doesn't come from a manual.",
   },
   {
-    photo: "/nav/painting.png",
+    photo: cld("friendly-team.jpg", { width: 900 }),
     alt: "RAS-VERTEX project manager on a Sunshine Coast job site",
-    title: "One partner. Every challenge.",
-    body: "Every person on your site is a direct RAS-VERTEX employee. One dedicated project manager runs your job from site visit to sign-off — one number, one thread, weekly photo updates, no handoffs, no subbies turning up unannounced.",
+    title: "We're easy to deal with.",
+    body: "One project manager runs your job from first call to sign-off. Every person on site is a direct RAS-VERTEX employee. You get weekly photo updates, a single contact number and a team that actually shows up when they say they will. No subcontractors, no handoffs, no chasing.",
   },
   {
-    photo: "/nav/maintenance.png",
+    photo: cld("one-parner.webp", { width: 900 }),
     alt: "Dedicated building maintenance team on the Sunshine Coast",
-    title: "One team for your entire building.",
-    body: "Painting, cleaning, waterproofing, height safety, remedial repairs — one dedicated team across every trade, every floor, every quarter. We've been doing this for 25 years because property managers don't want five contractors. They want one partner who actually knows the building.",
+    title: "Less coordination. Better outcomes.",
+    body: "Painting, cleaning, waterproofing, remedial repairs and height safety all managed by one experienced team. One quote, one schedule, one point of contact and one contractor who already understands your building. For strata managers and facilities teams, that's not a small thing.",
   },
 ];

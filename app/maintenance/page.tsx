@@ -3,25 +3,23 @@
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
-import ServiceHero from "../components/shared/ServiceHero";
-import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
-import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceProjects from "../components/shared/ServiceProjects";
+import ServiceIntro from "../components/shared/ServiceIntro";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
-import PhotoGrid from "../components/shared/PhotoGrid";
 import WarrantyCard from "../components/shared/WarrantyCard";
-import MaintenancePlans from "../components/shared/MaintenancePlans";
+import Carousel from "../components/homepage/Carousel";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
 import {
   HERO_SLIDES,
   SERVICES,
-  PROJECTS,
-  CARDS,
+  PLAN_SLIDES,
   FAQS,
   FAQ_CONTACT,
-  PLANS,
 } from "../data/maintenanceData";
 
 export const metadata = generatePageMetadata({
@@ -70,43 +68,78 @@ export default function MaintenancePage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
-        <ServiceHero
+      <section className="pt-10">
+        <ServiceHeroSplit
           heading={
             <>
-              Building maintenance
-              <br />
-              on the Sunshine Coast.
+              A specialist rope access team delivering complete building
+              maintenance across the Sunshine Coast.
             </>
           }
-          lede="Whether you're an industrial facility manager or managing a portfolio of commercial buildings, we're on call to take care of your building so you can take care of business."
-          slides={HERO_SLIDES}
+          lede="From Sunshine Coast schools and shopping centres to body corporates and commercial facilities, we help property owners and managers protect their buildings with responsive maintenance, specialist access, and one trusted local team."
           headingId="maintenance-hero-heading"
+          image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
         />
       </section>
 
-      <section className="pt-20 pb-20">
-        <ServiceIntro
-          heading="Working with you, not just for you."
-          paragraphs={[
-            "We use a combination of ropes, EWPs and scaffolding to complete building maintenance to the highest standard across the Sunshine Coast. With 25 years of coastal experience, we tailor our equipment and access method to the needs of each project — delivering long-lasting results and cost-effective solutions without disrupting your residents or tenants.",
-            "Every job is run by a dedicated project manager who knows your building inside and out. One phone number, detailed condition reports after every visit, and a maintenance record that keeps your body corporate committee informed and your building protected.",
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={[
+            {
+              photo: HERO_SLIDES[1].src,
+              alt: HERO_SLIDES[1].alt,
+              title: "The same faces every time",
+              body: "All painting, cleaning, waterproofing, repairs and height safety delivered by our in-house team. You deal with people who know your building, show up consistently, and keep everything moving.",
+            },
+            {
+              photo: HERO_SLIDES[2].src,
+              alt: HERO_SLIDES[2].alt,
+              title: "Built for full-building access",
+              body: "Rope access lets us work across facades, roofs and hard-to-reach areas without scaffolding or disruption. We move across your building efficiently, wherever work is needed.",
+            },
+            {
+              photo: HERO_SLIDES[3].src,
+              alt: HERO_SLIDES[3].alt,
+              title: "Always across your building",
+              body: "We’re local, always on call, and just around the corner when you need us most, giving you faster response when issues arise and less downtime across your building.",
+            },
           ]}
-          headingId="maintenance-intro-heading"
+          heading={
+            <>
+              Here&rsquo;s why building and facility
+              <br />
+              managers choose our maintenance team.
+            </>
+          }
+          ariaLabel="Why facility managers choose RAS-VERTEX maintenance"
+          footerCtaLabel="Get a free quote →"
+          footerCtaHref="/contact"
+          display="grid"
+          variant="white"
         />
       </section>
 
-      <section className="pt-20 px-10">
-        <PhotoGrid
-          showHeader={false}
-          cta={{
-            body: "Every building on the Sunshine Coast faces the same salt air, the same UV, the same storm season. We've been maintaining them for 25 years. We know what fails, when it fails, and how to stop it.",
-            link: { label: "Get a free quote →", href: "/contact" },
-          }}
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="25 years on the Sunshine Coast"
+      >
+        <WarrantyCard
+          stat="25"
+          statLabel={" years on the\nSunshine Coast"}
+          heading={
+            <>
+              The same postcode,
+              <br />
+              the same buildings.
+            </>
+          }
+          body="We’ve been maintaining properties here long before much of the coastline was developed. We understand how salt air breaks down sealants, how UV wears coatings, and how coastal weather puts pressure on every facade.
+
+That knowledge comes from 25 years of showing up, and it’s what our partners rely on most."
         />
       </section>
 
-      <section className="pt-20 px-10">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceAccordion
           heading={
             <>
@@ -115,98 +148,79 @@ export default function MaintenancePage() {
               are you looking for?
             </>
           }
+          paragraph="From small repairs to large-scale building works, we deliver maintenance across all types of projects on the Sunshine Coast."
           ariaLabel="What kind of maintenance are you looking for?"
           services={SERVICES}
           headingId="maintenance-services-heading"
-        />
-      </section>
-
-      <section className="pt-20">
-        <ServiceCards
-          cards={CARDS}
-          heading="Who we work for."
-          ariaLabel="Who we work for — maintenance services"
-        />
-      </section>
-
-      <section className="pt-20" aria-labelledby="maintenance-plans-heading">
-        <MaintenancePlans
-          heading={
-            <>
-              Maintenance plans
-              <br />
-              built around your building.
-            </>
-          }
-          lede="We act as an extension of your team — providing ongoing programs that deliver support when you need it most, and documentation your committee can rely on."
-          plans={PLANS}
-          headingId="maintenance-plans-heading"
-          ctaLabel="Tailor your plan →"
-          ctaHref="/contact"
+          ctaLabel="Not sure? Let's talk about it →"
         />
       </section>
 
       <section
-        className="px-10 pt-20"
-        aria-labelledby="maintenance-before-after-heading"
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="Maintenance plans built around your building"
       >
-        <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
-          beforeAlt="Beachfront Towers Maroochydore before facade maintenance program"
-          afterAlt="Beachfront Towers Maroochydore after facade maintenance program"
-          clientName="Beachfront Towers"
-          heading="A full facade program, zero resident complaints."
-          body="Beachfront Towers had been managing maintenance reactively — one contractor for renders, another for sealants, no coordinated program. We took it on as a single scope. One team, one schedule, one project manager from inspection to sign-off."
-          quote="We've had three different contractors on this building over the years. RAS-VERTEX is the first one that actually felt like a partner."
-          quoteAuthor="David Nguyen"
-          quoteRole="Building Manager, Beachfront Towers"
-          authorLogo="/partners/accor.svg"
-          authorLogoAlt="Beachfront Towers"
-          ctaHref="/work"
-          ctaLabel="Our projects →"
-          headingId="maintenance-before-after-heading"
+        <div className="mb-10 md:mb-16">
+          <ServiceIntro
+            heading={
+              <>
+                We offer flexible maintenance plans to
+                <br />
+                keep your building in top condition year round.
+              </>
+            }
+            paragraphs={[
+              "Our maintenance plans give you ongoing support across the year, with scheduled visits, condition checks and responsive maintenance when needed. The goal is simple, keep your building in good condition and stop small issues becoming bigger problems.",
+            ]}
+            headingId="maintenance-plans-intro-heading"
+            stacked
+            ctaLabel="Let's talk about your building →"
+            ctaHref="/contact"
+          />
+        </div>
+        <Carousel slides={PLAN_SLIDES} />
+      </section>
+      {/* ── Testimonial — its own full, centered section ── */}
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial
+          quote="We've used them for three years of scheduled maintenance across seven buildings. Zero callbacks."
+          name="Priya Raman"
+          role="BC Manager, Peppers Noosa"
+          logoSrc="/partners/novotel.svg.png"
+          logoAlt="Peppers Noosa"
         />
       </section>
 
       <section
-        className="px-10 py-20"
-        aria-label="25 years on the Sunshine Coast"
+        className="py-10 md:py-20"
+        aria-labelledby="maintenance-services-carousel-label"
       >
-        <WarrantyCard
-          stat="25"
-          statLabel={"years\non the Coast"}
-          heading={
-            <>
-              The same postcode,
-              <br />
-              the same buildings.
-            </>
-          }
-          body="We've been maintaining properties on the Sunshine Coast since before half the foreshore developments were built. We know how salt air attacks sealants, how UV degrades coatings, and how coastal storm seasons stress every facade system. That knowledge doesn't come from a manual — it comes from 25 years of showing up."
+        <h2
+          id="maintenance-services-carousel-label"
+          className="px-5 md:px-10 pb-10 md:pb-20"
+        >
+          Discover what we can cover in maintaining your building
+          <br />
+          and explore our full range of services below.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES.filter(
+            (slide) => slide.href !== "/maintenance",
+          )}
+          ariaLabel="RAS-VERTEX services"
         />
       </section>
 
-      <section className="pt-20">
-        <ServiceProjects
-          heading={
-            <>
-              Work we're proud of,
-              <br />
-              from Noosa to Caloundra.
-            </>
-          }
-          subheading="Twenty-five years of building maintenance across the Sunshine Coast. Body corporate facade programs in Maroochydore, roof restorations in Noosa, concrete repairs in Mooloolaba — every job documented, every building better for it."
-          projects={PROJECTS}
-          footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour, Yandina and throughout the hinterland."
-        />
-      </section>
-
-      <section className="px-10 py-20">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="maintenance-faq-heading"
+          ctaHeading="Any building, every challenge."
         />
       </section>
     </>

@@ -1,5 +1,9 @@
 /* app/components/about/AboutStory.module.css */
 
+.section {
+  /* padding applied by page wrapper */
+}
+
 /* ─── Image + copy split ─────────────────────────────────────── */
 .split {
   display: grid;
@@ -24,13 +28,42 @@
   object-position: center 20%;
 }
 
+/* ─── Copy column ─────────────────────────────────────────────── */
 .copyCol {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  padding-top: var(--space-lg);
 }
 
-/* h2 inherits from globals */
+/* ─── Credential pills ────────────────────────────────────────── */
+.credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.credential {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--navy-20);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--navy-55);
+}
+
+/* ─── Body paragraphs ─────────────────────────────────────────── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
@@ -40,5 +73,9 @@
 
   .imageWrap {
     aspect-ratio: 4 / 3;
+  }
+
+  .copyCol {
+    padding-top: 0;
   }
 }

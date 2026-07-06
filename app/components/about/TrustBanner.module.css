@@ -42,13 +42,11 @@
 
 .communityLogo {
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.6;
 }
 
-/* ── Right — burgundy companion card ────────────────────────── */
+/* ── Right — brand card ───────────────────────────────────────── */
 .right {
-  background: var(--burgundy);
+  background: var(--navy-08);
   border-radius: var(--radius-3xl);
   padding: var(--space-4xl);
   display: flex;
@@ -57,20 +55,16 @@
 }
 
 .rightHeading {
-  font-family: var(--font-body);
-  font-size: clamp(1.6rem, 2vw, 2rem);
-  font-weight: var(--weight-bold);
-  color: #ffffff;
+  color: var(--navy);
   margin: 0;
-  line-height: 1.15;
 }
 
 .rightBody {
   font-family: var(--font-body);
-  font-size: var(--p-sm-size);
+  font-size: var(--p-size);
   font-weight: var(--weight-regular);
   line-height: var(--p-sm-leading);
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--navy-65);
   margin: 0;
 }
 
@@ -91,8 +85,6 @@
 
 .logo {
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.6;
 }
 
 /* ── Responsive ──────────────────────────────────────────────── */

@@ -14,7 +14,6 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [activeService, setActiveService] = useState<ServiceKey | null>(null);
-  const [isVisible, setIsVisible] = useState(true);
 
   const closeServices = () => {
     setServicesOpen(false);
@@ -37,45 +36,13 @@ export default function Navigation() {
     return () => window.removeEventListener("resize", handleResize);
   }, [mobileMenuOpen]);
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    const update = () => {
-      const currentScrollY = window.scrollY;
-      const headlineBlock = document.querySelector("[data-headline]");
-      const pastHeadline = headlineBlock
-        ? headlineBlock.getBoundingClientRect().bottom < 72
-        : currentScrollY > 300;
-
-      if (currentScrollY < lastScrollY) setIsVisible(true);
-      else if (currentScrollY > lastScrollY && pastHeadline)
-        setIsVisible(false);
-
-      lastScrollY = currentScrollY;
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const navVisible = isVisible || servicesOpen || mobileMenuOpen;
-
   return (
     <>
       {servicesOpen && <div className={styles.backdrop} />}
 
       <nav
         aria-label="Main navigation"
-        className={`${styles.nav} ${navVisible ? styles.visible : styles.hidden}`}
+        className={`${styles.nav} ${styles.visible}`}
       >
         <Container size="xl">
           <div className={styles.wrapper}>
@@ -83,8 +50,8 @@ export default function Navigation() {
               <Image
                 src="/logo.png"
                 alt="RAS-VERTEX"
-                width={160}
-                height={40}
+                width={192}
+                height={48}
                 priority
                 style={{ objectFit: "contain" }}
               />
@@ -107,6 +74,7 @@ export default function Navigation() {
                   isOpen={servicesOpen}
                   activeService={activeService}
                   setActiveService={setActiveService}
+                  onClose={closeServices}
                 />
               </div>
 

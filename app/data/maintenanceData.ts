@@ -7,6 +7,7 @@ import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
 import type { MaintenancePlan } from "../components/shared/MaintenancePlans";
+import type { CarouselSlide } from "../components/homepage/Carousel";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
@@ -33,12 +34,6 @@ export const HERO_SLIDES: HeroSlide[] = [
 
 export const SERVICES: AccordionService[] = [
   {
-    label: "Sign Installations",
-    body: "Precise placement and secure installation of signage at any height. Storefront signs, interior branding, high-rise fascia — our rope access team ensures every installation is level, anchored correctly, and built to last.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
-  {
     label: "Roof Restoration",
     body: "Thorough inspection first, then a personalised restoration plan. We revitalise weathered roofs — repairing cracked tiles, repointing ridgelines, resealing penetrations — so they hold up against the Sunshine Coast's UV, salt air and storm season for years to come.",
     photo: "/images/projects/2.jpeg",
@@ -57,12 +52,6 @@ export const SERVICES: AccordionService[] = [
     href: "/contact",
   },
   {
-    label: "Facade Inspections",
-    body: "Comprehensive facade inspections using drone technology, thermal imaging and on-site rope access — providing detailed insights into the condition of your building's exterior. Every inspection produces a full condition report with photos, risk ratings, and a prioritised repair schedule your committee can act on.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
-  {
     label: "Preventative Maintenance",
     body: "Scheduled inspection and repair programs that address small issues before they become expensive ones. Every visit is documented with photos and condition reports — so your building file is always current for body corporate committees and insurance purposes.",
     photo: "/images/projects/2.jpeg",
@@ -73,6 +62,27 @@ export const SERVICES: AccordionService[] = [
     body: "Rapid response for storm damage, facade failures, and urgent safety hazards. We mobilise quickly, make safe, and repair — minimising liability exposure and tenant disruption from the first call.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
+  },
+];
+
+export const WHY_CHOOSE_US: ServiceCard[] = [
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "RAS-VERTEX dedicated project manager on site, Sunshine Coast building maintenance",
+    title: "Dedicated project manager",
+    body: "One person manages your building from first inspection to ongoing maintenance. One number, one thread, no chasing different trades or waiting on callbacks.",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "IRATA certified rope access technician performing building maintenance, RAS-VERTEX Sunshine Coast",
+    title: "IRATA rope access technicians",
+    body: "Thirty plus rope access technicians reach facades, roofs and plant rooms without scaffolding. Faster mobilisation, lower cost, and no disruption to residents or tenants.",
+  },
+  {
+    photo: "/nav/maintenance.png",
+    alt: "Condition reporting and documentation for body corporate committees, RAS-VERTEX Sunshine Coast",
+    title: "Full documentation",
+    body: "Every visit is recorded with timestamped photos and condition notes, so your building file is always current for committee meetings and insurance purposes.",
   },
 ];
 
@@ -218,6 +228,29 @@ export const PLANS: MaintenancePlan[] = [
   },
 ];
 
+export const PLAN_SLIDES: CarouselSlide[] = [
+  {
+    image: "/images/projects/1.jpeg",
+    imageAlt:
+      "RAS-VERTEX technician conducting preventive maintenance on the Sunshine Coast",
+    heading: "Ongoing support, on your terms",
+    body: "We plan maintenance around your building so problems are dealt with before they become disruptions. It is about staying ahead of wear and tear, knowing what is coming up and dealing with it before it becomes expensive.",
+  },
+  {
+    image: "/images/projects/2.jpeg",
+    imageAlt:
+      "RAS-VERTEX project manager on site for a dedicated maintenance program",
+    heading: "Dedicated team",
+    body: "You deal with the same person who knows your building and understands how it behaves. No repeating yourself, no confusion, just straight communication and updates when something needs attention.",
+  },
+  {
+    image: "/nav/maintenance.png",
+    imageAlt:
+      "RAS-VERTEX multi-trade team performing building maintenance on the Sunshine Coast",
+    heading: "Full service",
+    body: "Painting, waterproofing, concrete repairs, cleaning and rope access. We handle whatever the building needs without you having to coordinate different trades or chase different contractors.",
+  },
+];
 export const FAQS: FAQItem[] = [
   {
     q: "Why is routine maintenance crucial for body corporates and strata buildings?",
@@ -246,5 +279,5 @@ export const FAQ_CONTACT: FAQContact = {
   role: "Maintenance Manager",
   photo: "/images/projects/1.jpeg",
   ctaHref: "/contact",
-  ctaLabel: "Talk to Sam →",
+  ctaLabel: "Talk to our maintenance team →",
 };

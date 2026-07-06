@@ -1,8 +1,8 @@
 // app/components/homepage/HeroVariant.tsx
 
-import Link from "next/link";
 import styles from "./HeroVariant.module.css";
 import ServiceCarousel from "./ServiceCarousel";
+import { cld } from "../../lib/cloudinary";
 
 const SERVICE_SLIDES = [
   {
@@ -11,13 +11,15 @@ const SERVICE_SLIDES = [
     alt: "Painting",
     title: "Painting",
     href: "/painting",
+    industries: ["Commercial", "Body Corporate", "Residential"],
   },
   {
-    src: "/nav/cleaning.png",
+    src: cld("nav-cleaning.png", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Building Cleaning",
     title: "Building Cleaning",
-    href: "/cleaning",
+    href: "/external-cleaning",
+    industries: ["Commercial", "Body Corporate"],
   },
   {
     src: "/videos/cleaning.mp4",
@@ -25,34 +27,39 @@ const SERVICE_SLIDES = [
     alt: "Window Cleaning",
     title: "Window Cleaning",
     href: "/cleaning",
+    industries: ["Commercial", "Body Corporate", "Residential"],
   },
   {
-    src: "/nav/waterproofing.png",
+    src: cld("nav-waterproofing.png", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Waterproofing",
     title: "Waterproofing",
     href: "/waterproofing",
+    industries: ["Commercial", "Body Corporate"],
   },
   {
-    src: "/nav/maintenance.png",
+    src: cld("nav-maintenance.png", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Maintenance",
     title: "Maintenance",
     href: "/maintenance",
+    industries: ["Commercial", "Body Corporate"],
   },
   {
-    src: "/nav/height.png",
+    src: cld("nav-height.png", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Height Safety",
     title: "Height Safety",
     href: "/height-safety",
+    industries: ["Commercial", "Body Corporate", "Residential"],
   },
   {
-    src: "/images/projects/1.jpeg",
+    src: cld("nav-inspections.webp", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Building Inspections",
     title: "Building Inspections",
     href: "/building-inspections",
+    industries: ["Commercial", "Body Corporate"],
   },
 ];
 
@@ -64,25 +71,7 @@ export { SERVICE_SLIDES };
 
 export default function HeroVariant({ showCarousel = true }: HeroVariantProps) {
   return (
-    <header className={styles.hero} aria-labelledby="hero-heading">
-      <div className={styles.top}>
-        <h1 id="hero-heading" className={styles.headline}>
-          Higher
-          <br />
-          Standards.
-        </h1>
-
-        <div className={styles.topRight}>
-          <h3 className={styles.subheading}>25+ years on the Sunshine Coast.</h3>
-          <p className="p-soft">
-            Complete property maintenance for commercial, body corporate, and strata across the Sunshine Coast.
-          </p>
-          <Link href="/company" className={styles.learnMore}>
-            Learn more about RAS-VERTEX →
-          </Link>
-        </div>
-      </div>
-
+    <header className={styles.hero} aria-label="Our services">
       {showCarousel && <ServiceCarousel slides={SERVICE_SLIDES} />}
     </header>
   );

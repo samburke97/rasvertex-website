@@ -1,28 +1,19 @@
 // app/cleaning/page.tsx
 
+import Link from "next/link";
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
-import ServiceHero from "../components/shared/ServiceHero";
-import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
-import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceFeatures from "../components/shared/ServiceFeatures";
-import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
-import PhotoGrid from "../components/shared/PhotoGrid";
 import WarrantyCard from "../components/shared/WarrantyCard";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
-import {
-  HERO_SLIDES,
-  SERVICES,
-  FEATURES,
-  PROJECTS,
-  CARDS,
-  FAQS,
-  FAQ_CONTACT,
-} from "../data/cleaningData";
+import { HERO_SLIDES, SERVICES, FAQS, FAQ_CONTACT } from "../data/cleaningData";
 
 export const metadata = generatePageMetadata({
   title: "Window Cleaning Sunshine Coast | High-Rise & Commercial",
@@ -70,140 +61,153 @@ export default function CleaningPage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
-        <ServiceHero
+      <section className="pt-10">
+        <ServiceHeroSplit
           heading={
             <>
-              Window cleaning
-              <br />
-              on the Sunshine Coast.
+              We clean every window on every building across the Sunshine Coast,
+              at any height.
             </>
           }
-          lede="Streak-free results from ground to rooftop. IRATA rope access, purified water systems, and eco-friendly pressure cleaning — for residential, commercial and strata properties."
-          slides={HERO_SLIDES}
+          lede="We take advantage of rope access and purified water systems to deliver a streak-free finish without disruption. Removing salt, grime and coastal build-up properly, keeps your glass cleaner for longer."
           headingId="cleaning-hero-heading"
+          image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
         />
       </section>
 
-      <section className="pt-20 pb-20">
-        <ServiceIntro
-          heading="Clean glass. Protected surfaces. No disruption."
-          paragraphs={[
-            "On the Sunshine Coast, salt air doesn't just dirty your windows — it etches them. UV accelerates biological growth on facades. Wind carries marine particulates into every surface seam. Standard cleaning removes the surface layer. Our approach removes the contaminants that cause lasting damage — using purified water, hot-water vacuum pressure systems and biodegradable agents that are safe for your surfaces and the surrounding environment.",
-            "We employ ropes to complete our cleaning projects, which means no corner is left untouched regardless of building height. IRATA-certified technicians from our own team — not subcontractors — access every facade, every balustrade and every pane. Speedy delivery, minimal disruption, and a safe, cost-effective solution for buildings from four to forty storeys.",
-          ]}
-          headingId="cleaning-intro-heading"
-          logos={[
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={[
             {
-              src: "/images/associations/qbcc.png",
-              alt: "QBCC Licensed",
-              width: 60,
-              height: 40,
+              photo: HERO_SLIDES[1].src,
+              alt: HERO_SLIDES[1].alt,
+              title: "Gold standard water systems",
+              body: "Our purified systems remove 99.9% of solids, preventing mineral deposits as your windows dry. Combined with rope access systems, we deliver an industry-leading streak-free finish.",
+            },
+            {
+              photo: HERO_SLIDES[2].src,
+              alt: HERO_SLIDES[2].alt,
+              title: "High-rise rope access",
+              body: "IRATA-certified technicians work up close and personal on every window at any height, without scaffolding or EWP hire, keeping access simple and disruption minimal.",
+            },
+            {
+              photo: HERO_SLIDES[3].src,
+              alt: HERO_SLIDES[3].alt,
+              title: "Ongoing Maintenance Plans",
+              body: "Our tailored and ongoing cleaning schedules keep your building consistently maintained and spot free year-round, not just after one-off visits.",
             },
           ]}
+          heading={
+            <>
+              Here&rsquo;s why property managers and
+              <br />
+              owners choose our window cleaning.
+            </>
+          }
+          ariaLabel="Why property managers choose RAS-VERTEX window cleaning"
+          footerCtaLabel="Get a free quote →"
+          footerCtaHref="/contact"
+          display="grid"
+          variant="white"
         />
       </section>
 
-      <section className="pt-20 px-10">
-        <PhotoGrid
-          showHeader={false}
-          cta={{
-            body: "Salt air etches glass. UV grows algae on facades. Pollution builds up on every surface. Regular professional cleaning isn't cosmetic — it's the most cost-effective way to protect your building's surfaces long-term.",
-            link: { label: "Book a clean →", href: "/contact" },
-          }}
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="Eco-friendly cleaning"
+      >
+        <WarrantyCard
+          stat="100%"
+          statLabel={"recycled\nwater system"}
+          heading={
+            <>
+              Eco-friendly
+              <br />
+              cleaning systems.
+            </>
+          }
+          body="We use purified water systems and recycled hot-water vacuum technology to eliminate chemical runoff and prevent discharge into stormwater systems."
         />
       </section>
 
-      <section className="pt-20 px-10">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceAccordion
           heading={
             <>
-              What kind of clean
+              What kind of window cleaning
               <br />
-              are you looking for?
+              do you need?
             </>
           }
-          ariaLabel="What kind of clean are you looking for?"
+          paragraph="From single-storey homes to high-rise towers, we match the right access method and water system to every building."
+          ariaLabel="What kind of window clean do you need?"
           services={SERVICES}
           headingId="cleaning-services-heading"
           ctaLabel="Not sure? Let's talk about it →"
         />
       </section>
 
-      <section className="pt-20">
-        <ServiceCards
-          cards={CARDS}
-          heading="Who we work for."
-          ariaLabel="Who we work for — window cleaning services"
-        />
+      {/* ── External cleaning internal link callout ── */}
+      <section className="px-5 md:px-10 pb-5">
+        <p className="p-soft">
+          Looking for full building or facade cleaning?{" "}
+          <Link
+            href="/external-cleaning"
+            style={{
+              color: "var(--navy)",
+              fontWeight: "var(--weight-semibold)",
+              borderBottom: "1px solid var(--navy)",
+              paddingBottom: "1px",
+            }}
+          >
+            See our dedicated external cleaning page
+          </Link>
+        </p>
       </section>
 
-      <section className="pt-20">
-        <ServiceFeatures
-          features={FEATURES}
-          displayText={"Crystal\nClear."}
-          ariaLabel="Why choose RAS-VERTEX for window cleaning"
-        />
-      </section>
-
+      {/* ── Testimonial — its own full, centered section ── */}
       <section
-        className="px-10 pt-20"
-        aria-labelledby="cleaning-before-after-heading"
+        className="px-5 md:px-10 py-10 md:py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
       >
-        <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
-          beforeAlt="Mooloolaba strata building before professional window clean"
-          afterAlt="Mooloolaba strata building after professional window clean by RAS-VERTEX"
-          clientName="Mooloolaba Strata"
-          heading="Quarterly program, zero resident disruption."
-          body="This 18-storey Mooloolaba building had been managing window cleaning through three separate contractors — no consistent schedule, no documentation, and residents constantly fielding questions about access. We took over the full program: quarterly rope access cleans, facade wash twice a year, committee report after every visit."
-          quote="We've had no resident complaints since RAS-VERTEX took over. They show up when they say they will, the building looks sharp, and the report lands in my inbox before I've even asked for it."
-          quoteAuthor="Michelle Tran"
-          quoteRole="Building Manager, Mooloolaba"
-          authorLogo="/partners/accor.svg"
-          authorLogoAlt="Mooloolaba Strata"
-          ctaHref="/work"
-          ctaLabel="Our projects →"
-          headingId="cleaning-before-after-heading"
+        <ContactTestimonial
+          quote="Streak-free windows on every visit, even the sections other cleaners always skip. No scaffolding, no fuss, just clean glass."
+          name="David Lam"
+          role="Property Manager, Ray White Mooloolaba"
+          logoSrc="/partners/raywhite.png"
+          logoAlt="Ray White Mooloolaba"
+        />
+      </section>
+      <section
+        className="py-10 md:py-20"
+        aria-labelledby="cleaning-services-carousel-label"
+      >
+        <h2
+          id="cleaning-services-carousel-label"
+          className="px-5 md:px-10 pb-10 md:pb-20"
+        >
+          We work across every part of your property, <br /> from painting and
+          maintenance to inspections and safety.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/cleaning")}
+          ariaLabel="RAS-VERTEX services"
         />
       </section>
 
-      <section className="px-10 py-20" aria-label="Eco-friendly cleaning">
-        <WarrantyCard
-          stat="100%"
-          statLabel={"recycled\nwater system"}
-          heading={
-            <>
-              Clean results,
-              <br />
-              clean conscience.
-            </>
-          }
-          body="Our industrial-grade pressure cleaning system runs on 100% recycled and filtered hot water with full vacuum recovery — zero wastewater discharged to stormwater. Biodegradable cleaning agents on every job. Purified, deionised water for all window cleaning. The Sunshine Coast's environment is part of what makes it worth protecting."
-        />
-      </section>
-
-      <section className="pt-20">
-        <ServiceProjects
-          heading={
-            <>
-              Work we're proud of,
-              <br />
-              from Noosa to Caloundra.
-            </>
-          }
-          subheading="High-rise rope access window cleaning in Mooloolaba, quarterly commercial programs in Maroochydore, resort complexes in Noosa — streak-free results on every building, every visit."
-          projects={PROJECTS}
-          footerNote="We also clean across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour and throughout the hinterland."
-        />
-      </section>
-
-      <section className="px-10 py-20">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="cleaning-faq-heading"
+          ctaHeading={
+            <>
+              Keep your building looking sharp.
+              <br />
+              Let’s talk window cleaning.
+            </>
+          }
         />
       </section>
     </>

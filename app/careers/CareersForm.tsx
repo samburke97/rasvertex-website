@@ -16,6 +16,8 @@ const SKILLSETS = [
   "Repairs and maintenance",
 ];
 
+const EXPERIENCE_OPTIONS = ["1 year", "2 years", "3–5 years", "5+ years"];
+
 const IRATA_LEVELS = ["Level 1", "Level 2", "Level 3"];
 
 const STEP_LABELS: Record<Step, string> = {
@@ -31,10 +33,15 @@ export default function CareersForm() {
   const [resumeError, setResumeError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const [skillsets, setSkillsets] = useState<string[]>([]);
   const [form, setForm] = useState({
-    skillset: "",
+    experience: "",
     irata: "",
     irataLevel: "",
+    rightToWork: "",
+    visaType: "",
+    driversLicence: "",
+    whiteCard: "",
     otherQual: "",
     name: "",
     phone: "",
@@ -44,15 +51,22 @@ export default function CareersForm() {
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
+  const toggleSkillset = (s: string) =>
+    setSkillsets((p) => (p.includes(s) ? p.filter((x) => x !== s) : [...p, s]));
 
   const canAdvance =
     step === 1
-      ? form.skillset !== ""
+      ? skillsets.length > 0 && form.experience !== ""
       : step === 2
-        ? form.irata !== "" && (form.irata !== "Yes" || form.irataLevel !== "")
+        ? form.irata !== "" &&
+          (form.irata !== "Yes" || form.irataLevel !== "") &&
+          form.rightToWork !== "" &&
+          form.driversLicence !== "" &&
+          form.whiteCard !== ""
         : form.name.trim() !== "" &&
           form.phone.trim() !== "" &&
-          form.email.trim() !== "";
+          form.email.trim() !== "" &&
+          resume !== null;
 
   const handleResume = (file: File | null) => {
     setResumeError("");
@@ -72,6 +86,7 @@ export default function CareersForm() {
 
     try {
       const body = new FormData();
+      skillsets.forEach((s) => body.append("skillsets", s));
       Object.entries(form).forEach(([k, v]) => body.append(k, v as string));
       if (resume) body.append("resume", resume);
 
@@ -85,7 +100,9 @@ export default function CareersForm() {
       setSubmitted(true);
     } catch (err) {
       console.error("Careers form error:", err);
-      alert("Something went wrong submitting your application. Please try again.");
+      alert(
+        "Something went wrong submitting your application. Please try again.",
+      );
     }
   };
 
@@ -156,26 +173,56 @@ export default function CareersForm() {
 
           <h3>{STEP_LABELS[step]}</h3>
 
+          {step === 1 && (
+            <p className={styles.stepHint}>(Select all that apply)</p>
+          )}
+
           <div className={styles.stepBody}>
-            {/* Step 1 — skillset */}
+            {/* Step 1 — skillset + experience */}
             {step === 1 && (
-              <fieldset className={styles.fieldset} aria-label="Skillset selection">
-                <legend className="sr-only">What's your skillset?</legend>
-                <div className={styles.pills}>
-                  {SKILLSETS.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      role="radio"
-                      aria-checked={form.skillset === s}
-                      onClick={() => set("skillset", s)}
-                      className={`${styles.pill} ${form.skillset === s ? styles.pillActive : ""}`}
-                    >
-                      {s}
-                    </button>
-                  ))}
+              <div className={styles.fields}>
+                <fieldset
+                  className={styles.fieldset}
+                  aria-label="Skillset selection"
+                >
+                  <legend className="sr-only">What&apos;s your skillset?</legend>
+                  <div className={styles.pills}>
+                    {SKILLSETS.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        role="checkbox"
+                        aria-checked={skillsets.includes(s)}
+                        onClick={() => toggleSkillset(s)}
+                        className={`${styles.pill} ${skillsets.includes(s) ? styles.pillActive : ""}`}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <div className={styles.field}>
+                  <span className={styles.fieldLabel}>
+                    How many years of experience do you have?
+                    <span className={styles.required} aria-hidden="true"> *</span>
+                  </span>
+                  <div className={styles.pills}>
+                    {EXPERIENCE_OPTIONS.map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        role="radio"
+                        aria-checked={form.experience === opt}
+                        onClick={() => set("experience", opt)}
+                        className={`${styles.pill} ${form.experience === opt ? styles.pillActive : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </fieldset>
+              </div>
             )}
 
             {/* Step 2 — qualifications */}
@@ -183,7 +230,10 @@ export default function CareersForm() {
               <div className={styles.fields}>
                 {/* IRATA yes/no */}
                 <div className={styles.field}>
-                  <span className={styles.fieldLabel}>Do you hold an IRATA cert?</span>
+                  <span className={styles.fieldLabel}>
+                    Do you hold an IRATA cert?
+                    <span className={styles.required} aria-hidden="true"> *</span>
+                  </span>
                   <div className={styles.pills}>
                     {["Yes", "No"].map((opt) => (
                       <button
@@ -224,11 +274,76 @@ export default function CareersForm() {
                   </div>
                 )}
 
+                {/* Right to work */}
+                <div className={styles.field}>
+                  <span className={styles.fieldLabel}>
+                    Right to work in Australia
+                    <span className={styles.required} aria-hidden="true"> *</span>
+                  </span>
+                  <div className={styles.pills}>
+                    {["Yes", "No"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        role="radio"
+                        aria-checked={form.rightToWork === opt}
+                        onClick={() => set("rightToWork", opt)}
+                        className={`${styles.pill} ${form.rightToWork === opt ? styles.pillActive : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Driver's licence */}
+                <div className={styles.field}>
+                  <span className={styles.fieldLabel}>
+                    Current driver&apos;s licence
+                    <span className={styles.required} aria-hidden="true"> *</span>
+                  </span>
+                  <div className={styles.pills}>
+                    {["Yes", "No"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        role="radio"
+                        aria-checked={form.driversLicence === opt}
+                        onClick={() => set("driversLicence", opt)}
+                        className={`${styles.pill} ${form.driversLicence === opt ? styles.pillActive : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* White Card */}
+                <div className={styles.field}>
+                  <span className={styles.fieldLabel}>
+                    Do you have a White Card?
+                    <span className={styles.required} aria-hidden="true"> *</span>
+                  </span>
+                  <div className={styles.pills}>
+                    {["Yes", "No"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        role="radio"
+                        aria-checked={form.whiteCard === opt}
+                        onClick={() => set("whiteCard", opt)}
+                        className={`${styles.pill} ${form.whiteCard === opt ? styles.pillActive : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
                 {/* Other qualifications */}
                 <div className={styles.field}>
                   <label htmlFor="otherQual" className={styles.fieldLabel}>
-                    Any other qualifications to note?{" "}
-                    <span className={styles.optional}>(EWP cert, licences, etc.)</span>
+                    Any other qualifications to note?
                   </label>
                   <input
                     id="otherQual"
@@ -236,7 +351,7 @@ export default function CareersForm() {
                     className={styles.input}
                     value={form.otherQual}
                     onChange={(e) => set("otherQual", e.target.value)}
-                    placeholder="e.g. EWP cert, QBCC licence, White Card…"
+                    maxLength={500}
                   />
                 </div>
               </div>
@@ -249,7 +364,10 @@ export default function CareersForm() {
                   <div className={styles.field}>
                     <label htmlFor="careersName" className={styles.fieldLabel}>
                       Full name
-                      <span className={styles.required} aria-hidden="true"> *</span>
+                      <span className={styles.required} aria-hidden="true">
+                        {" "}
+                        *
+                      </span>
                     </label>
                     <input
                       id="careersName"
@@ -259,12 +377,16 @@ export default function CareersForm() {
                       value={form.name}
                       onChange={(e) => set("name", e.target.value)}
                       autoComplete="name"
+                      maxLength={100}
                     />
                   </div>
                   <div className={styles.field}>
                     <label htmlFor="careersPhone" className={styles.fieldLabel}>
                       Phone
-                      <span className={styles.required} aria-hidden="true"> *</span>
+                      <span className={styles.required} aria-hidden="true">
+                        {" "}
+                        *
+                      </span>
                     </label>
                     <input
                       id="careersPhone"
@@ -274,6 +396,7 @@ export default function CareersForm() {
                       value={form.phone}
                       onChange={(e) => set("phone", e.target.value)}
                       autoComplete="tel"
+                      maxLength={20}
                     />
                   </div>
                 </div>
@@ -281,7 +404,10 @@ export default function CareersForm() {
                 <div className={styles.field}>
                   <label htmlFor="careersEmail" className={styles.fieldLabel}>
                     Email
-                    <span className={styles.required} aria-hidden="true"> *</span>
+                    <span className={styles.required} aria-hidden="true">
+                      {" "}
+                      *
+                    </span>
                   </label>
                   <input
                     id="careersEmail"
@@ -291,14 +417,15 @@ export default function CareersForm() {
                     value={form.email}
                     onChange={(e) => set("email", e.target.value)}
                     autoComplete="email"
+                    maxLength={254}
                   />
                 </div>
 
                 {/* Resume upload */}
                 <div className={styles.field}>
                   <label className={styles.fieldLabel}>
-                    Resume / CV{" "}
-                    <span className={styles.optional}>(optional)</span>
+                    Resume / CV
+                    <span className={styles.required} aria-hidden="true"> *</span>
                   </label>
                   <input
                     ref={fileInputRef}
@@ -315,7 +442,10 @@ export default function CareersForm() {
                       <span className={styles.resumeName}>{resume.name}</span>
                       <button
                         type="button"
-                        onClick={() => { setResume(null); setResumeError(""); }}
+                        onClick={() => {
+                          setResume(null);
+                          setResumeError("");
+                        }}
                         className={styles.resumeRemove}
                         aria-label="Remove resume"
                       >
@@ -329,7 +459,13 @@ export default function CareersForm() {
                       onClick={() => fileInputRef.current?.click()}
                       aria-label="Upload your resume or CV"
                     >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
                         <path
                           d="M12 16V4M12 4L7 9M12 4l5 5M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"
                           stroke="currentColor"
@@ -338,14 +474,13 @@ export default function CareersForm() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <span>
-                        Upload resume
-                        <span className={styles.uploadBoxSub}> — PDF or Word, 10 MB max</span>
-                      </span>
+                      <span>Upload Resume</span>
                     </button>
                   )}
                   {resumeError && (
-                    <p className={styles.fileError} role="alert">{resumeError}</p>
+                    <p className={styles.fileError} role="alert">
+                      {resumeError}
+                    </p>
                   )}
                 </div>
 
@@ -357,10 +492,16 @@ export default function CareersForm() {
                   <textarea
                     id="careersMessage"
                     className={styles.textarea}
-                    rows={3}
+                    rows={1}
                     value={form.message}
                     onChange={(e) => set("message", e.target.value)}
-                    placeholder="Experience, certifications, availability…"
+                    onInput={(e) => {
+                      const t = e.currentTarget;
+                      t.style.height = "auto";
+                      t.style.height = `${t.scrollHeight}px`;
+                    }}
+                    style={{ overflow: "hidden" }}
+                    maxLength={1500}
                   />
                 </div>
               </div>
@@ -391,7 +532,7 @@ export default function CareersForm() {
                 disabled={!canAdvance}
                 aria-label={`Continue to step ${step + 1}`}
               >
-                Continue →
+                Continue
               </Button>
             ) : (
               <Button
@@ -402,7 +543,7 @@ export default function CareersForm() {
                 disabled={!canAdvance}
                 aria-label="Submit job application"
               >
-                Send application →
+                Send application
               </Button>
             )}
           </div>

@@ -2,8 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import styles from "./ServiceFAQ.module.css";
 
@@ -26,6 +25,8 @@ interface ServiceFAQProps {
   items: FAQItem[];
   contact: FAQContact;
   headingId?: string;
+  /** Heading above the CTA button — defaults to "Ready to talk about your project?" */
+  ctaHeading?: ReactNode;
 }
 
 export default function ServiceFAQ({
@@ -34,8 +35,9 @@ export default function ServiceFAQ({
   items,
   contact,
   headingId = "faq-heading",
+  ctaHeading = "Ready to talk about your project?",
 }: ServiceFAQProps) {
-  const [openIdx, setOpenIdx] = useState(0);
+  const [openIdx, setOpenIdx] = useState(-1);
 
   const schema = {
     "@context": "https://schema.org",
@@ -46,6 +48,9 @@ export default function ServiceFAQ({
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
+
+  const label = contact.ctaLabel ?? "Let’s talk about your project →";
+  const labelText = label.slice(0, label.lastIndexOf("→")).trimEnd();
 
   return (
     <>
@@ -67,37 +72,35 @@ export default function ServiceFAQ({
               </div>
             )}
 
-            {/* CTA block — avatar beside name/copy/button */}
+            {/* CTA block */}
             <div
               className={styles.ctaRow}
               aria-label={`Contact ${contact.name}`}
             >
-              <div className={styles.avatar} aria-hidden="true">
-                <Image
-                  src={contact.photo}
-                  alt={`${contact.name} — ${contact.role} at RAS-VERTEX`}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                  sizes="160px"
-                />
-              </div>
-              <div className={styles.ctaContent}>
-                <h3>Ready to talk about your project?</h3>
-                <p className="p-soft">
-                  Building projects can feel like a lot. Don&rsquo;t stress —
-                  we&rsquo;ve been doing this for 25 years. One call to{" "}
-                  {contact.name.split(" ")[0]} and you&rsquo;ll know exactly
-                  where you stand.
-                </p>
-                <Link
-                  href={contact.ctaHref ?? "/contact"}
-                  className={styles.ctaButton}
-                  aria-label={`Talk to ${contact.name.split(" ")[0]} about your project`}
+              <h3>{ctaHeading}</h3>
+              <Link
+                href={contact.ctaHref ?? "/contact"}
+                className={styles.ctaButton}
+                aria-label={`Talk to ${contact.name.split(" ")[0]} about your project`}
+              >
+                {labelText}
+                <svg
+                  className={styles.ctaArrow}
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
                 >
-                  {contact.ctaLabel ??
-                    "Let\u2019s talk about your project \u2192"}
-                </Link>
-              </div>
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
             </div>
           </div>
 

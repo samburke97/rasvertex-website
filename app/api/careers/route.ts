@@ -3,7 +3,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const MAX_RESUME_SIZE = 10 * 1024 * 1024; // 10 MB
+const MAX_RESUME_SIZE = 10 * 1024 * 1024;
 const ALLOWED_RESUME_TYPES = [
   "application/pdf",
   "application/msword",
@@ -19,10 +19,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true, skipped: true });
     }
 
-    const role = String(formData.get("role") || "");
+    const skillsets = formData.getAll("skillsets").map(String);
+    const experience = String(formData.get("experience") || "");
     const irata = String(formData.get("irata") || "");
-    const qbcc = String(formData.get("qbcc") || "");
-    const liability = String(formData.get("liability") || "");
+    const irataLevel = String(formData.get("irataLevel") || "");
+    const rightToWork = String(formData.get("rightToWork") || "");
+    const visaType = String(formData.get("visaType") || "");
+    const driversLicence = String(formData.get("driversLicence") || "");
+    const whiteCard = String(formData.get("whiteCard") || "");
+    const otherQual = String(formData.get("otherQual") || "");
     const name = String(formData.get("name") || "");
     const phone = String(formData.get("phone") || "");
     const email = String(formData.get("email") || "");
@@ -55,23 +60,29 @@ export async function POST(req: Request) {
     const { data: emailData, error } = await resend.emails.send({
       from: "RAS-VERTEX <sam@rasvertex.com.au>",
       to: "team@rasvertex.com.au",
-      subject: `New Candidate — ${role || "Unknown Role"}`,
+      subject: `New Job Application — ${name || "Unknown"}`,
       text: `
 New job application received.
 
-Role: ${role}
+--- SKILLSET ---
+Skills: ${skillsets.length > 0 ? skillsets.join(", ") : "None provided"}
+Experience: ${experience || "Not answered"}
 
-Qualifications:
-- IRATA certified: ${irata || "Not answered"}
-- QBCC licensed: ${qbcc || "Not answered"}
-- Public liability insurance: ${liability || "Not answered"}
+--- QUALIFICATIONS ---
+IRATA certified: ${irata || "Not answered"}
+IRATA level: ${irataLevel || "N/A"}
+Right to work in Australia: ${rightToWork || "Not answered"}
+Visa type: ${rightToWork === "No" ? visaType || "Not provided" : "N/A"}
+Current driver's licence: ${driversLicence || "Not answered"}
+White Card: ${whiteCard || "Not answered"}
+Other qualifications: ${otherQual || "None"}
 
-Applicant:
+--- APPLICANT ---
 Name: ${name}
 Phone: ${phone}
 Email: ${email}
 
-About:
+--- ADDITIONAL ---
 ${message || "None provided"}
 
 Resume attached: ${attachments.length > 0 ? "Yes" : "No"}

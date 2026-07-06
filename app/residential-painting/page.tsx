@@ -4,22 +4,21 @@ import Link from "next/link";
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
-import ServiceHero from "../components/shared/ServiceHero";
-import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
+import ServiceCards from "../components/shared/ServiceCards";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import CredentialRows from "../components/shared/CredentialRows";
-import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import InspectionProcess from "../components/shared/InspectionProcess";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
 import {
   HERO_SLIDES,
   SERVICES,
   PROCESS_STEPS,
-  CREDENTIALS,
-  PROJECTS,
   FAQS,
   FAQ_CONTACT,
 } from "../data/residentialPaintingData";
@@ -72,68 +71,86 @@ export default function ResidentialPaintingPage() {
       />
 
       <section className="pt-20">
-        <ServiceHero
+        <ServiceHeroSplit
           heading={
             <>
-              House painters on
-              <br />
-              the Sunshine Coast.
+              We deliver residential painting on the Sunshine Coast that looks
+              better, lasts longer, and holds up in our coastal conditions.
             </>
           }
-          lede="The same commercial-grade systems and preparation standard we apply to high-rise body corporates — for your home. QBCC licensed, 5-year written warranty."
-          slides={HERO_SLIDES}
+          lede="Local and professional house painters delivering commercial-grade preparation and coating systems for long-lasting Sunshine Coast homes. QBCC licensed with a 5-year written workmanship warranty."
+          image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="residential-painting-hero-heading"
+          breadcrumb={{
+            parentLabel: "Painting",
+            parentHref: "/painting",
+            currentLabel: "Residential",
+          }}
         />
       </section>
 
-      <section className="pt-20 pb-20">
-        <ServiceIntro
-          heading="Your home. Our commercial standard."
-          paragraphs={[
-            "We've been painting homes on the Sunshine Coast for 25 years — and we still treat every one like it's our own. You'll meet your project manager before a brush touches anything. They'll walk the job with you, explain exactly what we're using and why, and be on the other end of the phone until you're happy.",
-            "Painting a home on the Sunshine Coast isn't the same as painting one inland. Salt air within 5km of the ocean degrades standard paint systems within two to three years. UV at this latitude is among the highest in Australia. Every system we specify for residential work is the same coastal-spec standard we apply to body corporate buildings — chloride rinse, salt-bonded primer, commercial-grade topcoats that are actually built for this environment.",
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={[
+            {
+              photo: HERO_SLIDES[1].src,
+              alt: HERO_SLIDES[1].alt,
+              title: "Better results that last longer",
+              body: "We focus on thorough preparation and proven Haymes & Dulux coating systems to deliver a finish that looks better on day one and continues to perform for the long run.",
+            },
+            {
+              photo: HERO_SLIDES[2].src,
+              alt: HERO_SLIDES[2].alt,
+              title: "A local in-house team you can trust",
+              body: "We’re Sunshine Coast locals with a fully employed home painting team, no subcontractors, delivering the same consistent standard of workmanship across every project.",
+            },
+            {
+              photo: HERO_SLIDES[3].src,
+              alt: HERO_SLIDES[3].alt,
+              title: "A local team with real accountability",
+              body: "We’re a Sunshine Coast-based team, every project carries our reputation locally, which means a higher standard of care, communication, and follow-through on every job.",
+            },
           ]}
-          headingId="residential-painting-intro-heading"
+          heading={
+            <>
+              Here&rsquo;s why homeowners across the
+              <br />
+              Sunshine Coast choose us.
+            </>
+          }
+          ariaLabel="Why homeowners choose RAS-VERTEX for residential painting"
+          footerCtaLabel="Get a free quote →"
+          footerCtaHref="/contact"
+          display="grid"
+          variant="white"
+        />
+      </section>
+
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="8-year warranty"
+      >
+        <WarrantyCard
+          body="Every residential repaint is backed by a 8-year written workmanship warranty, issued at handover for complete peace of mind. Manufacturer warranties from Haymes and Dulux, up to 15 years on selected exterior systems, are also registered in your name for added protection and long-term confidence."
+          logosHeading="Backed by the best"
           logos={[
             {
               src: "/images/associations/haymes.svg",
               alt: "Haymes Paint",
-              width: 80,
-              height: 40,
+              width: 100,
+              height: 50,
             },
             {
-              src: "/images/associations/dulux.png",
+              src: "/images/associations/dulux.svg",
               alt: "Dulux",
-              width: 80,
-              height: 40,
-            },
-            {
-              src: "/images/associations/qbcc.png",
-              alt: "QBCC Licensed",
-              width: 60,
-              height: 40,
+              width: 100,
+              height: 50,
             },
           ]}
         />
       </section>
 
-      {/* ── How a residential repaint works ── */}
-      <section className="pt-20 pb-20" aria-labelledby="process-heading">
-        <InspectionProcess
-          heading={
-            <>
-              How a residential repaint
-              <br />
-              works, start to finish.
-            </>
-          }
-          lede="Five stages from site visit to warranty handover. No surprises, no scope creep — and a deliverable at every stage so you always know where the job is."
-          steps={PROCESS_STEPS}
-          headingId="process-heading"
-        />
-      </section>
-
-      <section className="pt-20 px-10">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceAccordion
           heading={
             <>
@@ -142,6 +159,7 @@ export default function ResidentialPaintingPage() {
               are you looking for?
             </>
           }
+          paragraph="Whether it's a full exterior repaint or an interior refresh, we bring the same coastal-spec systems and preparation standard to every home."
           ariaLabel="What kind of residential painting are you looking for?"
           services={SERVICES}
           headingId="residential-painting-services-heading"
@@ -149,48 +167,31 @@ export default function ResidentialPaintingPage() {
         />
       </section>
 
-      {/* ── Internal link to commercial — framed as a proof point ── */}
-      <section className="pt-20 pb-4 px-10">
-        <p className="p-soft">
-          We also run{" "}
-          <Link
-            href="/commercial-painting"
-            style={{
-              color: "var(--navy)",
-              fontWeight: "var(--weight-semibold)",
-              borderBottom: "1px solid var(--navy)",
-              paddingBottom: "1px",
-            }}
-          >
-            commercial and high-rise painting programs
-          </Link>{" "}
-          across the Sunshine Coast — the same team, the same preparation
-          standard, the same warranty.
-        </p>
-      </section>
-
-      <section
-        className="pt-20"
-        aria-label="Why choose RAS-VERTEX for residential painting"
-      >
-        <CredentialRows
-          credentials={CREDENTIALS}
-          ariaLabel="Why choose RAS-VERTEX for residential painting"
+      {/* ── How a residential repaint works ── */}
+      <section className="py-10 md:py-20" aria-labelledby="process-heading">
+        <InspectionProcess
+          heading="Your home, your vision. Professionally managed from start to finish."
+          lede="Clear steps, ongoing support, and a structured process that ensures your home is delivered exactly as planned."
+          steps={PROCESS_STEPS}
+          headingId="process-heading"
+          ctaLabel="Get a free quote →"
+          ctaHref="/contact"
         />
       </section>
 
       <section
-        className="px-10 pt-20"
+        className="px-5 md:px-10 py-10 md:py-20"
         aria-labelledby="residential-before-after-heading"
       >
         <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
+          beforeSrc="/images/residential/residential-before.webp"
+          afterSrc="/images/residential/residential-after.webp"
           beforeAlt="Moffat Beach coastal home before exterior repaint — failed coating system"
           afterAlt="Moffat Beach coastal home after 4-coat Haymes repaint by RAS-VERTEX"
-          clientName="Moffat Beach Residence"
+          projectName="Residence Repaint"
+          location="Moffat Beach, QLD"
           heading="Failed coating system. Four coats. Flawless finish."
-          body="The previous coating system on this Moffat Beach property had failed completely — peeling render, exposed substrate, significant salt damage. We undertook full surface remediation before a brush touched anything: crack injection, render repair, chloride treatment, salt-bonded primer. Four coats of Haymes Premium Exterior. The result holds up to the ocean views."
+          body="The previous coating system on this luxury coastal property had failed, leaving surfaces weathered and uneven. Our painters undertook extensive surface remediation, addressing peeling, cracking, and substrate damage, before applying a premium 4-coat Haymes paint system. The result? A flawless, weather-resistant finish that complements the architecture and lives up to the stunning ocean views."
           quote="I'd had two painters quote on this before RAS-VERTEX. Both wanted to paint straight over the problem. Sam's team stripped it back properly and the result speaks for itself — two years on and it still looks like day one."
           quoteAuthor="David Hartley"
           quoteRole="Homeowner, Moffat Beach"
@@ -202,41 +203,44 @@ export default function ResidentialPaintingPage() {
         />
       </section>
 
-      <section className="px-10 py-20" aria-label="5-year warranty">
-        <WarrantyCard
-          stat="5"
-          statLabel={"year\nwarranty"}
-          heading={
-            <>
-              We stand behind
-              <br />
-              every job.
-            </>
-          }
-          body="Every residential repaint is backed by a 5-year written workmanship warranty issued at handover. Haymes and Dulux manufacturer warranties — up to 15 years on qualifying exterior systems — are registered in your name. If anything fails due to our application, we come back and fix it. That's not a marketing line — it's a legal commitment, in writing, from a QBCC-licensed contractor."
+      {/* ── Testimonial — its own full, centered section ── */}
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial
+          quote="From the first call to the final walkthrough, everything was exactly as promised. No surprises, no upsells — just a beautifully finished home and a five-year warranty in writing."
+          name="Emma Whitfield"
+          role="Homeowner, Buderim"
+          logoSrc=""
         />
       </section>
 
-      <section className="pt-20">
-        <ServiceProjects
-          heading={
-            <>
-              Work we're proud of,
-              <br />
-              from Noosa to Caloundra.
-            </>
-          }
-          subheading="Coastal homes, pre-sale refreshes and full interior repaints across the Sunshine Coast — every job with the same preparation standard, the same paint systems, and the same 5-year warranty."
-          projects={PROJECTS}
-          footerNote="We also paint homes in Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour, Yandina and throughout the hinterland."
+      <section
+        className="py-10 md:py-20"
+        aria-labelledby="residential-painting-services-carousel-label"
+      >
+        <h2
+          id="residential-painting-services-carousel-label"
+          className="px-5 md:px-10 pb-10 md:pb-20"
+        >
+          Beyond painting, we support every part of your home
+          <br />
+          — explore our full range of services below.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/painting")}
+          ariaLabel="RAS-VERTEX services"
         />
       </section>
 
-      <section className="px-10 py-20">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="residential-painting-faq-heading"
+          ctaHeading="Your dream home starts here."
         />
       </section>
     </>

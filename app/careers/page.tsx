@@ -22,29 +22,22 @@ const CAREER_SLIDES = [
 export default function CareersPage() {
   return (
     <main aria-label="Careers at RAS-VERTEX">
-
       {/* ── Hero + form ── */}
-      <section className="px-10 pt-20" aria-label="Apply to join the team">
+      <section
+        className="px-5 md:px-10 pt-20"
+        aria-label="Apply to join the team"
+      >
         <CareersSurface />
       </section>
 
       {/* ── Testimonial ── */}
       <section
-        className="px-10 py-20"
+        className="px-5 md:px-10 py-10 md:py-20"
         style={{ display: "flex", justifyContent: "center" }}
         aria-label="Team testimonial"
       >
         <ContactTestimonial />
       </section>
-
-      {/* ── Photo carousel ── */}
-      <section className="pb-20" aria-label="RAS-VERTEX projects">
-        <PhotoCarousel
-          slides={CAREER_SLIDES}
-          ariaLabel="RAS-VERTEX project photos"
-        />
-      </section>
-
     </main>
   );
 }

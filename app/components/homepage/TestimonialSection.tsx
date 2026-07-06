@@ -146,6 +146,7 @@ export default function TestimonialsSection() {
               src={current.logo}
               alt={current.logoAlt}
               fill
+              sizes="120px"
               style={{ objectFit: "contain" }}
             />
           </div>

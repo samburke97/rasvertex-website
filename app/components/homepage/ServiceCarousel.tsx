@@ -5,7 +5,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./ServiceCarousel.module.css";
 
 export interface ServiceCarouselSlide {
@@ -13,6 +13,7 @@ export interface ServiceCarouselSlide {
   alt: string;
   title: string;
   body?: string;
+  industries?: string[];
   href: string;
   mediaType: "image" | "video";
 }
@@ -44,12 +45,27 @@ export default function ServiceCarousel({
     loop: false,
     dragFree: true,
     align: "start",
+    containScroll: "keepSnaps",
   });
 
   const [activeIdx, setActiveIdx] = useState(0);
+  const [snapIdx, setSnapIdx] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => {
+      const idx = emblaApi.selectedScrollSnap();
+      setSnapIdx(idx);
+      setActiveIdx(idx);
+    };
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
 
   if (!slides || slides.length === 0) return null;
 
@@ -57,7 +73,7 @@ export default function ServiceCarousel({
     <div className={styles.wrap}>
       <div className={styles.carouselWrap} role="region" aria-label={ariaLabel}>
         <div className={styles.carousel} ref={emblaRef}>
-          <div className={styles.track} onMouseLeave={() => setActiveIdx(0)}>
+          <div className={styles.track} onMouseLeave={() => setActiveIdx(snapIdx)}>
             {slides.map((slide, i) => (
               <Link
                 key={i}
@@ -88,13 +104,15 @@ export default function ServiceCarousel({
                     />
                   )}
                 </div>
-                <div className={styles.overlay} aria-hidden="true" />
-
                 <ArrowIcon />
 
-                <div className={styles.content}>
-                  <h3 className={styles.cardTitle}>{slide.title}</h3>
-                  <p className={styles.cardBody}>{slide.body}</p>
+                <div className={styles.tag}>
+                  <h3 className={styles.tagTitle}>{slide.title}</h3>
+                  {slide.industries && slide.industries.length > 0 && (
+                    <span className={styles.tagLocation}>
+                      {slide.industries.join(" · ")}
+                    </span>
+                  )}
                 </div>
               </Link>
             ))}

@@ -3,20 +3,21 @@
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
-import ServiceHero from "../components/shared/ServiceHero";
-import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
-import PhotoGrid from "../components/shared/PhotoGrid";
 import WarrantyCard from "../components/shared/WarrantyCard";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+
+import { cld } from "../lib/cloudinary";
 
 import {
   HERO_SLIDES,
   SERVICES,
-  PROJECTS,
   CARDS,
   FAQS,
   FAQ_CONTACT,
@@ -64,129 +65,111 @@ export default function PaintingPage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
-        <ServiceHero
+      <section className="pt-10">
+        <ServiceHeroSplit
           heading={
             <>
-              Painting the Sunshine Coast
-              <br />
-              for 25 years.
+              The Sunshine Coast's leading commercial, body corporate and
+              residential painting team.
             </>
           }
-          lede="One project manager, from first phone call to warranty sign-off. One number, one invoice, one thread."
-          slides={HERO_SLIDES}
+          lede="For over 25 years, we've completed painting projects with one dedicated team, right here on the Sunshine Coast. No subcontractors, no handovers, just the same experienced faces on site from start to finish."
+          image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="painting-hero-heading"
         />
       </section>
 
-      <section className="pt-20 pb-20">
-        <ServiceIntro
-          heading="Painting done properly, by people who live here."
-          paragraphs={[
-            "We've been painting buildings on the Sunshine Coast since before half the developments along the foreshore were built. In that time we've learned one thing above everything else: coastal painting is not the same as painting anywhere else. The salt air off Mooloolaba, the UV intensity up through Noosa, the humidity that rolls in off the hinterland — they all eat paint that isn't specced correctly. Every system we use is chosen for the substrate, the exposure, and the specific conditions of your building's location.",
-            "Whether it's a residential repaint in Buderim, exterior painting for a body corporate in Caloundra, commercial painting for a retail centre in Maroochydore, or a high-rise strata job in Mooloolaba — we run every project the same way. One project manager, on-site from day one, reachable on a single number until the warranty is signed. No subcontractors turning up unannounced. No quoting one crew and sending another.",
-          ]}
-          headingId="painting-intro-heading"
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={CARDS}
+          display="list"
+          eyebrow=""
+          heading="Three specialist teams covering every type of property."
+          ariaLabel="Who we work for — painting services (sticky variant)"
+          footerCtaLabel="Let's chat about your project →"
+          footerCtaHref="/contact"
+        />
+      </section>
+
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Warranty">
+        <WarrantyCard
+          body="We back every exterior paint job with an 8-year written warranty covering workmanship and the paint system. That's why we only specify Haymes and Dulux coatings, proven to perform in Sunshine Coast conditions."
+          logosHeading="Backed by the best"
           logos={[
             {
               src: "/images/associations/haymes.svg",
               alt: "Haymes Paint",
-              width: 80,
-              height: 40,
+              width: 100,
+              height: 50,
             },
             {
-              src: "/images/associations/dulux.png",
+              src: "/images/associations/dulux.svg",
               alt: "Dulux",
-              width: 80,
-              height: 40,
-            },
-            {
-              src: "/images/associations/qbcc.png",
-              alt: "QBCC Licensed",
-              width: 60,
-              height: 40,
+              width: 100,
+              height: 50,
             },
           ]}
         />
       </section>
 
-      <section className="pt-10 px-10">
-        <PhotoGrid
-          showHeader={false}
-          cta={{
-            body: "Every painter on the Sunshine Coast will quote you a job. Not every painter will show up on time, document every coat, and back the work with a five-year warranty. We will.",
-            link: { label: "Get a free quote →", href: "/contact" },
-          }}
-        />
-      </section>
-
-      <section className="pt-10 px-10">
-        <ServiceAccordion
-          heading={
-            <>
-              What kind of paint job
-              <br />
-              are you thinking about?
-            </>
-          }
-          ariaLabel="What kind of paint job are you thinking about?"
-          services={SERVICES}
-          headingId="painting-services-heading"
-        />
-      </section>
-
-      <section className="pt-20">
-        <ServiceCards
-          cards={CARDS}
-          heading="Who we work for."
-          ariaLabel="Who we work for — painting services"
-        />
-      </section>
-
-      <section className="px-10 pt-20" aria-labelledby="before-after-heading">
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="before-after-heading"
+      >
         <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
-          beforeAlt="Coolum Resort before exterior repaint by RAS-VERTEX"
-          afterAlt="Coolum Resort after exterior repaint by RAS-VERTEX"
-          clientName="Coolum Resort"
-          heading="Dedicated maintenance for the full resort complex."
-          body="RACV Resort Noosa had been managing building maintenance through Brisbane-based contractors — and the distance showed. We now run a dedicated program across the full resort complex. One project manager, one team, on their schedule."
-          quote="The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs."
-          quoteAuthor="James Whitfield"
-          quoteRole="Facilities Manager, Accor Hotels"
-          authorLogo="/partners/accor.svg"
-          authorLogoAlt="Accor Hotels"
+          beforeSrc={cld("bindaree-before", { width: 1600 })}
+          afterSrc={cld("bindaree-after", { width: 1600 })}
+          beforeAlt="Bindaree, Mooloolaba — before exterior repaint by RAS-VERTEX"
+          afterAlt="Bindaree, Mooloolaba — after exterior repaint by RAS-VERTEX"
+          projectName="Bindaree Repaint"
+          location="Mooloolaba, QLD"
+          heading="A tired facade, refreshed for coastal living."
+          body="Bindaree Apartments sits just back from the beach in Mooloolaba, where years of salt air, UV exposure and coastal weather had left the exterior faded and chalking. Our team completed a full body corporate repaint, removing failed coatings, preparing the substrate and applying a Haymes three coat exterior paint system designed for coastal conditions. The result is a durable finish that protects the building and keeps it looking its best for years to come."
           ctaHref="/work"
           ctaLabel="Our projects →"
           headingId="before-after-heading"
         />
       </section>
 
-      <section className="px-10 pt-20" aria-label="Warranty">
-        <WarrantyCard />
-      </section>
-
-      <section className="pt-20">
-        <ServiceProjects
-          heading={
-            <>
-              Work we're proud of,
-              <br />
-              from Noosa to Caloundra.
-            </>
-          }
-          subheading="Twenty-five years of painting across the Sunshine Coast. High-rise body corporates in Mooloolaba, heritage homes in Buderim, resort complexes in Coolum — every job gets the same crew, the same prep, and the same five-year warranty."
-          projects={PROJECTS}
-          footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour, Yandina and throughout the hinterland."
+      {/* ── Testimonial — its own full, centered section ── */}
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial
+          quote="They showed up within 48 hours for the site visit and had a full itemised quote within the week. One project manager start to finish, no passing the buck. Refreshing."
+          name="Sandra Koh"
+          role="Strata Manager, Archers Body Corporate"
+          logoSrc="/partners/archers.png"
+          logoAlt="Archers Body Corporate"
         />
       </section>
 
-      <section className="px-10 py-20">
+      <section
+        className="py-10 md:py-20"
+        aria-labelledby="painting-services-carousel-label"
+      >
+        <h2
+          id="painting-services-carousel-label"
+          className="px-5 md:px-10 pb-10 md:pb-20"
+        >
+          We do more than painting, with specialist services
+          <br />
+          that support every part of your building.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/painting")}
+          ariaLabel="RAS-VERTEX services"
+        />
+      </section>
+
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="painting-faq-heading"
+          ctaHeading="All painting projects, big or small."
         />
       </section>
     </>

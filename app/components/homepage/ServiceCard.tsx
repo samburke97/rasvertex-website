@@ -61,6 +61,7 @@ export default function ServiceCard({
                 loop
                 muted
                 playsInline
+                preload="metadata"
                 aria-hidden="true"
               />
             ) : (
@@ -69,6 +70,7 @@ export default function ServiceCard({
                 alt=""
                 fill
                 className={styles.media}
+                sizes="(max-width: 860px) 100vw, 33vw"
                 aria-hidden="true"
               />
             )}

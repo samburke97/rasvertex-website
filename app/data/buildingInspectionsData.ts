@@ -79,33 +79,49 @@ export const SERVICES: AccordionService[] = [
 export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "01",
-    title: "Site Review",
-    body: "We review your building plans, confirm anchor and access points, and scope the inspection method. Rope access, drone, or a combination — determined by building height, geometry and the areas of concern.",
-    deliverable: "Access plan & scope of works",
+    title: "We scope the building",
+    body: "We review plans, confirm access methods and define the inspection scope. You know exactly what will be covered before work begins.",
   },
   {
     n: "02",
-    title: "Physical Inspection",
-    body: "IRATA-certified technicians descend the full facade, physically assessing every element — render, sealants, expansion joints, balconies, fixings, flashings and penetrations. Every defect is photographed with location reference.",
-    deliverable: "Timestamped photo record",
+    title: "We access the full facade",
+    body: "Our IRATA technicians inspect every part of the building using rope access, ensuring full coverage at height without disruption.",
   },
   {
     n: "03",
-    title: "Thermal & Drone Survey",
-    body: "Thermal imaging to detect moisture behind surfaces and delamination that physical inspection can't confirm. Drone footage for context and documentation of overall building condition.",
-    deliverable: "Thermal scan report & drone footage",
+    title: "We capture what you can’t see",
+    body: "Thermal imaging and high-resolution inspection identify hidden moisture, defects and early-stage building issues before they become visible problems.",
   },
   {
     n: "04",
-    title: "Risk Assessment",
-    body: "All findings are classified by risk — Priority 1 (immediate action), Priority 2 (within 12 months), Priority 3 (monitor). Classification follows Australian Standards and gives committees a clear basis for maintenance decisions.",
-    deliverable: "Risk-rated defect register",
+    title: "We prioritise every finding",
+    body: "Each defect is ranked by urgency so you know what needs immediate attention, what can be planned, and what can be monitored. This gives committees clear direction for budgeting and maintenance planning.",
   },
   {
     n: "05",
-    title: "Condition Report",
-    body: "Full written condition report issued within 5 business days — findings, photos, risk ratings, recommended remediation scope and cost estimates. Formatted for use in sinking fund forecasts and 10-year maintenance plans under the BCCM Act.",
-    deliverable: "Written condition report + cost estimates",
+    title: "You get a decision-ready report",
+    body: "Within five business days. Photos, mapped defects, priority ratings and cost guidance you can use for sinking funds, maintenance planning and AGM reporting.",
+  },
+];
+
+export const WHY_CHOOSE_US: ServiceCard[] = [
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "IRATA rope access technician inspecting a Sunshine Coast building facade",
+    title: "Rope access reach",
+    body: "We access facades that standard inspectors can't. IRATA certified technicians physically inspect every element at every level, so there are no assumptions and no gaps.",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Thermal imaging survey of a Sunshine Coast building facade",
+    title: "Thermal imaging",
+    body: "We detect moisture, delamination and air infiltration behind cladding and render, defects that are invisible to the naked eye without a thermal survey.",
+  },
+  {
+    photo: "/nav/maintenance.png",
+    alt: "Sinking fund ready building inspection report, RAS-VERTEX Sunshine Coast",
+    title: "Sinking fund ready",
+    body: "Every report is formatted for direct use in 10 year maintenance plans and sinking fund forecasts, with cost estimates included so committees can plan budgets accurately.",
   },
 ];
 
@@ -175,7 +191,7 @@ export const CARDS: ServiceCard[] = [
   {
     photo: "/images/projects/2.jpeg",
     alt: "Body corporate building inspection — RAS-VERTEX Sunshine Coast",
-    title: "Body Corporate & Strata.",
+    title: "Body Corporate.",
     body: "Under the BCCM Act 1997, every Queensland body corporate must maintain a 10-year sinking fund forecast. Our condition reports give committees the data to plan accurately — defect register, risk ratings, prioritised works schedule and cost estimates, ready for the AGM.",
     cta: "Book an inspection",
     href: "/contact",
@@ -183,13 +199,45 @@ export const CARDS: ServiceCard[] = [
   {
     photo: "/images/projects/1.jpeg",
     alt: "Commercial building inspection — RAS-VERTEX Sunshine Coast",
-    title: "Commercial & Industrial.",
+    title: "Commercial.",
     body: "Facility managers and asset owners need to understand what their building actually needs — not guesswork, not deferred maintenance. Our inspection reports give you an accurate condition picture with a prioritised remediation plan you can budget against.",
     cta: "Book an inspection",
     href: "/contact",
   },
   {
     photo: "/nav/maintenance.png",
+    alt: "Industrial building inspection — RAS-VERTEX Sunshine Coast",
+    title: "Industrial.",
+    body: "Industrial buildings carry different failure risks — tilt-slab movement, hardstand cracking, roof membrane exposure to chemical or particulate contamination. Our condition reports assess against how the site actually operates, not a generic commercial checklist.",
+    cta: "Book an inspection",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Education facility building inspection — RAS-VERTEX Sunshine Coast",
+    title: "Education.",
+    body: "Schools and universities need condition data that supports capital works planning across multiple buildings and budget cycles. We inspect during holidays where possible and deliver reports formatted for facilities managers and school boards.",
+    cta: "Book an inspection",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "Government building inspection — RAS-VERTEX Sunshine Coast",
+    title: "Government.",
+    body: "Government and council-owned buildings need condition reporting that stands up to asset management audits. Our reports include defect registers, risk ratings and cost estimates formatted for public-sector capital works planning.",
+    cta: "Book an inspection",
+    href: "/contact",
+  },
+  {
+    photo: "/nav/maintenance.png",
+    alt: "Medical facility building inspection — RAS-VERTEX Sunshine Coast",
+    title: "Medical.",
+    body: "Hospitals and medical centres need facade and roof condition data without disrupting clinical operations. Our rope access and thermal imaging methods assess the full building envelope with minimal footprint on-site.",
+    cta: "Book an inspection",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
     alt: "Pre-purchase building inspection — RAS-VERTEX Sunshine Coast",
     title: "Pre-Purchase.",
     body: "Know what you're buying. We access high facades, rooftop areas and balcony membranes that standard building inspectors can't reach. A pre-purchase inspection gives buyers and investors an accurate picture of deferred maintenance liability before contracts are exchanged.",
@@ -268,27 +316,5 @@ export const INSPECTION_HOTSPOTS: Hotspot[] = [
     body: "Exposed reinforcing steel is visible where the concrete cover has spalled away. Chloride-induced corrosion of the reinforcing bar causes the steel to expand, fracturing the surrounding concrete from within. This is particularly prevalent on Sunshine Coast buildings within 5km of the ocean.",
     consequence:
       "Spalled concrete with exposed reinforcing will continue to deteriorate without intervention. The corroding steel weakens structural capacity over time. Falling concrete fragments present an immediate public safety hazard requiring temporary protection until repairs are completed.",
-  },
-  {
-    n: "04",
-    x: "35%",
-    y: "68%",
-    title: "Balcony Membrane Failure",
-    priority: "2",
-    priorityLabel: "Within 12 months",
-    body: "The waterproofing membrane on this balcony is showing surface crazing and has delaminated at the wall upturn junction. The membrane is at end of service life and no longer providing reliable waterproofing — moisture is likely entering the substrate during heavy rain, though visible internal damage has not yet appeared.",
-    consequence:
-      "Once water breaches the membrane consistently, it will track through the slab and manifest as water staining or active leaks in the apartment below. Full balcony membrane replacement at this stage costs significantly less than the combined cost of membrane replacement plus internal remediation.",
-  },
-  {
-    n: "05",
-    x: "88%",
-    y: "60%",
-    title: "Weep Hole Blockage",
-    priority: "3",
-    priorityLabel: "Monitor annually",
-    body: "Weep holes in this section of brickwork are blocked with render overspray and biological growth. Weep holes allow water that enters the wall cavity to drain out — when blocked, that water has no exit point and accumulates within the cavity.",
-    consequence:
-      "Prolonged moisture accumulation in the wall cavity accelerates corrosion of wall ties and cavity flashings. This is a monitor item at this stage, but should be cleared and re-inspected annually. If cavity wall tie corrosion is identified at future inspection, the scope and cost of remediation increases significantly.",
   },
 ];

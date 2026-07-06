@@ -4,6 +4,7 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { servicesData, type ServiceKey } from "../../../data/navigationData";
 import styles from "./ServicesDropdown.module.css";
 
@@ -11,22 +12,14 @@ type ServicesDropdownProps = {
   isOpen: boolean;
   activeService: ServiceKey | null;
   setActiveService: (service: ServiceKey | null) => void;
-};
-
-const serviceImages: Record<ServiceKey, string> = {
-  painting: "/nav/painting.png",
-  building: "/nav/cleaning.png",
-  window: "/nav/window.png",
-  waterproofing: "/nav/waterproofing.png",
-  maintenance: "/nav/maintenance.png",
-  height: "/nav/height.png",
-  inspections: "/nav/maintenance.png",
+  onClose: () => void;
 };
 
 export default function ServicesDropdown({
   isOpen,
   activeService,
   setActiveService,
+  onClose,
 }: ServicesDropdownProps) {
   const keys = Object.keys(servicesData) as ServiceKey[];
 
@@ -46,21 +39,23 @@ export default function ServicesDropdown({
           <motion.div
             className={styles.megaMenu}
             initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0, width: 1100 }}
+            animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
-            transition={{ opacity: { duration: 0.2 }, y: { duration: 0.2 } }}
+            transition={{ duration: 0.18 }}
           >
             <div className={styles.content}>
               {/* Service list */}
               <div className={styles.servicesList}>
                 {keys.map((key) => (
-                  <button
+                  <Link
                     key={key}
+                    href={servicesData[key].href}
                     onMouseEnter={() => setActiveService(key)}
+                    onClick={onClose}
                     className={`${styles.serviceButton} ${activeService === key ? styles.active : ""}`}
                   >
-                    {servicesData[key].name.toUpperCase()}
-                  </button>
+                    <h4 className={styles.serviceName}>{servicesData[key].name}</h4>
+                  </Link>
                 ))}
               </div>
 
@@ -90,9 +85,9 @@ export default function ServicesDropdown({
                           <div className={styles.servicePills}>
                             {servicesData[activeService].subServices.map(
                               (s) => (
-                                <span key={s} className={styles.pill}>
-                                  {s}
-                                </span>
+                                <Link key={s.label} href={s.href} onClick={onClose} className={styles.pill}>
+                                  {s.label}
+                                </Link>
                               ),
                             )}
                           </div>
@@ -110,7 +105,7 @@ export default function ServicesDropdown({
                         className={styles.serviceImage}
                       >
                         <Image
-                          src={serviceImages[activeService]}
+                          src={servicesData[activeService].image}
                           alt={servicesData[activeService].name}
                           fill
                           sizes="320px"

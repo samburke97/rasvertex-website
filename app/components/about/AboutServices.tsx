@@ -75,7 +75,7 @@ export default function AboutServices() {
               coordinate three separate contractors.
             </p>
             <Link href="/contact" className={styles.cta}>
-              Get a free quote →
+              Get a free quote
             </Link>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function AboutServices() {
                   className={styles.link}
                   aria-label={`Learn more about our ${s.title} services`}
                 >
-                  Learn more →
+                  Learn more
                 </Link>
               </div>
             </article>

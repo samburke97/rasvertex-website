@@ -24,6 +24,7 @@ export default function CaseStudy() {
           loop
           muted
           playsInline
+          preload="metadata"
           aria-label="RACV Resort Noosa — project footage by RAS-VERTEX"
         />
         <div className={styles.videoOverlay}>
@@ -42,11 +43,19 @@ export default function CaseStudy() {
             dedicated program across the full resort complex. One project
             manager, one team, on their schedule.
           </p>
+          <Link
+            href="/projects"
+            className={styles.projectsCta}
+            aria-label="View our projects"
+          >
+            Our projects
+          </Link>
         </div>
 
         {/* Right — quote */}
         <div className={styles.right}>
           <figure className={styles.quote}>
+            <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
             <blockquote className={styles.quoteText}>
               <p>
                 They showed up within 48 hours for the site visit and had a full
@@ -59,6 +68,7 @@ export default function CaseStudy() {
                   src="/partners/racv.png"
                   alt="RACV"
                   fill
+                  sizes="100px"
                   style={{ objectFit: "contain" }}
                 />
               </div>
@@ -72,14 +82,6 @@ export default function CaseStudy() {
           </figure>
         </div>
       </div>
-
-      <Link
-        href="/projects"
-        className={styles.projectsCta}
-        aria-label="View our projects"
-      >
-        Our projects →
-      </Link>
     </section>
   );
 }

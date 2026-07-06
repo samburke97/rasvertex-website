@@ -1,4 +1,4 @@
-/* app/careers/CareersForm.module.css — navy on cream, mirrors ContactSurface form */
+/* app/careers/CareersForm.module.css — mirrors ContactSurface form */
 
 .formWrap {
   padding: var(--space-4xl);
@@ -75,6 +75,14 @@
   margin: 0;
 }
 
+.stepHint {
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-regular);
+  color: var(--navy);
+  opacity: 0.45;
+  margin: calc(-1 * var(--space-xl)) 0 0;
+}
+
 .stepBody {
   flex: 1;
 }
@@ -92,7 +100,7 @@
 .fields {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
 }
 
 .fieldRow {
@@ -114,6 +122,7 @@
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
   color: var(--navy);
+  margin-bottom: var(--space-md);
 }
 
 .required {
@@ -194,8 +203,8 @@
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--navy);
-  -webkit-box-shadow: 0 0 0px 1000px var(--cream) inset;
-  box-shadow: 0 0 0px 1000px var(--cream) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--navy-08) inset;
+  box-shadow: 0 0 0px 1000px var(--navy-08) inset;
   transition:
     background-color 600000s 0s,
     color 600000s 0s;

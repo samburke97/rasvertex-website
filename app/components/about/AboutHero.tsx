@@ -1,7 +1,6 @@
 // app/components/about/AboutHero.tsx
 
 import Link from "next/link";
-import PhotoGrid from "../shared/PhotoGrid";
 import styles from "./AboutHero.module.css";
 
 export default function AboutHero() {
@@ -20,13 +19,10 @@ export default function AboutHero() {
             Sunshine Coast.
           </p>
           <Link href="/contact" className={styles.cta}>
-            Get a free quote →
+            Get a free quote
           </Link>
         </div>
       </div>
-
-      {/* ── PhotoGrid replaces the single banner image ── */}
-      <PhotoGrid showHeader={false} />
     </section>
   );
 }

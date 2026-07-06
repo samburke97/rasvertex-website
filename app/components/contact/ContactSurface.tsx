@@ -2,10 +2,11 @@
 
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import Image from "next/image";
 import Button from "../ui/Button";
 import styles from "./ContactSurface.module.css";
+import { cld } from "../../lib/cloudinary";
 
 type Step = 1 | 2 | 3;
 
@@ -31,7 +32,7 @@ const PROPERTY_TYPES = [
 const CTS_ELIGIBLE_TYPES = ["Strata / Body Corporate", "Commercial"];
 
 const STEP_LABELS: Record<Step, string> = {
-  1: "Which services do you need?",
+  1: "How can we help?",
   2: "Tell us about the property.",
   3: "How do we reach you?",
 };
@@ -40,7 +41,43 @@ const MAX_FILES = 6;
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const ACCEPTED_TYPES = "image/jpeg,image/png,image/webp,image/heic";
 
-export default function ContactSurface() {
+interface ContactSurfaceTrustGroup {
+  heading: string;
+  logos: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    displayHeight?: number;
+  }[];
+}
+
+interface ContactSurfaceProps {
+  headingLevel?: "h1" | "h2";
+  heading?: ReactNode;
+  leadParagraph?: string;
+  showPhoto?: boolean;
+  showContactGrid?: boolean;
+  showGoogleRating?: boolean;
+  trustGroups?: ContactSurfaceTrustGroup[];
+}
+
+export default function ContactSurface({
+  headingLevel = "h1",
+  heading = (
+    <>
+      Let&rsquo;s talk about
+      <br />
+      your building.
+    </>
+  ),
+  leadParagraph = "25 years working with Sunshine Coast body corporates, strata committees, commercial property managers and hotels. One standard across every building type, every time.",
+  showPhoto = true,
+  showGoogleRating = true,
+  showContactGrid = true,
+  trustGroups,
+}: ContactSurfaceProps) {
+  const HeadingTag = headingLevel;
   const [step, setStep] = useState<Step>(1);
   const [services, setServices] = useState<string[]>([]);
   const [photos, setPhotos] = useState<File[]>([]);
@@ -146,89 +183,110 @@ export default function ContactSurface() {
       {/* ── LEFT ── */}
       <div className={styles.left}>
         <header className={styles.header}>
-          <h1>
-            Let&rsquo;s talk about
-            <br />
-            your building.
-          </h1>
-          <p className="p-soft">
-            25 years working with Sunshine Coast body corporates, strata
-            committees, commercial property managers and hotels. One standard
-            across every building type, every time.
-          </p>
+          <HeadingTag>{heading}</HeadingTag>
+          <p className="p-soft">{leadParagraph}</p>
         </header>
 
-        <div className={styles.ratingBadge}>
-          <svg
-            className={styles.googleIcon}
-            viewBox="0 0 24 24"
-            width="32"
-            height="32"
-            fill="var(--navy)"
-            aria-hidden="true"
-          >
-            <path d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v2.97h3.86c2.26-2.09 3.56-5.17 3.56-8.79zM12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-2.97c-1.07.71-2.44 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.96H1.27v3.06C3.24 21.3 7.26 24 12 24zM5.27 14.3c-.24-.71-.38-1.46-.38-2.3s.14-1.59.38-2.3V6.64H1.27A11.95 11.95 0 0 0 0 12c0 1.93.46 3.76 1.27 5.36l4-3.06zM12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.26 0 3.24 2.7 1.27 6.64l4 3.06C6.22 6.86 8.87 4.75 12 4.75z" />
-          </svg>
-          <div className={styles.ratingText}>
-            <span className={styles.ratingTitle}>Google Rating</span>
-            <div className={styles.ratingScoreRow}>
-              <span className={styles.ratingScore}>4.9</span>
-              <div className={styles.stars} aria-hidden="true">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg
-                    key={i}
-                    className={styles.star}
-                    viewBox="0 0 24 24"
-                    width="15"
-                    height="15"
-                    fill="var(--navy)"
-                  >
-                    <path d="M12 2.5l2.97 6.02 6.64.97-4.8 4.68 1.13 6.6L12 17.6l-5.94 3.17 1.13-6.6-4.8-4.68 6.64-.97L12 2.5z" />
-                  </svg>
-                ))}
+        {trustGroups && trustGroups.length > 0 && (
+          <div className={styles.trustGroups}>
+            {trustGroups.map((group) => (
+              <div key={group.heading} className={styles.trustGroup}>
+                <h3 className={styles.trustGroupHeading}>{group.heading}</h3>
+                <div className={styles.trustLogos}>
+                  {group.logos.map((logo) => (
+                    <Image
+                      key={logo.src}
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={logo.width}
+                      height={logo.height}
+                      className={styles.trustLogoImg}
+                      style={{ height: logo.displayHeight ?? 30 }}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-            <span className={styles.ratingCount}>Based on 50+ reviews</span>
+            ))}
           </div>
-        </div>
+        )}
 
-        <div className={styles.imageWrap} aria-hidden="true">
-          <Image
-            src="/images/projects/1.jpeg"
-            alt="RAS-VERTEX project — Sunshine Coast"
-            fill
-            className={styles.image}
-            sizes="(max-width: 860px) 100vw, 480px"
-          />
-        </div>
-
-        <div className={styles.contactGrid}>
-          <div className={styles.contactBox}>
-            <span className={styles.contactLabel}>CALL US</span>
-            <a href="tel:0753710201" className={styles.contactValueLink}>
-              (07) 5371 0201
-            </a>
-          </div>
-          <div className={styles.contactBox}>
-            <span className={styles.contactLabel}>EMAIL</span>
-            <a
-              href="mailto:team@rasvertex.com.au"
-              className={styles.contactValueLink}
+        {showGoogleRating && (
+          <div className={styles.ratingBadge}>
+            <svg
+              className={styles.googleIcon}
+              viewBox="0 0 24 24"
+              width="32"
+              height="32"
+              fill="var(--navy)"
+              aria-hidden="true"
             >
-              team@rasvertex.com.au
-            </a>
+              <path d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v2.97h3.86c2.26-2.09 3.56-5.17 3.56-8.79zM12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-2.97c-1.07.71-2.44 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.96H1.27v3.06C3.24 21.3 7.26 24 12 24zM5.27 14.3c-.24-.71-.38-1.46-.38-2.3s.14-1.59.38-2.3V6.64H1.27A11.95 11.95 0 0 0 0 12c0 1.93.46 3.76 1.27 5.36l4-3.06zM12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.26 0 3.24 2.7 1.27 6.64l4 3.06C6.22 6.86 8.87 4.75 12 4.75z" />
+            </svg>
+            <div className={styles.ratingText}>
+              <span className={styles.ratingTitle}>Google Rating</span>
+              <div className={styles.ratingScoreRow}>
+                <span className={styles.ratingScore}>4.9</span>
+                <div className={styles.stars} aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg
+                      key={i}
+                      className={styles.star}
+                      viewBox="0 0 24 24"
+                      width="15"
+                      height="15"
+                      fill="var(--navy)"
+                    >
+                      <path d="M12 2.5l2.97 6.02 6.64.97-4.8 4.68 1.13 6.6L12 17.6l-5.94 3.17 1.13-6.6-4.8-4.68 6.64-.97L12 2.5z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <span className={styles.ratingCount}>Based on 50+ reviews</span>
+            </div>
           </div>
-          <div className={styles.contactBox}>
-            <span className={styles.contactLabel}>HOURS</span>
-            <span className={styles.contactValue}>Mon–Fri, 7am–5pm</span>
+        )}
+
+        {showPhoto && (
+          <div className={styles.imageWrap} aria-hidden="true">
+            <Image
+              src={cld("contact-us", { width: 1200 })}
+              alt="RAS-VERTEX project — Sunshine Coast"
+              fill
+              className={styles.image}
+              sizes="(max-width: 860px) 100vw, 480px"
+            />
           </div>
-          <div className={styles.contactBox}>
-            <span className={styles.contactLabel}>VISIT US</span>
-            <span className={styles.contactValue}>
-              1–3 Kessling Avenue, Kunda Park QLD 4556
-            </span>
+        )}
+
+        {showContactGrid && (
+          <div className={styles.contactGrid}>
+            <div className={styles.contactBox}>
+              <span className={styles.contactLabel}>CALL US</span>
+              <a href="tel:0753710201" className={styles.contactValueLink}>
+                (07) 5371 0201
+              </a>
+            </div>
+            <div className={styles.contactBox}>
+              <span className={styles.contactLabel}>EMAIL</span>
+              <a
+                href="mailto:team@rasvertex.com.au"
+                className={styles.contactValueLink}
+              >
+                team@rasvertex.com.au
+              </a>
+            </div>
+            <div className={styles.contactBox}>
+              <span className={styles.contactLabel}>HOURS</span>
+              <span className={styles.contactValue}>Mon–Fri, 7am–5pm</span>
+            </div>
+            <div className={styles.contactBox}>
+              <span className={styles.contactLabel}>VISIT US</span>
+              <span className={styles.contactValue}>
+                1–3 Kessling Avenue, Kunda Park QLD 4556
+              </span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* ── RIGHT ── */}
@@ -301,6 +359,10 @@ export default function ContactSurface() {
 
               <h3>{STEP_LABELS[step]}</h3>
 
+              {step === 1 && (
+                <p className={styles.stepHint}>(Select all that apply)</p>
+              )}
+
               <div className={styles.stepBody}>
                 {step === 1 && (
                   <fieldset
@@ -348,6 +410,7 @@ export default function ContactSurface() {
                         value={form.propertyAddress}
                         onChange={(e) => set("propertyAddress", e.target.value)}
                         autoComplete="street-address"
+                        maxLength={200}
                       />
                     </div>
 
@@ -389,6 +452,7 @@ export default function ContactSurface() {
                           className={styles.input}
                           value={form.ctsNumber}
                           onChange={(e) => set("ctsNumber", e.target.value)}
+                          maxLength={20}
                         />
                       </div>
                     )}
@@ -417,6 +481,7 @@ export default function ContactSurface() {
                           value={form.name}
                           onChange={(e) => set("name", e.target.value)}
                           autoComplete="name"
+                          maxLength={100}
                         />
                       </div>
                       <div className={styles.field}>
@@ -438,6 +503,7 @@ export default function ContactSurface() {
                           value={form.phone}
                           onChange={(e) => set("phone", e.target.value)}
                           autoComplete="tel"
+                          maxLength={20}
                         />
                       </div>
                     </div>
@@ -460,6 +526,7 @@ export default function ContactSurface() {
                         value={form.email}
                         onChange={(e) => set("email", e.target.value)}
                         autoComplete="email"
+                        maxLength={254}
                       />
                     </div>
 
@@ -503,13 +570,7 @@ export default function ContactSurface() {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <span>
-                          Add photos
-                          <span className={styles.uploadBoxSub}>
-                            {" "}
-                            — up to {MAX_FILES}, 8MB each
-                          </span>
-                        </span>
+                        <span>Add Photos</span>
                       </button>
 
                       {photoError && (
@@ -569,9 +630,16 @@ export default function ContactSurface() {
                       <textarea
                         id="contactMessage"
                         className={styles.textarea}
-                        rows={3}
+                        rows={1}
                         value={form.message}
                         onChange={(e) => set("message", e.target.value)}
+                        onInput={(e) => {
+                          const t = e.currentTarget;
+                          t.style.height = "auto";
+                          t.style.height = `${t.scrollHeight}px`;
+                        }}
+                        style={{ overflow: "hidden" }}
+                        maxLength={1500}
                       />
                     </div>
                   </div>
@@ -601,7 +669,7 @@ export default function ContactSurface() {
                     disabled={!canAdvance}
                     aria-label={`Continue to step ${step + 1}`}
                   >
-                    Continue →
+                    Continue
                   </Button>
                 ) : (
                   <Button
@@ -612,7 +680,7 @@ export default function ContactSurface() {
                     disabled={!canAdvance}
                     aria-label="Submit quote request"
                   >
-                    Send request →
+                    Send request
                   </Button>
                 )}
               </div>

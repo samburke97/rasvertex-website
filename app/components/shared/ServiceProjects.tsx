@@ -15,7 +15,7 @@ export interface ServiceProject {
 
 interface ServiceProjectsProps {
   heading: React.ReactNode;
-  subheading: string;
+  subheading?: string;
   projects: ServiceProject[];
   footerNote: string;
   ctaLabel?: string;
@@ -37,10 +37,8 @@ export default function ServiceProjects({
       {/* ── Header: h2 left, subheading right ── */}
       <header className={styles.header}>
         <h2 id={headingId}>{heading}</h2>
-        <p>{subheading}</p>
+        {subheading && <p className={styles.subheading}>{subheading}</p>}
       </header>
-
-      <div className={styles.rule} aria-hidden="true" />
 
       {/* ── Project grid ── */}
       <ul className={styles.grid} role="list" aria-label="Recent projects">
@@ -59,22 +57,18 @@ export default function ServiceProjects({
                 sizes="(max-width: 860px) 100vw, 33vw"
               />
             </div>
-            <div className={styles.meta}>
-              <p className={styles.suburb}>{p.suburb}</p>
-              <p className={styles.name}>{p.name}</p>
-              <p className={styles.type}>
-                {p.type} · {p.system}
-              </p>
-            </div>
+            <h4 className={styles.name}>
+              {p.name} <span className={styles.dot}>·</span> {p.suburb}
+            </h4>
+            <p className={styles.type}>{p.type} · {p.system}</p>
           </li>
         ))}
       </ul>
 
       {/* ── Footer ── */}
       <div className={styles.footer}>
-        <p className={styles.footerNote}>{footerNote}</p>
         <Link href={ctaHref} className={styles.cta} aria-label={ctaLabel}>
-          {ctaLabel}
+          {ctaLabel.slice(0, ctaLabel.lastIndexOf('→')).trimEnd()}
         </Link>
       </div>
     </section>

@@ -7,26 +7,34 @@ import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
 import type { InspectionStep } from "../components/shared/InspectionProcess";
+import { cld } from "../lib/cloudinary";
+import {
+  PiMagnifyingGlass,
+  PiClipboardText,
+  PiHammer,
+  PiPaintRoller,
+  PiShieldCheck,
+} from "react-icons/pi";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    src: "/images/projects/1.jpeg",
+    src: cld("commercial_hero_1", { width: 1600 }),
     alt: "High-rise commercial building repaint by RAS-VERTEX on the Sunshine Coast",
   },
   {
-    src: "/images/projects/2.jpeg",
+    src: cld("commercial_hero_2", { width: 1600 }),
     alt: "Rope access commercial painting — Sunshine Coast",
   },
   {
-    src: "/nav/painting.png",
+    src: cld("commercial_hero_3", { width: 1600 }),
     alt: "Strata and body corporate painting — Sunshine Coast",
   },
   {
-    src: "/nav/height.png",
+    src: cld("commercial_hero_4", { width: 1600 }),
     alt: "IRATA rope access facade painting — Sunshine Coast high-rise",
   },
   {
-    src: "/nav/maintenance.png",
+    src: cld("commercial_hero_5", { width: 1600 }),
     alt: "Commercial building maintenance and painting — Sunshine Coast",
   },
 ];
@@ -35,18 +43,6 @@ export const SERVICES: AccordionService[] = [
   {
     label: "High-Rise Facade Repaints",
     body: "Full exterior repaints for buildings from 4 to 40+ storeys using IRATA-certified rope access. No scaffolding hire, no crane cost, no footprint on the ground floor. Salt-bonded primer, chloride rinse and Dulux Weathershield or Haymes Sandtex systems as standard within 5km of the coast.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Body Corporate & Strata Painting",
-    body: "Committee-ready proposals, staged zone scheduling to minimise resident disruption, and resident communication handled end-to-end. Over 50 body corporate projects completed across the Sunshine Coast. Written warranty lodged at handover, formatted for your maintenance plan.",
-    photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Commercial Interior Painting",
-    body: "Low-VOC systems for occupied commercial buildings — offices, retail tenancies, hotel suites, hospitality venues and common areas. Zone-staged scheduling with dust containment and same-day re-occupancy on most scopes. After hours and weekend crews available.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
@@ -62,50 +58,43 @@ export const SERVICES: AccordionService[] = [
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
-  {
-    label: "Line Marking & Car Park Painting",
-    body: "Car park line marking, bay numbering, directional arrows and disabled bay stencils. Chlorinated rubber and road-grade epoxy systems. Completed overnight — no disruption to building tenants during business hours.",
-    photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Colour Consulting",
-    body: "On-site sample blocks at no charge for projects over $25k. Full colour schedules prepared with body corporate committees or commercial owners. We've seen what works on coastal facades — and what fails within two years.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
 ];
 
 export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "01",
     title: "Site Assessment",
-    body: "We inspect the full facade before pricing anything — substrate condition, access requirements, coating history, and any defects that need remediation before painting begins. What we find determines what we specify.",
+    body: "We begin with a detailed inspection of your building, assessing substrate condition, existing coatings, access requirements, and any repairs that should be addressed before painting begins. This allows us to provide an accurate scope and recommend the right approach from day one.",
     deliverable: "Written condition assessment",
+    icon: PiMagnifyingGlass,
   },
   {
     n: "02",
     title: "System Specification",
-    body: "Paint system selected for your building's substrate, exposure and coastal proximity. Not a generic spec — a system matched to the salt air, UV intensity and humidity your building actually experiences. Full product schedule provided at quote stage.",
+    body: "Every building is different. We specify a coating system based on your building's substrate, exposure, and coastal environment, then provide a clear product schedule as part of your quotation so you know exactly what's being applied and why.",
     deliverable: "Product schedule + specification sheet",
+    icon: PiClipboardText,
   },
   {
     n: "03",
     title: "Surface Preparation",
-    body: "High-pressure wash, mould treatment, crack repairs, sealant replacement and chloride rinse where required. Preparation determines how long the paint lasts — we spend more time here than most painters spend on the entire job.",
+    body: "Before any paint is applied, we complete the preparation needed to give the coating system the best chance of performing for years to come. This may include pressure washing, mould treatment, crack repairs, sealant replacement, and chloride rinsing where required.",
     deliverable: "Prep completion sign-off",
+    icon: PiHammer,
   },
   {
     n: "04",
     title: "Application",
-    body: "Primer, intermediate coat and topcoat applied to manufacturer's specified DFT (dry film thickness). Every coat documented. Rope access for all elevated work — no scaffolding unless the scope specifically requires it.",
+    body: "Once preparation is complete, we apply each coating in accordance with the manufacturer's specifications. Your project manager oversees the works, keeps you informed throughout the project, and ensures the agreed programme is delivered safely and efficiently.",
     deliverable: "Daily progress photos",
+    icon: PiPaintRoller,
   },
   {
     n: "05",
     title: "Handover & Warranty",
-    body: "Final inspection with your project manager. Written 5-year workmanship warranty issued and lodged in ROCO. Manufacturer warranties (up to 15 years on qualifying systems) registered in the building owner's name. Full documentation package for your body corporate records.",
+    body: "Before completion, we walk the project with you to ensure everything has been delivered as agreed. Any final items are addressed before handover, and you'll receive your workmanship warranty, manufacturer warranty documentation, and a complete handover package for your records.",
     deliverable: "Warranty certificate + documentation pack",
+    icon: PiShieldCheck,
   },
 ];
 
@@ -127,11 +116,11 @@ export const FEATURES: Feature[] = [
   },
   {
     n: "04",
-    title: "5-year written warranty",
-    body: "Workmanship warranty issued in writing and lodged in ROCO at handover. Backed by up to 15-year manufacturer coverage on qualifying systems.",
+    title: "8-year written warranty",
+    body: "Workmanship warranty issued in writing at handover. Backed by up to 15-year manufacturer coverage on qualifying systems.",
     logos: [
       { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.png", alt: "Dulux" },
+      { src: "/images/associations/dulux.svg", alt: "Dulux" },
     ],
   },
   {
@@ -176,7 +165,7 @@ export const CARDS: ServiceCard[] = [
   {
     photo: "/images/projects/2.jpeg",
     alt: "Body corporate and strata painting — RAS-VERTEX Sunshine Coast",
-    title: "Body Corporate & Strata.",
+    title: "Body Corporate.",
     body: "Committee-ready proposals and staged scheduling. We've run over 50 body corporate repaints across the Sunshine Coast — we know how to communicate with committees, manage resident expectations, and deliver a result that gets the building manager off the phone.",
     cta: "Get a quote",
     href: "/contact",
@@ -191,9 +180,33 @@ export const CARDS: ServiceCard[] = [
   },
   {
     photo: "/nav/maintenance.png",
-    alt: "Industrial and government painting — RAS-VERTEX Sunshine Coast",
-    title: "Industrial & Government.",
-    body: "Tilt-slab warehouses, industrial facilities, schools and government buildings. Epoxy and polyurethane systems for industrial environments, low-VOC for occupied educational and government buildings. Full compliance documentation provided.",
+    alt: "Industrial painting — RAS-VERTEX Sunshine Coast",
+    title: "Industrial.",
+    body: "Tilt-slab warehouses and industrial facilities need epoxy and polyurethane systems that hold up to chemical exposure, forklift traffic and constant use — not a retail-grade coating stretched to cover an industrial floor or facade.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Education facility painting — RAS-VERTEX Sunshine Coast",
+    title: "Education.",
+    body: "Schools and universities need repainting scheduled around term dates, with low-VOC systems suited to occupied classrooms and common areas. We work through holidays and after-hours to keep disruption off the timetable.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "Government building painting — RAS-VERTEX Sunshine Coast",
+    title: "Government.",
+    body: "Government buildings need painting programs backed by full compliance documentation and specification records for asset management sign-off. We deliver both, on a schedule that fits around public access and operating hours.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/nav/maintenance.png",
+    alt: "Medical facility painting — RAS-VERTEX Sunshine Coast",
+    title: "Medical.",
+    body: "Hospitals and medical centres need low-VOC, quick-cure systems that keep clinical areas usable with minimal downtime. We stage work zone by zone and schedule around operating requirements, not the other way around.",
     cta: "Get a quote",
     href: "/contact",
   },
@@ -234,8 +247,8 @@ export const FAQS: FAQItem[] = [
     a: "Rope access for the vast majority of high-rise work. Our 30+ IRATA L1–L3 certified technicians can access and paint any facade from rooftop anchor points — faster mobilisation, no scaffold hire cost, and no disruption to ground-floor tenants or car parks. On average, rope access saves 40–60% on access costs compared to full scaffold on buildings over 4 storeys. For buildings with complex geometries or where access-constrained floors require a working platform, we use scaffold for those specific areas.",
   },
   {
-    q: "What does the 5-year warranty cover on commercial painting?",
-    a: "All workmanship — adhesion failure, peeling, blistering, or any defect caused by our application. It doesn't cover damage from substrate movement beyond normal thermal expansion, flooding, or physical impact. The warranty is issued in writing at handover and lodged in ROCO. Manufacturer warranties — up to 15 years on qualifying Dulux and Haymes commercial systems — run separately and are registered in the building owner's or body corporate's name.",
+    q: "What does the 8-year warranty cover on commercial painting?",
+    a: "All workmanship — adhesion failure, peeling, blistering, or any defect caused by our application. It doesn't cover damage from substrate movement beyond normal thermal expansion, flooding, or physical impact. The warranty is issued in writing at handover. Manufacturer warranties — up to 15 years on qualifying Dulux and Haymes commercial systems — run separately and are registered in the building owner's or body corporate's name.",
   },
   {
     q: "How do you manage a body corporate painting project?",

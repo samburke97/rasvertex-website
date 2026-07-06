@@ -22,6 +22,11 @@
   gap: var(--space-title-to-body);
 }
 
+.subheading {
+  margin-top: var(--space-lg);
+  margin-bottom: 0;
+}
+
 /* ── Right — image ───────────────────────────────────────────── */
 .imageCol {
   position: relative;

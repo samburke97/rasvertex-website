@@ -3,26 +3,22 @@
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
-import ServiceHero from "../components/shared/ServiceHero";
-import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceFeatures from "../components/shared/ServiceFeatures";
-import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import InspectionProcess from "../components/shared/InspectionProcess";
-import LogoStrip from "../components/shared/LogoStrip";
+import PartnersCarousel from "../components/homepage/PartnersCarousel";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
 import {
   HERO_SLIDES,
   SERVICES,
   PROCESS_STEPS,
-  FEATURES,
-  PROJECTS,
-  CARDS,
-  TRUST_LOGOS,
   FAQS,
   FAQ_CONTACT,
 } from "../data/commercialPaintingData";
@@ -30,7 +26,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Commercial & High-Rise Painting Sunshine Coast",
   description:
-    "Commercial and high-rise painting on the Sunshine Coast. IRATA rope access, coastal-spec paint systems, 5-year written warranty. Body corporates, strata, commercial buildings and hotels. QBCC licensed.",
+    "Commercial and high-rise painting on the Sunshine Coast. IRATA rope access, coastal-spec paint systems, 8-year written warranty. Body corporates, strata, commercial buildings and hotels. QBCC licensed.",
   path: "/commercial-painting",
   keywords: [
     "commercial painting Sunshine Coast",
@@ -53,7 +49,7 @@ export default function CommercialPaintingPage() {
     <>
       <ServiceSchema
         name="Commercial & High-Rise Painting Sunshine Coast"
-        description="Commercial and high-rise painting on the Sunshine Coast. IRATA rope access, coastal-spec paint systems, 5-year written warranty. Body corporates, strata, commercial buildings and hotels. QBCC licensed."
+        description="Commercial and high-rise painting on the Sunshine Coast. IRATA rope access, coastal-spec paint systems, 8-year written warranty. Body corporates, strata, commercial buildings and hotels. QBCC licensed."
         image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
         url="https://www.ras-vertex.com.au/commercial-painting"
         serviceType="Commercial Painting"
@@ -74,74 +70,94 @@ export default function CommercialPaintingPage() {
       />
 
       <section className="pt-20">
-        <ServiceHero
+        <ServiceHeroSplit
           heading={
             <>
-              Commercial painting
-              <br />
-              on the Sunshine Coast.
+              Professional commercial painting for Sunshine Coast offices,
+              retail, industrial and multi-storey properties.
             </>
           }
-          lede="High-rise repaints, body corporate programs and commercial interiors — IRATA rope access, coastal-spec paint systems, and a 5-year written warranty on every job."
-          slides={HERO_SLIDES}
+          lede="From high-rise facade repaints to commercial rooftops, we combine IRATA-certified rope access, commercial-grade Dulux and Haymes coating systems, and meticulous surface preparation to deliver long-lasting results with minimal disruption to your business."
+          image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="commercial-painting-hero-heading"
+          breadcrumb={{
+            parentLabel: "Painting",
+            parentHref: "/painting",
+            currentLabel: "Commercial",
+          }}
         />
       </section>
 
-      <section className="pt-20 pb-20">
-        <ServiceIntro
-          heading="One project manager. From quote to warranty."
-          paragraphs={[
-            "Commercial painting on the Sunshine Coast isn't the same as inland work. Salt air off the ocean degrades standard paint systems within two to three years. UV intensity at this latitude is among the highest in Australia. Thermal cycling on dark-coloured renders causes movement that generic elastomerics can't handle. Every system we specify is chosen for the substrate and the exposure — not pulled from a price list.",
-            "We've been painting commercial buildings on the Sunshine Coast for 25 years. The same IRATA-certified rope access team that paints high-rise facades also handles prep, crack repairs and sealant replacement — one crew, one project manager, no subcontractors turning up unannounced. You get the same standard on a 40-storey tower as on a 4-storey strata.",
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={[
+            {
+              photo: HERO_SLIDES[1].src,
+              alt: HERO_SLIDES[1].alt,
+              title: "Commercial rope access painting",
+              body: "Specialists in high-rise and complex access commercial painting where scaffolding is disruptive, unsafe, or cost-prohibitive. Every project is managed from access planning through to completion, compliance, and warranty handover.",
+            },
+            {
+              photo: HERO_SLIDES[2].src,
+              alt: HERO_SLIDES[2].alt,
+              title: "Coastal-grade Dulux & Haymes coating systems",
+              body: "We specify commercial coating systems engineered for Sunshine Coast conditions including salt air exposure, high humidity, and UV degradation to ensure long-term performance and asset protection.",
+            },
+            {
+              photo: HERO_SLIDES[3].src,
+              alt: HERO_SLIDES[3].alt,
+              title: "The right paint system for your building",
+              body: "Every project is engineered around the building, substrate, and exposure conditions — ensuring coatings are specified correctly for long-term durability and warranty compliance.",
+            },
           ]}
-          headingId="commercial-painting-intro-heading"
+          heading={
+            <>
+              The commercial painters Sunshine Coast property managers and
+              facilities teams rely on.
+            </>
+          }
+          ariaLabel="Commercial painters Sunshine Coast - why property managers choose RAS-VERTEX"
+          footerCtaLabel="Get a free quote →"
+          footerCtaHref="/contact"
+          display="list"
+          eyebrow=""
+        />
+      </section>
+
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="8-year warranty"
+      >
+        <WarrantyCard
+          stat="8"
+          statLabel={"year\nwarranty"}
+          heading={
+            <>
+              Specified right.
+              <br />
+              Warranted in writing.
+            </>
+          }
+          body="Every commercial repaint comes with an 8 year written workmanship warranty. Where eligible Dulux and Haymes systems are used, the manufacturer warranty of up to 15 years is also passed on to the building owner, giving you clear protection on both the work and the materials."
+          logosHeading="Backed by the best."
           logos={[
             {
               src: "/images/associations/haymes.svg",
               alt: "Haymes Paint",
-              width: 80,
-              height: 40,
+              width: 100,
+              height: 50,
             },
             {
-              src: "/images/associations/dulux.png",
+              src: "/images/associations/dulux.svg",
               alt: "Dulux",
-              width: 80,
-              height: 40,
-            },
-            {
-              src: "/images/associations/qbcc.png",
-              alt: "QBCC Licensed",
-              width: 60,
-              height: 40,
+              width: 100,
+              height: 50,
             },
           ]}
         />
       </section>
-      {/* ── Partner logo strip ── */}
-      <section aria-label="Trusted by">
-        <LogoStrip
-          logos={TRUST_LOGOS}
-          label="Trusted by Sunshine Coast's best-run buildings"
-        />
-      </section>
 
-      {/* ── How we run a commercial repaint ── */}
-      <section className="pt-20 pb-20" aria-labelledby="process-heading">
-        <InspectionProcess
-          heading={
-            <>
-              How we run a<br />
-              commercial repaint.
-            </>
-          }
-          lede="Five stages from site assessment to warranty handover. Every stage has a deliverable — so you always know where the job is and what comes next."
-          steps={PROCESS_STEPS}
-          headingId="process-heading"
-        />
-      </section>
-
-      <section className="pt-20 px-10">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceAccordion
           heading={
             <>
@@ -150,6 +166,7 @@ export default function CommercialPaintingPage() {
               are you looking for?
             </>
           }
+          paragraph="From high-rise repaints to commercial interiors, every job is backed by coastal-spec systems and an 8-year written warranty."
           ariaLabel="What kind of commercial painting are you looking for?"
           services={SERVICES}
           headingId="commercial-painting-services-heading"
@@ -157,24 +174,25 @@ export default function CommercialPaintingPage() {
         />
       </section>
 
-      <section className="pt-20">
-        <ServiceCards
-          cards={CARDS}
-          heading="Who we work for."
-          ariaLabel="Who we work for — commercial painting"
-        />
-      </section>
-
-      <section className="pt-20">
-        <ServiceFeatures
-          features={FEATURES}
-          displayText={"One\nStandard."}
-          ariaLabel="Why choose RAS-VERTEX for commercial painting"
+      {/* ── How we run a commercial repaint ── */}
+      <section className="py-10 md:py-20" aria-labelledby="process-heading">
+        <InspectionProcess
+          heading={
+            <>
+              How we run a<br />
+              commercial repaint.
+            </>
+          }
+          lede="Every stage is planned, managed, and communicated, so you always know what's happening, what's next, and when your project will be completed."
+          steps={PROCESS_STEPS}
+          headingId="process-heading"
+          ctaLabel="Chat to our commercial painting team"
+          ctaHref="/contact"
         />
       </section>
 
       <section
-        className="px-10 pt-20"
+        className="px-5 md:px-10 py-10 md:py-20"
         aria-labelledby="commercial-before-after-heading"
       >
         <ServiceBeforeAfter
@@ -182,7 +200,8 @@ export default function CommercialPaintingPage() {
           afterSrc="/images/projects/2.jpeg"
           beforeAlt="Mooloolaba high-rise before exterior repaint by RAS-VERTEX"
           afterAlt="Mooloolaba high-rise after exterior repaint by RAS-VERTEX"
-          clientName="Mooloolaba Oceanfront Strata"
+          projectName="High-Rise Repaint"
+          location="Mooloolaba, QLD"
           heading="12 storeys. 84 lots. Done in 10 weeks."
           body="This Mooloolaba body corporate had been quoted 18 weeks by three other painters — all requiring full scaffold, all quoting the same generic Weathershield system. We mobilised with rope access, completed surface prep in two weeks, and painted the full facade zone by zone without closing the car park or displacing ground-floor tenants for a single day."
           quote="Other painters told us to expect two scaffolding installations and four months of disruption. RAS-VERTEX were done in ten weeks and the car park was never closed. The result is exactly what we presented to owners."
@@ -196,37 +215,39 @@ export default function CommercialPaintingPage() {
         />
       </section>
 
-      <section className="px-10 py-20" aria-label="5-year warranty">
-        <WarrantyCard
-          stat="5"
-          statLabel={"year\nwarranty"}
-          heading={
-            <>
-              Specified right.
-              <br />
-              Warranted in writing.
-            </>
-          }
-          body="Every commercial repaint we complete is backed by a 5-year written workmanship warranty lodged in ROCO at handover. Manufacturer warranties — up to 15 years on qualifying Dulux and Haymes commercial systems — are registered in the building owner's name. We don't cut corners on specification because we're the ones standing behind the result."
+      {/* ── Testimonial — its own full, centered section ── */}
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial
+          quote="We've used RAS-VERTEX across three properties now. Same crew, same standard, same result every time — that consistency is rare in this industry."
+          name="Michael Tran"
+          role="Facilities Manager, Novotel Twin Waters"
+          logoSrc="/partners/novotel.svg.png"
+          logoAlt="Novotel Twin Waters"
         />
       </section>
 
-      <section className="pt-20">
-        <ServiceProjects
-          heading={
-            <>
-              Work we're proud of,
-              <br />
-              from Noosa to Caloundra.
-            </>
-          }
-          subheading="High-rise repaints, body corporate programs and commercial buildings across the Sunshine Coast — every job run by one project manager, every coat documented, every warranty in writing."
-          projects={PROJECTS}
-          footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour and throughout the hinterland."
+      <section
+        className="py-10 md:py-20"
+        aria-labelledby="commercial-painting-services-carousel-label"
+      >
+        <h2
+          id="commercial-painting-services-carousel-label"
+          className="px-5 md:px-10 pb-10 md:pb-20"
+        >
+          Complete commercial property care, not just
+          <br />a repaint, explore our full range of services below.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/painting")}
+          ariaLabel="RAS-VERTEX services"
         />
       </section>
 
-      <section className="px-10 py-20">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}

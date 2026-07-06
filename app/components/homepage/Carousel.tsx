@@ -3,31 +3,19 @@
 import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import Pagination from "../ui/Pagination";
 import styles from "./Carousel.module.css";
+import {
+  WHY_CHOOSE_US_SLIDES as DEFAULT_SLIDES,
+  type CarouselSlide,
+} from "../../data/homepageWhyChooseUsData";
 
-const SLIDES = [
-  {
-    image: "/images/projects/1.jpeg",
-    imageAlt: "25 years painting buildings on the Sunshine Coast",
-    heading: "25 years on the Coast.",
-    body: "We started here before half the foreshore developments were built. Same postcode, same salt air, same substrate conditions — every system we spec is chosen for this environment, not borrowed from a Brisbane job sheet.",
-  },
-  {
-    image: "/nav/painting.png",
-    imageAlt: "RAS-VERTEX project manager on a Sunshine Coast job site",
-    heading: "One partner. Every challenge.",
-    body: "Every person on your site is a direct RAS-VERTEX employee. One dedicated project manager runs your job from site visit to sign-off — one number, one thread, weekly photo updates, no handoffs, no subbies turning up unannounced.",
-  },
-  {
-    image: "/nav/maintenance.png",
-    imageAlt: "Dedicated building maintenance team on the Sunshine Coast",
-    heading: "One team for your entire building.",
-    body: "Painting, cleaning, waterproofing, height safety, remedial repairs — one dedicated team across every trade, every floor, every quarter. We've been doing this for 25 years because property managers don't want five contractors. They want one partner who actually knows the building.",
-  },
-];
+export type { CarouselSlide };
 
-export default function Carousel() {
+interface CarouselProps {
+  slides?: CarouselSlide[];
+}
+
+export default function Carousel({ slides = DEFAULT_SLIDES }: CarouselProps) {
   const [active, setActive] = useState(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -53,7 +41,7 @@ export default function Carousel() {
     <section className={styles.root} aria-label="Why choose RAS-VERTEX">
       <div className={styles.carousel} ref={emblaRef}>
         <div className={styles.track}>
-          {SLIDES.map((s, i) => (
+          {slides.map((s, i) => (
             <article
               key={i}
               className={`${styles.slide} ${i !== active ? styles.slideInactive : ""}`}
@@ -67,9 +55,11 @@ export default function Carousel() {
                   className={styles.image}
                   sizes="(max-width: 860px) 72vw, (max-width: 560px) 85vw, 50vw"
                 />
+                <div className={styles.photoTag}>
+                  <h3 className={styles.photoTagTitle}>{s.heading}</h3>
+                </div>
               </div>
               <div className={styles.content}>
-                <h3>{s.heading}</h3>
                 <p className="p-soft">{s.body}</p>
               </div>
             </article>
@@ -78,13 +68,28 @@ export default function Carousel() {
       </div>
 
       <div className={styles.footer}>
-        <Pagination
-          count={SLIDES.length}
-          active={active}
-          onChange={(i) => emblaApi?.scrollTo(i)}
-          onPrev={scrollPrev}
-          onNext={scrollNext}
-        />
+        <div className={styles.nav} role="group" aria-label="Browse slides">
+          <button
+            className={styles.navBtn}
+            onClick={scrollPrev}
+            aria-label="Previous slide"
+          >
+            <svg width="28" height="28" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="9.25" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M11.5 6.5L8 10L11.5 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            className={styles.navBtn}
+            onClick={scrollNext}
+            aria-label="Next slide"
+          >
+            <svg width="28" height="28" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="9.25" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M8.5 6.5L12 10L8.5 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );

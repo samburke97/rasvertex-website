@@ -21,37 +21,6 @@ const NextArrow = () => (
   </svg>
 );
 
-interface CellProps {
-  project: Project;
-  onClick: () => void;
-}
-
-function ProjectCell({ project, onClick }: CellProps) {
-  return (
-    <button
-      type="button"
-      className={`${styles.cell} ${styles[project.size]}`}
-      onClick={onClick}
-      aria-label={`View ${project.name}`}
-    >
-      <div className={styles.mediaWrap}>
-        <Image
-          src={project.image}
-          alt={project.imageAlt}
-          fill
-          className={styles.image}
-          sizes="(max-width: 860px) 100vw, (max-width: 1100px) 50vw, 33vw"
-        />
-      </div>
-      <div className={styles.overlay} aria-hidden="true" />
-      <div className={styles.content} aria-hidden="true">
-        <span className={styles.cellCategory}>{project.category}</span>
-        <p className={styles.cellTitle}>{project.name}</p>
-      </div>
-    </button>
-  );
-}
-
 export default function ProjectsBento() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -61,7 +30,6 @@ export default function ProjectsBento() {
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeCategory);
 
-  const openModal = (idx: number) => setOpenIdx(idx);
   const closeModal = useCallback(() => setOpenIdx(null), []);
 
   const prev = useCallback(() => {
@@ -92,7 +60,7 @@ export default function ProjectsBento() {
 
   return (
     <>
-      {/* Category filter */}
+      {/* Filter */}
       <nav className={styles.filter} aria-label="Filter projects by category">
         {PROJECT_CATEGORIES.map((cat) => (
           <button
@@ -107,14 +75,31 @@ export default function ProjectsBento() {
         ))}
       </nav>
 
-      {/* Bento grid */}
-      <div className={styles.bento} role="list" aria-label="Project gallery">
+      {/* Grid */}
+      <div className={styles.grid} role="list" aria-label="Project gallery">
         {filtered.map((project, i) => (
-          <ProjectCell key={project.id} project={project} onClick={() => openModal(i)} />
+          <button
+            key={project.id}
+            type="button"
+            role="listitem"
+            className={styles.cell}
+            onClick={() => setOpenIdx(i)}
+            aria-label={`View ${project.name}`}
+          >
+            <div className={styles.mediaWrap}>
+              <Image
+                src={project.image}
+                alt={project.imageAlt}
+                fill
+                className={styles.image}
+                sizes="(max-width: 860px) 100vw, (max-width: 1100px) 50vw, 33vw"
+              />
+            </div>
+          </button>
         ))}
       </div>
 
-      {/* Modal lightbox */}
+      {/* Modal */}
       {current && (
         <div
           className={styles.backdrop}
@@ -123,7 +108,6 @@ export default function ProjectsBento() {
           aria-modal="true"
           aria-label={current.name}
         >
-          {/* Content — stop propagation so clicking image doesn't close */}
           <div className={styles.modalWrap} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalImageWrap}>
               <Image
@@ -135,28 +119,20 @@ export default function ProjectsBento() {
                 priority
               />
             </div>
+            <div className={styles.modalInfo}>
+              <p className={styles.modalName}>{current.name} <span className={styles.modalDot}>·</span> {current.location}</p>
+              <p className={styles.modalScope}>{current.category} · {current.scope}</p>
+            </div>
           </div>
 
-          {/* Prev */}
-          <button
-            className={`${styles.modalNav} ${styles.modalNavPrev}`}
-            onClick={(e) => { e.stopPropagation(); prev(); }}
-            aria-label="Previous project"
-          >
+          <button className={`${styles.modalNav} ${styles.modalNavPrev}`} onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Previous project">
             <PrevArrow />
           </button>
-
-          {/* Next */}
-          <button
-            className={`${styles.modalNav} ${styles.modalNavNext}`}
-            onClick={(e) => { e.stopPropagation(); next(); }}
-            aria-label="Next project"
-          >
+          <button className={`${styles.modalNav} ${styles.modalNavNext}`} onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Next project">
             <NextArrow />
           </button>
 
-          {/* Counter */}
-          <div className={styles.modalCounter} aria-live="polite" aria-atomic="true">
+          <div className={styles.modalCounter} aria-live="polite">
             {openIdx! + 1} / {filtered.length}
           </div>
         </div>

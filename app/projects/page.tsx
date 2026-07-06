@@ -24,17 +24,19 @@ export default function ProjectsPage() {
   return (
     <main aria-label="RAS-VERTEX project showcase">
 
-      <ServiceHero
-        heading={<>25 years of work.<br />Across the Coast.</>}
-        lede="The RAS-VERTEX team is proud to work alongside hundreds of Sunshine Coast-based businesses, and here's a small handful of our painting, cleaning, maintenance, waterproofing, and height safety projects."
-        headingId="projects-heading"
-      />
+      <section className="pt-20">
+        <ServiceHero
+          heading={<>25 years of work.<br />Across the Coast.</>}
+          lede="The RAS-VERTEX team is proud to work alongside hundreds of Sunshine Coast-based businesses, and here's a small handful of our painting, cleaning, maintenance, waterproofing, and height safety projects."
+          headingId="projects-heading"
+        />
+      </section>
 
-      <section className="px-10 pb-20" aria-label="Project gallery">
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Project gallery">
         <ProjectsBento />
       </section>
 
-      <section className="px-10 pb-30" aria-labelledby="projects-faq-heading">
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="projects-faq-heading">
         <ServiceFAQ items={FAQS} contact={FAQ_CONTACT} />
       </section>
 

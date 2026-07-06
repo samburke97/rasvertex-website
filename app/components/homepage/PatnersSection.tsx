@@ -1,70 +1,96 @@
 // app/components/homepage/PartnerSection.tsx
 
 import Image from "next/image";
-import Button from "../ui/Button";
+import Link from "next/link";
 import styles from "./PartnersSection.module.css";
+import { cld } from "../../lib/cloudinary";
 
-const CARDS = [
+export interface PartnerSectionCard {
+  image: string;
+  imageAlt: string;
+  heading: string;
+  body: string;
+}
+
+const DEFAULT_CARDS: PartnerSectionCard[] = [
   {
-    image: "/images/projects/1.jpeg",
-    imageAlt: "Residential property maintenance — RAS-VERTEX Sunshine Coast",
-    heading: "Residential.",
-    body: "We've been looking after homes on the Sunshine Coast for 25 years — painting, cleaning, waterproofing and maintenance. You'll meet your project manager before work starts, and they'll be on the other end of the phone until you're happy.",
-  },
-  {
-    image: "/images/projects/2.jpeg",
+    image: cld("commercial", { width: 1800 }),
     imageAlt: "Commercial property maintenance — RAS-VERTEX Sunshine Coast",
     heading: "Commercial.",
     body: "We know a closed shopfront or disrupted tenant costs you money. That's why we schedule around you — after hours, weekends, whatever it takes. One team across every trade, so you're not coordinating separate contractors.",
   },
   {
-    image: "/images/projects/2.jpeg",
+    image: cld("body-corp", { width: 1800 }),
     imageAlt: "Body corporate and strata maintenance — RAS-VERTEX",
-    heading: "Body corporate & strata.",
+    heading: "Body Corporate & Strata.",
     body: "We've worked with enough committees to know what matters: clear communication before work starts, no surprises for residents, and results the whole building is proud of. We handle the scheduling, the access, the documentation — across every service.",
+  },
+  {
+    image: cld("residential", { width: 1800 }),
+    imageAlt: "Residential property maintenance — RAS-VERTEX Sunshine Coast",
+    heading: "Residential.",
+    body: "We've been looking after homes on the Sunshine Coast for 25 years — painting, cleaning, waterproofing and maintenance. You'll meet your project manager before work starts, and they'll be on the other end of the phone until you're happy.",
   },
 ];
 
-export default function PartnerSection() {
+interface PartnerSectionProps {
+  heading?: string;
+  paragraph?: string;
+  ctaPersonName?: string;
+  ctaPersonRole?: string;
+  ctaPersonPhoto?: string;
+  ctaHeading?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  cards?: PartnerSectionCard[];
+}
+
+export default function PartnerSection({
+  heading = "Your partner on the Coast.",
+  paragraph = "Every person on your site is a direct RAS-VERTEX employee — no subbies, no labour hire. One dedicated project manager runs your job from first call to sign-off, with weekly photo updates and a single thread to keep everything on track.",
+  ctaPersonName = "Caroline",
+  ctaPersonRole = "Client Services Manager",
+  ctaPersonPhoto = "/images/people/caro.jpg",
+  ctaHeading = "Ready to talk about your project?",
+  ctaLabel = "Let's talk about your project",
+  ctaHref = "/contact",
+  cards = DEFAULT_CARDS,
+}: PartnerSectionProps) {
   return (
     <div className={styles.inner}>
 
       {/* ── Left col: sticky wrapper — flattened on mobile via display:contents ── */}
       <div className={styles.leftCol}>
         <div className={styles.leftTop}>
-          <h2 id="partner-heading">Your partner on the Coast.</h2>
-          <p className="p-soft">
-            Every person on your site is a direct RAS-VERTEX employee — no
-            subbies, no labour hire. One dedicated project manager runs your
-            job from first call to sign-off, with weekly photo updates and a
-            single thread to keep everything on track.
-          </p>
+          <h2 id="partner-heading">{heading}</h2>
+          <p className="p-soft">{paragraph}</p>
         </div>
 
         <div className={styles.ctaCard}>
-          <div className={styles.ctaAvatar}>
-            <Image
-              src="/images/people/caro.jpg"
-              alt="Hylton — Operations Lead at RAS-VERTEX"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+          <div className={styles.ctaAvatarRow}>
+            <div className={styles.ctaAvatar}>
+              <Image
+                src={ctaPersonPhoto}
+                alt={`${ctaPersonName} — ${ctaPersonRole} at RAS-VERTEX`}
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div className={styles.ctaPersonInfo}>
+              <span className={styles.ctaPersonName}>{ctaPersonName}</span>
+              <span className={styles.ctaPersonRole}>{ctaPersonRole}</span>
+            </div>
           </div>
-          <h3 className={styles.ctaHeading}>
-            Ready to talk about your project?
-          </h3>
-          <p className={styles.ctaBody}>
-            One call to Hylton and you&rsquo;ll know exactly where you stand.
-          </p>
-          <Button as="link" href="/contact" variant="primary" size="sm" aria-label="Talk to Hylton about your project">
-            Let&rsquo;s talk about your project →
-          </Button>
+          <h3 className={styles.ctaHeading}>{ctaHeading}</h3>
+          <Link href={ctaHref} className={styles.cta} aria-label={ctaLabel}>
+            {ctaLabel}
+          </Link>
         </div>
       </div>
 
       {/* ── Right: stacked cards ── */}
       <div className={styles.right}>
-        {CARDS.map((c) => (
+        {cards.map((c) => (
           <article key={c.heading} className={styles.card} aria-label={c.heading}>
             <div className={styles.imageWrap}>
               <Image

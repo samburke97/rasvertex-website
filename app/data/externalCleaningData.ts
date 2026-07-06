@@ -6,71 +6,60 @@ import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
+import { cld } from "../lib/cloudinary";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    src: "/nav/cleaning.png",
-    alt: "Rope access technician pressure cleaning a commercial facade on the Sunshine Coast",
+    src: cld("bw1", { width: 1600 }),
+    alt: "External cleaning project — Sunshine Coast",
   },
   {
-    src: "/images/projects/1.jpeg",
-    alt: "External building cleaning — RAS-VERTEX Sunshine Coast",
+    src: cld("bw2", { width: 1600 }),
+    alt: "External cleaning project — Sunshine Coast",
   },
   {
-    src: "/images/projects/2.jpeg",
-    alt: "Facade wash and pressure cleaning on a Sunshine Coast commercial building",
+    src: cld("bw3", { width: 1600 }),
+    alt: "External cleaning project — Sunshine Coast",
   },
   {
-    src: "/nav/maintenance.png",
-    alt: "Building exterior cleaning and maintenance — RAS-VERTEX",
+    src: cld("bw4", { width: 1600 }),
+    alt: "External cleaning project — Sunshine Coast",
   },
   {
-    src: "/nav/height.png",
-    alt: "High-access external cleaning by rope access — Sunshine Coast",
+    src: cld("bw5", { width: 1600 }),
+    alt: "External cleaning project — Sunshine Coast",
   },
 ];
 
 export const SERVICES: AccordionService[] = [
   {
-    label: "Facade & Render Washing",
-    body: "Soft-wash treatment for rendered, painted and clad facades — removing salt deposits, biological growth, mould, algae and pollution buildup that corrode surfaces over time. Pressure calibrated to the surface type; no blast damage to render or coatings.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Pressure & Surface Cleaning",
-    body: "Industrial-grade hot-water pressure cleaning for driveways, pavements, car parks, pool surrounds, roofs and hard surfaces. Our 100% recycled hot-water vacuum system deep-cleans and recovers all wastewater — zero stormwater discharge.",
-    photo: "/images/projects/2.jpeg",
+    label: "Facade Cleaning and Rope Access",
+    body: "Soft-wash treatment for rendered, painted and clad facades — removing salt deposits, biological growth and pollution buildup before they corrode surfaces. Our IRATA-certified rope access team reaches every facade at any height — no scaffolding, no EWP hire, no disruption to tenants or car parks below.",
+    photo: cld("bw1", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Roof Cleaning",
-    body: "Soft-wash roof cleaning for tile, Colorbond and membrane roofs — removing lichen, moss, algae and organic growth without high-pressure damage. Extends roof life, restores appearance, and removes the growth that traps moisture and accelerates deterioration.",
+    body: "Soft-wash roof cleaning for tile, Colorbond and membrane roofs — removing lichen, moss and algae without high-pressure damage. Extends roof life and removes the growth that traps moisture and accelerates deterioration.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
-    label: "Graffiti Removal",
-    body: "Safe, surface-appropriate graffiti removal using professional-grade solvents and pressure washing — from painted masonry to glass, cladding and signage. We assess the surface first and select the method that removes the tag without damaging the substrate.",
+    label: "Hard Surface Cleaning",
+    body: "Industrial-grade hot-water pressure cleaning for driveways, pavements, pool surrounds and general hard surfaces across the site. Our 100% Recycled Water System deep-cleans and recovers all wastewater on-site.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
   {
-    label: "Concrete & Car Park Cleaning",
-    body: "Deep cleaning of concrete surfaces, car parks, loading docks and hard stands — removing oil, grease, tyre marks and biological staining. Hot-water pressure systems break down hydrocarbon contamination that cold water alone won't touch.",
+    label: "Car Parks and Heavy Duty Concrete Cleaning",
+    body: "Deep cleaning of car parks, loading docks and hard stands — removing oil, grease, tyre marks and biological staining. Hot-water pressure systems break down heavy hydrocarbon contamination that cold water alone won't touch.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
-    label: "Post-Construction Clean",
-    body: "Complete external clean-down for new buildings and renovations — removing construction dust, mortar splatter, paint overspray, silicone residue and protective film from all external surfaces before handover. Builders across the Sunshine Coast call us first.",
+    label: "Specialist Cleaning and Programs",
+    body: "Graffiti removal using surface-appropriate solvents and pressure washing without damaging the substrate. Complete post-construction clean-downs before handover. Ongoing strata and body corporate maintenance programs with committee-ready condition reporting after every visit.",
     photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Strata & Body Corporate Programs",
-    body: "Ongoing external cleaning programs for strata buildings and body corporates — scheduled facade washes, common area pressure cleaning, and condition reporting after every visit. Committee-ready documentation and no disruption to residents.",
-    photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
 ];
@@ -78,8 +67,8 @@ export const SERVICES: AccordionService[] = [
 export const FEATURES: Feature[] = [
   {
     n: "01",
-    title: "Eco-friendly system",
-    body: "100% recycled and filtered hot-water with full vacuum recovery. All wastewater collected — zero discharge to stormwater. Biodegradable agents on every job.",
+    title: "100% Recycled Water System",
+    body: "Recycled and filtered hot water with full vacuum recovery. All wastewater collected on-site. Biodegradable agents on every job.",
   },
   {
     n: "02",
@@ -131,13 +120,34 @@ export const PROJECTS: ServiceProject[] = [
   },
 ];
 
+export const WHY_CHOOSE_US: ServiceCard[] = [
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "IRATA rope access technician cleaning a Sunshine Coast high-rise facade",
+    title: "Minimal disruption, maximum results",
+    body: "Rope access is our default, not our fallback. It's the fastest, least disruptive way to reach any facade on the Sunshine Coast, with no scaffolding, no EWP hire and no site disruption.",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Local RAS-VERTEX crew on site, Sunshine Coast building cleaning",
+    title: "Clear communication, start to finish",
+    body: "The same local, fully employed crew works your building every time. No subcontractors, no unfamiliar faces, just consistent care. Every visit is logged and reported through your own portal.",
+  },
+  {
+    photo: "/nav/cleaning.png",
+    alt: "100% recycled water pressure cleaning system, RAS-VERTEX Sunshine Coast",
+    title: "Responsible cleaning systems",
+    body: "Every wash we run goes through our 100% recycled, filtered water system with full vacuum recovery. Nothing is ever discharged to stormwater, protecting the waterways that make the Sunshine Coast what it is.",
+  },
+];
+
 export const CARDS: ServiceCard[] = [
   {
     photo: "/images/projects/2.jpeg",
     alt: "Strata and body corporate external cleaning — RAS-VERTEX Sunshine Coast",
-    title: "Strata & Body Corporate.",
-    body: "Scheduled programs that keep your building's exterior in top condition year-round. Rope access means no scaffolding disrupting residents. Committee reports after every visit, with photos and condition notes.",
-    cta: "Get a quote",
+    title: "Body Corporate.",
+    body: "Scheduled programs that keep your building's exterior in top condition year-round, staged to keep residents undisturbed. Committee reports after every visit, with photos and condition notes.",
+    cta: "Get a building wash quote",
     href: "/contact",
   },
   {
@@ -145,43 +155,63 @@ export const CARDS: ServiceCard[] = [
     alt: "Commercial building exterior cleaning — RAS-VERTEX Sunshine Coast",
     title: "Commercial.",
     body: "First impressions are made at the facade. We keep your commercial building, retail centre or office tower clean, presentable and protected — on a schedule that works around your tenants.",
-    cta: "Get a quote",
+    cta: "Get a building wash quote",
     href: "/contact",
   },
   {
     photo: "/nav/cleaning.png",
-    alt: "Industrial and government exterior cleaning — RAS-VERTEX Sunshine Coast",
-    title: "Industrial & Government.",
-    body: "Heavy-duty external cleaning for industrial facilities, government buildings and institutions. Hot-water pressure systems for oil, grease and industrial contamination. Full compliance documentation provided.",
-    cta: "Get a quote",
+    alt: "Industrial exterior cleaning — RAS-VERTEX Sunshine Coast",
+    title: "Industrial.",
+    body: "Tilt-slab warehouses, factories and industrial sites accumulate oil, grease and airborne contamination that generic pressure washing won't shift. Our hot-water systems break down hydrocarbon staining on hardstands and facades, with full wastewater recovery to meet site environmental requirements.",
+    cta: "Get a building wash quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Education facility exterior cleaning — RAS-VERTEX Sunshine Coast",
+    title: "Education.",
+    body: "Facade washes, roof cleans and graffiti removal scheduled around term dates and after-hours access. Full safety documentation supplied direct to campus grounds and facilities teams.",
+    cta: "Get a building wash quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "Government building exterior cleaning — RAS-VERTEX Sunshine Coast",
+    title: "Government.",
+    body: "Council buildings, libraries and public facilities need a contractor who works around public access and existing compliance requirements. We provide full documentation, public liability certificates and scheduled programs that fit around opening hours, not the other way around.",
+    cta: "Get a building wash quote",
+    href: "/contact",
+  },
+  {
+    photo: "/nav/cleaning.png",
+    alt: "Medical facility exterior cleaning — RAS-VERTEX Sunshine Coast",
+    title: "Medical.",
+    body: "Hospitals, medical centres and aged care facilities run on fixed access windows and infection-control protocols. We work to the window you set, with biodegradable agents and a sign-off report for your facilities team.",
+    cta: "Get a building wash quote",
     href: "/contact",
   },
 ];
 
 export const FAQS: FAQItem[] = [
   {
-    q: "How often should I have my building's exterior professionally cleaned on the Sunshine Coast?",
-    a: "For coastal properties within 5km of the ocean, we recommend a facade wash every 6–12 months — salt spray and biological growth accumulate quickly in the marine environment and will begin degrading render, coatings and sealants if left unchecked. Buildings further inland can typically extend to 12–18 month cycles. Car parks and high-traffic hard surfaces generally benefit from cleaning every 3–6 months.",
+    q: "How often should a facade cleaning be scheduled in coastal environments?",
+    a: "Every 6 to 12 months within 5km of the coast, where salt spray and biological growth build up fast. Inland buildings can often stretch to 12 to 18 months. Car parks and hard surfaces usually need attention every 3 to 6 months.",
   },
   {
-    q: "What's the difference between pressure cleaning and soft washing?",
-    a: "Pressure cleaning uses high-pressure water to physically remove surface contaminants — best suited to hard surfaces like concrete, pavers and car parks where high pressure won't cause damage. Soft washing uses low-pressure hot water combined with biodegradable cleaning agents to kill and remove biological growth (mould, algae, lichen) from more sensitive surfaces like rendered facades, painted exteriors and roof tiles. Using high-pressure on render or coatings can cause surface damage and force moisture into the substrate — we assess every surface before choosing the method.",
+    q: "What's the difference between soft washing and pressure cleaning?",
+    a: "Soft washing uses low pressure hot water and biodegradable agents to safely clean rendered facades, paint and roof tiles. Pressure cleaning uses high pressure water for hard surfaces like concrete and pavers. We choose the right method for each surface so nothing gets damaged.",
   },
   {
-    q: "Is external building cleaning eco-friendly?",
-    a: "Ours is. Our hot-water pressure cleaning system uses 100% recycled and filtered water with a full vacuum recovery unit — all wastewater is collected, no contaminated runoff enters stormwater drains. We use pH-neutral, biodegradable cleaning agents on all surfaces. For sensitive areas near vegetation or water, we select agents specifically rated for environmental safety.",
+    q: "Can you clean high-rise buildings without scaffolding?",
+    a: "Yes. Our IRATA certified rope access team reaches any height from rooftop anchor points, with no scaffolding and no EWP hire. It's faster to deploy and far less disruptive to residents and tenants.",
   },
   {
-    q: "Can you clean facades at any height without scaffolding?",
-    a: "Yes. Our IRATA-certified rope access team can clean facades on buildings of any height from rooftop anchor points — no scaffolding, no elevated work platform hire, and no disruption to ground-level access or car parks. For buildings under four storeys, boom-lift or ladder access may be appropriate depending on the site. We assess each building and recommend the safest, most cost-effective access method.",
+    q: "Is your system compliant with environmental regulations?",
+    a: "Yes. Our pressure cleaning system runs on 100% recycled, filtered water with full vacuum recovery, so nothing is discharged to stormwater. We use pH neutral, biodegradable cleaning agents on every job.",
   },
   {
-    q: "Do you also clean windows as part of a facade clean?",
-    a: "External facade cleaning and window cleaning are separate scopes — different equipment, different techniques, and different results. Facade cleaning removes biological growth, salt and pollution from rendered, clad or painted surfaces. Window cleaning uses purified deionised water to deliver a streak-free finish on glass. We offer both, and they're often scheduled together as part of a full building clean program. See our window cleaning page for more detail.",
-  },
-  {
-    q: "How much does external building cleaning cost on the Sunshine Coast?",
-    a: "Cost depends on building size, height, access requirements, surface type and cleaning method. A single facade wash on a mid-rise strata building typically ranges from $1,500–$6,000. Car park and concrete cleaning starts from $400. Post-construction cleans are quoted by scope. We provide fixed-price quotes after a site assessment — contact us for a building-specific price.",
+    q: "Do you provide strata reporting and condition photos?",
+    a: "Yes. Every visit includes photographic reporting and condition notes suitable for committees, councils and asset managers, logged and available through your own portal if you'd like it.",
   },
 ];
 
@@ -190,5 +220,5 @@ export const FAQ_CONTACT: FAQContact = {
   role: "Cleaning & Maintenance Manager",
   photo: "/images/projects/1.jpeg",
   ctaHref: "/contact",
-  ctaLabel: "Book a clean →",
+  ctaLabel: "Get a building wash quote →",
 };

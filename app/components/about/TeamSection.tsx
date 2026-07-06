@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./TeamSection.module.css";
+import { cld } from "../../lib/cloudinary";
 
 export default function TeamSection() {
   return (
@@ -11,21 +12,19 @@ export default function TeamSection() {
       <div className={styles.textCol}>
         <div className={styles.textBlock}>
           <h2 id="team-section-heading">
-            25 people.
+            A maintenance partner,
             <br />
-            Not one subcontractor.
+            not a middleman.
           </h2>
+
+          <h4 className={styles.subheading}>One crew. Every trade.</h4>
           <p className="p-soft">
-            Every person on your site is a direct RAS-VERTEX employee. We
-            recruit, we train, we insure them — and they stay. The same faces
-            show up year after year because we pay well, treat people right,
-            and give them real career paths through IRATA certification and
-            trade licensing. That continuity is what keeps buildings — and the
-            people who manage them — coming back to us after 25 years.
+            We don&rsquo;t farm work out to subbies. Every painter, technician and rope access specialist is directly employed, QBCC licensed and IRATA certified — and one project manager runs your job from the first site visit to the final sign-off. Every system we specify is built for here: salt air, coastal UV, and the exact conditions of your site.
           </p>
+
+          <h4 className={styles.subheading}>25 years on the Sunshine Coast.</h4>
           <p className="p-soft">
-            No labour hire. No subbies turning up unannounced. No finger-pointing
-            when something goes wrong. One team, one invoice, one number to call.
+            Founded in 2009 by Phil, who brought 15 years of rope access experience from the UK, RAS grew into the Coast&rsquo;s go-to property maintenance contractor for body corporates, strata and commercial buildings from Noosa to Caloundra. In 2023 we merged with Vertex Access Solutions — 23 years of high-rise painting, waterproofing and height safety — and became RAS-VERTEX: 25+ specialists, every trade, one team.
           </p>
         </div>
       </div>
@@ -33,7 +32,7 @@ export default function TeamSection() {
       {/* ── Right — team photo ── */}
       <div className={styles.imageCol}>
         <Image
-          src="/images/projects/1.jpeg"
+          src={cld("coastal-buildings.jpg", { width: 1800 })}
           alt="The RAS-VERTEX team on the Sunshine Coast"
           fill
           className={styles.image}

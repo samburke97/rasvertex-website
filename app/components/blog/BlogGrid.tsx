@@ -34,7 +34,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
         <p className={styles.featuredExcerpt}>{post.excerpt}</p>
 
         <div className={styles.featuredFooter}>
-          <span className={styles.readMore}>Read article →</span>
+          <span className={styles.readMore}>Read article</span>
         </div>
       </div>
 
@@ -77,7 +77,7 @@ function GridCard({ post }: { post: BlogPost }) {
         </h3>
         <p className={styles.cardExcerpt}>{post.excerpt}</p>
         <Link href={`/blog/${post.slug}`} className={styles.readMore} aria-label={`Read: ${post.title}`}>
-          Read more →
+          Read more
         </Link>
       </div>
     </article>

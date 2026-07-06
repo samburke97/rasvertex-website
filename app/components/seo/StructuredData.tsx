@@ -172,6 +172,26 @@ export function LocalBusinessSchema() {
           "Exceptional service from the RAS-VERTEX team. Professional, reliable, and excellent attention to detail.",
       },
     ],
+    areaServed: [
+      "Caloundra", "Caloundra West", "Kings Beach", "Moffat Beach", "Dicky Beach",
+      "Golden Beach", "Pelican Waters", "Kawana Waters", "Bokarina", "Wurtulla",
+      "Warana", "Birtinya", "Sippy Downs", "Mountain Creek", "Mooloolaba",
+      "Cotton Tree", "Maroochydore", "Twin Waters", "Mudjimba", "Marcoola",
+      "Bli Bli", "Buderim", "Kunda Park", "Mount Coolum", "Yaroomba",
+      "Coolum Beach", "Peregian Springs", "Sunrise Beach", "Sunshine Beach",
+      "Noosa", "Noosa Heads", "Noosaville", "Tewantin", "Cooroibah",
+      "Mooloolah Valley", "Palmwoods", "Nambour", "Yandina", "Maleny",
+      "Mount Mellum", "Pomona", "Cootharaba", "Kin Kin", "Cooroy",
+      "Cooroy Mountain", "Gympie",
+    ].map((suburb) => ({
+      "@type": "Place",
+      name: suburb,
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "QLD",
+        addressCountry: "AU",
+      },
+    })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Property Maintenance Services",

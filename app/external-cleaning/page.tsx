@@ -4,23 +4,18 @@ import Link from "next/link";
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
-import ServiceHero from "../components/shared/ServiceHero";
-import ServiceIntro from "../components/shared/ServiceIntro";
+import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
-import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceFeatures from "../components/shared/ServiceFeatures";
-import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
-import PhotoGrid from "../components/shared/PhotoGrid";
 import WarrantyCard from "../components/shared/WarrantyCard";
+import ContactTestimonial from "../components/contact/ContactTestimonial";
+import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
 import {
   HERO_SLIDES,
   SERVICES,
-  FEATURES,
-  PROJECTS,
-  CARDS,
   FAQS,
   FAQ_CONTACT,
 } from "../data/externalCleaningData";
@@ -71,43 +66,74 @@ export default function ExternalCleaningPage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
-        <ServiceHero
+      <section className="pt-10">
+        <ServiceHeroSplit
           heading={
             <>
-              External building cleaning
-              <br />
-              on the Sunshine Coast.
+              We are the Sunshine Coast’s leading external cleaning team,
+              delivering visible transformation across every surface.
             </>
           }
-          lede="Facade washing, pressure cleaning, roof cleaning and graffiti removal — using eco-friendly systems and IRATA rope access for buildings of any height."
-          slides={HERO_SLIDES}
+          lede="From pressure washing to rope access facade cleaning, we deliver full-scope exterior cleaning for our commercial, residential and body corporate partners."
           headingId="external-cleaning-hero-heading"
+          video="/videos/cleaning.mp4"
         />
       </section>
-
-      <section className="pt-20 pb-20">
-        <ServiceIntro
-          heading="Beyond aesthetics. Protecting your building."
-          paragraphs={[
-            "On the Sunshine Coast, external cleaning isn't cosmetic — it's protective. Salt air, UV, biological growth and marine pollution don't just dirty surfaces; they accelerate corrosion, degrade coatings, and eat into render and sealants. By removing contaminants regularly, we slow that damage before it becomes a structural problem. A clean building isn't just better-looking — it's a building that will cost less to maintain over its lifetime.",
-            "We use a combination of ropes, industrial hot-water pressure systems and soft-wash chemistry to reach every surface at any height. Our 100% recycled water vacuum system means no contaminated runoff to stormwater — an important consideration for beachside and waterway-adjacent properties across the Sunshine Coast. One team, one visit, every surface covered.",
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={[
+            {
+              photo: "/images/projects/rope-access.png",
+              alt: "IRATA rope access technician cleaning a Sunshine Coast high-rise facade",
+              title: "Minimal disruption",
+              body: "Rope access is our default, not our fallback. It's the fastest, least disruptive way to reach any facade on the Sunshine Coast, with no scaffolding, no EWP hire and no site disruption.",
+            },
+            {
+              photo: HERO_SLIDES[1].src,
+              alt: "Local RAS-VERTEX crew on site, Sunshine Coast building cleaning",
+              title: "Clear communication",
+              body: "The same local, fully employed crew works your building every time. No subcontractors, no unfamiliar faces, just consistent care. Every visit is logged and reported through your own portal.",
+            },
+            {
+              photo: HERO_SLIDES[2].src,
+              alt: "100% recycled water pressure cleaning system, RAS-VERTEX Sunshine Coast",
+              title: "Proactive care",
+              body: "Every clean includes visual checks and reporting so we can flag issues early, highlight potential problems and help prevent costly repairs.",
+            },
           ]}
-          headingId="external-cleaning-intro-heading"
+          heading={
+            <>
+              Here&rsquo;s why building managers and
+              <br />
+              property owners choose our cleaning team.
+            </>
+          }
+          ariaLabel="Why building managers choose RAS-VERTEX for external cleaning"
+          footerCtaLabel="Get a free quote →"
+          footerCtaHref="/contact"
+          display="grid"
+          variant="white"
+        />
+      </section>
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="100% Recycled Water System"
+      >
+        <WarrantyCard
+          stat="100%"
+          statLabel={"recycled\nwater system"}
+          heading={
+            <>
+              100% Recycled.
+              <br />
+              Zero compromise.
+            </>
+          }
+          body="Our pressure cleaning system runs on 100% recycled, filtered hot water with full vacuum recovery — every drop collected, nothing discharged to stormwater. The only responsible way to clean near the coast."
         />
       </section>
 
-      <section className="pt-20 px-10">
-        <PhotoGrid
-          showHeader={false}
-          cta={{
-            body: "Salt doesn't stop at the windows. Biological growth colonises render, tile and cladding year-round. Regular external cleaning is the most cost-effective protective maintenance you can run on any Sunshine Coast building.",
-            link: { label: "Book a clean →", href: "/contact" },
-          }}
-        />
-      </section>
-
-      <section className="pt-20 px-10">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceAccordion
           heading={
             <>
@@ -116,19 +142,19 @@ export default function ExternalCleaningPage() {
               are you looking for?
             </>
           }
+          paragraph="If your building is dealing with salt build-up, mould, staining or general coastal wear, we use rope access and low-impact wash systems to bring it back without damaging the surface."
           ariaLabel="What kind of external clean are you looking for?"
           services={SERVICES}
           headingId="external-cleaning-services-heading"
-          ctaLabel="Not sure? Let's talk about it →"
+          ctaLabel="Book a site inspection →"
         />
       </section>
-
       {/* ── Window cleaning internal link callout ── */}
-      <section className="pt-20 pb-4 px-10">
+      <section className="px-5 md:px-10 pb-5">
         <p className="p-soft">
           Looking for window cleaning specifically?{" "}
           <Link
-            href="/cleaning"
+            href="/window-cleaning"
             style={{
               color: "var(--navy)",
               fontWeight: "var(--weight-semibold)",
@@ -136,88 +162,55 @@ export default function ExternalCleaningPage() {
               paddingBottom: "1px",
             }}
           >
-            See our dedicated window cleaning page →
+            See our dedicated window cleaning page
           </Link>
         </p>
       </section>
 
-      <section className="pt-20">
-        <ServiceCards
-          cards={CARDS}
-          heading="Who we work for."
-          ariaLabel="Who we work for — external cleaning services"
-        />
-      </section>
-
-      <section className="pt-20">
-        <ServiceFeatures
-          features={FEATURES}
-          displayText={"Spotless\nResults."}
-          ariaLabel="Why choose RAS-VERTEX for external building cleaning"
+      {/* ── Testimonial — its own full, centered section ── */}
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        style={{ display: "flex", justifyContent: "center" }}
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial
+          quote="The rope access team is exceptional. No scaffold, no disruption to residents, and the building looks brand new."
+          name="Karen O'Brien"
+          role="Committee Chair, Rumba Resort"
+          logoSrc="/partners/mosaic.svg"
+          logoAlt="Rumba Resort"
         />
       </section>
 
       <section
-        className="px-10 pt-20"
-        aria-labelledby="external-cleaning-before-after-heading"
+        className="py-10 md:py-20"
+        aria-labelledby="external-cleaning-services-carousel-label"
       >
-        <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
-          beforeAlt="Maroochydore commercial building facade before professional external clean"
-          afterAlt="Maroochydore commercial building facade after professional external clean by RAS-VERTEX"
-          clientName="Maroochydore Commercial Tower"
-          heading="From salt-stained to spotless in a single visit."
-          body="This 12-storey Maroochydore tower had accumulated two years of salt deposit, biological staining and pollution buildup across its entire rendered facade. Rope access let us cover the full building in two days — no scaffolding, no crane hire, no disruption to tenants on the ground floor."
-          quote="We budgeted for three days and they finished in two. The facade looks like it did on completion day. Outstanding result."
-          quoteAuthor="Craig Whitmore"
-          quoteRole="Facilities Manager, Maroochydore"
-          authorLogo="/partners/accor.svg"
-          authorLogoAlt="Maroochydore Commercial Tower"
-          ctaHref="/work"
-          ctaLabel="Our projects →"
-          headingId="external-cleaning-before-after-heading"
+        <h2
+          id="external-cleaning-services-carousel-label"
+          className="px-5 md:px-10 pb-10 md:pb-20"
+        >
+          We bring the same expertise to every part <br /> of your property,
+          across the Sunshine Coast.
+        </h2>
+        <ServiceCarousel
+          slides={SERVICE_SLIDES.filter(
+            (slide) => slide.href !== "/external-cleaning",
+          )}
+          ariaLabel="RAS-VERTEX services"
         />
       </section>
 
-      <section
-        className="px-10 py-20"
-        aria-label="Eco-friendly cleaning system"
-      >
-        <WarrantyCard
-          stat="100%"
-          statLabel={"recycled\nwater system"}
-          heading={
-            <>
-              Zero discharge.
-              <br />
-              Zero compromise.
-            </>
-          }
-          body="Our industrial pressure cleaning system runs on 100% recycled and filtered hot water with full vacuum recovery — all wastewater collected and processed on-site, nothing discharged to stormwater drains. Biodegradable cleaning agents throughout. For Sunshine Coast properties near waterways, beaches and marine environments, that's not just good practice — it's the only responsible way to clean."
-        />
-      </section>
-
-      <section className="pt-20">
-        <ServiceProjects
-          heading={
-            <>
-              Work we're proud of,
-              <br />
-              from Noosa to Caloundra.
-            </>
-          }
-          subheading="Facade washes, pressure cleans, post-construction clean-downs and ongoing strata programs across the Sunshine Coast — every building cleaner, better protected, and documented after every visit."
-          projects={PROJECTS}
-          footerNote="We also clean across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour and throughout the hinterland."
-        />
-      </section>
-
-      <section className="px-10 py-20">
+      <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceFAQ
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="external-cleaning-faq-heading"
+          ctaHeading={
+            <>
+              We specialise in all aspects <br /> of exterior cleaning.
+            </>
+          }
         />
       </section>
     </>

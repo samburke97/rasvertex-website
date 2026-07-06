@@ -60,3 +60,23 @@
   background: var(--navy);
   width: 36px;
 }
+
+@media (max-width: 560px) {
+  .arrow {
+    width: 24px;
+    height: 24px;
+  }
+
+  .arrow svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .dot {
+    width: 20px;
+  }
+
+  .dotActive {
+    width: 30px;
+  }
+}

@@ -37,7 +37,7 @@ export default function MaintenancePlans({
         <div className={styles.headerRight}>
           <p className="p-soft">{lede}</p>
           <Link href={ctaHref} className={styles.cta}>
-            {ctaLabel}
+            {ctaLabel.slice(0, ctaLabel.lastIndexOf('→')).trimEnd()}
           </Link>
         </div>
       </div>

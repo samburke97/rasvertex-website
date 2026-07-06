@@ -1,10 +1,7 @@
 // app/components/shared/ServiceBeforeAfter.tsx
 
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef } from "react";
 import styles from "./ServiceBeforeAfter.module.css";
 
 export interface BeforeAfterSpec {
@@ -17,14 +14,15 @@ interface ServiceBeforeAfterProps {
   afterSrc: string;
   beforeAlt: string;
   afterAlt: string;
-  clientName: string;
+  projectName: string;
+  location: string;
   heading: string;
   body: string;
-  quote: string;
-  quoteAuthor: string;
-  quoteRole: string;
-  authorLogo: string;
-  authorLogoAlt: string;
+  quote?: string;
+  quoteAuthor?: string;
+  quoteRole?: string;
+  authorLogo?: string;
+  authorLogoAlt?: string;
   ctaHref?: string;
   ctaLabel?: string;
   headingId?: string;
@@ -35,7 +33,8 @@ export default function ServiceBeforeAfter({
   afterSrc,
   beforeAlt,
   afterAlt,
-  clientName,
+  projectName,
+  location,
   heading,
   body,
   quote,
@@ -47,164 +46,95 @@ export default function ServiceBeforeAfter({
   ctaLabel = "Our projects →",
   headingId = "before-after-heading",
 }: ServiceBeforeAfterProps) {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const afterRef = useRef<HTMLDivElement>(null);
-  const handleRef = useRef<HTMLDivElement>(null);
-  const dragging = useRef(false);
-
-  const setPct = useCallback((p: number) => {
-    const pct = Math.max(2, Math.min(98, p));
-    if (afterRef.current)
-      afterRef.current.style.clipPath = `inset(0 0 0 ${pct}%)`;
-    if (handleRef.current) handleRef.current.style.left = `${pct}%`;
-  }, []);
-
-  useEffect(() => {
-    setPct(50);
-    const stage = stageRef.current;
-    if (!stage) return;
-
-    const getX = (e: MouseEvent | TouchEvent) =>
-      "clientX" in e ? e.clientX : e.touches[0].clientX;
-
-    const onMove = (e: MouseEvent | TouchEvent) => {
-      if (!dragging.current) return;
-      setPct(
-        ((getX(e) - stage.getBoundingClientRect().left) / stage.offsetWidth) *
-          100,
-      );
-    };
-    const onStart = (e: MouseEvent | TouchEvent) => {
-      dragging.current = true;
-      e.preventDefault();
-      onMove(e);
-    };
-    const onEnd = () => {
-      dragging.current = false;
-    };
-
-    stage.addEventListener("mousedown", onStart as EventListener, {
-      passive: false,
-    });
-    stage.addEventListener("touchstart", onStart as EventListener, {
-      passive: false,
-    });
-    window.addEventListener("mousemove", onMove as EventListener, {
-      passive: false,
-    });
-    window.addEventListener("touchmove", onMove as EventListener, {
-      passive: false,
-    });
-    window.addEventListener("mouseup", onEnd);
-    window.addEventListener("touchend", onEnd);
-    return () => {
-      stage.removeEventListener("mousedown", onStart as EventListener);
-      stage.removeEventListener("touchstart", onStart as EventListener);
-      window.removeEventListener("mousemove", onMove as EventListener);
-      window.removeEventListener("touchmove", onMove as EventListener);
-      window.removeEventListener("mouseup", onEnd);
-      window.removeEventListener("touchend", onEnd);
-    };
-  }, [setPct]);
-
   return (
     <article aria-labelledby={headingId}>
-      {/* ── Slider ── */}
-      <div
-        className={styles.stage}
-        ref={stageRef}
-        role="img"
-        aria-label={`Before and after — ${clientName}`}
-      >
-        <div className={styles.imgWrap}>
+      {/* ── Photos ── */}
+      <div className={styles.photosRow}>
+        <div className={styles.photo}>
           <Image
             src={beforeSrc}
             alt={beforeAlt}
             fill
-            sizes="(max-width:860px) 100vw, calc(100vw - 80px)"
+            sizes="(max-width:860px) 100vw, 50vw"
+            style={{ objectFit: "cover" }}
             priority
           />
+          <div className={styles.tag}>
+            <span className={styles.tagTitle}>{projectName}</span>
+            <span className={styles.tagLocation}>{location} (Before)</span>
+          </div>
         </div>
-        <div className={styles.imgWrap} ref={afterRef}>
+        <div className={`${styles.photo} ${styles.photoDown}`}>
           <Image
             src={afterSrc}
             alt={afterAlt}
             fill
-            sizes="(max-width:860px) 100vw, calc(100vw - 80px)"
+            sizes="(max-width:860px) 100vw, 50vw"
+            style={{ objectFit: "cover" }}
           />
+          <div className={styles.tag}>
+            <span className={styles.tagTitle}>{projectName}</span>
+            <span className={styles.tagLocation}>{location} (After)</span>
+          </div>
         </div>
-        <span
-          className={`${styles.sliderLabel} ${styles.before}`}
-          aria-hidden="true"
-        >
-          Before
-        </span>
-        <span
-          className={`${styles.sliderLabel} ${styles.after}`}
-          aria-hidden="true"
-        >
-          After
-        </span>
-        <div className={styles.handle} ref={handleRef} aria-hidden="true">
-          <div className={styles.grip}>
+      </div>
+
+      {/* ── Content ── */}
+      <div className={`${styles.content} ${!quote ? styles.contentSingle : ""}`}>
+        <div className={styles.left}>
+          <h3 id={headingId}>{heading}</h3>
+          <p className="p-soft">{body}</p>
+          <Link
+            href={ctaHref}
+            className={styles.cta}
+            aria-label="View our projects"
+          >
+            {ctaLabel.slice(0, ctaLabel.lastIndexOf('→')).trimEnd()}
             <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
+              className={styles.ctaArrow}
+              width="14"
+              height="14"
+              viewBox="0 0 16 16"
               fill="none"
               aria-hidden="true"
             >
               <path
-                d="M7 10H13M7 10L4 7M7 10L4 13M13 10L16 7M13 10L16 13"
+                d="M3 8h10M9 4l4 4-4 4"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
+          </Link>
+        </div>
+        {quote && (
+          <div className={styles.right}>
+            <figure className={styles.quote}>
+              <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
+              <blockquote className={styles.quoteText}>
+                <p>{quote}</p>
+              </blockquote>
+              <figcaption className={styles.quoteAuthor}>
+                {authorLogo && (
+                  <div className={styles.authorLogo}>
+                    <Image
+                      src={authorLogo}
+                      alt={authorLogoAlt ?? ""}
+                      fill
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
+                )}
+                <div className={styles.authorInfo}>
+                  <cite className={styles.authorName}>{quoteAuthor}</cite>
+                  <span className={styles.authorRole}>{quoteRole}</span>
+                </div>
+              </figcaption>
+            </figure>
           </div>
-        </div>
-        <div className={styles.overlay} aria-hidden="true">
-          <span className={styles.clientName}>{clientName}</span>
-        </div>
+        )}
       </div>
-
-      {/* ── Content ── */}
-      <div className={styles.content}>
-        <div className={styles.left}>
-          <h3 id={headingId}>{heading}</h3>
-          <p className="p-soft">{body}</p>
-        </div>
-        <div className={styles.right}>
-          <figure className={styles.quote}>
-            <blockquote className={styles.quoteText}>
-              <p>{quote}</p>
-            </blockquote>
-            <figcaption className={styles.quoteAuthor}>
-              <div className={styles.authorLogo}>
-                <Image
-                  src={authorLogo}
-                  alt={authorLogoAlt}
-                  fill
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-              <div className={styles.authorInfo}>
-                <cite className={styles.authorName}>{quoteAuthor}</cite>
-                <span className={styles.authorRole}>{quoteRole}</span>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <Link
-        href={ctaHref}
-        className={styles.cta}
-        aria-label="View our projects"
-      >
-        {ctaLabel}
-      </Link>
     </article>
   );
 }

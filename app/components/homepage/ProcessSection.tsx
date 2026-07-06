@@ -133,7 +133,7 @@ export default function ProcessSection() {
               className={styles.bottomCta}
               aria-label="Start your project with RAS-VERTEX"
             >
-              Ready to start your project? →
+              Ready to start your project?
             </Link>
           </div>
         </div>

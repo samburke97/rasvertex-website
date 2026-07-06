@@ -6,6 +6,13 @@ import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
 import type { InspectionStep } from "../components/shared/InspectionProcess";
+import {
+  PiClipboardText,
+  PiHammer,
+  PiPalette,
+  PiPaintRoller,
+  PiCheckCircle,
+} from "react-icons/pi";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
@@ -78,33 +85,33 @@ export const SERVICES: AccordionService[] = [
 export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "01",
-    title: "Site Visit & Quote",
-    body: "Your project manager visits the property, walks every surface with you, and assesses substrate condition. We discuss your colour ideas, timeline and any repairs needed. Written quote issued within 48 hours — itemised, no hidden costs.",
-    deliverable: "Written itemised quote",
+    title: "Site visit & scope confirmation",
+    body: "Your project manager inspects the property, confirms surfaces, discusses colours, and identifies any repairs required. A fixed written quote is issued within 48 hours.",
+    icon: PiClipboardText,
   },
   {
     n: "02",
-    title: "Surface Preparation",
-    body: "High-pressure wash, mould treatment, sanding, caulking and crack repairs before any paint is mixed. For coastal homes, chloride rinse and salt-bonded primer are standard. Preparation is the single biggest factor in how long the paint lasts — we don't rush it.",
-    deliverable: "Prep sign-off before painting begins",
+    title: "Surface preparation",
+    body: "All surfaces are cleaned, sanded, and repaired as required. This includes mould treatment, crack repairs, caulking, and substrate preparation prior to coating.",
+    icon: PiHammer,
   },
   {
     n: "03",
-    title: "Colour Confirmation",
-    body: "Sample blocks applied on-site in your chosen colours before full commitment. Natural Sunshine Coast light is different to a paint chip — we make sure you're happy before we open the first full tin.",
-    deliverable: "On-site sample blocks",
+    title: "Colour selection",
+    body: "We confirm your colour choices on site using sample patches in natural light before any full application begins.",
+    icon: PiPalette,
   },
   {
     n: "04",
-    title: "Painting",
-    body: "Primer, undercoat and two finish coats to manufacturer's specification. Every coat is allowed to cure fully before the next is applied. Your project manager is on-site daily — not dropping in once a week.",
-    deliverable: "Daily progress photos",
+    title: "Painting & application",
+    body: "All coatings are applied in sequence — primer, undercoat, and finish coats — in line with manufacturer specifications, with appropriate curing time between stages.",
+    icon: PiPaintRoller,
   },
   {
     n: "05",
-    title: "Handover & Warranty",
-    body: "Final walkthrough with your project manager. Any touch-ups completed before we leave. Written 5-year workmanship warranty issued. We're not done until you're happy — and the warranty means we stand behind it long after we've packed up.",
-    deliverable: "5-year written warranty",
+    title: "Completion & handover",
+    body: "Final walkthrough with your project manager. Any required touch-ups are completed before sign-off. A written workmanship warranty is issued at handover.",
+    icon: PiCheckCircle,
   },
 ];
 
@@ -120,7 +127,7 @@ export const FEATURES: Feature[] = [
     body: "We specify Haymes and Dulux commercial-grade systems for residential work — not hardware store products. The difference in coastal durability is measurable.",
     logos: [
       { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.png", alt: "Dulux" },
+      { src: "/images/associations/dulux.svg", alt: "Dulux" },
     ],
   },
   {
@@ -205,7 +212,7 @@ export const FAQ_CONTACT: FAQContact = {
   role: "Residential Painting",
   photo: "/images/projects/1.jpeg",
   ctaHref: "/contact",
-  ctaLabel: "Get a free quote →",
+  ctaLabel: "Chat to our home painting team →",
 };
 
 import type { Credential } from "../components/shared/CredentialRows";
@@ -228,7 +235,7 @@ export const CREDENTIALS: Credential[] = [
       "Haymes and Dulux paint systems applied to a Sunshine Coast home by RAS-VERTEX",
     logos: [
       { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.png", alt: "Dulux" },
+      { src: "/images/associations/dulux.svg", alt: "Dulux" },
     ],
   },
   {

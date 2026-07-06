@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(NODE_PATH=/Users/burke/.npm/_npx/e41f203b7505f1fb/node_modules node -e ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(sips -g pixelWidth -g pixelHeight painting.png)",
+      "Bash(grep -n \"CALL US\\\\|EMAIL\\\\|HOURS\\\\|VISIT US\\\\|RAS-VERTEX project\\\\|Sunshine Coast$\\\\|25 years working\" \"/Users/burke/Desktop/RAS-VERTEX/RAS-VERTEX Website/rasvertex-website/app/components/contact/ContactSurface.tsx\")",
+      "Bash(kill 13455 13458)",
+      "Bash(rm -rf \"/Users/burke/Desktop/RAS-VERTEX/RAS-VERTEX Website/rasvertex-website/.next\" *)",
+      "Bash(sed -i '' '53s/className=\"py-10 md:py-20\"/className=\"px-5 md:px-10 py-10 md:py-20\"/' page.tsx)",
+      "Bash(sed -i '' -e '87s/className=\"py-10 md:py-20\"/className=\"px-5 md:px-10 py-10 md:py-20\"/' -e '148s/className=\"py-10 md:py-20\"/className=\"px-5 md:px-10 py-10 md:py-20\"/' height-safety/page.tsx)",
+      "Bash(sed -i '' '95s/className=\"py-10 md:py-20\"/className=\"px-5 md:px-10 py-10 md:py-20\"/' body-corporate-painting/page.tsx)",
+      "Bash(sed -i '' -e '98s/className=\"py-10 md:py-20\"/className=\"px-5 md:px-10 py-10 md:py-20\"/' -e '153s/className=\"py-10 md:py-20\"/className=\"px-5 md:px-10 py-10 md:py-20\"/' external-cleaning/page.tsx)",
+      "Bash(sed -i '' '91s/className=\"py-10 md:py-20\"/className=\"px-5 md:px-10 py-10 md:py-20\"/' residential-painting/page.tsx)",
+      "Bash(curl -s \"http://localhost:3000/external-cleaning\")",
+      "Bash(curl -s \"http://localhost:3000/\")",
+      "Bash(curl -s http://localhost:3000/waterproofing -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/painting -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/painting)",
+      "Bash(npm view *)",
+      "Bash(npm install *)",
+      "Bash(curl -s http://localhost:3000/residential-painting -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(find public/images/residential -iname \"*before*\" -o -iname \"*after*\")",
+      "Bash(ls -la public/images/residential)",
+      "Bash(curl -s http://localhost:3000/commercial-painting -o /dev/null -w \"commercial: %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/commercial-painting)",
+      "Bash(curl -s http://localhost:3000/body-corporate-painting)",
+      "Bash(npx --no-install lighthouse --version)",
+      "Bash(curl -sf http://localhost:3000)"
+    ],
+    "additionalDirectories": [
+      "/Users/burke/Desktop/RAS-VERTEX/RAS-VERTEX Website/rasvertex-website/.next"
+    ]
+  }
+}

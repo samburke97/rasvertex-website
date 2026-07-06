@@ -30,48 +30,69 @@ export const HERO_SLIDES: HeroSlide[] = [
   },
 ];
 
+export const PREP_STEPS = [
+  {
+    number: "01",
+    title: "Floor Preparation",
+    body: "Before any membrane is applied, all existing finishes including coatings, tiles and coverings are fully removed to expose the base structure. The goal is simple — a clean, sound surface that will actually hold the system long term.",
+  },
+  {
+    number: "02",
+    title: "Diamond Grinding",
+    body: "We mechanically prepare concrete to remove contamination, open the surface and expose hidden cracks and voids. This step ensures the waterproofing system bonds properly and performs as designed, not just on paper.",
+  },
+  {
+    number: "03",
+    title: "Crack Repair",
+    body: "Once exposed, cracks are assessed and repaired based on movement and severity. Structural cracks are cut, backed and sealed to allow movement, preventing repairs from failing as the building shifts over time.",
+  },
+];
+
 export const SERVICES: AccordionService[] = [
   {
-    label: "Floor Preparation",
-    body: "Before any waterproofing membrane can be applied, all existing coatings, tiles, outdoor carpet, artificial grass and surface coverings must be fully removed. We have the equipment to lift and dispose of any floor covering — leaving a clean, sound substrate ready for grinding and repair.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Diamond Grinding",
-    body: "RAS-VERTEX uses German-designed diamond floor grinding equipment powered by a three-phase generator. Every grinder is paired with a powerful vacuum extractor fitted with a HEPA filter — minimising dust on site and on adjacent properties. Grinding opens the concrete surface and exposes all cracks and voids before repair.",
-    photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Crack Repair",
-    body: "After grinding, all cracks are exposed and assessed. Major cracks are square-cut and filled with a backing rod before sealing. A bond-breaking tape is placed over the cut to allow for future structural movement — preventing the repair from re-cracking with the building. No surface-only filler that bridges the crack and fails within a season.",
-    photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
-  {
     label: "Concrete Roof Restoration",
-    body: "From two-pack epoxy prime coats through to polyurethane membrane and UV-stable non-slip topcoat — we apply a complete system specified for the substrate condition and the Sunshine Coast's UV intensity, salt air and thermal cycling. Every coat is applied to manufacturer's specification and thickness.",
+    body: "We restore failed concrete roof systems using a complete coating system designed for coastal exposure, including UV, salt air and thermal movement. Every layer is applied to manufacturer requirements to ensure long term performance and durability.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
   {
     label: "Balcony Waterproofing",
-    body: "Full membrane removal and replacement on failed or failing balcony waterproofing systems to AS 3740. We diagnose the failure mode first — delaminated membrane, failed upturns, cracked substrate or inadequate drainage — then specify the correct system. Polyurethane, fibreglass and liquid-applied membranes to suit the exposure and movement conditions.",
+    body: "We remove and replace failed balcony waterproofing systems after diagnosing the cause of failure, whether that is membrane breakdown, substrate cracking or poor drainage. New systems are installed to suit the movement and exposure conditions of the structure.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
-    label: "Leak Detection",
-    body: "Using thermal imaging cameras and electronic moisture detection equipment, we locate the exact source of water ingress without unnecessary destructive investigation. On the Sunshine Coast, the entry point and visible damage are often metres apart — water travels through concrete before it appears as a stain. We find the source, not just the symptom.",
+    label: "Leak Detection & Repair",
+    body: "Using thermal imaging and moisture detection equipment, we locate the exact source of water ingress without unnecessary destructive investigation. On the Sunshine Coast, water often travels through concrete before it becomes visible, so we trace it back to the origin, not just the surface damage.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
   {
     label: "Remedial & Injection Works",
-    body: "Polyurethane and epoxy injection for active leaks through concrete — basement walls, lift pits, underground car parks and retaining structures. Stops active water flow without excavation, restoring structural integrity and protecting reinforcing steel from ongoing corrosion damage.",
+    body: "We use epoxy and polyurethane injection to stop active leaks in concrete structures including basements, lift pits and retaining walls. This seals water ingress at the source and helps protect reinforcing steel from ongoing corrosion.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
+  },
+];
+
+export const WHY_CHOOSE_US: ServiceCard[] = [
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "Concrete surface preparation before waterproofing, RAS-VERTEX Sunshine Coast",
+    title: "Preparation first",
+    body: "Waterproofing is only as good as the surface beneath it. We grind, repair and prime before a single drop of membrane is applied, with no shortcuts on substrate prep.",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Diamond grinding equipment used for waterproofing preparation, RAS-VERTEX Sunshine Coast",
+    title: "German-engineered equipment",
+    body: "Diamond grinding equipment powered by three phase generators, paired with HEPA filtered vacuum extractors, producing a surface that membranes actually bond to.",
+  },
+  {
+    photo: "/nav/waterproofing.png",
+    alt: "Written waterproofing warranty, RAS-VERTEX Sunshine Coast",
+    title: "Written warranty",
+    body: "A workmanship warranty is issued in writing at handover, backed by manufacturer product warranties up to 15 years on qualifying membrane systems.",
   },
 ];
 
@@ -79,12 +100,12 @@ export const FEATURES: Feature[] = [
   {
     n: "01",
     title: "Preparation first",
-    body: "Waterproofing is only as good as the surface beneath it. We grind, repair and prime before a single drop of membrane is applied — no shortcuts on substrate prep.",
+    body: "No shortcuts on substrate prep. Full detail above.",
   },
   {
     n: "02",
     title: "German-engineered equipment",
-    body: "Diamond grinding equipment powered by three-phase generators, paired with HEPA-filtered vacuum extractors. The right tools produce a surface that membranes actually bond to.",
+    body: "The right tools for a surface membranes bond to. See above.",
   },
   {
     n: "03",
@@ -94,7 +115,7 @@ export const FEATURES: Feature[] = [
   {
     n: "04",
     title: "Written warranty",
-    body: "Workmanship warranty issued in writing at handover. Backed by manufacturer product warranties up to 15 years on qualifying membrane systems.",
+    body: "Issued at handover, backed by manufacturer warranties. Full detail above.",
     logos: [{ src: "/images/associations/qbcc.png", alt: "QBCC Licensed" }],
   },
   {
@@ -136,7 +157,7 @@ export const CARDS: ServiceCard[] = [
   {
     photo: "/images/projects/2.jpeg",
     alt: "Body corporate balcony waterproofing — RAS-VERTEX Sunshine Coast",
-    title: "Body Corporate & Strata.",
+    title: "Body Corporate.",
     body: "Failed balcony waterproofing is the most common and most expensive maintenance issue facing strata buildings on the Sunshine Coast. We run full balcony programs for body corporates — staged by floor to minimise owner disruption, with committee-ready condition reports at every stage.",
     cta: "Get a quote",
     href: "/contact",
@@ -151,6 +172,38 @@ export const CARDS: ServiceCard[] = [
   },
   {
     photo: "/nav/waterproofing.png",
+    alt: "Industrial waterproofing — RAS-VERTEX Sunshine Coast",
+    title: "Industrial.",
+    body: "Warehouse roofing, tilt-slab expansion joints and hardstand drainage need systems that handle structural movement and chemical exposure, not just weather. We specify for the substrate and the operation — so the fix outlasts the next audit.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Education facility waterproofing — RAS-VERTEX Sunshine Coast",
+    title: "Education.",
+    body: "Leaking roofs and balconies on school and campus buildings need repairs scheduled around term dates. We work during holidays and after-hours where possible, with full safety documentation for facilities and grounds teams.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "Government building waterproofing — RAS-VERTEX Sunshine Coast",
+    title: "Government.",
+    body: "Council buildings and public facilities need waterproofing works documented to a standard that satisfies asset management and compliance requirements. We provide full condition reports, specification records and warranty documentation for every project.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/nav/waterproofing.png",
+    alt: "Medical facility waterproofing — RAS-VERTEX Sunshine Coast",
+    title: "Medical.",
+    body: "Hospitals and medical centres can't tolerate water ingress near clinical spaces or unplanned shutdowns. We use thermal imaging to find the source before opening anything up, and schedule works to minimise disruption to critical areas.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
     alt: "Residential waterproofing — RAS-VERTEX Sunshine Coast",
     title: "Residential.",
     body: "Bathroom, balcony and rooftop waterproofing for homes and units. We find the source, prepare the surface correctly, and apply a warranted system — protecting your home and your investment from the Sunshine Coast's wet seasons.",
@@ -191,5 +244,5 @@ export const FAQ_CONTACT: FAQContact = {
   role: "Waterproofing Manager",
   photo: "/images/projects/1.jpeg",
   ctaHref: "/contact",
-  ctaLabel: "Book an inspection →",
+  ctaLabel: "Chat to our waterproofing team →",
 };

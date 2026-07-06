@@ -33,27 +33,20 @@ const CONTACT_SLIDES = [
 export default function ContactPage() {
   return (
     <main aria-label="Contact RAS-VERTEX — request a free quote">
-      <section className="px-10 pt-20" aria-label="Request a free quote">
+      <section
+        className="px-5 md:px-10 pt-20"
+        aria-label="Request a free quote"
+      >
         <ContactSurface />
       </section>
 
       {/* ── Testimonial — its own full, centered section ── */}
       <section
-        className="px-10 py-20"
+        className="px-5 md:px-10 py-10 md:py-20"
         style={{ display: "flex", justifyContent: "center" }}
         aria-label="Client testimonial"
       >
         <ContactTestimonial />
-      </section>
-
-      <section
-        className="pb-20"
-        aria-label="Recent projects across the Sunshine Coast"
-      >
-        <PhotoCarousel
-          slides={CONTACT_SLIDES}
-          ariaLabel="Recent RAS-VERTEX projects"
-        />
       </section>
     </main>
   );

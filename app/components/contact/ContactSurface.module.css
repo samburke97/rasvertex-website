@@ -12,6 +12,9 @@
   flex-direction: column;
   gap: var(--space-2xl);
   width: 100%;
+  position: sticky;
+  top: 96px;
+  align-self: flex-start;
 }
 
 .header {
@@ -19,6 +22,35 @@
   flex-direction: column;
   gap: var(--space-title-to-body);
   width: 100%;
+}
+
+.trustGroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4xl);
+}
+
+.trustGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.trustGroupHeading {
+  margin: 0;
+}
+
+.trustLogos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-top: var(--space-sm);
+}
+
+.trustLogoImg {
+  width: auto;
+  flex-shrink: 0;
 }
 
 .ratingBadge {
@@ -229,6 +261,14 @@
   margin: 0;
 }
 
+.stepHint {
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-regular);
+  color: var(--navy);
+  opacity: 0.45;
+  margin: calc(-1 * var(--space-xl)) 0 0;
+}
+
 .stepBody {
   flex: 1;
 }
@@ -261,7 +301,7 @@
   padding: 0 var(--space-lg);
   border-radius: var(--radius-xl);
   border: 1px solid var(--navy);
-  background: #ffffff;
+  background: transparent;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-bold);
@@ -500,6 +540,7 @@
 
   .left {
     flex: 1 1 auto;
+    position: static;
   }
 
   .right {

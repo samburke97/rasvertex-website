@@ -1,0 +1,30 @@
+// app/not-found.tsx
+
+import Link from "next/link";
+import styles from "./not-found.module.css";
+
+export default function NotFound() {
+  return (
+    <main className={styles.page}>
+      <div className={styles.watermark} aria-hidden="true">
+        <span className={styles.watermarkText}>404.</span>
+      </div>
+
+      <div className={styles.content}>
+        <p className={styles.eyebrow}>Page not found</p>
+        <h1>We couldn&rsquo;t find<br />that page.</h1>
+        <p className="p-soft">
+          It may have moved, or the link might be wrong. Try heading back to the homepage or finding what you need below.
+        </p>
+        <div className={styles.actions}>
+          <Link href="/" className={styles.primaryBtn}>
+            Back to homepage
+          </Link>
+          <Link href="/contact" className={styles.secondaryBtn}>
+            Get in touch
+          </Link>
+        </div>
+      </div>
+    </main>
+  );
+}

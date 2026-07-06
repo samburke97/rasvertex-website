@@ -16,25 +16,22 @@ export interface AccordionService {
 
 interface ServiceAccordionProps {
   heading: React.ReactNode;
+  /** Lede paragraph rendered under the heading, above the photo + accordion body */
+  paragraph?: string;
   /** Plain text version for aria-label — required when heading is JSX */
   ariaLabel?: string;
-  statement?: string;
   ctaLabel?: string | null;
   ctaHref?: string;
-  statementCtaLabel?: string;
-  statementCtaHref?: string;
   services: AccordionService[];
   headingId?: string;
 }
 
 export default function ServiceAccordion({
   heading,
+  paragraph,
   ariaLabel,
-  statement,
   ctaLabel,
   ctaHref = "/contact",
-  statementCtaLabel = "Learn more about RAS-VERTEX →",
-  statementCtaHref = "/about",
   services,
   headingId = "accordion-heading",
 }: ServiceAccordionProps) {
@@ -42,19 +39,10 @@ export default function ServiceAccordion({
 
   return (
     <section className={styles.section} aria-labelledby={headingId}>
-      {/* ── Header ── */}
-      <div
-        className={`${styles.header} ${!statement ? styles.headerSimple : ""}`}
-      >
-        <h2 id={headingId}>{heading}</h2>
-        {statement && (
-          <div className={styles.headerRight}>
-            <p className="p-soft">{statement}</p>
-            <Link href={statementCtaHref} className={styles.statementCta}>
-              {statementCtaLabel}
-            </Link>
-          </div>
-        )}
+      {/* ── Full-width title + lede ── */}
+      <div className={styles.top}>
+        <h2 id={headingId} className={styles.heading}>{heading}</h2>
+        {paragraph && <p className={`${styles.lede} p-soft`}>{paragraph}</p>}
       </div>
 
       {/* ── Two-column body ── */}
@@ -144,7 +132,7 @@ export default function ServiceAccordion({
           {ctaLabel && (
             <div className={styles.bottomRow}>
               <Link href={ctaHref} className={styles.bottomCta}>
-                {ctaLabel}
+                {ctaLabel.slice(0, ctaLabel.lastIndexOf('→')).trimEnd()}
               </Link>
             </div>
           )}

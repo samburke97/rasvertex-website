@@ -1,0 +1,188 @@
+/* app/components/shared/ServiceHeroSplit.module.css */
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: var(--space-col-gap);
+  padding: 0 var(--space-x) var(--space-4xl);
+}
+
+/* ─── Media column ───────────────────────────────────────────── */
+.mediaCol {
+  position: relative;
+  aspect-ratio: var(--hero-media-ratio, 4 / 3);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--navy-08);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── Text column ─────────────────────────────────────────────── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.textBlock {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-xl));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.breadcrumbLink {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-medium);
+  color: var(--navy);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.breadcrumbLink:hover {
+  opacity: 0.55;
+}
+
+.breadcrumbSep {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.3;
+}
+
+.breadcrumbCurrent {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+}
+
+/* Semantically the page's h1, sized to match the h2 scale used by
+   RopeAccessSection on the homepage so both sections read the same height. */
+.heading {
+  font-size: var(--h2-size);
+  line-height: var(--h2-leading);
+  letter-spacing: var(--h2-tracking);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 48px;
+  padding: 0 var(--space-lg);
+  background: var(--navy);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--button-size);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  width: fit-content;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover {
+  background: var(--navy-dark);
+}
+
+/* ─── Person card — replaces the plain CTA when personName is set ── */
+.personCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  margin-top: var(--space-4xl);
+}
+
+.personAvatarRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-sm);
+}
+
+.personAvatar {
+  position: relative;
+  width: 68px;
+  height: 82px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.personInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.personNameText {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--p-size);
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.personRoleText {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+  line-height: 1.2;
+}
+
+.personCtaHeading {
+  font-family: var(--font-body);
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--h4-tracking);
+  color: var(--navy);
+  margin: 0;
+  padding-top: var(--space-sm);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .section {
+    gap: var(--space-col-gap-sm);
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .mediaCol {
+    aspect-ratio: 4 / 3;
+  }
+
+  .textCol {
+    align-self: auto;
+  }
+
+  .textBlock {
+    position: static;
+  }
+}

@@ -1,37 +1,20 @@
 /* app/components/shared/ServiceAccordion.module.css */
 
-/* ─── Header ─────────────────────────────────────────────────── */
+/* ─── Full-width title + lede ───────────────────────────────── */
 
-.header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-col-gap);
-  align-items: end;
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title-to-body);
   margin-bottom: var(--space-3xl);
 }
 
-.headerSimple {
-  grid-template-columns: 1fr;
+.heading {
+  margin: 0;
 }
 
-.headerRight {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.statementCta {
-  font-size: var(--p-size);
-  font-weight: var(--weight-medium);
-  color: var(--navy);
-  text-decoration: none;
-  opacity: 0.65;
-  width: fit-content;
-  transition: opacity var(--duration-fast) var(--ease-out);
-}
-
-.statementCta:hover {
-  opacity: 1;
+.lede {
+  max-width: 60ch;
 }
 
 /* ─── Two-column body ────────────────────────────────────────── */
@@ -40,13 +23,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-col-gap);
-  align-items: stretch;
+  align-items: start;
 }
 
 /* ─── Left — static photo ────────────────────────────────────── */
 
 .left {
   aspect-ratio: 1 / 1;
+  min-width: 0;
 }
 
 .photoWrap {
@@ -81,6 +65,7 @@
   display: flex;
   flex-direction: column;
   align-self: start;
+  min-width: 0;
 }
 
 .list {
@@ -93,7 +78,7 @@
 
 .item {
   border-radius: var(--radius-xl);
-  background: var(--navy-08);
+  background: #eef0f5;
   overflow: hidden;
   transition: background var(--duration-fast) var(--ease-out);
 }
@@ -141,13 +126,13 @@
 }
 
 .label {
-  font-family: var(--font-display);
-  font-size: var(--nav-size);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+  line-height: var(--h4-leading);
+  letter-spacing: var(--h4-tracking);
   color: var(--navy);
   opacity: 0.28;
-  line-height: 1.1;
   transition: opacity var(--duration-fast) var(--ease-out);
 }
 
@@ -192,7 +177,6 @@
 
 .open .panelInner {
   padding: 20px 24px 24px;
-  max-width: 70%;
 }
 
 /* ─── Bottom CTA ─────────────────────────────────────────────── */
@@ -225,21 +209,37 @@
 /* ─── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 860px) {
-  .header {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-
   .inner {
     grid-template-columns: 1fr;
   }
 
+  /* Photo moves below accordion on mobile */
   .left {
+    order: 2;
     position: static;
     aspect-ratio: 16 / 9;
   }
 
+  .right {
+    order: 1;
+    position: static;
+  }
+
   .open .panelInner {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .left {
+    aspect-ratio: 4 / 3;
+  }
+
+  .row {
+    padding: 16px 18px;
+  }
+
+  .open .panelInner {
+    padding: 16px 18px 20px;
   }
 }

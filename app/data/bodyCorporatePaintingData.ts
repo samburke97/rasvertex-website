@@ -6,6 +6,13 @@ import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
 import type { InspectionStep } from "../components/shared/InspectionProcess";
 import type { Credential } from "../components/shared/CredentialRows";
+import {
+  PiPresentation,
+  PiMegaphone,
+  PiHammer,
+  PiPaintRoller,
+  PiShieldCheck,
+} from "react-icons/pi";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
@@ -38,33 +45,15 @@ export const SERVICES: AccordionService[] = [
     href: "/contact",
   },
   {
-    label: "Common Area Interiors",
-    body: "Lobbies, lift foyers, stairwells, corridors and common area ceilings. Low-VOC systems, zone-staged scheduling and same-day re-occupancy on most work. We notify affected residents 48 hours in advance and work around building access hours.",
-    photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
     label: "Balcony & Soffit Painting",
     body: "Balcony soffits, balustrades, ceilings and floor coatings. High-salt environments require different preparation and system selection on balconies — we treat every balcony as a coastal exposure, not an afterthought.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
-    label: "Render & Crack Repairs",
-    body: "Full crack injection, render patching and surface preparation before any coating is applied. We don't bridge movement cracks with thick coats — we repair them correctly, with backing rods and bond-breaking tape where structural movement is involved.",
-    photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
     label: "Roof Coatings",
     body: "Colorbond, tile and concrete roof recoats for strata buildings. Pressure wash, moss and lichen treatment, primer and commercial-grade topcoat — the full system. Heat-reflective options available to reduce top-floor unit temperatures.",
     photo: "/images/projects/1.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Colour Consulting",
-    body: "We prepare full colour schedules with sample blocks on the building before any colour is confirmed. Committees can present sample photos to lot owners before AGM approval — no surprises, no objections after the fact.",
-    photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
 ];
@@ -75,29 +64,34 @@ export const PROCESS_STEPS: InspectionStep[] = [
     title: "Committee Proposal",
     body: "We present to your committee before anything is signed — scope, product schedule, staging plan, colour schedule, and resident communication strategy. Everything in plain language. We've done this enough times to know what committees need to approve a project.",
     deliverable: "Written proposal + colour schedule",
+    icon: PiPresentation,
   },
   {
     n: "02",
     title: "Resident Communication",
     body: "We handle all resident notifications — zone schedules, access requirements, noise windows and expected completion dates. Distributed via your building manager or directly through the committee. Residents know what's happening and when before we mobilise.",
     deliverable: "Resident communication pack",
+    icon: PiMegaphone,
   },
   {
     n: "03",
     title: "Surface Preparation",
     body: "High-pressure wash, mould treatment, crack repairs, sealant replacement and chloride rinse. Preparation determines how long the paint lasts — we spend more time here than most painters spend on the entire job. No substrate surprises surfaced mid-project.",
     deliverable: "Prep completion sign-off",
+    icon: PiHammer,
   },
   {
     n: "04",
     title: "Zone-Staged Application",
     body: "Painting in building zones so no face is disrupted for more than a week at a time. Car parks never fully closed. Rope access eliminates ground-level footprint. Daily progress photos sent to building manager or committee contact.",
     deliverable: "Daily progress photos",
+    icon: PiPaintRoller,
   },
   {
     n: "05",
     title: "Handover & Warranty",
     body: "Final walkthrough with your project manager. Full documentation package issued — warranty certificate, paint specifications, before/after photos, and maintenance recommendations. Formatted for your sinking fund and maintenance records.",
+    icon: PiShieldCheck,
     deliverable: "5-year warranty + documentation pack",
   },
 ];
@@ -127,7 +121,7 @@ export const CREDENTIALS: Credential[] = [
       "Coastal spec paint system being applied to a Sunshine Coast strata building",
     logos: [
       { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.png", alt: "Dulux" },
+      { src: "/images/associations/dulux.svg", alt: "Dulux" },
     ],
   },
   {

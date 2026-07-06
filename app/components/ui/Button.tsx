@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import styles from "./Button.module.css";
 
-export type ButtonVariant = "primary" | "secondary" | "ghost";
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "white";
 export type ButtonSize = "sm" | "md" | "lg";
 
 interface BaseProps {

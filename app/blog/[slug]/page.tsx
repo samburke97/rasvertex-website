@@ -10,7 +10,6 @@ import {
   getRelatedPosts,
   type BlogBlock,
 } from "../../data/blogData";
-import CtaBanner from "../../components/homepage/CtaBanner";
 import styles from "./Article.module.css";
 
 // ─── Static params ────────────────────────────────────────────
@@ -103,10 +102,14 @@ function renderBlock(block: BlogBlock, index: number) {
 function ordinal(n: number): string {
   if (n >= 11 && n <= 13) return `${n}th`;
   switch (n % 10) {
-    case 1: return `${n}st`;
-    case 2: return `${n}nd`;
-    case 3: return `${n}rd`;
-    default: return `${n}th`;
+    case 1:
+      return `${n}st`;
+    case 2:
+      return `${n}nd`;
+    case 3:
+      return `${n}rd`;
+    default:
+      return `${n}th`;
   }
 }
 
@@ -156,16 +159,18 @@ export default async function ArticlePage({
       />
 
       <main aria-label={post.title}>
-
         {/* ── Hero: text left / cover image right ── */}
         <header className={`px-10 pt-10 ${styles.heroSection}`}>
           <div className={styles.articleHero}>
-
             {/* Left — meta + title + excerpt + author */}
             <div className={styles.articleHeader}>
               <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-                <Link href="/blog" className={styles.breadcrumbLink}>Blog</Link>
-                <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
+                <Link href="/blog" className={styles.breadcrumbLink}>
+                  Blog
+                </Link>
+                <span className={styles.breadcrumbSep} aria-hidden="true">
+                  /
+                </span>
                 <span className={styles.breadcrumbCurrent}>{post.title}</span>
               </nav>
 
@@ -191,7 +196,6 @@ export default async function ArticlePage({
                 sizes="(max-width: 860px) 100vw, 50vw"
               />
             </div>
-
           </div>
         </header>
 
@@ -229,7 +233,7 @@ export default async function ArticlePage({
             <div className={styles.relatedHeader}>
               <h2 id="related-heading">More from the blog</h2>
               <Link href="/blog" className={styles.allLink}>
-                All articles →
+                All articles
               </Link>
             </div>
             <div className={styles.relatedGrid}>
@@ -257,7 +261,10 @@ export default async function ArticlePage({
                   </Link>
                   <div className={styles.relatedBody}>
                     <span className={styles.relatedCategory}>{p.category}</span>
-                    <h3 id={`related-${p.slug}`} className={styles.relatedTitle}>
+                    <h3
+                      id={`related-${p.slug}`}
+                      className={styles.relatedTitle}
+                    >
                       <Link href={`/blog/${p.slug}`}>{p.title}</Link>
                     </h3>
                   </div>
@@ -266,12 +273,6 @@ export default async function ArticlePage({
             </div>
           </section>
         )}
-
-        {/* ── CTA Banner ── */}
-        <section className="px-10 pb-30" aria-label="Get a free quote">
-          <CtaBanner />
-        </section>
-
       </main>
     </>
   );

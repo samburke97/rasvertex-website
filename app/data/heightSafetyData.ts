@@ -32,46 +32,54 @@ export const HERO_SLIDES: HeroSlide[] = [
 
 export const SERVICES: AccordionService[] = [
   {
-    label: "Anchor Point Installation",
-    body: "Design, supply and installation of static and dynamic anchor points to AS/NZS 1891.4 and AS/NZS 1891.2. Every installation is engineered for the specific substrate — concrete, steel, membrane roofs and Colorbond — and certified on completion with a full compliance document.",
+    label: "Height Safety Installation",
+    body: "We install anchor points, lifelines and roof access systems across all building types, designed for safe, practical use and future maintenance access.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
     label: "Height Safety Inspections",
-    body: "Thorough examination of all fall protection systems — anchor points, static lines, davit arms, roof access hatches and associated hardware. Detailed condition reports issued after every inspection, including risk ratings and recommended remediation timeframes.",
+    body: "We inspect all fall protection systems and roof access infrastructure, identifying issues early and keeping your building safe and compliant.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
   {
     label: "Recertification",
-    body: "AS/NZS 1891 requires height safety systems to be inspected and recertified every 12 months. We manage the full recertification process — scheduling, inspection, load testing where required, and certificate issuance — so your compliance never lapses.",
+    body: "We manage the full 12 month recertification cycle so your height safety systems stay compliant without lapses or admin stress.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
-    label: "Static Line & Horizontal Lifeline Systems",
-    body: "Design and installation of horizontal lifeline systems for continuous fall protection across rooftops, plant areas and walkways. Energy-absorbing systems engineered to AS/NZS 1891.2 for single and multi-person use — suitable for any roof geometry.",
+    label: "Anchor Point & System Mapping",
+    body: "We assess and map existing height safety systems so you know exactly what you have, what condition it is in, and what needs attention.",
     photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Roof Access Systems",
-    body: "Fixed ladder systems, roof access hatches, walkways and guardrailing designed to AS 1657 and the relevant WHS regulations. We design the system around how your building is actually accessed — not a generic catalogue solution.",
-    photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
     label: "Rope Access Works",
-    body: "With IRATA L1–L3 certified technicians on staff, we don't just install height safety systems — we use them. Rope access for painting, cleaning, maintenance and inspection means we understand what a compliant system needs to perform under real working conditions.",
-    photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Compliance Management Programs",
-    body: "We track your certification dates, schedule annual inspections, and issue renewal reminders before your system falls out of compliance. Body corporates and commercial property managers across the Sunshine Coast use us as their single point of contact for all height safety obligations.",
+    body: "We use ropes daily for access across painting, external and window cleaning, maintenance and inspections, giving us direct insight into how systems should perform.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
+  },
+];
+export const WHY_CHOOSE_US: ServiceCard[] = [
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "Anchor point installation certified to AS/NZS 1891, RAS-VERTEX Sunshine Coast",
+    title: "Certified to AS/NZS 1891",
+    body: "Every anchor point, static line and roof access system we install is engineered and certified to AS/NZS 1891, with full compliance documentation issued at completion, insurance ready and legally defensible.",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "IRATA certified rope access technician, RAS-VERTEX Sunshine Coast",
+    title: "IRATA rope access technicians",
+    body: "Our technicians don't just install height safety systems, they use them every day. Thirty plus IRATA certified rope access workers means every installation is built to perform under real working conditions.",
+  },
+  {
+    photo: "/nav/height.png",
+    alt: "Minimal disruption height safety installation, RAS-VERTEX Sunshine Coast",
+    title: "Minimal disruption installs",
+    body: "Rope access installation requires no scaffolding and minimal plant on site. Most anchor point installations are completed in a single day, with no disruption to building occupants or tenants below.",
   },
 ];
 
@@ -135,7 +143,7 @@ export const CARDS: ServiceCard[] = [
   {
     photo: "/images/projects/2.jpeg",
     alt: "Body corporate height safety — RAS-VERTEX Sunshine Coast",
-    title: "Body Corporate & Strata.",
+    title: "Body Corporate.",
     body: "Height safety compliance is a legal obligation for any building where maintenance staff or contractors access the roof. We manage the full program for body corporates across the Sunshine Coast — installation, annual inspection, recertification and compliance tracking, all documented for your committee.",
     cta: "Get a quote",
     href: "/contact",
@@ -151,8 +159,32 @@ export const CARDS: ServiceCard[] = [
   {
     photo: "/nav/height.png",
     alt: "Industrial height safety systems — RAS-VERTEX Sunshine Coast",
-    title: "Industrial & Government.",
-    body: "Facilities with ongoing rooftop and elevated access requirements benefit most from a managed compliance program. We partner with industrial sites and government facilities across the Sunshine Coast for installation, certification and annual inspection on a single managed schedule.",
+    title: "Industrial.",
+    body: "Industrial sites with ongoing rooftop plant, silo or elevated access requirements benefit most from a managed compliance program. We install and certify systems engineered for the load and frequency of industrial access — not a one-off installation that gets forgotten.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/2.jpeg",
+    alt: "Education facility height safety — RAS-VERTEX Sunshine Coast",
+    title: "Education.",
+    body: "Schools and universities need certified anchor points and roof access systems for maintenance staff and contractors, installed and inspected around term dates. We manage the compliance calendar so certification never lapses during a busy school year.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/images/projects/1.jpeg",
+    alt: "Government facility height safety — RAS-VERTEX Sunshine Coast",
+    title: "Government.",
+    body: "Government and council facilities carry the same fall-protection obligations as any commercial building, with the added expectation of clean audit trails. We provide certification, inspection records and renewal reminders in a format that satisfies asset management requirements.",
+    cta: "Get a quote",
+    href: "/contact",
+  },
+  {
+    photo: "/nav/height.png",
+    alt: "Medical facility height safety — RAS-VERTEX Sunshine Coast",
+    title: "Medical.",
+    body: "Hospitals and medical centres run rooftop plant and HVAC systems that need servicing year-round. We install and certify height safety systems that keep contractors compliant without adding rooftop clutter near sensitive building services.",
     cta: "Get a quote",
     href: "/contact",
   },
@@ -186,5 +218,5 @@ export const FAQ_CONTACT: FAQContact = {
   role: "Height Safety Manager",
   photo: "/images/projects/1.jpeg",
   ctaHref: "/contact",
-  ctaLabel: "Talk to Sam →",
+  ctaLabel: "Talk to our height safety team →",
 };

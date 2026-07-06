@@ -34,10 +34,38 @@
   align-items: flex-start;
 }
 
+.ctaAvatarRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+}
+
+.ctaPersonInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ctaPersonName {
+  font-family: var(--font-body);
+  font-size: var(--p-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.ctaPersonRole {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+  line-height: 1.2;
+}
+
 .ctaAvatar {
   position: relative;
-  width: 80px;
-  height: 96px;
+  width: 96px;
+  height: 116px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   flex-shrink: 0;
@@ -52,6 +80,25 @@
   color: var(--navy);
   margin: 0;
   line-height: var(--h3-leading);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--navy);
+  color: #ffffff;
+  font-size: var(--button-size);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover {
+  background: var(--navy-dark);
 }
 
 .ctaBody {

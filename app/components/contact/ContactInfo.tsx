@@ -76,6 +76,7 @@ export default function ContactInfo() {
             src="/images/people/caro.jpg"
             alt="Hylton Denton — Project Manager at RAS-VERTEX"
             fill
+            sizes="64px"
             className={styles.avatar}
           />
         </div>

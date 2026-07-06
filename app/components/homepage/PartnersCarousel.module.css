@@ -3,7 +3,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
+  gap: var(--space-5xl);
   overflow: hidden;
 }
 
@@ -18,6 +18,11 @@
 
 .label {
   margin: 0;
+}
+
+.header p {
+  max-width: 58ch;
+  flex-shrink: 0;
 }
 
 /* ── Google rating badge ─────────────────────────────────────── */
@@ -103,9 +108,10 @@
 .track {
   display: flex;
   align-items: center;
-  gap: 96px;
+  gap: 72px;
   width: max-content;
-  animation: marquee 50s linear infinite;
+  animation: marquee 130s linear infinite;
+  will-change: transform;
   padding: var(--space-sm) 0;
 }
 
@@ -121,7 +127,7 @@
 .logoWrap {
   position: relative;
   width: 140px;
-  height: 60px;
+  height: 44px;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -133,17 +139,29 @@
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
+  .section {
+    gap: var(--space-2xl);
+  }
+
   .header {
     padding: 0 var(--space-x-xs);
     align-items: flex-start;
     flex-direction: column;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
+  }
+
+  .track {
+    gap: 32px;
   }
 }
 
 @media (max-width: 560px) {
   .header {
     padding: 0 var(--space-x-2xs);
+  }
+
+  .track {
+    gap: 24px;
   }
 }
 
