@@ -45,7 +45,7 @@ export default function ExternalCleaningPage() {
   return (
     <>
       <ServiceSchema
-        name="External Building Cleaning Sunshine Coast"
+        name="External Building Wash & Cleaning Sunshine Coast"
         description="Professional external building cleaning on the Sunshine Coast. Facade washing, pressure cleaning, roof cleaning, graffiti removal and post-construction clean-down. IRATA rope access, eco-friendly systems, QBCC licensed."
         image="https://www.ras-vertex.com.au/nav/cleaning.png"
         url="https://www.ras-vertex.com.au/external-cleaning"
@@ -70,11 +70,12 @@ export default function ExternalCleaningPage() {
         <ServiceHeroSplit
           heading={
             <>
-              We are the Sunshine Coast’s leading external cleaning team,
-              delivering visible transformation across every surface.
+              We are the Sunshine Coast’s leading external building wash and
+              cleaning team.
             </>
           }
-          lede="From pressure washing to rope access facade cleaning, we deliver full-scope exterior cleaning for our commercial, residential and body corporate partners."
+          lede="We provide professional exterior building cleaning across the Sunshine Coast, combining IRATA rope access, soft washing and commercial pressure cleaning to safely restore facades, roofs and hard surfaces, delivering visible transformation across every
+              surface."
           headingId="external-cleaning-hero-heading"
           video="/videos/cleaning.mp4"
         />

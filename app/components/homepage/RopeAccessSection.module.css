@@ -67,8 +67,8 @@
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  height: 40px;
+  gap: 8px;
+  height: 44px;
   padding: 0 var(--space-lg);
   background: var(--navy);
   color: #ffffff;
@@ -83,6 +83,15 @@
 
 .cta:hover {
   background: var(--navy-dark);
+}
+
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
 }
 
 .personCard {
@@ -101,8 +110,8 @@
 
 .personAvatar {
   position: relative;
-  width: 68px;
-  height: 82px;
+  width: 76px;
+  height: 92px;
   border-radius: var(--radius-md);
   overflow: hidden;
   flex-shrink: 0;
@@ -117,7 +126,7 @@
 .personNameText {
   font-family: var(--font-body);
   font-weight: var(--weight-bold);
-  font-size: var(--p-size);
+  font-size: 1.125rem;
   line-height: 1.2;
   letter-spacing: -0.05em;
   color: var(--navy);
@@ -126,15 +135,16 @@
 
 .personRoleText {
   font-family: var(--font-body);
-  font-size: var(--p-sm-size);
+  font-size: var(--p-size);
   color: var(--navy);
   opacity: 0.45;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .personCtaHeading {
   font-family: var(--font-body);
-  font-size: var(--h4-size);
+  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
   font-weight: var(--weight-bold);
   letter-spacing: var(--h4-tracking);
   color: var(--navy);

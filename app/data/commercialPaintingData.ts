@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
@@ -58,6 +57,12 @@ export const SERVICES: AccordionService[] = [
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
+  {
+    label: "Ongoing Maintenance Painting",
+    body: "Keep your property looking its best year-round with a tailored maintenance painting plan. Prevent premature wear, reduce long-term costs, and maintain a professional appearance effortlessly.",
+    photo: "/images/projects/2.jpeg",
+    href: "/contact",
+  },
 ];
 
 export const PROCESS_STEPS: InspectionStep[] = [
@@ -78,9 +83,13 @@ export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "03",
     title: "Surface Preparation",
-    body: "Before any paint is applied, we complete the preparation needed to give the coating system the best chance of performing for years to come. This may include pressure washing, mould treatment, crack repairs, sealant replacement, and chloride rinsing where required.",
+    body: "Before any paint is applied, we complete the preparation needed to give the coating system the best chance of performing for years to come. This includes a pressure clean as standard, along with mould treatment, crack repairs, sealant replacement, and chloride rinsing where required.",
     deliverable: "Prep completion sign-off",
     icon: PiHammer,
+    links: [
+      { text: "pressure clean", href: "/external-cleaning" },
+      { text: "crack repairs", href: "/maintenance" },
+    ],
   },
   {
     n: "04",
@@ -95,42 +104,6 @@ export const PROCESS_STEPS: InspectionStep[] = [
     body: "Before completion, we walk the project with you to ensure everything has been delivered as agreed. Any final items are addressed before handover, and you'll receive your workmanship warranty, manufacturer warranty documentation, and a complete handover package for your records.",
     deliverable: "Warranty certificate + documentation pack",
     icon: PiShieldCheck,
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "One project manager",
-    body: "One person from site assessment to warranty sign-off. One phone number. No handoffs between sales and production — the person who quotes is the person who runs the job.",
-  },
-  {
-    n: "02",
-    title: "IRATA rope access",
-    body: "30+ IRATA L1–L3 certified technicians — all direct employees, no subcontractors. High-rise repaints without scaffolding: 40–60% cheaper on buildings over 4 storeys, faster mobilisation, no ground-floor disruption.",
-  },
-  {
-    n: "03",
-    title: "Coastal paint systems",
-    body: "Salt-bonded primers, chloride rinse and elastomeric topcoats as standard within 5km of the coast. We specify Dulux and Haymes commercial systems — not hardware store products in trade buckets.",
-  },
-  {
-    n: "04",
-    title: "8-year written warranty",
-    body: "Workmanship warranty issued in writing at handover. Backed by up to 15-year manufacturer coverage on qualifying systems.",
-    logos: [
-      { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.svg", alt: "Dulux" },
-    ],
-  },
-  {
-    n: "05",
-    title: "QBCC licensed & insured",
-    body: "QBCC licensed, $20M public liability, full workers' comp. Certificates of currency issued automatically at quote stage — everything your body corporate or property manager needs.",
-    logos: [
-      { src: "/images/associations/qbcc.png", alt: "QBCC Licensed" },
-      { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
-    ],
   },
 ];
 

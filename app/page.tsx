@@ -43,7 +43,7 @@ export default function Home() {
           stat="100%"
           statLabel={"Fully\nEmployed"}
           heading="Local projects, Local team."
-          body="We chose to build our own team instead of relying on subcontractors. Our painters, rope access technicians, waterproofers, cleaners and height safety specialists work together every day under the same systems, safety standards and expectations, a simpler way to deliver consistent quality, and how we've always believed property maintenance should be done."
+          body="We chose to build our own team instead of relying on subcontractors. Our painters, rope access technicians, waterproofers, cleaners and height safety specialists work together every day under the same systems, safety standards and expectations. It’s a simpler way to deliver consistent quality, and it’s how we believe property maintenance should be done."
         />
       </section>
       <section className="px-5 md:px-10 py-10 md:py-20">

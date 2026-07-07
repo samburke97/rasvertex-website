@@ -26,7 +26,7 @@ const SERVICE_SLIDES = [
     mediaType: "video" as const,
     alt: "Window Cleaning",
     title: "Window Cleaning",
-    href: "/cleaning",
+    href: "/window-cleaning",
     industries: ["Commercial", "Body Corporate", "Residential"],
   },
   {

@@ -47,7 +47,7 @@ export default function RopeAccessSection({
   headingId = "rope-access-heading",
   body,
   paragraphs = [
-    "The products we specify, the people we employ, and the way we manage every project are shaped by decades of local experience.   From waterfront apartment towers and body corporate communities to schools, hotels, shopping centres and family homes, we've built our reputation by doing the job properly, every time.",
+    "For over 25 years, we've maintained buildings across the Sunshine Coast. From waterfront apartment towers and body corporate communities to schools, hotels, shopping centres and family homes, we've built our reputation by doing the job properly, every time. The products we specify, the people we employ and the way we manage every project are shaped by decades of local experience.",
   ],
   ctaHref = "/contact",
   ctaLabel = "Get a free quote",
@@ -118,6 +118,22 @@ export default function RopeAccessSection({
             {ctaLabel && ctaHref && (
               <Link href={ctaHref} className={styles.cta}>
                 {ctaLabel}
+                <svg
+                  className={styles.ctaArrow}
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
             )}
           </div>

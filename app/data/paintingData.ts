@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { BeforeAfterSpec } from "../components/shared/ServiceBeforeAfter";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
@@ -97,42 +96,6 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
   },
 ];
 
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "Dedicated project manager",
-    body: "One person runs your job from site visit to sign-off. One number, one thread, no chasing. You always know who to call.",
-  },
-  {
-    n: "02",
-    title: "IRATA-certified access",
-    body: "30+ rope access technicians trained in-house to IRATA L1–L3. We reach what scaffold can't — faster, safer, cheaper.",
-  },
-  {
-    n: "03",
-    title: "5-year written warranty",
-    body: "Workmanship warranty issued in writing and lodged in ROCO at handover. Backed by up to 15-year manufacturer coverage.",
-  },
-  {
-    n: "04",
-    title: "Coastal-spec paint systems",
-    body: "Salt-bonded primers, chloride rinse, elastomeric topcoats. Every system is matched to the substrate and the exposure.",
-    logos: [
-      { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.svg", alt: "Dulux" },
-    ],
-  },
-  {
-    n: "05",
-    title: "QBCC licensed & insured",
-    body: "QBCC licensed, $20M public liability, full workers' comp. Certificates of currency issued automatically at quote stage.",
-    logos: [
-      { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
-      { src: "/images/associations/qbcc.png", alt: "QBCC Licensed" },
-    ],
-  },
-];
-
 export const BEFORE_AFTER_SPECS: BeforeAfterSpec[] = [
   {
     label: "Scope",
@@ -184,7 +147,7 @@ export const CARDS: ServiceCard[] = [
     photo: cld("commercial-painting", { width: 1200 }),
     alt: "Commercial painting — RAS-VERTEX Sunshine Coast",
     title: "Commercial Painting",
-    body: "Twenty five years working across Sunshine Coast commercial buildings has taught us that disruption has a real cost. Tenants, customers and operations can’t afford delays or inconsistent crews. We plan properly, show up when we say we will, and deliver painting that fits around how your site actually runs.",
+    body: "Twenty five years working across Sunshine Coast commercial and high-rise buildings has taught us that disruption has a real cost. Tenants, customers and operations can’t afford delays or inconsistent crews. We plan properly, show up when we say we will, and deliver painting that fits around how your site actually runs.",
     cta: "Commercial painting",
     href: "/commercial-painting",
   },

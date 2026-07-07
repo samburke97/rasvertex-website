@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
@@ -61,35 +60,6 @@ export const SERVICES: AccordionService[] = [
     body: "Graffiti removal using surface-appropriate solvents and pressure washing without damaging the substrate. Complete post-construction clean-downs before handover. Ongoing strata and body corporate maintenance programs with committee-ready condition reporting after every visit.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "100% Recycled Water System",
-    body: "Recycled and filtered hot water with full vacuum recovery. All wastewater collected on-site. Biodegradable agents on every job.",
-  },
-  {
-    n: "02",
-    title: "IRATA rope access",
-    body: "30+ IRATA L1–L3 certified technicians. We clean any surface at any height without scaffolding — faster, cheaper and with zero footprint on your site.",
-  },
-  {
-    n: "03",
-    title: "Surface-first approach",
-    body: "Every surface assessed before we touch it. Pressure, temperature and chemical concentration calibrated to the substrate — render, tile, Colorbond, glass or cladding.",
-  },
-  {
-    n: "04",
-    title: "Protective, not just aesthetic",
-    body: "Salt, biological growth and pollution don't just look bad — they accelerate corrosion and degrade coatings. Regular external cleaning is the most cost-effective protective maintenance you can run.",
-    logos: [{ src: "/images/associations/qbcc.png", alt: "QBCC Licensed" }],
-  },
-  {
-    n: "05",
-    title: "QBCC licensed & insured",
-    body: "$20M public liability, full workers' comp. Safe work method statements and certificates of currency provided for every high-access clean.",
   },
 ];
 

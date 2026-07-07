@@ -122,9 +122,4 @@ export const companyLinks = [
   { name: "Blog", href: "/blog" },
 ];
 
-export const companySecondary = [
-  { name: "Contact", href: "/contact" },
-  { name: "Sunshine Coast", href: "/locations/sunshine-coast" },
-];
-
 export type ServiceKey = keyof typeof servicesData;

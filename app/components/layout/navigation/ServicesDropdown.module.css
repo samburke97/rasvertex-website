@@ -130,6 +130,7 @@
 .pill {
   font-family: var(--font-body);
   font-size: 13px;
+  font-weight: var(--weight-bold);
   padding: 6px 14px;
   background: transparent;
   border-radius: var(--radius-xl);

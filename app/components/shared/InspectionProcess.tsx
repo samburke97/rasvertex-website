@@ -1,8 +1,15 @@
 // app/components/shared/InspectionProcess.tsx
 
 import type { IconType } from "react-icons";
+import Link from "next/link";
 import Button from "../ui/Button";
 import styles from "./InspectionProcess.module.css";
+
+export interface InspectionStepLink {
+  /** Substring within `body` to render as a link to `href` */
+  text: string;
+  href: string;
+}
 
 export interface InspectionStep {
   n: string;
@@ -10,6 +17,36 @@ export interface InspectionStep {
   body: string;
   icon?: IconType;
   deliverable?: string;
+  /** Substrings within `body` to render as links — matched in order given */
+  links?: InspectionStepLink[];
+}
+
+function renderStepBody(step: InspectionStep) {
+  if (!step.links || step.links.length === 0) return step.body;
+
+  // Find each link's position in the body, then render the text as
+  // plain/linked segments in the order they actually appear.
+  const matches = step.links
+    .map((link) => ({ link, idx: step.body.indexOf(link.text) }))
+    .filter((m) => m.idx !== -1)
+    .sort((a, b) => a.idx - b.idx);
+
+  if (matches.length === 0) return step.body;
+
+  const nodes: React.ReactNode[] = [];
+  let cursor = 0;
+  matches.forEach((m, i) => {
+    nodes.push(step.body.slice(cursor, m.idx));
+    nodes.push(
+      <Link key={i} href={m.link.href} className={styles.bodyLink}>
+        {m.link.text}
+      </Link>,
+    );
+    cursor = m.idx + m.link.text.length;
+  });
+  nodes.push(step.body.slice(cursor));
+
+  return nodes;
 }
 
 export interface InspectionFinding {
@@ -78,7 +115,7 @@ export default function InspectionProcess({
               )}
               <div className={styles.content}>
                 <h4 className={styles.title}>{step.title}</h4>
-                <p className={styles.body}>{step.body}</p>
+                <p className={styles.body}>{renderStepBody(step)}</p>
               </div>
             </li>
           ))}

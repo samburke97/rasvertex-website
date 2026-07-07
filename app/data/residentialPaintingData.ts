@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
 import type { InspectionStep } from "../components/shared/InspectionProcess";
@@ -92,8 +91,12 @@ export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "02",
     title: "Surface preparation",
-    body: "All surfaces are cleaned, sanded, and repaired as required. This includes mould treatment, crack repairs, caulking, and substrate preparation prior to coating.",
+    body: "We start with a full building wash, then sand and repair surfaces as required. This includes mould treatment, crack repairs, caulking, and substrate preparation prior to coating.",
     icon: PiHammer,
+    links: [
+      { text: "building wash", href: "/external-cleaning" },
+      { text: "crack repairs", href: "/maintenance" },
+    ],
   },
   {
     n: "03",
@@ -112,39 +115,6 @@ export const PROCESS_STEPS: InspectionStep[] = [
     title: "Completion & handover",
     body: "Final walkthrough with your project manager. Any required touch-ups are completed before sign-off. A written workmanship warranty is issued at handover.",
     icon: PiCheckCircle,
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "Commercial prep standard",
-    body: "The same surface preparation we apply to high-rise body corporates — chloride rinse, salt-bonded primer, crack repairs — applied to every residential job within 5km of the coast.",
-  },
-  {
-    n: "02",
-    title: "Haymes & Dulux systems",
-    body: "We specify Haymes and Dulux commercial-grade systems for residential work — not hardware store products. The difference in coastal durability is measurable.",
-    logos: [
-      { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
-      { src: "/images/associations/dulux.svg", alt: "Dulux" },
-    ],
-  },
-  {
-    n: "03",
-    title: "One project manager",
-    body: "One person from quote to handover. They walk the job with you at the start and sign it off with you at the end. One number, no handoffs.",
-  },
-  {
-    n: "04",
-    title: "5-year written warranty",
-    body: "Workmanship warranty issued in writing at handover. If anything fails due to our application within five years, we come back and fix it. No arguments.",
-  },
-  {
-    n: "05",
-    title: "QBCC licensed & insured",
-    body: "QBCC licensed, $20M public liability, full workers' comp. You're covered if anything goes wrong — which it won't — but it matters.",
-    logos: [{ src: "/images/associations/qbcc.png", alt: "QBCC Licensed" }],
   },
 ];
 

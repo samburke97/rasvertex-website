@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
@@ -122,35 +121,6 @@ export const PROCESS_STEPS: InspectionStep[] = [
     n: "05",
     title: "Scheduled maintenance",
     body: "We manage ongoing cleaning schedules for body corporates and commercial buildings, if you'd like it.",
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "Streak-free results",
-    body: "Purified water and zero mineral residue, so every pane comes up crystal clear.",
-  },
-  {
-    n: "02",
-    title: "IRATA rope access",
-    body: "Certified technicians reach any height, on any building, without scaffolding.",
-  },
-  {
-    n: "03",
-    title: "Eco-friendly systems",
-    body: "Recycled, filtered water with full vacuum recovery, on every job.",
-  },
-  {
-    n: "04",
-    title: "Protective maintenance",
-    body: "Salt, pollution and biological growth eat building surfaces. Regular cleaning slows corrosion, protects coatings and extends the life of every facade.",
-    logos: [{ src: "/images/associations/qbcc.png", alt: "QBCC Licensed" }],
-  },
-  {
-    n: "05",
-    title: "QBCC licensed & insured",
-    body: "$20M public liability, full workers' comp. Certificates of currency issued at quote stage. Safe work method statements provided for every high-access clean.",
   },
 ];
 

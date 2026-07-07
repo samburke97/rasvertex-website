@@ -1,16 +1,16 @@
 // app/company/page.tsx
 
 import type { Metadata } from "next";
-import ServiceHero from "../components/shared/ServiceHero";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
-import TeamSection from "../components/about/TeamSection";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import TrustBanner from "../components/about/TrustBanner";
 import ServiceAreas from "../components/about/ServiceAreas";
 import PartnersCarousel from "../components/homepage/PartnersCarousel";
+import ServiceCards from "../components/shared/ServiceCards";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import { FAQS, FAQ_CONTACT } from "../data/companyData";
+import { CARDS } from "../data/paintingData";
 
 export const metadata: Metadata = {
   title: "About RAS-VERTEX | Sunshine Coast Property Maintenance Specialists",
@@ -41,9 +41,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main aria-label="About RAS-VERTEX">
-      {/* ── Hero ── */}
-      <section className="pt-20" aria-labelledby="about-hero-heading">
-        <ServiceHero
+      {/* ── Hero — partners carousel ── */}
+      <section className="pt-10 pb-10 md:pb-20" aria-label="Industry partners">
+        <PartnersCarousel
+          headingTag="h1"
+          headingId="about-hero-heading"
           heading={
             <>
               The Sunshine Coast&rsquo;s complete
@@ -51,16 +53,20 @@ export default function AboutPage() {
               property maintenance partner.
             </>
           }
-          lede="Painting, cleaning, waterproofing, height safety and rope access — for body corporates, strata, commercial properties, and homes from Noosa to Caloundra."
-          headingId="about-hero-heading"
         />
       </section>
 
-      <section
-        className="px-5 md:px-10 py-10 md:py-20"
-        aria-labelledby="team-section-heading"
-      >
-        <TeamSection />
+      {/* ── Sticky specialist teams ── */}
+      <section className="px-5 md:px-10 py-10 md:py-20">
+        <ServiceCards
+          cards={CARDS}
+          display="list"
+          eyebrow=""
+          heading="Three specialist teams covering every type of property."
+          ariaLabel="Who we work for — property maintenance"
+          footerCtaLabel="Let's chat about your project →"
+          footerCtaHref="/contact"
+        />
       </section>
 
       {/* ── Trust banner ── */}

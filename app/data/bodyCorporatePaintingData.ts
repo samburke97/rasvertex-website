@@ -79,6 +79,10 @@ export const PROCESS_STEPS: InspectionStep[] = [
     body: "High-pressure wash, mould treatment, crack repairs, sealant replacement and chloride rinse. Preparation determines how long the paint lasts — we spend more time here than most painters spend on the entire job. No substrate surprises surfaced mid-project.",
     deliverable: "Prep completion sign-off",
     icon: PiHammer,
+    links: [
+      { text: "High-pressure wash", href: "/external-cleaning" },
+      { text: "crack repairs", href: "/maintenance" },
+    ],
   },
   {
     n: "04",

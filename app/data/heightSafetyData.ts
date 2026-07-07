@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
@@ -80,35 +79,6 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     alt: "Minimal disruption height safety installation, RAS-VERTEX Sunshine Coast",
     title: "Minimal disruption installs",
     body: "Rope access installation requires no scaffolding and minimal plant on site. Most anchor point installations are completed in a single day, with no disruption to building occupants or tenants below.",
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "AS/NZS 1891 certified",
-    body: "Every installation and inspection meets Australian Standards and the Work Health and Safety Act 2011. Certificates of compliance issued at completion — insurance-ready and legally defensible.",
-  },
-  {
-    n: "02",
-    title: "IRATA rope access",
-    body: "Our technicians don't just install height safety — they use it daily. 30+ IRATA L1–L3 certified technicians means we understand what a compliant system needs to perform under working load conditions.",
-  },
-  {
-    n: "03",
-    title: "Compliance managed",
-    body: "We track your certification dates and manage renewal scheduling. No chasing, no lapses — your system stays current and your liability stays covered.",
-  },
-  {
-    n: "04",
-    title: "Minimal disruption",
-    body: "Rope access installation requires no scaffolding and minimal plant. Most anchor point installations are completed in a single day with no disruption to building occupants or tenants below.",
-    logos: [{ src: "/images/associations/qbcc.png", alt: "QBCC Licensed" }],
-  },
-  {
-    n: "05",
-    title: "QBCC licensed & insured",
-    body: "$20M public liability, full workers' comp. Safe work method statements, risk assessments and certificates of currency provided for every job — everything your body corporate or property manager needs.",
   },
 ];
 

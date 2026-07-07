@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
@@ -122,41 +121,6 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     alt: "Sinking fund ready building inspection report, RAS-VERTEX Sunshine Coast",
     title: "Sinking fund ready",
     body: "Every report is formatted for direct use in 10 year maintenance plans and sinking fund forecasts, with cost estimates included so committees can plan budgets accurately.",
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "Rope access reach",
-    body: "We access facades that standard inspectors can't. IRATA-certified technicians physically inspect every element at every level — no assumptions, no gaps.",
-  },
-  {
-    n: "02",
-    title: "Thermal imaging",
-    body: "Detect moisture, delamination and air infiltration behind cladding and render — defects that are invisible to the naked eye and undetectable without thermal survey.",
-  },
-  {
-    n: "03",
-    title: "Sinking fund ready",
-    body: "Reports formatted for direct use in 10-year maintenance plans and sinking fund forecasts under the BCCM Act 1997. Cost estimates included — committees can plan budgets accurately.",
-  },
-  {
-    n: "04",
-    title: "Priority-rated findings",
-    body: "Every defect classified as Priority 1, 2 or 3. Committees understand exactly what needs attention now, what can be scheduled, and what is being monitored.",
-    logos: [
-      { src: "/images/associations/qbcc.png", alt: "QBCC Licensed" },
-      {
-        src: "/images/associations/smartstrata.png",
-        alt: "Smart Strata Partner",
-      },
-    ],
-  },
-  {
-    n: "05",
-    title: "We also do the repairs",
-    body: "Unlike independent inspection-only firms, we're a full-service contractor. When the report identifies works, we can scope and price them — the same team, no re-mobilisation cost.",
   },
 ];
 

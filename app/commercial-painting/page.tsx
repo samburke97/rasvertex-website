@@ -5,12 +5,12 @@ import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
+import ServiceCrossLink from "../components/shared/ServiceCrossLink";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import InspectionProcess from "../components/shared/InspectionProcess";
-import PartnersCarousel from "../components/homepage/PartnersCarousel";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
@@ -73,8 +73,9 @@ export default function CommercialPaintingPage() {
         <ServiceHeroSplit
           heading={
             <>
-              Professional commercial painting for Sunshine Coast offices,
-              retail, industrial and multi-storey properties.
+              Over 25 years delivering commercial painting for Sunshine Coast
+              councils, schools, hotels, shopping centres and commercial
+              property managers.
             </>
           }
           lede="From high-rise facade repaints to commercial rooftops, we combine IRATA-certified rope access, commercial-grade Dulux and Haymes coating systems, and meticulous surface preparation to deliver long-lasting results with minimal disruption to your business."
@@ -171,6 +172,15 @@ export default function CommercialPaintingPage() {
           services={SERVICES}
           headingId="commercial-painting-services-heading"
           ctaLabel="Not sure? Let's talk about it →"
+        />
+      </section>
+
+      <section className="px-5 md:px-10 pb-10 md:pb-20">
+        <ServiceCrossLink
+          lead="Are you a body corporate or strata?"
+          linkText="Here's how we'll manage your project"
+          href="/body-corporate-painting"
+          arrow
         />
       </section>
 

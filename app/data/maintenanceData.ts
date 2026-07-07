@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
@@ -83,38 +82,6 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     alt: "Condition reporting and documentation for body corporate committees, RAS-VERTEX Sunshine Coast",
     title: "Full documentation",
     body: "Every visit is recorded with timestamped photos and condition notes, so your building file is always current for committee meetings and insurance purposes.",
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "Dedicated project manager",
-    body: "One person manages your building from first inspection to ongoing maintenance. One number, one thread — no chasing different trades.",
-  },
-  {
-    n: "02",
-    title: "IRATA rope access",
-    body: "30+ rope access technicians certified to IRATA L1–L3. We reach facades, roofs and plant rooms without scaffolding — faster mobilisation, lower cost.",
-  },
-  {
-    n: "03",
-    title: "Full documentation",
-    body: "Every visit recorded with timestamped photos, condition notes and repair records. Your building file is always current for committee meetings and insurance.",
-  },
-  {
-    n: "04",
-    title: "QBCC licensed & insured",
-    body: "QBCC licensed, $20M public liability, full workers' comp. Certificates of currency issued automatically at quote stage.",
-    logos: [
-      { src: "/images/associations/qbcc.png", alt: "QBCC Licensed" },
-      { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
-    ],
-  },
-  {
-    n: "05",
-    title: "Tailored maintenance plans",
-    body: "Whether you need quarterly inspections or a full-year preventative program, we build the plan around your budget, your building, and your committee's schedule.",
   },
 ];
 

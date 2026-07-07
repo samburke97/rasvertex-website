@@ -2,7 +2,6 @@
 
 import type { HeroSlide } from "../components/shared/ServiceHero";
 import type { AccordionService } from "../components/shared/ServiceAccordion";
-import type { Feature } from "../components/shared/ServiceFeatures";
 import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { ServiceCard } from "../components/shared/ServiceCards";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
@@ -93,35 +92,6 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     alt: "Written waterproofing warranty, RAS-VERTEX Sunshine Coast",
     title: "Written warranty",
     body: "A workmanship warranty is issued in writing at handover, backed by manufacturer product warranties up to 15 years on qualifying membrane systems.",
-  },
-];
-
-export const FEATURES: Feature[] = [
-  {
-    n: "01",
-    title: "Preparation first",
-    body: "No shortcuts on substrate prep. Full detail above.",
-  },
-  {
-    n: "02",
-    title: "German-engineered equipment",
-    body: "The right tools for a surface membranes bond to. See above.",
-  },
-  {
-    n: "03",
-    title: "SEQ climate specification",
-    body: "UV-stable, salt-resistant membrane systems specified for the Sunshine Coast's thermal cycling, UV intensity and coastal exposure — not generic inland systems applied to coastal conditions.",
-  },
-  {
-    n: "04",
-    title: "Written warranty",
-    body: "Issued at handover, backed by manufacturer warranties. Full detail above.",
-    logos: [{ src: "/images/associations/qbcc.png", alt: "QBCC Licensed" }],
-  },
-  {
-    n: "05",
-    title: "QBCC licensed & insured",
-    body: "QBCC licensed for waterproofing works in Queensland. $20M public liability, full workers' comp. Compliance certificates issued at completion for body corporate and building owner records.",
   },
 ];
 

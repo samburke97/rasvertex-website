@@ -1,20 +1,16 @@
 // app/body-corporate-painting/page.tsx
 
-import Link from "next/link";
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceCards from "../components/shared/ServiceCards";
-import ServiceIntro from "../components/shared/ServiceIntro";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
+import ServiceCrossLink from "../components/shared/ServiceCrossLink";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import InspectionProcess from "../components/shared/InspectionProcess";
-import CredentialRows from "../components/shared/CredentialRows";
-import PartnersCarousel from "../components/homepage/PartnersCarousel";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
@@ -23,8 +19,6 @@ import {
   HERO_SLIDES,
   SERVICES,
   PROCESS_STEPS,
-  CREDENTIALS,
-  PROJECTS,
   FAQS,
   FAQ_CONTACT,
 } from "../data/bodyCorporatePaintingData";
@@ -79,9 +73,8 @@ export default function BodyCorporatePaintingPage() {
         <ServiceHeroSplit
           heading={
             <>
-              Body corporate painting
-              <br />
-              on the Sunshine Coast.
+              Specialist body corporate and strata painters for Sunshine Coast
+              buildings.
             </>
           }
           lede="Committee-ready proposals, zone-staged delivery, rope access with no car park disruption — and a 5-year written warranty lodged in ROCO at handover."
@@ -137,16 +130,31 @@ export default function BodyCorporatePaintingPage() {
         aria-label="5-year warranty"
       >
         <WarrantyCard
-          stat="5"
+          stat="8"
           statLabel={"year\nwarranty"}
           heading={
             <>
-              Lodged in ROCO.
+              Complete confidence
               <br />
-              Backed by the manufacturer.
+              for your community.
             </>
           }
-          body="Every body corporate repaint is backed by a 5-year written workmanship warranty lodged in ROCO at handover — your committee's insurance and maintenance records are covered from completion day. Dulux and Haymes manufacturer warranties (up to 15 years on qualifying systems) are registered in the body corporate's name. The full documentation package is formatted for your sinking fund and maintenance plan under the BCCM Act 1997."
+          body="Every body corporate repaint includes our 8-year written workmanship warranty as standard. Where eligible coating systems are specified, manufacturer warranties are also supplied. From paint specifications to maintenance recommendations, your committee receives a complete handover package for future reference."
+          logosHeading="Backed by the best."
+          logos={[
+            {
+              src: "/images/associations/haymes.svg",
+              alt: "Haymes Paint",
+              width: 100,
+              height: 50,
+            },
+            {
+              src: "/images/associations/dulux.svg",
+              alt: "Dulux",
+              width: 100,
+              height: 50,
+            },
+          ]}
         />
       </section>
 
@@ -154,11 +162,12 @@ export default function BodyCorporatePaintingPage() {
         <ServiceAccordion
           heading={
             <>
-              What's included in a<br />
-              strata painting program?
+              What does your body corporate
+              <br />
+              building need?
             </>
           }
-          paragraph="Every strata program is zone-staged and committee-ready, so residents keep using the building while we work through the schedule."
+          paragraph="From full exterior repaints to balcony, roof and common area coatings, we deliver coastal-spec painting solutions designed for Sunshine Coast body corporate properties."
           ariaLabel="What's included in a strata painting program?"
           services={SERVICES}
           headingId="body-corporate-services-heading"
@@ -167,39 +176,13 @@ export default function BodyCorporatePaintingPage() {
         />
       </section>
 
-      <section className="px-5 md:px-10 py-10 md:py-20">
-        <ServiceIntro
-          heading="50+ strata projects. We know how committees work."
-          paragraphs={[
-            "We've been painting body corporate buildings on the Sunshine Coast for 25 years. In that time we've learned that a strata project lives or dies on communication — with the committee, with the building manager, and with residents who didn't ask for the disruption. We manage all three from the first presentation to the final walkthrough.",
-            "The Sunshine Coast's coastal environment demands more than a standard paint system. Salt air within 5km of the ocean degrades generic coatings within two to three years. Every system we specify is matched to the substrate, the exposure, and the building's maintenance history. One project manager from quote to warranty. No subcontractors, no surprises, no special levies from scope nobody told the committee about.",
-          ]}
-          headingId="body-corporate-painting-intro-heading"
-          logos={[
-            {
-              src: "/images/associations/haymes.svg",
-              alt: "Haymes Paint",
-              width: 80,
-              height: 40,
-            },
-            {
-              src: "/images/associations/dulux.svg",
-              alt: "Dulux",
-              width: 80,
-              height: 40,
-            },
-            {
-              src: "/images/associations/qbcc.png",
-              alt: "QBCC Licensed",
-              width: 60,
-              height: 40,
-            },
-          ]}
+      <section className="px-5 md:px-10 pb-10 md:pb-20">
+        <ServiceCrossLink
+          lead="Are you a commercial building?"
+          linkText="Find out more from our commercial team"
+          href="/commercial-painting"
+          arrow
         />
-      </section>
-
-      <section className="py-10" aria-label="Trusted by">
-        <PartnersCarousel showHeader={false} />
       </section>
 
       {/* ── How we run a strata repaint ── */}
@@ -214,17 +197,8 @@ export default function BodyCorporatePaintingPage() {
           lede="Five stages from committee proposal to warranty handover — every stage documented, every resident informed, no scope surprises."
           steps={PROCESS_STEPS}
           headingId="process-heading"
-        />
-      </section>
-
-      {/* ── Why choose us — CredentialRows ── */}
-      <section
-        className="pt-10 md:pt-20"
-        aria-label="Why choose RAS-VERTEX for body corporate painting"
-      >
-        <CredentialRows
-          credentials={CREDENTIALS}
-          ariaLabel="Why choose RAS-VERTEX for body corporate painting"
+          ctaLabel="Get a committee proposal →"
+          ctaHref="/contact"
         />
       </section>
 
@@ -249,53 +223,6 @@ export default function BodyCorporatePaintingPage() {
           ctaHref="/work"
           ctaLabel="Our projects →"
           headingId="body-corporate-before-after-heading"
-        />
-      </section>
-
-      {/* ── Internal links to related pages ── */}
-      <section className="px-5 md:px-10 py-5">
-        <p className="p-soft">
-          We also run{" "}
-          <Link
-            href="/building-inspections"
-            style={{
-              color: "var(--navy)",
-              fontWeight: "var(--weight-semibold)",
-              borderBottom: "1px solid var(--navy)",
-              paddingBottom: "1px",
-            }}
-          >
-            building condition inspections
-          </Link>{" "}
-          and{" "}
-          <Link
-            href="/maintenance"
-            style={{
-              color: "var(--navy)",
-              fontWeight: "var(--weight-semibold)",
-              borderBottom: "1px solid var(--navy)",
-              paddingBottom: "1px",
-            }}
-          >
-            ongoing maintenance programs
-          </Link>{" "}
-          for body corporates across the Sunshine Coast — the same team, managed
-          as a single scope.
-        </p>
-      </section>
-
-      <section className="py-10 md:py-20">
-        <ServiceProjects
-          heading={
-            <>
-              Work we're proud of,
-              <br />
-              from Noosa to Caloundra.
-            </>
-          }
-          subheading="Body corporate repaints from Caloundra to Noosa — every building zone-staged, every system coastal-spec, every job backed by a 5-year written warranty."
-          projects={PROJECTS}
-          footerNote="We also work across Kawana, Sippy Downs, Coolum, Peregian, Noosaville, Tewantin, Nambour and throughout the hinterland."
         />
       </section>
 
@@ -324,7 +251,7 @@ export default function BodyCorporatePaintingPage() {
         >
           Beyond painting, we support every part of your
           <br />
-          body corporate — explore our full range of services below.
+          body corporate community, explore our full range of services below.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/painting")}
