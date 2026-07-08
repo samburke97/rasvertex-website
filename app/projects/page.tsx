@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "RAS-VERTEX — Our Projects",
     description:
       "Projects across the Sunshine Coast — body corporate, commercial, strata, and industrial.",
-    url: "https://rasvertex.com.au/projects",
+    url: "https://www.ras-vertex.com.au/projects",
     siteName: "RAS-VERTEX",
     type: "website",
   },

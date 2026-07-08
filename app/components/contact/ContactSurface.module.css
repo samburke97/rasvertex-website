@@ -230,7 +230,7 @@
 
 .progressOf {
   font-weight: var(--weight-regular);
-  opacity: 0.35;
+  color: var(--navy-65);
 }
 
 .progressTrack {
@@ -264,8 +264,7 @@
 .stepHint {
   font-size: var(--p-sm-size);
   font-weight: var(--weight-regular);
-  color: var(--navy);
-  opacity: 0.45;
+  color: var(--navy-65);
   margin: calc(-1 * var(--space-xl)) 0 0;
 }
 

@@ -217,7 +217,7 @@ export default function ServiceCards({
         <h2 className={styles.gridHeading}>{heading}</h2>
         <div className={styles.grid} role="list">
           {cards.map((c) => (
-            <article key={c.title} className={styles.item} role="listitem">
+            <div key={c.title} className={styles.item} role="listitem">
               <div className={styles.photo}>
                 <Image
                   src={c.photo}
@@ -261,7 +261,7 @@ export default function ServiceCards({
                   </Link>
                 )}
               </div>
-            </article>
+            </div>
           ))}
         </div>
 

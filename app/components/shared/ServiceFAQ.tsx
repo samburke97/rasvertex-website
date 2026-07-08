@@ -77,7 +77,7 @@ export default function ServiceFAQ({
               className={styles.ctaRow}
               aria-label={`Contact ${contact.name}`}
             >
-              <h3>{ctaHeading}</h3>
+              <h2 className={styles.ctaHeading}>{ctaHeading}</h2>
               <Link
                 href={contact.ctaHref ?? "/contact"}
                 className={styles.ctaButton}

@@ -136,8 +136,7 @@
 .personRoleText {
   font-family: var(--font-body);
   font-size: var(--p-size);
-  color: var(--navy);
-  opacity: 0.45;
+  color: var(--navy-65);
   line-height: 1.2;
   letter-spacing: -0.02em;
 }

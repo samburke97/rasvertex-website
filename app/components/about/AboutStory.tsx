@@ -19,7 +19,7 @@ export default function AboutStory() {
             A maintenance partner,<br />not a middleman.
           </h2>
 
-          <div className={styles.credentials} aria-label="Accreditations">
+          <div className={styles.credentials} role="group" aria-label="Accreditations">
             {CREDENTIALS.map((c) => (
               <span key={c} className={styles.credential}>{c}</span>
             ))}

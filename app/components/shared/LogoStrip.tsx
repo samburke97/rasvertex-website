@@ -20,7 +20,7 @@ export default function LogoStrip({
   const track = [...logos, ...logos];
 
   return (
-    <div className={styles.wrap} aria-label={label}>
+    <div className={styles.wrap} role="group" aria-label={label}>
       <div className={styles.fadeLeft} aria-hidden="true" />
       <div className={styles.fadeRight} aria-hidden="true" />
       <div className={styles.track} aria-hidden="true" role="presentation">

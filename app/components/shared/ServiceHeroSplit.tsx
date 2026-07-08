@@ -112,7 +112,7 @@ export default function ServiceHeroSplit({
               </div>
             </div>
             {personCtaHeading && (
-              <h3 className={styles.personCtaHeading}>{personCtaHeading}</h3>
+              <h2 className={styles.personCtaHeading}>{personCtaHeading}</h2>
             )}
             <Link href={ctaHref} className={styles.cta}>
               {ctaLabel}

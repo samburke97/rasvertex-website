@@ -78,24 +78,24 @@ export default function ProjectsBento() {
       {/* Grid */}
       <div className={styles.grid} role="list" aria-label="Project gallery">
         {filtered.map((project, i) => (
-          <button
-            key={project.id}
-            type="button"
-            role="listitem"
-            className={styles.cell}
-            onClick={() => setOpenIdx(i)}
-            aria-label={`View ${project.name}`}
-          >
-            <div className={styles.mediaWrap}>
-              <Image
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                className={styles.image}
-                sizes="(max-width: 860px) 100vw, (max-width: 1100px) 50vw, 33vw"
-              />
-            </div>
-          </button>
+          <div key={project.id} className={styles.cell} role="listitem">
+            <button
+              type="button"
+              className={styles.cellButton}
+              onClick={() => setOpenIdx(i)}
+              aria-label={`View ${project.name}`}
+            >
+              <div className={styles.mediaWrap}>
+                <Image
+                  src={project.image}
+                  alt={project.imageAlt}
+                  fill
+                  className={styles.image}
+                  sizes="(max-width: 860px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                />
+              </div>
+            </button>
+          </div>
         ))}
       </div>
 

@@ -4,7 +4,7 @@ import styles from "./CareersInfo.module.css";
 
 export default function CareersInfo() {
   return (
-    <div className={styles.grid} aria-label="Contact details">
+    <div className={styles.grid} role="group" aria-label="Contact details">
       <div className={styles.box}>
         <span className={styles.label}>Call us</span>
         <a href="tel:0753710201" className={styles.valueLink}>

@@ -39,8 +39,7 @@
   font-weight: var(--weight-semibold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.35;
+  color: var(--navy-65);
   line-height: 1.4;
 }
 
@@ -85,12 +84,6 @@
 }
 
 @media (max-width: 1100px) {
-  .logosCol {
-    width: 220px;
-  }
-}
-
-@media (max-width: 860px) {
   .card {
     flex-direction: column;
     align-items: flex-start;

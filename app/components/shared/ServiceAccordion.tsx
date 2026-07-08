@@ -72,23 +72,26 @@ export default function ServiceAccordion({
         <div className={styles.right}>
           <div
             className={styles.list}
-            role="tablist"
+            role="list"
             aria-label={
               ariaLabel ?? (typeof heading === "string" ? heading : undefined)
             }
           >
             {services.map((s, i) => {
               const isOpen = activeIdx === i;
+              const buttonId = `${headingId}-tab-${i}`;
+              const panelId = `${headingId}-panel-${i}`;
               return (
                 <div
                   key={s.label}
                   className={`${styles.item} ${isOpen ? styles.open : ""}`}
+                  role="listitem"
                 >
                   <button
                     className={styles.row}
-                    role="tab"
-                    aria-selected={isOpen}
+                    id={buttonId}
                     aria-expanded={isOpen}
+                    aria-controls={panelId}
                     onClick={() => setActiveIdx(i)}
                   >
                     <div className={styles.rowLeft}>
@@ -116,9 +119,10 @@ export default function ServiceAccordion({
                   </button>
 
                   <div
+                    id={panelId}
                     className={styles.panel}
-                    role="tabpanel"
-                    aria-labelledby={`${headingId}-tab-${i}`}
+                    role="region"
+                    aria-labelledby={buttonId}
                   >
                     <div className={styles.panelInner}>
                       <p className="p-soft">{s.body}</p>

@@ -92,8 +92,7 @@
 .authorRole {
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
-  color: var(--navy);
-  opacity: 0.45;
+  color: var(--navy-65);
 }
 
 /* ─── Dots ─────────────────────────────────────────────────── */

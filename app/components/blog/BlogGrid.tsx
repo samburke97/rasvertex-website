@@ -100,13 +100,13 @@ export default function BlogGrid() {
 
   return (
     <div className={styles.wrap}>
-      {/* Hero featured post */}
-      <FeaturedCard post={featured} />
-
       {/* Section heading */}
       <div className={styles.sectionHead}>
         <h1>Insights from<br />the field.</h1>
       </div>
+
+      {/* Hero featured post */}
+      <FeaturedCard post={featured} />
 
       {/* Grid */}
       {rest.length > 0 && (

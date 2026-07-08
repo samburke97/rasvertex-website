@@ -31,7 +31,7 @@ const REASONS = [
 
 export default function AboutWhy() {
   return (
-    <div className={styles.card} aria-labelledby="why-heading">
+    <div className={styles.card} role="group" aria-labelledby="why-heading">
       <div className={styles.header}>
         <h2 id="why-heading">
           Why Sunshine Coast building managers choose RAS-VERTEX.

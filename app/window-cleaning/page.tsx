@@ -43,7 +43,7 @@ export default function CleaningPage() {
         name="Window Cleaning Sunshine Coast"
         description="Professional window cleaning on the Sunshine Coast. IRATA rope access for high-rise and strata buildings, purified water systems, eco-friendly pressure washing. Streak-free results, QBCC licensed."
         image="https://www.ras-vertex.com.au/nav/cleaning.png"
-        url="https://www.ras-vertex.com.au/cleaning"
+        url="https://www.ras-vertex.com.au/window-cleaning"
         serviceType="Window Cleaning"
         areaServed={[
           "Sunshine Coast",

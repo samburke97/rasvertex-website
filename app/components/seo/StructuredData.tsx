@@ -1,9 +1,9 @@
 /* ============================================
    SCHEMA.ORG STRUCTURED DATA COMPONENTS
-   
+
    These generate JSON-LD structured data for rich search results.
    Critical for local SEO and service-based businesses.
-   
+
    Test your structured data at:
    https://search.google.com/test/rich-results
    https://validator.schema.org/

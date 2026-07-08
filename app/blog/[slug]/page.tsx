@@ -35,11 +35,11 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author.name],
-      url: `https://rasvertex.com.au/blog/${post.slug}`,
+      url: `https://www.ras-vertex.com.au/blog/${post.slug}`,
       siteName: "RAS-VERTEX",
       images: [
         {
-          url: `https://rasvertex.com.au${post.coverImage}`,
+          url: `https://www.ras-vertex.com.au${post.coverImage}`,
           alt: post.coverAlt,
         },
       ],
@@ -141,13 +141,13 @@ export default async function ArticlePage({
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    image: `https://rasvertex.com.au${post.coverImage}`,
+    image: `https://www.ras-vertex.com.au${post.coverImage}`,
     datePublished: post.publishedAt,
     author: { "@type": "Person", name: post.author.name },
     publisher: {
       "@type": "Organization",
       name: "RAS-VERTEX",
-      url: "https://rasvertex.com.au",
+      url: "https://www.ras-vertex.com.au",
     },
   };
 

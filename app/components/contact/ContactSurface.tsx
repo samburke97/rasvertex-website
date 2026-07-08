@@ -291,7 +291,7 @@ export default function ContactSurface({
 
       {/* ── RIGHT ── */}
       <div className={styles.right}>
-        <div className={styles.formWrap} aria-label="Quote request form">
+        <div className={styles.formWrap}>
           {submitted ? (
             <div className={styles.success} role="status" aria-live="polite">
               <h2>We&rsquo;ll be in touch.</h2>
@@ -335,13 +335,14 @@ export default function ContactSurface({
                 />
               </div>
 
-              <div className={styles.progress} aria-label={`Step ${step} of 3`}>
+              <div className={styles.progress}>
                 <span className={styles.progressLabel}>
                   {step} <span className={styles.progressOf}>/ 3</span>
                 </span>
                 <div
                   className={styles.progressTrack}
                   role="progressbar"
+                  aria-label={`Step ${step} of 3`}
                   aria-valuenow={step}
                   aria-valuemin={1}
                   aria-valuemax={3}
@@ -357,7 +358,7 @@ export default function ContactSurface({
                 </div>
               </div>
 
-              <h3>{STEP_LABELS[step]}</h3>
+              <h2>{STEP_LABELS[step]}</h2>
 
               {step === 1 && (
                 <p className={styles.stepHint}>(Select all that apply)</p>

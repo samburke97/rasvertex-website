@@ -27,7 +27,7 @@ import {
    ============================================ */
 
 const SITE_NAME = "RAS-VERTEX";
-const SITE_URL = "https://www.rasvertex.com.au"; // Update with actual domain
+const SITE_URL = "https://www.ras-vertex.com.au";
 const SITE_LOCALE = "en_AU";
 
 // Primary keywords for Sunshine Coast commercial property maintenance
@@ -195,10 +195,6 @@ export default function RootLayout({
           href="https://use.typekit.net"
           crossOrigin="anonymous"
         />
-
-        {/* DNS prefetch for analytics (add your domains) */}
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
         {/* Adobe Fonts (Typekit) */}
         <link rel="stylesheet" href="https://use.typekit.net/nuk5csv.css" />

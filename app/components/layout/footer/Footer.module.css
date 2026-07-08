@@ -47,12 +47,12 @@
 
 .serviceLink {
   text-decoration: none;
-  opacity: 0.55;
-  transition: opacity var(--duration-fast) var(--ease-out);
+  color: var(--navy-65);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
 .serviceLink:hover {
-  opacity: 1;
+  color: var(--navy);
 }
 
 .footerLogo {
@@ -98,7 +98,7 @@
   font-size: var(--eyebrow-size);
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--navy-45);
+  color: var(--navy-65);
 }
 
 .socials {
@@ -112,7 +112,7 @@
   font-size: var(--eyebrow-size);
   letter-spacing: var(--eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--navy-45);
+  color: var(--navy-65);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-out);
 }
@@ -123,7 +123,7 @@
 
 .socials span {
   font-size: var(--eyebrow-size);
-  color: var(--navy-45);
+  color: var(--navy-65);
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */

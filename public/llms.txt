@@ -8,11 +8,12 @@ RAS-VERTEX is a Queensland-based building maintenance contractor operating acros
 
 ## Services
 
-- **Commercial & Strata Painting** — interior and exterior repaints for high-rise, mid-rise, commercial buildings, and residential strata. QBCC licensed. Product warranties up to 10 years.
+- **Commercial & Strata Painting** — interior and exterior repaints for high-rise, mid-rise, commercial buildings, and residential strata. QBCC licensed. Product warranties up to 15 years.
 - **Building & Window Cleaning** — facade washing, high-pressure cleaning, high-rise window cleaning via rope access. Regular maintenance programs available.
 - **Waterproofing** — balcony membranes, roof waterproofing, leak detection (thermal imaging), remedial injection works. Systems specified to AS 3740.
 - **Height Safety** — anchor point installation, static line systems, roof access compliance, annual recertification to AS/NZS 1891. Full compliance management programs.
 - **Building Maintenance** — preventative maintenance programs, facade inspections, spalling concrete remediation, emergency repairs. Single-contractor programs for strata.
+- **Building Inspections** — rope access facade inspections, thermal imaging, sinking fund reports under the BCCM Act 1997.
 - **Rope Access** — IRATA-certified technicians for access to any height. Eliminates scaffold for most inspection, cleaning, and maintenance tasks.
 
 ## Service Area
@@ -27,23 +28,24 @@ Sunshine Coast, QLD — from Caloundra to Noosa, including Mooloolaba, Maroochyd
 - Workers' compensation cover
 - Certificates of currency issued at quote stage
 
-## Contact
-
-Website: https://www.rasvertex.com.au
-Contact page: https://www.rasvertex.com.au/contact
-
 ## Key pages
 
-- Home: https://www.rasvertex.com.au
-- Painting: https://www.rasvertex.com.au/painting
-- Cleaning: https://www.rasvertex.com.au/cleaning
-- Waterproofing: https://www.rasvertex.com.au/waterproofing
-- Height Safety: https://www.rasvertex.com.au/services/height-safety
-- Building Maintenance: https://www.rasvertex.com.au/maintenance
-- Blog: https://www.rasvertex.com.au/blog
-- Work / Projects: https://www.rasvertex.com.au/work
-- About: https://www.rasvertex.com.au/company
-- Contact: https://www.rasvertex.com.au/contact
+- [Home](https://www.ras-vertex.com.au): Overview of all RAS-VERTEX services
+- [Painting](https://www.ras-vertex.com.au/painting): Commercial, body corporate and residential painting hub
+- [Commercial & High-Rise Painting](https://www.ras-vertex.com.au/commercial-painting): Commercial and high-rise repaints
+- [Body Corporate & Strata Painting](https://www.ras-vertex.com.au/body-corporate-painting): Strata and body corporate painting programs
+- [Residential Painting](https://www.ras-vertex.com.au/residential-painting): Home exterior and interior painting
+- [External Cleaning](https://www.ras-vertex.com.au/external-cleaning): Facade and building washing
+- [Window Cleaning](https://www.ras-vertex.com.au/window-cleaning): High-rise and residential window cleaning
+- [Waterproofing](https://www.ras-vertex.com.au/waterproofing): Balcony, roof and wet area waterproofing
+- [Height Safety](https://www.ras-vertex.com.au/height-safety): Anchor points, static lines and compliance
+- [Building Maintenance](https://www.ras-vertex.com.au/maintenance): Preventative maintenance and repairs
+- [Building Inspections](https://www.ras-vertex.com.au/building-inspections): Facade inspections and sinking fund reports
+- [About Us](https://www.ras-vertex.com.au/about-us): Company background and credentials
+- [Projects](https://www.ras-vertex.com.au/projects): Completed project gallery
+- [Blog](https://www.ras-vertex.com.au/blog): Building maintenance guides and articles
+- [Careers](https://www.ras-vertex.com.au/careers): Open roles at RAS-VERTEX
+- [Contact](https://www.ras-vertex.com.au/contact): Request a free quote
 
 ## Blog topics
 

@@ -114,7 +114,7 @@ export default function InspectionProcess({
                 </span>
               )}
               <div className={styles.content}>
-                <h4 className={styles.title}>{step.title}</h4>
+                <h3 className={styles.title}>{step.title}</h3>
                 <p className={styles.body}>{renderStepBody(step)}</p>
               </div>
             </li>

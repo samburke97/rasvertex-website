@@ -52,7 +52,7 @@ export default function PartnersCarousel({
         {paragraph ? (
           <p className="p-soft">{paragraph}</p>
         ) : (
-          <div className={styles.ratingBadge} aria-label="Google Rating: 4.9 out of 5">
+          <div className={styles.ratingBadge} role="group" aria-label="Google Rating: 4.9 out of 5">
             <svg
               className={styles.googleIcon}
               viewBox="0 0 24 24"
