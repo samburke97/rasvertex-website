@@ -67,6 +67,9 @@
 }
 
 .cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-body);
   font-size: var(--button-size);
   font-weight: var(--weight-bold);
@@ -80,6 +83,15 @@
 
 .cta:hover {
   border-color: var(--navy);
+}
+
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
 }
 
 /* ── Minimal hero — full-width heading, lede + rating row below ─ */

@@ -11,7 +11,7 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "We've used them for three years of scheduled maintenance across seven buildings. Zero callbacks.",
+      "We've used them for three years of scheduled maintenance across seven buildings, with zero callbacks.",
     name: "Priya Raman",
     role: "BC Manager, Peppers Noosa",
     logo: "/partners/novotel.svg.png",
@@ -19,7 +19,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs.",
+      "The communication alone sets them apart. One number, one thread, weekly photos, exactly what a body corporate needs.",
     name: "James Whitfield",
     role: "Facilities Manager, Accor Hotels",
     logo: "/partners/accor.svg",
@@ -35,7 +35,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "Other companies quoted higher and couldn't start for months. RAS-VERTEX had a crew on ropes within two weeks.",
+      "Other companies quoted higher and couldn't start for months. This crew had technicians on ropes within two weeks.",
     name: "David Lam",
     role: "Property Manager, Ray White Mooloolaba",
     logo: "/partners/raywhite.png",
@@ -51,7 +51,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "We moved from three separate contractors to one maintenance plan with RAS-VERTEX. Should have done it years ago.",
+      "We moved from three separate contractors to one maintenance plan with this team. Should have done it years ago.",
     name: "Mark Ellison",
     role: "Facilities Director, Stockland Kawana",
     logo: "/partners/pica.png",

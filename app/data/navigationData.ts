@@ -7,7 +7,7 @@ export const servicesData = {
     name: "Painting",
     href: "/painting",
     description:
-      "Professional interior and exterior painting for commercial, strata and residential properties. Quality finishes that last.",
+      "Professional interior and exterior painting for commercial, strata and residential properties on the Sunshine Coast. Quality finishes that actually last.",
     image: cld("nav-painting.png", { width: 600 }),
     subServices: [
       { label: "Exterior Painting", href: "/painting" },
@@ -23,7 +23,7 @@ export const servicesData = {
     name: "Building Cleaning",
     href: "/external-cleaning",
     description:
-      "Pressure washing, facade cleaning and complete building care for strata and commercial properties.",
+      "Pressure washing, facade cleaning and complete building care for strata and commercial properties across the Sunshine Coast.",
     image: cld("nav-cleaning.png", { width: 600 }),
     subServices: [
       { label: "Pressure Washing", href: "/external-cleaning" },
@@ -39,10 +39,10 @@ export const servicesData = {
     name: "Window Cleaning",
     href: "/window-cleaning",
     description:
-      "High-rise and commercial window cleaning with full IRATA certification. Safe, professional and compliant.",
+      "High rise and commercial window cleaning with full IRATA certification. Safe, professional and compliant, every time.",
     image: cld("nav-window.png", { width: 600 }),
     subServices: [
-      { label: "High-Rise Windows", href: "/window-cleaning" },
+      { label: "High Rise Windows", href: "/window-cleaning" },
       { label: "Rope Access", href: "/window-cleaning" },
       { label: "Commercial Windows", href: "/window-cleaning" },
       { label: "Strata Windows", href: "/window-cleaning" },
@@ -54,7 +54,7 @@ export const servicesData = {
     name: "Waterproofing",
     href: "/waterproofing",
     description:
-      "Expert waterproofing for balconies, roofs and wet areas. Long-term warranties and proven protection.",
+      "Expert waterproofing for balconies, roofs and wet areas on the Sunshine Coast, backed by long term warranties and proven protection.",
     image: cld("nav-waterproofing.png", { width: 600 }),
     subServices: [
       { label: "Balcony Waterproofing", href: "/waterproofing" },
@@ -70,7 +70,7 @@ export const servicesData = {
     name: "Maintenance",
     href: "/maintenance",
     description:
-      "Ongoing building maintenance and repair services to keep your property in top condition year-round.",
+      "Ongoing building maintenance and repair services that keep your Sunshine Coast property in top condition year round.",
     image: cld("nav-maintenance.png", { width: 600 }),
     subServices: [
       { label: "Preventative Maintenance", href: "/maintenance" },
@@ -85,7 +85,7 @@ export const servicesData = {
     name: "Height Safety",
     href: "/height-safety",
     description:
-      "Complete height safety systems, certification and compliance. IRATA certified technicians.",
+      "Complete height safety systems, certification and compliance for Sunshine Coast buildings, delivered by IRATA certified technicians.",
     image: cld("nav-height.png", { width: 600 }),
     subServices: [
       { label: "Anchor Point Installation", href: "/height-safety" },
@@ -101,7 +101,7 @@ export const servicesData = {
     name: "Building Inspections",
     href: "/building-inspections",
     description:
-      "Comprehensive facade and building condition inspections using rope access, drone and thermal imaging. Full condition reports with risk ratings and remediation schedules.",
+      "Comprehensive facade and building condition inspections using rope access, drone and thermal imaging, with full condition reports, risk ratings and remediation schedules.",
     image: cld("nav-inspections.webp", { width: 600 }),
     subServices: [
       { label: "Facade Inspections", href: "/building-inspections" },
@@ -109,7 +109,7 @@ export const servicesData = {
       { label: "Thermal Imaging", href: "/building-inspections" },
       { label: "Condition Reports", href: "/building-inspections" },
       { label: "Sinking Fund Reports", href: "/building-inspections" },
-      { label: "Pre-Purchase Inspections", href: "/building-inspections" },
+      { label: "Pre Purchase Inspections", href: "/building-inspections" },
       { label: "Remediation Scoping", href: "/building-inspections" },
     ],
   },

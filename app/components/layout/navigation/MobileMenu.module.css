@@ -126,7 +126,7 @@
 .serviceItemActive .arrow,
 .serviceItem:hover .arrow {
   opacity: 0.6;
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 /* ── Company flat rows ── */
@@ -165,7 +165,7 @@
 
 .companyItem:hover .arrow {
   opacity: 0.5;
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 /* ── CTA block ── */
@@ -226,6 +226,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   width: 100%;
   height: 48px;
   background: var(--navy);
@@ -240,6 +241,15 @@
 
 .ctaBtn:hover {
   background: var(--navy-dark);
+}
+
+.ctaBtnArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.ctaBtn:hover .ctaBtnArrow {
+  transform: translateX(3px);
 }
 
 .callBtn {

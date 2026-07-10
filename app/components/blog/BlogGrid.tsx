@@ -34,7 +34,25 @@ function FeaturedCard({ post }: { post: BlogPost }) {
         <p className={styles.featuredExcerpt}>{post.excerpt}</p>
 
         <div className={styles.featuredFooter}>
-          <span className={styles.readMore}>Read article</span>
+          <span className={styles.readMore}>
+            Read article
+            <svg
+              className={styles.readMoreArrow}
+              width="14"
+              height="14"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </div>
       </div>
 
@@ -78,6 +96,22 @@ function GridCard({ post }: { post: BlogPost }) {
         <p className={styles.cardExcerpt}>{post.excerpt}</p>
         <Link href={`/blog/${post.slug}`} className={styles.readMore} aria-label={`Read: ${post.title}`}>
           Read more
+          <svg
+            className={styles.readMoreArrow}
+            width="14"
+            height="14"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </Link>
       </div>
     </article>
@@ -100,13 +134,18 @@ export default function BlogGrid() {
 
   return (
     <div className={styles.wrap}>
+      {/* Hero featured post */}
+      <FeaturedCard post={featured} />
+
       {/* Section heading */}
       <div className={styles.sectionHead}>
         <h1>Insights from<br />the field.</h1>
+        <p className="p-soft">
+          Practical advice on painting, waterproofing, rope access and
+          building maintenance across the Sunshine Coast, from the team who
+          does the work.
+        </p>
       </div>
-
-      {/* Hero featured post */}
-      <FeaturedCard post={featured} />
 
       {/* Grid */}
       {rest.length > 0 && (

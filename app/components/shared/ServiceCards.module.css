@@ -158,7 +158,8 @@
   transition: transform var(--duration-fast) var(--ease-out);
 }
 
-.cta:hover .ctaArrow {
+.cta:hover .ctaArrow,
+a:hover .ctaArrow {
   transform: translateX(3px);
 }
 
@@ -170,6 +171,7 @@
 .footerCta {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   height: 48px;
   padding: 0 var(--space-xl);
   border-radius: var(--radius-xl);
@@ -184,6 +186,15 @@
 
 .footerCta:hover {
   background: var(--navy-dark);
+}
+
+.footerCtaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.footerCta:hover .footerCtaArrow {
+  transform: translateX(3px);
 }
 
 .burgundy .footerCta {
@@ -204,13 +215,17 @@
 }
 
 .listLeft {
-  flex: 0 0 34%;
+  flex: 0 0 38%;
   position: sticky;
   top: calc(var(--header-height) + var(--space-xl));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-lg);
+}
+
+.listLeft h2 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
 }
 
 .eyebrow {
@@ -220,6 +235,36 @@
   text-transform: uppercase;
   color: var(--navy);
   opacity: 0.45;
+}
+
+/* .listLeft lays its children out with `gap: var(--space-lg)` — this
+   pushes the logo group down an extra beat past that so the total gap
+   above it is var(--space-4xl), matching how RopeAccessSection's
+   .personCard is pushed farther down from the paragraph above it. */
+.footerLogosGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: calc(var(--space-4xl) - var(--space-lg));
+}
+
+.footerLogosHeading {
+  margin: 0;
+}
+
+.footerLogos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-top: var(--space-sm);
+}
+
+.footerLogoImg {
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+  flex-shrink: 0;
 }
 
 .listItems {

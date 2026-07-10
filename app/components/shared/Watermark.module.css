@@ -1,0 +1,24 @@
+/* app/components/shared/Watermark.module.css */
+
+.watermark {
+  overflow: hidden;
+}
+
+.watermarkText {
+  font-family: var(--font-display);
+  font-size: 16vw;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: #eef0f5;
+  white-space: nowrap;
+  display: block;
+  margin-left: -0.05em;
+}
+
+@media (max-width: 560px) {
+  .watermarkText {
+    font-size: 21vw;
+    white-space: normal;
+    word-break: normal;
+  }
+}

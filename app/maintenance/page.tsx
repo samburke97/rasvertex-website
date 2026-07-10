@@ -25,7 +25,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Building Maintenance Sunshine Coast",
   description:
-    "Commercial and body corporate building maintenance across the Sunshine Coast. Concrete repairs, roof restoration, leak detection, sign installation — IRATA rope access, QBCC licensed.",
+    "Commercial and body corporate building maintenance across the Sunshine Coast. Concrete repairs, roof restoration, leak detection, sign installation, IRATA rope access, QBCC licensed.",
   path: "/maintenance",
   keywords: [
     "building maintenance Sunshine Coast",
@@ -40,6 +40,10 @@ export const metadata = generatePageMetadata({
     "strata maintenance Maroochydore",
     "property maintenance Noosa",
     "emergency building repairs Sunshine Coast",
+    "commercial property maintenance Sunshine Coast",
+    "preventative maintenance Sunshine Coast",
+    "scheduled building maintenance Sunshine Coast",
+    "facilities maintenance Sunshine Coast",
   ],
 });
 
@@ -48,7 +52,7 @@ export default function MaintenancePage() {
     <>
       <ServiceSchema
         name="Building Maintenance Sunshine Coast"
-        description="Commercial and body corporate building maintenance across the Sunshine Coast. Concrete repairs, roof restoration, leak detection, sign installation — IRATA rope access, QBCC licensed."
+        description="Commercial and body corporate building maintenance across the Sunshine Coast. Concrete repairs, roof restoration, leak detection, sign installation, IRATA rope access, QBCC licensed."
         image="https://www.ras-vertex.com.au/nav/maintenance.png"
         url="https://www.ras-vertex.com.au/maintenance"
         serviceType="Building Maintenance"
@@ -170,7 +174,7 @@ That knowledge comes from 25 years of showing up, and it’s what our partners r
               </>
             }
             paragraphs={[
-              "Our maintenance plans give you ongoing support across the year, with scheduled visits, condition checks and responsive maintenance when needed. The goal is simple, keep your building in good condition and stop small issues becoming bigger problems.",
+              "Our maintenance plans give you ongoing, preventative support across the year, with scheduled building maintenance visits, condition checks and responsive repairs when needed. The goal is simple, keep your building in good condition and stop small issues becoming bigger problems.",
             ]}
             headingId="maintenance-plans-intro-heading"
             stacked

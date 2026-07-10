@@ -160,7 +160,7 @@ export default async function ArticlePage({
 
       <main aria-label={post.title}>
         {/* ── Hero: text left / cover image right ── */}
-        <header className={`px-10 pt-10 ${styles.heroSection}`}>
+        <header className={`px-5 md:px-10 pt-10 ${styles.heroSection}`}>
           <div className={styles.articleHero}>
             {/* Left — meta + title + excerpt + author */}
             <div className={styles.articleHeader}>
@@ -201,7 +201,7 @@ export default async function ArticlePage({
 
         {/* ── Article body ── */}
         <article
-          className={`px-10 pt-20 pb-20 ${styles.articleBody}`}
+          className={`px-5 md:px-10 py-10 md:py-20 ${styles.articleBody}`}
           aria-label="Article content"
         >
           <div className={styles.prose}>
@@ -229,11 +229,27 @@ export default async function ArticlePage({
 
         {/* ── Related posts ── */}
         {related.length > 0 && (
-          <section className="px-10 pb-20" aria-labelledby="related-heading">
+          <section className="px-5 md:px-10 pb-10 md:pb-20" aria-labelledby="related-heading">
             <div className={styles.relatedHeader}>
               <h2 id="related-heading">More from the blog</h2>
               <Link href="/blog" className={styles.allLink}>
                 All articles
+                <svg
+                  className={styles.allLinkArrow}
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
             </div>
             <div className={styles.relatedGrid}>

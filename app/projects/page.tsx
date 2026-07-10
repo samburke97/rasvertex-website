@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "RAS-VERTEX — Our Projects",
     description:
-      "Projects across the Sunshine Coast — body corporate, commercial, strata, and industrial.",
+      "Projects across the Sunshine Coast, spanning body corporate, commercial, strata, and industrial work.",
     url: "https://www.ras-vertex.com.au/projects",
     siteName: "RAS-VERTEX",
     type: "website",
@@ -24,10 +24,10 @@ export default function ProjectsPage() {
   return (
     <main aria-label="RAS-VERTEX project showcase">
 
-      <section className="pt-20">
+      <section className="pt-10">
         <ServiceHero
           heading={<>25 years of work.<br />Across the Coast.</>}
-          lede="The RAS-VERTEX team is proud to work alongside hundreds of Sunshine Coast-based businesses, and here's a small handful of our painting, cleaning, maintenance, waterproofing, and height safety projects."
+          lede="The RAS-VERTEX team is proud to work alongside hundreds of Sunshine Coast-based businesses, and here's a small handful of our painting, cleaning, window cleaning, maintenance, waterproofing, height safety and building inspection projects."
           headingId="projects-heading"
         />
       </section>

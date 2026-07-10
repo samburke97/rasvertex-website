@@ -102,6 +102,15 @@
   background: var(--navy-dark);
 }
 
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
 /* ─── Person card — replaces the plain CTA when personName is set ── */
 .personCard {
   display: flex;

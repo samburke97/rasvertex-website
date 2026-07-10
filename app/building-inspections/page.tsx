@@ -4,19 +4,20 @@ import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
-import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
-import { cld } from "../lib/cloudinary";
+import { cld, cldVideo } from "../lib/cloudinary";
 import InspectionHotspots from "../components/shared/InspectionHotspots";
+import InspectionProcess from "../components/shared/InspectionProcess";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
 import {
   HERO_SLIDES,
   SERVICES,
+  SERVICE_STEPS,
   FAQS,
   FAQ_CONTACT,
   INSPECTION_HOTSPOTS,
@@ -40,6 +41,10 @@ export const metadata = generatePageMetadata({
     "10 year maintenance plan Sunshine Coast",
     "concrete inspection Sunshine Coast",
     "facade condition report Sunshine Coast",
+    "commercial building inspections Sunshine Coast",
+    "roof inspections Sunshine Coast",
+    "defect report Sunshine Coast",
+    "commercial property inspections Sunshine Coast",
   ],
 });
 
@@ -72,8 +77,8 @@ export default function BuildingInspectionsPage() {
         <ServiceHeroSplit
           heading={
             <>
-              Our Building inspections identify issues early, plan repairs
-              properly, and protect long-term asset value.
+              Our Sunshine Coast building inspections identify issues early,
+              plan repairs properly, and protect long-term asset value.
             </>
           }
           lede="Sunshine Coast based rope access facade inspections, thermal imaging and detailed condition reporting that give body corporates and property managers clear visibility over building condition and maintenance needs."
@@ -101,7 +106,7 @@ export default function BuildingInspectionsPage() {
               photo: HERO_SLIDES[3].src,
               alt: HERO_SLIDES[3].alt,
               title: "Reports built for your committee",
-              body: "Comprehensive condition reports that give committees clear direction for maintenance planning, budgeting and long-term cost control.",
+              body: "Comprehensive condition and defect reports that give committees clear direction for maintenance planning, budgeting and long-term cost control.",
             },
           ]}
           heading={
@@ -136,8 +141,8 @@ export default function BuildingInspectionsPage() {
         />
       </section>
 
-      <section className="px-5 md:px-10 py-10 md:py-20">
-        <ServiceAccordion
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="building-inspections-services-heading">
+        <InspectionProcess
           heading={
             <>
               What kind of inspection
@@ -145,11 +150,15 @@ export default function BuildingInspectionsPage() {
               are you looking for?
             </>
           }
-          paragraph="From pre-purchase reports to full facade condition assessments, we give body corporates the clarity they need to plan maintenance with confidence."
-          ariaLabel="What kind of building inspection are you looking for?"
-          services={SERVICES}
+          steps={SERVICE_STEPS}
+          image={{
+            src: cld("inspect", { width: 1200 }),
+            alt: "What kind of inspection are you looking for, RAS-VERTEX Sunshine Coast",
+          }}
+          compactHeading
           headingId="building-inspections-services-heading"
           ctaLabel="Not sure? Let's talk about it →"
+          ctaHref="/contact"
         />
       </section>
 
@@ -181,8 +190,8 @@ export default function BuildingInspectionsPage() {
             </>
           }
           intro="We combine drone surveys for full-facade coverage with IRATA rope access inspections that physically test the building at every level."
-          methodBody="Drones capture the full picture quickly. Rope access confirms what’s actually happening on the surface — touching, testing and verifying defects that cameras alone can’t validate."
-          video="/videos/drone.mp4"
+          methodBody="Drones capture the full picture quickly. Rope access confirms what’s actually happening on the surface, touching, testing and verifying defects that cameras alone can’t validate."
+          video={cldVideo("cleaning", { width: 1200 })}
           hotspots={INSPECTION_HOTSPOTS}
           headingId="hotspots-heading"
           ctaLabel="Book your drone inspection today →"

@@ -25,11 +25,17 @@ interface ServiceCarouselProps {
 
 const ArrowIcon = () => (
   <span className={styles.cardArrow} aria-hidden="true">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <svg
+      className={styles.cardArrowIcon}
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
       <path
-        d="M4.5 13.5L13.5 4.5M13.5 4.5H6.75M13.5 4.5V11.25"
+        d="M3 8h10M9 4l4 4-4 4"
         stroke="currentColor"
-        strokeWidth="1.75"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -78,7 +84,7 @@ export default function ServiceCarousel({
               <Link
                 key={i}
                 href={slide.href}
-                className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""} ${activeIdx === i ? styles.slideActive : ""}`}
+                className={`${styles.slide} ${i === 0 ? styles.slideNudge : i % 2 === 1 ? styles.slideDown : ""} ${activeIdx === i ? styles.slideActive : ""}`}
                 aria-label={`${slide.title} — learn more`}
                 onMouseEnter={() => setActiveIdx(i)}
               >

@@ -1,6 +1,7 @@
 // app/components/shared/InspectionProcess.tsx
 
 import type { IconType } from "react-icons";
+import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/Button";
 import styles from "./InspectionProcess.module.css";
@@ -57,12 +58,16 @@ export interface InspectionFinding {
 
 interface InspectionProcessProps {
   heading: React.ReactNode;
-  lede: string;
+  lede?: string;
   steps: InspectionStep[];
   findings?: InspectionFinding[];
   headingId?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /** Optional large sticky image shown above the heading in the left column */
+  image?: { src: string; alt: string };
+  /** Shrinks the heading to match ServiceCards' .listLeft sizing */
+  compactHeading?: boolean;
 }
 
 export default function InspectionProcess({
@@ -73,33 +78,49 @@ export default function InspectionProcess({
   headingId = "inspection-process-heading",
   ctaLabel,
   ctaHref = "/contact",
+  image,
+  compactHeading = false,
 }: InspectionProcessProps) {
+  const cta = ctaLabel && (
+    <Button as="link" href={ctaHref} variant="primary" className={styles.cta}>
+      {ctaLabel.slice(0, ctaLabel.lastIndexOf("→")).trimEnd()}
+      <svg
+        className={styles.ctaArrow}
+        width="14"
+        height="14"
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 8h10M9 4l4 4-4 4"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </Button>
+  );
+
   return (
     <section className={styles.section} aria-labelledby={headingId}>
       {/* ── Left + steps row ── */}
       <div className={styles.row}>
-        <div className={styles.left}>
+        <div className={`${styles.left} ${compactHeading ? styles.compact : ""}`}>
           <h2 id={headingId}>{heading}</h2>
-          <p className="p-soft">{lede}</p>
-          {ctaLabel && (
-            <Button as="link" href={ctaHref} variant="primary" className={styles.cta}>
-              {ctaLabel.slice(0, ctaLabel.lastIndexOf("→")).trimEnd()}
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Button>
+          {lede && <p className="p-soft">{lede}</p>}
+          {cta}
+          {image && (
+            <div className={styles.imageWrap}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className={styles.image}
+                sizes="(max-width: 860px) 100vw, 32vw"
+              />
+            </div>
           )}
         </div>
 

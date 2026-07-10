@@ -10,6 +10,12 @@ interface RopeAccessSectionLogo {
   alt: string;
 }
 
+export interface RopeAccessSectionGroup {
+  /** Optional h4 sub-heading rendered above this group's paragraphs */
+  heading?: string;
+  paragraphs: string[];
+}
+
 interface RopeAccessSectionProps {
   image?: string;
   imageAlt?: string;
@@ -19,6 +25,8 @@ interface RopeAccessSectionProps {
   headingId?: string;
   body?: ReactNode;
   paragraphs?: string[];
+  /** Groups of paragraphs, each with an optional h4 sub-heading. Takes priority over `paragraphs`/`body`. */
+  contentGroups?: RopeAccessSectionGroup[];
   ctaHref?: string;
   ctaLabel?: string;
   imageTagName?: string;
@@ -28,6 +36,8 @@ interface RopeAccessSectionProps {
   personRole?: string;
   personPhoto?: string;
   personCtaHeading?: string;
+  /** Renders the heading full-width above the image/text row instead of inline beside the image */
+  headingAbove?: boolean;
 }
 
 export default function RopeAccessSection({
@@ -47,8 +57,9 @@ export default function RopeAccessSection({
   headingId = "rope-access-heading",
   body,
   paragraphs = [
-    "For over 25 years, we've maintained buildings across the Sunshine Coast. From waterfront apartment towers and body corporate communities to schools, hotels, shopping centres and family homes, we've built our reputation by doing the job properly, every time. The products we specify, the people we employ and the way we manage every project are shaped by decades of local experience.",
+    "For over 25 years, we've maintained buildings across the Sunshine Coast. From waterfront apartment towers and body corporate communities to schools, hotels, shopping centres and family homes, we've built our reputation by doing the job properly, every time.",
   ],
+  contentGroups,
   ctaHref = "/contact",
   ctaLabel = "Get a free quote",
   logos,
@@ -56,6 +67,7 @@ export default function RopeAccessSection({
   personRole,
   personPhoto,
   personCtaHeading,
+  headingAbove = false,
 }: RopeAccessSectionProps) {
   const imageEl = (
     <div
@@ -84,8 +96,19 @@ export default function RopeAccessSection({
   const textEl = (
     <div className={styles.textCol}>
       <div className={styles.textBlock}>
-        <h2 id={headingId}>{heading}</h2>
-        {paragraphs ? (
+        {!headingAbove && <h2 id={headingId}>{heading}</h2>}
+        {contentGroups ? (
+          contentGroups.map((group, gi) => (
+            <div key={gi} className={styles.contentGroup}>
+              {group.heading && <h4>{group.heading}</h4>}
+              {group.paragraphs.map((p, i) => (
+                <p key={i} className="p-soft">
+                  {p}
+                </p>
+              ))}
+            </div>
+          ))
+        ) : paragraphs ? (
           paragraphs.map((p, i) => (
             <p key={i} className="p-soft">
               {p}
@@ -168,18 +191,25 @@ export default function RopeAccessSection({
   );
 
   return (
-    <section className={styles.section} aria-labelledby={headingId}>
-      {imagePosition === "left" ? (
-        <>
-          {imageEl}
-          {textEl}
-        </>
-      ) : (
-        <>
-          {textEl}
-          {imageEl}
-        </>
+    <div>
+      {headingAbove && (
+        <h2 id={headingId} className={styles.headingAbove}>
+          {heading}
+        </h2>
       )}
-    </section>
+      <section className={styles.section} aria-labelledby={headingId}>
+        {imagePosition === "left" ? (
+          <>
+            {imageEl}
+            {textEl}
+          </>
+        ) : (
+          <>
+            {textEl}
+            {imageEl}
+          </>
+        )}
+      </section>
+    </div>
   );
 }

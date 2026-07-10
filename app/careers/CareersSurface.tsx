@@ -1,9 +1,7 @@
 // app/careers/CareersSurface.tsx
 
-import Image from "next/image";
 import CareersForm from "./CareersForm";
 import styles from "./CareersSurface.module.css";
-import { cld } from "../lib/cloudinary";
 
 const BENEFITS = [
   "IRATA-funded progression",
@@ -16,27 +14,25 @@ const BENEFITS = [
 
 export default function CareersSurface() {
   return (
-    <div className={styles.surface}>
+    <div className={styles.card}>
+      {/* ── Left info column ── */}
+      <div className={styles.info}>
+        <h1 className={styles.heading}>
+          We hire good people for hard work in high places.
+        </h1>
+        <p className={styles.lede}>
+          We&rsquo;re a business built around rope access, and we invest
+          heavily in training, safety and long term career development for
+          people who take their trade seriously. Every person on our crew is
+          a direct employee, with no labour hire and no subbies.
+        </p>
 
-      {/* ── LEFT ── */}
-      <div className={styles.left}>
-        <header className={styles.header}>
-          <h1>Good people. Hard work. High places.</h1>
-          <p className="p-soft">
-            We&rsquo;re a rope-access-first business. We invest heavily in
-            training, safety and long-term career development for people who
-            take their trade seriously. Every person on our crew is a direct
-            employee — no labour hire, no subbies.
-          </p>
-        </header>
-
-        {/* Google rating badge — identical to ContactSurface */}
-        <div className={styles.ratingBadge}>
+        <div className={styles.rating}>
           <svg
             className={styles.googleIcon}
             viewBox="0 0 24 24"
-            width="32"
-            height="32"
+            width="28"
+            height="28"
             fill="var(--navy)"
             aria-hidden="true"
           >
@@ -52,8 +48,8 @@ export default function CareersSurface() {
                     key={i}
                     className={styles.star}
                     viewBox="0 0 24 24"
-                    width="15"
-                    height="15"
+                    width="14"
+                    height="14"
                     fill="var(--navy)"
                   >
                     <path d="M12 2.5l2.97 6.02 6.64.97-4.8 4.68 1.13 6.6L12 17.6l-5.94 3.17 1.13-6.6-4.8-4.68 6.64-.97L12 2.5z" />
@@ -63,17 +59,6 @@ export default function CareersSurface() {
             </div>
             <span className={styles.ratingCount}>Based on 50+ reviews</span>
           </div>
-        </div>
-
-        {/* Photo */}
-        <div className={styles.imageWrap} aria-hidden="true">
-          <Image
-            src={cld("team", { width: 1200 })}
-            alt="RAS-VERTEX crew on site — Sunshine Coast"
-            fill
-            className={styles.image}
-            sizes="(max-width: 860px) 100vw, 480px"
-          />
         </div>
 
         {/* Benefits checklist */}
@@ -102,11 +87,22 @@ export default function CareersSurface() {
         </ul>
       </div>
 
-      {/* ── RIGHT — burgundy form card ── */}
-      <div className={styles.right}>
+      {/* ── Middle form column ── */}
+      <div className={styles.formCol}>
         <CareersForm />
       </div>
 
+      {/* ── Right video column ── */}
+      <div className={styles.videoCol}>
+        <span className={styles.videoCaption}>RAS-VERTEX PROJECT FOOTAGE</span>
+        <video
+          className={styles.video}
+          src="/videos/racv.mp4"
+          controls
+          playsInline
+          aria-label="RAS-VERTEX project footage — RACV Noosa Resort"
+        />
+      </div>
     </div>
   );
 }

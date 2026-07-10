@@ -2,35 +2,35 @@
 
 import styles from "./HeroVariant.module.css";
 import ServiceCarousel from "./ServiceCarousel";
-import { cld } from "../../lib/cloudinary";
+import { cld, cldVideo } from "../../lib/cloudinary";
 
 const SERVICE_SLIDES = [
   {
-    src: "/videos/painting.mp4",
-    mediaType: "video" as const,
+    src: cld("painting", { width: 1200 }),
+    mediaType: "image" as const,
     alt: "Painting",
     title: "Painting",
     href: "/painting",
     industries: ["Commercial", "Body Corporate", "Residential"],
   },
   {
-    src: cld("nav-cleaning.png", { width: 1200 }),
-    mediaType: "image" as const,
+    src: cldVideo("cleaning", { width: 800 }),
+    mediaType: "video" as const,
     alt: "Building Cleaning",
     title: "Building Cleaning",
     href: "/external-cleaning",
     industries: ["Commercial", "Body Corporate"],
   },
   {
-    src: "/videos/cleaning.mp4",
-    mediaType: "video" as const,
+    src: cld("window-cleaning", { width: 1200 }),
+    mediaType: "image" as const,
     alt: "Window Cleaning",
     title: "Window Cleaning",
     href: "/window-cleaning",
     industries: ["Commercial", "Body Corporate", "Residential"],
   },
   {
-    src: cld("nav-waterproofing.png", { width: 1200 }),
+    src: cld("waterproofing", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Waterproofing",
     title: "Waterproofing",
@@ -38,7 +38,7 @@ const SERVICE_SLIDES = [
     industries: ["Commercial", "Body Corporate"],
   },
   {
-    src: cld("nav-maintenance.png", { width: 1200 }),
+    src: cld("maintenance", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Maintenance",
     title: "Maintenance",

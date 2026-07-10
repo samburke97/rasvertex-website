@@ -41,6 +41,16 @@ export const metadata = generatePageMetadata({
     "building repaint Sunshine Coast",
     "QBCC painter Sunshine Coast",
     "high rise painter Sunshine Coast",
+    "commercial painters Sunshine Coast",
+    "office painting Sunshine Coast",
+    "industrial painting Sunshine Coast",
+    "commercial repainting Sunshine Coast",
+    "high rise painters Sunshine Coast",
+    "high rise building painters",
+    "high rise repaint Sunshine Coast",
+    "high rise facade painting Sunshine Coast",
+    "high rise apartment painting Sunshine Coast",
+    "high rise strata painting",
   ],
 });
 
@@ -69,16 +79,15 @@ export default function CommercialPaintingPage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
+      <section className="pt-10">
         <ServiceHeroSplit
           heading={
             <>
-              Over 25 years delivering commercial painting for Sunshine Coast
-              councils, schools, hotels, shopping centres and commercial
-              property managers.
+              Commercial and high-rise painting on the Sunshine Coast, backed
+              by 25 years of experience.
             </>
           }
-          lede="From high-rise facade repaints to commercial rooftops, we combine IRATA-certified rope access, commercial-grade Dulux and Haymes coating systems, and meticulous surface preparation to deliver long-lasting results with minimal disruption to your business."
+          lede="From high rise facade repaints to commercial rooftops, we deliver commercial painting for councils, schools, hotels, shopping centres, and commercial property managers across the Sunshine Coast. Combining IRATA certified rope access, commercial grade Dulux and Haymes coating systems, and meticulous surface preparation, we deliver long lasting results with minimal disruption to your business."
           image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="commercial-painting-hero-heading"
           breadcrumb={{
@@ -108,7 +117,7 @@ export default function CommercialPaintingPage() {
               photo: HERO_SLIDES[3].src,
               alt: HERO_SLIDES[3].alt,
               title: "The right paint system for your building",
-              body: "Every project is engineered around the building, substrate, and exposure conditions — ensuring coatings are specified correctly for long-term durability and warranty compliance.",
+              body: "Every project is engineered around the building, substrate, and exposure conditions, ensuring coatings are specified correctly for long-term durability and warranty compliance.",
             },
           ]}
           heading={
@@ -117,7 +126,7 @@ export default function CommercialPaintingPage() {
               facilities teams rely on.
             </>
           }
-          ariaLabel="Commercial painters Sunshine Coast - why property managers choose RAS-VERTEX"
+          ariaLabel="Why property managers choose RAS-VERTEX for commercial painting on the Sunshine Coast"
           footerCtaLabel="Get a free quote →"
           footerCtaHref="/contact"
           display="list"
@@ -185,7 +194,7 @@ export default function CommercialPaintingPage() {
       </section>
 
       {/* ── How we run a commercial repaint ── */}
-      <section className="py-10 md:py-20" aria-labelledby="process-heading">
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="process-heading">
         <InspectionProcess
           heading={
             <>
@@ -213,7 +222,7 @@ export default function CommercialPaintingPage() {
           projectName="High-Rise Repaint"
           location="Mooloolaba, QLD"
           heading="12 storeys. 84 lots. Done in 10 weeks."
-          body="This Mooloolaba body corporate had been quoted 18 weeks by three other painters — all requiring full scaffold, all quoting the same generic Weathershield system. We mobilised with rope access, completed surface prep in two weeks, and painted the full facade zone by zone without closing the car park or displacing ground-floor tenants for a single day."
+          body="This Mooloolaba body corporate had been quoted 18 weeks by three other painters, all requiring full scaffold, all quoting the same generic Weathershield system. We mobilised with rope access, completed surface prep in two weeks, and painted the full facade zone by zone without closing the car park or displacing ground-floor tenants for a single day."
           quote="Other painters told us to expect two scaffolding installations and four months of disruption. RAS-VERTEX were done in ten weeks and the car park was never closed. The result is exactly what we presented to owners."
           quoteAuthor="Sarah Mitchell"
           quoteRole="Strata Manager, Mooloolaba"
@@ -232,7 +241,7 @@ export default function CommercialPaintingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="We've used RAS-VERTEX across three properties now. Same crew, same standard, same result every time — that consistency is rare in this industry."
+          quote="We've used RAS-VERTEX across three properties now. Same crew, same standard, same result every time, that consistency is rare in this industry."
           name="Michael Tran"
           role="Facilities Manager, Novotel Twin Waters"
           logoSrc="/partners/novotel.svg.png"

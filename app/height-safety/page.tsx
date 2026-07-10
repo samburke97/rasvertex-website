@@ -40,6 +40,9 @@ export const metadata = generatePageMetadata({
     "rope access height safety",
     "height safety recertification Maroochydore",
     "WHS compliance Sunshine Coast",
+    "commercial height safety Sunshine Coast",
+    "roof safety compliance Sunshine Coast",
+    "anchor point testing Sunshine Coast",
   ],
 });
 
@@ -132,7 +135,7 @@ export default function HeightSafetyPage() {
               Never lapsed.
             </>
           }
-          body="AS NZS 1891 requires height safety systems to be inspected and recertified every 12 months. We manage the full cycle for body corporates and commercial buildings across the Sunshine Coast, from inspections and testing through to certification and renewal."
+          body="AS NZS 1891 requires height safety systems to be inspected and recertified every 12 months. We manage the full cycle for body corporates and commercial buildings across the Sunshine Coast, from anchor point testing and inspections through to certification and renewal."
         />
       </section>
       <section className="px-5 md:px-10 py-10 md:py-20">

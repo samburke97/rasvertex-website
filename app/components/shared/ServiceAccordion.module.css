@@ -190,6 +190,7 @@
 .bottomCta {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   height: 48px;
   padding: 0 var(--space-xl);
   border-radius: var(--radius-xl);
@@ -204,6 +205,15 @@
 
 .bottomCta:hover {
   background: var(--navy-dark);
+}
+
+.bottomCtaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.bottomCta:hover .bottomCtaArrow {
+  transform: translateX(3px);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */

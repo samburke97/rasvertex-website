@@ -79,9 +79,22 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <span className={styles.serviceLabel}>
                       {servicesData[key].name}
                     </span>
-                    <span className={styles.arrow} aria-hidden="true">
-                      →
-                    </span>
+                    <svg
+                      className={styles.arrow}
+                      width="14"
+                      height="14"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </Link>
                 );
               })}
@@ -98,9 +111,22 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   onClick={onClose}
                 >
                   <span>{item.name}</span>
-                  <span className={styles.arrow} aria-hidden="true">
-                    →
-                  </span>
+                  <svg
+                    className={styles.arrow}
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </Link>
               ))}
             </div>
@@ -128,7 +154,23 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </div>
             </div>
             <Link href="/contact" className={styles.ctaBtn} onClick={onClose}>
-              Let's talk about your project →
+              Let's talk about your project
+              <svg
+                className={styles.ctaBtnArrow}
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </Link>
             <a href="tel:0731300226" className={styles.callBtn}>
               Call us

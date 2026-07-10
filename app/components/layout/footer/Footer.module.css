@@ -7,19 +7,8 @@
 
 /* ── Watermark ──────────────────────────────────────────────── */
 
-.watermark {
+.watermarkSpacing {
   margin-bottom: var(--space-lg);
-}
-
-.watermarkText {
-  font-family: var(--font-display);
-  font-size: 15vw;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  color: #eef0f5;
-  white-space: nowrap;
-  display: block;
-  margin-left: -0.05em;
 }
 
 /* ── Top row — services + CTA ───────────────────────────────── */
@@ -47,12 +36,14 @@
 
 .serviceLink {
   text-decoration: none;
-  color: var(--navy-65);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--h4-tracking);
+  color: var(--navy);
   transition: color var(--duration-fast) var(--ease-out);
 }
 
 .serviceLink:hover {
-  color: var(--navy);
+  color: var(--navy-65);
 }
 
 .footerLogo {
@@ -65,6 +56,7 @@
 .contactBtn {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   height: 40px;
   padding: 0 var(--space-lg);
   background: var(--navy);
@@ -81,6 +73,15 @@
 
 .contactBtn:hover {
   background: var(--navy-dark);
+}
+
+.contactBtnArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.contactBtn:hover .contactBtnArrow {
+  transform: translateX(3px);
 }
 
 /* ── Bottom bar ─────────────────────────────────────────────── */
@@ -139,13 +140,5 @@
     flex-direction: column;
     gap: var(--space-md);
     text-align: center;
-  }
-}
-
-@media (max-width: 560px) {
-  .watermarkText {
-    font-size: 21vw;
-    white-space: normal;
-    word-break: normal;
   }
 }

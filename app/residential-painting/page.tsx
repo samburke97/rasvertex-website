@@ -26,7 +26,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Residential Painters Sunshine Coast | House Painting",
   description:
-    "Trusted house painters on the Sunshine Coast. Exterior and interior residential painting, pre-sale refreshes and colour consulting. QBCC licensed, 5-year written warranty, commercial-grade paint systems.",
+    "Trusted house painters on the Sunshine Coast. Exterior and interior residential painting, pre-sale refreshes and colour consulting. QBCC licensed, 8-year written warranty, commercial-grade paint systems.",
   path: "/residential-painting",
   keywords: [
     "residential painters Sunshine Coast",
@@ -41,6 +41,7 @@ export const metadata = generatePageMetadata({
     "pre-sale painting Sunshine Coast",
     "QBCC painter residential Sunshine Coast",
     "house painter Sunshine Coast",
+    "repaint specialists Sunshine Coast",
   ],
 });
 
@@ -49,7 +50,7 @@ export default function ResidentialPaintingPage() {
     <>
       <ServiceSchema
         name="Residential Painting Sunshine Coast"
-        description="Trusted house painters on the Sunshine Coast. Exterior and interior residential painting, pre-sale refreshes and colour consulting. QBCC licensed, 5-year written warranty, commercial-grade paint systems."
+        description="Trusted house painters on the Sunshine Coast. Exterior and interior residential painting, pre-sale refreshes and colour consulting. QBCC licensed, 8-year written warranty, commercial-grade paint systems."
         image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
         url="https://www.ras-vertex.com.au/residential-painting"
         serviceType="Residential Painting"
@@ -70,7 +71,7 @@ export default function ResidentialPaintingPage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
+      <section className="pt-10">
         <ServiceHeroSplit
           heading={
             <>
@@ -78,7 +79,7 @@ export default function ResidentialPaintingPage() {
               better, lasts longer, and holds up in our coastal conditions.
             </>
           }
-          lede="Local and professional house painters delivering commercial-grade preparation and coating systems for long-lasting Sunshine Coast homes. QBCC licensed with a 5-year written workmanship warranty."
+          lede="Local and professional house painters delivering commercial-grade preparation and coating systems for long-lasting Sunshine Coast homes. QBCC licensed with an 8-year written workmanship warranty."
           image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="residential-painting-hero-heading"
           breadcrumb={{
@@ -101,8 +102,8 @@ export default function ResidentialPaintingPage() {
             {
               photo: HERO_SLIDES[2].src,
               alt: HERO_SLIDES[2].alt,
-              title: "A local in-house team you can trust",
-              body: "We’re Sunshine Coast locals with a fully employed home painting team, no subcontractors, delivering the same consistent standard of workmanship across every project.",
+              title: "Built around your schedule",
+              body: "Whether you're living in the home or preparing it for sale, we plan each stage of the project to minimise disruption while maintaining a high standard of workmanship.",
             },
             {
               photo: HERO_SLIDES[3].src,
@@ -132,7 +133,7 @@ export default function ResidentialPaintingPage() {
       >
         <WarrantyCard
           body="Every residential repaint is backed by a 8-year written workmanship warranty, issued at handover for complete peace of mind. Manufacturer warranties from Haymes and Dulux, up to 15 years on selected exterior systems, are also registered in your name for added protection and long-term confidence."
-          logosHeading="Backed by the best"
+          logosHeading="Backed by the best."
           logos={[
             {
               src: "/images/associations/haymes.svg",
@@ -168,7 +169,7 @@ export default function ResidentialPaintingPage() {
       </section>
 
       {/* ── How a residential repaint works ── */}
-      <section className="py-10 md:py-20" aria-labelledby="process-heading">
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="process-heading">
         <InspectionProcess
           heading="Your home, your vision. Professionally managed from start to finish."
           lede="Clear steps, ongoing support, and a structured process that ensures your home is delivered exactly as planned."
@@ -186,17 +187,12 @@ export default function ResidentialPaintingPage() {
         <ServiceBeforeAfter
           beforeSrc="/images/residential/residential-before.webp"
           afterSrc="/images/residential/residential-after.webp"
-          beforeAlt="Moffat Beach coastal home before exterior repaint — failed coating system"
+          beforeAlt="Moffat Beach coastal home before exterior repaint, failed coating system"
           afterAlt="Moffat Beach coastal home after 4-coat Haymes repaint by RAS-VERTEX"
           projectName="Residence Repaint"
           location="Moffat Beach, QLD"
           heading="Failed coating system. Four coats. Flawless finish."
           body="The previous coating system on this luxury coastal property had failed, leaving surfaces weathered and uneven. Our painters undertook extensive surface remediation, addressing peeling, cracking, and substrate damage, before applying a premium 4-coat Haymes paint system. The result? A flawless, weather-resistant finish that complements the architecture and lives up to the stunning ocean views."
-          quote="I'd had two painters quote on this before RAS-VERTEX. Both wanted to paint straight over the problem. Sam's team stripped it back properly and the result speaks for itself — two years on and it still looks like day one."
-          quoteAuthor="David Hartley"
-          quoteRole="Homeowner, Moffat Beach"
-          authorLogo="/partners/raywhite.png"
-          authorLogoAlt="Ray White Sunshine Coast"
           ctaHref="/work"
           ctaLabel="Our projects →"
           headingId="residential-before-after-heading"
@@ -210,7 +206,7 @@ export default function ResidentialPaintingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="From the first call to the final walkthrough, everything was exactly as promised. No surprises, no upsells — just a beautifully finished home and a five-year warranty in writing."
+          quote="From the first call to the final walkthrough, everything was exactly as promised. No surprises, no upsells, just a beautifully finished home and an eight-year warranty in writing."
           name="Emma Whitfield"
           role="Homeowner, Buderim"
           logoSrc=""
@@ -225,9 +221,9 @@ export default function ResidentialPaintingPage() {
           id="residential-painting-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          Beyond painting, we support every part of your home
+          Beyond painting, we support every part of your home,
           <br />
-          — explore our full range of services below.
+          explore our full range of services below.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/painting")}

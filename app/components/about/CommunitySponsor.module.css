@@ -12,8 +12,7 @@
   text-align: center;
   gap: var(--space-xl);
   padding: var(--space-5xl) 0;
-  max-width: 680px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .eyebrow {
@@ -50,7 +49,6 @@
   gap: var(--space-4xl);
   flex-wrap: wrap;
   width: 100%;
-  max-width: 860px;
 }
 
 .logoItem {

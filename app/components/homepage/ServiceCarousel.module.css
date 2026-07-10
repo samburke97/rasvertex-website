@@ -48,6 +48,10 @@
   margin-top: 14px;
 }
 
+.slideNudge {
+  margin-top: 6px;
+}
+
 .mediaWrap {
   position: absolute;
   inset: 0;
@@ -91,6 +95,15 @@
 .slide:hover .cardArrow {
   opacity: 1;
   transform: scale(1);
+}
+
+.cardArrowIcon {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.slide:hover .cardArrowIcon {
+  transform: translateX(3px);
 }
 
 .tag {
@@ -288,6 +301,9 @@
     flex: 0 0 80vw;
   }
   .slideDown {
+    margin-top: 0;
+  }
+  .slideNudge {
     margin-top: 0;
   }
 }

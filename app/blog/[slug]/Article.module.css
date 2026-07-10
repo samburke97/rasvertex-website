@@ -285,6 +285,9 @@
 }
 
 .allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-medium);
@@ -296,6 +299,15 @@
 
 .allLink:hover {
   opacity: 1;
+}
+
+.allLinkArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.allLink:hover .allLinkArrow {
+  transform: translateX(3px);
 }
 
 .relatedGrid {

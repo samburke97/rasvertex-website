@@ -10,66 +10,66 @@ import { cld } from "../lib/cloudinary";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    src: cld("c1", { width: 1600 }),
-    alt: "Painting project — Sunshine Coast",
+    src: cld("building-repaint", { width: 1600 }),
+    alt: "Commercial building repaint on the Sunshine Coast",
   },
   {
     src: cld("c2", { width: 1600 }),
-    alt: "Painting project — Sunshine Coast",
+    alt: "Painting contractors at work on the Sunshine Coast",
   },
   {
     src: cld("c3", { width: 1600 }),
-    alt: "Painting project — Sunshine Coast",
+    alt: "Exterior painting project on the Sunshine Coast",
   },
   {
     src: cld("c4", { width: 1600 }),
-    alt: "Painting project — Sunshine Coast",
+    alt: "Strata painting project underway on the Sunshine Coast",
   },
   {
     src: cld("c5", { width: 1600 }),
-    alt: "Painting project — Sunshine Coast",
+    alt: "Facade painting project on the Sunshine Coast",
   },
   {
     src: cld("c6", { width: 1600 }),
-    alt: "Painting project — Sunshine Coast",
+    alt: "Residential painting project on the Sunshine Coast",
   },
 ];
 
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Painting",
-    body: "Full exterior repaints for strata, commercial and residential buildings. Chloride rinse, salt-bonded primer and Dulux Weathershield systems as standard within 5km of the coast.",
+    body: "We carry out full exterior repaints for strata, commercial and residential buildings right across the Sunshine Coast. Anything within about five kilometres of the water gets a chloride rinse and a salt bonded primer before a drop of Dulux Weathershield goes anywhere near the wall, because that is what actually holds up against our salt air.",
     photo: cld("exterior", { width: 1800 }),
     href: "/contact",
   },
   {
     label: "Roof Coatings",
-    body: "Colorbond, tile and membrane re-coats. Heat-reflective coatings reduce internal building temps by up to 8°C — a measurable energy saving on commercial assets.",
+    body: "We recoat Colorbond, tile and membrane roofs all over the region, and where it makes sense we will apply a heat reflective coating that can bring internal temperatures down by as much as eight degrees. On a commercial building that adds up to a genuine energy saving over a full Queensland summer.",
     photo: cld("roof-coatings", { width: 1800 }),
     href: "/contact",
   },
 
   {
     label: "Rope Access Painting",
-    body: "IRATA L1–L3 certified technicians for high-rise and difficult-access facades. Faster mobilisation, no scaffolding cost, zero footprint on your site.",
+    body: "Our IRATA certified technicians, trained through levels one to three, work on high rise and difficult to reach facades without needing scaffolding at all. That means faster mobilisation, no scaffold hire bill, and barely any footprint on your site while the job is underway.",
     photo: cld("rope-access-painting", { width: 1800 }),
     href: "/contact",
   },
   {
     label: "Render & Texture",
-    body: "Acrylic, polymer and sand render systems. We repair cracks and substrate defects before coating — no bandaid finishes.",
+    body: "We work across acrylic, polymer and sand render systems, and we always repair cracks and substrate defects properly before any coating goes on top. A patch job over a damaged surface never lasts long, so that is simply not how we do it.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
   {
     label: "Strata & Body Corporate",
-    body: "Committee-ready proposals, staged scheduling around occupancy, resident communication handled end-to-end. Over 50 body corporate projects completed across the Sunshine Coast.",
+    body: "As body corporate painters trusted across the Sunshine Coast, we bring committees a proposal that is ready to approve, schedule the work in stages around residents, and manage every bit of communication from the first meeting to the final coat. We have now completed more than fifty strata repainting projects up and down the coast.",
     photo: cld("strata", { width: 1800 }),
     href: "/contact",
   },
   {
     label: "Colour Consulting",
-    body: "On-site sample blocks at no charge for projects over $25k. Full colour schedules and heritage-compliant palettes available.",
+    body: "For projects over $25k we will paint sample blocks on site at no charge, so you can see the actual colour in your actual light before committing to anything. We also put together full colour schedules and heritage compliant palettes whenever a project calls for it.",
     photo: cld("colour-consulting", { width: 1800 }),
     href: "/contact",
   },
@@ -78,28 +78,28 @@ export const SERVICES: AccordionService[] = [
 export const WHY_CHOOSE_US: ServiceCard[] = [
   {
     photo: cld("exterior", { width: 1800 }),
-    alt: "RAS-VERTEX project manager on a Sunshine Coast painting job site",
+    alt: "Project manager on a Sunshine Coast painting job site",
     title: "Dedicated project manager",
-    body: "One person runs your job from first site visit to warranty sign off. One number, one thread, so you always know exactly who to call.",
+    body: "One project manager runs your job from the very first site visit right through to warranty sign off, so you have got one number and one familiar face to deal with rather than a rotating cast of subcontractors.",
   },
   {
     photo: cld("rope-access-painting", { width: 1800 }),
-    alt: "IRATA certified rope access painting technician, RAS-VERTEX Sunshine Coast",
+    alt: "IRATA certified rope access painting technician on the Sunshine Coast",
     title: "IRATA certified access",
-    body: "Thirty plus rope access technicians trained in house to IRATA L1 to L3 reach what scaffold can't, faster, safer and without the setup cost.",
+    body: "We have trained more than thirty rope access technicians in house through IRATA levels one to three, and they reach parts of a building that scaffold simply cannot, faster, safer and without the setup cost eating into your budget.",
   },
   {
     photo: cld("avere-repaint", { width: 1800 }),
-    alt: "Coastal spec paint system applied to a Sunshine Coast high-rise, RAS-VERTEX",
+    alt: "Coastal spec paint system applied to a Sunshine Coast high rise building",
     title: "Coastal spec paint systems",
-    body: "Salt bonded primers, chloride rinse and elastomeric topcoats, every system matched to the substrate and the exposure your building actually faces.",
+    body: "We match salt bonded primers, chloride rinse treatments and elastomeric topcoats to whatever substrate and exposure your building is actually dealing with, rather than reaching for the same system regardless of how close it sits to the coast.",
   },
 ];
 
 export const BEFORE_AFTER_SPECS: BeforeAfterSpec[] = [
   {
     label: "Scope",
-    value: "Full exterior repaint · render & masonry · 4 storeys",
+    value: "Full exterior repaint · render and masonry · 4 storeys",
   },
   {
     label: "System",
@@ -111,60 +111,60 @@ export const BEFORE_AFTER_SPECS: BeforeAfterSpec[] = [
   },
   {
     label: "Warranty",
-    value: "5-yr workmanship · 15-yr manufacturer",
+    value: "8 year workmanship · 15 year manufacturer",
   },
 ];
 
 export const PROJECTS: ServiceProject[] = [
   {
     suburb: "Mooloolaba",
-    name: "Oceanfront High-Rise Repaint",
+    name: "Oceanfront High Rise Repaint",
     type: "Body Corporate · 8 storeys",
     system: "Dulux Weathershield · elastomeric topcoat",
     image: "/images/projects/1.jpeg",
-    alt: "Mooloolaba oceanfront high-rise repaint by RAS-VERTEX",
+    alt: "Oceanfront high rise repaint in Mooloolaba",
   },
   {
     suburb: "Coolum Beach",
     name: "Coolum Resort Exterior",
     type: "Commercial · resort complex",
-    system: "Haymes Sandtex · salt-bonded primer",
+    system: "Haymes Sandtex · salt bonded primer",
     image: "/images/projects/2.jpeg",
-    alt: "Coolum Resort exterior painting — RAS-VERTEX",
+    alt: "Coolum Resort exterior painting project",
   },
   {
     suburb: "Maroochydore",
     name: "CBD Office Tower",
     type: "Commercial · 12 storeys",
-    system: "Dulux AcraTex · render & texture coat",
+    system: "Dulux AcraTex · render and texture coat",
     image: "/images/projects/1.jpeg",
-    alt: "Maroochydore CBD office tower commercial painting by RAS-VERTEX",
+    alt: "Maroochydore CBD office tower commercial painting project",
   },
 ];
 
 export const CARDS: ServiceCard[] = [
   {
-    photo: cld("commercial-painting", { width: 1200 }),
-    alt: "Commercial painting — RAS-VERTEX Sunshine Coast",
+    photo: cld("commercial-painters", { width: 1200 }),
+    alt: "Commercial painting on the Sunshine Coast",
     title: "Commercial Painting",
-    body: "Twenty five years working across Sunshine Coast commercial and high-rise buildings has taught us that disruption has a real cost. Tenants, customers and operations can’t afford delays or inconsistent crews. We plan properly, show up when we say we will, and deliver painting that fits around how your site actually runs.",
+    body: "Twenty five years working across commercial and high rise buildings on the Sunshine Coast has taught us that disruption always carries a real cost, and that tenants, customers and daily operations cannot afford delays or inconsistent crews turning up unannounced. As commercial painters, we plan properly, show up when we say we will, and deliver work that fits around how your site actually runs.",
     cta: "Commercial painting",
     href: "/commercial-painting",
   },
   {
-    photo: cld("body-corp-painting", { width: 1200 }),
-    alt: "Body corporate and strata painting — RAS-VERTEX",
+    photo: cld("rope-access-painting", { width: 1200 }),
+    alt: "Body corporate and strata painting on the Sunshine Coast",
     title: "Body Corporate & Strata Painting",
-    body: "We’ve worked with strata committees long enough to know that painting projects rely on clear communication. Residents want clarity, committees want certainty, and no one wants surprises mid-project. We structure our work to keep everyone informed and the building running smoothly.",
+    body: "We have worked alongside strata committees long enough to know that a good painting project comes down to clear communication just as much as good paintwork. Residents want clarity, committees want certainty, and nobody wants surprises halfway through, so as strata painters we structure every job to keep everyone informed and the building running smoothly from the first meeting to the final coat.",
     cta: "Body corporate painting",
     href: "/body-corporate-painting",
   },
   {
     photo: cld("house-painting", { width: 1200 }),
-    alt: "Residential painting — RAS-VERTEX Sunshine Coast",
+    alt: "Residential painting on the Sunshine Coast",
     objectPosition: "top",
     title: "Residential Painting",
-    body: "Your home is one of your biggest investments, and on the Sunshine Coast it needs the right protection to stay looking its best over time. We prepare properly and use coating systems chosen for local coastal conditions, so the finish holds up and your home continues to look it's best.",
+    body: "Your home is probably one of the biggest investments you will ever make, and here on the Sunshine Coast it needs proper protection to stay looking its best through salt air, humidity and long stretches of UV exposure. As residential painters, we prepare every surface properly and choose coating systems suited to our coastal conditions, so the finish holds up for years rather than fading after one summer.",
     cta: "Residential painting",
     href: "/residential-painting",
   },
@@ -172,32 +172,24 @@ export const CARDS: ServiceCard[] = [
 
 export const FAQS: FAQItem[] = [
   {
-    q: "How long does a typical strata repaint take?",
-    a: "For a 4–5 storey strata building, expect 5–8 weeks on-site for prep plus 2 coats. We work in zones so residents only see scaffolding or rope access on their face for a week at most.",
+    q: "How much does painting cost on the Sunshine Coast?",
+    a: "Cost depends on the type of project, whether that is a residential repaint, a commercial building or a full body corporate program, plus the size, substrate and access required. As commercial and residential painters across the Sunshine Coast, we provide a fully itemised written quote with no lump sums and no hidden extras, so you know exactly what you are paying for before any work begins.",
   },
   {
-    q: "Can you paint while the building stays occupied?",
-    a: "Yes — almost all our strata and commercial work is done in occupied buildings. We schedule noisy or disruptive work outside business hours and notify residents at least 48 hours before we're on their level.",
+    q: "Do you handle both commercial and residential painting on the Sunshine Coast?",
+    a: "Yes. We work as commercial painters for offices, retail centres and industrial sites, as residential painters for homes across the Sunshine Coast, and as body corporate painters for strata buildings of any height. Every project gets the same standard of surface preparation and coastal spec coating systems, whatever the scale.",
   },
   {
-    q: "What's covered by the 5-year warranty?",
-    a: "All workmanship — adhesion failure, peeling, blistering, or any defect caused by application. It doesn't cover damage from substrate movement, flooding, or impact. Manufacturer warranties (up to 15 years) run separately and are lodged at product level.",
+    q: "Can you paint while a building or home stays occupied?",
+    a: "Yes, almost all of our commercial, strata and residential painting happens while the property stays fully occupied. We schedule anything noisy or disruptive outside business hours, work zone by zone on larger buildings, and give residents or tenants advance notice before we are working on their section.",
   },
   {
-    q: "Do you do pre-sale painting?",
-    a: "Yes. We do interior and exterior refreshes for agents and vendors. Most jobs turn around in 5–10 business days. We can work around open homes and settlement dates.",
+    q: "Do you use rope access or scaffolding for high rise painting?",
+    a: "Both, depending on the job. Our crew is IRATA certified in house through levels one to three, and we partner with scaffolders on projects where access needs to be staged differently. On most high rise repaints, rope access saves somewhere between 40 and 60 percent compared to scaffolding alone.",
   },
   {
-    q: "Do you provide colour consulting?",
-    a: "Yes — we do on-site sample blocks at no charge for projects over $25k. Most body corporates use the process to socialise colour with their committee before committing.",
-  },
-  {
-    q: "Do you use rope access or scaffold?",
-    a: "Both. We're IRATA L1–L3 in-house and partner with scaffolders for jobs where access is staged. Rope access typically saves 40–60% vs scaffolding on high-rise repaints.",
-  },
-  {
-    q: "Are you QBCC licensed and insured?",
-    a: "QBCC licensed, $20M public liability, full workers' comp. Certificates of currency are auto-issued through ROCO at quote stage.",
+    q: "Are you QBCC licensed and insured for painting work on the Sunshine Coast?",
+    a: "Yes, we are fully QBCC licensed, carry $20 million in public liability cover and maintain full workers compensation insurance. Every project is backed by a written workmanship warranty, and certificates of currency are issued automatically at quote stage, so you have everything you need on file from day one.",
   },
 ];
 

@@ -1,7 +1,6 @@
 /* app/components/shared/InspectionProcess.module.css */
 
 .section {
-  padding: 0 var(--space-x);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -18,14 +17,54 @@
   flex: 0 0 32%;
   position: sticky;
   top: calc(var(--header-height) + var(--space-xl));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.imageWrap {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
 }
 
 .left h2 {
-  margin-bottom: var(--space-title-to-body);
+  margin-bottom: 0;
+}
+
+.left p {
+  margin: 0;
+}
+
+/* Opt-in via the `compactHeading` prop — matches ServiceCards'
+   .listLeft sizing and width exactly, so the same font-size actually
+   fits the same way it does there. Only applied where explicitly
+   requested so the "how it works" PROCESS_STEPS pages are untouched. */
+.compact {
+  flex-basis: 44%;
+}
+
+.compact h2 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
 }
 
 .cta {
-  margin-top: var(--space-xl);
+  margin-top: 0;
+}
+
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
 }
 
 /* ── Right — scrolling steps ────────────────────────────────── */
@@ -211,10 +250,6 @@
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .section {
-    padding: 0 var(--space-x-sm);
-  }
-
   .left {
     flex: 0 0 36%;
   }
@@ -228,15 +263,31 @@
   .row {
     flex-direction: column;
     gap: var(--space-3xl);
-    padding: 0 var(--space-x-xs);
   }
 
   .left {
-    position: static;
-    flex: 1 1 auto;
+    display: contents;
+  }
+
+  .left h2 {
+    order: 2;
+  }
+
+  .left p {
+    order: 2;
+  }
+
+  .imageWrap {
+    order: 1;
+    aspect-ratio: 4 / 3;
+  }
+
+  .cta {
+    order: 4;
   }
 
   .steps {
+    order: 3;
     max-width: none;
     margin-left: 0;
   }
@@ -247,10 +298,6 @@
 }
 
 @media (max-width: 560px) {
-  .section {
-    padding: 0 var(--space-x-2xs);
-  }
-
   .findsGrid {
     grid-template-columns: 1fr;
   }

@@ -107,11 +107,24 @@
 }
 
 .readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-semibold);
   color: var(--navy);
   text-decoration: none;
+}
+
+.readMoreArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.featuredCard:hover .readMoreArrow,
+.readMore:hover .readMoreArrow {
+  transform: translateX(3px);
 }
 
 /* ─── Grid cards ─────────────────────────────────────────────── */

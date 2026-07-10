@@ -43,7 +43,7 @@ export default function Home() {
           stat="100%"
           statLabel={"Fully\nEmployed"}
           heading="Local projects, Local team."
-          body="We chose to build our own team instead of relying on subcontractors. Our painters, rope access technicians, waterproofers, cleaners and height safety specialists work together every day under the same systems, safety standards and expectations. It’s a simpler way to deliver consistent quality, and it’s how we believe property maintenance should be done."
+          body="We chose to build our own team instead of relying on subcontractors. Our painters, rope access technicians, waterproofers, cleaners and height safety specialists work together every day under the same systems, safety standards and expectations. It’s a simpler way to deliver consistent quality, and it's the kind of accountability that comes from being your neighbour."
         />
       </section>
       <section className="px-5 md:px-10 py-10 md:py-20">
@@ -64,18 +64,36 @@ export default function Home() {
           ariaLabel="Why building managers choose RAS-VERTEX"
           footerCtaLabel="Get a free quote →"
           footerCtaHref="/contact"
-          display="grid"
+          display="list"
+          eyebrow=""
           variant="white"
+          footerLogosHeading="Fully Qualified"
+          footerLogos={[
+            {
+              src: "/images/associations/qbcc.png",
+              alt: "QBCC",
+            },
+            {
+              src: "/images/associations/smartstrata.png",
+              alt: "Smart Strata",
+            },
+            {
+              src: "/images/associations/work-cover.svg",
+              alt: "WorkCover Queensland",
+              width: 120,
+              height: 80,
+            },
+          ]}
         />
       </section>
       <section
-        className="px-5 md:px-10 pt-5 md:pt-10 pb-10 md:pb-20"
+        className="px-5 md:px-10 pt-20 md:pt-10 pb-10 md:pb-20"
         aria-label="Client testimonials"
       >
         <TestimonialsSection />
       </section>
       <section className="pb-10" aria-labelledby="projects-heading">
-        <h2 id="projects-heading" className=" pb-10">
+        <h2 id="projects-heading" className="px-5 md:px-10 pb-10">
           Our Projects
         </h2>
         <PhotoCarousel
@@ -101,9 +119,10 @@ export default function Home() {
           showPhoto={false}
           showContactGrid={false}
           showGoogleRating={false}
+          showVideo
           trustGroups={[
             {
-              heading: "5 Year warranty as standard",
+              heading: "8 Year warranty as standard",
               logos: [
                 {
                   src: "/images/associations/dulux.svg",
@@ -120,37 +139,11 @@ export default function Home() {
                   displayHeight: 38,
                 },
                 {
-                  src: "/images/associations/sika.webp",
+                  src: "/images/associations/sika.png",
                   alt: "Sika",
-                  width: 1024,
-                  height: 1024,
+                  width: 2215,
+                  height: 1924,
                   displayHeight: 46,
-                },
-              ],
-            },
-            {
-              heading: "Fully Qualified",
-              logos: [
-                {
-                  src: "/images/associations/qbcc.png",
-                  alt: "QBCC",
-                  width: 1610,
-                  height: 1418,
-                  displayHeight: 42,
-                },
-                {
-                  src: "/images/associations/work-cover.svg",
-                  alt: "WorkCover Queensland",
-                  width: 287,
-                  height: 85,
-                  displayHeight: 30,
-                },
-                {
-                  src: "/images/associations/smartstrata.png",
-                  alt: "Smart Strata",
-                  width: 2987,
-                  height: 492,
-                  displayHeight: 26,
                 },
               ],
             },

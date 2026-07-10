@@ -59,6 +59,7 @@ interface ContactSurfaceProps {
   showPhoto?: boolean;
   showContactGrid?: boolean;
   showGoogleRating?: boolean;
+  showVideo?: boolean;
   trustGroups?: ContactSurfaceTrustGroup[];
 }
 
@@ -75,6 +76,7 @@ export default function ContactSurface({
   showPhoto = true,
   showGoogleRating = true,
   showContactGrid = true,
+  showVideo = false,
   trustGroups,
 }: ContactSurfaceProps) {
   const HeadingTag = headingLevel;
@@ -261,13 +263,13 @@ export default function ContactSurface({
         {showContactGrid && (
           <div className={styles.contactGrid}>
             <div className={styles.contactBox}>
-              <span className={styles.contactLabel}>CALL US</span>
+              <h4 className={styles.contactLabel}>Call Us</h4>
               <a href="tel:0753710201" className={styles.contactValueLink}>
                 (07) 5371 0201
               </a>
             </div>
             <div className={styles.contactBox}>
-              <span className={styles.contactLabel}>EMAIL</span>
+              <h4 className={styles.contactLabel}>Email</h4>
               <a
                 href="mailto:team@rasvertex.com.au"
                 className={styles.contactValueLink}
@@ -276,11 +278,11 @@ export default function ContactSurface({
               </a>
             </div>
             <div className={styles.contactBox}>
-              <span className={styles.contactLabel}>HOURS</span>
+              <h4 className={styles.contactLabel}>Hours</h4>
               <span className={styles.contactValue}>Mon–Fri, 7am–5pm</span>
             </div>
             <div className={styles.contactBox}>
-              <span className={styles.contactLabel}>VISIT US</span>
+              <h4 className={styles.contactLabel}>Visit Us</h4>
               <span className={styles.contactValue}>
                 1–3 Kessling Avenue, Kunda Park QLD 4556
               </span>
@@ -358,7 +360,7 @@ export default function ContactSurface({
                 </div>
               </div>
 
-              <h2>{STEP_LABELS[step]}</h2>
+              <h2 className={styles.stepTitle}>{STEP_LABELS[step]}</h2>
 
               {step === 1 && (
                 <p className={styles.stepHint}>(Select all that apply)</p>
@@ -689,6 +691,20 @@ export default function ContactSurface({
           )}
         </div>
       </div>
+
+      {/* ── VIDEO ── */}
+      {showVideo && (
+        <div className={styles.videoCol}>
+          <span className={styles.videoCaption}>RAS-VERTEX PROJECT FOOTAGE</span>
+          <video
+            className={styles.video}
+            src="/videos/racv.mp4"
+            controls
+            playsInline
+            aria-label="RAS-VERTEX project footage — RACV Noosa Resort"
+          />
+        </div>
+      )}
     </div>
   );
 }

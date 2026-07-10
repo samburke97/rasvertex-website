@@ -8,6 +8,12 @@ import styles from "./CareersForm.module.css";
 
 type Step = 1 | 2 | 3;
 
+const STEPS: { n: Step; label: string }[] = [
+  { n: 1, label: "Skillset" },
+  { n: 2, label: "Qualifications" },
+  { n: 3, label: "Your Details" },
+];
+
 const SKILLSETS = [
   "Painting",
   "Exterior cleaning",
@@ -19,12 +25,6 @@ const SKILLSETS = [
 const EXPERIENCE_OPTIONS = ["1 year", "2 years", "3–5 years", "5+ years"];
 
 const IRATA_LEVELS = ["Level 1", "Level 2", "Level 3"];
-
-const STEP_LABELS: Record<Step, string> = {
-  1: "What's your skillset?",
-  2: "What are your qualifications?",
-  3: "How do we reach you?",
-};
 
 export default function CareersForm() {
   const [step, setStep] = useState<Step>(1);
@@ -39,7 +39,6 @@ export default function CareersForm() {
     irata: "",
     irataLevel: "",
     rightToWork: "",
-    visaType: "",
     driversLicence: "",
     whiteCard: "",
     otherQual: "",
@@ -150,29 +149,29 @@ export default function CareersForm() {
             />
           </div>
 
-          {/* Progress */}
-          <div className={styles.progress}>
-            <span className={styles.progressLabel}>
-              {step} <span className={styles.progressOf}>/ 3</span>
-            </span>
-            <div
-              className={styles.progressTrack}
-              role="progressbar"
-              aria-label={`Step ${step} of 3`}
-              aria-valuenow={step}
-              aria-valuemin={1}
-              aria-valuemax={3}
-            >
-              {([1, 2, 3] as Step[]).map((s) => (
-                <div
-                  key={s}
-                  className={`${styles.progressSegment} ${s <= step ? styles.progressSegmentActive : ""}`}
-                />
-              ))}
-            </div>
+          {/* Step tabs */}
+          <div
+            className={styles.steps}
+            role="tablist"
+            aria-label="Job application steps"
+          >
+            {STEPS.map((s) => (
+              <button
+                key={s.n}
+                type="button"
+                role="tab"
+                aria-selected={step === s.n}
+                disabled={s.n > step}
+                onClick={() => s.n < step && setStep(s.n)}
+                className={`${styles.stepTab} ${step === s.n ? styles.stepTabActive : ""}`}
+              >
+                <span className={styles.stepNum}>
+                  {String(s.n).padStart(2, "0")}
+                </span>
+                <span className={styles.stepLabel}>{s.label}</span>
+              </button>
+            ))}
           </div>
-
-          <h2>{STEP_LABELS[step]}</h2>
 
           {step === 1 && (
             <p className={styles.stepHint}>(Select all that apply)</p>
@@ -186,7 +185,9 @@ export default function CareersForm() {
                   className={styles.fieldset}
                   aria-label="Skillset selection"
                 >
-                  <legend className="sr-only">What&apos;s your skillset?</legend>
+                  <legend className={styles.fieldLabel}>
+                    What&apos;s your skillset?
+                  </legend>
                   <div className={styles.pills}>
                     {SKILLSETS.map((s) => (
                       <button
@@ -229,7 +230,6 @@ export default function CareersForm() {
             {/* Step 2 — qualifications */}
             {step === 2 && (
               <div className={styles.fields}>
-                {/* IRATA yes/no */}
                 <div className={styles.field}>
                   <span className={styles.fieldLabel}>
                     Do you hold an IRATA cert?
@@ -254,7 +254,6 @@ export default function CareersForm() {
                   </div>
                 </div>
 
-                {/* IRATA level — only when Yes */}
                 {form.irata === "Yes" && (
                   <div className={styles.field}>
                     <span className={styles.fieldLabel}>IRATA level</span>
@@ -275,7 +274,6 @@ export default function CareersForm() {
                   </div>
                 )}
 
-                {/* Right to work */}
                 <div className={styles.field}>
                   <span className={styles.fieldLabel}>
                     Right to work in Australia
@@ -297,7 +295,6 @@ export default function CareersForm() {
                   </div>
                 </div>
 
-                {/* Driver's licence */}
                 <div className={styles.field}>
                   <span className={styles.fieldLabel}>
                     Current driver&apos;s licence
@@ -319,7 +316,6 @@ export default function CareersForm() {
                   </div>
                 </div>
 
-                {/* White Card */}
                 <div className={styles.field}>
                   <span className={styles.fieldLabel}>
                     Do you have a White Card?
@@ -341,20 +337,18 @@ export default function CareersForm() {
                   </div>
                 </div>
 
-                {/* Other qualifications */}
-                <div className={styles.field}>
-                  <label htmlFor="otherQual" className={styles.fieldLabel}>
-                    Any other qualifications to note?
-                  </label>
+                <label className={styles.fieldBox}>
+                  <span className={styles.fieldBoxLabel}>
+                    Any other qualifications to note?{" "}
+                    <span className={styles.optional}>(optional)</span>
+                  </span>
                   <input
-                    id="otherQual"
-                    type="text"
                     className={styles.input}
                     value={form.otherQual}
                     onChange={(e) => set("otherQual", e.target.value)}
                     maxLength={500}
                   />
-                </div>
+                </label>
               </div>
             )}
 
@@ -362,72 +356,47 @@ export default function CareersForm() {
             {step === 3 && (
               <div className={styles.fields}>
                 <div className={styles.fieldRow}>
-                  <div className={styles.field}>
-                    <label htmlFor="careersName" className={styles.fieldLabel}>
-                      Full name
-                      <span className={styles.required} aria-hidden="true">
-                        {" "}
-                        *
-                      </span>
-                    </label>
+                  <label className={styles.fieldBox}>
+                    <span className={styles.fieldBoxLabel}>Full Name*</span>
                     <input
-                      id="careersName"
-                      type="text"
-                      required
                       className={styles.input}
                       value={form.name}
                       onChange={(e) => set("name", e.target.value)}
                       autoComplete="name"
                       maxLength={100}
                     />
-                  </div>
-                  <div className={styles.field}>
-                    <label htmlFor="careersPhone" className={styles.fieldLabel}>
-                      Phone
-                      <span className={styles.required} aria-hidden="true">
-                        {" "}
-                        *
-                      </span>
-                    </label>
+                  </label>
+                  <label className={styles.fieldBox}>
+                    <span className={styles.fieldBoxLabel}>Phone*</span>
                     <input
-                      id="careersPhone"
                       type="tel"
-                      required
                       className={styles.input}
                       value={form.phone}
                       onChange={(e) => set("phone", e.target.value)}
                       autoComplete="tel"
                       maxLength={20}
                     />
-                  </div>
+                  </label>
                 </div>
 
-                <div className={styles.field}>
-                  <label htmlFor="careersEmail" className={styles.fieldLabel}>
-                    Email
-                    <span className={styles.required} aria-hidden="true">
-                      {" "}
-                      *
-                    </span>
-                  </label>
+                <label className={styles.fieldBox}>
+                  <span className={styles.fieldBoxLabel}>E-mail*</span>
                   <input
-                    id="careersEmail"
                     type="email"
-                    required
                     className={styles.input}
                     value={form.email}
                     onChange={(e) => set("email", e.target.value)}
                     autoComplete="email"
                     maxLength={254}
                   />
-                </div>
+                </label>
 
                 {/* Resume upload */}
                 <div className={styles.field}>
-                  <label className={styles.fieldLabel}>
+                  <span className={styles.fieldLabel}>
                     Resume / CV
                     <span className={styles.required} aria-hidden="true"> *</span>
-                  </label>
+                  </span>
                   <input
                     ref={fileInputRef}
                     type="file"
@@ -485,68 +454,46 @@ export default function CareersForm() {
                   )}
                 </div>
 
-                <div className={styles.field}>
-                  <label htmlFor="careersMessage" className={styles.fieldLabel}>
+                <label className={styles.fieldBox}>
+                  <span className={styles.fieldBoxLabel}>
                     Anything else{" "}
                     <span className={styles.optional}>(optional)</span>
-                  </label>
+                  </span>
                   <textarea
-                    id="careersMessage"
                     className={styles.textarea}
-                    rows={1}
+                    rows={3}
                     value={form.message}
                     onChange={(e) => set("message", e.target.value)}
-                    onInput={(e) => {
-                      const t = e.currentTarget;
-                      t.style.height = "auto";
-                      t.style.height = `${t.scrollHeight}px`;
-                    }}
-                    style={{ overflow: "hidden" }}
                     maxLength={1500}
                   />
-                </div>
+                </label>
               </div>
             )}
           </div>
 
-          {/* Footer */}
           <div className={styles.formFooter}>
-            {step > 1 ? (
-              <Button
-                as="button"
-                variant="ghost"
-                size="md"
+            {step > 1 && (
+              <button
+                type="button"
+                className={styles.backBtn}
                 onClick={() => setStep((s) => (s - 1) as Step)}
                 aria-label="Go back to previous step"
               >
                 ← Back
-              </Button>
-            ) : (
-              <span />
+              </button>
             )}
-            {step < 3 ? (
-              <Button
-                as="button"
-                type="submit"
-                variant="primary"
-                size="md"
-                disabled={!canAdvance}
-                aria-label={`Continue to step ${step + 1}`}
-              >
-                Continue
-              </Button>
-            ) : (
-              <Button
-                as="button"
-                type="submit"
-                variant="primary"
-                size="md"
-                disabled={!canAdvance}
-                aria-label="Submit job application"
-              >
-                Send application
-              </Button>
-            )}
+            <Button
+              as="button"
+              type="submit"
+              variant="primary"
+              size="lg"
+              fullWidth
+              disabled={!canAdvance}
+              className={styles.nextBtn}
+              aria-label={step < 3 ? "Continue to next step" : "Submit job application"}
+            >
+              {step < 3 ? "Next →" : "Submit →"}
+            </Button>
           </div>
         </form>
       )}

@@ -47,7 +47,7 @@
 
 .number {
   font-family: var(--font-display);
-  font-size: clamp(44px, 5vw, 64px);
+  font-size: clamp(28px, 3vw, 40px);
   color: var(--navy);
   line-height: 1;
   margin-bottom: var(--space-sm);

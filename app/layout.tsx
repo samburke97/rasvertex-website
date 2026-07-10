@@ -35,12 +35,14 @@ const PRIMARY_KEYWORDS = [
   "commercial property maintenance Sunshine Coast",
   "building maintenance Brisbane",
   "commercial painting Sunshine Coast",
+  "residential painting Sunshine Coast",
   "high-rise window cleaning Queensland",
   "waterproofing services Sunshine Coast",
   "rope access services Brisbane",
   "body corporate maintenance",
   "commercial cleaning services",
   "height safety systems Queensland",
+  "building inspections Sunshine Coast",
 ];
 
 export const metadata: Metadata = {
@@ -89,7 +91,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "RAS-VERTEX | Commercial Property Maintenance Experts",
     description:
-      "Queensland's trusted commercial property maintenance experts. Professional painting, window and external cleaning, waterproofing & height safety services. 10+ years experience serving Sunshine Coast.",
+      "Queensland's trusted commercial property maintenance experts. Professional painting, window and external cleaning, waterproofing & height safety services. 25+ years experience serving the Sunshine Coast.",
     images: [
       {
         url: "/og-image.jpg", // 1200x630px recommended
@@ -102,7 +104,7 @@ export const metadata: Metadata = {
         url: "/og-image-square.jpg", // 1200x1200px for LinkedIn
         width: 1200,
         height: 1200,
-        alt: "RAS-VERTEX - 10 Years of Excellence",
+        alt: "RAS-VERTEX, 25 Years of Excellence",
         type: "image/jpeg",
       },
     ],
@@ -187,7 +189,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" dir="ltr" className={`${inter.variable} ${bebasNeue.variable}`}>
+    <html
+      lang="en-AU"
+      dir="ltr"
+      className={`${inter.variable} ${bebasNeue.variable}`}
+    >
       <head>
         {/* Preconnect to Adobe Fonts */}
         <link

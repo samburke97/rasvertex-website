@@ -36,6 +36,25 @@
   gap: var(--space-sm);
 }
 
+/* Side-by-side only in the medium band — once .surface stacks below
+   1100px the left column gets full page width, so the two trust
+   groups have room to sit next to each other. Below 560px they go
+   back to stacked for narrow mobile screens. Above 1100px, .surface
+   splits into columns again and .left narrows, so keep them stacked
+   there too. The 220px flex-basis only makes sense here, since this
+   is the only band where .trustGroups runs as a row — applied at
+   other widths it sets a min-height instead of a min-width. */
+@media (min-width: 560px) and (max-width: 1100px) {
+  .trustGroups {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .trustGroup {
+    flex: 1 1 220px;
+  }
+}
+
 .trustGroupHeading {
   margin: 0;
 }
@@ -153,12 +172,14 @@
 }
 
 .contactLabel {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: var(--weight-regular);
-  letter-spacing: var(--nav-tracking);
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: var(--h4-size);
+  line-height: var(--h4-leading);
+  letter-spacing: var(--h4-tracking);
+  font-weight: var(--weight-bold);
+  text-transform: none;
   color: var(--navy);
+  margin: 0;
 }
 
 .contactValue,
@@ -189,11 +210,38 @@
   overflow: hidden;
 }
 
+/* ── Video column ──────────────────────────────────────────────── */
+.videoCol {
+  flex: 0 0 26%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  position: sticky;
+  top: var(--header-height, 72px);
+  align-self: flex-start;
+}
+
+.videoCaption {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  color: var(--navy-65);
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-2xl);
+  background: var(--navy);
+}
+
 .formWrap {
   padding: var(--space-4xl);
   display: flex;
   flex-direction: column;
-  min-height: 720px;
+  min-height: 800px;
 }
 
 .form {
@@ -265,7 +313,7 @@
   font-size: var(--p-sm-size);
   font-weight: var(--weight-regular);
   color: var(--navy-65);
-  margin: calc(-1 * var(--space-xl)) 0 0;
+  margin: calc(-1 * var(--space-md)) 0 0;
 }
 
 .stepBody {
@@ -281,7 +329,7 @@
   gap: var(--space-lg);
 }
 
-.fieldset legend {
+.fieldset legend:not(:global(.sr-only)) {
   margin: 0 0 var(--space-md) 0;
   padding: 0;
   width: 100%;
@@ -521,7 +569,7 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--space-lg);
-  min-height: 720px;
+  min-height: 800px;
 }
 
 .successLink {
@@ -531,23 +579,54 @@
   text-underline-offset: 3px;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .surface {
     flex-direction: column;
     gap: var(--space-3xl);
   }
 
-  .left {
+  /* `display: contents` drops .left/.right from the box model so their
+     children become direct flex items of .surface, letting us reorder
+     the form to sit right after the Google rating badge on mobile
+     without touching the sticky two-column desktop layout. */
+  .left,
+  .right {
+    display: contents;
+  }
+
+  .header {
+    order: 1;
+  }
+
+  .trustGroups {
+    order: 2;
+  }
+
+  .ratingBadge {
+    order: 3;
+  }
+
+  .formWrap {
+    order: 4;
+    min-height: 0;
+  }
+
+  .imageWrap {
+    order: 5;
+  }
+
+  .contactGrid {
+    order: 6;
+  }
+
+  .videoCol {
+    order: 7;
     flex: 1 1 auto;
     position: static;
   }
 
-  .right {
-    position: static;
-  }
-
-  .formWrap {
-    min-height: 0;
+  .video {
+    aspect-ratio: 16 / 9;
   }
 
   .success {

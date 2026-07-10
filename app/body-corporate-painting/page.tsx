@@ -14,6 +14,7 @@ import InspectionProcess from "../components/shared/InspectionProcess";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+import { cld } from "../lib/cloudinary";
 
 import {
   HERO_SLIDES,
@@ -26,7 +27,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Body Corporate Painting Sunshine Coast | Strata Specialists",
   description:
-    "Body corporate and strata painting specialists on the Sunshine Coast. IRATA rope access, coastal paint systems, 5-year written warranty, committee-ready proposals. QBCC licensed.",
+    "Body corporate and strata painting specialists on the Sunshine Coast. IRATA rope access, coastal paint systems, 8-year written warranty, committee-ready proposals. QBCC licensed.",
   path: "/body-corporate-painting",
   keywords: [
     "body corporate painting Sunshine Coast",
@@ -49,7 +50,7 @@ export default function BodyCorporatePaintingPage() {
     <>
       <ServiceSchema
         name="Body Corporate Painting Sunshine Coast"
-        description="Body corporate and strata painting specialists on the Sunshine Coast. IRATA rope access, coastal paint systems, 5-year written warranty, committee-ready proposals. QBCC licensed."
+        description="Body corporate and strata painting specialists on the Sunshine Coast. IRATA rope access, coastal paint systems, 8-year written warranty, committee-ready proposals. QBCC licensed."
         image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
         url="https://www.ras-vertex.com.au/body-corporate-painting"
         serviceType="Body Corporate Painting"
@@ -69,7 +70,7 @@ export default function BodyCorporatePaintingPage() {
         services={SERVICES}
       />
 
-      <section className="pt-20">
+      <section className="pt-10">
         <ServiceHeroSplit
           heading={
             <>
@@ -77,7 +78,7 @@ export default function BodyCorporatePaintingPage() {
               buildings.
             </>
           }
-          lede="Committee-ready proposals, zone-staged delivery, rope access with no car park disruption — and a 5-year written warranty lodged in ROCO at handover."
+          lede="Committee-ready proposals, zone-staged delivery, rope access with no car park disruption, and an 8-year written warranty issued at handover."
           image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="body-corporate-painting-hero-heading"
           breadcrumb={{
@@ -106,7 +107,7 @@ export default function BodyCorporatePaintingPage() {
             {
               photo: HERO_SLIDES[3].src,
               alt: HERO_SLIDES[3].alt,
-              title: "5-year warranty, lodged in ROCO",
+              title: "8-year warranty, issued in writing",
               body: "Every repaint is backed by a written workmanship warranty registered with your body corporate at handover.",
             },
           ]}
@@ -127,7 +128,7 @@ export default function BodyCorporatePaintingPage() {
 
       <section
         className="px-5 md:px-10 py-10 md:py-20"
-        aria-label="5-year warranty"
+        aria-label="8-year warranty"
       >
         <WarrantyCard
           stat="8"
@@ -186,7 +187,7 @@ export default function BodyCorporatePaintingPage() {
       </section>
 
       {/* ── How we run a strata repaint ── */}
-      <section className="py-10 md:py-20" aria-labelledby="process-heading">
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="process-heading">
         <InspectionProcess
           heading={
             <>
@@ -194,7 +195,7 @@ export default function BodyCorporatePaintingPage() {
               strata repaint.
             </>
           }
-          lede="Five stages from committee proposal to warranty handover — every stage documented, every resident informed, no scope surprises."
+          lede="Five stages from committee proposal to warranty handover, every stage documented, every resident informed, no scope surprises."
           steps={PROCESS_STEPS}
           headingId="process-heading"
           ctaLabel="Get a committee proposal →"
@@ -207,19 +208,14 @@ export default function BodyCorporatePaintingPage() {
         aria-labelledby="body-corporate-before-after-heading"
       >
         <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
-          beforeAlt="Mooloolaba strata building before exterior repaint — salt-damaged facade"
-          afterAlt="Mooloolaba strata building after exterior repaint by RAS-VERTEX"
-          projectName="Oceanfront Strata Repaint"
-          location="Mooloolaba, QLD"
-          heading="12 storeys. 84 lots. 10 weeks. Zero resident complaints."
-          body="This Mooloolaba body corporate had been quoted 18 weeks and full scaffold by three other painters. We presented to the committee with a rope access staging plan, a full colour schedule with on-site samples, and a resident communication pack. Approved at the first committee meeting. Completed in 10 weeks with the car park open throughout."
-          quote="We've had painters before who treated the committee like a formality. RAS-VERTEX presented to us properly, answered every question, and delivered exactly what they said they would. The building looks better than it did on day one of construction."
-          quoteAuthor="Patricia Chen"
-          quoteRole="Committee Chair, Mooloolaba"
-          authorLogo="/partners/sskb.svg"
-          authorLogoAlt="SSKB Strata Management"
+          beforeSrc={cld("springfield-before", { width: 1200 })}
+          afterSrc={cld("springfield-after", { width: 1200 })}
+          beforeAlt="Springfield Apartments Coolum Beach before exterior repaint, weathered coastal facade"
+          afterAlt="Springfield Apartments Coolum Beach after exterior repaint by RAS-VERTEX"
+          projectName="Springfield Apartments"
+          location="Coolum Beach, QLD"
+          heading="3 storeys. 4 buildings. 4 weeks. One incredible result."
+          body="This characterful Coolum Beach property had weathered its share of coastal conditions. Working meticulously around every curve, our team carefully restored the building to its former glory, a complete exterior transformation across all four buildings in just four weeks."
           ctaHref="/work"
           ctaLabel="Our projects →"
           headingId="body-corporate-before-after-heading"

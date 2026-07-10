@@ -6,6 +6,7 @@ import type { ServiceProject } from "../components/shared/ServiceProjects";
 import type { FAQItem, FAQContact } from "../components/shared/ServiceFAQ";
 import type { InspectionStep } from "../components/shared/InspectionProcess";
 import type { Credential } from "../components/shared/CredentialRows";
+import { cld } from "../lib/cloudinary";
 import {
   PiPresentation,
   PiMegaphone,
@@ -16,44 +17,50 @@ import {
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    src: "/images/projects/1.jpeg",
-    alt: "Body corporate high-rise repaint by RAS-VERTEX on the Sunshine Coast",
+    src: cld("body-corporate", { width: 1600 }),
+    alt: "Body corporate high rise repaint on the Sunshine Coast",
   },
   {
-    src: "/images/projects/2.jpeg",
-    alt: "Strata building exterior painting — RAS-VERTEX Sunshine Coast",
+    src: cld("zone-staged", { width: 1200 }),
+    alt: "Strata building exterior painting on the Sunshine Coast",
   },
   {
     src: "/nav/painting.png",
-    alt: "Body corporate painting program — Sunshine Coast",
+    alt: "Body corporate painting program on the Sunshine Coast",
   },
   {
-    src: "/nav/height.png",
-    alt: "IRATA rope access strata painting — Sunshine Coast",
+    src: cld("warranty", { width: 1200 }),
+    alt: "IRATA rope access strata painting on the Sunshine Coast",
   },
   {
     src: "/nav/maintenance.png",
-    alt: "Body corporate painting and maintenance — Sunshine Coast",
+    alt: "Body corporate painting and building maintenance on the Sunshine Coast",
   },
 ];
 
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Facade Repaints",
-    body: "Full exterior repaints for strata buildings of any height — render, masonry, concrete and cladding. Chloride rinse and salt-bonded primer as standard within 5km of the coast. Dulux Weathershield and Haymes Sandtex systems specified for the substrate and exposure, not picked off a price list.",
-    photo: "/images/projects/1.jpeg",
+    body: "We carry out full exterior repaints for strata buildings of any height, across render, masonry, concrete and cladding. Anything within five kilometres of the coast gets a chloride rinse and salt bonded primer as standard, with Dulux Weathershield and Haymes Sandtex systems specified to suit the actual substrate and exposure, not picked off a generic price list.",
+    photo: cld("exterior-facades", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Balcony & Soffit Painting",
-    body: "Balcony soffits, balustrades, ceilings and floor coatings. High-salt environments require different preparation and system selection on balconies — we treat every balcony as a coastal exposure, not an afterthought.",
-    photo: "/images/projects/1.jpeg",
+    body: "We paint balcony soffits, balustrades, ceilings and floor coatings, and high salt environments call for different preparation and system choices on balconies. We treat every balcony as its own coastal exposure rather than an afterthought tacked onto the main facade job.",
+    photo: cld("balcony-painting", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Roof Coatings",
-    body: "Colorbond, tile and concrete roof recoats for strata buildings. Pressure wash, moss and lichen treatment, primer and commercial-grade topcoat — the full system. Heat-reflective options available to reduce top-floor unit temperatures.",
-    photo: "/images/projects/1.jpeg",
+    body: "We recoat Colorbond, tile and concrete roofs on strata buildings, starting with a pressure wash and moss or lichen treatment before priming and finishing with a commercial grade topcoat. Heat reflective options are available too, which helps keep top floor units cooler.",
+    photo: cld("roof-coatings", { width: 1200 }),
+    href: "/contact",
+  },
+  {
+    label: "Maintenance Painting",
+    body: "Our ongoing maintenance painting plans catch wear before it turns into a full repaint, with touch ups to common areas, entries and high traffic zones on a schedule your committee can budget for, keeping the building presentable in between full repaint cycles.",
+    photo: cld("maintenance-painting", { width: 1200 }),
     href: "/contact",
   },
 ];
@@ -62,64 +69,64 @@ export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "01",
     title: "Committee Proposal",
-    body: "We present to your committee before anything is signed — scope, product schedule, staging plan, colour schedule, and resident communication strategy. Everything in plain language. We've done this enough times to know what committees need to approve a project.",
+    body: "We present to your committee before anything is signed, covering scope, product schedule, staging plan, colour schedule and resident communication strategy, all in plain language. We have done this enough times now to know exactly what a committee needs in order to approve a project.",
     deliverable: "Written proposal + colour schedule",
     icon: PiPresentation,
   },
   {
     n: "02",
     title: "Resident Communication",
-    body: "We handle all resident notifications — zone schedules, access requirements, noise windows and expected completion dates. Distributed via your building manager or directly through the committee. Residents know what's happening and when before we mobilise.",
+    body: "We handle every resident notification ourselves, covering zone schedules, access requirements, noise windows and expected completion dates, distributed through your building manager or directly via the committee. Residents know what is happening and when, well before we mobilise on site.",
     deliverable: "Resident communication pack",
     icon: PiMegaphone,
   },
   {
     n: "03",
     title: "Surface Preparation",
-    body: "High-pressure wash, mould treatment, crack repairs, sealant replacement and chloride rinse. Preparation determines how long the paint lasts — we spend more time here than most painters spend on the entire job. No substrate surprises surfaced mid-project.",
-    deliverable: "Prep completion sign-off",
+    body: "High pressure washing, mould treatment, crack repairs, sealant replacement and chloride rinse all happen before a single coat goes on. Preparation is what determines how long the paint actually lasts, so we spend more time here than most painters spend on the entire job, and it means no substrate surprises turning up mid project.",
+    deliverable: "Prep completion sign off",
     icon: PiHammer,
     links: [
-      { text: "High-pressure wash", href: "/external-cleaning" },
+      { text: "High pressure wash", href: "/external-cleaning" },
       { text: "crack repairs", href: "/maintenance" },
     ],
   },
   {
     n: "04",
-    title: "Zone-Staged Application",
-    body: "Painting in building zones so no face is disrupted for more than a week at a time. Car parks never fully closed. Rope access eliminates ground-level footprint. Daily progress photos sent to building manager or committee contact.",
+    title: "Zone Staged Application",
+    body: "We paint in building zones so no single face is disrupted for more than about a week at a time, and car parks are never fully closed. Rope access removes most of the ground level footprint, and daily progress photos go straight to your building manager or committee contact.",
     deliverable: "Daily progress photos",
     icon: PiPaintRoller,
   },
   {
     n: "05",
     title: "Handover & Warranty",
-    body: "Final walkthrough with your project manager. Full documentation package issued — warranty certificate, paint specifications, before/after photos, and maintenance recommendations. Formatted for your sinking fund and maintenance records.",
+    body: "We finish with a final walkthrough alongside your project manager and issue a full documentation package, warranty certificate, paint specifications, before and after photos, and maintenance recommendations, all formatted for your sinking fund and maintenance records.",
     icon: PiShieldCheck,
-    deliverable: "5-year warranty + documentation pack",
+    deliverable: "8 year warranty + documentation pack",
   },
 ];
 
 export const CREDENTIALS: Credential[] = [
   {
     n: "01",
-    title: "50+ body corporate projects on the Sunshine Coast.",
-    body: "We've been painting strata buildings on the Sunshine Coast for 25 years. We know how to communicate with committees, manage resident expectations, and deliver a result the whole building is proud of — without a single special levy surprise.",
+    title: "Fifty plus body corporate projects on the Sunshine Coast.",
+    body: "We have been painting strata buildings on the Sunshine Coast for twenty five years now, which means we know how to communicate with committees, manage resident expectations and deliver a result the whole building is proud of, all without a single special levy surprise along the way.",
     photo: "/images/projects/1.jpeg",
     photoAlt:
-      "Body corporate repaint completed by RAS-VERTEX on the Sunshine Coast",
+      "Body corporate repaint completed on the Sunshine Coast",
   },
   {
     n: "02",
-    title: "Rope access. No scaffolding, no car park disruption.",
-    body: "Our 30+ IRATA-certified technicians access high-rise facades from rooftop anchor points. No scaffold hire, no crane cost, no ground-floor footprint. On a 10-storey building, rope access typically saves the body corporate 40–60% on access costs versus full scaffold.",
+    title: "Rope access, with no scaffolding and no car park disruption.",
+    body: "Our thirty plus IRATA certified technicians access high rise facades straight from rooftop anchor points, so there is no scaffold hire, no crane cost and no ground floor footprint to work around. On a ten storey building, rope access typically saves the body corporate 40 to 60 percent on access costs compared with a full scaffold.",
     photo: "/images/projects/2.jpeg",
     photoAlt: "IRATA rope access painting on a Sunshine Coast strata building",
   },
   {
     n: "03",
-    title: "Coastal-spec paint systems. Not generic inland products.",
-    body: "Salt-bonded primers, chloride rinse and elastomeric topcoats as standard within 5km of the coast. We specify Dulux Weathershield and Haymes Sandtex commercial systems matched to the substrate and exposure — not picked from a price list.",
+    title: "Coastal spec paint systems, not generic inland products.",
+    body: "Salt bonded primers, chloride rinse and elastomeric topcoats are standard on anything within five kilometres of the coast. We specify Dulux Weathershield and Haymes Sandtex commercial systems matched to the substrate and exposure your building actually faces, not something picked from a price list.",
     photo: "/images/projects/1.jpeg",
     photoAlt:
       "Coastal spec paint system being applied to a Sunshine Coast strata building",
@@ -130,11 +137,11 @@ export const CREDENTIALS: Credential[] = [
   },
   {
     n: "04",
-    title: "5-year written warranty. Lodged in ROCO at handover.",
-    body: "Workmanship warranty issued in writing and lodged in ROCO at completion — your body corporate's insurance and maintenance records are covered from day one. Manufacturer warranties (up to 15 years on qualifying systems) registered in the body corporate's name.",
+    title: "An 8 year written warranty, issued at handover.",
+    body: "Our workmanship warranty is issued in writing at completion, so your body corporate's insurance and maintenance records are covered from day one. Manufacturer warranties of up to fifteen years on qualifying systems are registered in the body corporate's name.",
     photo: "/images/projects/2.jpeg",
     photoAlt:
-      "RAS-VERTEX project manager handing over warranty documentation to strata committee",
+      "Project manager handing over warranty documentation to a strata committee",
     logos: [
       { src: "/images/associations/qbcc.png", alt: "QBCC Licensed" },
       { src: "/images/associations/smartstrata.png", alt: "Smart Strata" },
@@ -145,19 +152,19 @@ export const CREDENTIALS: Credential[] = [
 export const PROJECTS: ServiceProject[] = [
   {
     suburb: "Mooloolaba",
-    name: "Oceanfront High-Rise Repaint",
+    name: "Oceanfront High Rise Repaint",
     type: "Body Corporate · 12 storeys · 84 lots",
-    system: "Dulux Weathershield · salt-bonded primer · elastomeric topcoat",
+    system: "Dulux Weathershield · salt bonded primer · elastomeric topcoat",
     image: "/images/projects/1.jpeg",
-    alt: "Mooloolaba oceanfront high-rise body corporate repaint — RAS-VERTEX",
+    alt: "Oceanfront high rise body corporate repaint in Mooloolaba",
   },
   {
     suburb: "Maroochydore",
     name: "Strata Complex Exterior Program",
     type: "Body Corporate · 8 storeys · staged over 2 years",
-    system: "Haymes Sandtex · render repairs · zone-staged delivery",
+    system: "Haymes Sandtex · render repairs · zone staged delivery",
     image: "/images/projects/2.jpeg",
-    alt: "Maroochydore strata complex exterior painting — RAS-VERTEX",
+    alt: "Strata complex exterior painting in Maroochydore",
   },
   {
     suburb: "Caloundra",
@@ -165,38 +172,30 @@ export const PROJECTS: ServiceProject[] = [
     type: "Body Corporate · 6 storeys · full exterior + common areas",
     system: "Dulux AcraTex · chloride rinse · colour consult",
     image: "/images/projects/1.jpeg",
-    alt: "Caloundra beachside strata repaint by RAS-VERTEX",
+    alt: "Beachside strata repaint in Caloundra",
   },
 ];
 
 export const FAQS: FAQItem[] = [
   {
-    q: "How does a body corporate painting project get approved and started?",
-    a: "We start with a committee presentation — scope, product schedule, staging plan and colour schedule, all in plain language. Most committees vote to proceed at the same meeting. We can also prepare a written tender response for committees that require it. From approval to mobilisation is typically 2–4 weeks depending on the time of year.",
+    q: "How often should a body corporate repaint a building on the Sunshine Coast?",
+    a: "Most coastal buildings on the Sunshine Coast need a full exterior repaint every eight to twelve years, though salt air, UV and storm exposure can shorten that cycle for beachfront properties. As body corporate painters, we assess the existing coating condition at quote stage and give your committee an honest recommendation rather than an upsell, so the repaint fits your sinking fund cycle rather than forcing an early one.",
   },
   {
-    q: "How do you minimise disruption to residents during a strata repaint?",
-    a: "Zone staging is the key — we paint one face or floor zone at a time so the disruption to any resident is limited to a week at most. Rope access eliminates scaffolding from car parks and common areas entirely. We notify affected residents 48 hours before we're on their section and schedule noisy prep work during building management's preferred hours. Most of our strata projects run without a single resident complaint.",
+    q: "How long does a full exterior strata repaint take, and how do you minimise disruption to residents?",
+    a: "For a building of six to eight storeys, allow around five to seven weeks on site in total, or ten to twelve weeks for a twelve storey building. We paint one face or zone at a time so any resident only experiences disruption for about a week, and rope access removes scaffolding from car parks and common areas entirely. Most of our strata painting projects run without a single resident complaint.",
   },
   {
-    q: "Can a body corporate use their sinking fund for exterior painting?",
-    a: "Yes — painting and surface restoration are legitimate sinking fund expenditures under the BCCM Act 1997, provided the building's 10-year maintenance plan includes the work. If your current sinking fund forecast doesn't account for the repaint, your committee will need to pass a motion at an AGM or EGM to proceed. We can provide a written condition assessment to support the sinking fund case if required.",
+    q: "Can a body corporate use their sinking fund for exterior painting on the Sunshine Coast?",
+    a: "Yes, painting and surface restoration are legitimate sinking fund expenditures under the BCCM Act 1997, provided the building's ten year maintenance plan includes the work. If your current forecast does not account for the repaint, the committee will need to pass a motion at an AGM or EGM, and we can provide a written condition assessment to support that case.",
   },
   {
-    q: "What paint systems do you use for Sunshine Coast strata buildings?",
-    a: "Within 5km of the coast, Dulux Weathershield or Haymes Sandtex with salt-bonded primer and chloride rinse pre-treatment as standard. Elastomeric topcoats for rendered surfaces — these bridge hairline cracks and accommodate the thermal movement that coastal buildings experience. Inland strata buildings can use a lighter system. We specify the system at quote stage with the full product schedule — no surprises.",
+    q: "Do you use rope access or scaffolding for body corporate and strata repaints?",
+    a: "Rope access covers all high rise work where the building geometry allows it. Our IRATA certified technicians access facades directly from rooftop anchor points, meaning no scaffold hire, no crane cost and no ground floor footprint. On buildings over four storeys, rope access typically saves 40 to 60 percent on access costs, and we bring in scaffold only for specific areas that genuinely need a working platform.",
   },
   {
-    q: "Do you use rope access or scaffolding for strata repaints?",
-    a: "Rope access for all high-rise work where geometry allows. Our IRATA L1–L3 certified technicians access facades from rooftop anchor points — no scaffold hire, no crane cost, no ground-floor footprint. On buildings over 4 storeys, rope access typically saves 40–60% on access costs. For specific areas where working platforms are required (podium levels, complex balcony geometry), we use scaffold for those sections only.",
-  },
-  {
-    q: "What does the 5-year warranty cover on a strata painting project?",
-    a: "All workmanship — adhesion failure, peeling, blistering, or any defect caused by our application. It's issued in writing and lodged in ROCO at handover. Manufacturer warranties (up to 15 years on qualifying Dulux and Haymes commercial systems) run separately and are registered in the body corporate's name. The documentation package we provide at handover includes everything your committee needs for insurance and maintenance records.",
-  },
-  {
-    q: "How long does a full exterior strata repaint take?",
-    a: "For a 6–8 storey building: 2–3 weeks preparation, 3–4 weeks painting. Total 5–7 weeks on-site. For a 12-storey building: allow 10–12 weeks. We work zone by zone so the building is never fully disrupted at once. Rope access mobilises faster than scaffold and allows us to work multiple faces simultaneously — we're typically 20–30% faster than scaffold-based programs on equivalent buildings.",
+    q: "What warranty and paint systems do you provide for Sunshine Coast strata painting projects?",
+    a: "Within five kilometres of the coast, we specify Dulux Weathershield or Haymes Sandtex with a salt bonded primer and chloride rinse pre treatment, using elastomeric topcoats to bridge hairline cracks and handle thermal movement. Every strata project carries an eight year written workmanship warranty issued at handover, plus manufacturer warranties of up to fifteen years registered in the body corporate's name.",
   },
 ];
 

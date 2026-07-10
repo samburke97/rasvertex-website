@@ -4,24 +4,21 @@ import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
-import ServiceAccordion from "../components/shared/ServiceAccordion";
-import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
-import ServiceProjects from "../components/shared/ServiceProjects";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import ProcessCards from "../components/shared/ProcessCards";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
+import InspectionProcess from "../components/shared/InspectionProcess";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+import { cld } from "../lib/cloudinary";
 
 import {
   HERO_SLIDES,
   SERVICES,
-  WHY_CHOOSE_US,
+  SERVICE_STEPS,
   PREP_STEPS,
-  PROJECTS,
-  CARDS,
   FAQS,
   FAQ_CONTACT,
 } from "../data/waterproofingData";
@@ -44,6 +41,10 @@ export const metadata = generatePageMetadata({
     "waterproofing Mooloolaba",
     "waterproofing Noosa",
     "QBCC waterproofing Sunshine Coast",
+    "commercial waterproofing Sunshine Coast",
+    "waterproofing contractors Sunshine Coast",
+    "remedial waterproofing Sunshine Coast",
+    "leaking balcony repairs Sunshine Coast",
   ],
 });
 
@@ -136,10 +137,28 @@ export default function WaterproofingPage() {
             </>
           }
           body="All membrane systems installed by RAS-VERTEX include a written workmanship warranty on completion. Where applicable, manufacturer warranties of up to 8 years are applied and included in the building record."
+          logosHeading="Backed by the best."
+          logos={[
+            {
+              src: "/images/associations/adheseal.png",
+              alt: "Adheseal",
+              width: 150,
+              height: 50,
+            },
+            {
+              src: "/images/associations/sika.png",
+              alt: "Sika",
+              width: 80,
+              height: 50,
+            },
+          ]}
         />
       </section>
-      <section className="px-5 md:px-10 py-10 md:py-20">
-        <ServiceAccordion
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="waterproofing-services-heading"
+      >
+        <InspectionProcess
           heading={
             <>
               What waterproofing service
@@ -147,11 +166,15 @@ export default function WaterproofingPage() {
               are you looking for?
             </>
           }
-          paragraph="From rooftops and balconies to podiums, planter boxes and wet areas, we deliver waterproofing systems designed for real coastal exposure and long term performance."
-          ariaLabel="What waterproofing service are you looking for?"
-          services={SERVICES}
+          steps={SERVICE_STEPS}
+          image={{
+            src: cld("waterproofing-services", { width: 1200 }),
+            alt: "What waterproofing service are you looking for, RAS-VERTEX Sunshine Coast",
+          }}
+          compactHeading
           headingId="waterproofing-services-heading"
           ctaLabel="Not sure? Let's talk about it →"
+          ctaHref="/contact"
         />
       </section>
       <section className="px-5 md:px-10 py-10 md:py-20">
@@ -168,7 +191,7 @@ export default function WaterproofingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs."
+          quote="The communication alone sets them apart. One number, one thread, weekly photos, exactly what a body corporate needs."
           name="James Whitfield"
           role="Facilities Manager, Accor Hotels"
           logoSrc="/partners/accor.svg"
@@ -201,7 +224,13 @@ export default function WaterproofingPage() {
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="waterproofing-faq-heading"
-          ctaHeading="Have a question about waterproofing?"
+          ctaHeading={
+            <>
+              Have a question
+              <br />
+              about waterproofing?
+            </>
+          }
         />
       </section>
     </>

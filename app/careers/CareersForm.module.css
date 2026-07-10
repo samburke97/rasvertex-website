@@ -1,17 +1,14 @@
-/* app/careers/CareersForm.module.css — mirrors ContactSurface form */
+/* app/careers/CareersForm.module.css — mirrors QuoteBookingForm */
 
 .formWrap {
-  padding: var(--space-4xl);
   display: flex;
   flex-direction: column;
-  min-height: 720px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  gap: var(--space-2xl);
+  gap: var(--space-xl);
 }
 
 /* ── Honeypot ──────────────────────────────────────────────────── */
@@ -25,54 +22,54 @@
   left: -9999px;
 }
 
-/* ── Progress ──────────────────────────────────────────────────── */
-.progress {
+/* ── Step tabs ─────────────────────────────────────────────────── */
+.steps {
   display: flex;
-  align-items: center;
-  gap: var(--space-lg);
+  flex-wrap: wrap;
+  gap: var(--space-xl);
 }
 
-.progressLabel {
-  font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  font-weight: var(--weight-bold);
-  color: var(--navy);
-  flex-shrink: 0;
-  min-width: 32px;
-}
-
-.progressOf {
-  font-weight: var(--weight-regular);
+.stepTab {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: not-allowed;
   opacity: 0.35;
 }
 
-.progressTrack {
-  flex: 1;
-  display: flex;
-  gap: 6px;
+.stepTab:disabled {
+  cursor: not-allowed;
 }
 
-.progressSegment {
-  flex: 1;
-  height: 2px;
-  background: var(--navy-12);
-  border-radius: 2px;
-  transition: background 0.3s;
+.stepTab:not(:disabled) {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
-.progressSegmentActive {
-  background: var(--navy);
+.stepTabActive,
+.stepTabActive:not(:disabled) {
+  opacity: 1;
 }
 
-/* ── Step title ────────────────────────────────────────────────── */
-.stepTitle {
-  font-family: var(--font-body);
-  font-size: var(--h3-size);
-  line-height: var(--h3-leading);
-  letter-spacing: var(--h3-tracking);
-  font-weight: var(--weight-bold);
+.stepNum {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-weight: 400;
   color: var(--navy);
-  margin: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stepLabel {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--h4-size);
+  line-height: 1.2;
+  color: var(--navy);
 }
 
 .stepHint {
@@ -80,7 +77,7 @@
   font-weight: var(--weight-regular);
   color: var(--navy);
   opacity: 0.45;
-  margin: calc(-1 * var(--space-xl)) 0 0;
+  margin: calc(-1 * var(--space-md)) 0 0;
 }
 
 .stepBody {
@@ -100,7 +97,7 @@
 .fields {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: var(--space-lg);
 }
 
 .fieldRow {
@@ -117,12 +114,11 @@
 
 .fieldLabel {
   font-family: var(--font-body);
-  font-size: var(--eyebrow-size);
+  font-size: 11px;
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--eyebrow-tracking);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--navy);
-  margin-bottom: var(--space-md);
+  color: var(--navy-45);
 }
 
 .required {
@@ -174,25 +170,36 @@
   color: #ffffff;
 }
 
-/* ── Inputs ────────────────────────────────────────────────────── */
+/* ── Field boxes (white cards on the light blue surface) ────────── */
+.fieldBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--navy-08);
+  border-radius: var(--radius-xl);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.fieldBoxLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy-45);
+}
+
 .input,
 .textarea {
   font-family: var(--font-body);
   font-size: var(--p-size);
+  font-weight: var(--weight-medium);
   color: var(--navy);
   background: transparent;
-  padding: var(--space-sm) 0;
   border: none;
-  border-bottom: 1px solid var(--navy-25);
   outline: none;
-  transition: border-color 0.2s;
-  border-radius: 0;
+  padding: 0;
   width: 100%;
-}
-
-.input:focus,
-.textarea:focus {
-  border-bottom-color: var(--navy);
 }
 
 .textarea {
@@ -203,8 +210,8 @@
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--navy);
-  -webkit-box-shadow: 0 0 0px 1000px var(--navy-08) inset;
-  box-shadow: 0 0 0px 1000px var(--navy-08) inset;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+  box-shadow: 0 0 0px 1000px #ffffff inset;
   transition:
     background-color 600000s 0s,
     color 600000s 0s;
@@ -230,7 +237,7 @@
   padding: var(--space-md) var(--space-lg);
   border: 1px dashed var(--navy-25);
   border-radius: var(--radius-lg);
-  background: transparent;
+  background: var(--navy-08);
   color: var(--navy);
   opacity: 0.45;
   font-family: var(--font-body);
@@ -239,24 +246,23 @@
   cursor: pointer;
   transition:
     border-color 0.15s,
+    background 0.15s,
     opacity 0.15s;
 }
 
 .uploadBox:hover {
   border-color: var(--navy);
+  background: var(--navy-12);
   opacity: 0.7;
-}
-
-.uploadBoxSub {
-  font-weight: var(--weight-regular);
 }
 
 .resumeRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--navy-12);
+  background: var(--navy-08);
+  border-radius: var(--radius-xl);
+  padding: var(--space-md) var(--space-lg);
 }
 
 .resumeName {
@@ -297,9 +303,24 @@
 .formFooter {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: var(--space-xl);
+  gap: var(--space-lg);
+}
+
+.backBtn {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--navy-65);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.nextBtn {
+  border-radius: var(--radius-full);
 }
 
 /* ── Success ───────────────────────────────────────────────────── */
@@ -308,7 +329,7 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--space-lg);
-  min-height: 720px;
+  min-height: 320px;
 }
 
 .successLink {
@@ -319,22 +340,17 @@
 }
 
 /* ── Responsive ────────────────────────────────────────────────── */
-@media (max-width: 860px) {
-  .formWrap {
-    min-height: 0;
-  }
-
-  .success {
-    min-height: 0;
-  }
-}
-
 @media (max-width: 560px) {
-  .formWrap {
-    padding: var(--space-2xl);
+  .steps {
+    gap: var(--space-md);
   }
 
   .fieldRow {
     grid-template-columns: 1fr;
+  }
+
+  .formFooter {
+    flex-direction: column-reverse;
+    align-items: stretch;
   }
 }

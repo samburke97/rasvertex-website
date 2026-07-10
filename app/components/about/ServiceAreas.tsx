@@ -96,6 +96,22 @@ export default function ServiceAreas() {
         <span className={styles.meta}>{TOTAL} Suburbs Serviced · One Local Crew</span>
         <Button as="link" href="/contact" variant="primary">
           See your suburb? Let&rsquo;s get to work
+          <svg
+            className={styles.ctaArrow}
+            width="14"
+            height="14"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </Button>
       </div>
 

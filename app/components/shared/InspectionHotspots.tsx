@@ -43,7 +43,23 @@ export default function InspectionHotspots({
           <p className="p-soft">{methodBody}</p>
           {ctaLabel && (
             <Link href={ctaHref} className={styles.cta}>
-              {ctaLabel}
+              {ctaLabel.slice(0, ctaLabel.lastIndexOf("→")).trimEnd()}
+              <svg
+                className={styles.ctaArrow}
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </Link>
           )}
         </div>

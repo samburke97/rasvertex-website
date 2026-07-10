@@ -1,6 +1,5 @@
 // app/external-cleaning/page.tsx
 
-import Link from "next/link";
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
@@ -8,10 +7,12 @@ import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
+import ServiceCrossLink from "../components/shared/ServiceCrossLink";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+import { cld, cldVideo } from "../lib/cloudinary";
 
 import {
   HERO_SLIDES,
@@ -38,6 +39,11 @@ export const metadata = generatePageMetadata({
     "body corporate cleaning Sunshine Coast",
     "commercial building cleaning Noosa",
     "building exterior cleaning Maroochydore",
+    "soft washing Sunshine Coast",
+    "high rise building cleaning Sunshine Coast",
+    "commercial pressure cleaning Sunshine Coast",
+    "concrete cleaning Sunshine Coast",
+    "exterior cleaning contractors Sunshine Coast",
   ],
 });
 
@@ -77,20 +83,20 @@ export default function ExternalCleaningPage() {
           lede="We provide professional exterior building cleaning across the Sunshine Coast, combining IRATA rope access, soft washing and commercial pressure cleaning to safely restore facades, roofs and hard surfaces, delivering visible transformation across every
               surface."
           headingId="external-cleaning-hero-heading"
-          video="/videos/cleaning.mp4"
+          video={cldVideo("cleaning", { width: 1200 })}
         />
       </section>
       <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceCards
           cards={[
             {
-              photo: "/images/projects/rope-access.png",
+              photo: cld("bw4", { width: 1200 }),
               alt: "IRATA rope access technician cleaning a Sunshine Coast high-rise facade",
               title: "Minimal disruption",
               body: "Rope access is our default, not our fallback. It's the fastest, least disruptive way to reach any facade on the Sunshine Coast, with no scaffolding, no EWP hire and no site disruption.",
             },
             {
-              photo: HERO_SLIDES[1].src,
+              photo: cld("clear-communication", { width: 1200 }),
               alt: "Local RAS-VERTEX crew on site, Sunshine Coast building cleaning",
               title: "Clear communication",
               body: "The same local, fully employed crew works your building every time. No subcontractors, no unfamiliar faces, just consistent care. Every visit is logged and reported through your own portal.",
@@ -130,7 +136,7 @@ export default function ExternalCleaningPage() {
               Zero compromise.
             </>
           }
-          body="Our pressure cleaning system runs on 100% recycled, filtered hot water with full vacuum recovery — every drop collected, nothing discharged to stormwater. The only responsible way to clean near the coast."
+          body="Our pressure cleaning system runs on 100% recycled, filtered hot water with full vacuum recovery, every drop collected, nothing discharged to stormwater. The only responsible way to clean near the coast."
         />
       </section>
 
@@ -151,21 +157,13 @@ export default function ExternalCleaningPage() {
         />
       </section>
       {/* ── Window cleaning internal link callout ── */}
-      <section className="px-5 md:px-10 pb-5">
-        <p className="p-soft">
-          Looking for window cleaning specifically?{" "}
-          <Link
-            href="/window-cleaning"
-            style={{
-              color: "var(--navy)",
-              fontWeight: "var(--weight-semibold)",
-              borderBottom: "1px solid var(--navy)",
-              paddingBottom: "1px",
-            }}
-          >
-            See our dedicated window cleaning page
-          </Link>
-        </p>
+      <section className="px-5 md:px-10 pb-10 md:pb-20">
+        <ServiceCrossLink
+          lead="Looking for window cleaning specifically?"
+          linkText="See our dedicated window cleaning page"
+          href="/window-cleaning"
+          arrow
+        />
       </section>
 
       {/* ── Testimonial — its own full, centered section ── */}

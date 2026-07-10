@@ -1,7 +1,7 @@
 // app/contact/page.tsx
 
 import type { Metadata } from "next";
-import ContactSurface from "../components/contact/ContactSurface";
+import QuoteBookingForm from "../components/contact/QuoteBookingForm";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import PhotoCarousel from "../components/shared/PhotoCarousel";
 
@@ -22,22 +22,22 @@ export const metadata: Metadata = {
 const CONTACT_SLIDES = [
   {
     src: "/images/projects/1.jpeg",
-    alt: "Commercial repaint — Sunshine Coast",
+    alt: "Commercial repaint on the Sunshine Coast",
   },
-  { src: "/images/projects/2.jpeg", alt: "Facade restoration — Maroochydore" },
-  { src: "/nav/painting.png", alt: "Painting project — Mooloolaba" },
-  { src: "/nav/waterproofing.png", alt: "Waterproofing — Noosa" },
-  { src: "/nav/maintenance.png", alt: "Building maintenance — Sunshine Coast" },
+  { src: "/images/projects/2.jpeg", alt: "Facade restoration in Maroochydore" },
+  { src: "/nav/painting.png", alt: "Painting project in Mooloolaba" },
+  { src: "/nav/waterproofing.png", alt: "Waterproofing project in Noosa" },
+  { src: "/nav/maintenance.png", alt: "Building maintenance on the Sunshine Coast" },
 ];
 
 export default function ContactPage() {
   return (
-    <main aria-label="Contact RAS-VERTEX — request a free quote">
+    <main aria-label="Contact RAS-VERTEX, request a free quote">
       <section
-        className="px-5 md:px-10 pt-20"
+        className="px-5 md:px-10 pt-5 pb-10 md:pb-20"
         aria-label="Request a free quote"
       >
-        <ContactSurface />
+        <QuoteBookingForm />
       </section>
 
       {/* ── Testimonial — its own full, centered section ── */}

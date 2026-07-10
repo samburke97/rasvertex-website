@@ -19,6 +19,14 @@ export interface ServiceCard {
   objectPosition?: string;
 }
 
+export interface ServiceCardsFooterLogo {
+  src: string;
+  alt: string;
+  /** Overrides the default 84×40 box for logos that read small at the standard size */
+  width?: number;
+  height?: number;
+}
+
 interface ServiceCardsProps {
   cards: ServiceCard[];
   heading?: ReactNode;
@@ -31,6 +39,9 @@ interface ServiceCardsProps {
   display?: "grid" | "tabs" | "list";
   /** Small tracked label above the heading in "list" mode */
   eyebrow?: string;
+  /** Heading for an optional logo row rendered under the CTA button in "list" mode */
+  footerLogosHeading?: string;
+  footerLogos?: ServiceCardsFooterLogo[];
 }
 
 export default function ServiceCards({
@@ -43,6 +54,8 @@ export default function ServiceCards({
   footerCtaHref,
   display = "grid",
   eyebrow = "Why us",
+  footerLogosHeading,
+  footerLogos,
 }: ServiceCardsProps) {
   const Wrapper = embedded ? "div" : "section";
   const [activeIdx, setActiveIdx] = useState(0);
@@ -68,6 +81,7 @@ export default function ServiceCards({
                   .slice(0, footerCtaLabel.lastIndexOf("→"))
                   .trimEnd()}
                 <svg
+                  className={styles.ctaArrow}
                   width="14"
                   height="14"
                   viewBox="0 0 16 16"
@@ -83,6 +97,27 @@ export default function ServiceCards({
                   />
                 </svg>
               </Button>
+            )}
+            {footerLogos && footerLogos.length > 0 && (
+              <div className={styles.footerLogosGroup}>
+                {footerLogosHeading && (
+                  <h3 className={styles.footerLogosHeading}>
+                    {footerLogosHeading}
+                  </h3>
+                )}
+                <div className={styles.footerLogos}>
+                  {footerLogos.map((logo) => (
+                    <Image
+                      key={logo.src}
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={logo.width ?? 64}
+                      height={logo.height ?? 30}
+                      className={styles.footerLogoImg}
+                    />
+                  ))}
+                </div>
+              </div>
             )}
           </div>
 
@@ -271,6 +306,22 @@ export default function ServiceCards({
               {footerCtaLabel
                 .slice(0, footerCtaLabel.lastIndexOf("→"))
                 .trimEnd()}
+              <svg
+                className={styles.footerCtaArrow}
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </Link>
           </div>
         )}

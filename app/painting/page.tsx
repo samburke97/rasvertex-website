@@ -11,6 +11,7 @@ import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
+import Watermark from "../components/shared/Watermark";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 
 import { cld } from "../lib/cloudinary";
@@ -26,7 +27,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Painting Services Sunshine Coast",
   description:
-    "Residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, 5-year written warranty, one project manager from quote to sign-off.",
+    "Residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, 8-year written warranty, one project manager from quote to sign-off.",
   path: "/painting",
   keywords: [
     "painting Sunshine Coast",
@@ -39,6 +40,12 @@ export const metadata = generatePageMetadata({
     "exterior painting Sunshine Coast",
     "QBCC licensed painter",
     "rope access painting",
+    "commercial painters Sunshine Coast",
+    "residential painters Sunshine Coast",
+    "strata painters Sunshine Coast",
+    "body corporate painters Sunshine Coast",
+    "painting contractors Sunshine Coast",
+    "interior painting Sunshine Coast",
   ],
 });
 
@@ -47,7 +54,7 @@ export default function PaintingPage() {
     <>
       <ServiceSchema
         name="Painting Services Sunshine Coast"
-        description="Professional residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, IRATA rope access, 5-year written warranty."
+        description="Professional residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, IRATA rope access, 8-year written warranty."
         image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
         url="https://www.ras-vertex.com.au/painting"
         serviceType="Painting"
@@ -79,13 +86,15 @@ export default function PaintingPage() {
         />
       </section>
 
+      <Watermark className="px-5 md:px-10 pt-10 md:pt-20" />
+
       <section className="px-5 md:px-10 py-10 md:py-20">
         <ServiceCards
           cards={CARDS}
           display="list"
           eyebrow=""
-          heading="Three specialist teams covering every type of property."
-          ariaLabel="Who we work for — painting services (sticky variant)"
+          heading="Three specialist painting teams covering every type of property."
+          ariaLabel="Who we work for, painting services on the Sunshine Coast"
           footerCtaLabel="Let's chat about your project →"
           footerCtaHref="/contact"
         />
@@ -93,8 +102,8 @@ export default function PaintingPage() {
 
       <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Warranty">
         <WarrantyCard
-          body="We back every exterior paint job with an 8-year written warranty covering workmanship and the paint system. That's why we only specify Haymes and Dulux coatings, proven to perform in Sunshine Coast conditions."
-          logosHeading="Backed by the best"
+          body="We back every exterior paint job with an 8-year written warranty covering workmanship and the paint system. That's why we only specify Haymes and Dulux coatings, proven to perform in Sunshine Coast's salt air, UV and coastal conditions."
+          logosHeading="Backed by the best."
           logos={[
             {
               src: "/images/associations/haymes.svg",
@@ -119,8 +128,8 @@ export default function PaintingPage() {
         <ServiceBeforeAfter
           beforeSrc={cld("bindaree-before", { width: 1600 })}
           afterSrc={cld("bindaree-after", { width: 1600 })}
-          beforeAlt="Bindaree, Mooloolaba — before exterior repaint by RAS-VERTEX"
-          afterAlt="Bindaree, Mooloolaba — after exterior repaint by RAS-VERTEX"
+          beforeAlt="Bindaree Apartments in Mooloolaba before exterior repaint by RAS-VERTEX"
+          afterAlt="Bindaree Apartments in Mooloolaba after exterior repaint by RAS-VERTEX"
           projectName="Bindaree Repaint"
           location="Mooloolaba, QLD"
           heading="A tired facade, refreshed for coastal living."

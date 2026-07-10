@@ -1,19 +1,26 @@
 // app/cleaning/page.tsx
 
-import Link from "next/link";
 import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
-import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
+import ServiceCrossLink from "../components/shared/ServiceCrossLink";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
+import InspectionProcess from "../components/shared/InspectionProcess";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+import { cld } from "../lib/cloudinary";
 
-import { HERO_SLIDES, SERVICES, FAQS, FAQ_CONTACT } from "../data/cleaningData";
+import {
+  HERO_SLIDES,
+  SERVICES,
+  SERVICE_STEPS,
+  FAQS,
+  FAQ_CONTACT,
+} from "../data/cleaningData";
 
 export const metadata = generatePageMetadata({
   title: "Window Cleaning Sunshine Coast | High-Rise & Commercial",
@@ -33,6 +40,10 @@ export const metadata = generatePageMetadata({
     "window cleaning Mooloolaba",
     "facade cleaning Sunshine Coast",
     "solar panel cleaning Sunshine Coast",
+    "body corporate window cleaning Sunshine Coast",
+    "residential window cleaning Sunshine Coast",
+    "purified water window cleaning",
+    "glass cleaning Sunshine Coast",
   ],
 });
 
@@ -82,7 +93,7 @@ export default function CleaningPage() {
               photo: HERO_SLIDES[1].src,
               alt: HERO_SLIDES[1].alt,
               title: "Gold standard water systems",
-              body: "Our purified systems remove 99.9% of solids, preventing mineral deposits as your windows dry. Combined with rope access systems, we deliver an industry-leading streak-free finish.",
+              body: "Our purified, deionised water systems remove 99.9% of solids, preventing mineral deposits as your windows dry. Combined with rope access systems, we deliver an industry-leading streak-free finish.",
             },
             {
               photo: HERO_SLIDES[2].src,
@@ -130,8 +141,8 @@ export default function CleaningPage() {
         />
       </section>
 
-      <section className="px-5 md:px-10 py-10 md:py-20">
-        <ServiceAccordion
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="cleaning-services-heading">
+        <InspectionProcess
           heading={
             <>
               What kind of window cleaning
@@ -139,30 +150,26 @@ export default function CleaningPage() {
               do you need?
             </>
           }
-          paragraph="From single-storey homes to high-rise towers, we match the right access method and water system to every building."
-          ariaLabel="What kind of window clean do you need?"
-          services={SERVICES}
+          steps={SERVICE_STEPS}
+          image={{
+            src: cld("commercial-high-rise-window-cleaning", { width: 1200 }),
+            alt: "What kind of window cleaning do you need, RAS-VERTEX Sunshine Coast",
+          }}
+          compactHeading
           headingId="cleaning-services-heading"
           ctaLabel="Not sure? Let's talk about it →"
+          ctaHref="/contact"
         />
       </section>
 
       {/* ── External cleaning internal link callout ── */}
-      <section className="px-5 md:px-10 pb-5">
-        <p className="p-soft">
-          Looking for full building or facade cleaning?{" "}
-          <Link
-            href="/external-cleaning"
-            style={{
-              color: "var(--navy)",
-              fontWeight: "var(--weight-semibold)",
-              borderBottom: "1px solid var(--navy)",
-              paddingBottom: "1px",
-            }}
-          >
-            See our dedicated external cleaning page
-          </Link>
-        </p>
+      <section className="px-5 md:px-10 pb-10 md:pb-20">
+        <ServiceCrossLink
+          lead="Looking for full building or facade cleaning?"
+          linkText="See our dedicated external cleaning page"
+          href="/external-cleaning"
+          arrow
+        />
       </section>
 
       {/* ── Testimonial — its own full, centered section ── */}

@@ -57,6 +57,15 @@
   background: var(--navy-dark);
 }
 
+.ctaArrow {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
 /* ── Video column ────────────────────────────────────────────── */
 
 .videoCard {

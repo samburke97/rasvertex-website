@@ -3,8 +3,13 @@
 .section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: start;
+  align-items: stretch;
   gap: var(--space-col-gap);
+}
+
+.headingAbove {
+  font-size: var(--h1-size);
+  margin-bottom: var(--space-xl);
 }
 
 /* ─── Left — image ───────────────────────────────────────────── */
@@ -59,6 +64,12 @@
 .textBlock {
   position: sticky;
   top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title-to-body);
+}
+
+.contentGroup {
   display: flex;
   flex-direction: column;
   gap: var(--space-title-to-body);
@@ -172,7 +183,7 @@
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .section {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
