@@ -61,6 +61,14 @@
   align-self: stretch;
 }
 
+.textColEnd {
+  justify-content: flex-end;
+}
+
+.textColEnd .textBlock {
+  position: static;
+}
+
 .textBlock {
   position: sticky;
   top: 96px;

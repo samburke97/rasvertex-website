@@ -53,11 +53,6 @@ export default function ServiceAreas() {
           <br />
           from Caloundra to Noosa.
         </h2>
-        <p className="p-soft">
-          Our team services the full length of the Sunshine Coast — painting,
-          cleaning, waterproofing, rope access and height safety for body
-          corporates, strata, commercial properties and homes.
-        </p>
       </div>
 
       <div className={styles.tabs} role="tablist" aria-label="Service regions">

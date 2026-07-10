@@ -22,6 +22,7 @@ interface RopeAccessSectionProps {
   imagePosition?: "left" | "right";
   imageAspectRatio?: string;
   heading?: ReactNode;
+  headingLevel?: "h1" | "h2";
   headingId?: string;
   body?: ReactNode;
   paragraphs?: string[];
@@ -38,6 +39,8 @@ interface RopeAccessSectionProps {
   personCtaHeading?: string;
   /** Renders the heading full-width above the image/text row instead of inline beside the image */
   headingAbove?: boolean;
+  /** Vertically anchors the text column's content to the top (default) or bottom of the image. Bottom removes the sticky scroll effect. */
+  contentAlign?: "start" | "end";
 }
 
 export default function RopeAccessSection({
@@ -54,6 +57,7 @@ export default function RopeAccessSection({
       for over 25 years.
     </>
   ),
+  headingLevel = "h2",
   headingId = "rope-access-heading",
   body,
   paragraphs = [
@@ -68,7 +72,9 @@ export default function RopeAccessSection({
   personPhoto,
   personCtaHeading,
   headingAbove = false,
+  contentAlign = "start",
 }: RopeAccessSectionProps) {
+  const HeadingTag = headingLevel;
   const imageEl = (
     <div
       className={styles.imageCol}
@@ -94,9 +100,11 @@ export default function RopeAccessSection({
   );
 
   const textEl = (
-    <div className={styles.textCol}>
+    <div
+      className={`${styles.textCol} ${contentAlign === "end" ? styles.textColEnd : ""}`}
+    >
       <div className={styles.textBlock}>
-        {!headingAbove && <h2 id={headingId}>{heading}</h2>}
+        {!headingAbove && <HeadingTag id={headingId}>{heading}</HeadingTag>}
         {contentGroups ? (
           contentGroups.map((group, gi) => (
             <div key={gi} className={styles.contentGroup}>
@@ -193,9 +201,9 @@ export default function RopeAccessSection({
   return (
     <div>
       {headingAbove && (
-        <h2 id={headingId} className={styles.headingAbove}>
+        <HeadingTag id={headingId} className={styles.headingAbove}>
           {heading}
-        </h2>
+        </HeadingTag>
       )}
       <section className={styles.section} aria-labelledby={headingId}>
         {imagePosition === "left" ? (

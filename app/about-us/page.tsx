@@ -4,13 +4,13 @@ import type { Metadata } from "next";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import RopeAccessSection from "../components/homepage/RopeAccessSection";
-import CommunitySponsor from "../components/about/CommunitySponsor";
+import AboutPartnerGrid from "../components/about/AboutPartnerGrid";
 import ServiceAreas from "../components/about/ServiceAreas";
 import PartnersCarousel from "../components/homepage/PartnersCarousel";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
-import Watermark from "../components/shared/Watermark";
 import { FAQS, FAQ_CONTACT } from "../data/companyData";
+import { cld } from "../lib/cloudinary";
 
 export const metadata: Metadata = {
   title: "About RAS-VERTEX | Sunshine Coast Property Maintenance Specialists",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "building cleaning Sunshine Coast",
     "waterproofing Sunshine Coast",
     "height safety Sunshine Coast",
-    "painting contractor Sunshine Coast",
+    "painting Sunshine Coast",
     "building inspections Sunshine Coast",
     "RAS-VERTEX",
   ],
@@ -42,13 +42,14 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main aria-label="About RAS-VERTEX">
-      <Watermark className="px-5 md:px-10  md:py-10" />
       <section
-        className="px-5 md:px-10 py-10 md:py-10 lg:pt-20"
+        className="px-5 md:px-10 pt-5 pb-10 md:pb-20"
         aria-labelledby="rope-access-heading"
       >
         <RopeAccessSection
-          headingAbove
+          imageAspectRatio="4 / 3"
+          contentAlign="end"
+          headingLevel="h1"
           heading={
             <>
               The Sunshine Coast&rsquo;s complete
@@ -56,43 +57,81 @@ export default function AboutPage() {
               property maintenance partner.
             </>
           }
-          contentGroups={[
-            {
-              heading:
-                "From rope access specialists to complete property care.",
-              paragraphs: [
-                "What began as specialist rope access expertise back in 2000, has grown into a complete property maintenance company, bringing together dedicated teams across painting, cleaning, maintenance, waterproofing and height safety.",
-                "Today, our team of 30+ IRATA certified technicians supports body corporates, asset managers, commercial partners and property owners across the Sunshine Coast and South East Queensland. Locally owned and community focused, we combine technical expertise with the accountability that comes from being a trusted local partner.",
-              ],
-            },
-            {
-              heading:
-                "One trusted partner for all your property maintenance needs",
-              paragraphs: [
-                "Rather than managing multiple contractors, our clients have one experienced team that understands their property, coordinates every service and takes responsibility from inspection through to completion.",
-                "From high-rise and commercial repaints to window and building washes, waterproofing, height safety and building inspections, our dedicated teams take complete care of your property. Supported by experienced project managers and specialist crews, we deliver higher standards while making property maintenance simpler, more efficient and easier to manage.",
-              ],
-            },
+          paragraphs={[
+            "RAS-VERTEX is the Sunshine Coast's commercial, body corporate and strata maintenance specialists with over a decade of proven expertise. Since 2000, we've grown into a team of 30+, trusted by body corporates, asset managers, and commercial partners across SEQ. Locally-owned and community-focused, we deliver technical excellence with the accountability that comes from being your neighbour.",
           ]}
-          ctaLabel="Meet the team →"
-          ctaHref="/careers"
+          ctaLabel=""
+          ctaHref=""
         />
       </section>
 
       <section className="pt-10 pb-10 md:pb-20" aria-label="Industry partners">
         <PartnersCarousel
-          headingTag="h1"
+          headingTag="h2"
           headingId="about-hero-heading"
           heading={
             <>
-              We're trusted by the
+              We&rsquo;re trusted by the
               <br />
               coast&rsquo;s best run buildings.
             </>
           }
         />
       </section>
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-label="Client testimonial"
+      >
+        <ContactTestimonial />
+      </section>
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-label="What we do">
+        <AboutPartnerGrid />
+      </section>
 
+      <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Community">
+        <AboutPartnerGrid
+          imagePosition="left"
+          photoSrc={cld("coolum_fc", { width: 1200 })}
+          photoAlt="RAS-VERTEX sponsoring the Coolum Football Club"
+          title={
+            <>
+              We back the community
+              <br />
+              that backs us.
+            </>
+          }
+          paragraphs={[
+            "Our crew live here, their kids play here, and we put our name behind the local clubs and causes that make the Sunshine Coast what it is — because supporting the community isn't just good business, it's who we are.",
+            "From junior football and lawn bowls to surf lifesaving and mental health advocacy, we back the people and places that make this coast feel like home.",
+          ]}
+          logos={[
+            {
+              src: "/images/community/coolumbowls.png",
+              alt: "Coolum Beach Bowls Club",
+              width: 240,
+              height: 80,
+            },
+            {
+              src: "/images/community/coolumfc.png",
+              alt: "Coolum Football Club",
+              width: 110,
+              height: 110,
+            },
+            {
+              src: "/images/community/peregianbeachslsc.png",
+              alt: "Peregian Beach Surf Life Saving Club",
+              width: 110,
+              height: 110,
+            },
+            {
+              src: "/images/community/ruok.png",
+              alt: "R U OK?",
+              width: 210,
+              height: 80,
+            },
+          ]}
+        />
+      </section>
       {/* ── Service areas ── */}
       <section
         className="px-5 md:px-10 py-10 md:py-20"
@@ -100,15 +139,13 @@ export default function AboutPage() {
       >
         <ServiceAreas />
       </section>
-      <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Community">
-        <CommunitySponsor />
-      </section>
+
       {/* ── Services carousel — component owns its own horizontal padding ── */}
       <section className="py-10 md:py-20" aria-labelledby="services-label">
         <h2 id="services-label" className="px-5 md:px-10 pb-10 md:pb-20">
-          We partner with Sunshine Coast locals to take care of their complete
+          We partner with Sunshine Coast locals to take care
           <br />
-          property maintenance needs.
+          of their complete property maintenance needs.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES}
@@ -116,12 +153,6 @@ export default function AboutPage() {
         />
       </section>
 
-      <section
-        className="px-5 md:px-10 py-10 md:py-20"
-        aria-label="Client testimonial"
-      >
-        <ContactTestimonial />
-      </section>
       {/* ── FAQ ── */}
       <section
         className="px-5 md:px-10 py-10 md:py-20"

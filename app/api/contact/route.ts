@@ -23,9 +23,7 @@ export async function POST(req: Request) {
     const name = String(formData.get("name") || "");
     const email = String(formData.get("email") || "");
     const phone = String(formData.get("phone") || "");
-    const propertyType = String(formData.get("propertyType") || "");
     const propertyAddress = String(formData.get("propertyAddress") || "");
-    const ctsNumber = String(formData.get("ctsNumber") || "");
     const message = String(formData.get("message") || "");
 
     // ── Photos ──
@@ -71,9 +69,7 @@ export async function POST(req: Request) {
       text: `
 Services: ${services.join(", ") || "None"}
 
-Property Type: ${propertyType}
 Address: ${propertyAddress}
-CTS Number: ${ctsNumber || "N/A"}
 
 Name: ${name}
 Phone: ${phone}

@@ -139,12 +139,7 @@ export default function BlogGrid() {
 
       {/* Section heading */}
       <div className={styles.sectionHead}>
-        <h1>Insights from<br />the field.</h1>
-        <p className="p-soft">
-          Practical advice on painting, waterproofing, rope access and
-          building maintenance across the Sunshine Coast, from the team who
-          does the work.
-        </p>
+        <h1>Insights from the field.</h1>
       </div>
 
       {/* Grid */}

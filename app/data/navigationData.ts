@@ -117,7 +117,6 @@ export const servicesData = {
 
 export const companyLinks = [
   { name: "About Us", href: "/about-us" },
-  { name: "Careers", href: "/careers" },
   { name: "Projects", href: "/projects" },
   { name: "Blog", href: "/blog" },
 ];

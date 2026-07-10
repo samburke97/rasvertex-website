@@ -2,9 +2,34 @@
 
 // app/components/contact/QuoteBookingForm.tsx
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
+import Image from "next/image";
 import Button from "../ui/Button";
 import styles from "./QuoteBookingForm.module.css";
+
+const TRUST_LOGOS = [
+  {
+    src: "/images/associations/dulux.svg",
+    alt: "Dulux",
+    width: 108,
+    height: 32,
+    displayHeight: 26,
+  },
+  {
+    src: "/images/associations/haymes.svg",
+    alt: "Haymes Paint",
+    width: 642,
+    height: 289,
+    displayHeight: 33,
+  },
+  {
+    src: "/images/associations/sika.png",
+    alt: "Sika",
+    width: 2215,
+    height: 1924,
+    displayHeight: 40,
+  },
+];
 
 type Step = 1 | 2;
 
@@ -13,14 +38,15 @@ const STEPS: { n: Step; label: string }[] = [
   { n: 2, label: "Property Details" },
 ];
 
-const CUSTOMER_TYPES = [
-  "Strata / Body Corporate",
-  "Commercial",
-  "Residential",
-  "Other",
+const SERVICES = [
+  "Painting",
+  "Building Cleaning",
+  "Window Cleaning",
+  "Waterproofing",
+  "Maintenance",
+  "Height Safety",
+  "Building Inspections",
 ];
-
-const CTS_ELIGIBLE_TYPES = ["Strata / Body Corporate", "Commercial"];
 
 const MAX_FILES = 6;
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
@@ -28,10 +54,21 @@ const ACCEPTED_TYPES = "image/jpeg,image/png,image/webp,image/heic";
 
 interface QuoteBookingFormProps {
   headingLevel?: "h1" | "h2";
+  heading?: ReactNode;
+  leadParagraph?: ReactNode;
+  showGoogleRating?: boolean;
 }
 
 export default function QuoteBookingForm({
   headingLevel = "h1",
+  heading = "Enter your details for a no obligation, hassle-free quote.",
+  leadParagraph = (
+    <>
+      Fill out the form and we&rsquo;ll arrange for an estimator to attend
+      your property to quote.
+    </>
+  ),
+  showGoogleRating = true,
 }: QuoteBookingFormProps) {
   const HeadingTag = headingLevel;
   const [step, setStep] = useState<Step>(1);
@@ -46,16 +83,13 @@ export default function QuoteBookingForm({
     lastName: "",
     email: "",
     mobile: "",
-    customerType: "",
+    service: "",
     propertyAddress: "",
-    ctsNumber: "",
     message: "",
     company: "", // honeypot
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
-
-  const showCtsField = CTS_ELIGIBLE_TYPES.includes(form.customerType);
 
   // Build a real thumbnail preview URL for each selected file. Object
   // URLs are revoked whenever the photo list changes or the component
@@ -99,7 +133,7 @@ export default function QuoteBookingForm({
         form.lastName.trim() !== "" &&
         form.email.trim() !== "" &&
         form.mobile.trim() !== "" &&
-        form.customerType !== ""
+        form.service !== ""
       : form.propertyAddress.trim() !== "";
 
   const handleSubmit = async () => {
@@ -113,9 +147,8 @@ export default function QuoteBookingForm({
       body.append("name", `${form.firstName} ${form.lastName}`.trim());
       body.append("email", form.email);
       body.append("phone", form.mobile);
-      body.append("propertyType", form.customerType);
+      body.append("services", form.service);
       body.append("propertyAddress", form.propertyAddress);
-      body.append("ctsNumber", form.ctsNumber);
       body.append("message", form.message.trim());
       body.append("company", form.company);
       photos.forEach((file) => body.append("photos", file));
@@ -134,47 +167,61 @@ export default function QuoteBookingForm({
     <div className={styles.card}>
       {/* ── Left info column ── */}
       <div className={styles.info}>
-        <HeadingTag className={styles.heading}>
-          Book a no obligation,
-          <br />
-          hassle-free quote.
-        </HeadingTag>
-        <p className={styles.lede}>
-          Fill out the form and we&rsquo;ll arrange for an estimator to attend
-          your property to quote.
-        </p>
+        <HeadingTag className={styles.heading}>{heading}</HeadingTag>
+        <p className="p-soft">{leadParagraph}</p>
 
-        <div className={styles.rating}>
-          <svg
-            className={styles.googleIcon}
-            viewBox="0 0 24 24"
-            width="28"
-            height="28"
-            fill="var(--navy)"
-            aria-hidden="true"
-          >
-            <path d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v2.97h3.86c2.26-2.09 3.56-5.17 3.56-8.79zM12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-2.97c-1.07.71-2.44 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.96H1.27v3.06C3.24 21.3 7.26 24 12 24zM5.27 14.3c-.24-.71-.38-1.46-.38-2.3s.14-1.59.38-2.3V6.64H1.27A11.95 11.95 0 0 0 0 12c0 1.93.46 3.76 1.27 5.36l4-3.06zM12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.26 0 3.24 2.7 1.27 6.64l4 3.06C6.22 6.86 8.87 4.75 12 4.75z" />
-          </svg>
-          <div className={styles.ratingText}>
-            <span className={styles.ratingTitle}>Google Rating</span>
-            <div className={styles.ratingScoreRow}>
-              <span className={styles.ratingScore}>4.9</span>
-              <div className={styles.stars} aria-hidden="true">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg
-                    key={i}
-                    className={styles.star}
-                    viewBox="0 0 24 24"
-                    width="14"
-                    height="14"
-                    fill="var(--navy)"
-                  >
-                    <path d="M12 2.5l2.97 6.02 6.64.97-4.8 4.68 1.13 6.6L12 17.6l-5.94 3.17 1.13-6.6-4.8-4.68 6.64-.97L12 2.5z" />
-                  </svg>
-                ))}
+        {showGoogleRating && (
+          <div className={styles.rating}>
+            <svg
+              className={styles.googleIcon}
+              viewBox="0 0 24 24"
+              width="28"
+              height="28"
+              fill="var(--navy)"
+              aria-hidden="true"
+            >
+              <path d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v2.97h3.86c2.26-2.09 3.56-5.17 3.56-8.79zM12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-2.97c-1.07.71-2.44 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.96H1.27v3.06C3.24 21.3 7.26 24 12 24zM5.27 14.3c-.24-.71-.38-1.46-.38-2.3s.14-1.59.38-2.3V6.64H1.27A11.95 11.95 0 0 0 0 12c0 1.93.46 3.76 1.27 5.36l4-3.06zM12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.26 0 3.24 2.7 1.27 6.64l4 3.06C6.22 6.86 8.87 4.75 12 4.75z" />
+            </svg>
+            <div className={styles.ratingText}>
+              <span className={styles.ratingTitle}>Google Rating</span>
+              <div className={styles.ratingScoreRow}>
+                <span className={styles.ratingScore}>4.9</span>
+                <div className={styles.stars} aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg
+                      key={i}
+                      className={styles.star}
+                      viewBox="0 0 24 24"
+                      width="14"
+                      height="14"
+                      fill="var(--navy)"
+                    >
+                      <path d="M12 2.5l2.97 6.02 6.64.97-4.8 4.68 1.13 6.6L12 17.6l-5.94 3.17 1.13-6.6-4.8-4.68 6.64-.97L12 2.5z" />
+                    </svg>
+                  ))}
+                </div>
               </div>
+              <span className={styles.ratingCount}>Based on 50+ reviews</span>
             </div>
-            <span className={styles.ratingCount}>Based on 50+ reviews</span>
+          </div>
+        )}
+
+        <div className={styles.trustGroup}>
+          <h3 className={styles.trustGroupHeading}>
+            8 Year warranty as standard
+          </h3>
+          <div className={styles.trustLogos}>
+            {TRUST_LOGOS.map((logo) => (
+              <Image
+                key={logo.src}
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                className={styles.trustLogoImg}
+                style={{ height: logo.displayHeight }}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -236,9 +283,6 @@ export default function QuoteBookingForm({
                   onClick={() => s.n < step && setStep(s.n)}
                   className={`${styles.stepTab} ${step === s.n ? styles.stepTabActive : ""}`}
                 >
-                  <span className={styles.stepNum}>
-                    {String(s.n).padStart(2, "0")}
-                  </span>
                   <span className={styles.stepLabel}>{s.label}</span>
                 </button>
               ))}
@@ -290,14 +334,14 @@ export default function QuoteBookingForm({
                   />
                 </label>
                 <label className={styles.fieldBox}>
-                  <span className={styles.fieldBoxLabel}>Customer Type*</span>
+                  <span className={styles.fieldBoxLabel}>Services*</span>
                   <select
                     className={styles.fieldBoxSelect}
-                    value={form.customerType}
-                    onChange={(e) => set("customerType", e.target.value)}
+                    value={form.service}
+                    onChange={(e) => set("service", e.target.value)}
                   >
-                    <option value="">Please select a customer type</option>
-                    {CUSTOMER_TYPES.map((t) => (
+                    <option value="">Please select a service</option>
+                    {SERVICES.map((t) => (
                       <option key={t} value={t}>
                         {t}
                       </option>
@@ -322,20 +366,6 @@ export default function QuoteBookingForm({
                     maxLength={200}
                   />
                 </label>
-                {showCtsField && (
-                  <label className={styles.fieldBox}>
-                    <span className={styles.fieldBoxLabel}>
-                      CTS / Plan Number{" "}
-                      <span className={styles.optional}>(optional)</span>
-                    </span>
-                    <input
-                      className={styles.fieldBoxInput}
-                      value={form.ctsNumber}
-                      onChange={(e) => set("ctsNumber", e.target.value)}
-                      maxLength={50}
-                    />
-                  </label>
-                )}
                 <label className={styles.fieldBox}>
                   <span className={styles.fieldBoxLabel}>
                     Tell us more{" "}
@@ -352,8 +382,7 @@ export default function QuoteBookingForm({
 
                 <div className={styles.field}>
                   <label className={styles.fieldBoxLabel}>
-                    Photos{" "}
-                    <span className={styles.optional}>(optional)</span>
+                    Photos <span className={styles.optional}>(optional)</span>
                   </label>
 
                   <input
@@ -389,7 +418,7 @@ export default function QuoteBookingForm({
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span>Add Photos</span>
+                    <span className={styles.uploadBoxLabel}>Add Photos</span>
                   </button>
 
                   {photoError && (
@@ -399,7 +428,10 @@ export default function QuoteBookingForm({
                   )}
 
                   {photos.length > 0 && (
-                    <ul className={styles.photoGrid} aria-label="Uploaded photos">
+                    <ul
+                      className={styles.photoGrid}
+                      aria-label="Uploaded photos"
+                    >
                       {photos.map((file, i) => (
                         <li key={i} className={styles.photoThumb}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -455,8 +487,9 @@ export default function QuoteBookingForm({
                 size="lg"
                 fullWidth
                 disabled={!canAdvance}
-                className={styles.nextBtn}
-                aria-label={step < 2 ? "Continue to next step" : "Submit quote request"}
+                aria-label={
+                  step < 2 ? "Continue to next step" : "Submit quote request"
+                }
               >
                 {step < 2 ? "Next →" : "Submit →"}
               </Button>
@@ -467,7 +500,6 @@ export default function QuoteBookingForm({
 
       {/* ── Right video column ── */}
       <div className={styles.videoCol}>
-        <span className={styles.videoCaption}>RAS-VERTEX PROJECT FOOTAGE</span>
         <video
           className={styles.video}
           src="/videos/racv.mp4"

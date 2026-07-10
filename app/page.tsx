@@ -9,7 +9,7 @@ import { WHY_CHOOSE_US_SLIDES as WHY_CHOOSE_US_POINTS } from "./data/homepageWhy
 import WarrantyCard from "./components/shared/WarrantyCard";
 import PhotoCarousel from "./components/shared/PhotoCarousel";
 import { PROJECTS } from "./data/projectsData";
-import ContactSurface from "./components/contact/ContactSurface";
+import QuoteBookingForm from "./components/contact/QuoteBookingForm";
 
 export default function Home() {
   return (
@@ -113,41 +113,17 @@ export default function Home() {
         className="px-5 md:px-10 py-10 md:py-20 lg:py-32"
         aria-label="Request a free quote"
       >
-        <ContactSurface
+        <QuoteBookingForm
           headingLevel="h2"
-          leadParagraph="For 25 years, we've been the trusted maintenance partner for Sunshine Coast body corporates, strata committees, commercial property managers and hotels. Across every building type, we maintain higher standards."
-          showPhoto={false}
-          showContactGrid={false}
+          heading={
+            <>
+              Let&rsquo;s talk about
+              <br />
+              your building.
+            </>
+          }
+          leadParagraph="For 25 years, we've helped Sunshine Coast properties maintain higher standards. How can we help yours?"
           showGoogleRating={false}
-          showVideo
-          trustGroups={[
-            {
-              heading: "8 Year warranty as standard",
-              logos: [
-                {
-                  src: "/images/associations/dulux.svg",
-                  alt: "Dulux",
-                  width: 108,
-                  height: 32,
-                  displayHeight: 30,
-                },
-                {
-                  src: "/images/associations/haymes.svg",
-                  alt: "Haymes Paint",
-                  width: 642,
-                  height: 289,
-                  displayHeight: 38,
-                },
-                {
-                  src: "/images/associations/sika.png",
-                  alt: "Sika",
-                  width: 2215,
-                  height: 1924,
-                  displayHeight: 46,
-                },
-              ],
-            },
-          ]}
         />
       </section>
     </>

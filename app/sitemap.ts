@@ -62,12 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Company pages
   const companyPages: MetadataRoute.Sitemap = [
     {
-      url: `${SITE_URL}/careers`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
       url: `${SITE_URL}/projects`,
       lastModified: currentDate,
       changeFrequency: "weekly",

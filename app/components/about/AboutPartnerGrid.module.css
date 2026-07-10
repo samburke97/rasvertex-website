@@ -1,0 +1,64 @@
+/* app/components/about/AboutPartnerGrid.module.css */
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: var(--space-3xl);
+}
+
+.text {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title-to-body);
+}
+
+.photoWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg) var(--space-xl);
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  height: 56px;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .text {
+    position: static;
+  }
+}

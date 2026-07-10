@@ -4,14 +4,14 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-3xl);
+  background: #deeeff;
+  border-radius: var(--radius-3xl);
+  padding: var(--space-4xl);
 }
 
 /* ── Header ──────────────────────────────────────────────────── */
-.header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-col-gap);
-  align-items: end;
+.header h2 {
+  margin: 0;
 }
 
 /* ── Tabs ────────────────────────────────────────────────────── */
@@ -26,9 +26,9 @@
   align-items: center;
   gap: var(--space-sm);
   padding: 8px 18px;
-  border: 1px solid var(--navy-25);
+  border: 1px solid transparent;
   border-radius: var(--radius-xl);
-  background: none;
+  background: #ffffff;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-bold);
@@ -41,7 +41,7 @@
 }
 
 .tab:hover {
-  border-color: var(--navy);
+  border-color: var(--navy-25);
 }
 
 .tabActive {
@@ -81,7 +81,7 @@
 .suburb {
   padding: 8px 16px;
   border-radius: var(--radius-xl);
-  background: var(--navy-08);
+  background: #ffffff;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-medium);
@@ -113,9 +113,8 @@ a:hover .ctaArrow {
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .header {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+  .section {
+    padding: var(--space-3xl) var(--space-2xl);
   }
 }
 

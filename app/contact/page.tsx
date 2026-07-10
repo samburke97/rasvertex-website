@@ -2,7 +2,6 @@
 
 import type { Metadata } from "next";
 import QuoteBookingForm from "../components/contact/QuoteBookingForm";
-import ContactTestimonial from "../components/contact/ContactTestimonial";
 import PhotoCarousel from "../components/shared/PhotoCarousel";
 
 export const metadata: Metadata = {
@@ -34,19 +33,10 @@ export default function ContactPage() {
   return (
     <main aria-label="Contact RAS-VERTEX, request a free quote">
       <section
-        className="px-5 md:px-10 pt-5 pb-10 md:pb-20"
+        className="px-5 md:px-10 py-10 md:py-20 lg:py-32"
         aria-label="Request a free quote"
       >
         <QuoteBookingForm />
-      </section>
-
-      {/* ── Testimonial — its own full, centered section ── */}
-      <section
-        className="px-5 md:px-10 py-10 md:py-20"
-        style={{ display: "flex", justifyContent: "center" }}
-        aria-label="Client testimonial"
-      >
-        <ContactTestimonial />
       </section>
     </main>
   );
