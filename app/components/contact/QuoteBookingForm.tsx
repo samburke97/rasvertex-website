@@ -33,11 +33,6 @@ const TRUST_LOGOS = [
 
 type Step = 1 | 2;
 
-const STEPS: { n: Step; label: string }[] = [
-  { n: 1, label: "Your Details" },
-  { n: 2, label: "Property Details" },
-];
-
 const SERVICES = [
   "Painting",
   "Building Cleaning",
@@ -57,6 +52,8 @@ interface QuoteBookingFormProps {
   heading?: ReactNode;
   leadParagraph?: ReactNode;
   showGoogleRating?: boolean;
+  showTrustGroup?: boolean;
+  showVideo?: boolean;
 }
 
 export default function QuoteBookingForm({
@@ -69,6 +66,8 @@ export default function QuoteBookingForm({
     </>
   ),
   showGoogleRating = true,
+  showTrustGroup = true,
+  showVideo = true,
 }: QuoteBookingFormProps) {
   const HeadingTag = headingLevel;
   const [step, setStep] = useState<Step>(1);
@@ -164,7 +163,9 @@ export default function QuoteBookingForm({
   };
 
   return (
-    <div className={styles.card}>
+    <div
+      className={`${styles.card} ${!showVideo ? styles.cardNoVideo : ""}`}
+    >
       {/* ── Left info column ── */}
       <div className={styles.info}>
         <HeadingTag className={styles.heading}>{heading}</HeadingTag>
@@ -206,24 +207,26 @@ export default function QuoteBookingForm({
           </div>
         )}
 
-        <div className={styles.trustGroup}>
-          <h3 className={styles.trustGroupHeading}>
-            8 Year warranty as standard
-          </h3>
-          <div className={styles.trustLogos}>
-            {TRUST_LOGOS.map((logo) => (
-              <Image
-                key={logo.src}
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-                className={styles.trustLogoImg}
-                style={{ height: logo.displayHeight }}
-              />
-            ))}
+        {showTrustGroup && (
+          <div className={styles.trustGroup}>
+            <h3 className={styles.trustGroupHeading}>
+              8 Year warranty as standard
+            </h3>
+            <div className={styles.trustLogos}>
+              {TRUST_LOGOS.map((logo) => (
+                <Image
+                  key={logo.src}
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                  className={styles.trustLogoImg}
+                  style={{ height: logo.displayHeight }}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* ── Middle form column ── */}
@@ -265,27 +268,6 @@ export default function QuoteBookingForm({
                 value={form.company}
                 onChange={(e) => set("company", e.target.value)}
               />
-            </div>
-
-            {/* Step tabs */}
-            <div
-              className={styles.steps}
-              role="tablist"
-              aria-label="Quote request steps"
-            >
-              {STEPS.map((s) => (
-                <button
-                  key={s.n}
-                  type="button"
-                  role="tab"
-                  aria-selected={step === s.n}
-                  disabled={s.n > step}
-                  onClick={() => s.n < step && setStep(s.n)}
-                  className={`${styles.stepTab} ${step === s.n ? styles.stepTabActive : ""}`}
-                >
-                  <span className={styles.stepLabel}>{s.label}</span>
-                </button>
-              ))}
             </div>
 
             {/* Step 1 — Your Details */}
@@ -499,15 +481,17 @@ export default function QuoteBookingForm({
       </div>
 
       {/* ── Right video column ── */}
-      <div className={styles.videoCol}>
-        <video
-          className={styles.video}
-          src="/videos/racv.mp4"
-          controls
-          playsInline
-          aria-label="RAS-VERTEX project footage — RACV Noosa Resort"
-        />
-      </div>
+      {showVideo && (
+        <div className={styles.videoCol}>
+          <video
+            className={styles.video}
+            src="/videos/racv.mp4"
+            controls
+            playsInline
+            aria-label="RAS-VERTEX project footage — RACV Noosa Resort"
+          />
+        </div>
+      )}
     </div>
   );
 }

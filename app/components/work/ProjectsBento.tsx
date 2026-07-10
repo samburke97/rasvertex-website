@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { PROJECTS, PROJECT_CATEGORIES, type Project } from "../../data/projectsData";
+import { PROJECTS } from "../../data/projectsData";
 import styles from "./ProjectsBento.module.css";
 
 const PrevArrow = () => (
@@ -22,23 +22,17 @@ const NextArrow = () => (
 );
 
 export default function ProjectsBento() {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [openIdx, setOpenIdx] = useState<number | null>(null);
-
-  const filtered =
-    activeCategory === "All"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === activeCategory);
 
   const closeModal = useCallback(() => setOpenIdx(null), []);
 
   const prev = useCallback(() => {
-    setOpenIdx((i) => (i === null ? null : (i - 1 + filtered.length) % filtered.length));
-  }, [filtered.length]);
+    setOpenIdx((i) => (i === null ? null : (i - 1 + PROJECTS.length) % PROJECTS.length));
+  }, []);
 
   const next = useCallback(() => {
-    setOpenIdx((i) => (i === null ? null : (i + 1) % filtered.length));
-  }, [filtered.length]);
+    setOpenIdx((i) => (i === null ? null : (i + 1) % PROJECTS.length));
+  }, []);
 
   useEffect(() => {
     if (openIdx === null) return;
@@ -56,28 +50,13 @@ export default function ProjectsBento() {
     return () => { document.body.style.overflow = ""; };
   }, [openIdx]);
 
-  const current = openIdx !== null ? filtered[openIdx] : null;
+  const current = openIdx !== null ? PROJECTS[openIdx] : null;
 
   return (
     <>
-      {/* Filter */}
-      <nav className={styles.filter} aria-label="Filter projects by category">
-        {PROJECT_CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            type="button"
-            onClick={() => { setActiveCategory(cat); setOpenIdx(null); }}
-            aria-pressed={activeCategory === cat}
-            className={`${styles.filterBtn} ${activeCategory === cat ? styles.filterBtnActive : ""}`}
-          >
-            {cat}
-          </button>
-        ))}
-      </nav>
-
       {/* Grid */}
       <div className={styles.grid} role="list" aria-label="Project gallery">
-        {filtered.map((project, i) => (
+        {PROJECTS.map((project, i) => (
           <div key={project.id} className={styles.cell} role="listitem">
             <button
               type="button"

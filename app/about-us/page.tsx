@@ -65,7 +65,7 @@ export default function AboutPage() {
         />
       </section>
 
-      <section className="pt-10 pb-10 md:pb-20" aria-label="Industry partners">
+      <section className="py-10 md:py-20" aria-label="Industry partners">
         <PartnersCarousel
           headingTag="h2"
           headingId="about-hero-heading"

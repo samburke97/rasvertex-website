@@ -12,6 +12,10 @@
   border-radius: var(--radius-3xl);
 }
 
+.cardNoVideo {
+  grid-template-columns: minmax(280px, 35%) minmax(420px, 1fr);
+}
+
 /* ── Left info column ───────────────────────────────────────── */
 .info {
   display: flex;
@@ -22,13 +26,10 @@
 }
 
 .heading {
-  font-family: var(--font-body);
-  font-weight: var(--weight-bold);
-  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: var(--navy);
   margin: 0;
+  font-size: var(--h2-size);
+  line-height: var(--h2-leading);
+  letter-spacing: var(--h2-tracking);
 }
 
 .trustGroup {
@@ -114,48 +115,6 @@
   opacity: 0;
   pointer-events: none;
   left: -9999px;
-}
-
-/* ── Step tabs ──────────────────────────────────────────────── */
-.steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-}
-
-.stepTab {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-sm);
-  background: none;
-  border: none;
-  padding: 0;
-  text-align: left;
-  cursor: not-allowed;
-  opacity: 0.35;
-}
-
-.stepTab:disabled {
-  cursor: not-allowed;
-}
-
-.stepTab:not(:disabled) {
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.stepTabActive,
-.stepTabActive:not(:disabled) {
-  opacity: 1;
-}
-
-.stepLabel {
-  font-family: var(--font-body);
-  font-weight: var(--weight-bold);
-  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
-  line-height: var(--h4-leading);
-  letter-spacing: var(--h4-tracking);
-  color: var(--navy);
 }
 
 /* ── Fields ─────────────────────────────────────────────────── */
@@ -361,11 +320,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  align-self: end;
 }
 
 .video {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: var(--radius-2xl);
   background: var(--navy);
@@ -393,12 +353,7 @@
 
 @media (max-width: 560px) {
   .card {
-    padding: var(--space-xl);
     gap: var(--space-2xl);
-  }
-
-  .steps {
-    gap: var(--space-md);
   }
 
   .footer {

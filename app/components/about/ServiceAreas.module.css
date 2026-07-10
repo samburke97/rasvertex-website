@@ -4,9 +4,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-3xl);
-  background: #deeeff;
-  border-radius: var(--radius-3xl);
-  padding: var(--space-4xl);
 }
 
 /* ── Header ──────────────────────────────────────────────────── */
@@ -26,9 +23,9 @@
   align-items: center;
   gap: var(--space-sm);
   padding: 8px 18px;
-  border: 1px solid transparent;
+  border: 1px solid var(--navy-25);
   border-radius: var(--radius-xl);
-  background: #ffffff;
+  background: none;
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-bold);
@@ -41,7 +38,7 @@
 }
 
 .tab:hover {
-  border-color: var(--navy-25);
+  border-color: var(--navy);
 }
 
 .tabActive {
@@ -81,7 +78,7 @@
 .suburb {
   padding: 8px 16px;
   border-radius: var(--radius-xl);
-  background: #ffffff;
+  background: var(--navy-08);
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
   font-weight: var(--weight-medium);
@@ -112,12 +109,6 @@ a:hover .ctaArrow {
 }
 
 /* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .section {
-    padding: var(--space-3xl) var(--space-2xl);
-  }
-}
-
 @media (max-width: 560px) {
   .footer {
     flex-direction: column;

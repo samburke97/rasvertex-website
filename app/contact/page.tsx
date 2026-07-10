@@ -2,7 +2,6 @@
 
 import type { Metadata } from "next";
 import QuoteBookingForm from "../components/contact/QuoteBookingForm";
-import PhotoCarousel from "../components/shared/PhotoCarousel";
 
 export const metadata: Metadata = {
   title: "Contact Us | RAS-VERTEX — Sunshine Coast Painting & Maintenance",
@@ -18,25 +17,14 @@ export const metadata: Metadata = {
   },
 };
 
-const CONTACT_SLIDES = [
-  {
-    src: "/images/projects/1.jpeg",
-    alt: "Commercial repaint on the Sunshine Coast",
-  },
-  { src: "/images/projects/2.jpeg", alt: "Facade restoration in Maroochydore" },
-  { src: "/nav/painting.png", alt: "Painting project in Mooloolaba" },
-  { src: "/nav/waterproofing.png", alt: "Waterproofing project in Noosa" },
-  { src: "/nav/maintenance.png", alt: "Building maintenance on the Sunshine Coast" },
-];
-
 export default function ContactPage() {
   return (
     <main aria-label="Contact RAS-VERTEX, request a free quote">
       <section
-        className="px-5 md:px-10 py-10 md:py-20 lg:py-32"
+        className="px-5 md:px-10 pt-20 pb-10 md:pb-20 lg:pb-32"
         aria-label="Request a free quote"
       >
-        <QuoteBookingForm />
+        <QuoteBookingForm showTrustGroup={false} />
       </section>
     </main>
   );

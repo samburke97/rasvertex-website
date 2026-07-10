@@ -34,7 +34,7 @@
 .slide {
   position: relative;
   flex: 0 0 36vw;
-  aspect-ratio: 4 / 2.7;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: var(--navy-12);
@@ -45,11 +45,11 @@
 }
 
 .slideDown {
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .slideNudge {
-  margin-top: 6px;
+  margin-top: 0;
 }
 
 .mediaWrap {
@@ -141,8 +141,7 @@
 .tagLocation {
   font-family: var(--font-body);
   font-size: var(--p-sm-size);
-  color: var(--navy);
-  opacity: 0.45;
+  color: var(--navy-65);
   line-height: 1.2;
 }
 
@@ -274,6 +273,10 @@
 }
 
 @media (max-width: 1100px) {
+  .carousel {
+    padding-left: var(--space-x-sm);
+  }
+
   .slide {
     flex: 0 0 42vw;
   }
@@ -283,6 +286,10 @@
 }
 
 @media (max-width: 860px) {
+  .carousel {
+    padding-left: var(--space-x-xs);
+  }
+
   .slide {
     flex: 0 0 65vw;
   }
@@ -297,6 +304,10 @@
 }
 
 @media (max-width: 560px) {
+  .carousel {
+    padding-left: var(--space-x-2xs);
+  }
+
   .slide {
     flex: 0 0 80vw;
   }
