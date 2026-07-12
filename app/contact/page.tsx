@@ -21,7 +21,7 @@ export default function ContactPage() {
   return (
     <main aria-label="Contact RAS-VERTEX, request a free quote">
       <section
-        className="px-5 md:px-10 pt-10 md:pt-20 lg:pt-32 pb-10 md:pb-20 lg:pb-32"
+        className="px-5 md:px-10 pt-10 pb-10 md:pb-20 lg:pb-32"
         aria-label="Request a free quote"
       >
         <QuoteBookingForm showTrustGroup={false} />

@@ -56,7 +56,16 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-xl) var(--space-xl) 0;
-  gap: 0;
+  gap: var(--space-lg);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 /* Section headings — Inter bold h2, inherits from globals */
@@ -64,76 +73,55 @@
   margin: 0 0 var(--space-md);
 }
 
-.sectionHeading + .companyList {
-  margin-top: 0;
-}
+/* ── Services card — same burgundy as the desktop services dropdown ── */
 
-/* ── Service pills ── */
-
-.serviceList {
+.servicesCard {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--space-xl);
+  gap: 0;
+  background: #6d2932;
+  border-radius: var(--radius-3xl);
+  padding: var(--space-xl);
 }
 
 .serviceItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: 1.375rem;
+  line-height: var(--h4-leading);
+  letter-spacing: var(--h4-tracking);
+  color: #ffffff;
+  opacity: 0.4;
   text-decoration: none;
   transition: opacity 0.15s;
 }
 
-.serviceItem:last-of-type {
-  border-bottom: none;
-}
-.serviceItem:hover {
-  opacity: 0.6;
-}
-
-/* Service name — matches the desktop services dropdown */
-.serviceLabel {
-  flex: 1;
-  font-family: var(--font-body);
-  font-weight: var(--weight-bold);
-  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
-  line-height: var(--h4-leading);
-  letter-spacing: var(--h4-tracking);
-  color: var(--navy);
+.serviceItem:hover,
+.serviceItem:active,
+.serviceItemActive {
+  opacity: 1;
 }
 
-/* Arrow */
-.arrow {
-  font-size: var(--p-sm-size);
-  color: var(--navy);
-  opacity: 0.3;
-  flex-shrink: 0;
-  transition:
-    opacity 0.15s,
-    transform 0.15s;
-}
+/* ── Company card — same light blue used across the site ── */
 
-.serviceItem:hover .arrow {
-  opacity: 0.6;
-  transform: translateX(3px);
+.companyCard {
+  display: flex;
+  flex-direction: column;
+  background: #deeeff;
+  border-radius: var(--radius-3xl);
+  padding: var(--space-xl);
 }
-
-/* ── Company flat rows ── */
 
 .companyList {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--space-xl);
 }
 
 .companyItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
   font-family: var(--font-body);
   font-size: var(--p-size);
   font-weight: var(--weight-regular);
@@ -142,9 +130,6 @@
   transition: opacity 0.15s;
 }
 
-.companyItem:last-of-type {
-  border-bottom: none;
-}
 .companyItem:hover {
   opacity: 0.6;
 }
@@ -152,6 +137,10 @@
 .companyItem .arrow {
   color: var(--navy);
   opacity: 0.25;
+  flex-shrink: 0;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
 }
 
 .companyItem:hover .arrow {
@@ -167,7 +156,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  border-top: 1px solid var(--line);
 }
 
 .ctaInner {

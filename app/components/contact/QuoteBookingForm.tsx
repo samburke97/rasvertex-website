@@ -490,6 +490,10 @@ export default function QuoteBookingForm({
             playsInline
             aria-label="RAS-VERTEX project footage — RACV Noosa Resort"
           />
+          <div className={styles.videoTag}>
+            <span className={styles.videoTagName}>RACV Maintenance</span>
+            <span className={styles.videoTagLocation}>Sunshine Coast</span>
+          </div>
         </div>
       )}
     </div>

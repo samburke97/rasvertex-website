@@ -319,18 +319,45 @@
 
 /* ── Right video column ─────────────────────────────────────── */
 .videoCol {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  align-self: end;
+  position: relative;
+  align-self: stretch;
 }
 
 .video {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  min-height: 480px;
   object-fit: cover;
   border-radius: var(--radius-2xl);
   background: var(--navy);
+}
+
+.videoTag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 0 0 0 var(--radius-xl);
+}
+
+.videoTagName {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--p-size);
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.videoTagLocation {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+  line-height: 1.2;
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
@@ -346,9 +373,13 @@
 
   .videoCol {
     order: 3;
+    align-self: auto;
+    min-height: 0;
   }
 
   .video {
+    height: auto;
+    min-height: 0;
     aspect-ratio: 16 / 9;
   }
 

@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   servicesData,
@@ -18,6 +19,7 @@ type MobileMenuProps = {
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const serviceKeys = Object.keys(servicesData) as ServiceKey[];
+  const pathname = usePathname();
 
   return (
     <AnimatePresence>
@@ -55,68 +57,54 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {/* Nav */}
           <nav className={styles.nav} aria-label="Mobile navigation links">
-            <h2 className={styles.sectionHeading}>Services</h2>
-
-            <div className={styles.serviceList}>
-              {serviceKeys.map((key) => (
-                <Link
-                  key={key}
-                  href={servicesData[key].href}
-                  className={styles.serviceItem}
-                  onClick={onClose}
-                >
-                  <span className={styles.serviceLabel}>
-                    {servicesData[key].name}
-                  </span>
-                  <svg
-                    className={styles.arrow}
-                    width="14"
-                    height="14"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    aria-hidden="true"
+            <div className={styles.servicesCard}>
+              <h2 className={styles.srOnly}>Services</h2>
+              {serviceKeys.map((key) => {
+                const active = pathname === servicesData[key].href;
+                return (
+                  <Link
+                    key={key}
+                    href={servicesData[key].href}
+                    className={`${styles.serviceItem} ${active ? styles.serviceItemActive : ""}`}
+                    onClick={onClose}
                   >
-                    <path
-                      d="M3 8h10M9 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              ))}
+                    {servicesData[key].name}
+                  </Link>
+                );
+              })}
             </div>
 
-            <h2 className={styles.sectionHeading}>Company</h2>
+            <div className={styles.companyCard}>
+              <h2 className={styles.sectionHeading}>Company</h2>
 
-            <div className={styles.companyList}>
-              {companyLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={styles.companyItem}
-                  onClick={onClose}
-                >
-                  <span>{item.name}</span>
-                  <svg
-                    className={styles.arrow}
-                    width="14"
-                    height="14"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    aria-hidden="true"
+              <div className={styles.companyList}>
+                {companyLinks.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={styles.companyItem}
+                    onClick={onClose}
                   >
-                    <path
-                      d="M3 8h10M9 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              ))}
+                    <span>{item.name}</span>
+                    <svg
+                      className={styles.arrow}
+                      width="14"
+                      height="14"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
+                ))}
+              </div>
             </div>
           </nav>
 
