@@ -486,7 +486,9 @@ export default function QuoteBookingForm({
           <video
             className={styles.video}
             src="/videos/racv.mp4"
-            controls
+            autoPlay
+            loop
+            muted
             playsInline
             aria-label="RAS-VERTEX project footage — RACV Noosa Resort"
           />

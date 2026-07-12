@@ -68,8 +68,10 @@
   white-space: nowrap;
 }
 
-/* Section headings — Inter bold h2, inherits from globals */
+/* Section headings — sized down from the global h2 clamp, which is
+   far too large for a compact nav card label */
 .sectionHeading {
+  font-size: 1.375rem;
   margin: 0 0 var(--space-md);
 }
 
@@ -184,10 +186,9 @@
 
 .ctaHeading {
   font-family: var(--font-body);
-  font-size: var(--h3-size);
+  font-size: 1.125rem;
   font-weight: var(--weight-bold);
-  line-height: var(--h3-leading);
-  letter-spacing: var(--h3-tracking);
+  line-height: 1.25;
   color: var(--navy);
   margin: 0;
 }

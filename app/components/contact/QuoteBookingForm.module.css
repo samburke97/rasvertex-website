@@ -334,14 +334,14 @@
 
 .videoTag {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
   padding: 16px 20px;
   background: #ffffff;
-  border-radius: 0 0 0 var(--radius-xl);
+  border-radius: var(--radius-xl) 0 0 0;
 }
 
 .videoTagName {
