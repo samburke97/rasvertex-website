@@ -110,8 +110,8 @@ export default function ExternalCleaningPage() {
           ]}
           heading={
             <>
-              Here&rsquo;s why building managers and
-              <br />
+              Here&rsquo;s why building managers and{" "}
+              <br className="hidden md:block" />
               property owners choose our cleaning team.
             </>
           }
@@ -144,8 +144,8 @@ export default function ExternalCleaningPage() {
         <ServiceAccordion
           heading={
             <>
-              What kind of external clean
-              <br />
+              What kind of external clean{" "}
+              <br className="hidden md:block" />
               are you looking for?
             </>
           }

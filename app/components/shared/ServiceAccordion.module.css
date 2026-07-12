@@ -219,6 +219,10 @@
 /* ─── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 860px) {
+  .top {
+    margin-bottom: var(--space-2xl);
+  }
+
   .inner {
     grid-template-columns: 1fr;
   }

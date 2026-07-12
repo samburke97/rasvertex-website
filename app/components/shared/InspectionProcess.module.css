@@ -265,6 +265,10 @@
     gap: var(--space-3xl);
   }
 
+  .finds {
+    margin-top: var(--space-2xl);
+  }
+
   .left {
     display: contents;
   }

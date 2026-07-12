@@ -109,8 +109,8 @@ export default function HeightSafetyPage() {
           ]}
           heading={
             <>
-              Here&rsquo;s why body corporates and facility
-              <br />
+              Here&rsquo;s why body corporates and facility{" "}
+              <br className="hidden md:block" />
               managers trust our height safety systems.
             </>
           }
@@ -142,8 +142,8 @@ export default function HeightSafetyPage() {
         <ServiceAccordion
           heading={
             <>
-              What height safety service
-              <br />
+              What height safety service{" "}
+              <br className="hidden md:block" />
               are you looking for?
             </>
           }
@@ -178,8 +178,9 @@ export default function HeightSafetyPage() {
           id="height-safety-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          We use our expertise on ropes to deliver complete <br /> property
-          maintenance solutions across the Sunshine Coast.
+          We use our expertise on ropes to deliver complete{" "}
+          <br className="hidden xl:block" />
+          property maintenance solutions across the Sunshine Coast.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES.filter(

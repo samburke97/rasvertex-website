@@ -73,50 +73,58 @@ export default function ServiceCards({
       <Wrapper aria-label={embedded ? undefined : ariaLabel}>
         <div className={styles.listRow}>
           <div className={styles.listLeft}>
-            {eyebrow && <span className={styles.eyebrow}>{eyebrow}</span>}
-            <h2>{heading}</h2>
-            {footerCtaLabel && footerCtaHref && (
-              <Button as="link" href={footerCtaHref} variant="primary">
-                {footerCtaLabel
-                  .slice(0, footerCtaLabel.lastIndexOf("→"))
-                  .trimEnd()}
-                <svg
-                  className={styles.ctaArrow}
-                  width="14"
-                  height="14"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3 8h10M9 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Button>
-            )}
-            {footerLogos && footerLogos.length > 0 && (
-              <div className={styles.footerLogosGroup}>
-                {footerLogosHeading && (
-                  <h3 className={styles.footerLogosHeading}>
-                    {footerLogosHeading}
-                  </h3>
+            <div className={styles.headingGroup}>
+              {eyebrow && <span className={styles.eyebrow}>{eyebrow}</span>}
+              <h2>{heading}</h2>
+            </div>
+
+            {((footerCtaLabel && footerCtaHref) ||
+              (footerLogos && footerLogos.length > 0)) && (
+              <div className={styles.ctaGroup}>
+                {footerCtaLabel && footerCtaHref && (
+                  <Button as="link" href={footerCtaHref} variant="primary">
+                    {footerCtaLabel
+                      .slice(0, footerCtaLabel.lastIndexOf("→"))
+                      .trimEnd()}
+                    <svg
+                      className={styles.ctaArrow}
+                      width="14"
+                      height="14"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Button>
                 )}
-                <div className={styles.footerLogos}>
-                  {footerLogos.map((logo) => (
-                    <Image
-                      key={logo.src}
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={logo.width ?? 64}
-                      height={logo.height ?? 30}
-                      className={styles.footerLogoImg}
-                    />
-                  ))}
-                </div>
+                {footerLogos && footerLogos.length > 0 && (
+                  <div className={styles.footerLogosGroup}>
+                    {footerLogosHeading && (
+                      <h3 className={styles.footerLogosHeading}>
+                        {footerLogosHeading}
+                      </h3>
+                    )}
+                    <div className={styles.footerLogos}>
+                      {footerLogos.map((logo) => (
+                        <Image
+                          key={logo.src}
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={logo.width ?? 64}
+                          height={logo.height ?? 30}
+                          className={styles.footerLogoImg}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

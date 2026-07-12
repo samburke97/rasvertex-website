@@ -20,6 +20,10 @@ body {
   padding: 0;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--p-size);

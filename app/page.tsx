@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <section
-        className="pt-5 pb-30 flex flex-col gap-6 md:gap-8 lg:gap-10"
+        className="pt-5 pb-10 md:pb-20 lg:pb-30 flex flex-col gap-6 md:gap-8 lg:gap-10"
         aria-label="Our services and industry partners"
       >
         <HeroVariant />
@@ -56,8 +56,8 @@ export default function Home() {
           }))}
           heading={
             <>
-              Here&rsquo;s why building managers and
-              <br />
+              Here&rsquo;s why building managers and{" "}
+              <br className="hidden md:block" />
               property owners choose us.
             </>
           }
@@ -92,8 +92,8 @@ export default function Home() {
       >
         <TestimonialsSection />
       </section>
-      <section className="pb-10" aria-labelledby="projects-heading">
-        <h2 id="projects-heading" className="px-5 md:px-10 pb-10">
+      <section className="pb-10 md:pb-20" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" className="px-5 md:px-10 pb-10 md:pb-20">
           Our Projects
         </h2>
         <PhotoCarousel

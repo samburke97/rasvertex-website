@@ -110,8 +110,8 @@ export default function CleaningPage() {
           ]}
           heading={
             <>
-              Here&rsquo;s why property managers and
-              <br />
+              Here&rsquo;s why property managers and{" "}
+              <br className="hidden md:block" />
               owners choose our window cleaning.
             </>
           }
@@ -143,13 +143,7 @@ export default function CleaningPage() {
 
       <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="cleaning-services-heading">
         <InspectionProcess
-          heading={
-            <>
-              What kind of window cleaning
-              <br />
-              do you need?
-            </>
-          }
+          heading="What kind of window cleaning do you need?"
           steps={SERVICE_STEPS}
           image={{
             src: cld("commercial-high-rise-window-cleaning", { width: 1200 }),

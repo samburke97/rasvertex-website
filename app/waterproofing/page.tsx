@@ -159,13 +159,7 @@ export default function WaterproofingPage() {
         aria-labelledby="waterproofing-services-heading"
       >
         <InspectionProcess
-          heading={
-            <>
-              What waterproofing service
-              <br />
-              are you looking for?
-            </>
-          }
+          heading="What waterproofing service are you looking for?"
           steps={SERVICE_STEPS}
           image={{
             src: cld("waterproofing-services", { width: 1200 }),

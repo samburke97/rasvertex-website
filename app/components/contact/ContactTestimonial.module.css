@@ -69,3 +69,9 @@
   color: var(--navy);
   opacity: 0.45;
 }
+
+@media (max-width: 860px) {
+  .wrap {
+    padding-bottom: var(--space-2xl);
+  }
+}

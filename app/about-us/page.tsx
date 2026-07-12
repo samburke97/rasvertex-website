@@ -50,13 +50,7 @@ export default function AboutPage() {
           imageAspectRatio="4 / 3"
           contentAlign="end"
           headingLevel="h1"
-          heading={
-            <>
-              The Sunshine Coast&rsquo;s complete
-              <br />
-              property maintenance partner.
-            </>
-          }
+          heading="The Sunshine Coast’s complete property maintenance partner."
           paragraphs={[
             "RAS-VERTEX is the Sunshine Coast's commercial, body corporate and strata maintenance specialists with over a decade of proven expertise. Since 2000, we've grown into a team of 30+, trusted by body corporates, asset managers, and commercial partners across SEQ. Locally-owned and community-focused, we deliver technical excellence with the accountability that comes from being your neighbour.",
           ]}
@@ -78,14 +72,15 @@ export default function AboutPage() {
           }
         />
       </section>
-      <section
-        className="px-5 md:px-10 py-10 md:py-20"
-        aria-label="Client testimonial"
-      >
-        <ContactTestimonial />
-      </section>
+
       <section className="px-5 md:px-10 py-10 md:py-20" aria-label="What we do">
         <AboutPartnerGrid />
+      </section>
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="service-areas-heading"
+      >
+        <ServiceAreas />
       </section>
 
       <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Community">
@@ -95,14 +90,13 @@ export default function AboutPage() {
           photoAlt="RAS-VERTEX sponsoring the Coolum Football Club"
           title={
             <>
-              We back the community
-              <br />
+              We back the community{" "}
+              <br className="hidden xl:block" />
               that backs us.
             </>
           }
           paragraphs={[
-            "Our crew live here, their kids play here, and we put our name behind the local clubs and causes that make the Sunshine Coast what it is — because supporting the community isn't just good business, it's who we are.",
-            "From junior football and lawn bowls to surf lifesaving and mental health advocacy, we back the people and places that make this coast feel like home.",
+            "Our crew live here, their kids play here, and we put our name behind the local clubs and causes that make the Sunshine Coast what it is.",
           ]}
           logos={[
             {
@@ -133,18 +127,12 @@ export default function AboutPage() {
         />
       </section>
       {/* ── Service areas ── */}
-      <section
-        className="px-5 md:px-10 py-10 md:py-20"
-        aria-labelledby="service-areas-heading"
-      >
-        <ServiceAreas />
-      </section>
 
       {/* ── Services carousel — component owns its own horizontal padding ── */}
       <section className="py-10 md:py-20" aria-labelledby="services-label">
         <h2 id="services-label" className="px-5 md:px-10 pb-10 md:pb-20">
-          We partner with Sunshine Coast locals to take care
-          <br />
+          We partner with Sunshine Coast locals to take care{" "}
+          <br className="hidden md:block" />
           of their complete property maintenance needs.
         </h2>
         <ServiceCarousel

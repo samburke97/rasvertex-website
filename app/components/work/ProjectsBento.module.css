@@ -1,40 +1,5 @@
 /* app/components/work/ProjectsBento.module.css */
 
-/* ─── Filter bar ─────────────────────────────────────────────── */
-.filter {
-  display: flex;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-  padding-bottom: var(--space-2xl);
-}
-
-.filterBtn {
-  display: inline-flex;
-  align-items: center;
-  height: 40px;
-  padding: 0 var(--space-lg);
-  border: 1.5px solid var(--navy-25);
-  border-radius: var(--radius-xl);
-  background: transparent;
-  font-family: var(--font-body);
-  font-size: var(--button-size);
-  font-weight: var(--weight-bold);
-  color: var(--navy);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
-}
-
-.filterBtn:hover {
-  border-color: var(--navy);
-}
-
-.filterBtnActive {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #ffffff;
-}
-
 /* ─── Grid ───────────────────────────────────────────────────── */
 .grid {
   display: grid;

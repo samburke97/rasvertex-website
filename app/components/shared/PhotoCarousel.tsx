@@ -64,7 +64,7 @@ export default function PhotoCarousel({
             {slides.map((slide, i) => (
               <div
                 key={i}
-                className={`${styles.slide} ${i % 2 === 1 ? styles.slideDown : ""} ${activeIdx === i ? styles.slideActive : ""}`}
+                className={`${styles.slide} ${i === 0 ? styles.slideNudge : i % 2 === 1 ? styles.slideDown : ""} ${activeIdx === i ? styles.slideActive : ""}`}
                 onMouseEnter={() => setActiveIdx(i)}
               >
                 <Image

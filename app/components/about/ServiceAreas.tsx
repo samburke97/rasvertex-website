@@ -49,8 +49,8 @@ export default function ServiceAreas() {
 
       <div className={styles.header}>
         <h2 id="service-areas-heading">
-          Sunshine Coast property maintenance,
-          <br />
+          Sunshine Coast property maintenance,{" "}
+          <br className="hidden md:block" />
           from Caloundra to Noosa.
         </h2>
       </div>

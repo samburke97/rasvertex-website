@@ -64,7 +64,7 @@ export default function ServiceBeforeAfter({
             <span className={styles.tagLocation}>{location} (Before)</span>
           </div>
         </div>
-        <div className={`${styles.photo} ${styles.photoDown}`}>
+        <div className={styles.photo}>
           <Image
             src={afterSrc}
             alt={afterAlt}

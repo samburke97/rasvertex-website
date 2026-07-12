@@ -111,8 +111,8 @@ export default function BuildingInspectionsPage() {
           ]}
           heading={
             <>
-              Here&rsquo;s why committees rely
-              <br />
+              Here&rsquo;s why committees rely{" "}
+              <br className="hidden md:block" />
               on our inspection reports.
             </>
           }
@@ -143,13 +143,7 @@ export default function BuildingInspectionsPage() {
 
       <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="building-inspections-services-heading">
         <InspectionProcess
-          heading={
-            <>
-              What kind of inspection
-              <br />
-              are you looking for?
-            </>
-          }
+          heading="What kind of inspection are you looking for?"
           steps={SERVICE_STEPS}
           image={{
             src: cld("inspect", { width: 1200 }),

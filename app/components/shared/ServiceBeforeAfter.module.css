@@ -18,11 +18,6 @@
   background: var(--navy-08);
 }
 
-/* Second photo nudges down — subtle stagger, same idea as PhotoCarousel */
-.photoDown {
-  margin-top: 28px;
-}
-
 .tag {
   position: absolute;
   left: 0;
@@ -67,7 +62,7 @@
 }
 
 .contentSingle .left {
-  max-width: calc(50% - var(--space-lg) / 2);
+  max-width: 60%;
 }
 
 .left {
@@ -182,15 +177,32 @@
   .content {
     gap: var(--space-col-gap-sm);
   }
+
+  .contentSingle .left {
+    max-width: 80%;
+  }
 }
 
 @media (max-width: 860px) {
   .photosRow {
     flex-direction: column;
+    align-items: stretch;
   }
 
-  .photoDown {
-    margin-top: 0;
+  .photo {
+    flex: none;
+  }
+
+  .tag {
+    padding: 10px 14px;
+  }
+
+  .tagTitle {
+    font-size: var(--p-sm-size);
+  }
+
+  .tagLocation {
+    font-size: 12px;
   }
 
   .content {

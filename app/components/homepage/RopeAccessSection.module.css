@@ -7,6 +7,14 @@
   gap: var(--space-col-gap);
 }
 
+/* contentAlign="end" bottom-aligns text against the image instead of the
+   sticky-scroll default — stretch would force the text column to the
+   image's height and let tall content overflow upward past the row, so
+   size the row to the taller column instead. */
+.sectionEnd {
+  align-items: end;
+}
+
 .headingAbove {
   font-size: var(--h1-size);
   margin-bottom: var(--space-xl);
@@ -191,14 +199,14 @@
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .section {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
   }
 
   .imageCol {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
   }
 
   .textCol {
@@ -207,5 +215,9 @@
 
   .textBlock {
     position: static;
+  }
+
+  .personCard {
+    margin-top: var(--space-2xl);
   }
 }

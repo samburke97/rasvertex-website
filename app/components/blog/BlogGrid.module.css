@@ -237,12 +237,25 @@
     grid-template-columns: 1fr;
   }
 
+  .featuredBody {
+    padding: var(--space-2xl);
+  }
+
   .featuredImageWrap {
     min-height: 240px;
     order: -1;
     margin: var(--space-lg);
     margin-bottom: 0;
     width: calc(100% - var(--space-lg) * 2);
+  }
+
+  .sectionHead {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .loadMoreWrap {
+    padding-top: var(--space-2xl);
   }
 
   .grid {

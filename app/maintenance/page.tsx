@@ -110,8 +110,8 @@ export default function MaintenancePage() {
           ]}
           heading={
             <>
-              Here&rsquo;s why building and facility
-              <br />
+              Here&rsquo;s why building and facility{" "}
+              <br className="hidden md:block" />
               managers choose our maintenance team.
             </>
           }
@@ -147,8 +147,8 @@ That knowledge comes from 25 years of showing up, and it’s what our partners r
         <ServiceAccordion
           heading={
             <>
-              What kind of maintenance
-              <br />
+              What kind of maintenance{" "}
+              <br className="hidden md:block" />
               are you looking for?
             </>
           }

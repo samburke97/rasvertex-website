@@ -1,7 +1,6 @@
 // app/components/layout/navigation/MobileMenu.tsx
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,7 +17,6 @@ type MobileMenuProps = {
 };
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  const [activeService, setActiveService] = useState<ServiceKey | null>(null);
   const serviceKeys = Object.keys(servicesData) as ServiceKey[];
 
   return (
@@ -40,8 +38,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Image
                 src="/logo.png"
                 alt="RAS-VERTEX"
-                width={140}
-                height={36}
+                width={192}
+                height={48}
                 style={{ objectFit: "contain" }}
               />
             </Link>
@@ -60,44 +58,34 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <h2 className={styles.sectionHeading}>Services</h2>
 
             <div className={styles.serviceList}>
-              {serviceKeys.map((key, i) => {
-                const isActive = activeService === key;
-                return (
-                  <Link
-                    key={key}
-                    href={servicesData[key].href}
-                    className={`${styles.serviceItem} ${isActive ? styles.serviceItemActive : ""}`}
-                    onClick={(e) => {
-                      if (!isActive) {
-                        e.preventDefault();
-                        setActiveService(key);
-                      } else {
-                        onClose();
-                      }
-                    }}
+              {serviceKeys.map((key) => (
+                <Link
+                  key={key}
+                  href={servicesData[key].href}
+                  className={styles.serviceItem}
+                  onClick={onClose}
+                >
+                  <span className={styles.serviceLabel}>
+                    {servicesData[key].name}
+                  </span>
+                  <svg
+                    className={styles.arrow}
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
                   >
-                    <span className={styles.serviceLabel}>
-                      {servicesData[key].name}
-                    </span>
-                    <svg
-                      className={styles.arrow}
-                      width="14"
-                      height="14"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M3 8h10M9 4l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Link>
-                );
-              })}
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+              ))}
             </div>
 
             <h2 className={styles.sectionHeading}>Company</h2>

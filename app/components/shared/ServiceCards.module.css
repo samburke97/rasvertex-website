@@ -228,6 +228,14 @@ a:hover .ctaArrow {
   font-size: clamp(2rem, 3vw, 2.5rem);
 }
 
+.headingGroup,
+.ctaGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
 .eyebrow {
   font-family: var(--font-body);
   font-size: var(--eyebrow-size);
@@ -300,9 +308,37 @@ a:hover .ctaArrow {
     padding-bottom: 56px;
   }
 
-  /* Force max 3 cols at this breakpoint regardless of prop */
+  /* Stack to a single column regardless of prop */
   .grid {
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-xl);
+  }
+
+  .listRow {
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+
+  .listLeft {
+    position: static;
+    display: contents;
+  }
+
+  /* Reorder so stacked cards sit between the heading and the CTA/logo group */
+  .headingGroup {
+    order: 1;
+  }
+
+  .listItems {
+    order: 2;
+  }
+
+  .ctaGroup {
+    order: 3;
+  }
+
+  .listItemCard {
+    max-width: none;
   }
 }
 
@@ -312,26 +348,8 @@ a:hover .ctaArrow {
     padding-bottom: 44px;
   }
 
-  .grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: var(--space-xl);
-  }
-
   .pane {
     grid-template-columns: 1fr;
-  }
-
-  .listRow {
-    flex-direction: column;
-    gap: var(--space-3xl);
-  }
-
-  .listLeft {
-    position: static;
-  }
-
-  .listItemCard {
-    max-width: none;
   }
 
   .panePhoto {

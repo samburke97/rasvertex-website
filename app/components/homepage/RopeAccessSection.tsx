@@ -50,18 +50,12 @@ export default function RopeAccessSection({
   imageAspectRatio = "1 / 1",
   imageTagName,
   imageTagRole,
-  heading = (
-    <>
-      Trusted by the Sunshine Coast,
-      <br />
-      for over 25 years.
-    </>
-  ),
+  heading = "Trusted by the Sunshine Coast, for over 25 years.",
   headingLevel = "h2",
   headingId = "rope-access-heading",
   body,
   paragraphs = [
-    "For over 25 years, we've maintained buildings across the Sunshine Coast. From waterfront apartment towers and body corporate communities to schools, hotels, shopping centres and family homes, we've built our reputation by doing the job properly, every time.",
+    "For over 25 years, we've made building maintenance simpler for Sunshine Coast body corporate communities, commercial and high-rise buildings, schools, homes and government facilities. By combining our expertise in painting, cleaning, maintenance, waterproofing and height safety under one roof, we've become the single local partner you can rely on to keep your building safe, performing and looking its best. ",
   ],
   contentGroups,
   ctaHref = "/contact",
@@ -205,7 +199,10 @@ export default function RopeAccessSection({
           {heading}
         </HeadingTag>
       )}
-      <section className={styles.section} aria-labelledby={headingId}>
+      <section
+        className={`${styles.section} ${contentAlign === "end" ? styles.sectionEnd : ""}`}
+        aria-labelledby={headingId}
+      >
         {imagePosition === "left" ? (
           <>
             {imageEl}

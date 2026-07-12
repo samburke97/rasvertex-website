@@ -114,8 +114,8 @@ export default function ResidentialPaintingPage() {
           ]}
           heading={
             <>
-              Here&rsquo;s why homeowners across the
-              <br />
+              Here&rsquo;s why homeowners across the{" "}
+              <br className="hidden md:block" />
               Sunshine Coast choose us.
             </>
           }
@@ -155,8 +155,8 @@ export default function ResidentialPaintingPage() {
         <ServiceAccordion
           heading={
             <>
-              What kind of painting
-              <br />
+              What kind of painting{" "}
+              <br className="hidden md:block" />
               are you looking for?
             </>
           }

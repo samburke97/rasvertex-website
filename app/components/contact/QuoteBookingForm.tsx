@@ -210,7 +210,7 @@ export default function QuoteBookingForm({
         {showTrustGroup && (
           <div className={styles.trustGroup}>
             <h3 className={styles.trustGroupHeading}>
-              8 Year warranty as standard
+              8-Year warranty as standard
             </h3>
             <div className={styles.trustLogos}>
               {TRUST_LOGOS.map((logo) => (

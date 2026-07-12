@@ -113,8 +113,8 @@ export default function BodyCorporatePaintingPage() {
           ]}
           heading={
             <>
-              Here&rsquo;s why committees and strata
-              <br />
+              Here&rsquo;s why committees and strata{" "}
+              <br className="hidden md:block" />
               managers choose us.
             </>
           }
@@ -163,8 +163,8 @@ export default function BodyCorporatePaintingPage() {
         <ServiceAccordion
           heading={
             <>
-              What does your body corporate
-              <br />
+              What does your body corporate{" "}
+              <br className="hidden md:block" />
               building need?
             </>
           }
@@ -189,12 +189,7 @@ export default function BodyCorporatePaintingPage() {
       {/* ── How we run a strata repaint ── */}
       <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="process-heading">
         <InspectionProcess
-          heading={
-            <>
-              How we run a<br />
-              strata repaint.
-            </>
-          }
+          heading="How we run a strata repaint."
           lede="Five stages from committee proposal to warranty handover, every stage documented, every resident informed, no scope surprises."
           steps={PROCESS_STEPS}
           headingId="process-heading"

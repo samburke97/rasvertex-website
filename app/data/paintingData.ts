@@ -111,7 +111,7 @@ export const BEFORE_AFTER_SPECS: BeforeAfterSpec[] = [
   },
   {
     label: "Warranty",
-    value: "8 year workmanship · 15 year manufacturer",
+    value: "8-year workmanship · 15-year manufacturer",
   },
 ];
 
@@ -147,7 +147,7 @@ export const CARDS: ServiceCard[] = [
     photo: cld("commercial-painters", { width: 1200 }),
     alt: "Commercial painting on the Sunshine Coast",
     title: "Commercial Painting",
-    body: "Twenty five years working across commercial and high rise buildings on the Sunshine Coast has taught us that disruption always carries a real cost, and that tenants, customers and daily operations cannot afford delays or inconsistent crews turning up unannounced. As commercial painters, we plan properly, show up when we say we will, and deliver work that fits around how your site actually runs.",
+    body: "For more than 25 years, we've delivered commercial painting projects across the Sunshine Coast's schools, hotels, shopping centres, industrial facilities and high-rise buildings. We know that downtime costs money, which is why our in-house team plans every project around your operations, using rope access, EWPs and staged delivery methods to minimise disruption. Beyond the paint itself, we identify and remediate defects as we go, protecting the long-term performance of your asset rather than simply coating over problems. No subcontractors, experienced project managers, and 25+ years of commercial painting experience on every project.",
     cta: "Commercial painting",
     href: "/commercial-painting",
   },
@@ -155,7 +155,7 @@ export const CARDS: ServiceCard[] = [
     photo: cld("rope-access-painting", { width: 1200 }),
     alt: "Body corporate and strata painting on the Sunshine Coast",
     title: "Body Corporate & Strata Painting",
-    body: "We have worked alongside strata committees long enough to know that a good painting project comes down to clear communication just as much as good paintwork. Residents want clarity, committees want certainty, and nobody wants surprises halfway through, so as strata painters we structure every job to keep everyone informed and the building running smoothly from the first meeting to the final coat.",
+    body: "Body corporate painting is about more than applying a fresh coat of paint. It's about delivering a result that residents are proud of while keeping communities informed and disruption to a minimum. Backed by 25+ years of body corporate and strata painting experience on the Sunshine Coast, we've built a process centred on proactive communication, detailed project management and clean, well-organised worksites. Every project includes colour consultation as standard and premium Dulux and Haymes coating systems tailored to coastal conditions.",
     cta: "Body corporate painting",
     href: "/body-corporate-painting",
   },
@@ -164,7 +164,7 @@ export const CARDS: ServiceCard[] = [
     alt: "Residential painting on the Sunshine Coast",
     objectPosition: "top",
     title: "Residential Painting",
-    body: "Your home is probably one of the biggest investments you will ever make, and here on the Sunshine Coast it needs proper protection to stay looking its best through salt air, humidity and long stretches of UV exposure. As residential painters, we prepare every surface properly and choose coating systems suited to our coastal conditions, so the finish holds up for years rather than fading after one summer.",
+    body: "Painting your home should be an exciting experience, not a stressful one. Backed by 25+ years of residential painting experience, our local Sunshine Coast team takes the time to understand your vision, guide you through colour selections and recommend the right products and finishes for your home. With no subcontractors and a friendly, experienced team managing every detail, our goal is simple: to deliver a home you'll genuinely love coming back to every day.",
     cta: "Residential painting",
     href: "/residential-painting",
   },

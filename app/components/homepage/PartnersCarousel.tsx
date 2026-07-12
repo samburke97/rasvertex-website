@@ -31,8 +31,8 @@ export default function PartnersCarousel({
   showHeader = true,
   heading = (
     <>
-      We maintain the buildings where
-      <br />
+      We maintain the buildings where{" "}
+      <br className="hidden md:block" />
       Sunshine Coast locals live, learn, and work.
     </>
   ),

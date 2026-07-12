@@ -103,7 +103,7 @@ export const PROCESS_STEPS: InspectionStep[] = [
     title: "Handover & Warranty",
     body: "We finish with a final walkthrough alongside your project manager and issue a full documentation package, warranty certificate, paint specifications, before and after photos, and maintenance recommendations, all formatted for your sinking fund and maintenance records.",
     icon: PiShieldCheck,
-    deliverable: "8 year warranty + documentation pack",
+    deliverable: "8-year warranty + documentation pack",
   },
 ];
 
@@ -137,7 +137,7 @@ export const CREDENTIALS: Credential[] = [
   },
   {
     n: "04",
-    title: "An 8 year written warranty, issued at handover.",
+    title: "An 8-year written warranty, issued at handover.",
     body: "Our workmanship warranty is issued in writing at completion, so your body corporate's insurance and maintenance records are covered from day one. Manufacturer warranties of up to fifteen years on qualifying systems are registered in the body corporate's name.",
     photo: "/images/projects/2.jpeg",
     photoAlt:

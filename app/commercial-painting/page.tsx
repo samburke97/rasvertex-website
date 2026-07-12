@@ -83,8 +83,8 @@ export default function CommercialPaintingPage() {
         <ServiceHeroSplit
           heading={
             <>
-              Commercial and high-rise painting on the Sunshine Coast, backed
-              by 25 years of experience.
+              Commercial and high-rise painting on the Sunshine Coast, backed by
+              25 years of experience.
             </>
           }
           lede="From high rise facade repaints to commercial rooftops, we deliver commercial painting for councils, schools, hotels, shopping centres, and commercial property managers across the Sunshine Coast. Combining IRATA certified rope access, commercial grade Dulux and Haymes coating systems, and meticulous surface preparation, we deliver long lasting results with minimal disruption to your business."
@@ -148,7 +148,7 @@ export default function CommercialPaintingPage() {
               Warranted in writing.
             </>
           }
-          body="Every commercial repaint comes with an 8 year written workmanship warranty. Where eligible Dulux and Haymes systems are used, the manufacturer warranty of up to 15 years is also passed on to the building owner, giving you clear protection on both the work and the materials."
+          body="Every commercial repaint comes with an 8-year written workmanship warranty. Where eligible Dulux and Haymes systems are used, the manufacturer warranty of up to 15 years is also passed on to the building owner, giving you clear protection on both the work and the materials."
           logosHeading="Backed by the best."
           logos={[
             {
@@ -171,8 +171,8 @@ export default function CommercialPaintingPage() {
         <ServiceAccordion
           heading={
             <>
-              What kind of painting
-              <br />
+              What kind of painting{" "}
+              <br className="hidden md:block" />
               are you looking for?
             </>
           }
@@ -194,14 +194,12 @@ export default function CommercialPaintingPage() {
       </section>
 
       {/* ── How we run a commercial repaint ── */}
-      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="process-heading">
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="process-heading"
+      >
         <InspectionProcess
-          heading={
-            <>
-              How we run a<br />
-              commercial repaint.
-            </>
-          }
+          heading="How we run a commercial repaint."
           lede="Every stage is planned, managed, and communicated, so you always know what's happening, what's next, and when your project will be completed."
           steps={PROCESS_STEPS}
           headingId="process-heading"

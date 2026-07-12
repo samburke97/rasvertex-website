@@ -4,7 +4,6 @@ import { generatePageMetadata } from "../components/seo/PageSEO";
 import { ServiceSchema } from "../components/seo/StructuredData";
 import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
-import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
@@ -95,8 +94,23 @@ export default function PaintingPage() {
           eyebrow=""
           heading="Three specialist painting teams covering every type of property."
           ariaLabel="Who we work for, painting services on the Sunshine Coast"
-          footerCtaLabel="Let's chat about your project →"
-          footerCtaHref="/contact"
+          footerLogosHeading="Fully Qualified"
+          footerLogos={[
+            {
+              src: "/images/associations/qbcc.png",
+              alt: "QBCC",
+            },
+            {
+              src: "/images/associations/smartstrata.png",
+              alt: "Smart Strata",
+            },
+            {
+              src: "/images/associations/work-cover.svg",
+              alt: "WorkCover Queensland",
+              width: 120,
+              height: 80,
+            },
+          ]}
         />
       </section>
 
@@ -163,8 +177,8 @@ export default function PaintingPage() {
           id="painting-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          We do more than painting, with specialist services
-          <br />
+          We do more than painting, with specialist services{" "}
+          <br className="hidden xl:block" />
           that support every part of your building.
         </h2>
         <ServiceCarousel

@@ -60,5 +60,11 @@
 
   .text {
     position: static;
+    order: 2;
+  }
+
+  .photoWrap {
+    order: 1;
+    aspect-ratio: 16 / 9;
   }
 }

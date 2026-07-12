@@ -112,7 +112,7 @@ export default function ProjectsBento() {
           </button>
 
           <div className={styles.modalCounter} aria-live="polite">
-            {openIdx! + 1} / {filtered.length}
+            {openIdx! + 1} / {PROJECTS.length}
           </div>
         </div>
       )}
