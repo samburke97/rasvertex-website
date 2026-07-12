@@ -35,7 +35,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           aria-label="Mobile navigation"
         >
           {/* Header */}
-          <div className={styles.header}>
+          <div className={`${styles.header} px-5 md:px-10`}>
             <Link href="/" onClick={onClose} aria-label="RAS-VERTEX home">
               <Image
                 src="/logo.png"
@@ -56,7 +56,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </div>
 
           {/* Nav */}
-          <nav className={styles.nav} aria-label="Mobile navigation links">
+          <nav
+            className={`${styles.nav} px-5 md:px-10`}
+            aria-label="Mobile navigation links"
+          >
             <div className={styles.servicesCard}>
               <h2 className={styles.servicesHeading}>Services</h2>
               {serviceKeys.map((key) => {
@@ -96,7 +99,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </nav>
 
           {/* CTA */}
-          <div className={styles.cta}>
+          <div className={`${styles.cta} px-5 md:px-10`}>
             <div className={styles.ctaInner}>
               <div className={styles.avatar} aria-hidden="true">
                 <Image

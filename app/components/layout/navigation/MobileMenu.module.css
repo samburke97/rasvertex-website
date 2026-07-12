@@ -16,7 +16,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-x);
   height: 72px;
   border-bottom: 1px solid var(--line);
   flex-shrink: 0;
@@ -55,7 +54,7 @@
 .nav {
   display: flex;
   flex-direction: column;
-  padding: var(--space-xl) var(--space-x) 0;
+  padding-top: var(--space-xl);
   gap: var(--space-lg);
 }
 
@@ -141,7 +140,8 @@
 
 .cta {
   margin-top: auto;
-  padding: var(--space-xl) var(--space-x);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
