@@ -221,8 +221,8 @@ export default function ResidentialPaintingPage() {
           id="residential-painting-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          Beyond painting, we support every part of your home,
-          <br />
+          Beyond painting, we support every part of your home,{" "}
+          <br className="hidden xl:block" />
           explore our full range of services below.
         </h2>
         <ServiceCarousel

@@ -240,8 +240,8 @@ export default function BodyCorporatePaintingPage() {
           id="body-corporate-painting-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          Beyond painting, we support every part of your
-          <br />
+          Beyond painting, we support every part of your{" "}
+          <br className="hidden xl:block" />
           body corporate community, explore our full range of services below.
         </h2>
         <ServiceCarousel

@@ -255,8 +255,9 @@ export default function CommercialPaintingPage() {
           id="commercial-painting-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          Complete commercial property care, not just
-          <br />a repaint, explore our full range of services below.
+          Complete commercial property care, not just{" "}
+          <br className="hidden xl:block" />a repaint, explore our full range
+          of services below.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/painting")}

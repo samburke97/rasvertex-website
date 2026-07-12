@@ -6,7 +6,7 @@ import { cld, cldVideo } from "../../lib/cloudinary";
 
 const SERVICE_SLIDES = [
   {
-    src: cld("body-corporate", { width: 1200 }),
+    src: cld("the-work", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Painting",
     title: "Painting",

@@ -201,8 +201,8 @@ export default function BuildingInspectionsPage() {
           id="building-inspections-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          One team across painting, cleaning, maintenance,
-          <br />
+          One team across painting, cleaning, maintenance,{" "}
+          <br className="hidden xl:block" />
           inspections and safety, caring for every part of your property.
         </h2>
         <ServiceCarousel

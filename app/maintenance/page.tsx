@@ -207,8 +207,8 @@ That knowledge comes from 25 years of showing up, and it’s what our partners r
           id="maintenance-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          Discover what we can cover in maintaining your building
-          <br />
+          Discover what we can cover in maintaining your building{" "}
+          <br className="hidden xl:block" />
           and explore our full range of services below.
         </h2>
         <ServiceCarousel

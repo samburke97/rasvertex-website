@@ -189,7 +189,8 @@ export default function ExternalCleaningPage() {
           id="external-cleaning-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          We bring the same expertise to every part <br /> of your property,
+          We bring the same expertise to every part{" "}
+          <br className="hidden xl:block" /> of your property,
           across the Sunshine Coast.
         </h2>
         <ServiceCarousel

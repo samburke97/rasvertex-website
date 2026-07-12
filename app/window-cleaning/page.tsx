@@ -188,7 +188,8 @@ export default function CleaningPage() {
           id="cleaning-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          We work across every part of your property, <br /> from painting and
+          We work across every part of your property,{" "}
+          <br className="hidden xl:block" /> from painting and
           maintenance to inspections and safety.
         </h2>
         <ServiceCarousel
@@ -202,13 +203,7 @@ export default function CleaningPage() {
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="cleaning-faq-heading"
-          ctaHeading={
-            <>
-              Keep your building looking sharp.
-              <br />
-              Let’s talk window cleaning.
-            </>
-          }
+          ctaHeading="Keep your building looking sharp. Let’s talk window cleaning."
         />
       </section>
     </>

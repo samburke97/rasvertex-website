@@ -201,8 +201,8 @@ export default function WaterproofingPage() {
           id="waterproofing-services-carousel-label"
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
-          We do more than waterproofing, with specialist services
-          <br />
+          We do more than waterproofing, with specialist services{" "}
+          <br className="hidden xl:block" />
           that support every part of your building.
         </h2>
         <ServiceCarousel
