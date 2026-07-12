@@ -128,13 +128,7 @@ export default function HeightSafetyPage() {
         <WarrantyCard
           stat="12"
           statLabel={"month\ncertification"}
-          heading={
-            <>
-              Compliance tracked.
-              <br />
-              Never lapsed.
-            </>
-          }
+          heading="Compliance tracked. Never lapsed."
           body="AS NZS 1891 requires height safety systems to be inspected and recertified every 12 months. We manage the full cycle for body corporates and commercial buildings across the Sunshine Coast, from anchor point testing and inspections through to certification and renewal."
         />
       </section>
@@ -195,13 +189,7 @@ export default function HeightSafetyPage() {
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="height-safety-faq-heading"
-          ctaHeading={
-            <>
-              Chat to the Sunshine Coast&rsquo;s
-              <br />
-              Rope Access specialists.
-            </>
-          }
+          ctaHeading="Chat to the Sunshine Coast’s Rope Access specialists."
         />
       </section>
     </>

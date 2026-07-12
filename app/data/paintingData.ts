@@ -147,7 +147,7 @@ export const CARDS: ServiceCard[] = [
     photo: cld("commercial-painters", { width: 1200 }),
     alt: "Commercial painting on the Sunshine Coast",
     title: "Commercial Painting",
-    body: "For more than 25 years, we've delivered commercial painting projects across the Sunshine Coast's schools, hotels, shopping centres, industrial facilities and high-rise buildings. We know that downtime costs money, which is why our in-house team plans every project around your operations, using rope access, EWPs and staged delivery methods to minimise disruption. Beyond the paint itself, we identify and remediate defects as we go, protecting the long-term performance of your asset rather than simply coating over problems. No subcontractors, experienced project managers, and 25+ years of commercial painting experience on every project.",
+    body: "For more than 25 years, we've delivered commercial painting projects across the Sunshine Coast's schools, hotels, shopping centres and high-rise buildings. We know that downtime costs money, which is why our in-house team plans every project around your operations, using rope access, EWPs and staged delivery methods to minimise disruption. Beyond the paint itself, we identify and remediate defects as we go, protecting the long-term performance of your asset rather than simply coating over problems. No subcontractors, experienced project managers, and 25+ years of commercial painting experience on every project.",
     cta: "Commercial painting",
     href: "/commercial-painting",
   },

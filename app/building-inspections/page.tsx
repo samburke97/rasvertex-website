@@ -130,13 +130,7 @@ export default function BuildingInspectionsPage() {
         <WarrantyCard
           stat="25"
           statLabel={"years\non the Coast"}
-          heading={
-            <>
-              We know what to look for,
-              <br />
-              because we've seen it before.
-            </>
-          }
+          heading="We know what to look for, because we've seen it before."
           body="Twenty-five years of inspecting Sunshine Coast buildings means we've seen exactly how salt air, UV and storm exposure age a facade, and how fast. That pattern recognition is what turns a walk-around and a drop into a defect register your committee can actually act on."
         />
       </section>
@@ -176,13 +170,7 @@ export default function BuildingInspectionsPage() {
         aria-labelledby="hotspots-heading"
       >
         <InspectionHotspots
-          heading={
-            <>
-              Aerial drones, paired with
-              <br />
-              on-site rope access.
-            </>
-          }
+          heading="Aerial drones, paired with on-site rope access."
           intro="We combine drone surveys for full-facade coverage with IRATA rope access inspections that physically test the building at every level."
           methodBody="Drones capture the full picture quickly. Rope access confirms what’s actually happening on the surface, touching, testing and verifying defects that cameras alone can’t validate."
           video={cldVideo("cleaning", { width: 1200 })}

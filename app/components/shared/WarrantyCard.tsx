@@ -23,13 +23,7 @@ interface WarrantyCardProps {
 const DEFAULTS: WarrantyCardProps = {
   stat: "8",
   statLabel: "year\nwarranty",
-  heading: (
-    <>
-      Standing by our team,
-      <br />
-      and our products.
-    </>
-  ),
+  heading: "Standing by our team, and our products.",
   body: "We back every exterior paint job with an 8-year written warranty — covering both workmanship and the paint system itself. We only specify Haymes and Dulux commercial systems because we know they perform in coastal Queensland conditions, and we're confident enough in our application to put our name behind both.",
 };
 

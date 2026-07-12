@@ -130,13 +130,7 @@ export default function CleaningPage() {
         <WarrantyCard
           stat="100%"
           statLabel={"recycled\nwater system"}
-          heading={
-            <>
-              Eco-friendly
-              <br />
-              cleaning systems.
-            </>
-          }
+          heading="Eco-friendly cleaning systems."
           body="We use purified water systems and recycled hot-water vacuum technology to eliminate chemical runoff and prevent discharge into stormwater systems."
         />
       </section>

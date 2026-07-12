@@ -90,14 +90,14 @@ export default function ExternalCleaningPage() {
         <ServiceCards
           cards={[
             {
-              photo: cld("bw4", { width: 1200 }),
-              alt: "IRATA rope access technician cleaning a Sunshine Coast high-rise facade",
+              photo: cld("clear-communication", { width: 1200 }),
+              alt: "Local RAS-VERTEX crew on site, Sunshine Coast building cleaning",
               title: "Minimal disruption",
               body: "Rope access is our default, not our fallback. It's the fastest, least disruptive way to reach any facade on the Sunshine Coast, with no scaffolding, no EWP hire and no site disruption.",
             },
             {
-              photo: cld("clear-communication", { width: 1200 }),
-              alt: "Local RAS-VERTEX crew on site, Sunshine Coast building cleaning",
+              photo: cld("bw4", { width: 1200 }),
+              alt: "IRATA rope access technician cleaning a Sunshine Coast high-rise facade",
               title: "Clear communication",
               body: "The same local, fully employed crew works your building every time. No subcontractors, no unfamiliar faces, just consistent care. Every visit is logged and reported through your own portal.",
             },
@@ -129,13 +129,7 @@ export default function ExternalCleaningPage() {
         <WarrantyCard
           stat="100%"
           statLabel={"recycled\nwater system"}
-          heading={
-            <>
-              100% Recycled.
-              <br />
-              Zero compromise.
-            </>
-          }
+          heading="Designed to Leave Nothing Behind."
           body="Our pressure cleaning system runs on 100% recycled, filtered hot water with full vacuum recovery, every drop collected, nothing discharged to stormwater. The only responsible way to clean near the coast."
         />
       </section>
@@ -144,8 +138,7 @@ export default function ExternalCleaningPage() {
         <ServiceAccordion
           heading={
             <>
-              What kind of external clean{" "}
-              <br className="hidden md:block" />
+              What kind of external clean <br className="hidden md:block" />
               are you looking for?
             </>
           }
@@ -190,8 +183,8 @@ export default function ExternalCleaningPage() {
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
           We bring the same expertise to every part{" "}
-          <br className="hidden xl:block" /> of your property,
-          across the Sunshine Coast.
+          <br className="hidden xl:block" /> of your property, across the
+          Sunshine Coast.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES.filter(
@@ -206,11 +199,7 @@ export default function ExternalCleaningPage() {
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="external-cleaning-faq-heading"
-          ctaHeading={
-            <>
-              We specialise in all aspects <br /> of exterior cleaning.
-            </>
-          }
+          ctaHeading="We specialise in all aspects of exterior cleaning."
         />
       </section>
     </>

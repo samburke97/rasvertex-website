@@ -130,13 +130,7 @@ export default function MaintenancePage() {
         <WarrantyCard
           stat="25"
           statLabel={" years on the\nSunshine Coast"}
-          heading={
-            <>
-              The same postcode,
-              <br />
-              the same buildings.
-            </>
-          }
+          heading="The same postcode, the same buildings."
           body="We’ve been maintaining properties here long before much of the coastline was developed. We understand how salt air breaks down sealants, how UV wears coatings, and how coastal weather puts pressure on every facade.
 
 That knowledge comes from 25 years of showing up, and it’s what our partners rely on most."
@@ -168,8 +162,8 @@ That knowledge comes from 25 years of showing up, and it’s what our partners r
           <ServiceIntro
             heading={
               <>
-                We offer flexible maintenance plans to
-                <br />
+                We offer flexible maintenance plans to{" "}
+                <br className="hidden xl:block" />
                 keep your building in top condition year round.
               </>
             }

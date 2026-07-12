@@ -133,13 +133,7 @@ export default function BodyCorporatePaintingPage() {
         <WarrantyCard
           stat="8"
           statLabel={"year\nwarranty"}
-          heading={
-            <>
-              Complete confidence
-              <br />
-              for your community.
-            </>
-          }
+          heading="Complete confidence for your community."
           body="Every body corporate repaint includes our 8-year written workmanship warranty as standard. Where eligible coating systems are specified, manufacturer warranties are also supplied. From paint specifications to maintenance recommendations, your committee receives a complete handover package for future reference."
           logosHeading="Backed by the best."
           logos={[

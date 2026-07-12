@@ -26,7 +26,7 @@ export default function ProjectsPage() {
 
       <section className="pt-10">
         <ServiceHero
-          heading={<>25 years of work.<br />Across the Coast.</>}
+          heading="25 years of work. Across the Coast."
           lede="The RAS-VERTEX team is proud to work alongside hundreds of Sunshine Coast-based businesses, and here's a small handful of our painting, cleaning, window cleaning, maintenance, waterproofing, height safety and building inspection projects."
           headingId="projects-heading"
         />

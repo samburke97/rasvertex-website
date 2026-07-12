@@ -129,13 +129,7 @@ export default function WaterproofingPage() {
         <WarrantyCard
           stat="8"
           statLabel={"year\nwarranty"}
-          heading={
-            <>
-              Prepared right.
-              <br />
-              Warranted in writing.
-            </>
-          }
+          heading="Prepared right. Warranted in writing."
           body="All membrane systems installed by RAS-VERTEX include a written workmanship warranty on completion. Where applicable, manufacturer warranties of up to 8 years are applied and included in the building record."
           logosHeading="Backed by the best."
           logos={[
@@ -218,13 +212,7 @@ export default function WaterproofingPage() {
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="waterproofing-faq-heading"
-          ctaHeading={
-            <>
-              Have a question
-              <br />
-              about waterproofing?
-            </>
-          }
+          ctaHeading="Have a question about waterproofing?"
         />
       </section>
     </>

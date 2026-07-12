@@ -141,13 +141,7 @@ export default function CommercialPaintingPage() {
         <WarrantyCard
           stat="8"
           statLabel={"year\nwarranty"}
-          heading={
-            <>
-              Specified right.
-              <br />
-              Warranted in writing.
-            </>
-          }
+          heading="Specified right. Warranted in writing."
           body="Every commercial repaint comes with an 8-year written workmanship warranty. Where eligible Dulux and Haymes systems are used, the manufacturer warranty of up to 15 years is also passed on to the building owner, giving you clear protection on both the work and the materials."
           logosHeading="Backed by the best."
           logos={[
