@@ -1,8 +1,10 @@
 // app/components/layout/footer/Footer.tsx
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 import Watermark from "../../shared/Watermark";
 import styles from "./Footer.module.css";
 
@@ -17,6 +19,9 @@ const SERVICES = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isContactPage = pathname === "/contact";
+
   return (
     <footer className={styles.footer} role="contentinfo">
       <Watermark className={styles.watermarkSpacing} />
@@ -43,25 +48,27 @@ export default function Footer() {
           ))}
         </nav>
 
-        <Link href="/contact" className={styles.contactBtn}>
-          Get in touch
-          <svg
-            className={styles.contactBtnArrow}
-            width="14"
-            height="14"
-            viewBox="0 0 16 16"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
+        {!isContactPage && (
+          <Link href="/contact" className={styles.contactBtn}>
+            Get in touch
+            <svg
+              className={styles.contactBtnArrow}
+              width="14"
+              height="14"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        )}
       </div>
 
       <div className={styles.bottom}>

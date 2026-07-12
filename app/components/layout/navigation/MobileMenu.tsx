@@ -58,7 +58,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {/* Nav */}
           <nav className={styles.nav} aria-label="Mobile navigation links">
             <div className={styles.servicesCard}>
-              <h2 className={styles.srOnly}>Services</h2>
+              <h2 className={styles.servicesHeading}>Services</h2>
               {serviceKeys.map((key) => {
                 const active = pathname === servicesData[key].href;
                 return (
@@ -78,32 +78,19 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <h2 className={styles.sectionHeading}>Company</h2>
 
               <div className={styles.companyList}>
-                {companyLinks.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={styles.companyItem}
-                    onClick={onClose}
-                  >
-                    <span>{item.name}</span>
-                    <svg
-                      className={styles.arrow}
-                      width="14"
-                      height="14"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      aria-hidden="true"
+                {companyLinks.map((item) => {
+                  const active = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`${styles.companyItem} ${active ? styles.companyItemActive : ""}`}
+                      onClick={onClose}
                     >
-                      <path
-                        d="M3 8h10M9 4l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Link>
-                ))}
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </nav>

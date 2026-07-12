@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-x);
   height: 72px;
   border-bottom: 1px solid var(--line);
   flex-shrink: 0;
@@ -55,23 +55,22 @@
 .nav {
   display: flex;
   flex-direction: column;
-  padding: var(--space-xl) var(--space-xl) 0;
+  padding: var(--space-xl) var(--space-x) 0;
   gap: var(--space-lg);
-}
-
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
 }
 
 /* Section headings — sized down from the global h2 clamp, which is
    far too large for a compact nav card label */
 .sectionHeading {
-  font-size: 1.375rem;
+  font-size: 1.5rem;
+  margin: 0 0 var(--space-md);
+}
+
+.servicesHeading {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: 1.5rem;
+  color: #ffffff;
   margin: 0 0 var(--space-md);
 }
 
@@ -117,44 +116,32 @@
 .companyList {
   display: flex;
   flex-direction: column;
+  gap: 0;
 }
 
 .companyItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
   font-family: var(--font-body);
-  font-size: var(--p-size);
-  font-weight: var(--weight-regular);
+  font-weight: var(--weight-bold);
+  font-size: 1.375rem;
+  line-height: var(--h4-leading);
+  letter-spacing: var(--h4-tracking);
   color: var(--navy);
+  opacity: 0.4;
   text-decoration: none;
   transition: opacity 0.15s;
 }
 
-.companyItem:hover {
-  opacity: 0.6;
-}
-
-.companyItem .arrow {
-  color: var(--navy);
-  opacity: 0.25;
-  flex-shrink: 0;
-  transition:
-    opacity 0.15s,
-    transform 0.15s;
-}
-
-.companyItem:hover .arrow {
-  opacity: 0.5;
-  transform: translateX(3px);
+.companyItem:hover,
+.companyItem:active,
+.companyItemActive {
+  opacity: 1;
 }
 
 /* ── CTA block ── */
 
 .cta {
   margin-top: auto;
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-x);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -186,9 +173,9 @@
 
 .ctaHeading {
   font-family: var(--font-body);
-  font-size: 1.125rem;
+  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
   font-weight: var(--weight-bold);
-  line-height: 1.25;
+  letter-spacing: var(--h4-tracking);
   color: var(--navy);
   margin: 0;
 }
@@ -250,4 +237,12 @@
 
 .callBtn:hover {
   border-color: var(--navy);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 380px) {
+  .ctaInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

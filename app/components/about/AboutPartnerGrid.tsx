@@ -21,7 +21,7 @@ interface AboutPartnerGridProps {
 }
 
 export default function AboutPartnerGrid({
-  title = "One trusted partner for all your property maintenance needs.",
+  title = "One local partner for all your property maintenance needs.",
   paragraphs = [
     "Rather than managing multiple contractors, our clients have one experienced team that understands their property, coordinates every service and takes responsibility from inspection through to completion.",
     "From painting and building cleaning to window cleaning, waterproofing, maintenance and height safety, our dedicated teams take complete care of your property, supported by experienced project managers and specialist crews who deliver higher standards while making property maintenance simpler, more efficient and easier to manage.",
