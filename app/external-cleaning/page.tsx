@@ -90,8 +90,8 @@ export default function ExternalCleaningPage() {
         <ServiceCards
           cards={[
             {
-              photo: cld("clear-communication", { width: 1200 }),
-              alt: "Local RAS-VERTEX crew on site, Sunshine Coast building cleaning",
+              photo: cld("minimal-disruption", { width: 1200 }),
+              alt: "IRATA rope access technician cleaning a Sunshine Coast high-rise facade with no scaffolding or EWP hire",
               title: "Minimal disruption",
               body: "Rope access is our default, not our fallback. It's the fastest, least disruptive way to reach any facade on the Sunshine Coast, with no scaffolding, no EWP hire and no site disruption.",
             },

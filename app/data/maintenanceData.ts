@@ -204,7 +204,7 @@ export const PLANS: MaintenancePlan[] = [
 
 export const PLAN_SLIDES: CarouselSlide[] = [
   {
-    image: cld("your-terms", { width: 1200 }),
+    image: cld("full-access", { width: 1200 }),
     imageAlt:
       "Technician carrying out preventive maintenance on the Sunshine Coast",
     heading: "Ongoing support, on your terms",
@@ -218,7 +218,7 @@ export const PLAN_SLIDES: CarouselSlide[] = [
     body: "You deal with the same person who knows your building and understands how it behaves, so there is no repeating yourself and no confusion, just straight communication and updates whenever something needs attention.",
   },
   {
-    image: cld("full-service", { width: 1200 }),
+    image: cld("full-rope-service", { width: 1200 }),
     imageAlt:
       "Multi trade team carrying out building maintenance on the Sunshine Coast",
     heading: "Full service",
