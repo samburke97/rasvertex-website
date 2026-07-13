@@ -266,11 +266,13 @@ export default function QuoteBookingForm({
             aria-label={`Request a quote — step ${step} of 2`}
             noValidate
           >
-            {/* Honeypot */}
+            {/* Honeypot — deliberately has no label, name or id that
+                resembles a real field, since browser/password-manager
+                autofill will populate hidden inputs it recognises
+                (e.g. "company") regardless of CSS visibility, which
+                silently trips this trap for real visitors. */}
             <div className={styles.honeypot} aria-hidden="true">
-              <label htmlFor="qbf-company">Company</label>
               <input
-                id="qbf-company"
                 type="text"
                 tabIndex={-1}
                 autoComplete="off"
