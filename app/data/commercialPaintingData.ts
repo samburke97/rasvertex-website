@@ -41,7 +41,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "High Rise Facade Repaints",
-    body: "We repaint buildings from four storeys through to forty plus using IRATA certified rope access, so there is no scaffold hire, no crane cost and no footprint sitting on your ground floor. Within about five kilometres of the coast we treat every facade with a salt bonded primer and chloride rinse first, then finish with Dulux Weathershield or Haymes Sandtex as our standard commercial systems.",
+    body: "We repaint anything from single storey apartment complexes to high-rise commercial buildings using IRATA certified rope access, our preferred method of access for minimal disruption, with no footprint sitting on your ground floor. Within about five kilometres of the coast we treat every facade with a chloride rinse first, then finish with a coating system tailored to our coastal climate.",
     photo: cld("commercial_hero_5", { width: 1200 }),
     href: "/contact",
   },
@@ -112,7 +112,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Mooloolaba",
     name: "Oceanfront High Rise Repaint",
     type: "Body Corporate · 12 storeys · 84 lots",
-    system: "Dulux Weathershield · salt bonded primer · elastomeric topcoat",
+    system: "Coastal-climate coating system",
     image: "/images/projects/1.jpeg",
     alt: "Oceanfront high rise repaint in Mooloolaba",
   },
@@ -120,7 +120,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Maroochydore",
     name: "CBD Commercial Tower",
     type: "Commercial · 10 storeys",
-    system: "Dulux AcraTex · render repairs · full facade repaint",
+    system: "Coastal-climate coating system · render repairs · full facade repaint",
     image: "/images/projects/2.jpeg",
     alt: "Maroochydore CBD commercial tower painting project",
   },
@@ -128,7 +128,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Coolum Beach",
     name: "RACV Resort Complex",
     type: "Hospitality · resort complex",
-    system: "Haymes Sandtex · heritage palette · multi building program",
+    system: "Coastal-climate coating system · heritage palette · multi building program",
     image: "/images/projects/1.jpeg",
     alt: "RACV Coolum Resort exterior painting project",
   },
@@ -209,7 +209,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Can rope access reduce commercial painting costs on high rise buildings?",
-    a: "Yes. Our thirty plus IRATA certified technicians access and paint any facade from rooftop anchor points, so there is no scaffold hire, no crane cost and no lost ground floor space. On buildings over four storeys, rope access typically saves 40 to 60 percent on access costs compared to a full scaffold, while also mobilising faster and letting us work multiple faces at once.",
+    a: "Yes. Rope access is our preferred method of access for minimal disruption, and our thirty plus IRATA certified technicians access and paint any facade from rooftop anchor points with no lost ground floor space. On buildings over four storeys, rope access typically saves 40 to 60 percent on access costs compared to a full scaffold, while also mobilising faster and letting us work multiple faces at once.",
   },
   {
     q: "Can you paint a commercial building on the Sunshine Coast while it stays occupied?",
@@ -217,7 +217,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "What paint systems do you use for commercial buildings in coastal conditions?",
-    a: "Within about five kilometres of the coast, we specify salt bonded primers, chloride rinse pre treatment and elastomeric topcoats as standard, using Dulux Weathershield for masonry and render or Haymes Sandtex for textured surfaces. Elastomeric topcoats bridge hairline cracks and handle the thermal movement coastal commercial buildings experience, which standard topcoats cannot manage.",
+    a: "Within about five kilometres of the coast, we specify a chloride rinse pre treatment and a flexible topcoat as standard, using coating systems tailored to our coastal climate for masonry, render and textured surfaces. The flexible topcoat bridges hairline cracks and handles the movement coastal commercial buildings experience, which standard topcoats cannot manage.",
   },
   {
     q: "Are you QBCC licensed and what warranty do you offer on commercial painting?",

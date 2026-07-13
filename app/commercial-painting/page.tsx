@@ -105,7 +105,7 @@ export default function CommercialPaintingPage() {
               photo: HERO_SLIDES[1].src,
               alt: HERO_SLIDES[1].alt,
               title: "Commercial rope access painting",
-              body: "Specialists in high-rise and complex access commercial painting where scaffolding is disruptive, unsafe, or cost-prohibitive. Every project is managed from access planning through to completion, compliance, and warranty handover.",
+              body: "Specialists in high-rise and complex access commercial painting. Rope access is our preferred method for safe, cost-effective work with minimal disruption. Every project is managed from access planning through to completion, compliance, and warranty handover.",
             },
             {
               photo: HERO_SLIDES[2].src,
@@ -214,7 +214,7 @@ export default function CommercialPaintingPage() {
           projectName="High-Rise Repaint"
           location="Mooloolaba, QLD"
           heading="12 storeys. 84 lots. Done in 10 weeks."
-          body="This Mooloolaba body corporate had been quoted 18 weeks by three other painters, all requiring full scaffold, all quoting the same generic Weathershield system. We mobilised with rope access, completed surface prep in two weeks, and painted the full facade zone by zone without closing the car park or displacing ground-floor tenants for a single day."
+          body="This Mooloolaba body corporate had been quoted 18 weeks by three other painters, all quoting the same generic coating system. We mobilised with rope access, our preferred method of access for minimal disruption, completed surface prep in two weeks, and painted the full facade zone by zone without closing the car park or displacing ground-floor tenants for a single day."
           quote="Other painters told us to expect two scaffolding installations and four months of disruption. RAS-VERTEX were done in ten weeks and the car park was never closed. The result is exactly what we presented to owners."
           quoteAuthor="Sarah Mitchell"
           quoteRole="Strata Manager, Mooloolaba"

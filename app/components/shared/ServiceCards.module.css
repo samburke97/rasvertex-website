@@ -375,6 +375,16 @@ a:hover .ctaArrow {
   }
 }
 
+@media (min-width: 1920px) {
+  .photo {
+    max-height: 448px;
+  }
+
+  .listItemCard .photo {
+    max-height: 546px;
+  }
+}
+
 /* ─── Blue variant ───────────────────────────────────────────── */
 .blue {
   background: #deeeff;

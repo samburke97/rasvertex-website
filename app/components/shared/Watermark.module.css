@@ -6,7 +6,7 @@
 
 .watermarkText {
   font-family: var(--font-display);
-  font-size: 16vw;
+  font-size: clamp(3rem, 16vw, 19.5rem);
   line-height: 0.85;
   letter-spacing: -0.05em;
   color: #eef0f5;

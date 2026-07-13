@@ -40,7 +40,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior House Painting",
-    body: "We carry out full exterior repaints for homes across the Sunshine Coast, whether that is weatherboard, timber, rendered walls, brick or fibre cement. Coastal properties within about five kilometres of the ocean get a chloride rinse and a salt bonded primer before any topcoat goes on, the very same preparation standard we use on high rise body corporates, just applied to your home instead.",
+    body: "We carry out full exterior repaints for homes across the Sunshine Coast, whether that is weatherboard, timber, rendered walls, brick or fibre cement. Coastal properties within about five kilometres of the ocean get a chloride rinse and a coating system tailored to our coastal climate before any topcoat goes on, the very same preparation standard we use on high rise body corporates, just applied to your home instead.",
     photo: cld("exterior-house-painting", { width: 1200 }),
     href: "/contact",
   },
@@ -101,7 +101,7 @@ export const PROJECTS: ServiceProject[] = [
     name: "Coastal Home Exterior Repaint",
     type: "Residential · 4 coat Haymes system",
     system:
-      "Haymes Premium Exterior · salt bonded primer · elastomeric topcoat",
+      "Coastal-climate coating system · flexible topcoat",
     image: "/images/projects/1.jpeg",
     alt: "Coastal home exterior repaint in Moffat Beach",
   },
@@ -109,7 +109,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Buderim",
     name: "Full Interior & Exterior",
     type: "Residential · full repaint",
-    system: "Dulux Wash & Wear interior · Weathershield exterior",
+    system: "Low VOC interior paint · coastal-climate exterior system",
     image: "/images/projects/2.jpeg",
     alt: "Buderim residential full interior and exterior repaint",
   },
@@ -126,19 +126,19 @@ export const PROJECTS: ServiceProject[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "How much does house painting cost on the Sunshine Coast?",
-    a: "Cost depends on the size of the home, the number of rooms or the extent of the exterior, and how much surface preparation is needed. As residential painters across the Sunshine Coast, we quote every home individually after a site visit, with a fixed written price and no hidden extras. Coastal homes within five kilometres of the ocean can cost a little more, since they need chloride treatment and salt bonded primers to last.",
+    a: "Cost depends on the size of the home, the number of rooms or the extent of the exterior, and how much surface preparation is needed. As residential painters across the Sunshine Coast, we quote every home individually after a site visit, with a fixed written price and no hidden extras. Coastal homes within five kilometres of the ocean can cost a little more, since they need chloride treatment to last.",
   },
   {
     q: "Should I hire a professional for exterior house painting on the Sunshine Coast, or do it myself?",
-    a: "For small interior touch ups, doing it yourself is perfectly fine. For exterior house painting on the Sunshine Coast though, especially within five kilometres of the ocean, professional preparation is the difference between a finish that lasts a decade and one that peels within two years. Salt air, UV intensity and humidity call for chloride treatment, salt bonded primers and commercial grade topcoats that a hardware store simply will not stock, plus a written warranty a DIY job never comes with.",
+    a: "For small interior touch ups, doing it yourself is perfectly fine. For exterior house painting on the Sunshine Coast though, especially within five kilometres of the ocean, professional preparation is the difference between a finish that lasts a decade and one that peels within two years. Salt air, UV intensity and humidity call for chloride treatment and commercial grade topcoats that a hardware store simply will not stock, plus a written warranty a DIY job never comes with.",
   },
   {
     q: "What is included in an exterior house painting project on the Sunshine Coast?",
-    a: "Every project starts with a full building wash, followed by crack repairs, render patching, caulking and any rot replacement needed before a drop of paint goes on. We then apply a salt bonded primer and a Haymes or Dulux exterior system suited to the home's exposure. An eight year written workmanship warranty is issued at handover, with manufacturer warranties of up to fifteen years running separately.",
+    a: "Every project starts with a full building wash, followed by crack repairs, render patching, caulking and any rot replacement needed before a drop of paint goes on. We then apply a coating system tailored to our coastal climate and suited to the home's exposure. An eight year written workmanship warranty is issued at handover, with manufacturer warranties of up to fifteen years running separately.",
   },
   {
     q: "What paint products do you use for interior house painting on the Sunshine Coast?",
-    a: "We use low VOC Dulux Wash & Wear or an equivalent for interior house painting, chosen by sheen level to suit the surface and the room. For exterior work we specify Haymes and Dulux commercial systems rather than budget products, since coastal conditions on the Sunshine Coast wear out lower grade paint far faster than an inland home would experience.",
+    a: "We use low VOC paint for interior house painting, chosen by sheen level to suit the surface and the room. For exterior work we specify commercial systems tailored to our coastal climate rather than budget products, since coastal conditions on the Sunshine Coast wear out lower grade paint far faster than an inland home would experience.",
   },
   {
     q: "Do you offer pre sale house painting for Sunshine Coast homeowners and agents?",
@@ -160,7 +160,7 @@ export const CREDENTIALS: Credential[] = [
   {
     n: "01",
     title: "A commercial prep standard, applied to your home.",
-    body: "We bring the same surface preparation we use on high rise body corporates, chloride rinse, salt bonded primer, crack repairs, to every residential job within five kilometres of the coast. Standard paint systems tend to fail on coastal homes within two to three years without that level of prep. Ours do not.",
+    body: "We bring the same surface preparation we use on high rise body corporates, chloride rinse, crack repairs, to every residential job within five kilometres of the coast. Standard paint systems tend to fail on coastal homes within two to three years without that level of prep. Ours do not.",
     photo: "/images/projects/1.jpeg",
     photoAlt:
       "Painter preparing a coastal home exterior on the Sunshine Coast",
@@ -168,7 +168,7 @@ export const CREDENTIALS: Credential[] = [
   {
     n: "02",
     title: "Haymes and Dulux, not hardware store products.",
-    body: "We specify Haymes Premium Exterior and Dulux Weathershield commercial systems for residential work, because the difference in UV stability, salt resistance and adhesion is measurable. It is the gap between a finish that holds for ten years and one that starts chalking within two.",
+    body: "We specify Haymes and Dulux commercial systems for residential work, because the difference in UV stability, salt resistance and adhesion is measurable. It is the gap between a finish that holds for ten years and one that starts chalking within two.",
     photo: "/images/projects/2.jpeg",
     photoAlt:
       "Haymes and Dulux paint systems applied to a Sunshine Coast home",

@@ -29,6 +29,13 @@ const TRUST_LOGOS = [
     height: 1924,
     displayHeight: 40,
   },
+  {
+    src: "/images/associations/adheseal.png",
+    alt: "Adheseal",
+    width: 2383,
+    height: 333,
+    displayHeight: 17,
+  },
 ];
 
 type Step = 1 | 2;
@@ -58,7 +65,7 @@ interface QuoteBookingFormProps {
 
 export default function QuoteBookingForm({
   headingLevel = "h1",
-  heading = "Enter your details for a no obligation, hassle-free quote.",
+  heading = "Tell us about your project and we’ll provide a no-obligation quote.",
   leadParagraph = (
     <>
       Fill out the form and we&rsquo;ll arrange for an estimator to attend
@@ -233,15 +240,17 @@ export default function QuoteBookingForm({
       <div className={styles.formCol}>
         {submitted ? (
           <div className={styles.success} role="status" aria-live="polite">
-            <h2>We&rsquo;ll be in touch.</h2>
-            <p className="p-soft">
-              Thanks for reaching out. We&rsquo;ll be on site within 48 hours.
-              In the meantime, call{" "}
-              <a href="tel:0753710201" className={styles.successLink}>
-                (07) 5371 0201
-              </a>
-              .
-            </p>
+            <div className={styles.successCard}>
+              <h2>We&rsquo;ll be in touch.</h2>
+              <p className="p-soft">
+                Thanks for reaching out. We&rsquo;ll be in touch within 24
+                hours. In the meantime, feel free to call{" "}
+                <a href="tel:0753710201" className={styles.successLink}>
+                  (07) 5371 0201
+                </a>{" "}
+                for urgent enquiries.
+              </p>
+            </div>
           </div>
         ) : (
           <form

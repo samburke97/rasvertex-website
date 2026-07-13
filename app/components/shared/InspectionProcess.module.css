@@ -306,3 +306,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (min-width: 1920px) {
+  .imageWrap {
+    max-height: 484px;
+  }
+}

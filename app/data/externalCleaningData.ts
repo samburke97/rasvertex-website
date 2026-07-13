@@ -33,13 +33,13 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Facade Cleaning and Rope Access",
-    body: "We use a soft wash treatment on rendered, painted and clad facades to lift salt deposits, biological growth and general pollution buildup before they start corroding the surface underneath. Our IRATA certified rope access team reaches every high rise facade at any height, with no scaffolding, no EWP hire and no disruption to tenants or car parks below.",
+    body: "Eco-friendly high pressure cleaning is our preferred approach on rendered, painted and clad facades, lifting salt deposits, biological growth and general pollution buildup before they start corroding the surface underneath. Our IRATA certified rope access team reaches every high rise facade at any height, with no disruption to tenants or car parks below.",
     photo: cld("bw1", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Roof Cleaning",
-    body: "Our soft wash roof cleaning suits tile, Colorbond and membrane roofs, removing lichen, moss and algae without the damage that high pressure water can cause. It extends the life of the roof and clears away the growth that traps moisture and speeds up deterioration in our humidity.",
+    body: "Our eco-friendly high pressure roof cleaning suits tile, Colorbond and membrane roofs, removing lichen, moss and algae at a pressure set safely for the surface. It extends the life of the roof and clears away the growth that traps moisture and speeds up deterioration in our humidity.",
     photo: cld("roof-cleaning", { width: 1200 }),
     href: "/contact",
   },
@@ -62,7 +62,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Maroochydore",
     name: "Commercial Tower Facade Wash",
     type: "Commercial · 12 storeys",
-    system: "Rope access · soft wash facade · pressure clean podium",
+    system: "Rope access · pressure clean facade · pressure clean podium",
     image: "/images/projects/1.jpeg",
     alt: "Commercial facade wash in Maroochydore",
   },
@@ -159,15 +159,15 @@ export const CARDS: ServiceCard[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "How often should commercial buildings on the Sunshine Coast be pressure cleaned?",
-    a: "Most commercial buildings within about five kilometres of the coast need pressure cleaning or a facade wash every six to twelve months, since salt spray and biological growth build up quickly this close to the water. Buildings further inland can often stretch to twelve to eighteen months, while car parks and other hard surfaces usually need attention every three to six months.",
+    a: "As a general rule we recommend a full building wash annually, though properties within about five kilometres of the coast may need it a little more often since salt spray and biological growth build up quickly this close to the water. Get in touch and we'll recommend a schedule suited to your building's exposure and occupancy.",
   },
   {
-    q: "What's the difference between soft washing and pressure cleaning for external building cleaning?",
-    a: "Soft washing uses low pressure hot water and biodegradable agents to safely clean rendered facades, paint and roof tiles without damaging them. Pressure cleaning uses high pressure water suited to hard surfaces like concrete, pavers and driveways. As part of our external building cleaning service, we choose the right method for each surface so nothing gets damaged along the way.",
+    q: "Will pressure cleaning damage rendered facades, paint or roof tiles?",
+    a: "No. Eco-friendly high pressure cleaning is our preferred approach for external building cleaning, and we calibrate the pressure and technique to suit each surface, whether that's rendered facades, paint, roof tiles or hard surfaces like concrete and pavers, so nothing gets damaged along the way.",
   },
   {
     q: "Can you provide high rise building cleaning on the Sunshine Coast without scaffolding?",
-    a: "Yes. Our IRATA certified rope access team reaches any height from rooftop anchor points, with no scaffolding and no EWP hire required. It is faster to deploy than a traditional setup and far less disruptive to residents and tenants, which is why most of our high rise building cleaning work across the Sunshine Coast uses rope access as standard.",
+    a: "Yes. Rope access is our preferred method of access for minimal disruption. Our IRATA certified rope access team reaches any height from rooftop anchor points, faster to deploy and far less disruptive to residents and tenants, which is why most of our high rise building cleaning work across the Sunshine Coast uses rope access as standard.",
   },
   {
     q: "Is your external building cleaning process environmentally compliant?",

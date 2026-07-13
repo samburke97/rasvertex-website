@@ -244,7 +244,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Will building maintenance work disrupt residents or tenants?",
-    a: "We plan every job to keep disruption to a minimum. Rope access means no scaffolding on balconies or blocking common areas, and we stage work zone by zone, notify affected residents in advance and schedule noisy work during building management's preferred hours. Most of our maintenance programs run without a single resident complaint.",
+    a: "We plan every job to keep disruption to a minimum. Rope access is our preferred method of access for minimal disruption, so common areas and balconies stay clear, and we stage work zone by zone, notify affected residents in advance and schedule noisy work during building management's preferred hours. Most of our maintenance programs run without a single resident complaint.",
   },
 ];
 

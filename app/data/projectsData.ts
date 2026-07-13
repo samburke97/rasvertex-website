@@ -102,7 +102,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Do you use rope access for painting and facade maintenance?",
-    a: "Yes. Our IRATA certified rope access technicians handle high rise repaints, sealant replacement, facade inspections and remedial works without any scaffold. Rope access is typically 40 to 60 percent cheaper than scaffolded alternatives and causes far less disruption to residents and car parks.",
+    a: "Yes. Rope access is our preferred method of access for minimal disruption. Our IRATA certified rope access technicians handle high rise repaints, sealant replacement, facade inspections and remedial works, typically 40 to 60 percent cheaper than scaffolded alternatives and with far less disruption to residents and car parks.",
   },
   {
     q: "What does a balcony waterproofing project involve?",

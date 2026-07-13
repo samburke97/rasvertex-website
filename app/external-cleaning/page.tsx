@@ -39,7 +39,7 @@ export const metadata = generatePageMetadata({
     "body corporate cleaning Sunshine Coast",
     "commercial building cleaning Noosa",
     "building exterior cleaning Maroochydore",
-    "soft washing Sunshine Coast",
+    "eco-friendly pressure cleaning Sunshine Coast",
     "high rise building cleaning Sunshine Coast",
     "commercial pressure cleaning Sunshine Coast",
     "concrete cleaning Sunshine Coast",
@@ -80,7 +80,7 @@ export default function ExternalCleaningPage() {
               cleaning team.
             </>
           }
-          lede="We provide professional exterior building cleaning across the Sunshine Coast, combining IRATA rope access, soft washing and commercial pressure cleaning to safely restore facades, roofs and hard surfaces, delivering visible transformation across every
+          lede="We provide professional exterior building cleaning across the Sunshine Coast, combining IRATA rope access with eco-friendly high pressure cleaning to safely restore facades, roofs and hard surfaces, delivering visible transformation across every
               surface."
           headingId="external-cleaning-hero-heading"
           video={cldVideo("cleaning", { width: 1200 })}

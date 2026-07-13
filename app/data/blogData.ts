@@ -89,8 +89,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Dulux Weathershield or equivalent for exterior masonry and render",
-          "Two pack epoxy systems for high traffic floors and wet areas",
+          "A premium coating system tailored to our coastal climate for exterior masonry and render",
+          "Durable epoxy coatings for high traffic floors and wet areas",
           "Low sheen or flat finishes for interior ceilings, never semi gloss",
           "UV stable colours, since darker shades absorb more heat and cycle harder over time",
         ],
@@ -199,7 +199,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "rope-access-vs-scaffold-sunshine-coast",
     title: "Rope Access vs Scaffold: What's the Right Call for Your Building?",
     excerpt:
-      "Scaffold means days of setup, lost car parks and unhappy residents. Here is why Sunshine Coast building managers are switching to rope access, and when scaffold is still genuinely the right tool for the job.",
+      "Scaffold means extra setup time and lost car park space. Here is why Sunshine Coast building managers are switching to rope access, and when scaffold is still genuinely the right tool for the job.",
     category: "Rope Access",
     publishedAt: "2025-05-20",
     readingTime: 5,
@@ -219,7 +219,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Scaffold is not just expensive to hire, it is expensive in every direction. A typical mid rise building on the Coast can take two to three days to fully scaffold, plus another day to strike it all back down. That is the better part of a week where car parks stay blocked, residents are navigating around steel tubes, and nothing is actually getting done on the building itself.",
+        text: "Scaffold hire is only part of the cost. A typical mid rise building on the Coast can take two to three days to fully scaffold, plus another day to strike it all back down. That is the better part of a week where car parks stay blocked and residents need to work around it, before any real work begins on the building itself.",
       },
       {
         type: "ul",

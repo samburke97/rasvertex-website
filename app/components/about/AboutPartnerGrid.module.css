@@ -68,3 +68,9 @@
     aspect-ratio: 16 / 9;
   }
 }
+
+@media (min-width: 1920px) {
+  .photoWrap {
+    max-height: 672px;
+  }
+}

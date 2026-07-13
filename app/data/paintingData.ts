@@ -38,7 +38,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Painting",
-    body: "We carry out full exterior repaints for strata, commercial and residential buildings right across the Sunshine Coast. Anything within about five kilometres of the water gets a chloride rinse and a salt bonded primer before a drop of Dulux Weathershield goes anywhere near the wall, because that is what actually holds up against our salt air.",
+    body: "We carry out full exterior repaints for strata, commercial and residential buildings right across the Sunshine Coast. Anything within about five kilometres of the water gets a chloride rinse and a coating system tailored to our coastal climate, because that is what actually holds up against our salt air.",
     photo: cld("exterior", { width: 1800 }),
     href: "/contact",
   },
@@ -92,7 +92,7 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     photo: cld("avere-repaint", { width: 1800 }),
     alt: "Coastal spec paint system applied to a Sunshine Coast high rise building",
     title: "Coastal spec paint systems",
-    body: "We match salt bonded primers, chloride rinse treatments and elastomeric topcoats to whatever substrate and exposure your building is actually dealing with, rather than reaching for the same system regardless of how close it sits to the coast.",
+    body: "We match chloride rinse treatments and flexible topcoats to whatever substrate and exposure your building is actually dealing with, rather than reaching for the same system regardless of how close it sits to the coast.",
   },
 ];
 
@@ -103,7 +103,7 @@ export const BEFORE_AFTER_SPECS: BeforeAfterSpec[] = [
   },
   {
     label: "System",
-    value: "Dulux Weathershield Pure · elastomeric topcoat",
+    value: "Coastal-climate coating system · flexible topcoat",
   },
   {
     label: "Crew",
@@ -120,7 +120,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Mooloolaba",
     name: "Oceanfront High Rise Repaint",
     type: "Body Corporate · 8 storeys",
-    system: "Dulux Weathershield · elastomeric topcoat",
+    system: "Coastal-climate coating system · flexible topcoat",
     image: "/images/projects/1.jpeg",
     alt: "Oceanfront high rise repaint in Mooloolaba",
   },
@@ -128,7 +128,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Coolum Beach",
     name: "Coolum Resort Exterior",
     type: "Commercial · resort complex",
-    system: "Haymes Sandtex · salt bonded primer",
+    system: "Coastal-climate coating system",
     image: "/images/projects/2.jpeg",
     alt: "Coolum Resort exterior painting project",
   },
@@ -136,7 +136,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Maroochydore",
     name: "CBD Office Tower",
     type: "Commercial · 12 storeys",
-    system: "Dulux AcraTex · render and texture coat",
+    system: "Coastal-climate coating system · render and texture coat",
     image: "/images/projects/1.jpeg",
     alt: "Maroochydore CBD office tower commercial painting project",
   },
@@ -147,7 +147,7 @@ export const CARDS: ServiceCard[] = [
     photo: cld("commercial-painters", { width: 1200 }),
     alt: "Commercial painting on the Sunshine Coast",
     title: "Commercial Painting",
-    body: "For more than 25 years, we've delivered commercial painting projects across the Sunshine Coast's schools, hotels, shopping centres and high-rise buildings. We know that downtime costs money, which is why our in-house team plans every project around your operations, using rope access, EWPs and staged delivery methods to minimise disruption. Beyond the paint itself, we identify and remediate defects as we go, protecting the long-term performance of your asset rather than simply coating over problems. No subcontractors, experienced project managers, and 25+ years of commercial painting experience on every project.",
+    body: "For more than 25 years, we've delivered commercial painting projects across the Sunshine Coast, from schools and hotels to shopping centres and high-rise buildings. We plan every project around your operations, using rope access, EWPs and staged works to minimise disruption. Our team also identifies and repairs defects before painting, protecting your building for the long run.",
     cta: "Commercial painting",
     href: "/commercial-painting",
   },
@@ -155,7 +155,7 @@ export const CARDS: ServiceCard[] = [
     photo: cld("rope-access-painting", { width: 1200 }),
     alt: "Body corporate and strata painting on the Sunshine Coast",
     title: "Body Corporate & Strata Painting",
-    body: "Body corporate painting is about more than applying a fresh coat of paint. It's about delivering a result that residents are proud of while keeping communities informed and disruption to a minimum. Backed by 25+ years of body corporate and strata painting experience on the Sunshine Coast, we've built a process centred on proactive communication, detailed project management and clean, well-organised worksites. Every project includes colour consultation as standard and premium Dulux and Haymes coating systems tailored to coastal conditions.",
+    body: "Backed by 25+ years of experience, we deliver body corporate painting with clear communication, organised project management and minimal disruption for residents. Every project includes colour consultation and premium Dulux and Haymes coating systems designed for Sunshine Coast conditions.",
     cta: "Body corporate painting",
     href: "/body-corporate-painting",
   },
@@ -164,7 +164,7 @@ export const CARDS: ServiceCard[] = [
     alt: "Residential painting on the Sunshine Coast",
     objectPosition: "top",
     title: "Residential Painting",
-    body: "Painting your home should be an exciting experience, not a stressful one. Backed by 25+ years of residential painting experience, our local Sunshine Coast team takes the time to understand your vision, guide you through colour selections and recommend the right products and finishes for your home. With no subcontractors and a friendly, experienced team managing every detail, our goal is simple: to deliver a home you'll genuinely love coming back to every day.",
+    body: "Backed by 25+ years of experience, our local team delivers high-quality residential painting with expert colour advice, premium products and meticulous workmanship. With no subcontractors and clear communication throughout, we make the process straightforward from start to finish.",
     cta: "Residential painting",
     href: "/residential-painting",
   },
@@ -185,7 +185,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Do you use rope access or scaffolding for high rise painting?",
-    a: "Both, depending on the job. Our crew is IRATA certified in house through levels one to three, and we partner with scaffolders on projects where access needs to be staged differently. On most high rise repaints, rope access saves somewhere between 40 and 60 percent compared to scaffolding alone.",
+    a: "Both, depending on the job. Rope access is our preferred method of access for minimal disruption, and our crew is IRATA certified in house through levels one to three, but we partner with scaffolders on projects where access needs to be staged differently. On most high rise repaints, rope access saves somewhere between 40 and 60 percent compared to scaffolding alone.",
   },
   {
     q: "Are you QBCC licensed and insured for painting work on the Sunshine Coast?",

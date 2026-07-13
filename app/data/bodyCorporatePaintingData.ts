@@ -41,8 +41,8 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Facade Repaints",
-    body: "We carry out full exterior repaints for strata buildings of any height, across render, masonry, concrete and cladding. Anything within five kilometres of the coast gets a chloride rinse and salt bonded primer as standard, with Dulux Weathershield and Haymes Sandtex systems specified to suit the actual substrate and exposure, not picked off a generic price list.",
-    photo: cld("exterior-facades", { width: 1200 }),
+    body: "We carry out full exterior repaints for strata buildings of any height, across render, masonry, concrete and cladding. Anything within five kilometres of the coast gets a chloride rinse and a coating system tailored to our coastal climate, specified to suit the actual substrate and exposure, not picked off a generic price list.",
+    photo: cld("exterior-facade", { width: 1200 }),
     href: "/contact",
   },
   {
@@ -119,14 +119,14 @@ export const CREDENTIALS: Credential[] = [
   {
     n: "02",
     title: "Rope access, with no scaffolding and no car park disruption.",
-    body: "Our thirty plus IRATA certified technicians access high rise facades straight from rooftop anchor points, so there is no scaffold hire, no crane cost and no ground floor footprint to work around. On a ten storey building, rope access typically saves the body corporate 40 to 60 percent on access costs compared with a full scaffold.",
+    body: "Rope access is our preferred method of access for minimal disruption. Our thirty plus IRATA certified technicians access high rise facades straight from rooftop anchor points, with no ground floor footprint to work around. On a ten storey building, rope access typically saves the body corporate 40 to 60 percent on access costs compared with a full scaffold.",
     photo: "/images/projects/2.jpeg",
     photoAlt: "IRATA rope access painting on a Sunshine Coast strata building",
   },
   {
     n: "03",
     title: "Coastal spec paint systems, not generic inland products.",
-    body: "Salt bonded primers, chloride rinse and elastomeric topcoats are standard on anything within five kilometres of the coast. We specify Dulux Weathershield and Haymes Sandtex commercial systems matched to the substrate and exposure your building actually faces, not something picked from a price list.",
+    body: "Chloride rinse and a flexible topcoat are standard on anything within five kilometres of the coast. We specify coating systems tailored to our coastal climate, matched to the substrate and exposure your building actually faces, not something picked from a price list.",
     photo: "/images/projects/1.jpeg",
     photoAlt:
       "Coastal spec paint system being applied to a Sunshine Coast strata building",
@@ -154,7 +154,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Mooloolaba",
     name: "Oceanfront High Rise Repaint",
     type: "Body Corporate · 12 storeys · 84 lots",
-    system: "Dulux Weathershield · salt bonded primer · elastomeric topcoat",
+    system: "Coastal-climate coating system · flexible topcoat",
     image: "/images/projects/1.jpeg",
     alt: "Oceanfront high rise body corporate repaint in Mooloolaba",
   },
@@ -162,7 +162,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Maroochydore",
     name: "Strata Complex Exterior Program",
     type: "Body Corporate · 8 storeys · staged over 2 years",
-    system: "Haymes Sandtex · render repairs · zone staged delivery",
+    system: "Coastal-climate coating system · render repairs · zone staged delivery",
     image: "/images/projects/2.jpeg",
     alt: "Strata complex exterior painting in Maroochydore",
   },
@@ -170,7 +170,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Caloundra",
     name: "Beachside Strata Repaint",
     type: "Body Corporate · 6 storeys · full exterior + common areas",
-    system: "Dulux AcraTex · chloride rinse · colour consult",
+    system: "Coastal-climate coating system · chloride rinse · colour consult",
     image: "/images/projects/1.jpeg",
     alt: "Beachside strata repaint in Caloundra",
   },
@@ -191,11 +191,11 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Do you use rope access or scaffolding for body corporate and strata repaints?",
-    a: "Rope access covers all high rise work where the building geometry allows it. Our IRATA certified technicians access facades directly from rooftop anchor points, meaning no scaffold hire, no crane cost and no ground floor footprint. On buildings over four storeys, rope access typically saves 40 to 60 percent on access costs, and we bring in scaffold only for specific areas that genuinely need a working platform.",
+    a: "Rope access is our preferred method of access for minimal disruption, and it covers all high rise work where the building geometry allows it. Our IRATA certified technicians access facades directly from rooftop anchor points, with no ground floor footprint. On buildings over four storeys, rope access typically saves 40 to 60 percent on access costs, and we bring in scaffold only for specific areas that genuinely need a working platform.",
   },
   {
     q: "What warranty and paint systems do you provide for Sunshine Coast strata painting projects?",
-    a: "Within five kilometres of the coast, we specify Dulux Weathershield or Haymes Sandtex with a salt bonded primer and chloride rinse pre treatment, using elastomeric topcoats to bridge hairline cracks and handle thermal movement. Every strata project carries an eight year written workmanship warranty issued at handover, plus manufacturer warranties of up to fifteen years registered in the body corporate's name.",
+    a: "Within five kilometres of the coast, we specify a coating system tailored to our coastal climate with a chloride rinse pre treatment, using a flexible topcoat to bridge hairline cracks and handle movement. Every strata project carries an eight year written workmanship warranty issued at handover, plus manufacturer warranties of up to fifteen years registered in the body corporate's name.",
   },
 ];
 

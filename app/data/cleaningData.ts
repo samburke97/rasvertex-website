@@ -42,7 +42,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "High Rise Window Cleaning",
-    body: "Our IRATA rope access technicians abseil facades straight from rooftop anchors, with no cherry pickers and no scaffolding involved. That means streak free glass on buildings of any height, from four storeys right up past forty.",
+    body: "Our IRATA rope access technicians abseil facades straight from rooftop anchors, with no cherry pickers and no scaffolding involved. That means streak free glass on anything from single storey apartment complexes to high-rise commercial buildings.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
@@ -59,8 +59,8 @@ export const SERVICES: AccordionService[] = [
     href: "/contact",
   },
   {
-    label: "Pressure & Soft Washing",
-    body: "We run industrial grade pressure cleaning across driveways, pavements, roofs, facades and hard surfaces, using the same recycled water vacuum system behind all of our cleaning work.",
+    label: "Pressure Cleaning",
+    body: "Eco-friendly high pressure cleaning is our preferred approach across driveways, pavements, roofs, facades and hard surfaces, using the same recycled water vacuum system behind all of our cleaning work. For window panes we also cater to traditional methods such as squeegee cleaning where that suits the job.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
@@ -72,7 +72,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Facade & Cladding Wash",
-    body: "We apply a soft wash treatment to rendered, painted and clad facades, lifting salt deposits, biological growth, mould and general pollution buildup that corrodes surfaces over time. It is part of any effective coastal building maintenance program.",
+    body: "We apply an eco-friendly high pressure clean to rendered, painted and clad facades, lifting salt deposits, biological growth, mould and general pollution buildup that corrodes surfaces over time. It is part of any effective coastal building maintenance program.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
@@ -82,7 +82,7 @@ export const SERVICE_STEPS: InspectionStep[] = [
   {
     n: "01",
     title: "High Rise Window Cleaning",
-    body: "Our IRATA rope access technicians abseil facades straight from rooftop anchors, with no cherry pickers and no scaffolding involved. That means streak free glass on buildings of any height, from four storeys right up past forty.",
+    body: "Our IRATA rope access technicians abseil facades straight from rooftop anchors, with no cherry pickers and no scaffolding involved. That means streak free glass on anything from single storey apartment complexes to high-rise commercial buildings.",
     icon: PiBuildingApartment,
   },
   {
@@ -99,8 +99,8 @@ export const SERVICE_STEPS: InspectionStep[] = [
   },
   {
     n: "04",
-    title: "Pressure & Soft Washing",
-    body: "We run industrial grade pressure cleaning across driveways, pavements, roofs, facades and hard surfaces, using the same recycled water vacuum system behind all of our cleaning work.",
+    title: "Pressure Cleaning",
+    body: "Eco-friendly high pressure cleaning is our preferred approach across driveways, pavements, roofs, facades and hard surfaces, using the same recycled water vacuum system behind all of our cleaning work. For window panes we also cater to traditional methods such as squeegee cleaning where that suits the job.",
     icon: PiDrop,
   },
   {
@@ -112,7 +112,7 @@ export const SERVICE_STEPS: InspectionStep[] = [
   {
     n: "06",
     title: "Facade & Cladding Wash",
-    body: "We apply a soft wash treatment to rendered, painted and clad facades, lifting salt deposits, biological growth, mould and general pollution buildup that corrodes surfaces over time. It is part of any effective coastal building maintenance program.",
+    body: "We apply an eco-friendly high pressure clean to rendered, painted and clad facades, lifting salt deposits, biological growth, mould and general pollution buildup that corrodes surfaces over time. It is part of any effective coastal building maintenance program.",
     icon: PiBuildings,
   },
 ];
@@ -255,15 +255,15 @@ export const CARDS: ServiceCard[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "What is the best method for high rise window cleaning on the Sunshine Coast?",
-    a: "Rope access window cleaning is consistently the fastest and most cost effective method for high rise buildings on the Sunshine Coast. IRATA certified technicians descend from rooftop anchors using purified deionised water systems, with no scaffolding, no EWP hire costs and no disruption to ground level access. For buildings under four storeys, a water fed pole system delivers the same streak free result from the ground.",
+    a: "Rope access is our preferred method of access for minimal disruption, and it's consistently the fastest and most cost effective method for high rise buildings on the Sunshine Coast. IRATA certified technicians descend from rooftop anchors using purified deionised water systems, with no disruption to ground level access. For buildings under four storeys, a water fed pole system delivers the same streak free result from the ground.",
   },
   {
     q: "How much does commercial window cleaning cost on the Sunshine Coast?",
-    a: "Cost depends on building height, the number of panes, the access method required and how often you need us. Rope access window cleaning on high rise strata buildings typically ranges from $800 to $3,500 per visit depending on scale, while residential cleans start from $150. We provide fixed price quotes with no hidden charges, so get in touch for a site specific price.",
+    a: "Cost depends on building height, the number of panes, the access method required and how often you need us. Every building is different, so reach out and we'll provide a free quote tailored to your building, with no hidden charges.",
   },
   {
     q: "How often should commercial windows be cleaned on the Sunshine Coast?",
-    a: "For properties within about five kilometres of the ocean, we recommend commercial window cleaning every six to eight weeks, since salt spray builds up quickly and can etch glass if left too long. Buildings further inland can typically stretch to a ten to twelve week cycle, while facade and pressure washing programs generally run every six to twelve months depending on exposure and occupancy.",
+    a: "As a general rule we recommend window cleaning quarterly and a full building wash annually, though properties within about five kilometres of the ocean may need windows done a little more often since salt spray builds up quickly and can etch glass if left too long. Get in touch and we'll recommend a schedule suited to your building's exposure and occupancy.",
   },
   {
     q: "Is your window cleaning process eco friendly?",

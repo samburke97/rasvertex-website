@@ -195,3 +195,9 @@
     margin-top: var(--space-md);
   }
 }
+
+@media (min-width: 1920px) {
+  .mediaCol {
+    max-height: 660px;
+  }
+}

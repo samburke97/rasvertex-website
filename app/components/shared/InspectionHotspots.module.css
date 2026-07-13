@@ -192,3 +192,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (min-width: 1920px) {
+  .videoCard {
+    max-height: 832px;
+  }
+}

@@ -96,7 +96,7 @@ export default function BodyCorporatePaintingPage() {
               photo: HERO_SLIDES[1].src,
               alt: HERO_SLIDES[1].alt,
               title: "Zone-staged delivery",
-              body: "We paint in stages so residents, car parks and common areas stay usable throughout the project, no full-site shutdown.",
+              body: "We work one area at a time, allowing residents to continue using their homes, car parks and shared spaces while the project progresses.",
             },
             {
               photo: HERO_SLIDES[2].src,
@@ -157,8 +157,7 @@ export default function BodyCorporatePaintingPage() {
         <ServiceAccordion
           heading={
             <>
-              What does your body corporate{" "}
-              <br className="hidden md:block" />
+              What does your body corporate <br className="hidden md:block" />
               building need?
             </>
           }
@@ -181,7 +180,10 @@ export default function BodyCorporatePaintingPage() {
       </section>
 
       {/* ── How we run a strata repaint ── */}
-      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="process-heading">
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="process-heading"
+      >
         <InspectionProcess
           heading="How we run a strata repaint."
           lede="Five stages from committee proposal to warranty handover, every stage documented, every resident informed, no scope surprises."

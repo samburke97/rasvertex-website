@@ -221,3 +221,9 @@
     margin-top: var(--space-2xl);
   }
 }
+
+@media (min-width: 1920px) {
+  .imageCol {
+    max-height: 880px;
+  }
+}

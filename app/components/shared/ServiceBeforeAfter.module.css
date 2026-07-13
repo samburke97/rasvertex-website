@@ -214,3 +214,9 @@
     max-width: none;
   }
 }
+
+@media (min-width: 1920px) {
+  .photo {
+    max-height: 568px;
+  }
+}
