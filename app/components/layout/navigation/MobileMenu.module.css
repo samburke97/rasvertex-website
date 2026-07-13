@@ -167,7 +167,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   min-width: 0;
 }
 
@@ -182,8 +182,8 @@
 
 .ctaBody {
   font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  line-height: var(--p-sm-leading);
+  font-size: var(--p-size);
+  line-height: var(--p-leading);
   color: var(--navy);
   opacity: 0.65;
   margin: 0;
@@ -240,7 +240,7 @@
 }
 
 /* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 380px) {
+@media (max-width: 700px) {
   .ctaInner {
     flex-direction: column;
     align-items: flex-start;
