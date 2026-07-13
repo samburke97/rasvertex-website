@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
     client: "Body Corporate",
     location: "Caloundra, QLD",
     category: "Maintenance",
-    scope: "Rope access · carbon fibre injection · reinforcing bar replacement",
+    scope: "Rope access · carbon fibre injection · spalling repair",
     image: "/images/projects/rope-access.png",
     imageAlt: "Spalling concrete remediation at a Caloundra strata building",
     size: "tall",

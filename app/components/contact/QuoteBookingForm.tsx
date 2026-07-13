@@ -92,7 +92,6 @@ export default function QuoteBookingForm({
     service: "",
     propertyAddress: "",
     message: "",
-    company: "", // honeypot
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -143,11 +142,6 @@ export default function QuoteBookingForm({
       : form.propertyAddress.trim() !== "";
 
   const handleSubmit = async () => {
-    if (form.company.trim() !== "") {
-      setSubmitted(true);
-      return;
-    }
-
     try {
       const body = new FormData();
       body.append("name", `${form.firstName} ${form.lastName}`.trim());
@@ -156,7 +150,6 @@ export default function QuoteBookingForm({
       body.append("services", form.service);
       body.append("propertyAddress", form.propertyAddress);
       body.append("message", form.message.trim());
-      body.append("company", form.company);
       photos.forEach((file) => body.append("photos", file));
 
       const res = await fetch("/api/contact", { method: "POST", body });
@@ -266,21 +259,6 @@ export default function QuoteBookingForm({
             aria-label={`Request a quote — step ${step} of 2`}
             noValidate
           >
-            {/* Honeypot — deliberately has no label, name or id that
-                resembles a real field, since browser/password-manager
-                autofill will populate hidden inputs it recognises
-                (e.g. "company") regardless of CSS visibility, which
-                silently trips this trap for real visitors. */}
-            <div className={styles.honeypot} aria-hidden="true">
-              <input
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                value={form.company}
-                onChange={(e) => set("company", e.target.value)}
-              />
-            </div>
-
             {/* Step 1 — Your Details */}
             {step === 1 && (
               <div className={styles.fields}>

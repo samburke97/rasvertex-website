@@ -109,16 +109,6 @@
   gap: var(--space-xl);
 }
 
-.honeypot {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
-  left: -9999px;
-}
-
 /* ── Fields ─────────────────────────────────────────────────── */
 .fields {
   display: flex;

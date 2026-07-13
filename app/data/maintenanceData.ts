@@ -41,7 +41,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Concrete & Render Repairs",
-    body: "From hairline fractures through to full reinforcing bar replacement, we use modern injection treatment equipment to repair cracks, chips and spalling, restoring both structural integrity and aesthetic appeal without unnecessary demolition.",
+    body: "We use modern injection treatment equipment to repair cracks, chips and spalling, restoring both structural integrity and aesthetic appeal without unnecessary demolition.",
     photo: cld("maintenance-sunshine-coast", { width: 1200 }),
     href: "/contact",
   },

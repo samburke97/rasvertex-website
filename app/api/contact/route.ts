@@ -11,14 +11,6 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
-    // Honeypot check — mirrors the client-side check, but never
-    // trust the client alone. If this hidden field is filled,
-    // silently pretend success and send nothing.
-    const honeypot = formData.get("company");
-    if (typeof honeypot === "string" && honeypot.trim() !== "") {
-      return NextResponse.json({ success: true, skipped: true });
-    }
-
     const services = formData.getAll("services").map(String);
     const name = String(formData.get("name") || "");
     const email = String(formData.get("email") || "");
