@@ -100,25 +100,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {/* CTA */}
           <div className={`${styles.cta} px-5 md:px-10`}>
-            <div className={styles.ctaInner}>
-              <div className={styles.avatar} aria-hidden="true">
-                <Image
-                  src="/images/people/caro.jpg"
-                  alt="Hylton Denton — Project Manager at RAS-VERTEX"
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                  sizes="80px"
-                />
-              </div>
-              <div className={styles.ctaText}>
-                <p className={styles.ctaHeading}>
-                  Ready to talk about your project?
-                </p>
-                <p className={styles.ctaBody}>
-                  One call to Hylton and you'll know exactly where you stand.
-                </p>
-              </div>
-            </div>
             <Link href="/contact" className={styles.ctaBtn} onClick={onClose}>
               Let's talk about your project
               <svg
