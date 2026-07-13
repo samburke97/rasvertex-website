@@ -22,7 +22,7 @@ const SERVICE_SLIDES = [
     industries: ["Commercial", "Body Corporate"],
   },
   {
-    src: cld("window-cleaning", { width: 1200 }),
+    src: cld("nav-window", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Window Cleaning",
     title: "Window Cleaning",
@@ -38,7 +38,7 @@ const SERVICE_SLIDES = [
     industries: ["Commercial", "Body Corporate"],
   },
   {
-    src: cld("maintenance", { width: 1200 }),
+    src: cld("rope-access-works", { width: 1200 }),
     mediaType: "image" as const,
     alt: "Maintenance",
     title: "Maintenance",

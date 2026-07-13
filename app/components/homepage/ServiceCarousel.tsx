@@ -107,6 +107,8 @@ export default function ServiceCarousel({
                       className={styles.media}
                       sizes="36vw"
                       aria-hidden="true"
+                      priority={i === 0}
+                      loading={i === 0 ? undefined : "lazy"}
                     />
                   )}
                 </div>

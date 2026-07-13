@@ -201,6 +201,11 @@ export default function RootLayout({
           href="https://use.typekit.net"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preconnect"
+          href="https://p.typekit.net"
+          crossOrigin="anonymous"
+        />
 
         {/* Adobe Fonts (Typekit) */}
         <link rel="stylesheet" href="https://use.typekit.net/nuk5csv.css" />
