@@ -44,7 +44,7 @@
   /* ─── Layout dimensions ────────────────────────────────── */
   --header-height: 72px;
   --footer-height: auto;
-  --container-max: 1280px;
+  --container-max: 1920px;
   --content-max: 768px;
 
   /* ─── Z-index layers ───────────────────────────────────── */

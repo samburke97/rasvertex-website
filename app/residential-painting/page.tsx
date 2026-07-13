@@ -7,7 +7,6 @@ import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
-import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import InspectionProcess from "../components/shared/InspectionProcess";
@@ -177,25 +176,6 @@ export default function ResidentialPaintingPage() {
           headingId="process-heading"
           ctaLabel="Get a free quote →"
           ctaHref="/contact"
-        />
-      </section>
-
-      <section
-        className="px-5 md:px-10 py-10 md:py-20"
-        aria-labelledby="residential-before-after-heading"
-      >
-        <ServiceBeforeAfter
-          beforeSrc="/images/residential/residential-before.webp"
-          afterSrc="/images/residential/residential-after.webp"
-          beforeAlt="Moffat Beach coastal home before exterior repaint, failed coating system"
-          afterAlt="Moffat Beach coastal home after 4-coat Haymes repaint by RAS-VERTEX"
-          projectName="Residence Repaint"
-          location="Moffat Beach, QLD"
-          heading="Failed coating system. Four coats. Flawless finish."
-          body="The previous coating system on this luxury coastal property had failed, leaving surfaces weathered and uneven. Our painters undertook extensive surface remediation, addressing peeling, cracking, and substrate damage, before applying a premium 4-coat Haymes paint system. The result? A flawless, weather-resistant finish that complements the architecture and lives up to the stunning ocean views."
-          ctaHref="/work"
-          ctaLabel="Our projects →"
-          headingId="residential-before-after-heading"
         />
       </section>
 

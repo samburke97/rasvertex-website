@@ -13,6 +13,14 @@
   box-sizing: border-box;
 }
 
+/* Page content caps at --container-max on very wide screens, keeping
+   the px-5/px-10 gutters intact up to that width instead of the
+   content stretching edge-to-edge on ultrawide monitors. */
+#main-content {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
 html,
 body {
   max-width: 100vw;

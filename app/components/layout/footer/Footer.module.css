@@ -1,6 +1,8 @@
 /* app/components/layout/footer/Footer.module.css */
 
 .footer {
+  max-width: var(--container-max);
+  margin-inline: auto;
   padding: 0 var(--space-x) var(--space-lg);
   overflow: hidden;
 }

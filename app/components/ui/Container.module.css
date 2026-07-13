@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  margin: 0 auto;
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -17,6 +18,7 @@
 }
 
 .xl {
+  max-width: var(--container-max);
 }
 
 .responsive {

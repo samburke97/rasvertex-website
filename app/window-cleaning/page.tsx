@@ -135,7 +135,10 @@ export default function CleaningPage() {
         />
       </section>
 
-      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="cleaning-services-heading">
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="cleaning-services-heading"
+      >
         <InspectionProcess
           heading="What kind of window cleaning do you need?"
           steps={SERVICE_STEPS}
@@ -183,8 +186,8 @@ export default function CleaningPage() {
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
           We work across every part of your property,{" "}
-          <br className="hidden xl:block" /> from painting and
-          maintenance to inspections and safety.
+          <br className="hidden xl:block" /> from painting and maintenance to
+          inspections and safety.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/cleaning")}
@@ -197,7 +200,7 @@ export default function CleaningPage() {
           items={FAQS}
           contact={FAQ_CONTACT}
           headingId="cleaning-faq-heading"
-          ctaHeading="Keep your building looking sharp. Let’s talk window cleaning."
+          ctaHeading="Keep your building looking sharp."
         />
       </section>
     </>
