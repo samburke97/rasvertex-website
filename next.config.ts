@@ -18,6 +18,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/home", destination: "/", permanent: true },
+      { source: "/cleaning", destination: "/external-cleaning", permanent: true },
+      {
+        source: "/blog/improve-the-look-and-value-of-your-property",
+        destination: "/blog",
+        permanent: true,
+      },
+      { source: "/blog/tag/:tag*", destination: "/blog", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Get a Free Quote | RAS-VERTEX",
     description:
       "Request a free quote from the Sunshine Coast's trusted painting and building maintenance team. On site within 48 hours, no obligation.",
-    url: "https://www.ras-vertex.com.au/contact",
+    url: "https://www.rasvertex.com.au/contact",
     siteName: "RAS-VERTEX",
     type: "website",
   },

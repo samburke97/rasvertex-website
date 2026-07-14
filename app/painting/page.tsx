@@ -24,7 +24,7 @@ import {
 } from "../data/paintingData";
 
 export const metadata = generatePageMetadata({
-  title: "Painting Services Sunshine Coast",
+  title: "Painting Services Sunshine Coast | RAS-VERTEX",
   description:
     "Residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, 8-year written warranty, one project manager from quote to sign-off.",
   path: "/painting",
@@ -54,16 +54,9 @@ export default function PaintingPage() {
       <ServiceSchema
         name="Painting Services Sunshine Coast"
         description="Professional residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, IRATA rope access, 8-year written warranty."
-        image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
-        url="https://www.ras-vertex.com.au/painting"
+        image="https://www.rasvertex.com.au/images/projects/1.jpeg"
+        url="https://www.rasvertex.com.au/painting"
         serviceType="Painting"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-        ]}
       />
 
       <ServiceSEO

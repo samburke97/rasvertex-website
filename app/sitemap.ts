@@ -14,7 +14,7 @@ import { BLOG_POSTS } from "./data/blogData";
    - 0.6: Blog index + posts
    ============================================ */
 
-const SITE_URL = "https://www.ras-vertex.com.au";
+const SITE_URL = "https://www.rasvertex.com.au";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "About RAS-VERTEX — Sunshine Coast Property Maintenance",
     description:
       "The Sunshine Coast's complete property maintenance partner. Painting, cleaning, waterproofing, height safety and rope access for body corporates, strata, and commercial properties.",
-    url: "https://www.ras-vertex.com.au/about-us",
+    url: "https://www.rasvertex.com.au/about-us",
     siteName: "RAS-VERTEX",
     type: "website",
   },

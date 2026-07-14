@@ -27,35 +27,34 @@ import {
    ============================================ */
 
 const SITE_NAME = "RAS-VERTEX";
-const SITE_URL = "https://www.ras-vertex.com.au";
+const SITE_URL = "https://www.rasvertex.com.au";
 const SITE_LOCALE = "en_AU";
 
 // Primary keywords for Sunshine Coast commercial property maintenance
 const PRIMARY_KEYWORDS = [
   "commercial property maintenance Sunshine Coast",
-  "building maintenance Brisbane",
   "commercial painting Sunshine Coast",
   "residential painting Sunshine Coast",
-  "high-rise window cleaning Queensland",
+  "body corporate painting Sunshine Coast",
+  "external building cleaning Sunshine Coast",
+  "high-rise window cleaning Sunshine Coast",
   "waterproofing services Sunshine Coast",
-  "rope access services Brisbane",
-  "body corporate maintenance",
-  "commercial cleaning services",
-  "height safety systems Queensland",
+  "rope access services Sunshine Coast",
+  "body corporate maintenance Sunshine Coast",
+  "building maintenance Sunshine Coast",
+  "height safety systems Sunshine Coast",
   "building inspections Sunshine Coast",
+  "property maintenance Hervey Bay",
+  "commercial painting north Brisbane",
 ];
 
 export const metadata: Metadata = {
   // ============================================
   // BASIC META
   // ============================================
-  title: {
-    default:
-      "RAS-VERTEX | Commercial Property Maintenance | Sunshine Coast, Brisbane & Gold Coast",
-    template: "%s | RAS-VERTEX",
-  },
+  title: "Commercial Property Maintenance Sunshine Coast | RAS-VERTEX",
   description:
-    "Queensland's trusted commercial property maintenance experts. Professional painting, cleaning, waterproofing, height safety & building maintenance services across Sunshine Coast, Brisbane & Gold Coast. 10+ years experience. Free quotes.",
+    "The Sunshine Coast's property maintenance specialists. Painting, external & window cleaning, waterproofing, maintenance & height safety. 25+ years experience.",
   keywords: PRIMARY_KEYWORDS,
   authors: [{ name: "RAS-VERTEX", url: SITE_URL }],
   creator: "RAS-VERTEX",
@@ -89,9 +88,9 @@ export const metadata: Metadata = {
     locale: SITE_LOCALE,
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "RAS-VERTEX | Commercial Property Maintenance Experts",
+    title: "Commercial Property Maintenance Sunshine Coast | RAS-VERTEX",
     description:
-      "Queensland's trusted commercial property maintenance experts. Professional painting, window and external cleaning, waterproofing & height safety services. 25+ years experience serving the Sunshine Coast.",
+      "The Sunshine Coast's trusted property maintenance experts. Painting, external & window cleaning, waterproofing, maintenance & height safety. 25+ years experience.",
     images: [
       {
         url: "/og-image.jpg", // 1200x630px recommended

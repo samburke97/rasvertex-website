@@ -9,6 +9,8 @@
    https://validator.schema.org/
    ============================================ */
 
+import { SUBURBS } from "../../data/serviceAreasData";
+
 // ============================================
 // ORGANIZATION SCHEMA
 // Appears in Knowledge Panel
@@ -17,20 +19,20 @@ export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://www.ras-vertex.com.au/#organization",
+    "@id": "https://www.rasvertex.com.au/#organization",
     name: "RAS-VERTEX",
     alternateName: "RAS-VERTEX Property Services",
-    url: "https://www.ras-vertex.com.au",
+    url: "https://www.rasvertex.com.au",
     logo: {
       "@type": "ImageObject",
-      url: "https://www.ras-vertex.com.au/logo.png",
+      url: "https://www.rasvertex.com.au/logo.png",
       width: 400,
       height: 100,
     },
-    image: "https://www.ras-vertex.com.au/og-image.jpg",
+    image: "https://www.rasvertex.com.au/og-image.jpg",
     description:
       "Queensland's trusted commercial property maintenance experts providing painting, cleaning, waterproofing, height safety, and building maintenance services across Sunshine Coast, Brisbane, and Gold Coast.",
-    foundingDate: "2014",
+    foundingDate: "2001",
     founders: [
       {
         "@type": "Person",
@@ -53,9 +55,9 @@ export function OrganizationSchema() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+61-XXX-XXX-XXX", // Add your phone number
+        telephone: "+61-7-5371-0201",
         contactType: "customer service",
-        email: "info@ras-vertex.com.au", // Add your email
+        email: "team@rasvertex.com.au",
         areaServed: ["AU-QLD"],
         availableLanguage: ["English"],
         hoursAvailable: {
@@ -117,12 +119,12 @@ export function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://www.ras-vertex.com.au/#localbusiness",
+    "@id": "https://www.rasvertex.com.au/#localbusiness",
     name: "RAS-VERTEX",
     image: [
-      "https://www.ras-vertex.com.au/images/storefront-1x1.jpg",
-      "https://www.ras-vertex.com.au/images/storefront-4x3.jpg",
-      "https://www.ras-vertex.com.au/images/storefront-16x9.jpg",
+      "https://www.rasvertex.com.au/images/storefront-1x1.jpg",
+      "https://www.rasvertex.com.au/images/storefront-4x3.jpg",
+      "https://www.rasvertex.com.au/images/storefront-16x9.jpg",
     ],
     address: {
       "@type": "PostalAddress",
@@ -137,9 +139,9 @@ export function LocalBusinessSchema() {
       latitude: -26.65,
       longitude: 153.0667,
     },
-    url: "https://www.ras-vertex.com.au",
-    telephone: "+61-XXX-XXX-XXX",
-    email: "info@ras-vertex.com.au",
+    url: "https://www.rasvertex.com.au",
+    telephone: "+61-7-5371-0201",
+    email: "team@rasvertex.com.au",
     priceRange: "$$",
     openingHoursSpecification: [
       {
@@ -172,18 +174,7 @@ export function LocalBusinessSchema() {
           "Exceptional service from the RAS-VERTEX team. Professional, reliable, and excellent attention to detail.",
       },
     ],
-    areaServed: [
-      "Caloundra", "Caloundra West", "Kings Beach", "Moffat Beach", "Dicky Beach",
-      "Golden Beach", "Pelican Waters", "Kawana Waters", "Bokarina", "Wurtulla",
-      "Warana", "Birtinya", "Sippy Downs", "Mountain Creek", "Mooloolaba",
-      "Cotton Tree", "Maroochydore", "Twin Waters", "Mudjimba", "Marcoola",
-      "Bli Bli", "Buderim", "Kunda Park", "Mount Coolum", "Yaroomba",
-      "Coolum Beach", "Peregian Springs", "Sunrise Beach", "Sunshine Beach",
-      "Noosa", "Noosa Heads", "Noosaville", "Tewantin", "Cooroibah",
-      "Mooloolah Valley", "Palmwoods", "Nambour", "Yandina", "Maleny",
-      "Mount Mellum", "Pomona", "Cootharaba", "Kin Kin", "Cooroy",
-      "Cooroy Mountain", "Gympie",
-    ].map((suburb) => ({
+    areaServed: SUBURBS.map((suburb) => ({
       "@type": "Place",
       name: suburb,
       address: {
@@ -268,7 +259,7 @@ export function ServiceSchema({
   image,
   url,
   provider = "RAS-VERTEX",
-  areaServed = ["Sunshine Coast", "Brisbane", "Gold Coast"],
+  areaServed = SUBURBS,
   serviceType,
 }: ServiceSchemaProps) {
   const schema = {
@@ -281,18 +272,17 @@ export function ServiceSchema({
     provider: {
       "@type": "LocalBusiness",
       name: provider,
-      "@id": "https://www.ras-vertex.com.au/#localbusiness",
+      "@id": "https://www.rasvertex.com.au/#localbusiness",
     },
     areaServed: areaServed.map((area) => ({
-      "@type": "City",
+      "@type": "Place",
       name: area,
     })),
     serviceType,
     availableChannel: {
       "@type": "ServiceChannel",
       serviceUrl: url,
-      servicePhone: "+61-XXX-XXX-XXX",
-      serviceSmsNumber: "+61-XXX-XXX-XXX",
+      servicePhone: "+61-7-5371-0201",
     },
   };
 
@@ -380,19 +370,19 @@ export function WebsiteSearchSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://www.ras-vertex.com.au/#website",
-    url: "https://www.ras-vertex.com.au",
+    "@id": "https://www.rasvertex.com.au/#website",
+    url: "https://www.rasvertex.com.au",
     name: "RAS-VERTEX",
     description: "Commercial Property Maintenance Services",
     publisher: {
-      "@id": "https://www.ras-vertex.com.au/#organization",
+      "@id": "https://www.rasvertex.com.au/#organization",
     },
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
         urlTemplate:
-          "https://www.ras-vertex.com.au/search?q={search_term_string}",
+          "https://www.rasvertex.com.au/search?q={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },

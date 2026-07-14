@@ -6,7 +6,7 @@ import { MetadataRoute } from "next";
    Next.js automatically serves this at /robots.txt
    ============================================ */
 
-const SITE_URL = "https://www.ras-vertex.com.au";
+const SITE_URL = "https://www.rasvertex.com.au";
 
 export default function robots(): MetadataRoute.Robots {
   return {

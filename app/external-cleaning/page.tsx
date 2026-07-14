@@ -22,7 +22,7 @@ import {
 } from "../data/externalCleaningData";
 
 export const metadata = generatePageMetadata({
-  title: "External Building Cleaning Sunshine Coast | Facade & Pressure Wash",
+  title: "External & Facade Cleaning Sunshine Coast | RAS-VERTEX",
   description:
     "Professional external building cleaning on the Sunshine Coast. Facade washing, pressure cleaning, roof cleaning, graffiti removal and post-construction clean-down. IRATA rope access, eco-friendly systems, QBCC licensed.",
   path: "/external-cleaning",
@@ -53,18 +53,9 @@ export default function ExternalCleaningPage() {
       <ServiceSchema
         name="External Building Wash & Cleaning Sunshine Coast"
         description="Professional external building cleaning on the Sunshine Coast. Facade washing, pressure cleaning, roof cleaning, graffiti removal and post-construction clean-down. IRATA rope access, eco-friendly systems, QBCC licensed."
-        image="https://www.ras-vertex.com.au/nav/cleaning.png"
-        url="https://www.ras-vertex.com.au/external-cleaning"
+        image={HERO_SLIDES[0].src}
+        url="https://www.rasvertex.com.au/external-cleaning"
         serviceType="External Building Cleaning"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

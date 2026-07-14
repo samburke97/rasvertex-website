@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "RAS-VERTEX Blog",
     description:
       "Practical building maintenance insights from the Sunshine Coast's trusted property maintenance team.",
-    url: "https://www.ras-vertex.com.au/blog",
+    url: "https://www.rasvertex.com.au/blog",
     siteName: "RAS-VERTEX",
     type: "website",
   },

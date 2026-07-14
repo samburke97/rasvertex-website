@@ -25,7 +25,7 @@ import {
 } from "../data/residentialPaintingData";
 
 export const metadata = generatePageMetadata({
-  title: "Residential Painters Sunshine Coast | House Painting",
+  title: "Residential Painters Sunshine Coast | RAS-VERTEX",
   description:
     "Trusted house painters on the Sunshine Coast. Exterior and interior residential painting, pre-sale refreshes and colour consulting. QBCC licensed, 8-year written warranty, commercial-grade paint systems.",
   path: "/residential-painting",
@@ -52,19 +52,9 @@ export default function ResidentialPaintingPage() {
       <ServiceSchema
         name="Residential Painting Sunshine Coast"
         description="Trusted house painters on the Sunshine Coast. Exterior and interior residential painting, pre-sale refreshes and colour consulting. QBCC licensed, 8-year written warranty, commercial-grade paint systems."
-        image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
-        url="https://www.ras-vertex.com.au/residential-painting"
+        image={cld("house-painting", { width: 1200 })}
+        url="https://www.rasvertex.com.au/residential-painting"
         serviceType="Residential Painting"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Buderim",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

@@ -24,7 +24,7 @@ import {
 } from "../data/waterproofingData";
 
 export const metadata = generatePageMetadata({
-  title: "Waterproofing Sunshine Coast | Roof, Balcony & Leak Detection",
+  title: "Waterproofing Sunshine Coast | RAS-VERTEX",
   description:
     "Professional waterproofing on the Sunshine Coast. Concrete roof restoration, balcony membrane replacement, leak detection and remedial injection. Diamond grinding, QBCC licensed, written warranty.",
   path: "/waterproofing",
@@ -54,18 +54,9 @@ export default function WaterproofingPage() {
       <ServiceSchema
         name="Waterproofing Sunshine Coast"
         description="Professional waterproofing on the Sunshine Coast. Concrete roof restoration, balcony membrane replacement, leak detection and remedial injection. Diamond grinding, QBCC licensed, written warranty."
-        image="https://www.ras-vertex.com.au/nav/waterproofing.png"
-        url="https://www.ras-vertex.com.au/waterproofing"
+        image={HERO_SLIDES[0].src}
+        url="https://www.rasvertex.com.au/waterproofing"
         serviceType="Waterproofing"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

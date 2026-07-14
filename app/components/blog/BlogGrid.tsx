@@ -59,7 +59,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
       {/* Right — image */}
       <div className={styles.featuredImageWrap}>
         <Image
-          src={post.coverImage}
+          src={post.previewImage ?? post.coverImage}
           alt={post.coverAlt}
           fill
           className={styles.image}
@@ -77,7 +77,7 @@ function GridCard({ post }: { post: BlogPost }) {
       <Link href={`/blog/${post.slug}`} className={styles.cardImageLink} tabIndex={-1} aria-hidden="true">
         <div className={styles.imageWrap}>
           <Image
-            src={post.coverImage}
+            src={post.previewImage ?? post.coverImage}
             alt={post.coverAlt}
             fill
             className={styles.image}

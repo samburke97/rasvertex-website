@@ -13,6 +13,8 @@ export interface BlogPost {
   readingTime: number;
   coverImage: string;
   coverAlt: string;
+  /** Thumbnail shown on the blog listing/related cards — falls back to coverImage */
+  previewImage?: string;
   author: {
     name: string;
     role: string;
@@ -40,7 +42,7 @@ const HYLTON = {
 // Declaration order doesn't matter — BlogGrid and helpers sort by publishedAt.
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "how-to-paint-a-house-sunshine-coast",
+    slug: "sunshine-coast-painting-guide",
     title: "The Sunshine Coast Painter's Guide to Getting It Right",
     excerpt:
       "A quality paint job on the Sunshine Coast really comes down to what happens before the first coat goes on. Surface preparation, product selection, timing and precision are all things you genuinely cannot afford to skip.",
@@ -121,7 +123,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 
   {
-    slug: "why-exterior-building-cleaning-matters",
+    slug: "how-exterior-cleaning-how-exterior-cleaning-will-improve-the-look-and-value-of-your-property",
     title: "Why Exterior Building Cleaning Is About More Than Appearances",
     excerpt:
       "Most people clean the inside of their building and neglect the outside, and on the Sunshine Coast that is an expensive mistake to make. Here are four reasons exterior building cleaning counts as essential maintenance rather than something cosmetic.",
@@ -131,6 +133,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: cld("clear-communication", { width: 1600 }),
     coverAlt:
       "Rope access technician performing exterior building cleaning on the Sunshine Coast",
+    previewImage: cld("minimal-disruption", { width: 800 }),
     author: HYLTON,
     body: [
       {
@@ -198,7 +201,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 
   {
-    slug: "rope-access-vs-scaffold-sunshine-coast",
+    slug: "choosing-a-rope-access-partner",
     title: "Rope Access vs Scaffold: What's the Right Call for Your Building?",
     excerpt:
       "Scaffold means extra setup time and lost car park space. Here is why Sunshine Coast building managers are switching to rope access, and when scaffold is still genuinely the right tool for the job.",
@@ -251,7 +254,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 
   {
-    slug: "building-maintenance-plan-sunshine-coast",
+    slug: "5-ways-strata-managers-can-effortlessly-maintain-property-value",
     title:
       "How to Build a 10 Year Maintenance Plan for Your Sunshine Coast Strata",
     excerpt:
@@ -312,7 +315,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 
   {
-    slug: "waterproofing-sunshine-coast-buildings",
+    slug: "protect-your-building-from-the-sunshine-coasts-elements",
     title: "Waterproofing on the Sunshine Coast: What Fails and Why",
     excerpt:
       "The Coast's UV intensity and humidity cycle create specific failure patterns in waterproofing membranes. Here is what to look for before the water actually gets in.",

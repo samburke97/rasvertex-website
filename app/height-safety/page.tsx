@@ -23,7 +23,7 @@ import {
 } from "../data/heightSafetyData";
 
 export const metadata = generatePageMetadata({
-  title: "Height Safety Systems Sunshine Coast | Installation & Certification",
+  title: "Height Safety & Rope Access Sunshine Coast | RAS-VERTEX",
   description:
     "Height safety installation, inspection and recertification on the Sunshine Coast. Anchor points, static lines and roof access systems to AS/NZS 1891. IRATA certified, QBCC licensed, compliance managed end-to-end.",
   path: "/height-safety",
@@ -52,18 +52,9 @@ export default function HeightSafetyPage() {
       <ServiceSchema
         name="Height Safety Systems Sunshine Coast"
         description="Height safety installation, inspection and recertification on the Sunshine Coast. Anchor points, static lines and roof access systems to AS/NZS 1891. IRATA certified, QBCC licensed, compliance managed end-to-end."
-        image="https://www.ras-vertex.com.au/nav/height.png"
-        url="https://www.ras-vertex.com.au/height-safety"
+        image={HERO_SLIDES[0].src}
+        url="https://www.rasvertex.com.au/height-safety"
         serviceType="Height Safety"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

@@ -23,7 +23,7 @@ import {
 } from "../data/maintenanceData";
 
 export const metadata = generatePageMetadata({
-  title: "Building Maintenance Sunshine Coast",
+  title: "Building Maintenance Sunshine Coast | RAS-VERTEX",
   description:
     "Commercial and body corporate building maintenance across the Sunshine Coast. Concrete repairs, roof restoration, leak detection, sign installation, IRATA rope access, QBCC licensed.",
   path: "/maintenance",
@@ -53,18 +53,9 @@ export default function MaintenancePage() {
       <ServiceSchema
         name="Building Maintenance Sunshine Coast"
         description="Commercial and body corporate building maintenance across the Sunshine Coast. Concrete repairs, roof restoration, leak detection, sign installation, IRATA rope access, QBCC licensed."
-        image="https://www.ras-vertex.com.au/nav/maintenance.png"
-        url="https://www.ras-vertex.com.au/maintenance"
+        image="https://www.rasvertex.com.au/nav/maintenance.png"
+        url="https://www.rasvertex.com.au/maintenance"
         serviceType="Building Maintenance"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

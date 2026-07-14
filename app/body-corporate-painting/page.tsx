@@ -25,7 +25,7 @@ import {
 } from "../data/bodyCorporatePaintingData";
 
 export const metadata = generatePageMetadata({
-  title: "Body Corporate Painting Sunshine Coast | Strata Specialists",
+  title: "Body Corporate Painting Sunshine Coast | RAS-VERTEX",
   description:
     "Body corporate and strata painting specialists on the Sunshine Coast. IRATA rope access, coastal paint systems, 8-year written warranty, committee-ready proposals. QBCC licensed.",
   path: "/body-corporate-painting",
@@ -51,18 +51,9 @@ export default function BodyCorporatePaintingPage() {
       <ServiceSchema
         name="Body Corporate Painting Sunshine Coast"
         description="Body corporate and strata painting specialists on the Sunshine Coast. IRATA rope access, coastal paint systems, 8-year written warranty, committee-ready proposals. QBCC licensed."
-        image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
-        url="https://www.ras-vertex.com.au/body-corporate-painting"
+        image={cld("rope-access-painting", { width: 1200 })}
+        url="https://www.rasvertex.com.au/body-corporate-painting"
         serviceType="Body Corporate Painting"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

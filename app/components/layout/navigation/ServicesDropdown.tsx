@@ -108,7 +108,7 @@ export default function ServicesDropdown({
                           src={servicesData[activeService].image}
                           alt={servicesData[activeService].name}
                           fill
-                          sizes="320px"
+                          sizes="(max-width: 1024px) 340px, (max-width: 1280px) 400px, 360px"
                           style={{ objectFit: "cover" }}
                           priority
                         />

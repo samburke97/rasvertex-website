@@ -8,7 +8,7 @@ export const servicesData = {
     href: "/painting",
     description:
       "Professional interior and exterior painting for commercial, strata and residential properties on the Sunshine Coast. Quality finishes that actually last.",
-    image: cld("nav-painting.png", { width: 600 }),
+    image: cld("painting-services", { width: 1000, quality: 85 }),
     subServices: [
       { label: "Exterior Painting", href: "/painting" },
       { label: "Interior Painting", href: "/painting" },
@@ -24,7 +24,7 @@ export const servicesData = {
     href: "/external-cleaning",
     description:
       "Pressure washing, facade cleaning and complete building care for strata and commercial properties across the Sunshine Coast.",
-    image: cld("nav-cleaning.png", { width: 600 }),
+    image: cld("nav-cleaning.png", { width: 1000, quality: 85 }),
     subServices: [
       { label: "Pressure Washing", href: "/external-cleaning" },
       { label: "Facade Cleaning", href: "/external-cleaning" },
@@ -40,7 +40,7 @@ export const servicesData = {
     href: "/window-cleaning",
     description:
       "High rise and commercial window cleaning with full IRATA certification. Safe, professional and compliant, every time.",
-    image: cld("nav-window.png", { width: 600 }),
+    image: cld("nav-window.png", { width: 1000, quality: 85 }),
     subServices: [
       { label: "High Rise Windows", href: "/window-cleaning" },
       { label: "Rope Access", href: "/window-cleaning" },
@@ -55,7 +55,7 @@ export const servicesData = {
     href: "/waterproofing",
     description:
       "Expert waterproofing for balconies, roofs and wet areas on the Sunshine Coast, backed by long term warranties and proven protection.",
-    image: cld("nav-waterproofing.png", { width: 600 }),
+    image: cld("nav-waterproofing.png", { width: 1000, quality: 85 }),
     subServices: [
       { label: "Balcony Waterproofing", href: "/waterproofing" },
       { label: "Roof Waterproofing", href: "/waterproofing" },
@@ -71,7 +71,7 @@ export const servicesData = {
     href: "/maintenance",
     description:
       "Ongoing building maintenance and repair services that keep your Sunshine Coast property in top condition year round.",
-    image: cld("nav-maintenance.png", { width: 600 }),
+    image: cld("nav-maintenance.png", { width: 1000, quality: 85 }),
     subServices: [
       { label: "Preventative Maintenance", href: "/maintenance" },
       { label: "Reactive Repairs", href: "/maintenance" },
@@ -86,7 +86,7 @@ export const servicesData = {
     href: "/height-safety",
     description:
       "Complete height safety systems, certification and compliance for Sunshine Coast buildings, delivered by IRATA certified technicians.",
-    image: cld("nav-height.png", { width: 600 }),
+    image: cld("nav-height.png", { width: 1000, quality: 85 }),
     subServices: [
       { label: "Anchor Point Installation", href: "/height-safety" },
       { label: "Safety Line Systems", href: "/height-safety" },
@@ -102,7 +102,7 @@ export const servicesData = {
     href: "/building-inspections",
     description:
       "Comprehensive facade and building condition inspections using rope access, drone and thermal imaging, with full condition reports, risk ratings and remediation schedules.",
-    image: cld("nav-inspections.webp", { width: 600 }),
+    image: cld("nav-inspections.webp", { width: 1000, quality: 85 }),
     subServices: [
       { label: "Facade Inspections", href: "/building-inspections" },
       { label: "Drone Surveys", href: "/building-inspections" },

@@ -23,10 +23,10 @@ import {
 } from "../data/cleaningData";
 
 export const metadata = generatePageMetadata({
-  title: "Window Cleaning Sunshine Coast | High-Rise & Commercial",
+  title: "Window Cleaning Sunshine Coast | RAS-VERTEX",
   description:
     "Professional window cleaning on the Sunshine Coast. IRATA rope access for high-rise and strata buildings, purified water systems, eco-friendly pressure washing. Streak-free results, QBCC licensed.",
-  path: "/cleaning",
+  path: "/window-cleaning",
   keywords: [
     "window cleaning Sunshine Coast",
     "high-rise window cleaning Sunshine Coast",
@@ -53,18 +53,9 @@ export default function CleaningPage() {
       <ServiceSchema
         name="Window Cleaning Sunshine Coast"
         description="Professional window cleaning on the Sunshine Coast. IRATA rope access for high-rise and strata buildings, purified water systems, eco-friendly pressure washing. Streak-free results, QBCC licensed."
-        image="https://www.ras-vertex.com.au/nav/cleaning.png"
-        url="https://www.ras-vertex.com.au/window-cleaning"
+        image={HERO_SLIDES[0].src}
+        url="https://www.rasvertex.com.au/window-cleaning"
         serviceType="Window Cleaning"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

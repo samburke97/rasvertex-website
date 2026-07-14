@@ -13,6 +13,7 @@ import InspectionProcess from "../components/shared/InspectionProcess";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+import { cld } from "../lib/cloudinary";
 
 import {
   HERO_SLIDES,
@@ -23,7 +24,7 @@ import {
 } from "../data/commercialPaintingData";
 
 export const metadata = generatePageMetadata({
-  title: "Commercial & High-Rise Painting Sunshine Coast",
+  title: "Commercial & High-Rise Painting Sunshine Coast | RAS-VERTEX",
   description:
     "Commercial and high-rise painting on the Sunshine Coast. IRATA rope access, coastal-spec paint systems, 8-year written warranty. Body corporates, strata, commercial buildings and hotels. QBCC licensed.",
   path: "/commercial-painting",
@@ -59,18 +60,9 @@ export default function CommercialPaintingPage() {
       <ServiceSchema
         name="Commercial & High-Rise Painting Sunshine Coast"
         description="Commercial and high-rise painting on the Sunshine Coast. IRATA rope access, coastal-spec paint systems, 8-year written warranty. Body corporates, strata, commercial buildings and hotels. QBCC licensed."
-        image="https://www.ras-vertex.com.au/images/projects/1.jpeg"
-        url="https://www.ras-vertex.com.au/commercial-painting"
+        image={cld("commercial-painters", { width: 1200 })}
+        url="https://www.rasvertex.com.au/commercial-painting"
         serviceType="Commercial Painting"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO

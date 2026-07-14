@@ -17,7 +17,7 @@ import { Metadata } from "next";
    });
    ============================================ */
 
-const SITE_URL = "https://www.ras-vertex.com.au";
+const SITE_URL = "https://www.rasvertex.com.au";
 const SITE_NAME = "RAS-VERTEX";
 
 interface PageSEOConfig {
@@ -79,7 +79,7 @@ export function generatePageMetadata({
     openGraph: {
       type: ogType,
       url,
-      title: `${title} | ${SITE_NAME}`,
+      title,
       description,
       siteName: SITE_NAME,
       locale: "en_AU",
@@ -97,7 +97,7 @@ export function generatePageMetadata({
 
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${SITE_NAME}`,
+      title,
       description,
       images: [ogImage],
     },

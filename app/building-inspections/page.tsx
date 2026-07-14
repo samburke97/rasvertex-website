@@ -24,7 +24,7 @@ import {
 } from "../data/buildingInspectionsData";
 
 export const metadata = generatePageMetadata({
-  title: "Building Inspections Sunshine Coast | Facade & Condition Reports",
+  title: "Building Inspections Sunshine Coast | RAS-VERTEX",
   description:
     "Professional building inspections on the Sunshine Coast. Rope access facade inspections, thermal imaging, condition reports for body corporates and strata. Sinking fund ready, IRATA certified, QBCC licensed.",
   path: "/building-inspections",
@@ -54,18 +54,9 @@ export default function BuildingInspectionsPage() {
       <ServiceSchema
         name="Building Inspections Sunshine Coast"
         description="Professional building inspections on the Sunshine Coast. Rope access facade inspections, thermal imaging, condition reports for body corporates and strata. Sinking fund ready, IRATA certified, QBCC licensed."
-        image="https://www.ras-vertex.com.au/nav/maintenance.png"
-        url="https://www.ras-vertex.com.au/building-inspections"
+        image={HERO_SLIDES[0].src}
+        url="https://www.rasvertex.com.au/building-inspections"
         serviceType="Building Inspection"
-        areaServed={[
-          "Sunshine Coast",
-          "Noosa",
-          "Caloundra",
-          "Maroochydore",
-          "Mooloolaba",
-          "Kawana",
-          "Coolum",
-        ]}
       />
 
       <ServiceSEO
