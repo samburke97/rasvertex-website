@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Our Projects | RAS-VERTEX — Sunshine Coast",
   description:
     "Painting, waterproofing, rope access, building cleaning and maintenance projects across the Sunshine Coast. Body corporate, commercial, and strata.",
+  alternates: {
+    canonical: "/projects",
+  },
   openGraph: {
     title: "RAS-VERTEX — Our Projects",
     description:

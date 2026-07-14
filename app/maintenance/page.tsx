@@ -25,7 +25,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Building Maintenance Sunshine Coast | RAS-VERTEX",
   description:
-    "Commercial and body corporate building maintenance across the Sunshine Coast. Concrete repairs, roof restoration, leak detection, sign installation, IRATA rope access, QBCC licensed.",
+    "Commercial and body corporate maintenance across the Sunshine Coast, from concrete repairs to roof restoration, led by a dedicated project manager.",
   path: "/maintenance",
   keywords: [
     "building maintenance Sunshine Coast",

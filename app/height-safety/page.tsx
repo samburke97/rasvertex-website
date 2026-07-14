@@ -25,7 +25,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Height Safety & Rope Access Sunshine Coast | RAS-VERTEX",
   description:
-    "Height safety installation, inspection and recertification on the Sunshine Coast. Anchor points, static lines and roof access systems to AS/NZS 1891. IRATA certified, QBCC licensed, compliance managed end-to-end.",
+    "The Sunshine Coast's leading height safety specialists, installing and certifying systems to AS/NZS 1891 with our IRATA-certified technicians.",
   path: "/height-safety",
   keywords: [
     "height safety Sunshine Coast",

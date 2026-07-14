@@ -13,9 +13,12 @@ import { FAQS, FAQ_CONTACT } from "../data/companyData";
 import { cld } from "../lib/cloudinary";
 
 export const metadata: Metadata = {
-  title: "About RAS-VERTEX | Sunshine Coast Property Maintenance Specialists",
+  title: "About RAS-VERTEX | Sunshine Coast Maintenance Specialists",
   description:
-    "The Sunshine Coast's complete property maintenance partner. IRATA-certified rope access, QBCC licensed. Painting, cleaning, waterproofing, height safety and maintenance for body corporates and strata.",
+    "We're the Sunshine Coast's complete property maintenance partner, IRATA-certified and QBCC licensed for painting, cleaning, waterproofing and more.",
+  alternates: {
+    canonical: "/about-us",
+  },
   keywords: [
     "property maintenance Sunshine Coast",
     "body corporate maintenance Sunshine Coast",

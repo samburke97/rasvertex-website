@@ -4,9 +4,12 @@ import type { Metadata } from "next";
 import QuoteBookingForm from "../components/contact/QuoteBookingForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us | RAS-VERTEX — Sunshine Coast Painting & Maintenance",
+  title: "Contact RAS-VERTEX | Sunshine Coast Free Quotes",
   description:
-    "Get a free quote from RAS-VERTEX. On site within 48 hours across the Sunshine Coast for painting, building cleaning, waterproofing, height safety and maintenance. Call (07) 5371 0201.",
+    "Get a free quote from RAS-VERTEX, on site within 48 hours across the Sunshine Coast for painting, cleaning, waterproofing and maintenance.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: "Get a Free Quote | RAS-VERTEX",
     description:

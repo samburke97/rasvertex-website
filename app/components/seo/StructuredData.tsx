@@ -147,33 +147,17 @@ export function LocalBusinessSchema() {
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "07:00",
-        closes: "17:00",
+        opens: "07:30",
+        closes: "16:30",
       },
     ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
-      reviewCount: "127", // Update with actual review count
+      reviewCount: "51",
       bestRating: "5",
       worstRating: "1",
     },
-    review: [
-      {
-        "@type": "Review",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-        },
-        author: {
-          "@type": "Person",
-          name: "Property Manager",
-        },
-        reviewBody:
-          "Exceptional service from the RAS-VERTEX team. Professional, reliable, and excellent attention to detail.",
-      },
-    ],
     areaServed: SUBURBS.map((suburb) => ({
       "@type": "Place",
       name: suburb,

@@ -27,7 +27,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Body Corporate Painting Sunshine Coast | RAS-VERTEX",
   description:
-    "Body corporate and strata painting specialists on the Sunshine Coast. IRATA rope access, coastal paint systems, 8-year written warranty, committee-ready proposals. QBCC licensed.",
+    "Sunshine Coast body corporate painting specialists, trusted on hundreds of strata projects and backed by IRATA rope access and an 8-year warranty.",
   path: "/body-corporate-painting",
   keywords: [
     "body corporate painting Sunshine Coast",

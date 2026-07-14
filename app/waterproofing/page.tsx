@@ -26,7 +26,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Waterproofing Sunshine Coast | RAS-VERTEX",
   description:
-    "Professional waterproofing on the Sunshine Coast. Concrete roof restoration, balcony membrane replacement, leak detection and remedial injection. Diamond grinding, QBCC licensed, written warranty.",
+    "Waterproofing for roofs, balconies and wet areas across the Sunshine Coast, from membrane replacement to remedial injection, backed by a written warranty.",
   path: "/waterproofing",
   keywords: [
     "waterproofing Sunshine Coast",

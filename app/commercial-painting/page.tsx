@@ -26,7 +26,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Commercial & High-Rise Painting Sunshine Coast | RAS-VERTEX",
   description:
-    "Commercial and high-rise painting on the Sunshine Coast. IRATA rope access, coastal-spec paint systems, 8-year written warranty. Body corporates, strata, commercial buildings and hotels. QBCC licensed.",
+    "The Sunshine Coast's leading commercial and high-rise painting team, using IRATA rope access and coastal-spec systems backed by an 8-year warranty.",
   path: "/commercial-painting",
   keywords: [
     "commercial painting Sunshine Coast",

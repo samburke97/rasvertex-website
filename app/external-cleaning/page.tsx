@@ -24,7 +24,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "External & Facade Cleaning Sunshine Coast | RAS-VERTEX",
   description:
-    "Professional external building cleaning on the Sunshine Coast. Facade washing, pressure cleaning, roof cleaning, graffiti removal and post-construction clean-down. IRATA rope access, eco-friendly systems, QBCC licensed.",
+    "Facade and pressure cleaning across the Sunshine Coast, using IRATA rope access, eco-friendly systems and QBCC licensed technicians.",
   path: "/external-cleaning",
   keywords: [
     "external building cleaning Sunshine Coast",

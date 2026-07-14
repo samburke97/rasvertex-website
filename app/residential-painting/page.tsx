@@ -27,7 +27,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Residential Painters Sunshine Coast | RAS-VERTEX",
   description:
-    "Trusted house painters on the Sunshine Coast. Exterior and interior residential painting, pre-sale refreshes and colour consulting. QBCC licensed, 8-year written warranty, commercial-grade paint systems.",
+    "Sunshine Coast house painters covering exterior, interior and pre-sale repaints, backed by QBCC licensing, an 8-year warranty and commercial-grade systems.",
   path: "/residential-painting",
   keywords: [
     "residential painters Sunshine Coast",

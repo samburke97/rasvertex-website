@@ -26,7 +26,7 @@ import {
 export const metadata = generatePageMetadata({
   title: "Building Inspections Sunshine Coast | RAS-VERTEX",
   description:
-    "Professional building inspections on the Sunshine Coast. Rope access facade inspections, thermal imaging, condition reports for body corporates and strata. Sinking fund ready, IRATA certified, QBCC licensed.",
+    "We carry out IRATA-certified building inspections across the Sunshine Coast, using rope access, thermal imaging and drones for comprehensive reports.",
   path: "/building-inspections",
   keywords: [
     "building inspection Sunshine Coast",

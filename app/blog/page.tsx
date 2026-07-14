@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Blog | RAS-VERTEX — Building Maintenance Insights",
   description:
     "Practical articles on rope access, waterproofing, body corporate maintenance, and building care from the RAS-VERTEX team on the Sunshine Coast.",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
     title: "RAS-VERTEX Blog",
     description:
