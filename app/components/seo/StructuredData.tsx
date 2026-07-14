@@ -33,12 +33,23 @@ export function OrganizationSchema() {
     description:
       "Queensland's trusted commercial property maintenance experts providing painting, cleaning, waterproofing, height safety, and building maintenance services across Sunshine Coast, Brisbane, and Gold Coast.",
     foundingDate: "2001",
+    taxID: "53 167 652 637",
     founders: [
       {
         "@type": "Person",
         name: "RAS-VERTEX Founders",
       },
     ],
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "license",
+      name: "QBCC Licence",
+      identifier: "1307234",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Queensland Building and Construction Commission",
+      },
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "1/3 Kessling Avenue",

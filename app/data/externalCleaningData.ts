@@ -39,7 +39,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Roof Cleaning",
-    body: "Our eco-friendly high pressure roof cleaning suits tile, Colorbond and membrane roofs, removing lichen, moss and algae at a pressure set safely for the surface. It extends the life of the roof and clears away the growth that traps moisture and speeds up deterioration in our humidity.",
+    body: "Our eco-friendly high pressure roof cleaning suits tile, Colorbond and membrane roofs, removing lichen, moss and algae at a pressure set safely for the surface. We clear gutters and downpipes in the same visit, so water can actually drain the way it's supposed to. It extends the life of the roof and clears away the growth that traps moisture and speeds up deterioration in our humidity.",
     photo: cld("roof-cleaning", { width: 1200 }),
     href: "/contact",
   },

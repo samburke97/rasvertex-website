@@ -33,6 +33,7 @@ export const servicesData = {
       { label: "Concrete Cleaning", href: "/external-cleaning" },
       { label: "Building Wash", href: "/external-cleaning" },
       { label: "Driveway Cleaning", href: "/external-cleaning" },
+      { label: "Gutter Cleaning", href: "/external-cleaning" },
     ],
   },
   window: {
@@ -47,7 +48,6 @@ export const servicesData = {
       { label: "Commercial Windows", href: "/window-cleaning" },
       { label: "Strata Windows", href: "/window-cleaning" },
       { label: "Solar Panel Cleaning", href: "/window-cleaning" },
-      { label: "Gutter Cleaning", href: "/window-cleaning" },
     ],
   },
   waterproofing: {

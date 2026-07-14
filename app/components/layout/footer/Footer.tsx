@@ -47,7 +47,7 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <span className={styles.small}>
-          &copy;{new Date().getFullYear()} Rope Access Services Pty Ltd. All rights reserved.
+          &copy;{new Date().getFullYear()} Rope Access Services Pty Ltd. ABN 53 167 652 637. QBCC Lic. 1307234. All rights reserved.
         </span>
         <div className={styles.socials}>
           <a href="https://au.linkedin.com/company/ras-vertex" target="_blank" rel="noopener noreferrer">LinkedIn</a>

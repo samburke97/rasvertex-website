@@ -193,22 +193,6 @@ export default function RootLayout({
       dir="ltr"
       className={`${inter.variable} ${bebasNeue.variable}`}
     >
-      <head>
-        {/* Preconnect to Adobe Fonts */}
-        <link
-          rel="preconnect"
-          href="https://use.typekit.net"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://p.typekit.net"
-          crossOrigin="anonymous"
-        />
-
-        {/* Adobe Fonts (Typekit) */}
-        <link rel="stylesheet" href="https://use.typekit.net/nuk5csv.css" />
-      </head>
       <body>
         {/* Skip to main content for accessibility */}
         <a
