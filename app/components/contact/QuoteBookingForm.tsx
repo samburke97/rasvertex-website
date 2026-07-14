@@ -68,8 +68,9 @@ export default function QuoteBookingForm({
   heading = "Tell us about your project and we’ll provide a no-obligation quote.",
   leadParagraph = (
     <>
-      Fill out the form and we&rsquo;ll arrange for an estimator to attend
-      your property to quote.
+      With dedicated teams for painting, external and window cleaning,
+      maintenance, waterproofing and height safety, we&rsquo;ll put you in
+      touch with the experts for your project.
     </>
   ),
   showGoogleRating = true,
@@ -77,6 +78,9 @@ export default function QuoteBookingForm({
   showVideo = true,
 }: QuoteBookingFormProps) {
   const HeadingTag = headingLevel;
+  // Bot check: real visitors take more than a couple of seconds to fill
+  // a two-step form. No field involved, so autofill can't trip it.
+  const mountedAt = useRef(Date.now());
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
   const [photos, setPhotos] = useState<File[]>([]);
@@ -150,6 +154,7 @@ export default function QuoteBookingForm({
       body.append("services", form.service);
       body.append("propertyAddress", form.propertyAddress);
       body.append("message", form.message.trim());
+      body.append("elapsedMs", String(Date.now() - mountedAt.current));
       photos.forEach((file) => body.append("photos", file));
 
       const res = await fetch("/api/contact", { method: "POST", body });

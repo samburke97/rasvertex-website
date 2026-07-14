@@ -179,11 +179,10 @@ export default function WaterproofingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="The communication alone sets them apart. One number, one thread, weekly photos, exactly what a body corporate needs."
-          name="James Whitfield"
-          role="Facilities Manager, Accor Hotels"
-          logoSrc="/partners/accor.svg"
-          logoAlt="Accor Hotels"
+          quote="The team of Maxwell, Rob, Shannon and Nick did an amazing job in extremely difficult circumstances, with real professionalism and attention to detail throughout."
+          name="Paul McCarthy"
+          role="Medici"
+          logoSrc=""
         />
       </section>
 

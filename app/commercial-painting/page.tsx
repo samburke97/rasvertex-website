@@ -6,7 +6,6 @@ import ServiceSEO from "../components/shared/ServiceSEO";
 import ServiceHeroSplit from "../components/shared/ServiceHeroSplit";
 import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceCrossLink from "../components/shared/ServiceCrossLink";
-import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
 import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
@@ -202,30 +201,6 @@ export default function CommercialPaintingPage() {
         />
       </section>
 
-      <section
-        className="px-5 md:px-10 py-10 md:py-20"
-        aria-labelledby="commercial-before-after-heading"
-      >
-        <ServiceBeforeAfter
-          beforeSrc="/images/projects/1.jpeg"
-          afterSrc="/images/projects/2.jpeg"
-          beforeAlt="Mooloolaba high-rise before exterior repaint by RAS-VERTEX"
-          afterAlt="Mooloolaba high-rise after exterior repaint by RAS-VERTEX"
-          projectName="High-Rise Repaint"
-          location="Mooloolaba, QLD"
-          heading="12 storeys. 84 lots. Done in 10 weeks."
-          body="This Mooloolaba body corporate had been quoted 18 weeks by three other painters, all quoting the same generic coating system. We mobilised with rope access, our preferred method of access for minimal disruption, completed surface prep in two weeks, and painted the full facade zone by zone without closing the car park or displacing ground-floor tenants for a single day."
-          quote="Other painters told us to expect two scaffolding installations and four months of disruption. RAS-VERTEX were done in ten weeks and the car park was never closed. The result is exactly what we presented to owners."
-          quoteAuthor="Sarah Mitchell"
-          quoteRole="Strata Manager, Mooloolaba"
-          authorLogo="/partners/pica.png"
-          authorLogoAlt="Pica Group"
-          ctaHref="/work"
-          ctaLabel="Our projects →"
-          headingId="commercial-before-after-heading"
-        />
-      </section>
-
       {/* ── Testimonial — its own full, centered section ── */}
       <section
         className="px-5 md:px-10 py-10 md:py-20"
@@ -233,11 +208,10 @@ export default function CommercialPaintingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="We've used RAS-VERTEX across three properties now. Same crew, same standard, same result every time, that consistency is rare in this industry."
-          name="Michael Tran"
-          role="Facilities Manager, Novotel Twin Waters"
-          logoSrc="/partners/novotel.svg.png"
-          logoAlt="Novotel Twin Waters"
+          quote="RAS-VERTEX carried out a full external repaint, including a thorough building wash and remedial works beforehand. Great communication and planning, with the high standards that Phil, Shane and Jason set, and the flexibility to fix issues as they came up."
+          name="Kerry O'Donnell"
+          role="12 Storey Commercial High-Rise, Sunshine Coast"
+          logoSrc=""
         />
       </section>
 

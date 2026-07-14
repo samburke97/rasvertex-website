@@ -7,9 +7,45 @@ const MAX_FILES = 6;
 const MAX_FILE_SIZE = 8 * 1024 * 1024; // 8MB per photo
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic"];
 
+// Real visitors take more than a couple of seconds to fill a two-step
+// form. Anything faster is almost certainly a script, not a person.
+const MIN_FILL_TIME_MS = 2500;
+
+// Basic per-IP rate limit. In-memory, so it resets on cold start —
+// good enough to blunt a burst of scripted submissions without
+// needing an external service.
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const submissionsByIp = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (submissionsByIp.get(ip) ?? []).filter(
+    (t) => now - t < RATE_LIMIT_WINDOW_MS,
+  );
+  recent.push(now);
+  submissionsByIp.set(ip, recent);
+  return recent.length > RATE_LIMIT_MAX;
+}
+
 export async function POST(req: Request) {
   try {
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { success: false, error: "Too many requests. Please try again later." },
+        { status: 429 },
+      );
+    }
+
     const formData = await req.formData();
+
+    const elapsedMs = Number(formData.get("elapsedMs"));
+    if (Number.isFinite(elapsedMs) && elapsedMs < MIN_FILL_TIME_MS) {
+      return NextResponse.json({ success: true, skipped: true });
+    }
 
     const services = formData.getAll("services").map(String);
     const name = String(formData.get("name") || "");

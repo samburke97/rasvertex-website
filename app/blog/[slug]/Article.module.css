@@ -106,21 +106,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  margin-top: var(--space-lg);
-}
-
-.avatarWrap {
-  position: relative;
-  width: 44px;
-  height: 56px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.avatar {
-  object-fit: cover;
-  object-position: top;
 }
 
 .authorName {
@@ -173,7 +158,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
-  max-width: 80%;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1100px) {

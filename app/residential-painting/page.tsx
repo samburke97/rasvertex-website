@@ -10,9 +10,11 @@ import ServiceAccordion from "../components/shared/ServiceAccordion";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import InspectionProcess from "../components/shared/InspectionProcess";
+import ServiceBeforeAfter from "../components/shared/ServiceBeforeAfter";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
 import { SERVICE_SLIDES } from "../components/homepage/HeroVariant";
+import { cld } from "../lib/cloudinary";
 
 import {
   HERO_SLIDES,
@@ -176,6 +178,25 @@ export default function ResidentialPaintingPage() {
           headingId="process-heading"
           ctaLabel="Get a free quote →"
           ctaHref="/contact"
+        />
+      </section>
+
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="residential-before-after-heading"
+      >
+        <ServiceBeforeAfter
+          beforeSrc={cld("residential-before", { width: 1600 })}
+          afterSrc={cld("residential-after", { width: 1600 })}
+          beforeAlt="Luxury coastal home before exterior repaint by RAS-VERTEX"
+          afterAlt="Luxury coastal home after exterior repaint by RAS-VERTEX"
+          projectName="Luxury Coastal Home Repaint"
+          location="Sunshine Coast, QLD"
+          heading="A failed coating system, restored to a flawless finish."
+          body="The previous coating system on this luxury coastal property had failed, leaving surfaces weathered and uneven. Our painters undertook extensive surface remediation, addressing peeling, cracking, and substrate damage, before applying a premium 4-coat Haymes paint system. The result? A flawless, weather-resistant finish that complements the architecture and lives up to the stunning ocean views."
+          ctaHref="/contact"
+          ctaLabel="Chat to us about your home →"
+          headingId="residential-before-after-heading"
         />
       </section>
 

@@ -3,61 +3,54 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import styles from "./TestimonialSection.module.css";
 
 const TESTIMONIALS = [
   {
     quote:
-      "We've used them for three years of scheduled maintenance across seven buildings. Zero callbacks.",
-    name: "Priya Raman",
-    role: "BC Manager, Peppers Noosa",
-    logo: "/partners/novotel.svg.png",
-    logoAlt: "Peppers Noosa",
+      "The team of Maxwell, Rob, Shannon and Nick did an amazing job in extremely difficult circumstances, with real professionalism and attention to detail throughout.",
+    name: "Paul McCarthy",
+    role: "Medici",
   },
   {
     quote:
-      "The communication alone sets them apart. One number, one thread, weekly photos — exactly what a body corporate needs.",
-    name: "James Whitfield",
-    role: "Facilities Manager, Accor Hotels",
-    logo: "/partners/accor.svg",
-    logoAlt: "Accor Hotels",
+      "RAS-VERTEX carried out a full external repaint, including a thorough building wash and remedial works beforehand. Great communication and planning, with the high standards that Phil, Shane and Jason set, and the flexibility to fix issues as they came up.",
+    name: "Kerry O'Donnell",
+    role: "12 Storey Commercial High-Rise, Sunshine Coast",
   },
   {
     quote:
-      "They showed up within 48 hours for the site visit and had a full itemised quote within the week. One project manager start to finish — no passing the buck. Refreshing.",
-    name: "Sandra Koh",
-    role: "Strata Manager, Archers Body Corporate",
-    logo: "/partners/archers.png",
-    logoAlt: "Archers Body Corporate",
+      "Thank you for the work performed and the professionalism shown throughout. With disruption already high from developments next door, having abseilers, tool noise, dust and driveway closures on top tested residents' patience, but your team showed real understanding and empathy.",
+    name: "Elizabeth Nottle",
+    role: "Landsborough65",
   },
   {
     quote:
-      "Other companies quoted higher and couldn't start for months. RAS-VERTEX had a crew on ropes within two weeks.",
-    name: "David Lam",
-    role: "Property Manager, Ray White Mooloolaba",
-    logo: "/partners/raywhite.png",
-    logoAlt: "Ray White",
+      "We've used RAS-VERTEX for years to wash down our building, and the last two years to have it painted in two stages. The team has never let us down, always turning up and keeping us updated daily. Caroline in the office has been extremely helpful, and we'd have no hesitation recommending RAS-VERTEX.",
+    name: "Rhonda Dawson",
+    role: "30 Frank Street",
   },
   {
     quote:
-      "The rope access team is exceptional. No scaffold, no disruption to residents, and the building looks brand new.",
-    name: "Karen O'Brien",
-    role: "Committee Chair, Rumba Resort",
-    logo: "/partners/mosaic.svg",
-    logoAlt: "Rumba Resort",
+      "We've worked with RAS-VERTEX for six years now, covering a full exterior and stairwell paint, box gutter re-skinning, window works, abseiling remedial work and a full roof waterproofing membrane. Phil and his team are committed tradespeople who get the best possible results.",
+    name: "John Dillon",
+    role: "Alexandria Apartments",
   },
   {
     quote:
-      "We moved from three separate contractors to one maintenance plan with RAS-VERTEX. Should have done it years ago.",
-    name: "Mark Ellison",
-    role: "Facilities Director, Stockland Kawana",
-    logo: "/partners/pica.png",
-    logoAlt: "Stockland Kawana",
+      "RAS-VERTEX repaired rust on the upstairs posts of six townhouses at a difficult-to-access site. The team were professional, efficient and always respectful working in people's homes. I have no hesitation recommending them.",
+    name: "Marilyn Adams",
+    role: "The Boulevard",
+  },
+  {
+    quote:
+      "Finding reliable at-height companies for Body Corporates used to be a challenge. RAS-VERTEX's reliable quoting process, care and attention to detail changed that, I'd recommend them to other strata management companies for their professionalism and quality of work.",
+    name: "AAA Body Corporate",
+    role: "",
   },
 ];
 
-const INTERVAL = 5000;
+const INTERVAL = 8000;
 const DRAG_THRESHOLD = 50;
 
 export default function TestimonialsSection() {
@@ -141,15 +134,6 @@ export default function TestimonialsSection() {
           <p>{current.quote}</p>
         </blockquote>
         <figcaption className={styles.author}>
-          <div className={styles.authorLogo}>
-            <Image
-              src={current.logo}
-              alt={current.logoAlt}
-              fill
-              sizes="120px"
-              style={{ objectFit: "contain" }}
-            />
-          </div>
           <div className={styles.authorInfo}>
             <cite className={styles.authorName}>{current.name}</cite>
             <span className={styles.authorRole}>{current.role}</span>

@@ -2,9 +2,9 @@
 
 // app/components/work/ProjectsBento.tsx
 
-import { useState, useEffect, useCallback } from "react";
+import { Fragment, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { PROJECTS } from "../../data/projectsData";
+import { GALLERY_PROJECTS as PROJECTS } from "../../data/projectsData";
 import styles from "./ProjectsBento.module.css";
 
 const PrevArrow = () => (
@@ -21,7 +21,17 @@ const NextArrow = () => (
   </svg>
 );
 
-export default function ProjectsBento() {
+interface ProjectsBentoProps {
+  heading: React.ReactNode;
+  lede?: string;
+  headingId?: string;
+}
+
+export default function ProjectsBento({
+  heading,
+  lede,
+  headingId = "projects-heading",
+}: ProjectsBentoProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   const closeModal = useCallback(() => setOpenIdx(null), []);
@@ -57,24 +67,36 @@ export default function ProjectsBento() {
       {/* Grid */}
       <div className={styles.grid} role="list" aria-label="Project gallery">
         {PROJECTS.map((project, i) => (
-          <div key={project.id} className={styles.cell} role="listitem">
-            <button
-              type="button"
-              className={styles.cellButton}
-              onClick={() => setOpenIdx(i)}
-              aria-label={`View ${project.name}`}
-            >
-              <div className={styles.mediaWrap}>
-                <Image
-                  src={project.image}
-                  alt={project.imageAlt}
-                  fill
-                  className={styles.image}
-                  sizes="(max-width: 860px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                />
+          <Fragment key={project.id}>
+            {i === 3 && (
+              <div className={styles.headingCell} role="listitem">
+                <div>
+                  <h1 id={headingId} className={styles.headingText}>
+                    {heading}
+                  </h1>
+                  {lede && <p className={styles.headingLede}>{lede}</p>}
+                </div>
               </div>
-            </button>
-          </div>
+            )}
+            <div className={styles.cell} role="listitem">
+              <button
+                type="button"
+                className={styles.cellButton}
+                onClick={() => setOpenIdx(i)}
+                aria-label={`View ${project.name}`}
+              >
+                <div className={styles.mediaWrap}>
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    fill
+                    className={styles.image}
+                    sizes="(max-width: 860px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                  />
+                </div>
+              </button>
+            </div>
+          </Fragment>
         ))}
       </div>
 
@@ -92,15 +114,12 @@ export default function ProjectsBento() {
               <Image
                 src={current.image}
                 alt={current.imageAlt}
-                fill
+                width={1600}
+                height={1200}
                 className={styles.modalImage}
                 sizes="(max-width: 860px) 95vw, 80vw"
                 priority
               />
-            </div>
-            <div className={styles.modalInfo}>
-              <p className={styles.modalName}>{current.name} <span className={styles.modalDot}>·</span> {current.location}</p>
-              <p className={styles.modalScope}>{current.category} · {current.scope}</p>
             </div>
           </div>
 

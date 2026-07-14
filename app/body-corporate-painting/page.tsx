@@ -205,10 +205,10 @@ export default function BodyCorporatePaintingPage() {
           afterAlt="Springfield Apartments Coolum Beach after exterior repaint by RAS-VERTEX"
           projectName="Springfield Apartments"
           location="Coolum Beach, QLD"
-          heading="3 storeys. 4 buildings. 4 weeks. One incredible result."
+          heading="3 storeys. 4 buildings. 4 weeks."
           body="This characterful Coolum Beach property had weathered its share of coastal conditions. Working meticulously around every curve, our team carefully restored the building to its former glory, a complete exterior transformation across all four buildings in just four weeks."
-          ctaHref="/work"
-          ctaLabel="Our projects →"
+          ctaHref="/contact"
+          ctaLabel="Chat to us about your building →"
           headingId="body-corporate-before-after-heading"
         />
       </section>
@@ -220,11 +220,10 @@ export default function BodyCorporatePaintingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="Our committee had been burned before by painters who over-promised. RAS-VERTEX delivered exactly what they proposed, on the timeline they gave us, with weekly updates the whole way through."
-          name="Robert Sinclair"
-          role="Body Corporate Chair, Trafalgar Property Management"
-          logoSrc="/partners/trafalgar.svg"
-          logoAlt="Trafalgar Property Management"
+          quote="Thank you for the work performed and the professionalism shown throughout. With disruption already high from developments next door, having abseilers, tool noise, dust and driveway closures on top tested residents' patience, but your team showed real understanding and empathy."
+          name="Elizabeth Nottle"
+          role="Landsborough65"
+          logoSrc=""
         />
       </section>
 

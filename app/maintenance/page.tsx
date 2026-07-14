@@ -185,11 +185,10 @@ That knowledge comes from 25 years of showing up, and it’s what our partners r
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="We've used them for three years of scheduled maintenance across seven buildings. Zero callbacks."
-          name="Priya Raman"
-          role="BC Manager, Peppers Noosa"
-          logoSrc="/partners/novotel.svg.png"
-          logoAlt="Peppers Noosa"
+          quote="RAS-VERTEX repaired rust on the upstairs posts of six townhouses at a difficult-to-access site. The team were professional, efficient and always respectful working in people's homes. I have no hesitation recommending them."
+          name="Marilyn Adams"
+          role="The Boulevard"
+          logoSrc=""
         />
       </section>
 

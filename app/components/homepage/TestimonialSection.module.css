@@ -67,13 +67,6 @@
   gap: var(--space-sm);
 }
 
-.authorLogo {
-  position: relative;
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0;
-}
-
 .authorInfo {
   display: flex;
   flex-direction: column;

@@ -7,7 +7,7 @@ import RopeAccessSection from "../components/homepage/RopeAccessSection";
 import AboutPartnerGrid from "../components/about/AboutPartnerGrid";
 import ServiceAreas from "../components/about/ServiceAreas";
 import PartnersCarousel from "../components/homepage/PartnersCarousel";
-import ContactTestimonial from "../components/contact/ContactTestimonial";
+import TestimonialsSection from "../components/homepage/TestimonialSection";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import { FAQS, FAQ_CONTACT } from "../data/companyData";
 import { cld } from "../lib/cloudinary";
@@ -139,6 +139,14 @@ export default function AboutPage() {
           slides={SERVICE_SLIDES}
           ariaLabel="RAS-VERTEX services"
         />
+      </section>
+
+      {/* ── Testimonials ── */}
+      <section
+        className="px-5 md:px-10 pt-20 md:pt-10 pb-10 md:pb-20"
+        aria-label="Client testimonials"
+      >
+        <TestimonialsSection />
       </section>
 
       {/* ── FAQ ── */}

@@ -166,11 +166,10 @@ export default function ExternalCleaningPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="The rope access team is exceptional. No scaffold, no disruption to residents, and the building looks brand new."
-          name="Karen O'Brien"
-          role="Committee Chair, Rumba Resort"
-          logoSrc="/partners/mosaic.svg"
-          logoAlt="Rumba Resort"
+          quote="We've used RAS-VERTEX for years to wash down our building, and the last two years to have it painted in two stages. The team has never let us down, always turning up and keeping us updated daily. Caroline in the office has been extremely helpful, and we'd have no hesitation recommending RAS-VERTEX."
+          name="Rhonda Dawson"
+          role="30 Frank Street"
+          logoSrc=""
         />
       </section>
 

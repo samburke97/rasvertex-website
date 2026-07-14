@@ -2,6 +2,8 @@
 // Add new posts here — the index and article pages pick them up automatically.
 // Posts are rendered newest-first; add new entries anywhere in the array.
 
+import { cld } from "../lib/cloudinary";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -45,7 +47,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Painting",
     publishedAt: "2025-05-26",
     readingTime: 6,
-    coverImage: "/images/projects/1.jpeg",
+    coverImage: cld("blog_1", { width: 1600 }),
     coverAlt:
       "Rope access painter preparing a Sunshine Coast building facade for repainting",
     author: HYLTON,
@@ -126,7 +128,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Cleaning",
     publishedAt: "2025-01-11",
     readingTime: 5,
-    coverImage: "/images/projects/1.jpeg",
+    coverImage: cld("clear-communication", { width: 1600 }),
     coverAlt:
       "Rope access technician performing exterior building cleaning on the Sunshine Coast",
     author: HYLTON,
@@ -203,8 +205,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Rope Access",
     publishedAt: "2025-05-20",
     readingTime: 5,
-    // Fixed: was /images/projects/rope-access.png which does not exist on disk
-    coverImage: "/images/projects/2.jpeg",
+    coverImage: cld("blog_3", { width: 1600 }),
     coverAlt:
       "IRATA certified rope access technician on a Sunshine Coast high rise building",
     author: HYLTON,
@@ -258,7 +259,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Maintenance",
     publishedAt: "2025-04-08",
     readingTime: 6,
-    coverImage: "/images/projects/2.jpeg",
+    coverImage: cld("archers-reports", { width: 1600 }),
     coverAlt:
       "Building condition inspection for a Sunshine Coast strata maintenance plan",
     author: HYLTON,
@@ -318,7 +319,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Waterproofing",
     publishedAt: "2025-02-14",
     readingTime: 4,
-    coverImage: "/images/projects/1.jpeg",
+    coverImage: cld("blog_5", { width: 1600 }),
     coverAlt: "Waterproofing membrane inspection on a Sunshine Coast balcony",
     author: HYLTON,
     body: [

@@ -1,7 +1,6 @@
 // app/projects/page.tsx
 
 import type { Metadata } from "next";
-import ServiceHero from "../components/shared/ServiceHero";
 import ProjectsBento from "../components/work/ProjectsBento";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import { FAQS, FAQ_CONTACT } from "../data/projectsData";
@@ -24,20 +23,19 @@ export default function ProjectsPage() {
   return (
     <main aria-label="RAS-VERTEX project showcase">
 
-      <section className="pt-10">
-        <ServiceHero
-          heading="25 years of work. Across the Coast."
-          lede="The RAS-VERTEX team is proud to work alongside hundreds of Sunshine Coast-based businesses, and here's a small handful of our painting, cleaning, window cleaning, maintenance, waterproofing, height safety and building inspection projects."
+      <section className="pt-10 pb-10 md:pb-20" aria-label="Project gallery">
+        <ProjectsBento
+          heading="Trusted by the Sunshine Coast's best run buildings for 25+ years."
           headingId="projects-heading"
         />
       </section>
 
-      <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Project gallery">
-        <ProjectsBento />
-      </section>
-
       <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="projects-faq-heading">
-        <ServiceFAQ items={FAQS} contact={FAQ_CONTACT} />
+        <ServiceFAQ
+          items={FAQS}
+          contact={FAQ_CONTACT}
+          ctaHeading="Have a project in mind?"
+        />
       </section>
 
     </main>

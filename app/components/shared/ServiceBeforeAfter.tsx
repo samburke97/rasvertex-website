@@ -42,8 +42,8 @@ export default function ServiceBeforeAfter({
   quoteRole,
   authorLogo,
   authorLogoAlt,
-  ctaHref = "/work",
-  ctaLabel = "Our projects →",
+  ctaHref = "/contact",
+  ctaLabel = "Chat to us about your project →",
   headingId = "before-after-heading",
 }: ServiceBeforeAfterProps) {
   return (
@@ -87,7 +87,7 @@ export default function ServiceBeforeAfter({
           <Link
             href={ctaHref}
             className={styles.cta}
-            aria-label="View our projects"
+            aria-label={ctaLabel.slice(0, ctaLabel.lastIndexOf("→")).trimEnd()}
           >
             {ctaLabel.slice(0, ctaLabel.lastIndexOf('→')).trimEnd()}
             <svg

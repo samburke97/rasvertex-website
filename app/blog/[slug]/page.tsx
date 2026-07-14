@@ -206,23 +206,18 @@ export default async function ArticlePage({
         >
           <div className={styles.prose}>
             {post.body.map((block, i) => renderBlock(block, i))}
-          </div>
 
-          <div className={styles.authorRow}>
-            <div className={styles.avatarWrap}>
-              <Image
-                src={post.author.avatar}
-                alt={post.author.name}
-                fill
-                className={styles.avatar}
-              />
-            </div>
-            <div>
-              <p className={styles.authorName}>{post.author.name}</p>
-              <p className={styles.authorRole}>{post.author.role}</p>
-              <time dateTime={post.publishedAt} className={styles.authorDate}>
-                {formatPublishedOn(post.publishedAt)}
-              </time>
+            <div className={styles.authorRow}>
+              <div>
+                <p className={styles.authorName}>{post.author.name}</p>
+                <p className={styles.authorRole}>{post.author.role}</p>
+                <time
+                  dateTime={post.publishedAt}
+                  className={styles.authorDate}
+                >
+                  {formatPublishedOn(post.publishedAt)}
+                </time>
+              </div>
             </div>
           </div>
         </article>

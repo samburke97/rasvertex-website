@@ -148,8 +148,8 @@ export default function PaintingPage() {
           location="Mooloolaba, QLD"
           heading="A tired facade, refreshed for coastal living."
           body="Bindaree Apartments sits just back from the beach in Mooloolaba, where years of salt air, UV exposure and coastal weather had left the exterior faded and chalking. Our team completed a full body corporate repaint, removing failed coatings, preparing the substrate and applying a Haymes three coat exterior paint system designed for coastal conditions. The result is a durable finish that protects the building and keeps it looking its best for years to come."
-          ctaHref="/work"
-          ctaLabel="Our projects →"
+          ctaHref="/contact"
+          ctaLabel="Chat to us about your next project →"
           headingId="before-after-heading"
         />
       </section>
@@ -161,11 +161,10 @@ export default function PaintingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="They showed up within 48 hours for the site visit and had a full itemised quote within the week. One project manager start to finish, no passing the buck. Refreshing."
-          name="Sandra Koh"
-          role="Strata Manager, Archers Body Corporate"
-          logoSrc="/partners/archers.png"
-          logoAlt="Archers Body Corporate"
+          quote="The RAS-VERTEX team are pros. Top quality workmanship and always in a professional manner. We've used RAS VERTEX on a number of commercial painting projects and they always deliver. Especially if theres something we need when access is difficult, this is the team we always turn to."
+          name="Tim Lee"
+          role="Commercial Painting"
+          logoSrc=""
         />
       </section>
 

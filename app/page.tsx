@@ -93,7 +93,7 @@ export default function Home() {
         <TestimonialsSection />
       </section>
       <section className="pb-10 md:pb-20" aria-labelledby="projects-heading">
-        <h2 id="projects-heading" className="px-5 md:px-10 pb-10 md:pb-20">
+        <h2 id="projects-heading" className="px-5 md:px-10 pb-5 md:pb-10">
           Our Projects
         </h2>
         <PhotoCarousel

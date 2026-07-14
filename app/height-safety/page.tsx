@@ -156,11 +156,10 @@ export default function HeightSafetyPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="Our compliance never lapses anymore. RAS-VERTEX tracks every certification date and has us re-inspected before anything expires."
-          name="Mark Ellison"
-          role="Facilities Director, Stockland Kawana"
-          logoSrc="/partners/pica.png"
-          logoAlt="Stockland Kawana"
+          quote="Finding reliable at-height companies for Body Corporates used to be a challenge. RAS-VERTEX's reliable quoting process, care and attention to detail changed that, I'd recommend them to other strata management companies for their professionalism and quality of work."
+          name="AAA Body Corporate"
+          role=""
+          logoSrc=""
         />
       </section>
 

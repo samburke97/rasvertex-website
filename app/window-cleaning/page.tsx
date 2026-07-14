@@ -170,11 +170,10 @@ export default function CleaningPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="Streak-free windows on every visit, even the sections other cleaners always skip. No scaffolding, no fuss, just clean glass."
-          name="David Lam"
-          role="Property Manager, Ray White Mooloolaba"
-          logoSrc="/partners/raywhite.png"
-          logoAlt="Ray White Mooloolaba"
+          quote="We've worked with RAS-VERTEX for six years now, covering a full exterior and stairwell paint, box gutter re-skinning, window works, abseiling remedial work and a full roof waterproofing membrane. Phil and his team are committed tradespeople who get the best possible results."
+          name="John Dillon"
+          role="Alexandria Apartments"
+          logoSrc=""
         />
       </section>
       <section

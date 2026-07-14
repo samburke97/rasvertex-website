@@ -103,10 +103,14 @@
 }
 
 /* ── Middle form column ─────────────────────────────────────── */
+/* Fixed min-height so step 1 (5 fields) and step 2 (address, message,
+   photos) don't resize the row when switching — otherwise the
+   stretched video column jumps height along with it. */
 .formCol form {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  min-height: 600px;
 }
 
 /* ── Fields ─────────────────────────────────────────────────── */
@@ -297,7 +301,7 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--space-lg);
-  min-height: 320px;
+  min-height: 600px;
 }
 
 .successCard {
