@@ -53,7 +53,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Preventative Maintenance",
-    body: "Our scheduled inspection and repair programs deal with small issues before they turn into expensive ones. Every visit is documented with photos and condition reports, so your building file stays current for body corporate committees and insurance purposes alike.",
+    body: "We cater for everything from gutter cleaning to rust repair and remediation, dealing with small issues before they turn into expensive ones. Every repair is documented with photo evidence for body corporate committees and insurance purposes alike.",
     photo: cld("preventative-maintenance", { width: 1200 }),
     href: "/contact",
   },

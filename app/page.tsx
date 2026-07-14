@@ -31,7 +31,7 @@ export default function Home() {
           personRole="Client Services Manager"
           personPhoto="/images/people/caro.jpg"
           personCtaHeading="Ready to talk about your project?"
-          ctaLabel="Let's talk about your project"
+          ctaLabel="Let us know how we can help"
         />
       </section>
 
@@ -43,7 +43,7 @@ export default function Home() {
           stat="100%"
           statLabel={"Fully\nEmployed"}
           heading="Local projects, Local team."
-          body="We chose to build our own team instead of relying on subcontractors. Our painters, rope access technicians, waterproofers, cleaners and height safety specialists work together every day under the same systems, safety standards and expectations. It’s a simpler way to deliver consistent quality, and it's the kind of accountability that comes from being your neighbour."
+          body="We chose to build our own team instead of relying on subcontractors. Our painters, rope access technicians, waterproofers and cleaners work together every day under the same systems, safety standards and expectations. It’s a simpler way to deliver consistent quality, and it's the kind of accountability that comes from being your neighbour."
         />
       </section>
       <section className="px-5 md:px-10 py-10 md:py-20">

@@ -257,6 +257,14 @@
   .findsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .step:first-child {
+    padding-top: 0;
+  }
+
+  .step:last-child {
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width: 860px) {
