@@ -4,19 +4,19 @@ import Image from "next/image";
 import styles from "./ContactTestimonial.module.css";
 
 interface ContactTestimonialProps {
-  quote?: string;
-  name?: string;
+  quote: string;
+  name: string;
   role?: string;
   logoSrc?: string;
   logoAlt?: string;
 }
 
 export default function ContactTestimonial({
-  quote = "They showed up within 48 hours for the site visit and had a full itemised quote within the week. One project manager start to finish — no passing the buck. Refreshing.",
-  name = "Sandra Koh",
-  role = "Strata Manager, Archers Body Corporate",
-  logoSrc = "/partners/racv.png",
-  logoAlt = "RACV",
+  quote,
+  name,
+  role = "",
+  logoSrc = "",
+  logoAlt = "",
 }: ContactTestimonialProps) {
   return (
     <aside className={styles.wrap} aria-label="Client testimonial">
