@@ -5,6 +5,7 @@
 import { useState, useRef, useEffect, type ReactNode } from "react";
 import Image from "next/image";
 import Button from "../ui/Button";
+import { cld } from "../../lib/cloudinary";
 import styles from "./QuoteBookingForm.module.css";
 
 const TRUST_LOGOS = [
@@ -48,6 +49,7 @@ const SERVICES = [
   "Maintenance",
   "Height Safety",
   "Building Inspections",
+  "Other",
 ];
 
 const MAX_FILES = 6;
@@ -65,12 +67,12 @@ interface QuoteBookingFormProps {
 
 export default function QuoteBookingForm({
   headingLevel = "h1",
-  heading = "Tell us about your project and we’ll provide a no-obligation quote.",
+  heading = "Tell us about your project and we’ll provide a free, no-obligation quote.",
   leadParagraph = (
     <>
-      With dedicated teams for painting, external and window cleaning,
-      maintenance, waterproofing and height safety, we&rsquo;ll put you in
-      touch with the experts for your project.
+      With dedicated teams for all of your property maintenance needs,
+      we&rsquo;ll put you in touch with the Sunshine Coast experts for your
+      project.
     </>
   ),
   showGoogleRating = true,
@@ -474,22 +476,16 @@ export default function QuoteBookingForm({
         )}
       </div>
 
-      {/* ── Right video column ── */}
+      {/* ── Right photo column ── */}
       {showVideo && (
         <div className={styles.videoCol}>
-          <video
+          <Image
             className={styles.video}
-            src="/videos/racv.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            aria-label="RAS-VERTEX project footage — RACV Noosa Resort"
+            src={cld("avere-repaint", { width: 1200 })}
+            alt="RAS-VERTEX branded van outside a completed exterior repaint at Avere, Sunshine Coast"
+            fill
+            style={{ objectFit: "cover" }}
           />
-          <div className={styles.videoTag}>
-            <span className={styles.videoTagName}>RACV Maintenance</span>
-            <span className={styles.videoTagLocation}>Sunshine Coast</span>
-          </div>
         </div>
       )}
     </div>

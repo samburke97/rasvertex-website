@@ -355,6 +355,10 @@ a:hover .ctaArrow {
   .panePhoto {
     aspect-ratio: 16 / 9;
   }
+
+  .footer {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 560px) {

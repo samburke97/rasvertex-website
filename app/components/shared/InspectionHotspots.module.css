@@ -83,6 +83,34 @@
   object-fit: cover;
 }
 
+.videoTag {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: var(--radius-xl) 0 0 0;
+}
+
+.videoTagName {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--p-size);
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.videoTagLocation {
+  font-family: var(--font-body);
+  font-size: var(--p-sm-size);
+  color: var(--navy);
+  opacity: 0.45;
+  line-height: 1.2;
+}
+
 /* ── Divider ─────────────────────────────────────────────────── */
 
 .divider {

@@ -73,7 +73,7 @@ export default function MaintenancePage() {
           }
           lede="From Sunshine Coast schools and shopping centres to body corporates and commercial facilities, we help property owners and managers protect their buildings with responsive maintenance, specialist access, and one trusted local team."
           headingId="maintenance-hero-heading"
-          image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
+          image={{ src: HERO_SLIDES[3].src, alt: HERO_SLIDES[3].alt }}
         />
       </section>
 
@@ -93,8 +93,8 @@ export default function MaintenancePage() {
               body: "Rope access lets us work across facades, roofs and hard-to-reach areas without scaffolding or disruption. We move across your building efficiently, wherever work is needed.",
             },
             {
-              photo: HERO_SLIDES[3].src,
-              alt: HERO_SLIDES[3].alt,
+              photo: SERVICE_SLIDES.find((s) => s.href === "/maintenance")!.src,
+              alt: "Rope access technician working across a Sunshine Coast building facade",
               title: "Always across your building",
               body: "We’re local, always on call, and just around the corner when you need us most, giving you faster response when issues arise and less downtime across your building.",
             },

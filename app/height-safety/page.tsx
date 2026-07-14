@@ -73,6 +73,7 @@ export default function HeightSafetyPage() {
           lede="Height safety is what we do across hundreds of Sunshine Coast buildings. From installation to inspection and certification, we keep systems compliant, tested and ready, year round."
           headingId="height-safety-hero-heading"
           image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
+          mediaObjectPosition="center 20%"
         />
       </section>
 

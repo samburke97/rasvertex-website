@@ -217,4 +217,7 @@
     height: auto;
     aspect-ratio: 16 / 9;
   }
+  .bottomRow {
+    justify-content: flex-start;
+  }
 }

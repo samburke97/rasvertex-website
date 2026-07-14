@@ -27,6 +27,8 @@ interface ServiceHeroSplitProps {
   video?: string;
   mediaPosition?: "left" | "right";
   mediaAspectRatio?: string;
+  /** object-position for the media, e.g. "center 20%" to favour the top of the frame on the cropped mobile 16:9 ratio */
+  mediaObjectPosition?: string;
   ctaLabel?: string;
   ctaHref?: string;
   personName?: string;
@@ -44,6 +46,7 @@ export default function ServiceHeroSplit({
   video,
   mediaPosition = "left",
   mediaAspectRatio = "1 / 1",
+  mediaObjectPosition = "50% 50%",
   ctaLabel = "Get a free quote →",
   ctaHref = "/contact",
   personName = "Caroline",
@@ -54,7 +57,12 @@ export default function ServiceHeroSplit({
   const mediaEl = (
     <div
       className={styles.mediaCol}
-      style={{ "--hero-media-ratio": mediaAspectRatio } as CSSProperties}
+      style={
+        {
+          "--hero-media-ratio": mediaAspectRatio,
+          "--hero-media-position": mediaObjectPosition,
+        } as CSSProperties
+      }
     >
       {video ? (
         <video

@@ -19,6 +19,8 @@ interface InspectionHotspotsProps {
   intro: string;
   methodBody: string;
   video: string;
+  videoTagName?: string;
+  videoTagLocation?: string;
   hotspots: Hotspot[];
   headingId?: string;
   ctaLabel?: string;
@@ -30,6 +32,8 @@ export default function InspectionHotspots({
   intro,
   methodBody,
   video,
+  videoTagName,
+  videoTagLocation,
   headingId = "hotspots-heading",
   ctaLabel,
   ctaHref = "/contact",
@@ -74,6 +78,14 @@ export default function InspectionHotspots({
             playsInline
             aria-hidden="true"
           />
+          {videoTagName && (
+            <div className={styles.videoTag}>
+              <span className={styles.videoTagName}>{videoTagName}</span>
+              {videoTagLocation && (
+                <span className={styles.videoTagLocation}>{videoTagLocation}</span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </article>

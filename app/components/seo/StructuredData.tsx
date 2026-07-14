@@ -69,7 +69,7 @@ export function OrganizationSchema() {
       },
     ],
     sameAs: [
-      "https://www.facebook.com/rasvertex", // Add your social links
+      "https://www.facebook.com/rasvertex",
       "https://www.instagram.com/rasvertex",
       "https://www.linkedin.com/company/ras-vertex",
     ],

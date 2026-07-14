@@ -53,6 +53,16 @@ export default function Navigation() {
                 width={192}
                 height={48}
                 priority
+                className={styles.logoMobile}
+                style={{ objectFit: "contain" }}
+              />
+              <Image
+                src="/logo-full.png"
+                alt="RAS-VERTEX"
+                width={220}
+                height={55}
+                priority
+                className={styles.logoDesktop}
                 style={{ objectFit: "contain" }}
               />
             </Link>

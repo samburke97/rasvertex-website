@@ -130,7 +130,7 @@
 .pill {
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-light);
   padding: 6px 14px;
   background: transparent;
   border-radius: var(--radius-xl);
@@ -204,6 +204,6 @@
     height: 300px;
   }
   .serviceImage {
-    width: 340px;
+    height: 180px;
   }
 }

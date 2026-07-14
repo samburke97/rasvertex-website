@@ -197,9 +197,9 @@ export default function ResidentialPaintingPage() {
         aria-label="Client testimonial"
       >
         <ContactTestimonial
-          quote="From the first call to the final walkthrough, everything was exactly as promised. No surprises, no upsells, just a beautifully finished home and an eight-year warranty in writing."
-          name="Emma Whitfield"
-          role="Homeowner, Buderim"
+          quote="From the first call to the final walkthrough, everything was exactly as promised. No surprises, no upsells, just a beautifully finished home."
+          name="Claudia Jean"
+          role="Homeowner, Noosa"
           logoSrc=""
         />
       </section>
