@@ -127,6 +127,7 @@ export default function RopeAccessSection({
                   src={personPhoto ?? "/images/people/caro.jpg"}
                   alt={`${personName} — ${personRole ?? ""} at RAS-VERTEX`}
                   fill
+                  sizes="76px"
                   style={{ objectFit: "cover" }}
                 />
               </div>

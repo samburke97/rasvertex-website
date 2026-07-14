@@ -484,6 +484,7 @@ export default function QuoteBookingForm({
             src={cld("avere-repaint", { width: 1200 })}
             alt="RAS-VERTEX branded van outside a completed exterior repaint at Avere, Sunshine Coast"
             fill
+            sizes="(max-width: 860px) 100vw, 30vw"
             style={{ objectFit: "cover" }}
           />
         </div>

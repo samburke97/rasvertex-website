@@ -14,7 +14,7 @@ const SERVICE_SLIDES = [
     industries: ["Commercial", "Body Corporate", "Residential"],
   },
   {
-    src: cldVideo("cleaning", { width: 800 }),
+    src: cldVideo("cleaning", { width: 800, quality: "auto:eco" }),
     mediaType: "video" as const,
     alt: "Building Cleaning",
     title: "Building Cleaning",

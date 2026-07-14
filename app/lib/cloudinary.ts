@@ -22,7 +22,7 @@ export function cld(publicId: string, { width, quality = 80, format = "auto" }: 
 
 type VideoOptions = {
   width?: number;
-  quality?: "auto";
+  quality?: "auto" | "auto:eco" | "auto:low";
 };
 
 export function cldVideo(publicId: string, { width, quality = "auto" }: VideoOptions = {}) {

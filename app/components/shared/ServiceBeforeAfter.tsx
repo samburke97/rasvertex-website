@@ -122,6 +122,7 @@ export default function ServiceBeforeAfter({
                       src={authorLogo}
                       alt={authorLogoAlt ?? ""}
                       fill
+                      sizes="40px"
                       style={{ objectFit: "contain" }}
                     />
                   </div>

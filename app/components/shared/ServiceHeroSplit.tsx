@@ -109,6 +109,7 @@ export default function ServiceHeroSplit({
                   src={personPhoto}
                   alt={`${personName} — ${personRole ?? ""} at RAS-VERTEX`}
                   fill
+                  sizes="68px"
                   style={{ objectFit: "cover" }}
                 />
               </div>

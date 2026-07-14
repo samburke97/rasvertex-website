@@ -73,6 +73,7 @@ export default function PartnerSection({
                 src={ctaPersonPhoto}
                 alt={`${ctaPersonName} — ${ctaPersonRole} at RAS-VERTEX`}
                 fill
+                sizes="96px"
                 style={{ objectFit: "cover" }}
               />
             </div>
