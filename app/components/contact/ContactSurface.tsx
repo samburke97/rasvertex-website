@@ -279,12 +279,12 @@ export default function ContactSurface({
             </div>
             <div className={styles.contactBox}>
               <h4 className={styles.contactLabel}>Hours</h4>
-              <span className={styles.contactValue}>Mon–Fri, 7am–5pm</span>
+              <span className={styles.contactValue}>Mon–Fri, 7:30am–4:30pm</span>
             </div>
             <div className={styles.contactBox}>
               <h4 className={styles.contactLabel}>Visit Us</h4>
               <span className={styles.contactValue}>
-                1–3 Kessling Avenue, Kunda Park QLD 4556
+                1/3 Kessling Avenue, Kunda Park QLD 4556
               </span>
             </div>
           </div>

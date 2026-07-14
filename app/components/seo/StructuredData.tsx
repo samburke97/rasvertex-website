@@ -41,10 +41,10 @@ export function OrganizationSchema() {
     ],
     address: {
       "@type": "PostalAddress",
-      streetAddress: "", // Add your street address
-      addressLocality: "Sunshine Coast",
+      streetAddress: "1/3 Kessling Avenue",
+      addressLocality: "Kunda Park",
       addressRegion: "QLD",
-      postalCode: "4551", // Update with actual postcode
+      postalCode: "4556",
       addressCountry: "AU",
     },
     geo: {
@@ -63,8 +63,8 @@ export function OrganizationSchema() {
         hoursAvailable: {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "07:00",
-          closes: "17:00",
+          opens: "07:30",
+          closes: "16:30",
         },
       },
     ],
@@ -128,10 +128,10 @@ export function LocalBusinessSchema() {
     ],
     address: {
       "@type": "PostalAddress",
-      streetAddress: "", // Add street address
-      addressLocality: "Sunshine Coast",
+      streetAddress: "1/3 Kessling Avenue",
+      addressLocality: "Kunda Park",
       addressRegion: "QLD",
-      postalCode: "4551",
+      postalCode: "4556",
       addressCountry: "AU",
     },
     geo: {
