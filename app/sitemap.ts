@@ -1,4 +1,6 @@
 import { MetadataRoute } from "next";
+import { execSync } from "child_process";
+import path from "path";
 import { BLOG_POSTS } from "./data/blogData";
 
 /* ============================================
@@ -16,25 +18,42 @@ import { BLOG_POSTS } from "./data/blogData";
 
 const SITE_URL = "https://www.rasvertex.com.au";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const currentDate = new Date().toISOString();
+// lastModified should reflect when a page's content actually changed, not
+// today's date on every single build — Google's own guidance is that it
+// discounts a sitemap where every URL always says "just updated". Pulling
+// it from git history is zero-maintenance and always honest: a page's date
+// only moves when someone actually edits app/<route>/page.tsx.
+function getLastModified(pageFilePath: string): string {
+  try {
+    const absPath = path.join(process.cwd(), pageFilePath);
+    const output = execSync(`git log -1 --format=%aI -- "${absPath}"`, {
+      encoding: "utf-8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    if (output) return new Date(output).toISOString();
+  } catch {
+    // Git history unavailable in this environment — fall through.
+  }
+  return new Date().toISOString();
+}
 
+export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
-      lastModified: currentDate,
+      lastModified: getLastModified("app/page.tsx"),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${SITE_URL}/contact`,
-      lastModified: currentDate,
+      lastModified: getLastModified("app/contact/page.tsx"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/about-us`,
-      lastModified: currentDate,
+      lastModified: getLastModified("app/about-us/page.tsx"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -52,9 +71,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/height-safety",
     "/maintenance",
     "/building-inspections",
-  ].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: currentDate,
+  ].map((route) => ({
+    url: `${SITE_URL}${route}`,
+    lastModified: getLastModified(`app${route}/page.tsx`),
     changeFrequency: "monthly",
     priority: 0.9,
   }));
@@ -63,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const companyPages: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/projects`,
-      lastModified: currentDate,
+      lastModified: getLastModified("app/projects/page.tsx"),
       changeFrequency: "weekly",
       priority: 0.7,
     },
@@ -73,7 +92,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPages: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/blog`,
-      lastModified: currentDate,
+      lastModified: getLastModified("app/blog/page.tsx"),
       changeFrequency: "weekly",
       priority: 0.6,
     },
