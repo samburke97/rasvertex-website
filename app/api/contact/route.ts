@@ -4,8 +4,24 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const MAX_FILES = 6;
-const MAX_FILE_SIZE = 8 * 1024 * 1024; // 8MB per photo
-const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic"];
+
+// Photos now upload straight from the browser to Cloudinary (see
+// QuoteBookingForm) and we only ever receive back secure_url strings —
+// this guards against the field being used to smuggle arbitrary links
+// into the notification email.
+const CLOUDINARY_CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+function isTrustedPhotoUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    return (
+      parsed.protocol === "https:" &&
+      parsed.hostname === "res.cloudinary.com" &&
+      parsed.pathname.startsWith(`/${CLOUDINARY_CLOUD}/`)
+    );
+  } catch {
+    return false;
+  }
+}
 
 // Real visitors take more than a couple of seconds to fill a two-step
 // form. Anything faster is almost certainly a script, not a person.
@@ -17,6 +33,34 @@ const MIN_FILL_TIME_MS = 2500;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
 const submissionsByIp = new Map<string, number[]>();
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+async function verifyTurnstileToken(token: string, ip: string): Promise<boolean> {
+  if (!token) return false;
+
+  const res = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: process.env.TURNSTILE_SECRET_KEY || "",
+        response: token,
+        remoteip: ip,
+      }),
+    },
+  );
+  const data = await res.json();
+  return data.success === true;
+}
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -47,6 +91,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true, skipped: true });
     }
 
+    const turnstileToken = String(formData.get("turnstileToken") || "");
+    const humanVerified = await verifyTurnstileToken(turnstileToken, ip);
+    if (!humanVerified) {
+      return NextResponse.json(
+        { success: false, error: "Verification failed. Please try again." },
+        { status: 403 },
+      );
+    }
+
     const services = formData.getAll("services").map(String);
     const name = String(formData.get("name") || "");
     const email = String(formData.get("email") || "");
@@ -54,41 +107,36 @@ export async function POST(req: Request) {
     const propertyAddress = String(formData.get("propertyAddress") || "");
     const message = String(formData.get("message") || "");
 
-    // ── Photos ──
-    const files = formData
-      .getAll("photos")
-      .filter((f) => f instanceof File) as File[];
+    // ── Photos — already uploaded to Cloudinary client-side, we just
+    // received the resulting URLs back ──
+    const photoUrls = formData
+      .getAll("photoUrls")
+      .map(String)
+      .filter(isTrustedPhotoUrl);
 
-    if (files.length > MAX_FILES) {
+    if (photoUrls.length > MAX_FILES) {
       return NextResponse.json(
         { success: false, error: `Maximum ${MAX_FILES} photos allowed` },
         { status: 400 },
       );
     }
 
-    const attachments = [];
-    for (const file of files) {
-      if (!ALLOWED_TYPES.includes(file.type)) {
-        return NextResponse.json(
-          { success: false, error: `Unsupported file type: ${file.type}` },
-          { status: 400 },
-        );
-      }
-      if (file.size > MAX_FILE_SIZE) {
-        return NextResponse.json(
-          { success: false, error: `${file.name} is over the 8MB limit` },
-          { status: 400 },
-        );
-      }
-
-      const buffer = Buffer.from(await file.arrayBuffer());
-      attachments.push({
-        filename: file.name,
-        content: buffer,
-      });
-    }
-
     const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const photosText =
+      photoUrls.length > 0
+        ? photoUrls.map((url, i) => `  ${i + 1}. ${url}`).join("\n")
+        : "  None";
+
+    const photosHtml =
+      photoUrls.length > 0
+        ? photoUrls
+            .map(
+              (url) =>
+                `<a href="${url}" style="display:inline-block;margin:4px"><img src="${url}" width="160" style="border-radius:8px;display:block" /></a>`,
+            )
+            .join("")
+        : "<p>None</p>";
 
     const { data: emailData, error } = await resend.emails.send({
       from: "RAS-VERTEX <sam@rasvertex.com.au>",
@@ -106,9 +154,19 @@ Email: ${email}
 Message:
 ${message}
 
-Photos attached: ${attachments.length}
+Photos:
+${photosText}
       `,
-      attachments: attachments.length > 0 ? attachments : undefined,
+      html: `
+        <p><strong>Services:</strong> ${escapeHtml(services.join(", ") || "None")}</p>
+        <p><strong>Address:</strong> ${escapeHtml(propertyAddress)}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}<br/>
+        <strong>Phone:</strong> ${escapeHtml(phone)}<br/>
+        <strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Message:</strong><br/>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
+        <p><strong>Photos:</strong></p>
+        ${photosHtml}
+      `,
     });
 
     if (error) {

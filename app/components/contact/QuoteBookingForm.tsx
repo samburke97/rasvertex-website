@@ -4,9 +4,18 @@
 
 import { useState, useRef, useEffect, type ReactNode } from "react";
 import Image from "next/image";
+import Script from "next/script";
 import Button from "../ui/Button";
 import { cld } from "../../lib/cloudinary";
 import styles from "./QuoteBookingForm.module.css";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+declare global {
+  interface Window {
+    onTurnstileVerified?: (token: string) => void;
+  }
+}
 
 const TRUST_LOGOS = [
   {
@@ -56,6 +65,29 @@ const MAX_FILES = 6;
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const ACCEPTED_TYPES = "image/jpeg,image/png,image/webp,image/heic";
 
+// Unsigned preset — safe to expose client-side, that's what "unsigned" means.
+// Photos upload straight from the browser to Cloudinary so they never pass
+// through our own serverless function, which has a request size limit well
+// under what a handful of phone photos add up to.
+const CLOUDINARY_CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_UPLOAD_PRESET = "form-submissions";
+
+async function uploadPhotoToCloudinary(file: File): Promise<string> {
+  const body = new FormData();
+  body.append("file", file);
+  body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`,
+    { method: "POST", body },
+  );
+  const data = await res.json();
+  if (!res.ok || !data.secure_url) {
+    throw new Error(data?.error?.message || `Failed to upload ${file.name}`);
+  }
+  return data.secure_url as string;
+}
+
 interface QuoteBookingFormProps {
   headingLevel?: "h1" | "h2";
   heading?: ReactNode;
@@ -85,10 +117,20 @@ export default function QuoteBookingForm({
   const mountedAt = useRef(Date.now());
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const [photoError, setPhotoError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
+
+  useEffect(() => {
+    window.onTurnstileVerified = (token: string) => setTurnstileToken(token);
+    return () => {
+      delete window.onTurnstileVerified;
+    };
+  }, []);
 
   const [form, setForm] = useState({
     firstName: "",
@@ -145,10 +187,16 @@ export default function QuoteBookingForm({
         form.email.trim() !== "" &&
         form.mobile.trim() !== "" &&
         form.service !== ""
-      : form.propertyAddress.trim() !== "";
+      : form.propertyAddress.trim() !== "" && turnstileToken !== "";
 
   const handleSubmit = async () => {
+    setIsSubmitting(true);
+    setSubmitError(false);
     try {
+      const photoUrls = await Promise.all(
+        photos.map((file) => uploadPhotoToCloudinary(file)),
+      );
+
       const body = new FormData();
       body.append("name", `${form.firstName} ${form.lastName}`.trim());
       body.append("email", form.email);
@@ -157,7 +205,8 @@ export default function QuoteBookingForm({
       body.append("propertyAddress", form.propertyAddress);
       body.append("message", form.message.trim());
       body.append("elapsedMs", String(Date.now() - mountedAt.current));
-      photos.forEach((file) => body.append("photos", file));
+      body.append("turnstileToken", turnstileToken);
+      photoUrls.forEach((url) => body.append("photoUrls", url));
 
       const res = await fetch("/api/contact", { method: "POST", body });
       const result = await res.json().catch(() => null);
@@ -168,12 +217,9 @@ export default function QuoteBookingForm({
       setSubmitted(true);
     } catch (err) {
       console.error("Quote booking form error:", err);
-      const detail = err instanceof Error ? err.message : "";
-      alert(
-        detail
-          ? `Something went wrong sending your request: ${detail}`
-          : "Something went wrong sending your request. Please try again.",
-      );
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -181,6 +227,14 @@ export default function QuoteBookingForm({
     <div
       className={`${styles.card} ${!showVideo ? styles.cardNoVideo : ""}`}
     >
+      {TURNSTILE_SITE_KEY && (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="lazyOnload"
+          async
+          defer
+        />
+      )}
       {/* ── Left info column ── */}
       <div className={styles.info}>
         <HeadingTag className={styles.heading}>{heading}</HeadingTag>
@@ -256,8 +310,38 @@ export default function QuoteBookingForm({
                 <a href="tel:0753710201" className={styles.successLink}>
                   (07) 5371 0201
                 </a>{" "}
+                or email{" "}
+                <a
+                  href="mailto:team@rasvertex.com.au"
+                  className={styles.successLink}
+                >
+                  team@rasvertex.com.au
+                </a>{" "}
                 for urgent enquiries.
               </p>
+            </div>
+          </div>
+        ) : submitError ? (
+          <div className={styles.success} role="alert" aria-live="assertive">
+            <div className={styles.errorCard}>
+              <h2>Sorry, we couldn&rsquo;t submit your request.</h2>
+              <p className="p-soft">
+                Please email through your details to{" "}
+                <a
+                  href="mailto:team@rasvertex.com.au"
+                  className={styles.errorLink}
+                >
+                  team@rasvertex.com.au
+                </a>{" "}
+                and we&rsquo;ll be in touch within 24 hours.
+              </p>
+              <button
+                type="button"
+                className={styles.errorRetry}
+                onClick={() => setSubmitError(false)}
+              >
+                Try again
+              </button>
             </div>
           </div>
         ) : (
@@ -452,6 +536,14 @@ export default function QuoteBookingForm({
                     </ul>
                   )}
                 </div>
+
+                {TURNSTILE_SITE_KEY && (
+                  <div
+                    className="cf-turnstile"
+                    data-sitekey={TURNSTILE_SITE_KEY}
+                    data-callback="onTurnstileVerified"
+                  />
+                )}
               </div>
             )}
 
@@ -472,12 +564,12 @@ export default function QuoteBookingForm({
                 variant="primary"
                 size="lg"
                 fullWidth
-                disabled={!canAdvance}
+                disabled={!canAdvance || isSubmitting}
                 aria-label={
                   step < 2 ? "Continue to next step" : "Submit quote request"
                 }
               >
-                {step < 2 ? "Next →" : "Submit →"}
+                {step < 2 ? "Next →" : isSubmitting ? "Sending…" : "Submit →"}
               </Button>
             </div>
           </form>
