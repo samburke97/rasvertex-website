@@ -79,14 +79,37 @@ const ACCEPTED_TYPES = "image/jpeg,image/png,image/webp,image/heic";
 const CLOUDINARY_CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = "form-submissions";
 
+// A hung request (bad network, an unresponsive endpoint) must not leave the
+// form stuck on "Sending…" forever — fail it out after a bounded time so a
+// real error can surface instead.
+async function fetchWithTimeout(
+  input: string,
+  init: RequestInit,
+  timeoutMs: number,
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } catch (err) {
+    if (controller.signal.aborted) {
+      throw new Error("Request timed out. Please check your connection and try again.");
+    }
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function uploadPhotoToCloudinary(file: File): Promise<string> {
   const body = new FormData();
   body.append("file", file);
   body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
-  const res = await fetch(
+  const res = await fetchWithTimeout(
     `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`,
     { method: "POST", body },
+    20000,
   );
   const data = await res.json();
   if (!res.ok || !data.secure_url) {
@@ -247,7 +270,11 @@ export default function QuoteBookingForm({
       body.append("turnstileToken", turnstileToken);
       photoUrls.forEach((url) => body.append("photoUrls", url));
 
-      const res = await fetch("/api/contact", { method: "POST", body });
+      const res = await fetchWithTimeout(
+        "/api/contact",
+        { method: "POST", body },
+        20000,
+      );
       const result = await res.json().catch(() => null);
       if (!res.ok || !result?.success) {
         throw new Error(result?.error || `Failed to send (${res.status})`);

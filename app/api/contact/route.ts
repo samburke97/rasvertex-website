@@ -43,23 +43,43 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
+async function fetchWithTimeout(
+  input: string,
+  init: RequestInit,
+  timeoutMs: number,
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function verifyTurnstileToken(token: string, ip: string): Promise<boolean> {
   if (!token) return false;
 
-  const res = await fetch(
-    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        secret: process.env.TURNSTILE_SECRET_KEY || "",
-        response: token,
-        remoteip: ip,
-      }),
-    },
-  );
-  const data = await res.json();
-  return data.success === true;
+  try {
+    const res = await fetchWithTimeout(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          secret: process.env.TURNSTILE_SECRET_KEY || "",
+          response: token,
+          remoteip: ip,
+        }),
+      },
+      8000,
+    );
+    const data = await res.json();
+    return data.success === true;
+  } catch (err) {
+    console.error("Turnstile verify error:", err);
+    return false;
+  }
 }
 
 function isRateLimited(ip: string): boolean {
@@ -138,7 +158,8 @@ export async function POST(req: Request) {
             .join("")
         : "<p>None</p>";
 
-    const { data: emailData, error } = await resend.emails.send({
+    const { data: emailData, error } = await Promise.race([
+      resend.emails.send({
       from: "RAS-VERTEX <sam@rasvertex.com.au>",
       to: "team@rasvertex.com.au",
       subject: `New Quote Request — ${name || "Unknown"}`,
@@ -167,7 +188,11 @@ ${photosText}
         <p><strong>Photos:</strong></p>
         ${photosHtml}
       `,
-    });
+      }),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("Email send timed out")), 15000),
+      ),
+    ]);
 
     if (error) {
       console.error("Resend error:", error);
