@@ -13,7 +13,14 @@ const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 declare global {
   interface Window {
-    onTurnstileVerified?: (token: string) => void;
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: { sitekey: string; callback: (token: string) => void },
+      ) => string;
+      reset: (widgetId?: string) => void;
+      remove: (widgetId?: string) => void;
+    };
   }
 }
 
@@ -124,13 +131,45 @@ export default function QuoteBookingForm({
   const [photoError, setPhotoError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileScriptLoaded, setTurnstileScriptLoaded] = useState(false);
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | null>(null);
 
+  // Explicit render — step 2's container only exists in the DOM once the
+  // user reaches it, so we render the widget ourselves the moment it's
+  // available rather than relying on Turnstile's own page-load DOM scan,
+  // which would run before this container exists and never render it.
   useEffect(() => {
-    window.onTurnstileVerified = (token: string) => setTurnstileToken(token);
-    return () => {
-      delete window.onTurnstileVerified;
-    };
-  }, []);
+    if (
+      step !== 2 ||
+      !turnstileScriptLoaded ||
+      !TURNSTILE_SITE_KEY ||
+      !turnstileContainerRef.current ||
+      turnstileWidgetId.current ||
+      !window.turnstile
+    ) {
+      return;
+    }
+
+    turnstileWidgetId.current = window.turnstile.render(
+      turnstileContainerRef.current,
+      {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token) => setTurnstileToken(token),
+      },
+    );
+  }, [step, turnstileScriptLoaded]);
+
+  // Leaving step 2 destroys its container — drop our reference to the old
+  // widget and clear the token so re-entering step 2 renders a fresh one
+  // instead of silently doing nothing (see effect above).
+  useEffect(() => {
+    if (step !== 2 && turnstileWidgetId.current) {
+      window.turnstile?.remove(turnstileWidgetId.current);
+      turnstileWidgetId.current = null;
+      setTurnstileToken("");
+    }
+  }, [step]);
 
   const [form, setForm] = useState({
     firstName: "",
@@ -230,9 +269,8 @@ export default function QuoteBookingForm({
       {TURNSTILE_SITE_KEY && (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          strategy="lazyOnload"
-          async
-          defer
+          strategy="afterInteractive"
+          onLoad={() => setTurnstileScriptLoaded(true)}
         />
       )}
       {/* ── Left info column ── */}
@@ -537,13 +575,7 @@ export default function QuoteBookingForm({
                   )}
                 </div>
 
-                {TURNSTILE_SITE_KEY && (
-                  <div
-                    className="cf-turnstile"
-                    data-sitekey={TURNSTILE_SITE_KEY}
-                    data-callback="onTurnstileVerified"
-                  />
-                )}
+                {TURNSTILE_SITE_KEY && <div ref={turnstileContainerRef} />}
               </div>
             )}
 
