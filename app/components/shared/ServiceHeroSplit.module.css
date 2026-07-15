@@ -11,7 +11,15 @@
 /* ─── Media column ───────────────────────────────────────────── */
 .mediaCol {
   position: relative;
+  /* Explicit width gives Safari's grid algorithm an unambiguous value to
+     resolve aspect-ratio against — some Safari versions fail to resolve it
+     against the grid track's own width when the box's only content is a
+     position: absolute fill image (Next's <Image fill>), collapsing the
+     box to 0 height even though the image loaded fine. min-height is a
+     second safety net in case aspect-ratio still doesn't resolve. */
+  width: 100%;
   aspect-ratio: var(--hero-media-ratio, 4 / 3);
+  min-height: 320px;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: var(--navy-08);
