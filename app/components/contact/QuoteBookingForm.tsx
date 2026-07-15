@@ -160,12 +160,20 @@ export default function QuoteBookingForm({
       photos.forEach((file) => body.append("photos", file));
 
       const res = await fetch("/api/contact", { method: "POST", body });
-      if (!res.ok) throw new Error("Failed to send");
+      const result = await res.json().catch(() => null);
+      if (!res.ok || !result?.success) {
+        throw new Error(result?.error || `Failed to send (${res.status})`);
+      }
 
       setSubmitted(true);
     } catch (err) {
       console.error("Quote booking form error:", err);
-      alert("Something went wrong sending your request. Please try again.");
+      const detail = err instanceof Error ? err.message : "";
+      alert(
+        detail
+          ? `Something went wrong sending your request: ${detail}`
+          : "Something went wrong sending your request. Please try again.",
+      );
     }
   };
 

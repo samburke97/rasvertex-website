@@ -100,15 +100,10 @@ export default function WaterproofingPage() {
               body: "Every project is handed over with clear documentation and written warranty coverage, giving building managers confidence in performance and long term maintenance planning.",
             },
           ]}
-          heading={
-            <>
-              Here’s why building managers and property owners choose our
-              waterproofing team.
-            </>
-          }
+          heading="Meet the team"
           ariaLabel="Why body corporates trust RAS-VERTEX waterproofing"
           footerCtaLabel="Get a free quote →"
-          footerCtaHref="/contact"
+          footerCtaHref="/about-us"
           display="grid"
           variant="white"
         />

@@ -8,7 +8,7 @@ import ServiceCards from "../components/shared/ServiceCards";
 import ServiceFAQ from "../components/shared/ServiceFAQ";
 import WarrantyCard from "../components/shared/WarrantyCard";
 import ContactTestimonial from "../components/contact/ContactTestimonial";
-import { cld } from "../lib/cloudinary";
+import { cld, cldVideo } from "../lib/cloudinary";
 import InspectionHotspots from "../components/shared/InspectionHotspots";
 import InspectionProcess from "../components/shared/InspectionProcess";
 import ServiceCarousel from "../components/homepage/ServiceCarousel";
@@ -164,7 +164,7 @@ export default function BuildingInspectionsPage() {
           heading="Aerial drones, paired with on-site rope access."
           intro="We combine drone surveys for full-facade coverage with IRATA rope access inspections that physically test the building at every level."
           methodBody="Drones capture the full picture quickly. Rope access confirms what’s actually happening on the surface, touching, testing and verifying defects that cameras alone can’t validate."
-          video="/videos/racv.mp4"
+          video={cldVideo("racv", { width: 1200, quality: "auto:eco" })}
           videoTagName="RACV Noosa"
           videoTagLocation="Aerial Inspection"
           hotspots={INSPECTION_HOTSPOTS}
