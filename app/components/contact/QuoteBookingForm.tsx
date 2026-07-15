@@ -158,41 +158,43 @@ export default function QuoteBookingForm({
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetId = useRef<string | null>(null);
 
-  // Explicit render — step 2's container only exists in the DOM once the
-  // user reaches it, so we render the widget ourselves the moment it's
-  // available rather than relying on Turnstile's own page-load DOM scan,
-  // which would run before this container exists and never render it.
+  // The widget's container only exists in the DOM while step 2 is the
+  // visible screen — not just while step === 2, but also not while the
+  // success or error screen has replaced the form entirely. Keying the
+  // effect off that exact visibility condition, with its cleanup returned
+  // from the same effect invocation that created the widget (rather than a
+  // second effect reacting to a mutable ref), guarantees we only ever try
+  // to remove a widget we ourselves just rendered — never a stale or
+  // already-gone one.
+  const showTurnstile = step === 2 && !submitted && !submitError;
+
   useEffect(() => {
     if (
-      step !== 2 ||
+      !showTurnstile ||
       !turnstileScriptLoaded ||
       !TURNSTILE_SITE_KEY ||
       !turnstileContainerRef.current ||
-      turnstileWidgetId.current ||
       !window.turnstile
     ) {
       return;
     }
 
-    turnstileWidgetId.current = window.turnstile.render(
-      turnstileContainerRef.current,
-      {
-        sitekey: TURNSTILE_SITE_KEY,
-        callback: (token) => setTurnstileToken(token),
-      },
-    );
-  }, [step, turnstileScriptLoaded]);
+    const widgetId = window.turnstile.render(turnstileContainerRef.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      callback: (token) => setTurnstileToken(token),
+    });
+    turnstileWidgetId.current = widgetId;
 
-  // Leaving step 2 destroys its container — drop our reference to the old
-  // widget and clear the token so re-entering step 2 renders a fresh one
-  // instead of silently doing nothing (see effect above).
-  useEffect(() => {
-    if (step !== 2 && turnstileWidgetId.current) {
-      window.turnstile?.remove(turnstileWidgetId.current);
+    return () => {
+      try {
+        window.turnstile?.remove(widgetId);
+      } catch {
+        // Already gone — nothing to clean up.
+      }
       turnstileWidgetId.current = null;
       setTurnstileToken("");
-    }
-  }, [step]);
+    };
+  }, [showTurnstile, turnstileScriptLoaded]);
 
   const [form, setForm] = useState({
     firstName: "",
