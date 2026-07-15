@@ -101,7 +101,7 @@ async function fetchWithTimeout(
   }
 }
 
-async function uploadPhotoToCloudinary(file: File): Promise<string> {
+async function uploadPhotoToCloudinaryOnce(file: File): Promise<string> {
   const body = new FormData();
   body.append("file", file);
   body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -109,13 +109,25 @@ async function uploadPhotoToCloudinary(file: File): Promise<string> {
   const res = await fetchWithTimeout(
     `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`,
     { method: "POST", body },
-    20000,
+    30000,
   );
   const data = await res.json();
   if (!res.ok || !data.secure_url) {
     throw new Error(data?.error?.message || `Failed to upload ${file.name}`);
   }
   return data.secure_url as string;
+}
+
+// A single flaky upload (cold connection, a slow mobile network) must never
+// be the reason a customer's enquiry doesn't reach us — retry once before
+// giving up, and even then the caller treats a failure here as "this one
+// photo didn't make it," never as a reason to block the whole submission.
+async function uploadPhotoToCloudinary(file: File): Promise<string> {
+  try {
+    return await uploadPhotoToCloudinaryOnce(file);
+  } catch {
+    return await uploadPhotoToCloudinaryOnce(file);
+  }
 }
 
 interface QuoteBookingFormProps {
@@ -148,6 +160,7 @@ export default function QuoteBookingForm({
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [failedPhotoCount, setFailedPhotoCount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
@@ -294,9 +307,24 @@ export default function QuoteBookingForm({
     setIsSubmitting(true);
     setSubmitError(false);
     try {
-      const photoUrls = await Promise.all(
+      // Photos are best-effort — a customer's contact details and message
+      // are the actual enquiry, and a flaky upload on someone's mobile
+      // connection must never be the reason that never reaches us.
+      // allSettled means one bad photo can't take the other photos, or the
+      // submission itself, down with it.
+      const photoResults = await Promise.allSettled(
         photos.map((file) => uploadPhotoToCloudinary(file)),
       );
+      const photoUrls = photoResults
+        .filter((r): r is PromiseFulfilledResult<string> => r.status === "fulfilled")
+        .map((r) => r.value);
+      const failedPhotoCount = photoResults.length - photoUrls.length;
+      if (failedPhotoCount > 0) {
+        console.error(
+          `${failedPhotoCount} photo(s) failed to upload after retry — continuing without them`,
+        );
+      }
+      setFailedPhotoCount(failedPhotoCount);
 
       const body = new FormData();
       body.append("name", `${form.firstName} ${form.lastName}`.trim());
@@ -307,6 +335,7 @@ export default function QuoteBookingForm({
       body.append("message", form.message.trim());
       body.append("elapsedMs", String(Date.now() - mountedAt.current));
       body.append("turnstileToken", turnstileToken);
+      body.append("failedPhotoCount", String(failedPhotoCount));
       photoUrls.forEach((url) => body.append("photoUrls", url));
 
       const res = await fetchWithTimeout(
@@ -423,6 +452,14 @@ export default function QuoteBookingForm({
                 </a>{" "}
                 for urgent enquiries.
               </p>
+              {failedPhotoCount > 0 && (
+                <p className="p-soft">
+                  {failedPhotoCount === 1
+                    ? "One photo was attached but couldn't be sent — "
+                    : `${failedPhotoCount} photos were attached but couldn't be sent — `}
+                  everything else came through fine, so feel free to email any photos through separately if needed.
+                </p>
+              )}
             </div>
           </div>
         ) : submitError ? (

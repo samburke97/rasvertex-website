@@ -143,6 +143,7 @@ export async function POST(req: Request) {
       .getAll("photoUrls")
       .map(String)
       .filter(isTrustedPhotoUrl);
+    const failedPhotoCount = Number(formData.get("failedPhotoCount")) || 0;
 
     if (photoUrls.length > MAX_FILES) {
       return NextResponse.json(
@@ -153,10 +154,15 @@ export async function POST(req: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
+    const failedPhotoNote =
+      failedPhotoCount > 0
+        ? `\n⚠️ ${failedPhotoCount} photo(s) the customer attached failed to upload and are not included.`
+        : "";
+
     const photosText =
-      photoUrls.length > 0
+      (photoUrls.length > 0
         ? photoUrls.map((url, i) => `  ${i + 1}. ${url}`).join("\n")
-        : "  None";
+        : "  None") + failedPhotoNote;
 
     const photosHtml =
       photoUrls.length > 0
@@ -172,7 +178,7 @@ export async function POST(req: Request) {
       resend.emails.send({
       from: "RAS-VERTEX <sam@rasvertex.com.au>",
       to: "team@rasvertex.com.au",
-      subject: `New Quote Request — ${name || "Unknown"}`,
+      subject: `New Quote Request — ${name || "Unknown"}${failedPhotoCount > 0 ? " (photo upload failed)" : ""}`,
       text: `
 Services: ${services.join(", ") || "None"}
 
@@ -195,6 +201,7 @@ ${photosText}
         <strong>Phone:</strong> ${escapeHtml(phone)}<br/>
         <strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Message:</strong><br/>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
+        ${failedPhotoCount > 0 ? `<p style="color:#a2540b"><strong>⚠️ ${failedPhotoCount} photo(s) the customer attached failed to upload and are not included.</strong></p>` : ""}
         <p><strong>Photos:</strong></p>
         ${photosHtml}
       `,
