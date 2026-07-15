@@ -81,9 +81,10 @@ export default function InspectionProcess({
   image,
   compactHeading = false,
 }: InspectionProcessProps) {
+  const ctaArrowIndex = ctaLabel?.lastIndexOf("→") ?? -1;
   const cta = ctaLabel && (
     <Button as="link" href={ctaHref} variant="primary" className={styles.cta}>
-      {ctaLabel.slice(0, ctaLabel.lastIndexOf("→")).trimEnd()}
+      {ctaArrowIndex === -1 ? ctaLabel : ctaLabel.slice(0, ctaArrowIndex).trimEnd()}
       <svg
         className={styles.ctaArrow}
         width="14"

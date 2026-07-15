@@ -55,7 +55,7 @@ export default function RopeAccessSection({
   headingId = "rope-access-heading",
   body,
   paragraphs = [
-    "For over 25 years, we've made building maintenance simpler for Sunshine Coast body corporate communities, commercial and high-rise buildings, schools, homes and government facilities. By combining our expertise in painting, cleaning, maintenance, waterproofing and height safety under one roof, we've become the single local partner you can rely on to keep your building safe, performing and looking its best. ",
+    "For over 25 years, we've made building maintenance simple for the Sunshine Coast. By bringing painting, cleaning, maintenance, waterproofing and height safety under one roof, we've become the trusted local partner for body corporates, commercial and high-rise buildings, schools, government facilities and homes.",
   ],
   contentGroups,
   ctaHref = "/contact",
