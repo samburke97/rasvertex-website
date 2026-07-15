@@ -99,10 +99,16 @@ export default function ExternalCleaningPage() {
               body: "Every clean includes visual checks and reporting so we can flag issues early, highlight potential problems and help prevent costly repairs.",
             },
           ]}
-          heading="Meet the team"
+          heading={
+            <>
+              Here&rsquo;s why building managers and{" "}
+              <br className="hidden md:block" />
+              property owners choose our cleaning team.
+            </>
+          }
           ariaLabel="Why building managers choose RAS-VERTEX for external cleaning"
           footerCtaLabel="Get a free quote →"
-          footerCtaHref="/about-us"
+          footerCtaHref="/contact"
           display="grid"
           variant="white"
         />

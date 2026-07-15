@@ -50,13 +50,7 @@ export default function RopeAccessSection({
   imageAspectRatio = "1 / 1",
   imageTagName,
   imageTagRole,
-  heading = (
-    <>
-      Trusted by the Sunshine Coast,
-      <br />
-      for over 25 years.
-    </>
-  ),
+  heading = "Trusted by the Sunshine Coast, for over 25 years.",
   headingLevel = "h2",
   headingId = "rope-access-heading",
   body,

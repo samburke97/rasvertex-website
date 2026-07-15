@@ -54,10 +54,16 @@ export default function Home() {
             title: s.heading,
             body: s.body,
           }))}
-          heading="Meet the team"
+          heading={
+            <>
+              Here&rsquo;s why building managers and{" "}
+              <br className="hidden md:block" />
+              property owners choose us.
+            </>
+          }
           ariaLabel="Why building managers choose RAS-VERTEX"
           footerCtaLabel="Get a free quote →"
-          footerCtaHref="/about-us"
+          footerCtaHref="/contact"
           display="list"
           eyebrow=""
           variant="white"

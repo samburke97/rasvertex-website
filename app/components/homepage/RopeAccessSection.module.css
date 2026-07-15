@@ -85,6 +85,11 @@
   gap: var(--space-title-to-body);
 }
 
+.textBlock h1,
+.textBlock h2 {
+  max-width: 80%;
+}
+
 .contentGroup {
   display: flex;
   flex-direction: column;
@@ -215,6 +220,11 @@
 
   .textBlock {
     position: static;
+  }
+
+  .textBlock h1,
+  .textBlock h2 {
+    max-width: 100%;
   }
 
   .personCard {
