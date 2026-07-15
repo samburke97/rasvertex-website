@@ -23,7 +23,7 @@ import {
 } from "../data/maintenanceData";
 
 export const metadata = generatePageMetadata({
-  title: "Building Maintenance Sunshine Coast | RAS-VERTEX",
+  title: "Building Maintenance | Sunshine Coast Facility Maintenance",
   description:
     "Commercial and body corporate maintenance across the Sunshine Coast, from concrete repairs to roof restoration, led by a dedicated project manager.",
   path: "/maintenance",

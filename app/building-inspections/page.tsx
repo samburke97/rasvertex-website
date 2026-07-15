@@ -24,7 +24,7 @@ import {
 } from "../data/buildingInspectionsData";
 
 export const metadata = generatePageMetadata({
-  title: "Building Inspections Sunshine Coast | RAS-VERTEX",
+  title: "Building Inspections | Sunshine Coast Inspection Reports",
   description:
     "We carry out IRATA-certified building inspections across the Sunshine Coast, using rope access, thermal imaging and drones for comprehensive reports.",
   path: "/building-inspections",

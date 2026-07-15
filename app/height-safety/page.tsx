@@ -23,7 +23,7 @@ import {
 } from "../data/heightSafetyData";
 
 export const metadata = generatePageMetadata({
-  title: "Height Safety & Rope Access Sunshine Coast | RAS-VERTEX",
+  title: "Height Safety & Rope Access | IRATA Sunshine Coast",
   description:
     "The Sunshine Coast's leading height safety specialists, installing and certifying systems to AS/NZS 1891 with our IRATA-certified technicians.",
   path: "/height-safety",

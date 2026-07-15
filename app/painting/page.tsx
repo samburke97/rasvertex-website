@@ -24,7 +24,7 @@ import {
 } from "../data/paintingData";
 
 export const metadata = generatePageMetadata({
-  title: "Painting Services Sunshine Coast | RAS-VERTEX",
+  title: "Painting Services | Sunshine Coast Painters",
   description:
     "Residential, commercial and body corporate painting across the Sunshine Coast. QBCC licensed, 8-year written warranty, one project manager from quote to sign-off.",
   path: "/painting",

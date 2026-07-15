@@ -13,7 +13,7 @@ import { FAQS, FAQ_CONTACT } from "../data/companyData";
 import { cld } from "../lib/cloudinary";
 
 export const metadata: Metadata = {
-  title: "About RAS-VERTEX | Sunshine Coast Maintenance Specialists",
+  title: "About Us | Sunshine Coast Property Maintenance Team",
   description:
     "We're the Sunshine Coast's complete property maintenance partner, IRATA-certified and QBCC licensed for painting, cleaning, waterproofing and more.",
   alternates: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "RAS-VERTEX",
   ],
   openGraph: {
-    title: "About RAS-VERTEX — Sunshine Coast Property Maintenance",
+    title: "About Us | Sunshine Coast Property Maintenance Team",
     description:
       "The Sunshine Coast's complete property maintenance partner. Painting, cleaning, waterproofing, height safety and rope access for body corporates, strata, and commercial properties.",
     url: "https://www.rasvertex.com.au/about-us",

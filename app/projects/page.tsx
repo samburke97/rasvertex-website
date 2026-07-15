@@ -6,14 +6,14 @@ import ServiceFAQ from "../components/shared/ServiceFAQ";
 import { FAQS, FAQ_CONTACT } from "../data/projectsData";
 
 export const metadata: Metadata = {
-  title: "Our Projects | RAS-VERTEX — Sunshine Coast",
+  title: "Our Projects | Sunshine Coast Painting & Maintenance",
   description:
     "Painting, waterproofing, rope access, building cleaning and maintenance projects across the Sunshine Coast. Body corporate, commercial, and strata.",
   alternates: {
     canonical: "/projects",
   },
   openGraph: {
-    title: "RAS-VERTEX — Our Projects",
+    title: "Our Projects | Sunshine Coast Painting & Maintenance",
     description:
       "Projects across the Sunshine Coast, spanning body corporate, commercial, strata, and industrial work.",
     url: "https://www.rasvertex.com.au/projects",

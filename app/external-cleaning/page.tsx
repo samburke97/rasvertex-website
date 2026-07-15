@@ -22,7 +22,7 @@ import {
 } from "../data/externalCleaningData";
 
 export const metadata = generatePageMetadata({
-  title: "External & Facade Cleaning Sunshine Coast | RAS-VERTEX",
+  title: "Facade & External Cleaning | Sunshine Coast High-Rise Pressure Cleaning",
   description:
     "Facade and pressure cleaning across the Sunshine Coast, using IRATA rope access, eco-friendly systems and QBCC licensed technicians.",
   path: "/external-cleaning",

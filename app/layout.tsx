@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   // ============================================
   // BASIC META
   // ============================================
-  title: "Commercial Property Maintenance Sunshine Coast | RAS-VERTEX",
+  title: "Property Maintenance | Sunshine Coast Painting & Cleaning",
   description:
     "The Sunshine Coast's property maintenance specialists. Painting, external & window cleaning, waterproofing, maintenance & height safety. 25+ years experience.",
   keywords: PRIMARY_KEYWORDS,
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     locale: SITE_LOCALE,
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Commercial Property Maintenance Sunshine Coast | RAS-VERTEX",
+    title: "Property Maintenance | Sunshine Coast Painting & Cleaning",
     description:
       "The Sunshine Coast's trusted property maintenance experts. Painting, external & window cleaning, waterproofing, maintenance & height safety. 25+ years experience.",
     images: [
@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@rasvertex", // Update with actual Twitter handle
     creator: "@rasvertex",
-    title: "RAS-VERTEX | Commercial Property Maintenance",
+    title: "Property Maintenance | Sunshine Coast Painting & Cleaning",
     description:
       "Queensland's trusted commercial property maintenance experts. Painting, cleaning, waterproofing & height safety services.",
     images: ["/twitter-image.jpg"], // 1200x600px recommended

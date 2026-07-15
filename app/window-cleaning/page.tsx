@@ -23,7 +23,7 @@ import {
 } from "../data/cleaningData";
 
 export const metadata = generatePageMetadata({
-  title: "Window Cleaning Sunshine Coast | RAS-VERTEX",
+  title: "Window Cleaning | High-Rise Cleaners Sunshine Coast",
   description:
     "The leading high-rise window cleaning team on the Sunshine Coast, using IRATA rope access and purified water systems for streak-free results.",
   path: "/window-cleaning",

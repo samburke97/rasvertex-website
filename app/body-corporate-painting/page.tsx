@@ -25,7 +25,7 @@ import {
 } from "../data/bodyCorporatePaintingData";
 
 export const metadata = generatePageMetadata({
-  title: "Body Corporate Painting Sunshine Coast | RAS-VERTEX",
+  title: "Body Corporate Painting | Strata Painters Sunshine Coast",
   description:
     "Sunshine Coast body corporate painting specialists, trusted on hundreds of strata projects and backed by IRATA rope access and an 8-year warranty.",
   path: "/body-corporate-painting",

@@ -24,7 +24,7 @@ import {
 } from "../data/waterproofingData";
 
 export const metadata = generatePageMetadata({
-  title: "Waterproofing Sunshine Coast | RAS-VERTEX",
+  title: "Waterproofing Services | Sunshine Coast Waterproofers",
   description:
     "Waterproofing for roofs, balconies and wet areas across the Sunshine Coast, from membrane replacement to remedial injection, backed by a written warranty.",
   path: "/waterproofing",

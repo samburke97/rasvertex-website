@@ -4,14 +4,14 @@ import type { Metadata } from "next";
 import BlogGrid from "../components/blog/BlogGrid";
 
 export const metadata: Metadata = {
-  title: "Blog | RAS-VERTEX — Building Maintenance Insights",
+  title: "Blog | Sunshine Coast Building Maintenance Insights",
   description:
     "Practical articles on rope access, waterproofing, body corporate maintenance, and building care from the RAS-VERTEX team on the Sunshine Coast.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "RAS-VERTEX Blog",
+    title: "Blog | Sunshine Coast Building Maintenance Insights",
     description:
       "Practical building maintenance insights from the Sunshine Coast's trusted property maintenance team.",
     url: "https://www.rasvertex.com.au/blog",
