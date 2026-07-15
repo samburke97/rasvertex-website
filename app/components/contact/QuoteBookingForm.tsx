@@ -159,6 +159,27 @@ export default function QuoteBookingForm({
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetId = useRef<string | null>(null);
 
+  // next/script's onLoad only fires for an actual network load. If this
+  // page was reached by client-side navigation from another page that had
+  // already loaded the Turnstile script, the script tag is reused as-is
+  // and onLoad never fires again here — window.turnstile is already
+  // sitting on the global object the whole time, we just never checked
+  // for it directly. Poll briefly for that case in addition to onLoad.
+  useEffect(() => {
+    if (turnstileScriptLoaded || !TURNSTILE_SITE_KEY) return;
+    if (window.turnstile) {
+      setTurnstileScriptLoaded(true);
+      return;
+    }
+    const interval = setInterval(() => {
+      if (window.turnstile) {
+        setTurnstileScriptLoaded(true);
+        clearInterval(interval);
+      }
+    }, 200);
+    return () => clearInterval(interval);
+  }, [turnstileScriptLoaded]);
+
   // The widget's container only exists in the DOM while step 2 is the
   // visible screen — not just while step === 2, but also not while the
   // success or error screen has replaced the form entirely. Keying the
