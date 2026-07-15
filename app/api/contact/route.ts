@@ -111,13 +111,23 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true, skipped: true });
     }
 
+    // A missing token means the widget never loaded client-side (ad
+    // blocker, privacy extension, corporate firewall) — the client already
+    // waits several seconds before allowing submission without one, so by
+    // the time we see this, it's a real customer, not a bot skipping the
+    // check. A *present* token still has to actually verify, though — that
+    // path stays strict.
     const turnstileToken = String(formData.get("turnstileToken") || "");
-    const humanVerified = await verifyTurnstileToken(turnstileToken, ip);
-    if (!humanVerified) {
-      return NextResponse.json(
-        { success: false, error: "Verification failed. Please try again." },
-        { status: 403 },
-      );
+    if (turnstileToken) {
+      const humanVerified = await verifyTurnstileToken(turnstileToken, ip);
+      if (!humanVerified) {
+        return NextResponse.json(
+          { success: false, error: "Verification failed. Please try again." },
+          { status: 403 },
+        );
+      }
+    } else {
+      console.warn(`Contact form submitted without a Turnstile token (ip: ${ip})`);
     }
 
     const services = formData.getAll("services").map(String);

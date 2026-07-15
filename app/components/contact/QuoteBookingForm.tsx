@@ -155,6 +155,7 @@ export default function QuoteBookingForm({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileScriptLoaded, setTurnstileScriptLoaded] = useState(false);
+  const [turnstileUnavailable, setTurnstileUnavailable] = useState(false);
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetId = useRef<string | null>(null);
 
@@ -195,6 +196,20 @@ export default function QuoteBookingForm({
       setTurnstileToken("");
     };
   }, [showTurnstile, turnstileScriptLoaded]);
+
+  // A blocked script (ad blocker, privacy extension, corporate firewall) or
+  // a widget that never fires its callback must never be the reason a real
+  // customer can't send an enquiry — spam prevention is a nice-to-have,
+  // a working contact form is not. If nothing has happened within a few
+  // seconds of reaching step 2, stop waiting on it.
+  useEffect(() => {
+    if (!showTurnstile || turnstileToken) {
+      setTurnstileUnavailable(false);
+      return;
+    }
+    const timer = setTimeout(() => setTurnstileUnavailable(true), 6000);
+    return () => clearTimeout(timer);
+  }, [showTurnstile, turnstileToken]);
 
   const [form, setForm] = useState({
     firstName: "",
@@ -251,7 +266,8 @@ export default function QuoteBookingForm({
         form.email.trim() !== "" &&
         form.mobile.trim() !== "" &&
         form.service !== ""
-      : form.propertyAddress.trim() !== "" && turnstileToken !== "";
+      : form.propertyAddress.trim() !== "" &&
+        (turnstileToken !== "" || turnstileUnavailable || !TURNSTILE_SITE_KEY);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);

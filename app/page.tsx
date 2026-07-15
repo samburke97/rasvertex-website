@@ -62,8 +62,8 @@ export default function Home() {
             </>
           }
           ariaLabel="Why building managers choose RAS-VERTEX"
-          footerCtaLabel="Get a free quote →"
-          footerCtaHref="/contact"
+          footerCtaLabel="Meet the team →"
+          footerCtaHref="/about-us"
           display="list"
           eyebrow=""
           variant="white"
