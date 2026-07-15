@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
   },
   images: {
-    formats: ["image/avif", "image/webp"],
+    // No AVIF — certain iOS Safari versions report AVIF support but fail to
+    // actually decode some AVIF-encoded images, leaving the <img> blank
+    // with no error (network request succeeds, it just never paints).
+    // WebP has universal, reliable Safari/iOS support with no such issue.
+    formats: ["image/webp"],
     remotePatterns: [
       {
         protocol: "https",
