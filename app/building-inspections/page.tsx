@@ -136,7 +136,7 @@ export default function BuildingInspectionsPage() {
           }}
           compactHeading
           headingId="building-inspections-services-heading"
-          ctaLabel="Not sure? Let's talk about it →"
+          ctaLabel="Let us know how we can help →"
           ctaHref="/contact"
         />
       </section>

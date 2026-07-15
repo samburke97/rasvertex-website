@@ -93,9 +93,9 @@ export default function HeightSafetyPage() {
               body: "The technicians who install your systems are the same ones who inspect and maintain them, so performance is understood in the real world, not just on paper.",
             },
             {
-              photo: HERO_SLIDES[3].src,
-              alt: HERO_SLIDES[3].alt,
-              title: "Engineering you can hand to your committee",
+              photo: cld("archers-reports", { width: 1200 }),
+              alt: "Building inspection report handed to a Sunshine Coast body corporate committee",
+              title: "Reports you can hand to your committee",
               body: "Every installation and inspection comes with clear, certified records ready for body corporate reporting, maintenance planning and insurance requirements.",
             },
           ]}
@@ -137,7 +137,7 @@ export default function HeightSafetyPage() {
           ariaLabel="What height safety service are you looking for?"
           services={SERVICES}
           headingId="height-safety-services-heading"
-          ctaLabel="Not sure? Let's talk about it →"
+          ctaLabel="Let us know how we can help →"
         />
       </section>
 

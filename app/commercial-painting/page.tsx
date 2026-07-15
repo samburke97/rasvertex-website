@@ -165,7 +165,7 @@ export default function CommercialPaintingPage() {
           ariaLabel="What kind of commercial painting are you looking for?"
           services={SERVICES}
           headingId="commercial-painting-services-heading"
-          ctaLabel="Not sure? Let's talk about it →"
+          ctaLabel="Let us know how we can help →"
         />
       </section>
 

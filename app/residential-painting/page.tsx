@@ -155,7 +155,7 @@ export default function ResidentialPaintingPage() {
           ariaLabel="What kind of residential painting are you looking for?"
           services={SERVICES}
           headingId="residential-painting-services-heading"
-          ctaLabel="Not sure? Let's talk about it →"
+          ctaLabel="Let us know how we can help →"
         />
       </section>
 
