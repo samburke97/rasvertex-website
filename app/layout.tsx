@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Bebas_Neue } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./styles/globals.css";
 import Navigation from "./components/layout/navigation/Navigation";
 import Footer from "./components/layout/footer/Footer";
@@ -213,6 +214,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
