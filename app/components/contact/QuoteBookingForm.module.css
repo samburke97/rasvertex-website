@@ -368,6 +368,7 @@
 /* ── Right video column ─────────────────────────────────────── */
 .videoCol {
   position: relative;
+  width: 100%;
   align-self: stretch;
 }
 
@@ -422,12 +423,17 @@
   .videoCol {
     order: 3;
     align-self: auto;
-    min-height: 0;
+    /* Explicit width + a real min-height floor — some Safari versions fail
+       to resolve aspect-ratio against a grid item's width when its only
+       content is a position: absolute fill image, collapsing the box (and
+       the image inside it) to 0 height even though the image loaded fine. */
+    width: 100%;
+    min-height: 200px;
   }
 
   .video {
     height: auto;
-    min-height: 0;
+    min-height: 200px;
     aspect-ratio: 16 / 9;
   }
 
