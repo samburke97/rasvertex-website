@@ -172,7 +172,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "How can I make sure my building stays compliant with height safety regulations?",
-    a: "The most reliable approach is a compliance management program, essentially one contractor who tracks your certification dates, schedules annual inspections and issues renewal reminders before anything lapses. We provide exactly this service for body corporates and commercial property managers across the Sunshine Coast, starting with a full audit of your existing systems before identifying gaps, carrying out remediation and putting a forward schedule in place.",
+    a: "The simplest way is a compliance management program: one contractor who tracks your certification dates, books the annual inspections and sends renewal reminders before anything lapses. We run this for body corporates and commercial property managers across the Sunshine Coast, starting with a full audit of what you've already got, then fixing any gaps and keeping you on schedule from there.",
   },
   {
     q: "Do you install and certify anchor points, static lines and roof access systems on the Sunshine Coast?",
@@ -180,7 +180,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Do you partner with body corporates and commercial buildings for ongoing height safety compliance?",
-    a: "Yes, this is one of our most commonly requested services. We act as the single point of contact for all height safety obligations, including annual inspections, recertification, system upgrades and compliance documentation. Body corporate committees receive a full report after every inspection, with findings, risk ratings and recommended actions, everything needed for committee minutes and insurance records.",
+    a: "Yes, this is one of our most requested services. We're the single point of contact for all your height safety obligations, annual inspections, recertification, system upgrades and paperwork. Your committee gets a full report after every inspection, ready for committee minutes and insurance records.",
   },
 ];
 

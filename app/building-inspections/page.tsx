@@ -39,7 +39,6 @@ export const metadata = generatePageMetadata({
     "rope access inspection Sunshine Coast",
     "pre-purchase building inspection Sunshine Coast",
     "10 year maintenance plan Sunshine Coast",
-    "concrete inspection Sunshine Coast",
     "facade condition report Sunshine Coast",
     "commercial building inspections Sunshine Coast",
     "roof inspections Sunshine Coast",
@@ -91,7 +90,7 @@ export default function BuildingInspectionsPage() {
               photo: HERO_SLIDES[2].src,
               alt: HERO_SLIDES[2].alt,
               title: "Thermal imaging included",
-              body: "We trace moisture and defects through the building envelope, uncovering issues you can’t see from the surface, so you stay ahead of costly surprises.",
+              body: "We trace moisture and defects hiding behind the walls and roof, uncovering issues you can’t see from the surface, so you stay ahead of costly surprises.",
             },
             {
               photo: HERO_SLIDES[3].src,
@@ -169,7 +168,7 @@ export default function BuildingInspectionsPage() {
           videoTagLocation="Aerial Inspection"
           hotspots={INSPECTION_HOTSPOTS}
           headingId="hotspots-heading"
-          ctaLabel="Book your drone inspection today →"
+          ctaLabel="Let's get started →"
           ctaHref="/contact"
         />
       </section>

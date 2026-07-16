@@ -60,7 +60,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Pressure Cleaning",
-    body: "Eco-friendly high pressure cleaning is our preferred approach across driveways, pavements, roofs, facades and hard surfaces, using the same recycled water vacuum system behind all of our cleaning work. For window panes we also cater to traditional methods such as squeegee cleaning where that suits the job.",
+    body: "We pressure clean driveways, pavements, roofs, facades and hard surfaces using the same recycled water vacuum system behind all our work. For window panes we also do it the traditional way with a squeegee, whichever suits the job.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
@@ -72,7 +72,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Facade & Cladding Wash",
-    body: "We apply an eco-friendly high pressure clean to rendered, painted and clad facades, lifting salt deposits, biological growth, mould and general pollution buildup that corrodes surfaces over time. It is part of any effective coastal building maintenance program.",
+    body: "We pressure clean rendered, painted and clad facades to lift salt, grime and mould before it eats into the surface. It's part of keeping any coastal building properly maintained.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
@@ -100,7 +100,7 @@ export const SERVICE_STEPS: InspectionStep[] = [
   {
     n: "04",
     title: "Pressure Cleaning",
-    body: "Eco-friendly high pressure cleaning is our preferred approach across driveways, pavements, roofs, facades and hard surfaces, using the same recycled water vacuum system behind all of our cleaning work. For window panes we also cater to traditional methods such as squeegee cleaning where that suits the job.",
+    body: "We pressure clean driveways, pavements, roofs, facades and hard surfaces using the same recycled water vacuum system behind all our work. For window panes we also do it the traditional way with a squeegee, whichever suits the job.",
     icon: PiDrop,
   },
   {
@@ -112,7 +112,7 @@ export const SERVICE_STEPS: InspectionStep[] = [
   {
     n: "06",
     title: "Facade & Cladding Wash",
-    body: "We apply an eco-friendly high pressure clean to rendered, painted and clad facades, lifting salt deposits, biological growth, mould and general pollution buildup that corrodes surfaces over time. It is part of any effective coastal building maintenance program.",
+    body: "We pressure clean rendered, painted and clad facades to lift salt, grime and mould before it eats into the surface. It's part of keeping any coastal building properly maintained.",
     icon: PiBuildings,
   },
 ];
@@ -122,7 +122,7 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     photo: "/images/projects/1.jpeg",
     alt: "Streak free rope access window cleaning on the Sunshine Coast",
     title: "Streak free results",
-    body: "Purified, deionised water leaves zero mineral residue on glass, so there are no squeegee marks and no streaks left behind. Every pane comes up crystal clear, on every visit, on every building we clean.",
+    body: "Purified water leaves zero mineral residue on glass, so there are no squeegee marks and no streaks left behind. Every pane comes up crystal clear, on every visit, on every building we clean.",
   },
   {
     photo: "/images/projects/2.jpeg",
@@ -152,7 +152,7 @@ export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "03",
     title: "Purified water cleaning",
-    body: "We remove dirt, salt and contaminants using deionised water systems.",
+    body: "We remove dirt, salt and grime using our purified water system.",
   },
   {
     n: "04",
@@ -255,7 +255,7 @@ export const CARDS: ServiceCard[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "What is the best method for high rise window cleaning on the Sunshine Coast?",
-    a: "Rope access is our preferred method of access for minimal disruption, and it's consistently the fastest and most cost effective method for high rise buildings on the Sunshine Coast. IRATA certified technicians descend from rooftop anchors using purified deionised water systems, with no disruption to ground level access. For buildings under four storeys, a water fed pole system delivers the same streak free result from the ground.",
+    a: "Rope access is our preferred method of access for minimal disruption, and it's consistently the fastest and most cost effective method for high rise buildings on the Sunshine Coast. IRATA certified technicians descend from rooftop anchors using our purified water system, with no disruption to ground level access. For buildings under four storeys, a water fed pole system delivers the same streak free result from the ground.",
   },
   {
     q: "How much does commercial window cleaning cost on the Sunshine Coast?",
@@ -271,7 +271,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "Can you safely clean solar panels on the Sunshine Coast?",
-    a: "Yes. We use a purified, deionised water system with soft bristle brushes, so there are no abrasive pads and no chemicals that could damage panel coatings or void manufacturer warranties. Solar cleaning is built straight into our rope access programs for rooftop panels on strata and commercial buildings.",
+    a: "Yes. We use a purified water system with soft bristle brushes, so there are no abrasive pads and no chemicals that could damage panel coatings or void manufacturer warranties. Solar cleaning is built straight into our rope access programs for rooftop panels on strata and commercial buildings.",
   },
 ];
 

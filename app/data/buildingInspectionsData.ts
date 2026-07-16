@@ -10,7 +10,6 @@ import { cld } from "../lib/cloudinary";
 import {
   PiMagnifyingGlass,
   PiDrone,
-  PiBuildings,
   PiCalculator,
   PiCloudLightning,
   PiCalendarCheck,
@@ -42,20 +41,14 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Facade Condition Inspections",
-    body: "We carry out a comprehensive visual and physical inspection of the full building facade, covering render, cladding, sealants, flashings, expansion joints, fixings and weep holes. Every element gets assessed, photographed and risk rated, then delivered as a written condition report with findings, risk classification and recommended remediation timeframes.",
+    body: "We inspect the full building facade, top to bottom, covering render, cladding, sealants and fixings. Every issue gets photographed and rated by urgency, then handed to you as a written report with clear next steps.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
     label: "Drone & Thermal Imaging",
-    body: "We combine aerial drone inspection for inaccessible or very tall facades with thermal imaging cameras that detect moisture ingress, delamination and air infiltration behind cladding and render that the naked eye simply cannot see. Thermal surveys work best in the early morning, before solar heat masks the temperature differentials we are looking for.",
+    body: "We combine drone footage for the full facade with thermal cameras that pick up hidden moisture and defects behind cladding and render before they show up as visible damage.",
     photo: "/images/projects/2.jpeg",
-    href: "/contact",
-  },
-  {
-    label: "Concrete & Structural Inspections",
-    body: "We assess concrete spalling, reinforcing corrosion, carbonation and concrete cancer, which is particularly relevant for Sunshine Coast buildings within about five kilometres of the ocean, where chloride induced reinforcement corrosion progresses noticeably faster than it does inland. Every finding is documented with photos and a remediation scope.",
-    photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
   {
@@ -116,35 +109,29 @@ export const SERVICE_STEPS: InspectionStep[] = [
   {
     n: "01",
     title: "Facade Condition Inspections",
-    body: "We carry out a comprehensive visual and physical inspection of the full building facade, covering render, cladding, sealants, flashings, expansion joints, fixings and weep holes. Every element gets assessed, photographed and risk rated, then delivered as a written condition report with findings, risk classification and recommended remediation timeframes.",
+    body: "We inspect the full building facade, top to bottom, covering render, cladding, sealants and fixings. Every issue gets photographed and rated by urgency, then handed to you as a written report with clear next steps.",
     icon: PiMagnifyingGlass,
   },
   {
     n: "02",
     title: "Drone & Thermal Imaging",
-    body: "We combine aerial drone inspection for inaccessible or very tall facades with thermal imaging cameras that detect moisture ingress, delamination and air infiltration behind cladding and render that the naked eye simply cannot see. Thermal surveys work best in the early morning, before solar heat masks the temperature differentials we are looking for.",
+    body: "We combine drone footage for the full facade with thermal cameras that pick up hidden moisture and defects behind cladding and render before they show up as visible damage.",
     icon: PiDrone,
   },
   {
     n: "03",
-    title: "Concrete & Structural Inspections",
-    body: "We assess concrete spalling, reinforcing corrosion, carbonation and concrete cancer, which is particularly relevant for Sunshine Coast buildings within about five kilometres of the ocean, where chloride induced reinforcement corrosion progresses noticeably faster than it does inland. Every finding is documented with photos and a remediation scope.",
-    icon: PiBuildings,
-  },
-  {
-    n: "04",
     title: "Sinking Fund Support Reports",
     body: "Our condition assessment reports are formatted for use in ten year maintenance plans and sinking fund forecasts under the Body Corporate and Community Management Act 1997, including a prioritised works schedule with cost estimates so committees have the data they need to plan levies accurately and avoid special levy surprises.",
     icon: PiCalculator,
   },
   {
-    n: "05",
+    n: "04",
     title: "Post Storm Damage Assessments",
     body: "We mobilise quickly after severe weather events, whether that is hail, cyclone or storm surge, to assess facade damage, membrane breaches and structural concerns. Insurance ready condition reports with photographic evidence and a scope of works are issued within 48 hours of the inspection.",
     icon: PiCloudLightning,
   },
   {
-    n: "06",
+    n: "05",
     title: "Annual Maintenance Inspections",
     body: "Our ongoing annual inspection programs track a building's condition over time, identifying early stage deterioration before it escalates into structural repair. Year on year condition data gives body corporate committees and property managers an accurate picture of their building's asset lifecycle.",
     icon: PiCalendarCheck,
@@ -162,7 +149,7 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     photo: "/images/projects/2.jpeg",
     alt: "Thermal imaging survey of a Sunshine Coast building facade",
     title: "Thermal imaging",
-    body: "We detect moisture, delamination and air infiltration behind cladding and render, defects that stay completely invisible to the naked eye without a proper thermal survey.",
+    body: "We spot hidden moisture and problems behind cladding and render that a thermal camera can see but your eyes never will.",
   },
   {
     photo: "/nav/maintenance.png",
@@ -193,7 +180,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Noosa",
     name: "Resort Pre Remediation Assessment",
     type: "Hospitality · resort complex",
-    system: "Concrete inspection · thermal imaging · remediation scope",
+    system: "Facade condition inspection · thermal imaging · remediation scope",
     image: "/images/projects/1.jpeg",
     alt: "Pre remediation building inspection at a Noosa resort",
   },
@@ -244,7 +231,7 @@ export const CARDS: ServiceCard[] = [
     photo: "/nav/maintenance.png",
     alt: "Medical facility building inspection on the Sunshine Coast",
     title: "Medical.",
-    body: "Hospitals and medical centres need facade and roof condition data without disrupting clinical operations. Our rope access and thermal imaging methods assess the full building envelope with minimal footprint on site.",
+    body: "Hospitals and medical centres need facade and roof condition data without disrupting clinical operations. Our rope access and thermal imaging methods cover the whole building with minimal footprint on site.",
     cta: "Book an inspection",
     href: "/contact",
   },
@@ -265,19 +252,19 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "How often should a building's facade be inspected on the Sunshine Coast?",
-    a: "We recommend annual building inspections for Sunshine Coast properties within about five kilometres of the ocean, since salt air, UV intensity and humidity speed up sealant degradation, render delamination and reinforcement corrosion well beyond what inland buildings experience. Buildings further from the coast can typically extend to inspections every two years. Annual inspections also build a condition baseline, which makes sinking fund forecasting significantly more accurate over time.",
+    a: "We recommend annual building inspections for Sunshine Coast properties within about five kilometres of the ocean, since salt air, UV and humidity wear buildings down much faster than they do further inland. Buildings further from the coast can typically extend to inspections every two years. Annual inspections also build a track record for your building, which makes sinking fund forecasting more accurate over time.",
   },
   {
     q: "What does a building inspection report include?",
-    a: "Our condition reports include a full defect register with location references and photographs, a risk classification for each defect across three priority levels, recommended remediation scope, indicative cost estimates for budgeting, a thermal imaging scan report where applicable, and an executive summary suitable for a body corporate committee or AGM. Reports are formatted for direct use in sinking fund forecasts and ten year maintenance plans.",
+    a: "Our reports include a full defect list with photos and locations, a priority rating for each issue, a cost estimate for budgeting, a thermal imaging scan where relevant, and a summary ready for your committee or AGM. Everything's formatted to drop straight into sinking fund forecasts and ten year maintenance plans.",
   },
   {
     q: "How is a rope access building inspection different from a standard inspection?",
-    a: "A standard building inspector works from the ground, ladders or a cherry picker, so their report reflects only what they can physically reach, which on a multi storey building is often very little. Our IRATA certified technicians descend the full facade from rooftop anchor points, physically assessing sealant condition, expansion joint integrity, render adhesion and balcony membrane upturns, all elements completely inaccessible to a ground level inspector. The difference in the quality of the condition data is significant.",
+    a: "A standard building inspector works from the ground, ladders or a cherry picker, so their report only covers what they can actually reach, which on a multi storey building often isn't much. Our IRATA certified technicians go down the full facade from rooftop anchor points, checking sealants, joints, render and balcony edges up close, all the things a ground level inspector simply can't get to.",
   },
   {
     q: "Can a building inspection report be used for an insurance claim?",
-    a: "Yes. Our post storm and post incident reports are formatted to support insurance claims, with timestamped photographs, documented defect locations and a scope of works. Where a claim needs to distinguish pre existing damage from storm caused damage, our condition baseline from prior annual building inspections provides the comparative evidence insurers require.",
+    a: "Yes. Our post storm reports are built to support insurance claims, with timestamped photos, defect locations and a scope of works. If a claim needs to separate pre-existing damage from storm damage, your past annual inspections give us the before-and-after evidence insurers ask for.",
   },
 ];
 
@@ -299,9 +286,9 @@ export const INSPECTION_HOTSPOTS: Hotspot[] = [
     title: "Render Delamination",
     priority: "1",
     priorityLabel: "Immediate action required",
-    body: "Hollow sections behind the render surface point to a loss of adhesion between the render and the substrate underneath. On the Sunshine Coast, thermal cycling and salt air speed up this process, and the bond breaks down from the back face, invisible until a section eventually falls.",
+    body: "Hollow sections mean the render has come loose from the wall underneath. Our sun and salt air speed this up, and you won't see it happening until a piece actually falls.",
     consequence:
-      "Delaminated render panels can fall from height, creating a serious public safety risk and significant liability exposure for the body corporate. Remediation costs increase substantially once water starts entering behind the render.",
+      "Loose render can fall from height, which is a real safety risk and a liability problem for the body corporate. The longer it's left, the more expensive the fix gets once water finds its way in behind it.",
   },
   {
     n: "02",
@@ -310,9 +297,9 @@ export const INSPECTION_HOTSPOTS: Hotspot[] = [
     title: "Sealant Failure at Expansion Joint",
     priority: "1",
     priorityLabel: "Immediate action required",
-    body: "The sealant at this expansion joint has hardened, cracked and pulled away from the substrate, so it is no longer functioning as a watertight seal. Expansion joints are specifically designed to accommodate building movement, and failed sealant here means uncontrolled water entry during every rain event.",
+    body: "The sealant here has hardened, cracked and pulled away from the wall, so it's no longer keeping water out. This joint is built to flex with the building, and once the seal fails, water gets in every time it rains.",
     consequence:
-      "Water tracking behind the facade will cause progressive concrete carbonation, reinforcement corrosion and internal water damage. In strata buildings this typically shows up as ceiling staining in the apartment below, by which point significant internal damage has usually already occurred.",
+      "Water getting in behind the facade causes real damage over time, and in strata buildings it usually shows up as staining on the ceiling of the unit below — by which point the damage is already done.",
   },
   {
     n: "03",

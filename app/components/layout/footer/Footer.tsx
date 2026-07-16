@@ -23,7 +23,7 @@ export default function Footer() {
       <Watermark className={styles.watermarkSpacing} />
 
       <Image
-        src="/logo.png"
+        src="/logo-full.png"
         alt="RAS-VERTEX"
         width={240}
         height={60}

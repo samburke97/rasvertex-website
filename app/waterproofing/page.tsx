@@ -72,7 +72,7 @@ export default function WaterproofingPage() {
               waterproofing team.
             </>
           }
-          lede="From crack repair and surface preparation through to diamond grinding and membrane application, we deliver end to end waterproofing across Sunshine Coast schools, body corporate communities and commercial buildings, keeping structures protected, watertight and built to handle our coastal conditions."
+          lede="From crack repair through to full membrane replacement, we handle waterproofing for schools, body corporates and commercial buildings across the Sunshine Coast, built to handle our coastal conditions."
           headingId="waterproofing-hero-heading"
           image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
         />
@@ -91,7 +91,7 @@ export default function WaterproofingPage() {
               photo: HERO_SLIDES[2].src,
               alt: HERO_SLIDES[2].alt,
               title: "Systems built for coastal conditions",
-              body: "We use waterproofing systems selected for Sunshine Coast exposure, including heat, salt and moisture, applied using equipment and methods that ensure proper bonding and coverage.",
+              body: "We select waterproofing systems for our heat, salt and moisture, and apply them properly so they actually bond and last.",
             },
             {
               photo: HERO_SLIDES[3].src,

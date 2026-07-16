@@ -423,18 +423,13 @@
   .videoCol {
     order: 3;
     align-self: auto;
-    /* Explicit width + a real min-height floor — some Safari versions fail
-       to resolve aspect-ratio against a grid item's width when its only
-       content is a position: absolute fill image, collapsing the box (and
-       the image inside it) to 0 height even though the image loaded fine. */
+    /* aspect-ratio (not just min-height) so the box has real intrinsic
+       height for the absolutely positioned fill image to fill — the image
+       itself can't drive its own height in fill mode, since Next.js
+       overrides it with an inline height: 100% against this parent. */
     width: 100%;
-    min-height: 200px;
-  }
-
-  .video {
-    height: auto;
-    min-height: 200px;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
+    min-height: 320px;
   }
 
   .cardNoVideo {

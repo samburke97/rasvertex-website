@@ -41,7 +41,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Concrete & Render Repairs",
-    body: "We use modern injection treatment equipment to repair cracks, chips and spalling, restoring both structural integrity and aesthetic appeal without unnecessary demolition.",
+    body: "We repair cracks, chips and crumbling concrete using modern injection equipment, restoring both strength and appearance without unnecessary demolition.",
     photo: cld("maintenance-sunshine-coast", { width: 1200 }),
     href: "/contact",
   },
@@ -228,23 +228,23 @@ export const PLAN_SLIDES: CarouselSlide[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "Why is routine building maintenance important for body corporates and strata buildings on the Sunshine Coast?",
-    a: "The Sunshine Coast's salt air, UV intensity and seasonal storms speed up deterioration in ways that are not always visible until they become expensive. Routine building maintenance, quarterly inspections, annual facade checks and preventative sealant programs, catches problems at the hairline crack stage rather than the structural repair stage. It also protects your committee from liability if something fails with no documented maintenance history to point to.",
+    a: "Our salt air, UV and storms wear buildings down faster than most places, often before you can see it happening. Routine maintenance, quarterly inspections, annual facade checks and sealant programs, catches problems while they're still cheap fixes, and gives your committee a paper trail if something ever goes wrong.",
   },
   {
     q: "What are the most common commercial building maintenance services on the Sunshine Coast?",
-    a: "Facade inspections, concrete and render repairs, roof restoration, leak detection and sign maintenance are the most frequently requested commercial building maintenance services. For coastal properties we add sealant replacement and anti corrosion treatment to the standard schedule, since salt air degrades caulking and fixings much faster here than at inland sites.",
+    a: "Facade inspections, concrete and render repairs, roof restoration, leak detection and sign maintenance are what we're asked for most. For coastal properties we also add sealant replacement, since salt air wears out caulking and fixings much faster here than it does inland.",
   },
   {
     q: "Do you offer ongoing maintenance plans for body corporates and commercial properties?",
-    a: "Yes. We build plans around your building's specific condition, your committee's budget cycle and your preferred inspection frequency. Plans range from a single annual inspection with a condition report through to a fully managed ongoing program covering every trade, and everything is documented and ready for committee review.",
+    a: "Yes. We build plans around your building's condition, your committee's budget cycle and how often you want us checking in, anywhere from one annual inspection to a fully managed program covering every trade, all documented and ready for committee review.",
   },
   {
     q: "What does roof restoration and repair involve on the Sunshine Coast?",
-    a: "We start with a thorough inspection, visual, physical and thermal imaging where required, then produce a scope of works with photos and a cost breakdown before any repair begins. Restoration typically involves repointing ridgelines, replacing damaged tiles or Colorbond sheets, resealing penetrations and applying a protective coating, with every job signed off by a post works condition report.",
+    a: "We start with a full inspection, then give you a scope of works with photos and a cost breakdown before any repair begins. Restoration typically means repointing ridgelines, replacing damaged tiles or Colorbond sheets, resealing penetrations and applying a protective coating.",
   },
   {
     q: "Will building maintenance work disrupt residents or tenants?",
-    a: "We plan every job to keep disruption to a minimum. Rope access is our preferred method of access for minimal disruption, so common areas and balconies stay clear, and we stage work zone by zone, notify affected residents in advance and schedule noisy work during building management's preferred hours. Most of our maintenance programs run without a single resident complaint.",
+    a: "We plan every job to keep disruption to a minimum. Rope access keeps common areas and balconies clear of scaffolding, we stage work zone by zone, and we notify residents in advance. Most of our maintenance programs run without a single complaint.",
   },
 ];
 

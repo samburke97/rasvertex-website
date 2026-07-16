@@ -84,7 +84,7 @@ export default function CleaningPage() {
               photo: HERO_SLIDES[1].src,
               alt: HERO_SLIDES[1].alt,
               title: "Gold standard water systems",
-              body: "Our purified, deionised water systems remove 99.9% of solids, preventing mineral deposits as your windows dry. Combined with rope access systems, we deliver an industry-leading streak-free finish.",
+              body: "Our purified water system leaves zero mineral residue, so there's nothing left behind as your windows dry. Combined with rope access, that's how we get a streak-free finish every time.",
             },
             {
               photo: HERO_SLIDES[2].src,

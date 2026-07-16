@@ -39,8 +39,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  height: 48px;
-  padding: 0 var(--space-lg);
+  min-height: 48px;
+  padding: var(--space-sm) var(--space-lg);
   background: var(--navy);
   color: #ffffff;
   border-radius: var(--radius-lg);

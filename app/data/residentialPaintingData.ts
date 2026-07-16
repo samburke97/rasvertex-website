@@ -46,7 +46,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Roof Painting & Restoration",
-    body: "We recoat Colorbond, terracotta tile and concrete tile roofs, pressure washing first, treating any moss or lichen, then priming and finishing with a commercial grade topcoat, the same process we rely on for commercial buildings. Heat reflective coatings are available too if you want to bring internal temperatures down.",
+    body: "We recoat Colorbond, terracotta tile and concrete tile roofs, pressure washing first, clearing off any moss or green growth, then priming and finishing with a commercial grade topcoat, the same process we rely on for commercial buildings. Heat reflective coatings are available too if you want to bring internal temperatures down.",
     photo: cld("roof-coatings-home", { width: 1200 }),
     href: "/contact",
   },

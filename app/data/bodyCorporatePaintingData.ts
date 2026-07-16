@@ -53,7 +53,7 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Roof Coatings",
-    body: "We recoat Colorbond, tile and concrete roofs on strata buildings, starting with a pressure wash and moss or lichen treatment before priming and finishing with a commercial grade topcoat. Heat reflective options are available too, which helps keep top floor units cooler.",
+    body: "We recoat Colorbond, tile and concrete roofs on strata buildings, starting with a pressure wash to clear off moss and grime before priming and finishing with a commercial grade topcoat. Heat reflective options are available too, which helps keep top floor units cooler.",
     photo: cld("roof-coatings", { width: 1200 }),
     href: "/contact",
   },

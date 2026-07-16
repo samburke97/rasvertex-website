@@ -168,7 +168,7 @@ export const BLOG_POSTS: BlogPost[] = [
         type: "ul",
         items: [
           "Salt deposits: speed up corrosion of fixings, flashings and cladding within about five kilometres of the coast",
-          "Biological growth: algae, lichen and moss hold moisture against the surface and degrade coatings over time",
+          "Green growth: algae and moss hold moisture against the surface and degrade coatings over time",
           "Pollution and dust: block weep holes and drainage channels, which leads to water ingress",
           "UV degradation: sped up by dirty surfaces that trap heat against the substrate underneath",
         ],

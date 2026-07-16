@@ -70,13 +70,13 @@ export const SERVICES: AccordionService[] = [
   },
   {
     label: "Leak Detection & Repair",
-    body: "Using thermal imaging and moisture detection equipment, we locate the exact source of water ingress without unnecessary destructive investigation. On the Sunshine Coast, water often travels through concrete well before it becomes visible, so we trace it back to the true origin rather than just treating the surface damage.",
+    body: "Using thermal imaging and moisture detection gear, we find exactly where water is getting in without tearing the place apart to look. On the Sunshine Coast, water often travels through concrete well before it becomes visible, so we trace it back to the real source instead of just patching the surface damage.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
   {
     label: "Remedial & Injection Works",
-    body: "We use epoxy and polyurethane injection to stop active leaks in concrete structures, including basements, lift pits and retaining walls. This seals the water ingress at the source and helps protect the reinforcing steel from ongoing corrosion.",
+    body: "We inject a sealant directly into cracks to stop active leaks in concrete structures, including basements, lift pits and retaining walls. This stops the water getting in at the source and protects the steel underneath from rusting.",
     photo: "/images/projects/1.jpeg",
     href: "/contact",
   },
@@ -98,13 +98,13 @@ export const SERVICE_STEPS: InspectionStep[] = [
   {
     n: "03",
     title: "Leak Detection & Repair",
-    body: "Using thermal imaging and moisture detection equipment, we locate the exact source of water ingress without unnecessary destructive investigation. On the Sunshine Coast, water often travels through concrete well before it becomes visible, so we trace it back to the true origin rather than just treating the surface damage.",
+    body: "Using thermal imaging and moisture detection gear, we find exactly where water is getting in without tearing the place apart to look. On the Sunshine Coast, water often travels through concrete well before it becomes visible, so we trace it back to the real source instead of just patching the surface damage.",
     icon: PiMagnifyingGlass,
   },
   {
     n: "04",
     title: "Remedial & Injection Works",
-    body: "We use epoxy and polyurethane injection to stop active leaks in concrete structures, including basements, lift pits and retaining walls. This seals the water ingress at the source and helps protect the reinforcing steel from ongoing corrosion.",
+    body: "We inject a sealant directly into cracks to stop active leaks in concrete structures, including basements, lift pits and retaining walls. This stops the water getting in at the source and protects the steel underneath from rusting.",
     icon: PiSyringe,
   },
 ];
@@ -119,8 +119,8 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
   {
     photo: "/images/projects/2.jpeg",
     alt: "Diamond grinding equipment used for waterproofing preparation on the Sunshine Coast",
-    title: "German engineered equipment",
-    body: "Our diamond grinding equipment runs off three phase generators, paired with HEPA filtered vacuum extractors, producing a surface that membranes actually bond to properly.",
+    title: "Proper equipment, no dust everywhere",
+    body: "Our diamond grinding gear runs with full dust extraction, so the surface is properly prepped and your site isn't left covered in concrete dust.",
   },
   {
     photo: "/nav/waterproofing.png",

@@ -33,25 +33,25 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Facade Cleaning and Rope Access",
-    body: "Eco-friendly high pressure cleaning is our preferred approach on rendered, painted and clad facades, lifting salt deposits, biological growth and general pollution buildup before they start corroding the surface underneath. Our IRATA certified rope access team reaches every high rise facade at any height, with no disruption to tenants or car parks below.",
+    body: "We pressure clean rendered, painted and clad facades to lift salt, grime and growth before it eats into the surface underneath. Our IRATA certified rope access team reaches every high rise facade at any height, with no scaffolding and no disruption to tenants or car parks below.",
     photo: cld("bw1", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Roof Cleaning",
-    body: "Our eco-friendly high pressure roof cleaning suits tile, Colorbond and membrane roofs, removing lichen, moss and algae at a pressure set safely for the surface. We clear gutters and downpipes in the same visit, so water can actually drain the way it's supposed to. It extends the life of the roof and clears away the growth that traps moisture and speeds up deterioration in our humidity.",
+    body: "We clear moss, algae and grime off tile, Colorbond and membrane roofs, at a pressure that's safe for the surface. We clear gutters and downpipes in the same visit, so water actually drains the way it's meant to and your roof lasts longer.",
     photo: cld("roof-cleaning", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Hard Surface Cleaning",
-    body: "Our industrial grade hot water pressure cleaning handles driveways, pavements, pool surrounds, car parks, loading docks and hard stands, lifting oil, grease, tyre marks and biological staining that cold water alone will never shift. Our 100 percent recycled water system deep cleans concrete and hard surfaces while recovering all wastewater on site.",
+    body: "Our hot water pressure cleaning handles driveways, pavements, pool surrounds, car parks, loading docks and hard stands, lifting oil, grease, tyre marks and stains that cold water alone won't shift. Every drop of wastewater is recovered on site through our 100 percent recycled water system.",
     photo: cld("hard-surface", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Specialist Cleaning and Programs",
-    body: "We handle graffiti removal using surface appropriate solvents and pressure washing that will not damage the substrate underneath, along with complete post construction clean downs before handover. We also run ongoing strata and body corporate maintenance programs with committee ready condition reporting after every visit.",
+    body: "We handle graffiti removal without damaging what's underneath, plus full clean downs before handover on new builds and renovations. We also run ongoing cleaning programs for strata and body corporates, with a report after every visit.",
     photo: cld("specialist-cleaning", { width: 1200 }),
     href: "/contact",
   },
@@ -123,14 +123,6 @@ export const CARDS: ServiceCard[] = [
     href: "/contact",
   },
   {
-    photo: "/nav/cleaning.png",
-    alt: "Industrial exterior cleaning on the Sunshine Coast",
-    title: "Industrial.",
-    body: "Tilt slab warehouses, factories and industrial sites build up oil, grease and airborne contamination that generic pressure washing will not shift. Our hot water systems break down hydrocarbon staining on hardstands and facades, with full wastewater recovery to meet site environmental requirements.",
-    cta: "Get a building wash quote",
-    href: "/contact",
-  },
-  {
     photo: "/images/projects/2.jpeg",
     alt: "Education facility exterior cleaning on the Sunshine Coast",
     title: "Education.",
@@ -159,23 +151,23 @@ export const CARDS: ServiceCard[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "How often should commercial buildings on the Sunshine Coast be pressure cleaned?",
-    a: "As a general rule we recommend a full building wash annually, though properties within about five kilometres of the coast may need it a little more often since salt spray and biological growth build up quickly this close to the water. Get in touch and we'll recommend a schedule suited to your building's exposure and occupancy.",
+    a: "As a general rule, once a year. If you're within five kilometres of the coast, salt spray and grime build up faster, so it might need doing more often. Get in touch and we'll recommend a schedule that suits your building.",
   },
   {
     q: "Will pressure cleaning damage rendered facades, paint or roof tiles?",
-    a: "No. Eco-friendly high pressure cleaning is our preferred approach for external building cleaning, and we calibrate the pressure and technique to suit each surface, whether that's rendered facades, paint, roof tiles or hard surfaces like concrete and pavers, so nothing gets damaged along the way.",
+    a: "No. We adjust the pressure and technique for each surface, whether that's render, paint, roof tiles or hard surfaces like concrete and pavers, so nothing gets damaged in the process.",
   },
   {
     q: "Can you provide high rise building cleaning on the Sunshine Coast without scaffolding?",
-    a: "Yes. Rope access is our preferred method of access for minimal disruption. Our IRATA certified rope access team reaches any height from rooftop anchor points, faster to deploy and far less disruptive to residents and tenants, which is why most of our high rise building cleaning work across the Sunshine Coast uses rope access as standard.",
+    a: "Yes. Our IRATA certified rope access team reaches any height straight from rooftop anchor points, no scaffolding needed. It's faster to set up and far less disruptive to residents and tenants, which is why it's our standard approach for high rise cleaning.",
   },
   {
     q: "Is your external building cleaning process environmentally compliant?",
-    a: "Yes. Our pressure cleaning system runs on 100 percent recycled, filtered water with full vacuum recovery, so nothing is discharged to stormwater. We use pH neutral, biodegradable cleaning agents on every building cleaning job we run across the Sunshine Coast.",
+    a: "Yes. Our system runs on 100 percent recycled, filtered water with full vacuum recovery, so nothing goes down the stormwater drain. We use biodegradable cleaning agents on every job.",
   },
   {
     q: "Do you provide condition reports for strata and body corporate building cleaning?",
-    a: "Yes. Every visit includes photographic reporting and condition notes suitable for committees, councils and asset managers, logged and available through your own portal if that is something you would like.",
+    a: "Yes. Every visit comes with photos and condition notes your committee or property manager can use, logged in your own portal if you'd like access to it.",
   },
 ];
 
