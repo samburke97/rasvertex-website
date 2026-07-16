@@ -41,7 +41,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Facade Repaints",
-    body: "We carry out full exterior repaints for strata buildings of any height, across render, masonry, concrete and cladding. Anything within five kilometres of the coast gets a chloride rinse and a coating system tailored to our coastal climate, specified to suit the actual substrate and exposure, not picked off a generic price list.",
+    body: "We carry out full exterior repaints for strata buildings of any height, across render, masonry, concrete and cladding. Anything within five kilometres of the coast gets an environmentally friendly pressure clean and a coating system tailored to our coastal climate, specified to suit the actual substrate and exposure, not picked off a generic price list.",
     photo: cld("exterior-facade", { width: 1200 }),
     href: "/contact",
   },
@@ -83,7 +83,7 @@ export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "03",
     title: "Surface Preparation",
-    body: "High pressure washing, mould treatment, crack repairs, sealant replacement and chloride rinse all happen before a single coat goes on. Preparation is what determines how long the paint actually lasts, so we spend more time here than most painters spend on the entire job, and it means no substrate surprises turning up mid project.",
+    body: "An environmentally friendly pressure clean, mould treatment, crack repairs and sealant replacement all happen before a single coat goes on. Preparation is what determines how long the paint actually lasts, so we spend more time here than most painters spend on the entire job, and it means no substrate surprises turning up mid project.",
     deliverable: "Prep completion sign off",
     icon: PiHammer,
     links: [
@@ -126,7 +126,7 @@ export const CREDENTIALS: Credential[] = [
   {
     n: "03",
     title: "Coastal spec paint systems, not generic inland products.",
-    body: "Chloride rinse and a flexible topcoat are standard on anything within five kilometres of the coast. We specify coating systems tailored to our coastal climate, matched to the substrate and exposure your building actually faces, not something picked from a price list.",
+    body: "An environmentally friendly pressure clean and a flexible topcoat are standard on anything within five kilometres of the coast. We specify coating systems tailored to our coastal climate, matched to the substrate and exposure your building actually faces, not something picked from a price list.",
     photo: "/images/projects/1.jpeg",
     photoAlt:
       "Coastal spec paint system being applied to a Sunshine Coast strata building",
@@ -170,7 +170,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Caloundra",
     name: "Beachside Strata Repaint",
     type: "Body Corporate · 6 storeys · full exterior + common areas",
-    system: "Coastal-climate coating system · chloride rinse · colour consult",
+    system: "Coastal-climate coating system · environmentally friendly pressure clean · colour consult",
     image: "/images/projects/1.jpeg",
     alt: "Beachside strata repaint in Caloundra",
   },
@@ -195,7 +195,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "What warranty and paint systems do you provide for Sunshine Coast strata painting projects?",
-    a: "Within five kilometres of the coast, we specify a coating system tailored to our coastal climate with a chloride rinse pre treatment, using a flexible topcoat to bridge hairline cracks and handle movement. Every strata project carries an eight year written workmanship warranty issued at handover, plus manufacturer warranties of up to fifteen years registered in the body corporate's name.",
+    a: "Within five kilometres of the coast, we specify a coating system tailored to our coastal climate with an environmentally friendly pressure clean pre treatment, using a flexible topcoat to bridge hairline cracks and handle movement. Every strata project carries an eight year written workmanship warranty issued at handover, plus manufacturer warranties of up to fifteen years registered in the body corporate's name.",
   },
 ];
 

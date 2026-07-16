@@ -38,7 +38,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Painting",
-    body: "We carry out full exterior repaints for strata, commercial and residential buildings right across the Sunshine Coast. Anything within about five kilometres of the water gets a chloride rinse and a coating system tailored to our coastal climate, because that is what actually holds up against our salt air.",
+    body: "We carry out full exterior repaints for strata, commercial and residential buildings right across the Sunshine Coast. Anything within about five kilometres of the water gets an environmentally friendly pressure clean and a coating system tailored to our coastal climate, because that is what actually holds up against our salt air.",
     photo: cld("exterior", { width: 1800 }),
     href: "/contact",
   },
@@ -92,7 +92,7 @@ export const WHY_CHOOSE_US: ServiceCard[] = [
     photo: cld("avere-repaint", { width: 1800 }),
     alt: "Coastal spec paint system applied to a Sunshine Coast high rise building",
     title: "Coastal spec paint systems",
-    body: "We match chloride rinse treatments and flexible topcoats to whatever substrate and exposure your building is actually dealing with, rather than reaching for the same system regardless of how close it sits to the coast.",
+    body: "We match environmentally friendly pressure clean treatments and flexible topcoats to whatever substrate and exposure your building is actually dealing with, rather than reaching for the same system regardless of how close it sits to the coast.",
   },
 ];
 
@@ -147,7 +147,7 @@ export const CARDS: ServiceCard[] = [
     photo: cld("commercial-painters", { width: 1200 }),
     alt: "Commercial painting on the Sunshine Coast",
     title: "Commercial Painting",
-    body: "For more than 25 years, we've delivered commercial painting projects across the Sunshine Coast, from schools and hotels to shopping centres and high-rise buildings. We plan every project around your operations, using rope access, EWPs and staged works to minimise disruption. Our team also identifies and repairs defects before painting, protecting your building for the long run.",
+    body: "For more than 25 years, we've delivered commercial painting projects across the Sunshine Coast, from schools and hotels to shopping centres and high-rise buildings. We plan every project around your operations, using rope access and staged works to minimise disruption. Our team also identifies and repairs defects before painting, protecting your building for the long run.",
     cta: "Commercial painting",
     href: "/commercial-painting",
   },
@@ -164,7 +164,7 @@ export const CARDS: ServiceCard[] = [
     alt: "Residential painting on the Sunshine Coast",
     objectPosition: "top",
     title: "Residential Painting",
-    body: "Backed by 25+ years of experience, our local team delivers high-quality residential painting with expert colour advice, premium products and meticulous workmanship. With no subcontractors and clear communication throughout, we make the process straightforward from start to finish.",
+    body: "Our local team delivers high-quality residential painting with expert colour advice, premium products and meticulous workmanship. With no subcontractors and clear communication throughout, we make the process straightforward from start to finish.",
     cta: "Residential painting",
     href: "/residential-painting",
   },

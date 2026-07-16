@@ -93,13 +93,12 @@ export default function AboutPage() {
           photoAlt="RAS-VERTEX sponsoring the Coolum Football Club"
           title={
             <>
-              We back the community{" "}
-              <br className="hidden xl:block" />
+              We back the community <br className="hidden xl:block" />
               that backs us.
             </>
           }
           paragraphs={[
-            "Our crew live here, their kids play here, and we put our name behind the local clubs and causes that make the Sunshine Coast what it is.",
+            "Our crew live here, their kids play here, and we proudly support the local clubs and causes that help our Sunshine Coast community thrive.",
           ]}
           logos={[
             {

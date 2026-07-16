@@ -109,7 +109,7 @@ export default function PaintingPage() {
 
       <section className="px-5 md:px-10 py-10 md:py-20" aria-label="Warranty">
         <WarrantyCard
-          body="We back every exterior paint job with an 8-year written warranty covering workmanship and the paint system. That's why we only specify Haymes and Dulux coatings, proven to perform in Sunshine Coast's salt air, UV and coastal conditions."
+          body="Every exterior paint job is backed by an 8-year written warranty covering workmanship and the paint system. We only use Haymes and Dulux coatings, proven to perform in Sunshine Coast’s harsh coastal conditions."
           logosHeading="Backed by the best."
           logos={[
             {

@@ -78,7 +78,7 @@ export default function CommercialPaintingPage() {
               25 years of experience.
             </>
           }
-          lede="From high rise facade repaints to commercial rooftops, we deliver commercial painting for councils, schools, hotels, shopping centres, and commercial property managers across the Sunshine Coast. Combining IRATA certified rope access, commercial grade Dulux and Haymes coating systems, and meticulous surface preparation, we deliver long lasting results with minimal disruption to your business."
+          lede="From high rise facade repaints to commercial rooftops, we deliver commercial painting for councils, schools, hotels and shopping centres across the Sunshine Coast. Combining IRATA certified rope access, commercial grade Dulux and Haymes coating systems, and meticulous surface preparation, we deliver long lasting results with minimal disruption to your business."
           image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="commercial-painting-hero-heading"
           breadcrumb={{
@@ -107,8 +107,8 @@ export default function CommercialPaintingPage() {
             {
               photo: HERO_SLIDES[3].src,
               alt: HERO_SLIDES[3].alt,
-              title: "The right paint system for your building",
-              body: "Every project is engineered around the building, substrate, and exposure conditions, ensuring coatings are specified correctly for long-term durability and warranty compliance.",
+              title: "25+ Years of Paint",
+              body: "Family owned and operated on the Sunshine Coast, we combine decades of experience with premium coating systems, skilled, in-house trade and a commitment to doing the job properly, as you'd expect from your neighbour.",
             },
           ]}
           heading={
@@ -133,7 +133,7 @@ export default function CommercialPaintingPage() {
           stat="8"
           statLabel={"year\nwarranty"}
           heading="Specified right. Warranted in writing."
-          body="Every commercial repaint comes with an 8-year written workmanship warranty. Where eligible Dulux and Haymes systems are used, the manufacturer warranty of up to 15 years is also passed on to the building owner, giving you clear protection on both the work and the materials."
+          body="Every commercial repaint includes an 8-year workmanship warranty, with eligible Dulux and Haymes systems backed by manufacturer warranties of up to 15 years for added protection."
           logosHeading="Backed by the best."
           logos={[
             {
@@ -156,8 +156,7 @@ export default function CommercialPaintingPage() {
         <ServiceAccordion
           heading={
             <>
-              What kind of painting{" "}
-              <br className="hidden md:block" />
+              What kind of painting <br className="hidden md:block" />
               are you looking for?
             </>
           }
@@ -216,8 +215,8 @@ export default function CommercialPaintingPage() {
           className="px-5 md:px-10 pb-10 md:pb-20"
         >
           Complete commercial property care, not just{" "}
-          <br className="hidden xl:block" />a repaint, explore our full range
-          of services below.
+          <br className="hidden xl:block" />a repaint, explore our full range of
+          services below.
         </h2>
         <ServiceCarousel
           slides={SERVICE_SLIDES.filter((slide) => slide.href !== "/painting")}

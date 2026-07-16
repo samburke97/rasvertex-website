@@ -40,7 +40,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior House Painting",
-    body: "We carry out full exterior repaints for homes across the Sunshine Coast, whether that is weatherboard, timber, rendered walls, brick or fibre cement. Coastal properties within about five kilometres of the ocean get a chloride rinse and a coating system tailored to our coastal climate before any topcoat goes on, the very same preparation standard we use on high rise body corporates, just applied to your home instead.",
+    body: "We carry out full exterior repaints for homes across the Sunshine Coast, whether that is weatherboard, timber, rendered walls, brick or fibre cement. Coastal properties within about five kilometres of the ocean get an environmentally friendly pressure clean and a coating system tailored to our coastal climate before any topcoat goes on, the very same preparation standard we use on high rise body corporates, just applied to your home instead.",
     photo: cld("exterior-house-painting", { width: 1200 }),
     href: "/contact",
   },
@@ -126,11 +126,11 @@ export const PROJECTS: ServiceProject[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "How much does house painting cost on the Sunshine Coast?",
-    a: "Cost depends on the size of the home, the number of rooms or the extent of the exterior, and how much surface preparation is needed. As residential painters across the Sunshine Coast, we quote every home individually after a site visit, with a fixed written price and no hidden extras. Coastal homes within five kilometres of the ocean can cost a little more, since they need chloride treatment to last.",
+    a: "Cost depends on the size of the home, the number of rooms or the extent of the exterior, and how much surface preparation is needed. As residential painters across the Sunshine Coast, we quote every home individually after a site visit, with a fixed written price and no hidden extras. Coastal homes within five kilometres of the ocean can cost a little more, since they need an environmentally friendly pressure clean treatment to last.",
   },
   {
     q: "Should I hire a professional for exterior house painting on the Sunshine Coast, or do it myself?",
-    a: "For small interior touch ups, doing it yourself is perfectly fine. For exterior house painting on the Sunshine Coast though, especially within five kilometres of the ocean, professional preparation is the difference between a finish that lasts a decade and one that peels within two years. Salt air, UV intensity and humidity call for chloride treatment and commercial grade topcoats that a hardware store simply will not stock, plus a written warranty a DIY job never comes with.",
+    a: "For small interior touch ups, doing it yourself is perfectly fine. For exterior house painting on the Sunshine Coast though, especially within five kilometres of the ocean, professional preparation is the difference between a finish that lasts a decade and one that peels within two years. Salt air, UV intensity and humidity call for an environmentally friendly pressure clean treatment and commercial grade topcoats that a hardware store simply will not stock, plus a written warranty a DIY job never comes with.",
   },
   {
     q: "What is included in an exterior house painting project on the Sunshine Coast?",
@@ -160,7 +160,7 @@ export const CREDENTIALS: Credential[] = [
   {
     n: "01",
     title: "A commercial prep standard, applied to your home.",
-    body: "We bring the same surface preparation we use on high rise body corporates, chloride rinse, crack repairs, to every residential job within five kilometres of the coast. Standard paint systems tend to fail on coastal homes within two to three years without that level of prep. Ours do not.",
+    body: "We bring the same surface preparation we use on high rise body corporates, environmentally friendly pressure clean, crack repairs, to every residential job within five kilometres of the coast. Standard paint systems tend to fail on coastal homes within two to three years without that level of prep. Ours do not.",
     photo: "/images/projects/1.jpeg",
     photoAlt:
       "Painter preparing a coastal home exterior on the Sunshine Coast",

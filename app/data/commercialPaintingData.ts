@@ -41,19 +41,19 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "High Rise Facade Repaints",
-    body: "We repaint anything from single storey apartment complexes to high-rise commercial buildings using IRATA certified rope access, our preferred method of access for minimal disruption, with no footprint sitting on your ground floor. Within about five kilometres of the coast we treat every facade with a chloride rinse first, then finish with a coating system tailored to our coastal climate.",
+    body: "We repaint anything from single storey apartment complexes to high-rise commercial buildings using IRATA certified rope access, our preferred method of access for minimal disruption, with no footprint sitting on your ground floor. Within about five kilometres of the coast we treat every facade with an environmentally friendly pressure clean first, then finish with a coating system tailored to our coastal climate.",
     photo: cld("commercial_hero_5", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Render & Texture Coatings",
-    body: "We apply acrylic, polymer and sand finish render systems across commercial facades, and every crack or substrate defect gets repaired properly before any coating goes on rather than bridged over with a quick fix. Preparation is really half the job, and we never shortcut it.",
+    body: "We specialise in commercial render finishes and facade repairs, restoring tired buildings with clean, durable results. From minor repairs to full facade upgrades, our team prepares surfaces properly to ensure a finish that looks great and stands the test of time.",
     photo: "/images/projects/2.jpeg",
     href: "/contact",
   },
   {
     label: "Roof Coatings",
-    body: "We recoat Colorbond, tile and concrete roofs on commercial buildings across the region, and a heat reflective coating can bring internal temperatures down by up to eight degrees. That translates into a genuine energy saving for the building and a noticeably more comfortable top floor for tenants.",
+    body: "From Colorbond and tile roofs to concrete roof systems, our team delivers professional rooftop repaints across the Sunshine Coast. We focus on thorough preparation, repairs and waterproofing to provide a long-lasting finish that protects your asset. If your building experiences excessive heat, we can assess whether a heat reflective coating system could help improve roof performance and comfort.",
     photo: cld("roof-coatings", { width: 1200 }),
     href: "/contact",
   },
@@ -69,7 +69,7 @@ export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "01",
     title: "Site Assessment",
-    body: "We start with a detailed inspection of your building, looking at substrate condition, existing coatings, access requirements and any repairs worth addressing before painting begins. That gives us an accurate scope from day one, rather than surprises further down the track.",
+    body: "We start with a detailed inspection of your building, assessing condition, existing coatings, access requirements and any repairs worth addressing before painting begins. That gives us an accurate scope from day one, rather than surprises further down the track.",
     deliverable: "Written condition assessment",
     icon: PiMagnifyingGlass,
   },
@@ -83,7 +83,7 @@ export const PROCESS_STEPS: InspectionStep[] = [
   {
     n: "03",
     title: "Surface Preparation",
-    body: "Before any paint goes on, we complete the preparation that gives the coating system a genuine chance of performing for years to come. A pressure clean is standard, alongside mould treatment, crack repairs, sealant replacement and chloride rinsing wherever it is needed.",
+    body: "Before any paint goes on, we complete the preparation that gives the coating system a genuine chance of performing for years to come. An environmentally friendly pressure clean is standard, alongside mould treatment, crack repairs and sealant replacement.",
     deliverable: "Prep completion sign off",
     icon: PiHammer,
     links: [
@@ -120,7 +120,8 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Maroochydore",
     name: "CBD Commercial Tower",
     type: "Commercial · 10 storeys",
-    system: "Coastal-climate coating system · render repairs · full facade repaint",
+    system:
+      "Coastal-climate coating system · render repairs · full facade repaint",
     image: "/images/projects/2.jpeg",
     alt: "Maroochydore CBD commercial tower painting project",
   },
@@ -128,7 +129,8 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Coolum Beach",
     name: "RACV Resort Complex",
     type: "Hospitality · resort complex",
-    system: "Coastal-climate coating system · heritage palette · multi building program",
+    system:
+      "Coastal-climate coating system · heritage palette · multi building program",
     image: "/images/projects/1.jpeg",
     alt: "RACV Coolum Resort exterior painting project",
   },
@@ -217,7 +219,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: "What paint systems do you use for commercial buildings in coastal conditions?",
-    a: "Within about five kilometres of the coast, we specify a chloride rinse pre treatment and a flexible topcoat as standard, using coating systems tailored to our coastal climate for masonry, render and textured surfaces. The flexible topcoat bridges hairline cracks and handles the movement coastal commercial buildings experience, which standard topcoats cannot manage.",
+    a: "Within about five kilometres of the coast, we specify an environmentally friendly pressure clean and a flexible topcoat as standard, using coating systems tailored to our coastal climate for masonry, render and textured surfaces. The flexible topcoat bridges hairline cracks and handles the movement coastal commercial buildings experience, which standard topcoats cannot manage.",
   },
   {
     q: "Are you QBCC licensed and what warranty do you offer on commercial painting?",
