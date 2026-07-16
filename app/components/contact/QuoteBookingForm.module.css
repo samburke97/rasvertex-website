@@ -432,6 +432,15 @@
     min-height: 320px;
   }
 
+  /* The base .video rule below sets min-height: 480px for desktop — that
+     still applies here since fill mode's inline styles only cover height
+     and width, not min-height. Left unset, it overrides videoCol's aspect
+     ratio and forces the absolutely positioned image past its own
+     container's bottom edge, spilling into whatever follows. */
+  .video {
+    min-height: 0;
+  }
+
   .cardNoVideo {
     gap: var(--space-2xl);
   }
