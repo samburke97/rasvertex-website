@@ -124,7 +124,7 @@ export default function Home() {
           }
           leadParagraph="For 25 years, we've helped Sunshine Coast properties maintain higher standards. How can we help yours?"
           showGoogleRating={false}
-          showVideo={false}
+          showPhoto={false}
         />
       </section>
     </>

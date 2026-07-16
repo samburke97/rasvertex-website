@@ -12,7 +12,7 @@
   border-radius: var(--radius-3xl);
 }
 
-.cardNoVideo {
+.cardNoPhoto {
   grid-template-columns: minmax(280px, 35%) minmax(420px, 45%);
   justify-content: space-between;
   gap: var(--space-5xl);
@@ -104,8 +104,8 @@
 
 /* ── Middle form column ─────────────────────────────────────── */
 /* Fixed min-height so step 1 (5 fields) and step 2 (address, message,
-   photos) don't resize the row when switching — otherwise the
-   stretched video column jumps height along with it. */
+   photos) don't resize the form, shifting the footer buttons when
+   switching steps. */
 .formCol form {
   display: flex;
   flex-direction: column;
@@ -365,48 +365,18 @@
   opacity: 0.75;
 }
 
-/* ── Right video column ─────────────────────────────────────── */
-.videoCol {
+/* ── Right photo column ─────────────────────────────────────── */
+.photoCol {
   position: relative;
   width: 100%;
-  align-self: stretch;
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-  min-height: 480px;
-  object-fit: cover;
+  aspect-ratio: 3 / 4;
+  min-height: 320px;
   border-radius: var(--radius-2xl);
-  background: var(--navy);
+  overflow: hidden;
 }
 
-.videoTag {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  padding: 16px 20px;
-  background: #ffffff;
-  border-radius: var(--radius-xl) 0 0 0;
-}
-
-.videoTagName {
-  font-family: var(--font-body);
-  font-weight: var(--weight-bold);
-  font-size: var(--p-size);
-  line-height: 1.2;
-  color: var(--navy);
-}
-
-.videoTagLocation {
-  font-family: var(--font-body);
-  font-size: var(--p-sm-size);
-  color: var(--navy);
-  opacity: 0.45;
-  line-height: 1.2;
+.photo {
+  object-fit: cover;
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
@@ -420,28 +390,13 @@
     top: auto;
   }
 
-  .videoCol {
+  .photoCol {
     order: 3;
-    align-self: auto;
-    /* aspect-ratio (not just min-height) so the box has real intrinsic
-       height for the absolutely positioned fill image to fill — the image
-       itself can't drive its own height in fill mode, since Next.js
-       overrides it with an inline height: 100% against this parent. */
-    width: 100%;
     aspect-ratio: 4 / 3;
-    min-height: 320px;
+    min-height: 260px;
   }
 
-  /* The base .video rule below sets min-height: 480px for desktop — that
-     still applies here since fill mode's inline styles only cover height
-     and width, not min-height. Left unset, it overrides videoCol's aspect
-     ratio and forces the absolutely positioned image past its own
-     container's bottom edge, spilling into whatever follows. */
-  .video {
-    min-height: 0;
-  }
-
-  .cardNoVideo {
+  .cardNoPhoto {
     gap: var(--space-2xl);
   }
 }

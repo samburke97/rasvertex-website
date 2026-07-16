@@ -136,7 +136,7 @@ interface QuoteBookingFormProps {
   leadParagraph?: ReactNode;
   showGoogleRating?: boolean;
   showTrustGroup?: boolean;
-  showVideo?: boolean;
+  showPhoto?: boolean;
 }
 
 export default function QuoteBookingForm({
@@ -151,7 +151,7 @@ export default function QuoteBookingForm({
   ),
   showGoogleRating = true,
   showTrustGroup = true,
-  showVideo = true,
+  showPhoto = true,
 }: QuoteBookingFormProps) {
   const HeadingTag = headingLevel;
   // Bot check: real visitors take more than a couple of seconds to fill
@@ -359,7 +359,7 @@ export default function QuoteBookingForm({
 
   return (
     <div
-      className={`${styles.card} ${!showVideo ? styles.cardNoVideo : ""}`}
+      className={`${styles.card} ${!showPhoto ? styles.cardNoPhoto : ""}`}
     >
       {TURNSTILE_SITE_KEY && (
         <Script
@@ -712,16 +712,15 @@ export default function QuoteBookingForm({
       </div>
 
       {/* ── Right photo column ── */}
-      {showVideo && (
-        <div className={styles.videoCol}>
+      {showPhoto && (
+        <div className={styles.photoCol}>
           <Image
-            className={styles.video}
+            className={styles.photo}
             src={cld("avere-repaint", { width: 1200 })}
             alt="RAS-VERTEX branded van outside a completed exterior repaint at Avere, Sunshine Coast"
             fill
             priority
             sizes="(max-width: 860px) 100vw, 30vw"
-            style={{ objectFit: "cover" }}
           />
         </div>
       )}
