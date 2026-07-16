@@ -220,23 +220,23 @@ export const CARDS: ServiceCard[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "How often should roof and balcony waterproofing be inspected or reapplied on the Sunshine Coast?",
-    a: "We recommend a visual inspection every two to three years for flat and low pitch concrete roofs on the Sunshine Coast, since intense UV, thermal cycling and salt air degrade membrane systems faster here than in most Australian climates. A full system reapplication is typically needed every eight to twelve years, depending on the original specification and how well it has been maintained. Surface crazing, blistering, delamination at edges and ponding water are all signs reapplication is overdue.",
+    a: "Get flat or low pitch concrete roofs checked every two to three years. Our sun, heat and salt air wear waterproofing out faster than most of Australia, so a full reapplication is usually needed every eight to twelve years.",
   },
   {
     q: "What are the signs that a roof or balcony needs waterproofing?",
-    a: "The most common signs are water staining or damp patches on ceilings and walls below the roof or balcony, white salt deposits on concrete soffits, visible cracking or blistering on the membrane surface, and failed sealant at wall junctions and penetrations. In strata buildings, complaints from the apartment underneath are often the first indicator. By the time damage is visible inside, the membrane has usually been failing for a while, and a thermal imaging inspection will confirm the extent without any destructive work.",
+    a: "Damp patches or staining on ceilings and walls below the roof or balcony, cracking or bubbling on the surface, and gaps where the old sealant has failed. In apartment buildings, a complaint from the unit below is often the first sign something's wrong. If you can already see damage inside, it has usually been leaking for a while.",
   },
   {
-    q: "What waterproofing materials and membrane systems do you use?",
-    a: "It depends on the substrate, expected movement, foot traffic and coastal exposure. For concrete rooftops we typically use a two pack epoxy prime coat, a polyurethane membrane and a UV stable non slip topcoat. For balconies built to AS 3740, polyurethane or fibreglass systems are most common, and for wet areas we use liquid applied membranes to the same standard. We specify materials from proven commercial manufacturers only, never a budget system on a coastal exposure.",
+    q: "What waterproofing materials do you use?",
+    a: "It depends on the surface, how much foot traffic it gets, and how exposed it is to the weather. We only use proven, commercial grade products, never a cheap system on a coastal building, because that's what actually lasts here.",
   },
   {
-    q: "Can I legally do my own waterproofing, or do I need a licensed contractor?",
-    a: "Waterproofing is a licensed trade in Queensland, and all waterproofing works beyond minor maintenance must be carried out by a QBCC licensed contractor. The outcome also depends heavily on correct substrate preparation, which needs diamond grinding equipment and HEPA filtered dust extraction to get right. An improperly prepared surface will cause membrane delamination within one to two wet seasons, so a licensed application with a written warranty works out far more cost effective than a failed DIY attempt.",
+    q: "Can I do my own waterproofing, or do I need a licensed contractor?",
+    a: "Waterproofing needs a licensed contractor in Queensland for anything beyond minor maintenance. Getting the surface properly prepared matters just as much as the product used. A rushed or DIY job usually fails within a year or two, so a licensed job with a written warranty works out cheaper in the long run.",
   },
   {
     q: "Do you provide condition reports for body corporate sinking fund planning?",
-    a: "Yes. We provide written condition assessments suitable for use in ten year maintenance plans and sinking fund forecasts, complete with photos, risk ratings and recommended remediation timeframes for each area inspected. Body corporate committees and strata managers across the Sunshine Coast rely on these reports to prioritise spending and plan maintenance budgets accurately.",
+    a: "Yes. We put together written reports with photos and clear recommendations that your committee or strata manager can use for maintenance and budget planning.",
   },
 ];
 

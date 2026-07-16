@@ -132,8 +132,7 @@ That knowledge comes from 25 years of showing up, and it’s what our partners r
         <ServiceAccordion
           heading={
             <>
-              What kind of maintenance{" "}
-              <br className="hidden md:block" />
+              What kind of maintenance <br className="hidden md:block" />
               are you looking for?
             </>
           }

@@ -123,7 +123,7 @@ export default function ResidentialPaintingPage() {
         aria-label="8-year warranty"
       >
         <WarrantyCard
-          body="Every residential repaint is backed by a 8-year written workmanship warranty, issued at handover for complete peace of mind. Manufacturer warranties from Haymes and Dulux, up to 15 years on selected exterior systems, are also registered in your name for added protection and long-term confidence."
+          body="Every residential repaint is backed by an 8-year written workmanship warranty, with eligible Haymes and Dulux systems providing additional manufacturer protection for long-term confidence."
           logosHeading="Backed by the best."
           logos={[
             {
@@ -146,8 +146,7 @@ export default function ResidentialPaintingPage() {
         <ServiceAccordion
           heading={
             <>
-              What kind of painting{" "}
-              <br className="hidden md:block" />
+              What kind of painting <br className="hidden md:block" />
               are you looking for?
             </>
           }
@@ -160,7 +159,10 @@ export default function ResidentialPaintingPage() {
       </section>
 
       {/* ── How a residential repaint works ── */}
-      <section className="px-5 md:px-10 py-10 md:py-20" aria-labelledby="process-heading">
+      <section
+        className="px-5 md:px-10 py-10 md:py-20"
+        aria-labelledby="process-heading"
+      >
         <InspectionProcess
           heading="Your home, your vision. Professionally managed from start to finish."
           lede="Clear steps, ongoing support, and a structured process that ensures your home is delivered exactly as planned."

@@ -40,7 +40,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior House Painting",
-    body: "We carry out full exterior repaints for homes across the Sunshine Coast, whether that is weatherboard, timber, rendered walls, brick or fibre cement. Coastal properties within about five kilometres of the ocean get an environmentally friendly pressure clean and a coating system tailored to our coastal climate before any topcoat goes on, the very same preparation standard we use on high rise body corporates, just applied to your home instead.",
+    body: "We carry out full exterior repaints for homes across the Sunshine Coast, whether that is weatherboard, timber, rendered walls, brick or fibre cement. Coastal properties within about five kilometres of the ocean get an environmentally friendly pressure clean and a coating system tailored to our coastal climate, the very same preparation standard we use on commercial projects, just applied to your home.",
     photo: cld("exterior-house-painting", { width: 1200 }),
     href: "/contact",
   },
@@ -100,8 +100,7 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Moffat Beach",
     name: "Coastal Home Exterior Repaint",
     type: "Residential · 4 coat Haymes system",
-    system:
-      "Coastal-climate coating system · flexible topcoat",
+    system: "Coastal-climate coating system · flexible topcoat",
     image: "/images/projects/1.jpeg",
     alt: "Coastal home exterior repaint in Moffat Beach",
   },
@@ -126,7 +125,7 @@ export const PROJECTS: ServiceProject[] = [
 export const FAQS: FAQItem[] = [
   {
     q: "How much does house painting cost on the Sunshine Coast?",
-    a: "Cost depends on the size of the home, the number of rooms or the extent of the exterior, and how much surface preparation is needed. As residential painters across the Sunshine Coast, we quote every home individually after a site visit, with a fixed written price and no hidden extras. Coastal homes within five kilometres of the ocean can cost a little more, since they need an environmentally friendly pressure clean treatment to last.",
+    a: "Cost depends on the size of the home, the number of rooms or the extent of the exterior, and how much surface preparation is needed. As residential painters across the Sunshine Coast, we quote every home individually after a site visit, with a fixed written price and no hidden extras.",
   },
   {
     q: "Should I hire a professional for exterior house painting on the Sunshine Coast, or do it myself?",
@@ -162,16 +161,14 @@ export const CREDENTIALS: Credential[] = [
     title: "A commercial prep standard, applied to your home.",
     body: "We bring the same surface preparation we use on high rise body corporates, environmentally friendly pressure clean, crack repairs, to every residential job within five kilometres of the coast. Standard paint systems tend to fail on coastal homes within two to three years without that level of prep. Ours do not.",
     photo: "/images/projects/1.jpeg",
-    photoAlt:
-      "Painter preparing a coastal home exterior on the Sunshine Coast",
+    photoAlt: "Painter preparing a coastal home exterior on the Sunshine Coast",
   },
   {
     n: "02",
     title: "Haymes and Dulux, not hardware store products.",
     body: "We specify Haymes and Dulux commercial systems for residential work, because the difference in UV stability, salt resistance and adhesion is measurable. It is the gap between a finish that holds for ten years and one that starts chalking within two.",
     photo: "/images/projects/2.jpeg",
-    photoAlt:
-      "Haymes and Dulux paint systems applied to a Sunshine Coast home",
+    photoAlt: "Haymes and Dulux paint systems applied to a Sunshine Coast home",
     logos: [
       { src: "/images/associations/haymes.svg", alt: "Haymes Paint" },
       { src: "/images/associations/dulux.svg", alt: "Dulux" },
@@ -190,8 +187,7 @@ export const CREDENTIALS: Credential[] = [
     title: "An eight year written warranty.",
     body: "Issued in writing at handover. If anything fails due to our application within eight years, we come back and fix it, no questions and no arguments. Haymes and Dulux manufacturer warranties, up to fifteen years on qualifying systems, run separately and are registered in your name.",
     photo: "/images/projects/2.jpeg",
-    photoAlt:
-      "Residential painting warranty handover on the Sunshine Coast",
+    photoAlt: "Residential painting warranty handover on the Sunshine Coast",
     logos: [{ src: "/images/associations/qbcc.png", alt: "QBCC Licensed" }],
   },
 ];
