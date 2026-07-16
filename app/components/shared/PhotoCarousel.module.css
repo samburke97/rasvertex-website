@@ -96,15 +96,25 @@
 
 /* ── Footer row — arrows left, CTA right ─────────────────────── */
 
+/* Matches the page's own px-5 md:px-10 section padding (not --space-x,
+   which the carousel track above uses for its full-bleed inset) so the
+   arrows and CTA line up with the heading and every other section. */
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-col-gap);
   padding-top: var(--space-xl);
-  padding-left: var(--space-x);
-  padding-right: var(--space-x);
+  padding-left: 20px;
+  padding-right: 20px;
   margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 .cta {
@@ -174,11 +184,6 @@
   .slide {
     flex: 0 0 42vw;
   }
-
-  .footer {
-    padding-left: var(--space-x-sm);
-    padding-right: var(--space-x-sm);
-  }
 }
 
 @media (max-width: 860px) {
@@ -188,11 +193,6 @@
 
   .slide {
     flex: 0 0 65vw;
-  }
-
-  .footer {
-    padding-left: var(--space-x-xs);
-    padding-right: var(--space-x-xs);
   }
 }
 
@@ -211,10 +211,5 @@
 
   .slideNudge {
     margin-top: 0;
-  }
-
-  .footer {
-    padding-left: var(--space-x-2xs);
-    padding-right: var(--space-x-2xs);
   }
 }

@@ -25,8 +25,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     alt: "Strata building exterior painting on the Sunshine Coast",
   },
   {
-    src: "/nav/painting.png",
-    alt: "Body corporate painting program on the Sunshine Coast",
+    src: cld("archers-reports", { width: 1200 }),
+    alt: "Committee-ready painting proposal document for a Sunshine Coast body corporate",
   },
   {
     src: cld("warranty", { width: 1200 }),
