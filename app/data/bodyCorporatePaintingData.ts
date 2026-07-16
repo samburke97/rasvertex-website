@@ -41,13 +41,13 @@ export const HERO_SLIDES: HeroSlide[] = [
 export const SERVICES: AccordionService[] = [
   {
     label: "Exterior Facade Repaints",
-    body: "We carry out full exterior repaints for strata buildings of any height, across render, masonry, concrete and cladding. Anything within five kilometres of the coast gets an environmentally friendly pressure clean and a coating system tailored to our coastal climate, specified to suit the actual substrate and exposure, not picked off a generic price list.",
+    body: "We deliver complete exterior facade repaints for strata buildings of all heights across the Sunshine Coast. Every project is assessed individually, with the right preparation and coating system selected to suit your building, location and coastal conditions.",
     photo: cld("exterior-facade", { width: 1200 }),
     href: "/contact",
   },
   {
     label: "Balcony & Soffit Painting",
-    body: "We paint balcony soffits, balustrades, ceilings and floor coatings, and high salt environments call for different preparation and system choices on balconies. We treat every balcony as its own coastal exposure rather than an afterthought tacked onto the main facade job.",
+    body: "We repaint balcony soffits, balustrades, ceilings and floor coatings, with preparation and coating systems tailored to the challenges of coastal environments. Every balcony is treated as its own exposure area, not an afterthought to the main facade repaint.",
     photo: cld("balcony-painting", { width: 1200 }),
     href: "/contact",
   },
@@ -113,8 +113,7 @@ export const CREDENTIALS: Credential[] = [
     title: "Fifty plus body corporate projects on the Sunshine Coast.",
     body: "We have been painting strata buildings on the Sunshine Coast for twenty five years now, which means we know how to communicate with committees, manage resident expectations and deliver a result the whole building is proud of, all without a single special levy surprise along the way.",
     photo: "/images/projects/1.jpeg",
-    photoAlt:
-      "Body corporate repaint completed on the Sunshine Coast",
+    photoAlt: "Body corporate repaint completed on the Sunshine Coast",
   },
   {
     n: "02",
@@ -162,7 +161,8 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Maroochydore",
     name: "Strata Complex Exterior Program",
     type: "Body Corporate · 8 storeys · staged over 2 years",
-    system: "Coastal-climate coating system · render repairs · zone staged delivery",
+    system:
+      "Coastal-climate coating system · render repairs · zone staged delivery",
     image: "/images/projects/2.jpeg",
     alt: "Strata complex exterior painting in Maroochydore",
   },
@@ -170,7 +170,8 @@ export const PROJECTS: ServiceProject[] = [
     suburb: "Caloundra",
     name: "Beachside Strata Repaint",
     type: "Body Corporate · 6 storeys · full exterior + common areas",
-    system: "Coastal-climate coating system · environmentally friendly pressure clean · colour consult",
+    system:
+      "Coastal-climate coating system · environmentally friendly pressure clean · colour consult",
     image: "/images/projects/1.jpeg",
     alt: "Beachside strata repaint in Caloundra",
   },

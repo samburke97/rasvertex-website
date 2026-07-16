@@ -69,7 +69,7 @@ export default function BodyCorporatePaintingPage() {
               buildings.
             </>
           }
-          lede="Committee-ready proposals, zone-staged delivery, rope access with no car park disruption, and an 8-year written warranty issued at handover."
+          lede="Committee-ready proposals, zone-staged delivery, rope access for minimal disruption, and an 8-year written warranty issued at handover."
           image={{ src: HERO_SLIDES[0].src, alt: HERO_SLIDES[0].alt }}
           headingId="body-corporate-painting-hero-heading"
           breadcrumb={{
@@ -93,13 +93,13 @@ export default function BodyCorporatePaintingPage() {
               photo: HERO_SLIDES[2].src,
               alt: HERO_SLIDES[2].alt,
               title: "Committee-ready proposals",
-              body: "Detailed, itemised quotes formatted for body corporate approval and sinking fund planning, not vague estimates.",
+              body: "Clear, detailed quotes with transparent scopes of work, making it easier for committees to review, compare and approve projects.",
             },
             {
               photo: HERO_SLIDES[3].src,
               alt: HERO_SLIDES[3].alt,
-              title: "8-year warranty, issued in writing",
-              body: "Every repaint is backed by a written workmanship warranty registered with your body corporate at handover.",
+              title: "Minimal disruption, flexible access",
+              body: "Our rope access teams provide a safer, more efficient, and cost effective solution for your community.",
             },
           ]}
           heading={
@@ -125,7 +125,7 @@ export default function BodyCorporatePaintingPage() {
           stat="8"
           statLabel={"year\nwarranty"}
           heading="Complete confidence for your community."
-          body="Every body corporate repaint includes our 8-year written workmanship warranty as standard. Where eligible coating systems are specified, manufacturer warranties are also supplied. From paint specifications to maintenance recommendations, your committee receives a complete handover package for future reference."
+          body="Every body corporate repaint includes an 8-year written workmanship warranty. At completion, we provide your committee with all relevant warranty details, coating information and maintenance recommendations for peace of mind moving forward."
           logosHeading="Backed by the best."
           logos={[
             {
