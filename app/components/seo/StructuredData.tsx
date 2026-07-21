@@ -243,7 +243,6 @@ interface ServiceSchemaProps {
   description: string;
   image: string;
   url: string;
-  provider?: string;
   areaServed?: string[];
   serviceType?: string;
 }
@@ -253,7 +252,6 @@ export function ServiceSchema({
   description,
   image,
   url,
-  provider = "RAS-VERTEX",
   areaServed = SUBURBS,
   serviceType,
 }: ServiceSchemaProps) {
@@ -264,9 +262,12 @@ export function ServiceSchema({
     description,
     image,
     url,
+    // Bare @id reference to the LocalBusinessSchema node rendered
+    // site-wide — re-declaring "@type": "LocalBusiness" here (a second
+    // node sharing that @id) is what triggered Google's "Review has
+    // multiple aggregate ratings" error, since LocalBusinessSchema's own
+    // node carries the aggregateRating and the two got merged.
     provider: {
-      "@type": "LocalBusiness",
-      name: provider,
       "@id": "https://www.rasvertex.com.au/#localbusiness",
     },
     areaServed: areaServed.map((area) => ({
