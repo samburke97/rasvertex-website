@@ -252,6 +252,34 @@
   display: block;
 }
 
+.fileThumb {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px;
+  color: var(--navy);
+  text-align: center;
+}
+
+.fileThumbExt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fileThumbName {
+  max-width: 100%;
+  font-size: 0.625rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .photoThumbRemove {
   position: absolute;
   top: 4px;
@@ -409,5 +437,14 @@
   .footer {
     flex-direction: column-reverse;
     align-items: stretch;
+  }
+
+  .trustLogos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
+    align-items: center;
+    row-gap: var(--space-lg);
+    column-gap: var(--space-md);
   }
 }

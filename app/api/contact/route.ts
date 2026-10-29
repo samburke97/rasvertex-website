@@ -23,6 +23,19 @@ function isTrustedPhotoUrl(url: string): boolean {
   }
 }
 
+// Cloudinary stores PDFs under /image/ too, so the resource type alone
+// can't tell us whether a URL is safe to inline as an <img> in the email.
+const INLINE_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif", "heic", "heif"];
+function fileExtensionFromUrl(url: string): string {
+  return new URL(url).pathname.split(".").pop()?.toLowerCase() ?? "";
+}
+function isInlineImageUrl(url: string): boolean {
+  return (
+    new URL(url).pathname.includes("/image/upload/") &&
+    INLINE_IMAGE_EXTENSIONS.includes(fileExtensionFromUrl(url))
+  );
+}
+
 // Real visitors take more than a couple of seconds to fill a two-step
 // form. Anything faster is almost certainly a script, not a person.
 const MIN_FILL_TIME_MS = 2500;
@@ -147,7 +160,7 @@ export async function POST(req: Request) {
 
     if (photoUrls.length > MAX_FILES) {
       return NextResponse.json(
-        { success: false, error: `Maximum ${MAX_FILES} photos allowed` },
+        { success: false, error: `Maximum ${MAX_FILES} files allowed` },
         { status: 400 },
       );
     }
@@ -156,7 +169,7 @@ export async function POST(req: Request) {
 
     const failedPhotoNote =
       failedPhotoCount > 0
-        ? `\n⚠️ ${failedPhotoCount} photo(s) the customer attached failed to upload and are not included.`
+        ? `\n⚠️ ${failedPhotoCount} file(s) the customer attached failed to upload and are not included.`
         : "";
 
     const photosText =
@@ -164,21 +177,33 @@ export async function POST(req: Request) {
         ? photoUrls.map((url, i) => `  ${i + 1}. ${url}`).join("\n")
         : "  None") + failedPhotoNote;
 
+    const imageUrls = photoUrls.filter(isInlineImageUrl);
+    const documentUrls = photoUrls.filter((url) => !isInlineImageUrl(url));
+
     const photosHtml =
-      photoUrls.length > 0
-        ? photoUrls
+      (imageUrls.length > 0
+        ? imageUrls
             .map(
               (url) =>
                 `<a href="${url}" style="display:inline-block;margin:4px"><img src="${url}" width="160" style="border-radius:8px;display:block" /></a>`,
             )
             .join("")
-        : "<p>None</p>";
+        : "") +
+      (documentUrls.length > 0
+        ? `<ul>${documentUrls
+            .map(
+              (url, i) =>
+                `<li><a href="${url}">Document ${i + 1} (${escapeHtml(fileExtensionFromUrl(url).toUpperCase() || "file")})</a></li>`,
+            )
+            .join("")}</ul>`
+        : "") ||
+      "<p>None</p>";
 
     const { data: emailData, error } = await Promise.race([
       resend.emails.send({
       from: "RAS-VERTEX <sam@rasvertex.com.au>",
       to: "team@rasvertex.com.au",
-      subject: `New Quote Request — ${name || "Unknown"}${failedPhotoCount > 0 ? " (photo upload failed)" : ""}`,
+      subject: `New Quote Request — ${name || "Unknown"}${failedPhotoCount > 0 ? " (file upload failed)" : ""}`,
       text: `
 Services: ${services.join(", ") || "None"}
 
@@ -191,7 +216,7 @@ Email: ${email}
 Message:
 ${message}
 
-Photos:
+Photos & documents:
 ${photosText}
       `,
       html: `
@@ -201,8 +226,8 @@ ${photosText}
         <strong>Phone:</strong> ${escapeHtml(phone)}<br/>
         <strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Message:</strong><br/>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
-        ${failedPhotoCount > 0 ? `<p style="color:#a2540b"><strong>⚠️ ${failedPhotoCount} photo(s) the customer attached failed to upload and are not included.</strong></p>` : ""}
-        <p><strong>Photos:</strong></p>
+        ${failedPhotoCount > 0 ? `<p style="color:#a2540b"><strong>⚠️ ${failedPhotoCount} file(s) the customer attached failed to upload and are not included.</strong></p>` : ""}
+        <p><strong>Photos &amp; documents:</strong></p>
         ${photosHtml}
       `,
       }),

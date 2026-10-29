@@ -70,12 +70,42 @@ const SERVICES = [
 
 const MAX_FILES = 6;
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
-const ACCEPTED_TYPES = "image/jpeg,image/png,image/webp,image/heic";
+// Photos plus the documents customers most often send through (plans,
+// specs, strata reports, previous quotes). Extensions are listed alongside
+// MIME types because some browsers report an empty type for Office files.
+const ACCEPTED_EXTENSIONS = [
+  "jpg", "jpeg", "png", "webp", "heic", "heif",
+  "pdf", "doc", "docx", "xls", "xlsx", "txt",
+];
+const ACCEPTED_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
+  ...ACCEPTED_EXTENSIONS.map((ext) => `.${ext}`),
+].join(",");
+
+function fileExtension(file: File): string {
+  return file.name.split(".").pop()?.toLowerCase() ?? "";
+}
+
+// The accept attribute is only a hint to the file picker — "All files" on
+// desktop or drag-and-drop gets around it — so check again ourselves.
+function isAcceptedFile(file: File): boolean {
+  return ACCEPTED_EXTENSIONS.includes(fileExtension(file));
+}
+
+function isImageFile(file: File): boolean {
+  return file.type.startsWith("image/");
+}
 
 // Unsigned preset — safe to expose client-side, that's what "unsigned" means.
-// Photos upload straight from the browser to Cloudinary so they never pass
+// Files upload straight from the browser to Cloudinary so they never pass
 // through our own serverless function, which has a request size limit well
-// under what a handful of phone photos add up to.
+// under what a handful of phone photos add up to. The /auto/ endpoint lets
+// Cloudinary store images as images and documents (PDF, Word, Excel) as
+// raw files — /image/ rejects anything it can't decode as an image.
 const CLOUDINARY_CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = "form-submissions";
 
@@ -101,13 +131,13 @@ async function fetchWithTimeout(
   }
 }
 
-async function uploadPhotoToCloudinaryOnce(file: File): Promise<string> {
+async function uploadFileToCloudinaryOnce(file: File): Promise<string> {
   const body = new FormData();
   body.append("file", file);
   body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
   const res = await fetchWithTimeout(
-    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`,
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/auto/upload`,
     { method: "POST", body },
     30000,
   );
@@ -121,12 +151,12 @@ async function uploadPhotoToCloudinaryOnce(file: File): Promise<string> {
 // A single flaky upload (cold connection, a slow mobile network) must never
 // be the reason a customer's enquiry doesn't reach us — retry once before
 // giving up, and even then the caller treats a failure here as "this one
-// photo didn't make it," never as a reason to block the whole submission.
-async function uploadPhotoToCloudinary(file: File): Promise<string> {
+// file didn't make it," never as a reason to block the whole submission.
+async function uploadFileToCloudinary(file: File): Promise<string> {
   try {
-    return await uploadPhotoToCloudinaryOnce(file);
+    return await uploadFileToCloudinaryOnce(file);
   } catch {
-    return await uploadPhotoToCloudinaryOnce(file);
+    return await uploadFileToCloudinaryOnce(file);
   }
 }
 
@@ -276,8 +306,14 @@ export default function QuoteBookingForm({
     const next = [...photos];
     for (const file of incoming) {
       if (next.length >= MAX_FILES) {
-        setPhotoError(`You can attach up to ${MAX_FILES} photos.`);
+        setPhotoError(`You can attach up to ${MAX_FILES} files.`);
         break;
+      }
+      if (!isAcceptedFile(file)) {
+        setPhotoError(
+          `${file.name} isn't a supported file type and was skipped. Please use photos, PDF, Word or Excel files.`,
+        );
+        continue;
       }
       if (file.size > MAX_FILE_SIZE) {
         setPhotoError(`${file.name} is over 8MB and was skipped.`);
@@ -313,7 +349,7 @@ export default function QuoteBookingForm({
       // allSettled means one bad photo can't take the other photos, or the
       // submission itself, down with it.
       const photoResults = await Promise.allSettled(
-        photos.map((file) => uploadPhotoToCloudinary(file)),
+        photos.map((file) => uploadFileToCloudinary(file)),
       );
       const photoUrls = photoResults
         .filter((r): r is PromiseFulfilledResult<string> => r.status === "fulfilled")
@@ -321,7 +357,7 @@ export default function QuoteBookingForm({
       const failedPhotoCount = photoResults.length - photoUrls.length;
       if (failedPhotoCount > 0) {
         console.error(
-          `${failedPhotoCount} photo(s) failed to upload after retry — continuing without them`,
+          `${failedPhotoCount} file(s) failed to upload after retry — continuing without them`,
         );
       }
       setFailedPhotoCount(failedPhotoCount);
@@ -455,9 +491,9 @@ export default function QuoteBookingForm({
               {failedPhotoCount > 0 && (
                 <p className="p-soft">
                   {failedPhotoCount === 1
-                    ? "One photo was attached but couldn't be sent — "
-                    : `${failedPhotoCount} photos were attached but couldn't be sent — `}
-                  everything else came through fine, so feel free to email any photos through separately if needed.
+                    ? "One file was attached but couldn't be sent — "
+                    : `${failedPhotoCount} files were attached but couldn't be sent — `}
+                  everything else came through fine, so feel free to email any files through separately if needed.
                 </p>
               )}
             </div>
@@ -593,7 +629,8 @@ export default function QuoteBookingForm({
 
                 <div className={styles.field}>
                   <label className={styles.fieldBoxLabel}>
-                    Photos <span className={styles.optional}>(optional)</span>
+                    Photos &amp; documents{" "}
+                    <span className={styles.optional}>(optional)</span>
                   </label>
 
                   <input
@@ -612,7 +649,7 @@ export default function QuoteBookingForm({
                     type="button"
                     className={styles.uploadBox}
                     onClick={() => fileInputRef.current?.click()}
-                    aria-label="Add photos of the building or issue"
+                    aria-label="Add photos or documents (PDF, Word, Excel)"
                   >
                     <svg
                       width="20"
@@ -629,7 +666,7 @@ export default function QuoteBookingForm({
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span className={styles.uploadBoxLabel}>Add Photos</span>
+                    <span className={styles.uploadBoxLabel}>Add Photos or Documents</span>
                   </button>
 
                   {photoError && (
@@ -641,16 +678,30 @@ export default function QuoteBookingForm({
                   {photos.length > 0 && (
                     <ul
                       className={styles.photoGrid}
-                      aria-label="Uploaded photos"
+                      aria-label="Attached files"
                     >
                       {photos.map((file, i) => (
                         <li key={i} className={styles.photoThumb}>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={photoPreviews[i]}
-                            alt={`Preview of ${file.name}`}
-                            className={styles.photoThumbImage}
-                          />
+                          {isImageFile(file) ? (
+                            /* eslint-disable-next-line @next/next/no-img-element */
+                            <img
+                              src={photoPreviews[i]}
+                              alt={`Preview of ${file.name}`}
+                              className={styles.photoThumbImage}
+                            />
+                          ) : (
+                            <span
+                              className={styles.fileThumb}
+                              title={file.name}
+                            >
+                              <span className={styles.fileThumbExt}>
+                                {fileExtension(file) || "file"}
+                              </span>
+                              <span className={styles.fileThumbName}>
+                                {file.name}
+                              </span>
+                            </span>
+                          )}
                           <button
                             type="button"
                             onClick={() => removePhoto(i)}
