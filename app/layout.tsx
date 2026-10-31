@@ -3,6 +3,7 @@ import { Inter, Bebas_Neue } from "next/font/google";
 import "./styles/globals.css";
 import Navigation from "./components/layout/navigation/Navigation";
 import Footer from "./components/layout/footer/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -213,6 +214,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
